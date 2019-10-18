@@ -1,0 +1,189 @@
+% ===========================================================================
+% header.tex (Release 2.0)
+% ==========-----------------------------------------------------------------
+%
+% (C) in 2017-19 by Norman Markgraf (nmarkgraf(at)hotmail(dot)com)
+%
+% 17. Jan. 2019 (nm) Some tiny changes.
+%
+% ---------------------------------------------------------------------------
+
+%\def\logowidth{1.3cm}
+%\def\logoheight{1.3cm}
+%\def\logoxshift{-0.85cm}
+%\def\logoyshift{-0.85cm}
+
+\newcommand{\handleSection}{%
+  %
+  % New section, not section in headline
+  %
+  \setbeamertemplate{headline}[nosectioninhead]
+  %
+  \begin{frame}
+    \frametitle{\phantom{ÜgyT}}
+    \vspace*{1.2em}
+    \vspace*{7cm}
+    \begin{tikzpicture}[remember picture, overlay]
+        \node[% section title
+          xshift=\logoxshift-6.6cm,
+          yshift=3.8cm, 
+          inner sep=0pt
+        ] at (current page.south east){%
+            \makebox[\sectiontitleboxwidth][r]{%
+              {%
+                \usebeamercolor{sectionnumber title}%
+                \usebeamerfont{sectionnumber title}\insertsectionnumber\hspace*{0.15em}%
+              }%
+              {%
+                \usebeamercolor[fg]{section title}%
+                \usebeamerfont{section title}\NoHyper\insertsectionhead\endNoHyper%
+              }
+            }% makebox
+        };%
+    \end{tikzpicture}%
+  \end{frame}
+  % Reset headline. Put section in head
+  \setbeamertemplate{headline}[sectioninhead]
+}
+
+\newcommand{\handleSectionStar}{%
+  %
+  % New section, not section in headline
+  %
+  \setbeamertemplate{headline}[nosectioninhead]
+  %
+  \begin{frame}
+    \frametitle{\phantom{ÜgyT}}
+    \vspace*{1.2em}
+    \vspace*{7cm}
+    \begin{tikzpicture}[remember picture, overlay]
+        \node[% section title
+          xshift=\logoxshift-6.6cm,
+          yshift=3.8cm, 
+          inner sep=0pt
+        ] at (current page.south east){%
+            \makebox[\sectiontitleboxwidth][r]{%
+              {%
+                \usebeamercolor[fg]{section title}%
+                \usebeamerfont{section title}\NoHyper\insertsectionhead\endNoHyper%
+              }
+            }% makebox
+        };
+    \end{tikzpicture}%
+  \end{frame}
+  % Reset headline. Put section in head
+  \setbeamertemplate{headline}[sectioninhead]
+
+}
+
+
+\AtBeginSection[\handleSectionStar]{\handleSection}
+
+\newcommand{\handleSubsection}{%
+  %
+  % New subsection, not section in headline
+  %
+  \setbeamertemplate{headline}[nosectioninhead]
+  %
+  \begin{frame}
+    \frametitle{\phantom{ÜgyT}}
+    \vspace*{1.2em}
+    \vspace*{7cm}
+    \begin{tikzpicture}[remember picture, overlay]
+        \node[% section title
+          xshift=\logoxshift-6.6cm,
+          %anchor=south east,
+          yshift=3.8cm, 
+          inner sep=0pt
+        ] at (current page.south east){%
+%          \fbox{
+            \makebox[\sectiontitleboxwidth][r]{%
+              {%
+                \usebeamercolor{sectionnumber title}%
+                \usebeamerfont{sectionnumber title}\insertsectionnumber.%\insertsubsectionnumber\hspace*{0.15em}%
+              }%
+              {%
+                \usebeamercolor{subsectionnumber title}%
+                \usebeamerfont{subsectionnumber title}\insertsubsectionnumber\hspace*{0.15em}%
+              }%
+              {%
+                \usebeamercolor[fg]{subsection title}%
+                \usebeamerfont{subsection title}\NoHyper\insertsubsectionhead\endNoHyper%
+              }
+            }% makebox
+%          }% fbox
+        };
+    \end{tikzpicture}%
+  \end{frame}
+  % Reset headline. Put section in head
+  \setbeamertemplate{headline}[sectioninhead]
+%  \addtocounter{framenumber}{-1}% If you don't want them to affect the slide number
+
+}
+
+\newcommand{\handleSubsectionStar}{%
+  %
+  % New subsection, not section in headline
+  %
+  \setbeamertemplate{headline}[nosectioninhead]
+  %
+  \begin{frame}
+    \frametitle{\phantom{ÜgyT}}
+    \vspace*{1.2em}
+    \vspace*{7cm}
+    \begin{tikzpicture}[remember picture, overlay]
+      \node[% section title
+          xshift=\logoxshift-6.6cm,
+          %anchor=south east,
+          yshift=3.8cm, 
+          inner sep=0pt
+      ] at (current page.south east){%
+%          \fbox{
+            \makebox[\sectiontitleboxwidth][r]{%
+              {%
+                \usebeamercolor[fg]{subsection title}%
+                \usebeamerfont{subsection title}\NoHyper\insertsubsectionhead\endNoHyper%
+              }
+            }% makebox
+%          }% fbox
+    };% war mal -3pt
+    \end{tikzpicture}%
+  \end{frame}
+  % Reset headline. Put section in head
+  \setbeamertemplate{headline}[sectioninhead]
+}
+
+
+\AtBeginSubsection[\handleSubsectionStar]{\handleSubsection}
+
+%
+% Remove unwanted toc entries:
+%
+\renewcommand\addcontentsline[3]{%
+\ifthenelse{\equal{#1}{toc}}{\relax}{\addtocontents{#1}{\protect\contentsline{#2}{#3}}}
+}
+
+\setbeamertemplate{section in toc}{%
+    \leavevmode\leftskip=2.75ex%
+  \llap{%
+    \usebeamerfont*{section number projected}%
+    \usebeamercolor[bg]{section number projected}%
+    \vrule width2.50ex height2.05ex depth.4ex%
+    \hskip-2.50ex%
+    \hbox to2.50ex{\hfil\color{fg}\inserttocsectionnumber\hfil}}%
+  \kern1.35ex\inserttocsection\par}
+
+%
+% BUGFIX für caption bug in 2018!
+% 
+% see: https://tex.stackexchange.com/questions/426088/texlive-pretest-2018-beamer-and-subfig-collide/426090#426090
+% see: https://www.mrunix.de/forums/showthread.php?77329-Undefined-control-sequence-magyar-captionfix-beim-Laden-von-subfig-in-beamer
+% see: https://gitlab.com/axelsommerfeldt/caption/issues?state=opened
+%
+\makeatletter
+\let\@@magyar@captionfix\relax
+\makeatother
+
+\InputIfFileExists{include-notes.tex}{\relax}{\relax}
+\InputIfFileExists{header_costums.tex}{\relax}{\relax}
+% ===========================================================================

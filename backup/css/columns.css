@@ -1,0 +1,23 @@
+/*
+ * columns.css
+ * ============
+ *
+ * (C) in 2018 by Norman Markgraf
+ *
+ *
+ * Zwei (oder mehr) spaltiges Layout.
+ *
+ */
+ div .columns {
+    display: table;
+    table-layout: fixed; 
+    width: 100%;
+    text-align: left; 
+}
+
+div .column {
+    display: table-cell;
+    vertical-align: top;
+    padding: 0px 5px 0px 0px;
+    &:first-of-type { padding-left: 0; }
+}

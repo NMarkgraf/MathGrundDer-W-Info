@@ -1,0 +1,48 @@
+## Integralrechnung
+
+Stammfunktion
+:   Eine Funktion $F$ heißt **Stammfunktion** von $f$, falls gilt:
+:   $\displaystyle F'(x) = f(x)$
+
+
+Unbestimmtest Integral
+:   Damit gilt für das **unbestimmte Integral**:
+:   $\displaystyle \int f(x) \,\textrm{d}x \int F'(x) \,\textrm{d}x F(x) + c$
+
+### Elementare Stammfunktionen:
+
+\begin{tabular}{ l c l }
+	$\displaystyle\int x^n \,\textrm{d}x$ 			& $\quad=\quad$ & $\displaystyle\frac{1}{n+1}x^{n+1}+c$ \hfil (für $n\neq-1$) \\[0.75em]
+	$\displaystyle\int \frac1x \,\textrm{d}x$ 		& $\quad=\quad$ & $\displaystyle\begin{cases}\ln(x) + c \phantom{-}\quad \text{für } x > 0\\ \ln(-x) + c \quad \text{für } x < 0 \end{cases}$ \hfil (für $n\neq-1$) \\[0.75em]
+	$\displaystyle\int e^x \,\textrm{d}x$ 			& $\quad=\quad$ & $\displaystyle e^x+c$\\[0.75em]
+	$\displaystyle\int a^x \,\textrm{d}x$ 			& $\quad=\quad$ & $\displaystyle \frac{a^x}{\ln(a)}+c$ \hfil (für $a>0$ und $a\neq 1$)\\[0.75em]
+	$\displaystyle\int \sin(x) \,\textrm{d}x$ 			& $\quad=\quad$ & $\displaystyle -\cos(x)+c$\\[0.75em]
+	$\displaystyle\int \cos(x) \,\textrm{d}x$ 			& $\quad=\quad$ & $\displaystyle \sin(x)+c$\\[0.75em]
+\end{tabular}
+
+
+### Rechenregeln:
+
+Hauptsatz der Integral- und Differentialrechnung:
+:	$\displaystyle \int_a^b f(x) \,\textrm{d}x =F(x)\bigg|_a^b = F(b)-F(a)$
+
+
+Punktregel
+: 	$\displaystyle \int_a^a f(x) \,\textrm{d}x = 0$
+
+
+Umkehrregel
+: 	$\displaystyle \int_a^b f(x) \,\textrm{d}x = -\int_b^a f(x) dx$
+
+
+Linearität
+: 	$\displaystyle \int a f(x) + b g(x) \,\textrm{d}x = a \int f(x) dx + b \int g(x) dx$
+
+
+Partielle Integration
+: 	$\displaystyle \int f(x) g'(x) \,\textrm{d}x = f(x)g(x) - \int f'(x)g(x) dx$
+
+
+Substitionsregel für lineare Substitution
+:   Sei $z=mx+d$ eine lineare Substitution und $F(z)$ die Stammfunktion von $f(z)$, dann gilt:
+: 	$\displaystyle \int_a^b f(mx+d) \,\textrm{d}x = \frac{1}{m} \int_{m\cdot a+d}^{m\cdot b+d}f(z)\,\textrm{d}z$

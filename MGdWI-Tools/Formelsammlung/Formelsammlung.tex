@@ -1,0 +1,362 @@
+\documentclass[8pt,landscape]{scrartcl}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[left=1cm,right=1cm,top=1cm,bottom=1cm,landscape]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+%
+% ZusatzPakete
+% ============
+%
+%  Die folgende Pakete werden noch benötigt:
+%
+% ---------------------------------------------------------------------------
+%\usepackage{systeme}
+\usepackage{booktabs}
+\usepackage{xspace}
+\usepackage{mathtools}
+\usepackage{array}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{multicol}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{gensymb}
+\usepackage{dsfont}
+\usepackage{calc}
+\usepackage{csquotes}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\definecolor{FOMVoll}{RGB}{0,153,138}
+\newcommand{\mydesrcitem}[1]{\textcolor{FOMVoll!70}{#1}}
+\setlist[description]{style=nextline,font=\mydesrcitem}
+%\usepackage[permil]{overpic} \usepackage{graphicx} \graphicspath{{gfx/}
+% ---------------------------------------------------------------------------------------
+%
+% DeclareOwnMathOperators
+% =======================
+%
+%  Ein paar eigene mathematische Operatoren definieren
+%
+% ---------------------------------------------------------------------------
+\DeclareMathOperator*{\leftlim}{\text{l-\!}\lim} 		% l-lim
+\DeclareMathOperator*{\rightlim}{\text{r-\!}\lim} 	% r-lim
+\DeclareMathOperator*{\grad}{\text{grad}} 			% grad
+% ---------------------------------------------------------------------------------------
+\DeclareTextFontCommand{\textbf}{\bfseries\color{red}}
+\DeclareTextFontCommand{\textit}{\bfseries\color{blue}}
+
+
+
+\date{}
+
+\begin{document}
+
+% ---------------------------------------------------------------------------
+%
+% BeforeBodyInclude
+% =================
+%
+%
+% ---------------------------------------------------------------------------
+
+
+\setlength{\columnsep}{1cm}
+\begin{multicols}{3}
+% ---------------------------------------------------------------------------
+
+\subsection{Logik}\label{logik}
+
+\begin{description}
+\tightlist
+\item[Aussagen]
+Sätze, die entweder \emph{wahr} oder \emph{falsch} sind, heißen
+\textbf{Ausagen}.
+\item[Aussageformen / offene Aussagen]
+Hängte die Wahrheit einer Aussage von einem Parameter \(x\) ab, so nennt
+man die Aussage \(A(x)\) eine **offene Aussage* oder *Aussageform**.
+\item[Lösungsmenge]
+Die Menge der Werte \(x\), die eine Aussageform \(A(x)\) zu einer
+\emph{wahren Aussage} machen heißt \textbf{Lösungemenge}
+\end{description}
+
+Es seien \(A\) und \(B\) Aussagen, dann gilt:
+
+\begin{description}
+\tightlist
+\item[Implikation \emph{(Aus \(A\) folge \(B\))}]
+\(A \Longrightarrow B\) : falls \(A\) wahr ist, dann ist auch \(B\)
+wahr.
+\item[Äquivalenz]
+\(A \Longleftrightarrow B\) : \(A\) ist genau dann wahr, falls \(B\)
+wahr ist.
+\item[Konjunktion]
+\(A \wedge B\) : \(A\) ist wahr und \(B\) ist wahr.
+\item[Disjunktion]
+\(A \vee B\) : \(A\) ist wahr oder \(B\) ist wahr.
+\item[Negation]
+\(-A\) ist wahr \(\Longleftrightarrow\) \(A\) ist falsch.
+\item[Allquantor]
+\(\forall\) : \enquote{Für alle}"
+\item[Existenzquantor]
+\(\exists\) : \enquote{Es gibt ein}
+\end{description}
+
+\subsection{Mengenlehre}\label{mengenlehre}
+
+Für beliebige Mengen \(A\) und \(B\) gilt:
+
+\begin{description}
+\tightlist
+\item[Element]
+Ist \(a\) ist ein Element von \(A\), dann schreiben wir \(a \in A\).
+\item[Teilmenge]
+\(A \subset B \Longleftrightarrow \left(x \in A \Rightarrow x \in B\right)\)
+\item[Echte Teilmenge]
+\(A \subsetneq B \Longleftrightarrow \left(A \subset B \wedge \exists z \in B : z \notin A\right)\)
+\item[Gleichheit von Mengen]
+\(A = B \Longleftrightarrow A \subset B \wedge B \subset A\)
+\item[Vereinigungsmenge zweier Mengen]
+\(A \cup B = \{ x | x \in A \vee x \in B \}\)
+\item[Schnittmenge zweier Mengen]
+\(A \cap B = \{ x | x \in A \wedge x \in B \}\)
+\item[Kompliment einer Menge]
+\(A^c = \{x | x \in U \wedge x \not\in A \}, U\) ein Universum mit
+\(A \subset U\)
+\item[Differenz von Mengen]
+\(A \setminus B = \{ x | x \in A \wedge x \notin B \} = A \cap B^c\)
+\item[Potenzmenge]
+\(\mathcal{P}(A) = \{ U | U \subset A\}\)
+\item[Disjunktheit]
+\(A\) und \(B\) disjunkt \(\Longleftrightarrow A \cap B = \emptyset\)
+\item[Gleichmächtigkeit von Mengen]
+\(A\) und \(B\) sind gleichmächtig, falls es eine Bijektion
+\(f: A \leftrightarrow B\) gibt.
+\item[Endlichkeit]
+Eine Menge ist \textbf{endlich}, wenn sie \emph{gleichmächtig} zu einem
+Element von \(\mathbb{N}_0\) im Sinne von von Neumann ist.
+\item[Abzählbar]
+Eine Menge ist \textbf{abzählbar}, wenn sie \emph{endlich} ist oder
+\emph{gleichmächtig} zu einer \emph{Teilmenge} von \(\mathbb{N}\) ist.
+\item[Unendlichkeit]
+Eine nicht \emph{endliche} Menge ist \textbf{unendlich}
+\item[Mächtigkeit von Mengen (allgemein)]
+\(|A|\) heißt \emph{Betrag} der Menge \(A\) und bezeichnet die
+Mächtigkeit der Menge.
+\item[Mächtigkeit von endlichen Mengen]
+\(|A|\) ist die Anzahl der unterscheidbaren Elemente der (endlichen)
+Menge \(A\).
+\item[Produktmenge]
+\(A \times B = \{(x;y) | x \in A \wedge y \in B\}\)
+\item[De Morgansche Regeln]
+\((A \cup B)^c = A^c \cap B^c\) und \((A \cap B)^c = A^c \cup B^c\)
+\item[Disjunktheit]
+\(A\) und \(B\) sind \emph{disjunkt}
+\(\Longleftrightarrow A \cap B = \emptyset\)
+\item[Zerlegung / Partition]
+Die Mengen \(A_1, ..., A_n\) mit
+\(A_1 \cup A_2 \cup \cdots \cup A_n = A\) und
+\(A_i \cap A_j = \emptyset\) für alle \(0 \leq i \not= j \leq n\) heißt
+\emph{Partition} oder \emph{Zerlegung} von \(A\).
+\end{description}
+
+\subsection{Zahlen}\label{zahlen}
+
+\begin{description}
+\tightlist
+\item[Natürliche Zahlen]
+\(\displaystyle \mathbb{N} = \{1,2,3,4,...\}\)
+\item[Natürliche Zahlen mit Null:]
+\(\displaystyle \mathbb{N}_0 = \mathbb{N} \cup \{0\} = \{0,1,2,3,4,...\}\)
+\item[Ganze Zahlen]
+\(\displaystyle \mathbb{Z} = \{...,-3,-2,-1,0,1,2,3,...\}\)
+\item[Rationale Zahlen]
+\(\displaystyle \mathbb{Q} = \left\{ \frac{q}{p} \left| q\in \mathbb{Z}, p \in \mathbb{N}, p \text{ und } q \text{ sind teilerfremd }\right.\right\}\)
+\item[Reelle Zahlen]
+\(\displaystyle \mathbb{R}\)
+\item[Komplexe Zahlen]
+\(\displaystyle \mathbb{C} = \left\{ x+y\cdot i \left| x,y \in \mathbb{R}\right. \right\}\)
+\end{description}
+
+Es gilt:
+
+\begin{equation*}
+    \mathbb{N} \subsetneq  \mathbb{N}_0 \subsetneq  \mathbb{Z} \subsetneq \mathbb{Q} \subsetneq \mathbb{R}\subsetneq \mathbb{C}
+\end{equation*}
+
+\subsection{Folgen und Reihen}\label{folgen-und-reihen}
+
+Rechenregeln für konvergente Folgen:
+
+Seien \((a_n)\) und \((b_n)\) konvergente Folgen mit den Grenzwerten
+\(a\) und \(b\). Weiter sei \(c \in \mathbb{R}\). Dann gilt:
+
+\begin{itemize}
+\tightlist
+\item
+  \(\lim\limits_{n \to \infty} (c \cdot a_n) = c \cdot a\)
+\item
+  \(\lim\limits_{n \to \infty} (a_n \pm b_n) = a \pm b\)
+\item
+  \(\lim\limits_{n \to \infty} (a_n \cdot b_n) = a \cdot b\)
+\item
+  \(\lim\limits_{n \to \infty} \left(\frac{a_n}{b_n}\right) = \frac{a}{b},\)
+  falls \(b \not= 0\)
+\end{itemize}
+
+\subsection{Kombinatorik}\label{kombinatorik}
+
+\begin{description}
+\tightlist
+\item[Summenregel]
+\(|A \cup B| = |A| + |B| - |A \cap B|\)
+\item[Produktregel]
+\(|A \times B| = |A| \cdot |B|\)
+\item[Binomischer Lehrsatz]
+Für zwei reelle Zahlen \(a\), \(b\) und eine natürliche Zahl \(n\) gilt:
+
+\((a+b)^n = \sum\limits_{k=0}^{n} \binom{k}{n} a^{n-k}b^{k}\)
+\end{description}
+
+Für die Anzahl der Möglichkeiten aus \(n\) Objekten \(k\) Objekte
+auszuwählen, gelten die folgenden Regeln:
+
+\begin{center}
+    \begin{tabular}{lcc}
+        \toprule
+        Auswahl & \textbf{mit} Beachtung    & \textbf{ohne} Beachtung   \\
+        ~       & der Reihenfolge           & der Reihenfolge           \\
+        ~       & (\textit{Variation})      & (\textit{Kombination})    \\
+        \midrule
+        ohne Zurücklegen & $\displaystyle\frac{n!}{(n-k)!}$ & $\displaystyle\binom{n}{k}$ \\
+        \midrule
+        mit  Zurücklegen & $\displaystyle n^k$              & $\displaystyle\binom{n+k-1}{k}$ \\
+        \bottomrule
+    \end{tabular}
+\end{center}
+
+\subsection{Wahrscheinlichkeitsrechnung}\label{wahrscheinlichkeitsrechnung}
+
+In einem Wahrscheinlichkeitsraum \((\Omega, \Sigma, P)\) ist \(\Omega\)
+die Ergebnismenge, \(\Sigma\) der Ereignisraum und \(P\) ein
+Wahscheinlichkeitsmaß.
+
+Es gilt dann für die beliebigen Ereignisse \(A\) und \(B\) bzw. die
+disjunkten Ereignisse \(A_1,...,A_n\) aus \(\Sigma\):
+
+\begin{description}
+\item[Gegenereignis von Ereignis \(A\)]
+\(\overline{A} = A^c = \Omega \setminus A\)
+\item[Sicheres Ereignis]
+\(\Omega\)
+\item[Unmögliches Ereignis]
+\(\emptyset\) oder \(\{\}\)
+\item[Teilereignis \(A\) von \(B\)]
+\(A \subset B\)
+\item[Disjunktheit / Unverträglichkeit]
+\(A\) und \(B\) sind \emph{disjunkt} oder \emph{unverträglich}
+\(\Longleftrightarrow A \cap B = \emptyset\)
+\item[Nichtnegativität der Wahrscheinlichkeitsfunktion]
+\(P(A) \in [0; 1]\)
+\item[Normiertheit der Wahrscheinlichkeitsfunktion]
+\(P(\Omega) = 1\)
+\item[Gegenwahrscheinlichkeit]
+\(P(\overline{A})=1-P(A)\)
+\item[Wahrscheinlichkeit des unmöglichen Ereignisses]
+\(P(\emptyset)=0\)
+\item[Summerregel]
+\(P(A \cup B) = P(A) + P(B) - P(A \cap B)\)
+\item[Additivität]
+Für eine paarweise disjunkte Ereignisse \(A_1,...,A_n\) gilt:
+
+\(P(A_1 \cup A_2 \cup ... \cup A_n) = P(A_1) + P(A_2) + \cdots + P(A_n)\)
+\item[Stochastische Unabhänigkeit]
+\(A\) und \(B\) sind unabhängig
+\(\Longleftrightarrow P(A \cap B) = P(A) \cdot P(B)\)
+\item[Bedingte Wahrscheinlichkeit von \(A\) unter der Bedingung \(B\)]
+\begin{equation*}
+    P(A | B) = \frac{P(A \cap B}{P(B)}
+\end{equation*}
+\item[Multiplikationssatz]
+\(P(A\cap B) = P(A\mid B) \cdot P(B)\)
+\item[Satz von der totalen Wahrscheinlichkeit]
+Sei \(\{E_1, \dots, E_k\}\) eine \emph{Zerlegung} von \(\Omega\) mit
+\(P(E_i) > 0\). Dann ist
+
+\begin{equation*}
+    P(E) = \sum\limits_{i=1}^{k} P(E_i) \cdot P(E \mid E_i)
+\end{equation*}
+\item[Satz von Bayes]
+Für zwei Ereignisse \(A\) und \(B\) mit \(P(B) > 0\) gilt:
+
+\begin{equation*}
+    P(A \mid B) \; = \; \frac {P(B \mid A) \cdot P(A)} {P(B)}.
+\end{equation*}
+\item[Satz von Bayes für Gegenereignisse]
+Da ein Ereignis \(A\) und sein Gegenereignis \(\bar{A}\) stets eine
+Zerlegung der
+
+Ergebnismenge darstellen, gilt insbesondere:
+
+\begin{equation*} 
+    P(A \mid B) \; = \; \frac{P(B \mid A) \cdot P(A)}{P(B \mid A) \cdot P(A) + P(B \mid \bar{A}) \cdot P(\bar{A})}.
+\end{equation*}
+\item[Klassische Wahrscheinlichkeitsfunktion bei Laplace-Experimenten]
+\begin{equation*}
+    P(A) = \frac{\text{\enquote{Anzahl der für A günstigen Fälle}}}{\text{\enquote{Anzahl der möglichen Fälle}}}
+\end{equation*}
+\end{description}
+
+%
+% AfterBodyInclude
+% ================
+%
+%
+% ---------------------------------------------------------------------------
+\end{multicols}
+% ---------------------------------------------------------------------------------------
+
+\end{document}

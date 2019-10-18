@@ -1,0 +1,298 @@
+```{r setup-Einfuehrung-R-zwei, include=FALSE}
+# ---------------------------------------------------------------------------
+#% maintainer:
+#%   - Norman Markgraf
+#%   - Karsten Luebke
+#%
+# ---------------------------------------------------------------------------
+source("../../prelude.R")
+initPart(
+    "Einfuehrung-EDA-R",  # Dateiname ohne Suffix
+    "Einfuehrung"       # Verzeichnisname im Bilderverzeichnis 
+    )
+pathToImages = getPathToImages()
+# ---------------------------------------------------------------------------
+
+library(mosaic)
+```
+
+
+# Einführung R (Teil 2)
+
+### Cartoon: Computereinsatz in der Statistik
+
+```{r echo=FALSE, out.width = "50%", fig.align="center", cache=FALSE}
+# Lizenzworkaround: 
+extern_image_include("https://www.causeweb.org/cause/sites/default/files/caption_contest/2018/Caption-Contest_05-2018.jpg", "cartoon0518.jpg", pathToImages, TRUE)
+```
+"Auch wenn die Zeit für das 'Einsetzen von Zahlen in Formeln' und das 'Abbildungen zeichnen per Hand` gekommen ist: die Ideen und Konzepte leben weiter -- in unseren Computerprogrammen."^[[https://www.CAUSEweb.org/](https://www.causeweb.org/cause/caption-contest/may/2018/results) &copy; J.B. Landers, Überschrift K. Lübke]
+
+
+### Statistik, R, Rstudio und mosaic
+
+- *Statistik*  ist das *Auto*, mit dem der Weg von der Forschungsfrage zur vorläufigen Antwort bestritten werden kann.
+- *R* ist ein *Motor*, der das Auto antreiben kann.
+- *Rstudio Desktop* ist das Cockpit, mit dem der Motor gesteuert werden kann.
+- *mosaic* ist eine *Zusatzausstattung*, um die Motorsteuerung zu vereinfachen.
+
+
+### Vorteile Code
+
+- Dokumentation des Vorgehens
+- (Einfache) Nachvollziehbarkeit, Wiederholung
+- Möglichkeit zur Automatisierung und Übertragung
+- "Direkte" Kommunikation mit dem Programm/ Computer
+- Speziell R: unzählige Literatur und Hilfe/ Tutorials im Internet
+
+
+### Code: mosaic
+
+```{r, eval = FALSE}
+analysiere( y  # ggfs. abhängige Variable
+            ~  x # unabhängige Variable(n)
+            | z, # ggfs. bedingende (gruppierende) Variable(n)
+            Optionen, # ggfs. weitere Optionen
+            data = daten ) # Datensatz 
+```
+
+`analysiere()`: Was soll R tun?^[Befehlsübersicht [hier](https://github.com/luebby/Datenanalyse-mit-R/blob/master/Installation/R-mosaic-Kurzreferenz.pdf)]
+
+
+*Hinweis*: unter macOS: `~: alt+n`, `|: alt+7`
+
+
+### Zentrale Fragen
+
+1. Was soll der Computer für mich tun?
+2. Was muss der Computer dafür wissen?
+
+```{r, eval = FALSE}
+meineanalyse( meiny ~ meinx, data = meinedaten)
+```
+
+### R-Basics
+
+- R unterscheidet zwischen Groß- und Kleinbuchstaben.
+- R verwendet den Punkt `.` als Dezimaltrennzeichen.
+- Fehlende Werte werden in R durch `NA` kodiert.
+- Kommentare werden mit dem Rautezeichen `#` eingeleitet.
+- Eine Ergebniszuweisung erfolgt über `<-.`
+- `%>%` (Paket `dplyr`) übergibt Ergebnisse.
+- Hilfe zur Funktion `foo`: `?foo`
+
+
+### Beispiel `Alcohol`
+
+Ggf. einmalig vorab `mosaic` installieren:
+```{r, eval=FALSE}
+install.packages("mosaic")
+```
+
+Paket `mosaic` in jeder Sitzung laden:
+```{r, message=FALSE}
+library(mosaic)
+```
+
+Internen Datensatz `Alcohol` laden:
+```{r}
+data(Alcohol)
+```
+
+Datensatzbeschreibung (Hilfe zu den Daten):
+```{r, eval=FALSE}
+?Alcohol
+```
+
+Daten betrachten:
+```{r, eval=FALSE}
+View(Alcohol)
+```
+
+
+### Datenvorverarbeitung
+
+Häufig müssen Daten vor der eigentlichen Analyse vorverarbeitet werden, z. B.:
+
+- Variablen auswählen: `select()`
+- Beobachtungen auswählen: `filter()`
+- Variablen verändern, neu erzeugen: `mutate()`
+- ...
+
+
+Das Paket `dplyr`^[wird mit `mosaic` installiert und geladen. [http://dplyr.tidyverse.org/index.html](http://dplyr.tidyverse.org/index.html)] bietet dazu viele Möglichkeiten. Mehr dazu im **Datenhandling**.
+
+
+### `filter()` wählt Beobachtungen aus
+
+```
+Alcohol.Ger soll sein:
+  Nimm den Datensatz Alcohol und dann...
+  filtere auf die Beobachtungen, in denen das Land Deutschland ist.
+```
+
+```{r}
+Alcohol.Ger <- Alcohol %>%
+  filter(country == "Germany")
+```
+
+```{r, eval=FALSE}
+View(Alcohol.Ger)
+```
+
+### `select()` wählt Variablen aus
+
+```
+Alcohol.2008 soll sein:
+  Nimm den Datensatz Alcohol und dann...
+  filtere auf die Beobachtungen, in denen das Jahr 2008 ist und dann...
+  selektiere die Variablen Land und Alkohol.
+```
+
+```{r}
+Alcohol.2008 <- Alcohol %>%
+  filter(year == 2008) %>%
+  select(country, alcohol)
+```
+
+```{r, eval=FALSE}
+View(Alcohol.2008)
+```
+
+### `arrange()` sortiert Beobachtungen
+
+```
+Alcohol.2008.sort soll sein:
+  Nimm den Datensatz Alcohol.2008 und dann...
+  sortiere nach der Variable Alkohol.
+```
+
+```{r}
+Alcohol.2008.sort <- Alcohol.2008 %>%
+  arrange(alcohol)
+```
+
+```{r, eval=FALSE}
+View(Alcohol.2008.sort)
+```
+
+### `mutate()` verändert bzw. erzeugt Variablen
+
+Die Funktion `rank()` gibt den Rang einer Beobachtung zurück.
+
+```
+Alcohol.2008.rank soll sein:
+  Nimm den Datensatz Alcohol.2008 und dann...
+  erzeuge neue Variable rank als Rang der Beobachtung
+    in der Variable Alkohol.
+```
+
+```{r}
+Alcohol.2008.rank <- Alcohol.2008 %>%
+  mutate(rank = rank(alcohol))
+```
+
+```{r, eval=FALSE}
+View(Alcohol.2008.rank)
+```
+
+### Übung `r nextExercise()`: Rangliste {.exercise type=A-B answer=A}
+
+```{r}
+Alcohol.2008.rank %>%
+  filter(country == "Germany")
+```
+
+```{r, include=FALSE}
+rk <- Alcohol.2008.rank %>%
+  filter(country == "Germany") %>%
+  select(rank) %>%
+  as.numeric()
+```
+
+
+Ist Deutschland in der Stichprobe in dem Jahr das Land mit dem `r round(rk)`. in der Rangfolge geringsten oder höchsten Alkoholkonsum? 
+
+
+A.  Geringsten.
+B.  Höchsten.
+
+```{r, include=FALSE}
+rm(rk)
+```
+
+::: {.notes}
+Die Ränge werden *aufsteigend* gebildet, d.h. ***A***. Das Land mit Rang 1 hat den geringsten Alkoholkonsum.
+:::
+
+
+### Variablentypen in R
+
+Struktur des Datensatzes `Alcohol`:
+```{r}
+str(Alcohol)
+```
+
+
+Ein Datensatz (`data.frame`) kann aus mehreren Variablen (Spalten) mit gleicher Anzahl Beobachtungen (Zeilen) bestehen. Für Variablen gibt es verschiedene Typen, u.a.:
+
+- Zeichenketten (`character`) und Faktoren (`factor`)^[Faktoren sind Zeichenketten, die eine definierte Menge an Werten (Ausprägungen, `levels`) annehmen können.].
+- Gleitkommazahlen (`numeric` bzw. `double`) und Ganze Zahlen (`integer`).
+
+### Übung `r nextExercise()`: Variablentyp {.exercise type=A-B-C answer=A}
+
+Als welcher Variablentyp sollten kategorial-nominale Variablen in R gespeichert werden?
+
+A.  `character` bzw. `factor`.
+B.  `integer`.
+C.  `numeric` bzw. `double`.
+
+::: {.notes}
+***A***. `integer` wird für ganze Zahlen, d.h. häufig numerisch diskrete und `numeric` für numerisch quasi-stetige Variablen verwendet.
+:::
+
+
+### Sebastians Kaffeemühle {.sesmill}
+
+```{r echo=FALSE, out.width = "20%", fig.align="right"}
+knitr::include_graphics(file.path(pathToImages, "maschine.jpg"))
+```
+
+R ist eine der Kaffemühlen, die helfen, um von der Frage auf Basis von Daten zur Antwort zu kommen.^[Skizze: Sebastian Sauer]
+
+
+### R im quantitativen Forschungsprozess
+
+1.  Forschungsfrage: Was soll untersucht werden?
+2.  Studiendesign: Operationalisierung/ Variablenauswahl. Wahl des Stichprobenverfahren, z. B. Paket [sampling](https://cran.r-project.org/package=sampling), Stichprobenumfang, z. B. Paket [pwr](https://cran.r-project.org/package=pwr) und/ oder Versuchsplanung, z.B. Paket [AlgDesign](https://cran.r-project.org/package=AlgDesign). Alternativ: Nutzung vorhandener Daten, z.B CRAN Task View [Web Technologies and Services](https://cran.r-project.org/web/views/WebTechnologies.html).
+3.  Datenerhebung
+4.  Datenanalyse: Datenvorverarbeitung (u.a. Ausreißer, z.B. Paket [outliers](https://cran.r-project.org/package=outliers); fehlende Werte, z. B. Paket [VIM](https://cran.r-project.org/package=VIM)), Explorative Datenanalyse (Grafiken und Kennzahlen), z. B. Paket [mosaic](https://cran.r-project.org/web/packages/mosaic/).
+5.  Inferenz: Schätzen und Testen; Modellierung, z. B. Paket [mosaic](https://cran.r-project.org/web/packages/mosaic/).
+6.  Schlussfolgerungen: (vorläufige) Antwort auf Forschungsfrage.
+
+
+### R im Studium
+
+- Daten und deren Analyse sind zentraler Bestandteil wissenschaftlichen Arbeitens.
+- Jede wissenschaftliche Arbeit sollte mind. eine Methode aufweisen. In den *Science*-Studiengängen sind dies häufig empirische Methoden -- je nach Forschungsfrage qualitativ oder quantitativ.
+- Zur Analyse von Daten sollte auf geeignete Software zurückgegriffen werden. Dabei ist die Software das Werkzeug, um die inhaltliche Arbeit (die Analyse) erledigen zu können.
+- Es geht nicht darum, dass Sie R-Programmierung lernen, sondern, dass Sie die Daten (mit Hilfe von R) analysieren können.
+
+
+
+### Erste Hilfe für R
+
+
+
+- Die [häufigste Ursache von Fehlermeldungen](https://ismayc.github.io/rbasics-book/6-errors.html) sind Tippfehler. Genaues Lesen und Googeln der Fehlermeldung helfen.
+- Gerne vergisst man, die benötigten Pakete und Daten zu laden.
+- R schreibt sowohl Hinweise, als auch Warnungen und Fehler (`Error`) in rot. Aber nur Fehler sind i.d.R. ein Problem, Hinweise nicht.
+- Gibt R beim Laden eines Paketes (`library(XXX)`) den Fehler aus, dass ein Paket fehlt (`Fehler in library(XXX): es gibt kein Paket namens 'XXX'`), so muss man das genannte Paket noch installieren (`install.packages("XXX")`)^[Am Besten zu Beginn einer R-Sitzung.].
+- Steht am Anfang einer Zeile in der Konsole ein `+`, so ist der vorherige Befehl noch nicht abgeschlossen.
+- Reagiert R nicht, so kann es daran liegen, dass der aktuelle Befehl in der Konsole noch nicht abgeschlossen ist. Ein einfacher Ausweg ist, in die Konsole zu klicken und dann die Escape-Taste (`Esc`) zu drücken. Damit wird die aktuelle Zeile in der Konsole abgebrochen.
+- In RStudio kann über die Tabulatortaste (`Tab`) vervollständigt werden, über die Pfeiltasten können in der Konsole vorherige Befehle wiederholt werden.
+
+
+```{r finish-Einfuehrung-R-zwei, include=FALSE}
+rm(pathToImages)
+finalizePart()
+```

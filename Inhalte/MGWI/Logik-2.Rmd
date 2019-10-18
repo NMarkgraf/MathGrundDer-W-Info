@@ -1,0 +1,26 @@
+```{r setup-MGDWI-Logik, include=FALSE}
+# ---------------------------------------------------------------------------
+#% maintainer:
+#%   - Norman Markgraf
+#%
+# ---------------------------------------------------------------------------
+source("../../prelude.R")
+initPart(
+    "Logik",  # Dateiname ohne Suffix
+    "Logik"   # Verzeichnisname im Bilderverzeichnis 
+    )
+pathToImages = getPathToImages()
+# ---------------------------------------------------------------------------
+
+```
+
+# Logik oder die Kunst des Denkens 
+
+### Was ist Logik?
+
+.......
+
+
+```{r finish-Logik, include=FALSE}
+finalizePart(partname)
+```

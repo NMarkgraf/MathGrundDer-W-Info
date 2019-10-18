@@ -1,0 +1,268 @@
+```{r setup-Nullstellenberechnung, include=FALSE}
+# ---------------------------------------------------------------------------
+#% maintainer:
+#%   - Norman Markgraf
+#%
+# ---------------------------------------------------------------------------
+source("../../prelude.R")
+initPart(
+    "10-Nullstellenberechnung",  # Dateiname ohne Suffix
+    "Nullstellenberechnung"      # Verzeichnisname im Bilderverzeichnis 
+    )
+pathToImages = getPathToImages()
+# ---------------------------------------------------------------------------
+
+library(mosaic)
+library(mosaicCalc)
+```
+
+
+# Nullstellenberechnung
+
+
+### Die Nullstellenberechnung
+
+[Ziel:]{.cemph} Das finden von Nullstellen von Funktionen, z.B.:
+
+- Break Even Menge ($x_{BE}$) bei Gewinnfunktionen
+- Interner Zinssatz ($i_{int}$) bei Normalinvestitionen 
+- Zielwertbestimmung: $f(x) = c \Longleftrightarrow f(x) - c=0$
+
+
+**Zwischenwertsatz:** Sei $f$ eine reelwertige, stetige Funktion auf dem Intervall $[a, b]$ mit entweder $f(a) \leq c \leq f(b)$ oder $f(b) \leq c \leq f(a)$. Dann gibt es ein $x_c$ aus $[a, b]$ mit $f(x_c)=c$.
+
+($c$ liegt bei einer stetigen Funktion zwischen den Funktionswerten von $a$ und $b$, dann gibt es ein $x_c$ zwischen $a$ und $b$, dass $c$ als Funktionswert hat.)
+
+**Zwei Fälle:**
+
+- Ableitung bekannt und einfach zu bestimmen:  
+    - $\rightarrow$ **Newtonverfahren (zur Nullstellenberechnung)** (**Tangentenverfahren**)
+    
+- Ableitung unbekannt oder schwer zu berechnen: 
+    - $\rightarrow$ **Bisektionsverfahren**
+    - $\rightarrow$ **Sekantenverfahren**
+    - $\rightarrow$ **Regular Falsi** 
+
+
+### Das Bisektionsverfahren
+
+Gegeben ist eine (stetige) Funktion und zwei Stellen $a_0$, $b_0$, mit $f(a_0) \cdot f(b_0) < 0$. Dann gibt es, nach dem Zwischenwertsatz, eine Stelle $x_0 \in [a_0\,;\,b_0]$ mit $f(x_0)=0$ ist.
+
+**Das Bisektionsverfahren:** 
+
+[Startbedingung:]{.cemph} Gegeben sei ein Interval $[a_0\,;\, b_0]$ durch seine Grenzen $a_0$, $b_0$ mit 
+$a_0 < b_0$ und $f(a_0) \cdot f(b_0) < 0$. Dann liegt (mindestens) eine Nullstelle in diesem Intervall.^[Genauer gesagt eine ungerade Anzahl und hoffentlich nur eine Nullstellen.]
+
+[Im (i+1). Schritt:]{.cemph} Halbiere das Intervall $[a_i\,;\,b_i]$ an der Stelle $c_i = (a_i+b_i)/2$ und verwende als nächstes Intervall diejenige Hälfte weiter, in der eine Nullstelle liegt:
+
+$$
+    c_i = \frac{a_i + b_i}{2}; \qquad
+    [a_{i+1}\,;\, b_{i+1}] = 
+        \begin{cases}
+            \left[a_i \,;\, c \right] & \text{ falls } f(a_i) \cdot f(c) < 0 \\[1.ex]
+            \left[c\,;\, b_i \right] & \text{ sonst }
+        \end{cases}
+$$
+
+**Interaktives Beispiel:**
+
+<https://fomshinyapps.shinyapps.io/bisektionsverfahren/>
+
+
+### Die Programmiersprache R (I/ II) {.shrink}
+
+Um in R einfach mit Funktionen umgehen zu können laden wir zusätzlich zum Paket `mosaic` auch das Paket `mosaicCalc`:
+
+```{r, eval=FALSE, echo=TRUE}
+library(mosaic)
+library(mosaicCalc)
+```
+
+Ein paar Befehle für den Anfang:
+
+```{r r_demo_1, eval=FALSE, echo=TRUE}
+# Variablenzuweisung:
+a <- 3; A <- 0
+# Vergleiche:
+a == A; a != A
+# Schleifen:
+while (a != A) {
+    a <- a - 1
+    print("Und noch eins abziehen!")
+}
+print("Erledigt!")
+# Abfragen:
+if (a >= 2) { a <- 2 } else { a <- 0 }
+print(paste("Es ist a =", a, "und A =", A))
+```
+
+
+### Die Programmiersprache R (II/ II) {.shrink}
+
+```{r ref.label="r_demo_1", eval=TRUE}
+```
+
+
+### R-Code für Bisektionsverfahren {.shrink}
+
+```{r, eval=TRUE, echo=FALSE}
+library(mosaic)
+library(mosaicCalc)
+```
+
+```{r}
+bisektion <- function(fkt, a, b, maxiter=1000, minwidth=1/1000){
+    # Bisektionsverfahren 
+    if (fkt(a)*fkt(b) > 0) {
+        stop("Das Intervall muss keine Nullstellen enthalten!")
+    }
+    if (a > b) { swap <- a; a <- b; b <- swap }
+    iw <- (b-a); i <- 1
+    while (iw > minwidth) {
+        c <- (a+b)/2;
+        cat("Iteration:", i, "\t(a+b)/2=", c, "\tf((a+b)/2)=", 
+            fkt(c), "\na=", a, "\t fkt(a)=", fkt(a), 
+            "\nb=", b, "\t fkt(b)=", fkt(b), "\n\n");
+        i <- i + 1
+        if (i > maxiter) break
+        if (fkt(a)*fkt(c) < 0) { b <- c} else { a <- c }
+        iw <- (b-a)
+    }
+    erg <- list(fkt=fkt, a=a, b=b); return(erg)
+}
+```
+
+
+### Beispiel: Bisektionsverfahren (I/ II) 
+
+```{r echo=FALSE}
+fkt <- makeFun( exp(-x*x)-x ~ x )
+```
+
+
+Gegeben: $f(x) = e^{-x^2}-x$; $f(0)=1$; $f(1)=`r fkt(1)`$
+
+```{r}
+fkt <- makeFun( exp(-x*x)-x ~ x )
+fkt(0)
+fkt(1)
+```
+
+```{r eval=FALSE, width="50%"}
+bisektion(fkt, 0, 1)
+```
+
+
+### Beispiel: Bisektionsverfahren (II/ II) {.shrink}
+
+```{r eval=TRUE, width="50%"}
+bisektion(fkt, 0, 1)
+```
+
+
+### Übung `r nextExercise()`:  Bisektionsverfahren {.exercise}
+
+Berechnen Sie mit Hilfe des Bisektionsverfahrens die erste Nachkommastelle der Nullstelle der Funktion $f(x)=\sqrt{(x-2)^2+1}-2(x+1)^2$ auf dem Intervall $[0, 1]$.
+
+```{r, out.width="60%"}
+fkt <- makeFun(sqrt( (x-2)^2 + 1) - 2*(x+1)^2 ~ x)
+p <- plotFun(fkt, x.lim=range(-0.5,1.5), h=0)
+ladd(panel.abline(h=0,v=0,col='gray50'), plot=p)
+```
+
+
+### Das Newtonverfahren (Tangentenverfahren)
+
+Gegeben ist eine differenzierbare Funktion $f$. Eine Nullstelle ausgehend von einem Punkt $x_0$ wird dann iterativ als Schnittpunkt der Tangente (1. Ableitung) der Funktion an dem Punkt $x_0$ und der x-Achse bestimmt:
+$$
+    x_{i+1} = x_i - \frac{f(x_i)}{f'(x_i)}
+$$
+
+**Interaktives Beispiel:**
+
+<https://fomshinyapps.shinyapps.io/newtonverfahren/>
+
+
+### R-Code für das Newtonverfahren {.shrink}
+
+```{r}
+newton <- function(fkt, dftk, xstart, maxiter=1000, epsilon=1/1000) {
+    x <- xstart
+    for(i in 1:maxiter) {
+        fx <- fkt(x)
+        dfx <- dfkt(x)
+        cat("Iteration :", i, "x=", x, ", f(x)=", fkt(x),
+            ", f'(x)=", dfkt(x), "\n")
+        if (abs(fx) < epsilon) break
+        x <- x - (fx / dfx)
+    }
+    erg <- list(fkt=fkt, dfkt=dfkt, x=x)
+    return(erg)
+}
+```
+
+
+### Beispiel: Newtonverfahren (I/ II)
+
+Ein Unternehmen (unter vollkommener Konkurrenz) erhält für sein produziertes Gut den Preis $P=15$, so dass für seine Erlöse gilt: $E(x) = 15\cdot x$. 
+Die Kosten lassen sich darstellen durch $K(x) = x^3-8 x^2+24 x+18$. 
+
+Wo liegt die Break-Even (BE) Gewinnschwelle – ausgehend von $x_0=4$?
+
+```{r}
+fkt = makeFun( -x^3+8*x^2-9*x-18 ~ x )
+dfkt = D( fkt(x) ~ x )
+dfkt = makeFun( -3*x^2+16*x-9 ~ x )
+```
+
+
+### Beispiel: Newtonverfahren (II/ II)
+
+```{r}
+newton(fkt, dfkt, 4)
+```
+
+
+### Übung `r nextExercise()`: Newtonverfahren {.exercise}
+
+Ein Unternehmen (mit Marktmacht) weiß aus Erfahrung, dass der erzielte Preis $P$ abhängig von der verkauften Menge $x$ gemäß folgender Preisabsatzfunktion ist:
+
+$$P(x) = 100-x$$
+Für die Erlöse $E$ gilt damit: 
+
+$$E(x) = P \cdot x= 100 x - x^2$$ 
+
+Die Kosten lassen sich darstellen durch: 
+
+$$K(x) = 2x^3-25x^2+134x+60$$
+
+Wo liegt die Break-Even ($x_{BE}$) Gewinnschwelle – ausgehend von $x_0=2$?
+
+<!-- 100*x - x^2 - (2*x^3-25*x^2+134*x+60) -->
+
+
+### Sekantenverfahren {include-only=NEWNUM}
+
+Tangentensteigung wird und Sekantensteigung der letzen beiden Werte ersetzt.
+
+
+### Regular-Falsi {include-only=NEWNUM}
+
+Kombination aus Bisektions- und Sekantenverfahren.
+
+
+### Das Wissen Sie nun!
+
+- Nach dem Zwischenwertsatz gibt es bei stetigen Funktionen innerhalb eines Intervalls mindestens eine Nullstelle, wenn der Funktionswert an der einen Intervallgrenze größer als Null, an der anderen Intervallgrenze kleiner als Null ist
+
+- Nullstellen werden unter anderem zur Berechnung des Break-Even benötigt
+
+- Das Bisektionsverfahren findet Nullstellen von Funktionen dadurch, dass es ein immer kleineres Intervall bildet, in dem eine Nullstelle liegen muss
+
+- Das Newtonverfahren benötigt zur Nullstellenberechnung die 1. Ableitung. Mit dieser Hilfe findet es häufig recht schnell ein Nullstelle durch Approximation mit Hilfe der Tangente.
+
+
+```{r finish-Nullstellenberechnung, include=FALSE}
+rm(pathToImages)
+finalizePart(partname)
+```

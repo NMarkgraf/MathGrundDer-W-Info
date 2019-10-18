@@ -1,0 +1,14 @@
+### Literatur (Auswahl)
+
+**Basisliteratur**
+
+- W. Domschke, A. Drexl, R. Klein: Einführung in Operations Research, 9. Auflage, 2015, Springer Gabler, Berlin und Heidelberg.
+
+- B. Werners: Grundlagen des Operation Research: mit Aufgaben und Lösungen, 2006, Springer, Berlin und Heidelberg.
+
+**Ergänzende Literatur**
+
+- J. Tietze: Einführung in die angewandte Wirtschaftsmathematik: Das praxisnahe Lehrbuch - inklusive Brückenkurs für Einsteiger, 17. Auflage, 2013, Springer Spektrum, Berlin und Heidelberg.
+
+- T. Christiaans, M. Ross: Wirtschaftsmathematik für das Bachelor-Studium, 2016, 2. Auflage, Wiesbaden: Springer Gabler.
+

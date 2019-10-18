@@ -1,0 +1,88 @@
+## Differentialrechnung
+
+Differentialquotient erster Ordnung
+:	Die **Ableitung** oder der **Differentialquotient** einer Funktion $f$ an der Stelle $x_0$ ist, falls der Grenzwert existiert
+:	$\displaystyle f'(x_0) = \frac{\text{d} f}{\text{d} x} (x_0) = \lim\limits_{x \to x_0} \frac{f(x_0)-f(x)}{x_0-x}$
+
+Differentialquotient zweiter Ordnung
+: Die **2. Ableitung** oder der **Differentialquotient 2. Ordnung** einer Funktion $f$ an der Stelle $_x0$ ist, falls der Grenzwert existiert, die Ableitung der 1. Ableitung.
+
+### Ableitungsregeln:
+Für differenzierbare, reelle Funktionen $f$, $g$, $z$ und $n$ gelten die folgenden Regeln:
+
+Summenregel
+:   $\displaystyle [f \pm g]'(x) = f'(x) \pm g'(x)$
+
+Produktregel
+: 	$\displaystyle [f \cdot g]'(x) = f'(x) \cdot g(x) + f(x) \cdot g'(x)$
+
+Produktregel für eine reelle Konstante $c$
+: 	$\displaystyle [c \cdot f]'(x) = c \cdot f'(x)$
+
+Quotientenregel
+: 	$\displaystyle \left[\frac{z(x)}{n(x)}\right]' = \frac{z'(x)\cdot n(x) - z(x) \cdot n'(x)}{\left(n(x)\right)^2}$
+
+Kettenregel
+: 	$\displaystyle \left[f\left(g(x)\right)\right]' = f'\left( g(x) \right) \cdot g'(x)$
+
+
+### Ableitung elementarer Funktionen
+
+\begin{tabular}{ l c l }
+	$\displaystyle\left[\ln(x)\right]' = \frac{1}{x}$ 						& $\qquad$ 	& $\displaystyle\left[e^x\right]' = 	e^x$ 	 		\\[0.75em]	
+	$\displaystyle\left[\log_a (x)\right]' = \frac{1}{x \cdot \ln(a)}$	    & $\qquad$	& $\displaystyle\left[a^x\right]' = a^x \cdot \ln (a)$ 	\\[0.75em]
+	$\displaystyle\left[x^b\right]' = b \cdot x^{b-1}$ 				        & $\qquad$	& $\displaystyle\left[c\right]'	 = 0$ 					\\[0.75em]
+	$\displaystyle\left[\sin(x)\right]' = \cos(x)$ 				        	& $\qquad$	& $\displaystyle\left[\cos(x)\right]'	 = -\sin(x)$ 	\\[0.5em]
+\end{tabular}
+
+
+### Multivariate Differentialrechnung
+
+Partielle Ableitungen erster Ordnung
+:   $\displaystyle \frac{\partial f(x,y)}{\partial x} = f_x(x,y)$
+:   $\displaystyle \frac{\partial f(x,y)}{\partial y} = f_y(x,y)$
+
+Partielle Ableitungen zweiter Ordnung
+:   $\displaystyle \frac{\partial^2 f(x,y)}{\partial x\partial x} = f_{xx}(x,y)$
+:   $\displaystyle \frac{\partial^2 f(x,y)}{\partial y\partial x} = f_{xy}(x,y)$
+:   $\displaystyle \frac{\partial^2 f(x,y)}{\partial x\partial y} = f_{yx}(x,y)$
+:   $\displaystyle \frac{\partial^2 f(x,y)}{\partial y\partial y} = f_{yy}(x,y)$
+
+
+### Hesse-Matrix
+
+Für eine bivariate (zweimal partiell stetig differenzierbare) Funktion $f(x,y)$ wird durch
+
+\[ 
+  A_{Hess(f(x,y))} =
+  \begin{pmatrix}
+    f_{xx}(x,y) & f_{xy}(x,y) \\
+    f_{yx}(x,y) & f_{yy}(x,y)  
+  \end{pmatrix}
+\]
+
+die **Hesse-Matrix** definiert. 
+
+Satz von Schwarz
+:   Für eine bivariate (zweimal partiell stetig differenzierbare) Funktion $f(x,y)$ gilt $f_{xy}(x,y) = f_{yx}(x,y)$.
+ 
+
+### Definitheit symmetrischer ($2 \times 2$) Matrizen
+
+Eine $(2\times 2)$ Matrix $A$ ist **definit**, falls
+
+\[
+  \det A = \det \begin{pmatrix} a & c \\ c & b \end{pmatrix} = a \cdot b - c^2 > 0 \text{ und } a \neq 0
+\]
+
+gilt. Eine solche *definite* Matrix ist für $a>0$ **positiv definit** und für $a<0$ **negativ definit**. 
+
+### Extremstellen bivariater Funktionen
+
+Kritischer Punkt
+:   $(x_0,y_0)$ ist ein *kritischer Punkt* von $f(x,y)$, falls $f_x(x_0, y_0) = 0$ und $f_y(x_0, y_0)=0$ gilt.
+
+Extremstellen / Sattelpunkte
+:   Ein kritischer Punkt $(x_0,y_0)$ ist ein **Maximum** von $f(x,y)$, falls die *Hesse-Matrix* von $f(x,y)$ an der Stellte $(x_0,y_0)$ *negativ definit* ist.
+:   Ist die Hesse-Matrix dort *positiv definit*, dann hat $f(x,y)$ dort ein **Minimum**.
+:   Ist die Hesse-Matrix dort *indefinit*, so handelt es sich um einen **Sattelpunkt**.

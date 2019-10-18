@@ -1,0 +1,33 @@
+## Logik
+
+Aussagen
+:	Sätze, die entweder *wahr* oder *falsch* sind, heißen **Ausagen**.
+
+Aussageformen / offene Aussagen
+:	Hängte die Wahrheit einer Aussage von einem Parameter $x$ ab, so nennt man die Aussage $A(x)$ eine **offene Aussage** oder **Aussageform**.
+
+Lösungsmenge
+:	Die Menge der Werte $x$, die eine Aussageform $A(x)$ zu einer *wahren Aussage* machen heißt **Lösungemenge**
+
+Es seien $A$ und $B$ Aussagen, dann gilt:
+
+Implikation *(Aus $A$ folge $B$)*
+:	$\displaystyle A \Longrightarrow B$ : falls $A$ wahr ist, dann ist auch $B$ wahr. 
+
+Äquivalenz
+:	$\displaystyle A \Longleftrightarrow B$ : $A$ ist genau dann wahr, falls $B$ wahr ist.
+
+Konjunktion
+:	$\displaystyle A \wedge B$ : $A$ ist wahr und $B$ ist wahr.
+
+Disjunktion
+:	$\displaystyle A \vee B$ : $A$ ist wahr oder $B$ ist wahr.
+
+Negation
+:	$\displaystyle \lnot A$ ist wahr $\Longleftrightarrow$ $A$ ist falsch.
+
+Allquantor
+:	$\displaystyle \forall$ : "Für alle""
+
+Existenzquantor
+:	$\displaystyle \exists$ : "Es gibt ein"

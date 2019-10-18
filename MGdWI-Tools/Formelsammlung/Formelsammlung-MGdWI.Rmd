@@ -1,0 +1,53 @@
+---
+fontsize: 9pt
+papersize: a4
+documentclass: scrartcl
+classoption: landscape
+geometry: left=1cm,right=1cm,top=1cm,bottom=1cm,landscape
+lang: de
+output:
+    pdf_document:
+        latex_engine: pdflatex
+        template: NULL
+        toc: false
+        md_extensions: +raw_tex+header_attributes
+        fig_caption: false
+        highlight: tango
+        keep_tex: true
+        includes:
+            in_header: 
+                - ZusatzPakete.tex
+                - DeclareOwnMathOperators.tex
+            before_body: BeforeBodyInclude.tex
+            after_body: AfterBodyInclude.tex
+---
+
+```{r child="Inhalte/Notationen.Rmd", eval=TRUE}
+```
+
+```{r child="Inhalte/EinfachesRechnen.Rmd", eval=TRUE}
+```
+
+```{r child="Inhalte/Logik.Rmd", eval=FALSE}
+```
+
+```{r child="Inhalte/Mengenlehre.Rmd", eval=TRUE}
+```
+
+```{r child="Inhalte/VollstaendigeInduktion.Rmd", eval=TRUE}
+```
+
+```{r child="Inhalte/Folgen.Rmd", eval=FALSE}
+```
+
+```{r child="Inhalte/Reihen.Rmd", eval=FALSE}
+```
+
+```{r child="Inhalte/Kombinatorik.Rmd", eval=TRUE}
+```
+
+```{r child="Inhalte/Differentialrechnung.Rmd", eval=TRUE}
+```
+
+```{r child="Inhalte/Integralrechnung.Rmd", eval=TRUE}
+```

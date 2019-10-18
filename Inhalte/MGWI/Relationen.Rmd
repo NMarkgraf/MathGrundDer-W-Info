@@ -1,0 +1,446 @@
+```{r setup-MGDWI-Relationen, include=FALSE}
+# ---------------------------------------------------------------------------
+#% maintainer:
+#%   - Norman Markgraf
+#%
+# ---------------------------------------------------------------------------
+source("../../prelude.R")
+initPart(
+    "Relationen",   # Dateiname ohne Suffix
+    "MGWI"          # Verzeichnisname im Bilderverzeichnis 
+    )
+pathToImages = getPathToImages()
+# ---------------------------------------------------------------------------
+
+library(mosaic)
+library(latex2exp)
+library(gridExtra)
+```
+
+## Relationen
+
+### Relationen 
+
+#### Zweistellige/binäre Relation {.definition}
+
+Eine **zweistellige** oder auch **binäre Relation** zwischen zwei Mengen $A$ und $B$ ist eine Teilmenge des kartesichscn Produkts:
+$$R \subseteq A \times B$$
+
+#### Definitions- und Werteberich einer Relation {.definition}
+
+Sei $R \subseteq A \times B$ eine Relation, dann bezeichnet
+
+- $\displaystyle \mathbf{D}_R =\left\{a \in A \,\left|\, \exists b \in B : (a,b) \in R \right.\right\}$ den **Definitionsbereich**
+
+- $\displaystyle \mathbf{W}_R =\left\{b \in B \,\left|\, \exists a \in A : (a,b) \in R \right.\right\}$ den **Wertebereich**
+
+#### {.examples}
+
+- Die Leeremenge $\emptyset$ als Teilmenge von $A \times B$ aufgefasst als Relation heißt **Nullrelation**.
+- Für eine Funktion $f: A \to B$ ist der $Graph(f) = \{ (x, y)\,|\,x \in A, y = f(x) \in B \}$ eine Relation.
+
+
+### Beispiel
+
+```{r echo=FALSE, out.width = "50%", fig.align="center"}
+knitr::include_graphics(file.path(pathToImages, "207px-Relationen-svg.png"))
+```
+
+
+[Quelle: Von Honina, Thexudox - https://de.wikipedia.org/wiki/Datei:Relation.PNG, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=22819676]{.tiny}
+
+
+### Beispiel
+
+```{r echo=FALSE, out.width = "40%", fig.align="center"}
+knitr::include_graphics(file.path(pathToImages, "512px-Relation-x-studiert-y-svg.png"))
+```
+
+
+[Quelle: Von Stick Figure.svg: Jleedev and Ben LiblitNuvola apps edu mathematics-p.svg: David Vignoni (original icon); Flamurai (SVG convertion)Earth clip art.svg: yeKcim on the Open Clip Art LibraryNuvola apps edu languages.svg: Traced by User:Stannered, original by David Vignoniderivative work: Stephan Kulla (User:Stephan Kulla) - Stick Figure.svgNuvola apps edu mathematics-p.svgEarth clip art.svgNuvola apps edu languages.svg, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=14849973]{.tiny}
+
+
+### Mehrstellige Relation
+
+#### $n$-stellige Relation {.definition}
+
+Eine $n$-stellige Relation $R$ auf einer Menge M ist eine Teilmenge $M^n$. M.a.W.: $R \subset M^n$.
+
+#### {.example}
+
+```{r echo=FALSE, out.width = "40%", fig.align="center"}
+knitr::include_graphics(file.path(pathToImages, "845px-Relation-x-lernt-y-beim-Lehrer-svg.png"))
+```
+
+
+[Quelle: Von Stick Figure.svg: Jleedev and Ben LiblitNuvola apps edu mathematics-p.svg: David Vignoni (original icon); Flamurai (SVG convertion)Earth clip art.svg: yeKcim on the Open Clip Art LibraryNuvola apps kcoloredit.svg: David Vignoni (original icon); Actam (SVG convertion)derivative work: Stephan Kulla (User:Stephan Kulla) - Stick Figure.svgNuvola apps edu mathematics-p.svgEarth clip art.svgNuvola apps kcoloredit.svg, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=14852526]{.tiny}
+
+
+### Homogene Relation
+
+#### Homogene Relation {.definition}
+
+Eine zweistellige Relation $R\subseteq A \times A$ *auf* einer Menge $A$ heißt **homogene Relation**.
+
+#### Infix Notation von homogenen Relationen {.definition}
+
+Bei einer *homogene* Relation $R \subset A \times A$ schreibt am anstelle von $(x, y) \in R$ auch $xRy$.
+
+#### Die Relationen $<$, $\leq$, $>$, $\leq$ und $=$ {.examples}
+- $<$, $\leq$, $>$, $\leq$ und $=$ sind Relationen auf $\mathbf{R}^2$, $\mathbf{Q}^2$ und $\mathbf{Z}^2$.
+- Statt $(1, 2) \in <$, $(1,2) \in \leq$, $(2,1) \in\;>$, $(2, 1) \in\;\geq$ oder $(1,1) \in\;=$ schreiben wir $1 < 2$, $1 \leq 2$, $2 > 1$, $2 \geq 1$ oder $1=1$.
+
+
+### Übung `r nextExercise()`: {.exercise}
+
+Für die Mengen $A=\left\{1, 2, 3\right\}$ und $B=\left\{1,2,3,4,5, 6, 7, 8, 9, 10\right\}$ bilden Sie explizit die folgenden Relationen auf $A$ bzw. $B$:
+
+a) $\displaystyle <_A = \left\{(x,y) \in A^2\,\left|\, x < y \right.\right\}$
+
+a) $\displaystyle >_A = \left\{(x,y) \in A^2\,\left|\, x > y \right.\right\}$
+
+a) $\displaystyle R^{\text{quad}}_B = \left\{(x,y) \in B^2 \, \left| \, x = y^2 \right.\right\}$
+
+a) $\displaystyle R^{\text{doppelt}}_B =\left\{(x,y) \in B^2 \, \left| \, 2 \cdot x = y \right.\right\}$
+
+::: {.notes}
+
+a) $<_A = \left\{(1, 2), (1, 3), (2, 3) \right\}$
+
+a) $>_A = \left\{(3, 2), (3, 1), (2, 1) \right\}$
+
+a) $R^{\text{quad}}_B = \left\{(1, 1), (2, 4), (3, 9) \right\}$
+
+a) $R^{\text{doppelt}}_B = \left\{(1, 2), (2, 4), (3, 6), (4, 8), (5, 10) \right\}$
+
+:::
+
+
+### Äquivalenzrelation
+
+Eine (homogene) Relation $\sim$ auf einer Menge A heißt **Äquivalenzrelation**, falls für alle $a,b,c \in A$ gilt:
+
+1. Aus $a \sim b$ folgt $b \sim a$ (*Symmetrie*)
+2. Aus $a \sim b$ und $b \sim c$ folgt $a \sim c$ (*Transitivität*)
+3. Es ist $a \sim a$ (*Reflexivität*)
+
+####  Äquivalenzrelationen {.example}
+
+Auf jeder Zahlenmenge bildet $=$ eine Äquivalenzrelation.
+
+
+### Übung `r nextExercise()`: {.exercise}
+
+Es sei $A=\{1,2,3,4\}$. 
+Welche der folgenden Relationen auf $A$ sind Äquivalenzrelationen? 
+Zeigen sie die Bedingungen oder geben Sie ein Gegenbeispiel an.
+
+a) $<_A = \{ (a; b) \in A^2\,|\,a < b \}$ 
+b) $>_A = \{ (a; b) \in A^2\,|\,a > b \}$ 
+c) $\leq_A = \{ (a; b) \in A^2\,|\,a \leq b \}$ 
+d) $\geq_A = \{ (a; b) \in A^2\,|\,a \geq b \}$ 
+e) $\sim_2 = \{(a; b) \in A^2\,|\,2 \text{ teilt }  a-b\}$
+
+::: {.notes}
+a) Keine Äquibalentrelation, da z.B. $(1; 1) \not\in <_A$.
+b) Keine Äquibalentrelation, da z.B. $(1; 1) \not\in >_A$.
+c) Äquivalenzrelation!
+d) Äquivalenzrelation!
+e) Äquivalenzrelation!
+:::
+
+
+### Der Restklassenring $\mathbf{Z}/n\mathbf{Z}$
+
+Wir definierten für jedes $n \in \mathbf{N}$ die Relation 
+$$\sim_n = \{(a; b) \in \mathbf{Z}^2\,|\,n \text{ teilt } a-b\} $$
+auf den ganzen Zahlen.
+
+Die Menge 
+$$[a]_n = \{m \in \mathbf{Z}\,|\,m \sim_n a\}$$
+aller zu $a$ *aquivalenten* Elemente nennen wir die **Äquivalenzklasse** von $a$ (bzgl. $\sim_n$ und $\mathbf{Z}$). Jedes Element der Klasse nennen wir einen **Repräsentanten** dieser Klasse. 
+
+
+
+Die Menge aller Äquivalenzklassen bezeichnen wir mit 
+$$\mathbf{Z_n} := \mathbf{Z}/n \mathbf{Z} := \mathbf{Z}/\sim_n := \{ [a]_n\,|\,a \in \mathbf{Z}\}.$$ 
+Zusammen mit der Addition $[a]_n + [b]_n = [a+b]_n$ und Multiplikation $[a]_n \cdot [b]_n = [a \cdot b]_n$ nennen wir den **Restklassenring $Z$ modulo $n$** $(\mathbf{Z_n}, +, \cdot)$.
+
+
+### Beispiele 
+
+#### Der Restklassenring modulo 2 {.example}
+
+:::::::::: {.small}
+
+$\mathbf{Z_2} = \{\mathbf{0}, \mathbf{1}\}$ mit $\mathbf{0} := [0]_2 = G$, $\mathbf{1} := [1]_2 = U$.
+
+:::::: {.columns}
+::: {.column width="49%"}
+
+| $+$ | $\mathbf{0}$ | $\mathbf{1}$ |
+|:-:|:-:|:-:|
+| $\mathbf{0}$ | $\mathbf{0}$ | $\mathbf{1}$ |
+| $\mathbf{1}$ | $\mathbf{1}$ | $\mathbf{0}$ |
+:::
+::: {.column width="49%"}
+
+| $\cdot$ | $\mathbf{0}$ | $\mathbf{1}$ |
+|:-:|:-:|:-:|
+| $\mathbf{0}$ | $\mathbf{0}$ | $\mathbf{0}$ |
+| $\mathbf{1}$ | $\mathbf{0}$ | $\mathbf{1}$ |
+
+:::
+::::::
+::::::::::
+
+
+#### Der Restklassenring modulo 3 {.example}
+
+:::::::::: {.small}
+
+$\mathbf{Z_3} = \{\mathbf{0}, \mathbf{1}, \mathbf{2}\}$ mit 
+
+$\mathbf{0} := [0]_3 = \left\{n \in \mathbf{Z}\,|\, 3 \text{ teilt } n \right\}$,
+
+$\mathbf{1} := [1]_3 = \{n \in \mathbf{Z}\,|\, 3  \text{ teilt } (n-1) \}$ und
+
+$\mathbf{2} := [2]_3 = \{n \in \mathbf{Z}\,|\, 3 \text{ teilt } (n-2) \}$
+
+:::::: {.columns}
+::: {.column width="49%"}
+
+| $+$ | $\mathbf{0}$ | $\mathbf{1}$ | $\mathbf{2}$ |
+|:-:|:-:|:-:|:-:|
+| $\mathbf{0}$ | $\mathbf{0}$ | $\mathbf{1}$ | $\mathbf{2}$ |
+| $\mathbf{1}$ | $\mathbf{1}$ | $\mathbf{2}$ | $\mathbf{0}$ |
+| $\mathbf{2}$ | $\mathbf{2}$ | $\mathbf{0}$ | $\mathbf{1}$ |
+
+:::
+::: {.column width="49%"}
+
+| $\cdot$ | $\mathbf{0}$ | $\mathbf{1}$ | $\mathbf{2}$ |
+|:-:|:-:|:-:|:-:|
+| $\mathbf{0}$ | $\mathbf{0}$ | $\mathbf{0}$ | $\mathbf{0}$ |
+| $\mathbf{1}$ | $\mathbf{0}$ | $\mathbf{1}$ | $\mathbf{2}$ |
+| $\mathbf{2}$ | $\mathbf{0}$ | $\mathbf{2}$ | $\mathbf{1}$ |
+
+:::
+::::::
+::::::::::
+
+### Beispiel: Volle Stunden der Uhr
+
+Ein einfaches und sehr anschauliches Beispiel hierfür ist eine (analoge) Uhr, bei der wir der Einfachheit halber annehmen, dass wir nur ganze Stunden ablesen wollen. 
+Eine solche Uhr kann z.B. nicht zwischen 9 Uhr und 21 Uhr unterscheiden, sie betrachtet also diese Zeiten -- oder allgemeiner alle Zeiten, die sich nur um ein Vielfaches von 12 unterscheiden -- als äquivalent, bzw. fasst sie zu einer Äquivalenzklasse zusammen.
+
+Es ist also 
+$$a \sim b :\Leftrightarrow b-a = 12 \cdot k \text{ für ein } k \in \mathbf{Z} \Leftrightarrow 12 \text{ teilt } (b-a) \Leftrightarrow (b-a) \in 12\mathbf{Z}.$$
+D.h. es gilt genau dann $a\sim b$, wenn auf einer Uhr die $a.$ und $b.$ Stunden nicht unterscheiden kann.
+
+Bezüglich dieser Relation ist z.B.:
+$$[9]_{12} = \{b \in \mathbf{Z} \,|\, (b−9) \in 12\mathbf{Z}\}=\{...,−15,−3,9,21,...\}$$
+die Menge aller Zeiten, die von der Uhr als zu 9 Uhr äquivalent angesehen werden.
+
+Menge aller Äquivalenzklassen lautet somit
+
+$$\mathbf{Z}/\sim_{12} = \mathbf{Z_{12}} = \{[0]_{12}, [1]_{12}, [2]_{12}, [3]_{12}, [4]_{12}, [5]_{12}, [6]_{12}, [7]_{12}, [8]_{12}, [8]_{12}, [9]_{12}, [10]_{12}, [11]_{12}\}$$
+und entspricht den möglichen Ständen der Uhr.
+
+
+### Übung `r nextExercise()`: {.exercise}
+
+Beschreiben Sie $\mathbf{Z_4}$ und geben Sie die Additions- und Multiplikationstabelle an.
+
+:::::: {.notes}
+
+$\mathbf{Z_4} = \{\mathbf{0}, \mathbf{1}, \mathbf{2}, \mathbf{3}\}$ mit 
+$\mathbf{0} := [0]_3 = \{n \in \mathbf{Z}\,|\,4 \text{ teilt } n\}$,
+
+$\mathbf{1} := [1]_3 = \{n \in \mathbf{Z}\,|\,4 \text{ teilt } (n-1)\}$,
+
+$\mathbf{2} := [2]_3 = \{n \in \mathbf{Z}\,|\,4 \text{ teilt } (n-2)\}$ und
+
+$\mathbf{3} := [3]_3 = \{n \in \mathbf{Z}\,|\,4 \text{ teilt } (n-3)\}$
+
+:::: {.columns}
+
+::: {.column width="49%"}
+
+| $+$ |$\mathbf{0}$ |$\mathbf{1}$ |$\mathbf{2}$ |$\mathbf{3}$ |
+|:-:|:-:|:-:|:-:|:-:|
+|$\mathbf{0}$ |$\mathbf{0}$ |$\mathbf{1}$ |$\mathbf{2}$ |$\mathbf{3}$ |
+|$\mathbf{1}$ |$\mathbf{1}$ |$\mathbf{2}$ |$\mathbf{3}$ |$\mathbf{0}$ |
+|$\mathbf{2}$ |$\mathbf{2}$ |$\mathbf{3}$ |$\mathbf{0}$ |$\mathbf{1}$ |
+|$\mathbf{3}$ |$\mathbf{3}$ |$\mathbf{0}$ |$\mathbf{1}$ |$\mathbf{2}$ |
+
+:::
+::: {.column width="49%"}
+
+| $\cdot$ |$\mathbf{0}$ |$\mathbf{1}$ |$\mathbf{2}$ |$\mathbf{3}$ |
+|:-:|:-:|:-:|:-:|:-:|
+|$\mathbf{0}$ |$\mathbf{0}$ |$\mathbf{0}$ |$\mathbf{0}$ |$\mathbf{0}$ |
+|$\mathbf{1}$ |$\mathbf{0}$ |$\mathbf{1}$ |$\mathbf{2}$ |$\mathbf{3}$ |
+|$\mathbf{2}$ |$\mathbf{0}$ |$\mathbf{2}$ |$\mathbf{0}$ |$\mathbf{2}$ |
+|$\mathbf{3}$ |$\mathbf{0}$ |$\mathbf{3}$ |$\mathbf{2}$ |$\mathbf{1}$ |
+
+:::
+
+::::
+
+::::::
+
+### Funktionen (I/III)
+
+Eine *Abbildung* (oder *Funktion*) $$f: A \to B$$ mit der *Zuordnungsvorschrift* $a \mapsto b=f(a)$ 
+ist wegen $(a, f(a))$ eine Relation auf $A \times B$.
+
+Der **Definitionsbereich** (**Domain von $f$**) ist dabei:
+
+$$\text{domain}(f) := \mathbf{D}_f := \{a \in A \,|\, f(a) \text{ ist definiert}\}$$
+
+Der **Wertebereich** (**Range von $f$**) ist hierbei:
+$$\text{range}(f) := \mathbf{W}_f := \{b \in B \,|\, \text{ es gibt ein } a \in A \text{ mit } f(a) = b\}$$
+
+Eine Funktion ist **total**, falls $\text{domain}(f) = A$, ansonsten ist sie **partiell** (oder **rechtseindeutig**).
+
+
+### Funktionen (II/III)
+
+#### Injektiv, surjektiv und bijektiv {.definition}
+
+Wir nennen die Funktion $f: A \to B$ ...
+
+a) **injektiv** (oder **linkseindeutig**), falls die Gleichung $f(a)=b$ für $b \in B$ höchstens eine Lösung $a\in A$ hat; d.h. $a_1 \neq a_2 \Longrightarrow$ folgt $f(a_1) \neq f(a_2)$ oder alternativ $f(a_1) = f(a_2) \Longrightarrow a_1 = a_2$
+
+b) **surjektiv** (oder **rechtstotal**), falls die Gleichung $f(a)=b$ für jedes $b \in B$ mindestens eine Lösung hat; d.h. $\forall b\in B: \exists a \in A: f(a)=b$ oder alternativ $\text{range}(f) = B$;
+
+c) **bijektiv**, falls $f$ sowohl *injektiv* als auch *surjektiv* ist.
+
+
+### Beispiele Funktionen
+
+```{r Funktion, out.width="95%", echo=FALSE, fig.align="center"}
+f1 = makeFun( x^2 ~ x & x)
+x1 = seq(-2,2, by=0.1)
+p1 <-gf_line(f1(x1) ~ x1,
+        xlab="x", ylab="f(x)",
+        subtitle="surjektiv, nicht bijektiv.",
+        caption=TeX("$f: \\mathbf{R} \\rightarrow \\mathbf{R}^{\\geq 0}$, $f(x)=x^2$"))
+
+f2 = makeFun( x^3 ~ x & x)
+x2 = seq(-1,1, by=0.05)
+p2 <- gf_line(f2(x2) ~ x2, 
+        xlab="x", ylab="f(x)",
+        subtitle="bijektiv",
+        caption=TeX("$f: \\mathbf{R} \\rightarrow \\mathbf{R}$, $f(x)=x^3$"))
+
+f3 = makeFun( exp(x) ~ x & x)
+p3 <- gf_line(f3(x1) ~ x1,
+        xlab="x", ylab="f(x)",
+        subtitle="injektiv, nicht surjektiv",
+        caption=TeX("$f: \\mathbf{R} \\rightarrow \\mathbf{R}^{\\geq 0}$, $f(x)=\\exp(x)$"))
+
+f4 = makeFun( exp(-x^2) ~ x & x)
+p4 <- gf_line(f4(x1) ~ x1,
+        xlab="x", ylab="f(x)",
+        subtitle="weder injektiv noch surjektiv",
+        caption=TeX("$f: \\mathbf{R} \\rightarrow \\mathbf{R}^{\\geq 0}$, $f(x)=\\exp\\left(-x^2\\right)$"))
+
+grid.arrange(p1, p2, p3, p4, ncol=2)
+```
+
+
+### Funktionen (III/III)
+
+Ist $f$ *injektiv*, so gibt es eine Funktion $f^{-1}: B \to A$ mit:
+$$f^{-1}(b)=a \Longleftrightarrow f(a) = b$$
+Diese Funktion nennen wir die **Umkehrfunktion** zu $f$.
+
+#### {.fact}
+
+Ist $f$ *injektiv* und $f^{-1}$ *injektiv*, so ist $f$ (und $f^{-1}$) *bijektiv*.
+
+#### Urbild{.definition}
+
+Wir bezeichnen für eine Menge $M$ das **Urbild von $M$** mit 
+$$f^{-1}(M) = \{a \in A \,|\, f(a) \in M\}.$$
+
+
+### (Partiell-)Charakteristische Funktionen
+
+Wir bezeichnen mit $\bot$ einen Zustand, für den etwas nicht definiert ist.
+
+Dann gibt es für eine Menge $M$ eine **charakteristische Funktion** $\chi_M$ die wie folgt definiert ist:
+
+$$\chi_M(x) = \begin{cases}1 &: x \in M \\ 0 &: \text{sonst}\end{cases}$$
+Unter einer **partiell-charakteristische Funktion**  $\phi_M$ einer Menge $M$ verstehen wir:
+
+$$\phi_M(x) = \begin{cases}1 &: x \in M \\ \bot &: \text{sonst}\end{cases}$$
+
+#### {.fact}
+Die *Funktionen* $f: A \to B$ sind also die **linkstotalen** und **rechtseindeutigen** Relation auf $A \times B$.
+Die *injektiven Funktionen* sind zusätzlich **linkseindeutig**, die *surjektiven Funktionen* **rechtstotal** und die *bijektiven Funktionen* sind **bitotal** und **eineindeutig**. 
+
+
+### Übung `r nextExercise()`: {.exercise}
+
+A. Die Funktion $f:\{1,2\} \to \{1,2,3\}$ mit $f(x) = x$ ist *injektiv*, *surjektiv* und/oder *bijektiv*?
+
+B. Für ein *Universum* $U$ ist charakteristische Funktion $\chi_U$  *injektiv*, *surjektiv* und/oder *bijektiv*?
+
+C. Die Funktion $f:\mathbf{Z_5} \to \mathbf{Z}_5$ mit $f(\mathbf{a}) = [\mathbf{a}+\mathbf{1}]_5$ ist *injektiv*, *surjektiv* und/oder *bijektiv*?
+
+D. Es seien $\max(x,y) := \begin{cases}x &: x \geq y \\ y &: x < y\end{cases}$ und $\min(x,y) := -\max(-x,-y)$ sowie zwei beliebige Teilmengen $A$ und $B$ von $\mathbf{Z}$ gegeben. 
+Schreiben  Sie die folgenden Funktionen nur mit charakteristischen Funktionen, den Funktionen $\max(.,.)$ und $\min(.,.)$ und den Zeichen $+$, $-$, $\cdot$:
+1) $\chi_{A \cap B}$
+2) $\chi_{A \cup B}$
+3) $\chi_{A \setminus B}$
+4) $\chi_{A^c}$
+
+::: {.notes}
+A. nur injektiv.
+
+B. weder injektiv, noch surjektiv und somit auch nicht bijektiv.
+
+C. bijektiv mit $f^{-1}(\mathbf{a}) = [\mathbf{a}-\mathbf{1}]_5$
+
+D. Es ist:
+1) $\chi_{A \cap B} = \min(\chi_A, \chi_B) = \chi_A \cdot \chi_B$
+2) $\chi_{A \cup B} = \max(\chi_A, \chi_B) = \chi_A + \chi_B - \chi_{A \cap B} = \chi_A + \chi_B - \chi_A \cdot \chi_B$
+1) $\chi_{A \setminus B} = \max(\chi_A - \chi_B, 0) = \chi_A - \chi_{A \cap B} = \chi_A - \chi_A \cdot \chi_B = \chi_A \cdot (1-\chi_B)$
+4) $\chi_{A^c} = 1 - \chi_A$
+
+:::
+
+
+### Ein paar Ideen zu den charateristischen Funktionen
+
+Für eine endliche Menge $A$ und $B$ (bzgl. einer *universalen Menge* $U$) ist nun:
+
+
+1.) $|A| = \sum\limits_{x \in U} \chi_A(x)$
+
+2.) $|A| = \sum\limits_{a \in A} \phi_A(a)$
+
+3.) $|A \cap B| = \sum\limits_{x \in U} \chi_A(x) \cdot \chi_B(x)$
+
+4.) $|A \cup B| = \sum\limits_{x \in U} \left(\chi_A(x) + \chi_B(x) -\chi_A(x) \cdot \chi_B(x)\right)$
+
+5.) $|A \setminus B| = \sum\limits_{x \in U} \left(\chi_A(x) \cdot \left(1-\chi_B(x)\right)\right)$
+
+
+### Typen von Relationen 
+
+```{r echo=FALSE, out.width = "80%", fig.align="center"}
+knitr::include_graphics(file.path(pathToImages, "TypenVonRelationen.pdf"))
+```
+
+::: {.tiny}
+Quelle: [Von Me, myself and(?)](http://de.wikipedia.org/wiki/Benutzer:KonradVoelkel) Gemeinfrei, https://commons.wikimedia.org/w/index.php?curid=6658622
+:::
+
+```{r finish-Relationen, include=FALSE}
+rm(pathToImages)
+finalizePart(partname)
+```

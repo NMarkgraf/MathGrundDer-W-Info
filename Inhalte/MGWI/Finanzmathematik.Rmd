@@ -1,0 +1,389 @@
+```{r setup-MGDWI-Finanzmathematik, include=FALSE}
+# ---------------------------------------------------------------------------
+#% maintainer:
+#%   - Norman Markgraf
+#%
+# ---------------------------------------------------------------------------
+source("../../prelude.R")
+initPart(
+    "Finanzmathematik",  # Dateiname ohne Suffix
+    "Finanzmathematik"   # Verzeichnisname im Bilderverzeichnis 
+    )
+pathToImages = getPathToImages()
+# ---------------------------------------------------------------------------
+
+```
+
+# Finanzmathematik 
+
+### Was ist Finanzmathematik?
+
+In der **Finanzmathematik** spielt neben **Geld** (in Form von Zahlungen) der Faktor **Zeit** (als *Zeitpunkt*, zu dem die Zahlungen erfolgen, bzw. als *Zeitraum* zwischen Zahlungen) eine entscheidende Rolle. 
+
+Weiter ist der **Zinssatz**, zu dem Geld überlassen wird, von wesentlicher Bedeutung.
+
+
+## Zinsrechnung
+
+### Einführungsbeispiel (I/II)
+
+Nehmen wir an, Sie wollen $1\,000$ Euro für die Dauer von zwei Jahren anlegen. 
+Sie bekommen Angebote von drei Banken. Das Angebot der Bank A bietet in jedem Jahr $5\,\%$ Zinsen. 
+Die Zinsen werden nach dem ersten Jahr errechnet und im zweiten Jahr mitverzinst. 
+Dies gilt auch für das Angebot der Bank B, bei dem es im ersten Jahr $8\,\%$ und im zweiten nur $2\,\%$ Zinsen gibt. 
+Beim Angebot der Bank C erhalten Sie dagegen im ersten Jahr nur $2\,\%$, im zweiten allerdings $8\,\%$. 
+
+Welches der drei Angebote ist das beste?
+
+
+|          | Bank A  | Bank B  | Bank C  |
+|:--------:|:-------:|:-------:|:-------:|
+| 1. Jahr  | $5\,\%$ | $8\,\%$ | $2\,\%$ |
+| 2. Jahr  | $5\,\%$ | $2\,\%$ | $8\,\%$ |
+
+
+
+### Einführungsbeispiel (II/II)
+
+Um diese Frage zu klären, muss das sogenannte Endkapital, hier: das Kapital nach 2 Jahren, bestimmt werden.
+
+- Angebot Bank A: nach einem Jahr hat man 1000 Euro plus 5 % Zinsen also plus 50 Euro. Ergibt 1050 Euro. Nach 2 Jahren sind es 1050 Euro plus 5 % Zinsen also plus 52, 50 Euro Zinsen. Das Endkapital beträgt $1102{,}50$ Euro.
+
+- Angebot Bank B: nach einem Jahr hat man 1080 Euro ($1080 = 1000 + 8 \cdot 1000$), nach 2 Jahren (mit 2 % Zinsen auf 1080 Euro für das 2. Jahr: $21{,}60$ Euro) ist das Kapital $1101{,}60$ Euro. 
+
+- Angebot Bank C: nach dem 1. Jahr hat man 1020 Euro, nach dem 2. Jahr mit 8 % Zins ist das
+Kapital auch $1101{,}60$ Euro.
+
+**Fazit:** das Angebot der Bank A ist am höchsten. 
+Die Angebote der Bank B und C ergeben dasselbe Endkapital. 
+Mit der Ermittlung der durchschnittlichen Verzinsung kann man die Angebote leicht vergleichen, mehr dazu beim effektiven Zins.
+
+
+### Grundbegriffe
+
+:::::: {.columns}
+::: {.column width="40%"}
+**Zinsen** ($Z$) sind die Vergütung für die befristete Überlassung von Kapital.
+
+Der Betrag der Zinsen wird aus der Höhe des überlassenen Kapitals und der Dauer des Kapitals berechnet:
+
+$$Z = i \cdot K$$
+:::
+::: {.column width="58%"}
+
+
+| Symbol            | Bezeichnung                      | 
+|:------------------|:---------------------------------|
+| $K$, $K_0$, $K_t$ | Kapital (zum Zeitpunkt 0 oder t) |
+| $t$               | Zeitpunkt oder Zeitraum          |
+| $Z$,$Z_t$         | Zinsen(für den Zeitraum $t$)     |
+| $i$               | Zins, Zinssatz                   |
+| $q=1+i$           | Aufzinsungsfaktor                |
+
+
+:::
+::::::
+**Hinweise und Definitionen:**
+
+- Die *Zinsperiode* ist üblicherweise 1 Jahr, d.h., die genannten Zinssätze (i) beziehen sich auf den Zeitraum 1 Jahr (p.a.).
+
+- Sofern das Kapital innerhalb einer Zinsperiode angelegt und die Zinsen ausgezahlt werden, sprechen wir von *unterjähriger Verzinsung*.
+
+- Sparzinsen in Deutschland können zinseszinslich angelegt werden. Zinseszinsen bei Kreditgeschäften zwischen Privatpersonen sind nicht erlaubt (vgl. *Rechtsgrundlagen*)
+
+- In Deutschland Einteilung des Zinsjahres in 12 Monate zu je 30 Tagen (30/360 oder deutsche Zinsmethode)
+
+
+### Rechtsgrundlagen
+::::: {.columns}
+::: {.column width="49%"}
+:::::::: {.small}
+
+**BGB § 248 Zinseszinsen**
+
+(1) Eine im Voraus getroffene Vereinbarung, dass fällige Zinsen wieder Zinsen tragen sollen, ist nichtig.
+
+(2) Sparkassen, Kreditanstalten und Inhaber von Bankgeschäften können im Voraus vereinbaren, dass nicht erhobene Zinsen von Einlagen als neue verzinsliche Einlagen gelten sollen. Kreditanstalten, die berechtigt sind, für den Betrag der von ihnen gewährten Darlehen verzinsliche Schuldverschreibungen auf den Inhaber auszugeben, können sich bei solchen Darlehen die Verzinsung rückständiger Zinsen im Voraus versprechen lassen.
+::::::::
+:::
+::: {.column width="49%"}
+:::::::: {.small}
+**HGB § 355**
+::::::::
+:::::::: {.footnotesize}
+(1) Steht jemand mit einem Kaufmanne derart in Geschäftsverbindung, dass die aus der Verbindung entspringenden beiderseitigen Ansprüche und Leistungen nebst Zinsen in Rechnung gestellt und in regelmäßigen Zeitabschnitten durch Verrechnung und Feststellung des für den einen oder anderen Teil sich ergebenden Überschusses ausgeglichen werden (laufende Rechnung, Kontokorrent), so kann derjenige, welchem bei dem Rechnungsabschluß ein Überschuss gebührt, von dem Tage des Abschlusses an Zinsen von dem Überschuss verlangen, auch soweit in der Rechnung Zinsen enthalten sind.
+
+(2) Der Rechnungsabschluss geschieht jährlich einmal, sofern nicht ein anderes bestimmt ist.
+
+(3) [...]
+::::::::
+:::
+:::::
+::::::::
+
+### Ganzjährige Verzinsung
+
+::::::: {.columns}
+::: {.column width="49%"}
+
+Zum *Zeitpunkt* $t=0$ wird *Kapital* $K_0$ angelegt, welches sich mit dem *Zinssatz* $i$ verzinst, wobei die *Zinsen* zum Ende jeder *Zinsperiode* sofort wiederangelegt werden:
+
+:::
+::: {.column width="49%"}
+
+\begin{align*}
+K_1 &= K_0 (1+i) \\
+K_2 &= K_1 (1+i) = K_0 (1+i)^{2} \\
+K_3 &= K_2 (1+i) = K_0 (1+i)^{3} \\
+\cdots & \\
+K_n &= K_0 (1+i)^{n} = K_q^{n} \\
+\end{align*}
+
+mit dem *Aufzinsungsfaktor* $q=(1+i)$
+
+:::
+:::::::
+
+#### {.example}
+
+$K_0 = 2\,000$ Euro werden für 12 Jahre zu einem Zinssatz von $2{,}75\,\%$ angelegt. Dann ergibt sich das Endkapital $K_n$ gemäß:
+
+$$K_n = K_0 \cdot (1+i)^{n} = 2\,000 \cdot (1+0{,}0275)^{12} = 2\,769{,}57$$
+
+
+### Übung `r nextExercise()`: {.exercise}
+
+a) 	Wie viel Endkapital erhalten Sie nach 17 Jahren, wenn Sie $3\,000$ € zu einem Zinssatz von $1{,}6\,\%$ anlegen?
+
+b) 	Wie viel Kapital hatten Sie vor 7 Jahren zu einem Zinssatz von $1{,}1\,\%$ angelegt, wenn Sie heute inkl. Zinsen $2\,159{,}18$ € erhalten?
+
+c) 	Wie hoch ist der Zinssatz, wenn aus 500 € nach 11 Jahren $545{,}80$ € werden?
+
+d) 	Wie lange hatten Sie $1\,500$ € zu einem Zinssatz von $4\,\%$ angelegt, wenn das Endkapital $2\,921{,}85$ € beträgt?
+
+::: {.notes}
+
+a) $3\,929{,}29$ Euro
+b) $2\,000{,}00$ Euro
+c) $\left(\frac{545{,}80}{500}\right)^{\frac{1}{11}}-1 = 0{,}80\,\%$
+d) $\log_{1{,}04}\left(\frac{2\,921{,}85}{1\,500}\right) = 17{,}00$
+
+:::
+
+
+### Unterjährige Verzinsung
+
+Die Methode der **unterjährigen Verzinsung** bezieht sich auf Zeiträume, die **innerhalb eines Jahres (unterjährig)** liegen. 
+Das Grundprinzip ist hier, dass der Jahreszinssatz (linear) gewichtet wird mit dem entsprechenden Anteil (t) des Jahres:
+
+$$K_t = K_0 + Z \cdot t = K_0 + i\cdot K_0 \cdot t = K_0 (1+i\cdot t)$$
+
+Die **deutsche kaufmännische Zinsmethode** nimmt zusätzlich an, dass jeder Monat 30 Tage und das Jahr 360 Tage hat (wird auch 30/360-Methode genannt). Der unterjährige Jahresanteil $t$ berechnet sich gemäß:
+
+$$t = \frac{T_2-T_1}{360}$$
+
+wobei $T_1$ und $T_2$ Start- und Endzeitpunt der Kapitalanlage beschreiben. Mit der deutschen Zinsmethode berechnen sich diese Zeitpunkte durch:
+
+$$T_i = (\text{aktueller Monat} - 1) \cdot 30 + \text{Tag im Monat}$$
+
+Falls einer der Zeitpunkte der 31. eines Monats ist, wird nur der 30. gezählt.
+
+
+### Beispiele unterjährlicher Verzinsung
+
+- Vom 15.03. bis zum 28.11. eines Jahres werden $5\,000$ € zu $1{,}75\,\%$ angelegt.
+    
+$\qquad T_1:\qquad 15.3. \mathrel{\hat{=}}  (3-1) \cdot 30 + 15 = 75$
+    
+$\qquad T_2:\qquad 28.11. \mathrel{\hat{=}} (11-1) \cdot 30 + 28 = 328$
+
+
+Mit $T_2-T_1 = 253$ Zinstagen gilt für den Kapitalendwert:
+
+$$K_t = K_0\left(1+i\cdot\frac{T_2-T_1}{360}\right)= 5\,000\left(1+0{,}0175\cdot\frac{253}{360}\right) = 5\,061{,}49$$
+
+- Vom 28.02. bis zum 1.03. eines Jahres werden $3\,000$ € zu $2{,}2\,\%$ angelegt:
+$$K_t = K_0\left(1+i\cdot\frac{T_2-T_1}{360}\right)= 3\,000\left(1+0{,}022\cdot\frac{6158}{360}\right) = 3\,000{,}55$$
+
+
+- Vom 10.09. bis zum 31.10. eines Jahres werden $9\,000$ € zu $1{,}1\,\%$ angelegt:
+$$K_t = K_0\left(1+i\cdot\frac{T_2-T_1}{360}\right)= 9\,000\left(1+0{,}011\cdot\frac{300-250}{360}\right) = 9\,013{,}75$$
+
+### Übung `r nextExercise()`: {.exercise}
+
+a)	Gertrud legt am 1. April eines Jahres $3\,000$ € zu $4\,\%$ Zinsen bei der Bank an. Wie hoch ist Ihr Endkapital am 16. September, wenn Sie Ihre Geldanlage inklusive Zinsen abhebt?
+
+b)	Kathrin erhält am 25.10. insgesamt 112 € inkl. Zinsen. Wie viel Kapital hatte sie am 20.4. des selben Jahres zu einem Zinssatz von 8 % angelegt?
+ 
+c)	Eine Rechnung über $3\,250$ € wird nicht bezahlt. Daher sind Verzugszinsen in Höhe von $144{,}45$ € zu zahlen. Für welche Zeitspanne wurden die Verzugszinsen berechnet, falls der zugrunde liegende Zins $8\,\%$ betrug?
+
+::: {.notes}
+
+:::
+
+### Übung `r nextExercise()`: {.exercise}
+a)  Robin hatte am 20.2. $11\,000$ € angelegt und erhielt am 18.10. des selben Jahres $11\,500$ € Endkapital ausgezahlt. Wie hoch war sein Zinssatz?
+
+b) Rudolf hat am 12.02 insgesamt $9\,000,00$ € zu einem Zinssatz von $5\,\%$ angelegt. Wann kann er seine Anlage auflösen, wenn er insgesamt Zinsen in Höhe von genau 300 € erhalten will?
+
+c) Hanna legt am 12. 11. eines Jahres $12\,000$ € zu $5{,}0\,\%$ Zinsen bei der Bank an. Wie hoch ist ihr Endkapital am 31.12.?
+
+d) Walter legt am 12. Januar eines Jahres $2\,100$ € zu $3{,}9\,\%$ Zinsen bei der Bank an. Wie hoch ist sein Endkapital am 16. September?
+
+e) Frank legt am 3. März eines Jahres $22\,000$ € zu $4{,}7\,\%$ Zinsen an. Wie hoch ist sein Endkapital am 12. Oktober?
+
+
+### Übung `r thisExercise()`: {.exercise}
+
+f) Luise legt am 6. April eines Jahres 800 € zu $3{,}3\,\%$ Zinsen bei der Bank an. Wie hoch ist ihr Endkapital am 23. Dezember?
+
+g) Leonard hatte am 20.11. das erhaltende Weihnachtsgeld zu $4\,\%$ angelegt, so dass er am 20.12. insgesamt  $2\,112{,}00$ € abheben konnte. Wie viel Weihnachtsgeld bekam er?
+
+h) Kent hatte am 2.2. eines Jahres $6\,000$ € angelegt und erhielt am 2.12. des selben Jahres $6\,500$ € Endkapital ausgezahlt. Wie hoch war sein Zinssatz?
+
+i) Wie viel Tage müssen $5\,000$ € bei einem Zinssatz von $6\,\%$ angelegt werden, um Zinsen von 200 € zu erhalten?
+
+j) Wie viel Tage müssen $3\,000$ € bei einem Zinssatz von $8\,\%$ angelegt werden, um Zinsen von 200 € zu erhalten?
+
+k) Heinz hat am 20.05 insgesamt $2\,500{,}00$ € zu einem Zinssatz von %8\,\%$ angelegt. Wann kann er seine Anlage auflösen, wenn er insgesamt Zinsen in Höhe von genau 50 € erhalten will?
+
+::: {.notes}
+
+
+:::
+
+### Übung `r nextExercise()`: {.exercise}
+
+Ein Girokonto weist am Jahresanfang ein Guthaben von $2\,400$ € auf. 
+Am 6. März werden auf das Konto $10\,000$ € überwiesen; 
+am 21. Januar und am 16. Februar werden jeweils $4\,000$ € abgebucht. 
+Die Bank berechnet $12\,\%$ Sollzins und $0{,}5\,\%$ Habenzins. 
+
+
+Stellen Sie die Abrechnung zum 1. April auf, wenn die Bank das Konto monatlich zum 1. abrechnet (Zinsperiode entspricht 1 Monat).  
+
+::: {.notes}
+
+
+:::
+
+### Gemischte Verzinsung
+
+Ein- und Auszahlungen fallen in praktischen Fällen selten mit dem Anfang und dem Ende von Zinsperioden oder Jahren zusammen ...
+
+
+
+...
+
+### Gemische Verzinsung
+
+| Symbol | Bezeichnung                                |
+|:------:|:-------------------------------------------|
+| $K_0$  | Anfangskapital                             |
+| $t_1$  | Zeitraum innerhalb der ersten Zinsperiode  |
+| $n$    | Anzahl der ganzen Zinsperioden             |
+| $t_2$	 | Zeitraum innerhalb der letzten Zinsperiode |
+| $K_t$  | Endkapital                                 |
+
+
+$$K_t = K_0\cdot \left(1+i\cdot t_1\right)\cdot \left(1+i\right)^n\cdot \left(1+i\cdot t_2\right)$$
+
+Nach der *deutschen Zinsmethode* gilt (meistens^[nicht wirklich einheitlich; vgl. BGB §§187, 188]) der erste Tag der Kapitalanlage als Zinstag, der letzte Tag (an dem abgehoben wird) hingegen nicht. 
+Deshalb müssen die Zinszeiträume praktisch korrigiert werden:
+
+$$K_t = K_0\cdot \left(1+i\cdot \frac{360-T_0+1}{360}\right)\cdot \left(1+i\right)^n\cdot \left(1+i\cdot \frac{T_1-1}{360}\right)$$
+
+
+### Beispiel: Gemischte Verzinsung
+
+Am 15.9.2016 werden $12\,000$ € zu $3{,}75\,\%$ angelegt. 
+Wie hoch ist der Endbetrag bei Kontoauflösung am 24.9.2023?
+
+
+**Lösung:**
+
+1.  Berechnung der Zeiträume im ersten (t1) und letzten (t2)Jahr:
+$\qquad T_1:\qquad 15.9. \mathrel{\hat{=}}  (9-1) \cdot 30 + 15 = 255 \Longrightarrow t_1 = \frac{360-255+1}{360} = \frac{106}{360}$
+    
+$\qquad T_2:\qquad 24.9. \mathrel{\hat{=}} (9-1) \cdot 30 + 24 = 264 \Longrightarrow t_1 = \frac{264-1}{360} = \frac{263}{360}$
+
+$\qquad n = \text{"Endjahr"} - \text{"Anfangsjahr"} - 1 = 2023 - 2016-1 = 6$
+
+2. Berechnung des Endbetrages: $K_t = K_0\cdot \left(1+i\cdot t_1\right)\cdot \left(1+i\right)^n\cdot \left(1+i\cdot t_2\right)$
+
+$$K_t = 12\,000\cdot \left(1+0{,}0375\cdot \frac{106}{360}\right)\cdot 1{,}0375^6\cdot \left(1+0{,}0375\cdot \frac{263}{360}\right)=15\,545{,}93$$
+
+
+### Übung `r nextExercise()`: {.exercise}
+
+Berechnen Sie das Endkapital (inkl. Zinsen) der folgenden Kapitalanlagen.
+
+a) Sie legen am 12.4.2017 insgesamt $110\,000$ € zu einem Zinssatz von $4\,\%$ an, um davon am 1.10.2021 Ihre Hypothek abzubezahlen.
+
+b) Sie legen am 19.2.2018 insgesamt $68\,000$ € zu einem Zinssatz von $5\,\%$ an, um davon am 12.1.2023 Ihre Hypothek abzubezahlen.  
+
+c) Sie legen am 1.4.2017 insgesamt $82\,000$ € zu einem Zinssatz von $3{,}75\,\%$ an, um davon am 13.2.2021 Ihre Hypothek abzubezahlen. 
+
+d) Sie legen am 13.12.2018 insgesamt $50\,000$ € zu einem Zinssatz von $4{,}5\,\%$ an, um davon am 12.4.2023 Ihre Hypothek abzubezahlen. 
+
+::: {.notes}
+
+
+:::
+
+
+### Approximative Verzinsung
+
+**Zinseszinsen mit nichtganzzahligen Exponenten:**
+
+Für kleine Zinsen gilt ungefähr: $(1+i\cdot t) \approx (1+i)^t$, wobei $t$ beliebige (nichtganzzahlige) Zeiträume in Jahren beschreibt. 
+Wird die Zinseszinsformel durch obige Annäherung ersetzt, ergibt sich:
+
+$$K_t= K_0\cdot (1+i)^t$$
+
+#### {.example}
+
+Am 15.9.2016 werden  $12\,000$ € zu $3{,}75\,\%$ angelegt. 
+Wie hoch ist der approximierte Endbetrag bei Kontoauflösung am 24.9.2023, wenn die Verzinsung mit nichtganzzahligen Exponenten berechnet wird?
+
+**Lösung:**
+
+106 Tage im ersten und 263 Tage im letzten Jahr und 6 ganze Jahre ergeben einen Gesamtzeitraum von 7,025 Jahren:
+
+$$K_t = K_0 \cdot (1+i)^t = 12\,000 \cdot \left(1+0{,}0375\right)^{7{,}025} = 15\,541{,}67$$
+
+
+### Approximierte und gemischte Verzinsung
+
+**Nachteil der gemischten Verzinsung:**
+
+- Die gemischte Verzinsung ist *inkonsistent* und vom Zeitpunkt des Zinszuschlages (bzw. der Einzahlung) abhängig.
+
+- Wäre der Zeitraum vorheriger Beispielaufgabe um einen Monat verschoben (15.10.2016 bis 24.10.2023), so ergäbe sich ein leicht anderer Betrag:
+
+$$K_t = 12\,000\cdot \left(1+0{,}0375\cdot \frac{76}{360}\right)\cdot 1{,}0375^6\cdot \left(1+0{,}0375\cdot \frac{293}{360}\right)=15\,545{,}02$$
+
+- Weil die gemischte Verzinsung üblicherweise höhere Zinserträge als die “Verzinsung mit nicht ganzzahligen Exponenten” erbringt, ist sie im Grundsatz aber *verbraucherfreundlicher*.
+
+- Die approximierte Verzinsung mit nichtganzzahligen Exponenten kann immer dann verwendet werden, wenn Startzeitpunkte nicht exakt bekannt sind, oder wenn aufgrund weiterer *Ungenauigkeiten*, welche gerade im betrieblichen Entscheidungsprozess häufig vorliegen, ein exaktes Ergebnis sowieso nicht berechenbar ist.
+
+
+### Übung `r nextExercise()`: {.exercise}
+
+a) In welcher Zeit verdoppelt sich bei Zinseszinsrechnung jedes beliebige Anfangskapital $K$ bei einem jährlichen Zinssatz von $i = 5\,\%$?
+
+
+b) Wie lange müssen $10\,000$ € angelegt werden, damit sie bei einer jährlichen Verzinsung von $7\,\%$ ein Endkapital von $25\,000$ € erbringen?
+
+c) Eine Kapitalanlage hat sich in 10 Jahren verdoppelt. In der ersten Hälfte der Laufzeit betrug der Zinssatz $4\,\%$. Wie hoch war er in der zweiten Hälfte?
+
+
+d) Wie hoch muss der jährliche Zinssatz bei Zinseszinsrechnung sein, wenn sich ein Anfangskapital in 10 Jahren verdoppeln soll?
+
+::: {.notes}
+:::
+
+
+```{r finish-Finanzmathematik, include=FALSE}
+finalizePart(partname)
+```

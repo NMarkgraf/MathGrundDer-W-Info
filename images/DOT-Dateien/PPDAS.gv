@@ -1,0 +1,18 @@
+digraph PPDAS {
+
+   layout=circo;
+
+    splines=curved;
+
+    node [shape=circle fontname=Arial fixedsize=true width=1.8]
+
+    D  [label="Daten"]
+    A  [label="Analyse"]
+    C  [label="Schlussfolgerung"]
+    P1 [label="Problem"]
+    P2 [label="Plan"]
+    
+    D -> A -> C -> P1 -> P2 -> D;
+    
+
+}

@@ -1,0 +1,97 @@
+---
+title: "Mathematische Grundlagen der (Wirtschafts-)Informatik"
+---
+
+```{r setup, include=FALSE}
+# ---------------------------------------------------------------------------
+# Einige Funktionen und Variabeln sind in die Datei 'prelude.R' ausgelagert.
+# Diese werden hier nachgeladen und angepasst.
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+source("prelude.R")
+initPrelude(
+    "MGWI-",        # Prefix für Terminlisten etc.
+    TRUE           # Soll geprüft werden ob alle Pakete installiert sind?
+)
+
+# ---------------------------------------------------------------------------
+```
+
+```{r localKnitrButtonSetup, eval=!RENDEREDBYSCRIPT, echo=FALSE, include=FALSE}
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# Einstellungen für den Fall, dass man den knitr-Button nutzt. Sonst bitte
+# 'eval=FALSE' einstellen!
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+if (!exists("prelude.rendertools")) {
+    loadPrelude("prelude_rendertools.R")
+}
+
+privateVorstellung <<- TRUE   # Zeige die Private Vorstellung
+showVorlesungsplan <<- FALSE  # Zeige den Vorlesungsplan
+
+UseCache <<- FALSE
+
+createPrivateYaml("Dipl.-Math. Norman Markgraf", "WS 2019/20", "Münster/Düsseldorf")
+
+# Erzeuge Skript "DozentenSkript", "StudierendenSkript" oder "LösungsSkript": 
+makeSkriptOfType("DozentenSkript") 
+```
+
+```{r ggplot2Setup, eval=TRUE, echo=FALSE, include=FALSE}
+library(ggplot2)
+# ggformula, also ggplot2 muss noch etwas konfiguriert werden.
+theme.fom <- theme_classic(22*1.02)
+theme.fom <- theme.fom
+theme_set(
+  theme.fom  
+)
+```
+
+```{r setUpChildren, eval=TRUE, include=FALSE}
+childrenToInclude <- c(
+    "Organisatorisches", "Hinweise", "Mengenlehre", "Relationen", "Kombinatorik", "Logik", "Finanzmathematik"
+)
+## Test! (TRUE oder FALSE ändern!)
+if (FALSE) {
+  childrenToInclude <- c(
+    "Relationen"
+  )
+  privateVorstellung <<- FALSE
+  }
+##
+includeChild <- function(name, children=childrenToInclude, all=FALSE) {
+    all | ifelse(name %in% children, TRUE, FALSE)
+}
+```
+
+```{r child = './Inhalte/MGWI-Organisatorisches.Rmd', eval=includeChild("Organisatorisches")}
+```
+
+```{r child = './private/private-Vorstellung.Rmd', eval = privateVorstellung}
+```
+
+```{r child = './Inhalte/Organisatorisches/MGWI-Hinweise.Rmd', eval=includeChild("Hinweise")}
+```
+
+```{r child = './Inhalte/MGWI/Mengenlehre.Rmd', eval=includeChild("Mengenlehre")}
+```
+
+```{r child = './Inhalte/MGWI/Relationen.Rmd', eval=includeChild("Relationen")}
+```
+
+```{r child = './Inhalte/MGWI/Kombinatorik.Rmd', eval=includeChild("Kombinatorik")}
+```
+
+```{r child = "./Inhalte/MGWI/Logik.Rmd", eval=includeChild("Logik")}
+```
+
+```{r child = "./Inhalte/MGWI/Finanzmathematik.Rmd", eval=includeChild("Finanzmathematik")}
+```
+
+
+```{r finalize, include=FALSE}
+# ---------------------------------------------------------------------------
+# Setzt einige Parameter zurück.
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+finalizePrelude()
+```

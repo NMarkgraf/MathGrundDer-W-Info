@@ -1,0 +1,13 @@
+| Tag | Datum      | Inhalte                                         |
+|:---:|:----------:|:------------------------------------------------|
+| Di  | 20.03.2019 | Organisatorisches, Wissenschaftliche Grundlagen, Grundlagen Quantitative Datenanalyse (Fr. Vollbracht, M. Sc.)    |
+| Di  | 26.03.2019 | Einführung R, Explorative Datenanalyse          |
+| Mo  | 08.04.2019 | Explorative Datenanalyse (Forts.)               |
+| Mo  | 29.04.2019 | Inferenz                                        |
+| Di  | 30.04.2019 | Inferenz (Forts.)                               |
+| Mi  | 15.05.2019 | Inferenz-Beispiele                              |
+| Mo  | 20.05.2019 | Lineare Regression	                             |
+| Mi  | 12.06.2019 | Lineare Regression (Forts.)                     |
+| Mi  | 19.06.2019 | Logistische Regression                          |
+| Di  | 02.07.2019 | Wiederholung                                    |
+| Mo  | 15.07.2019 | **Klausur**                                     |

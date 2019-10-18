@@ -1,0 +1,19 @@
+/*
+ * fom-layout.css
+ * ==============
+ *
+ * (C) in 2018 by Norman Markgraf
+ *
+ *
+ * Änderungen um sich langsam dem FOM CD anzunähern.
+ *
+ */
+ 
+.reveal section img {
+    border: 0;
+    box-shadow: none;
+}
+
+.reveal .slides {
+    text-align: left;
+}

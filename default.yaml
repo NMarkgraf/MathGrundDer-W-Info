@@ -1,0 +1,9 @@
+---
+toc-title: "\\contentsname"
+lang: de-DE
+header-includes: 
+    - "\\InputIfFileExists{header.tex}{\\relax}{\\relax}"
+output:
+    beamer_presentation:
+        slide_level: 3
+---

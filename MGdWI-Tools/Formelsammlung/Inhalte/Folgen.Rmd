@@ -1,0 +1,53 @@
+## Folgen
+
+Konvergenz und Grenzwert
+:	Eine Folge ($a_n$) heißt **konvergent** gegen eine (reelle) Zahl $a$, falls es zu jedem $\epsilon > 0$ einen Folgenindex $n_0$ gibt, so dass für alle $n \geq n_0$ gilt:
+:	$\displaystyle |a_n - a| < \epsilon$
+: 	Man schreibt dafür $\displaystyle \lim\limits_{n\to\infty} a_n = a$ oder $\displaystyle a_n \to a \text{ für } n \to \infty$ und nennt $a$ den **Grenzwert** der Folge $(a_n)$.
+
+Divergenz
+:	Jede *nicht konvergente* Folge ist **divergent**. 
+
+Monotonie
+: 	Eine Folge $(a_n)$ heißt
+: 	* **monoton wachsend**, falls $a_n \leq a_{n+1}$ 
+: 	* **monoton fallend**, falls $a_n \geq a_{n+1}$
+: 	* **konstant**, falls $a_n = a_{n+1}$
+: 	* **alterniered**, falls $a_n \cdot a_{n+1} < 0$
+:	gilt, für alle $n \in \mathbb{N}$.
+:	Man nutzt das Wort **streng**, falls jeweils $>$ bzw. $<$ statt $\leq$ bzw. $\geq$ gilt.
+
+Beschränktheit
+:	Eine Folge $(a_n) heißt
+:	* **nach oben beschränkt**, falls es ein $K \in \mathbb{R}$ gibt mit $a_n \leq K$ für alle $n \in \mathbb{N}$
+:	* **nach unten beschränkt**, falls es ein $k \in \mathbb{R}$ gibt mit $a_n \geq k$ für alle $n \in \mathbb{N}$
+:	* **beschränt**, falls sie sowohl *nach oben* als auch *nach unten beschränkt* ist.
+
+Arithmetische Folge
+:	Das sind Folgen die dem Bildungsgesetz $a_k = a_0 + k \cdot d$ mit einer Konstanten $d$ gehorchen.
+
+Geometrische Folge
+:	Das sind Folgen die dem Bildungsgesetz $a_k=a_0 \cdot q^k$ ist, mit einer Konstanten $q$ gehorchen.
+
+
+### Bekannte Folgen und deren Grenzwerte
+
+* $\displaystyle \lim\limits_{n\to\infty} c = c \quad \text{für jedes konstante } c$
+* $\displaystyle \lim\limits_{n\to\infty} \sqrt[n]{a} = 1 \quad \text{für } a >0$
+* $\displaystyle \lim\limits_{n\to\infty} \sqrt[n]{n} = 1$
+* $\displaystyle \lim\limits_{n\to\infty} \sqrt[n]{n^k} = 1 \quad \text{für eine feste natürliche Zahl } k$
+* $\displaystyle \lim\limits_{n\to\infty} \frac{\ln(n)}{n} = 0$
+* $\displaystyle \lim\limits_{n\to\infty} \frac{1}{n^s} = 0 \quad \text{für alle reelen } s \geq 1$
+* $\displaystyle \lim\limits_{n\to\infty} q^n = 0 \quad \text{für alle reellen } |q| < 1$
+* $\displaystyle \lim\limits_{n\to \infty} \left(1+\frac{1}{n}\right)^n = e$
+
+
+### Rechenregeln für konvergente Folgen
+
+Seien $(a_n)$ und $(b_n)$ konvergente Folgen mit den Grenzwerten $a$ und $b$. 
+Weiter sei $c \in \mathbb{R}$. Dann gilt:
+
+* $\displaystyle \lim\limits_{n \to \infty} (c \cdot a_n) = c \cdot a$
+* $\displaystyle \lim\limits_{n \to \infty} (a_n \pm b_n) = a \pm b$
+* $\displaystyle \lim\limits_{n \to \infty} (a_n \cdot b_n) = a \cdot b$
+* $\displaystyle \lim\limits_{n \to \infty} \left(\frac{a_n}{b_n}\right) = \frac{a}{b},$ falls $b \not= 0$

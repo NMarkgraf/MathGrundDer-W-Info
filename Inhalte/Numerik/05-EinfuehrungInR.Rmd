@@ -1,0 +1,96 @@
+```{r setup-EinfuehrungInR-WI, include=FALSE}
+# ---------------------------------------------------------------------------
+#% maintainer:
+#%   - Norman Markgraf
+#%
+# ---------------------------------------------------------------------------
+source("../../prelude.R")
+initPart(
+    "00-EinfuehrungInR",  # Dateiname ohne Suffix
+    "EinfuehrungInR-WI"   # Verzeichnisname im Bilderverzeichnis 
+    )
+pathToImages = getPathToImages()
+# ---------------------------------------------------------------------------
+
+library(mosaic)
+library(mosaicCalc)
+```
+
+# Grundlagen von R
+
+
+### Warum R?
+
+> [...] she was also following a wider trend: for many academics [...] R is the data-analysis tool of choice.^[Tippmann, S.. Programming tools (2015): Adventures with R. A guide to the popular, free statistics and visualization software that gives scientists control of their own data analysis. Nature, 517, S. 109--110. [https://doi.org/10.1038%2F517109a](https://doi.org/10.1038%2F517109a)]
+
+Verbreitung z. B.: [http://r4stats.com/articles/popularity/](http://r4stats.com/articles/popularity/)
+
+**R ist eine weit verbreitete Eintrittskarte in das globale Datenzeitalter!**
+
+### Vorteile R
+
+- Methoden- und Anwendungsvielfalt (Finance, Marketing, HR, Psychologie, ...)^[Siehe z. B. [https://cran.r-project.org/web/views/](https://cran.r-project.org/web/views/)]
+- Neue Methoden der Datenanalyse werden häufig in R entwickelt (auch Big Data, KI, etc.).
+- frei und offen; kostenlos
+- Schnittstellen zu sehr vielen Datenquellen/-banken (auch SocialMedia etc.)
+- Erweiterungen u. a. für Microsoft, Oracle, SAP Produkte, aber auch SPSS, SAS
+- unzählige Nutzer*innen weltweit in Unternehmen und Wissenschaft
+- Möglichkeiten für Reporting, Apps, etc.
+- numerische Stabilität / Genauigkeit
+- große Entwickler*innen-Gemeinde mit langer Geschichte (seit 1993); R Konsortium, u.\ a. IBM, Microsoft, TIPCO, Google, ...
+
+
+### R und co.
+
+- **R** [https://www.r-project.org/](https://www.r-project.org/): ist das Basisprogramm
+- **RStudio Desktop** [https://www.rstudio.com/](https://www.rstudio.com/): ist eine komfortable Entwicklungsumgebung für R und bietet zusätzliche Tools, wie z. B. Dokumentenerstellung etc.
+- **mosaic** [https://cran.r-project.org/web/packages/mosaic/](https://cran.r-project.org/web/packages/mosaic/): ist ein Zusatzpaket, welches u. a. eine vereinheitlichte R Syntax bietet
+
+
+### R Installation
+
+1. R ([https://www.r-project.org/](https://www.r-project.org/))
+2. RStudio Desktop ([https://www.rstudio.com/](https://www.rstudio.com/))
+3. Installation von Zusatzpaketen in RStudio:
+
+```{r, eval=FALSE}
+install.packages("mosaic")
+```
+
+Ausführliche Installationsanleitung [hier](https://rawgit.com/luebby/Datenanalyse-mit-R/master/Installation/Install.html).
+
+
+### Warum Code? Politik
+ 
+ > Ich glaube, dass die Fähigkeit zum Programmieren eine der Basisfähigkeiten von jungen Menschen wird, neben Lesen, Schreiben, Rechnen. Die werden nicht wegfallen. Aber Programmieren wird nochmal dazu kommen.^[[Rede von Bundeskanzlerin Merkel zur Deutsch-Französischen Digitalkonferenz am 13. Dezember 2016.](https://www.bundeskanzlerin.de/Content/DE/Rede/2016/12/2016-12-13-deutsch-franzoesische-digitalkonferenz.html)]
+
+ 
+### Warum Code? Wirtschaft
+ 
+> Der Prozess, eine komplexe Aufgabe auf eine Reihe einfacher Anweisungen zu reduzieren - genau darum geht es beim Programmieren -, ist eine Fähigkeit, die in vielen Aspekten des modernen Lebens nützlich ist, nicht nur für professionelle Informatiker und Programmierer.^[[Facebooks Forschungschef Yann LeCun](http://www.faz.net/aktuell/wirtschaft/netzwirtschaft/facebook-ki-experte-yann-lecun-fordert-informatik-als-pflichtfach-15058261.html)]
+
+> I think everyone should learn how to program a computer, because it teaches you how to think.^[[Steve Jobs](http://www.businessinsider.com/the-best-quotes-from-the-lost-steve-jobs-interview-showing-this-weekend-2011-11?IR=T)]
+
+
+### Warum Code? Lehre
+
+> Don’t fence off students from the computation pool, throw them in! Computing skills are essential to working with data in the 21st century. Given this fact, we feel that to shield students from computing is to ultimately do them a disservice.^[[Ismay, C, Kim, A (2017): ModernDive ](http://moderndive.com/index.html#intro-instructors)]
+
+
+### Vorteile Code
+
+- Dokumentation des Vorgehens
+- (Einfache) Nachvollziehbarkeit, Wiederholung
+- Möglichkeit zur Automatisierung und Übertragung
+- "Direkte" Kommunikation mit dem Programm/ Computer
+- Speziell R: unzählige Literatur und Hilfe/ Tutorials im Internet
+
+
+
+
+```{r finish-EinfuehrungInR-WI, include=FALSE}
+rm(pathToImages)
+finalizePart(partname)
+```
+
+

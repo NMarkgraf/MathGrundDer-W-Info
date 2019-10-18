@@ -1,0 +1,11 @@
+## Notationen
+
+Summenzeichen
+:	$\displaystyle \sum\limits_{k=m}^n a_k = a_m + a_{m+1} + a_{m+2} + \dotsc + a_{n-1} + a_{n}$
+
+Produktzeichen
+:	$\displaystyle \prod\limits_{k=m}^n a_k = a_m \cdot a_{m+1} \cdot a_{m+2} \cdot \dotsc \cdot a_{n-1} \cdot a_{n}$
+
+Fakultät
+:	$\displaystyle n! = \prod\limits_{k=1}^n k = 1 \cdot 2 \cdot \dotsc \cdot (n-1) \cdot n$
+:	$\displaystyle 0! = 1$

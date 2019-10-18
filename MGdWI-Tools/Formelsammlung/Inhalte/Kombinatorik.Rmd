@@ -1,0 +1,42 @@
+## Kombinatorik
+
+Summenregel
+:	$\displaystyle |A \cup B| = |A| + |B| - |A \cap B|$
+
+
+Inklusion und Exklusion
+:	$\displaystyle |A \cup B \cup C| = |A| + |B| + |C| - |A \cap B| - |A \cap C| - |B \cap C| + |A \cap B \cap C|$
+
+
+Produktregel
+:	$\displaystyle |A \times B| = |A| \cdot |B|$
+
+
+$k$-Permutationen / Variation
+:	$\displaystyle P(n, k) = n \cdot (n-1) \cdot (n-2) \cdot \dotsc \cdot (n-k+1) = \frac{n!}{(n-k)!}$
+
+
+Permutation
+:	$\displaystyle n! = P(n, n) =  n \cdot (n-1) \cdot (n-2) \cdot \dotsc \cdot 1$
+
+
+Binomialkoeffizient
+:	$\displaystyle \dbinom{n}{k} = C(n,k) = \frac{P(n,k)}{k!} = \frac{n!}{k! \cdot (n-k)!}$
+
+
+Für die Anzahl der Möglichkeiten aus $n$ Objekten $k$ Objekte auszuwählen, gelten die 
+folgenden Regeln:
+
+\begin{center}
+	\begin{tabular}{lcc}
+		\toprule
+		Auswahl & \textbf{mit} Beachtung	& \textbf{ohne} Beachtung 	\\
+		~		& der Reihenfolge			& der Reihenfolge 			\\
+		~		& (\textit{Variation})	 	& (\textit{Kombination}) 	\\
+		\midrule
+		\textbf{ohne} Zurücklegen & $\displaystyle\frac{n!}{(n-k)!}$	& $\displaystyle\dbinom{n}{k}$ \\
+		\midrule
+		\textbf{mit}  Zurücklegen & $\displaystyle n^k$			 	& $\dbinom{n+k-1}{k}$ \\
+		\bottomrule
+	\end{tabular}
+\end{center}

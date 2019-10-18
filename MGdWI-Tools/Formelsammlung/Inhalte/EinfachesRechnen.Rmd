@@ -1,0 +1,105 @@
+## Einfaches Rechnen
+
+Betrag
+:	Für eine reelle Zahl $x$ ist der **(Absolut-)Betrag** definiert durch:
+: 	$\displaystyle |x| = \sqrt{x^2} = \begin{cases} x : x > 0 \\ 0 : x=0 \\ -x : x <0 \end{cases}$
+
+
+Rechnen mit Beträgen
+:	Für reelle Zahlen $x$,$y$ und eine nicht-negative reelle Zahl $p$ gelten die folgenden Regeln:
+:	\begin{tabular}{ l c l }
+		$|x| \geq 0$									& $\qquad$	&	$|x| = 0 \Longleftrightarrow x=0$ \\
+		$|x \cdot y| = |x| \cdot |y|$					&	& \\
+		$|x \cdot p| = |x| \cdot p$ 					& $\qquad$	&	$|x \cdot (-p)| = |x| \cdot p$ \\
+		$|x+y| \leq |x| + |y|$							& $\qquad$	&	$|x-y| \geq \left| |x| - |y| \right|$ \\
+		$\left|\frac{x}{y}\right| = \frac{|x|}{|y|}$	& $\qquad$	&	\\
+	\end{tabular}
+
+
+Bruchrechnen
+: 	Für alle Zahlen $a$, $b$, $c$, $d$ mit $c\neq 0$ und $d \neq 0$ gilt: 
+:	\begin{tabular}{ l c l }
+		$\displaystyle \frac{a}{c} + \frac{b}{d} = \frac{ad+bc}{cd}$ 	& $\qquad$ 	& 	$\displaystyle \frac{a}{c} - \frac{b}{d} = \frac{ad-bc}{cd}$ \\
+		$\displaystyle \frac{c\cdot a}{c \cdot d} = \frac{a}{d}$		& $\qquad$	&	$\displaystyle \frac{a}{c} \cdot \frac{b}{d} = \frac{ab}{cd}$ \\
+		$\displaystyle \frac{\frac{a}{c}}{\frac{b}{d}} = \frac{ad}{bc}$ & & \\
+	\end{tabular}
+
+
+Potenzrechengesetze
+:	Für reelle Zahlen $a\neq0$ und $b\neq0$, reelle Zahlen $r$ und $s$ falls $a>0$ und rationale Zahlen $r$ und $s$ falls $a<0$ ist gilt:
+:	\begin{tabular}{ l c l }
+		$\displaystyle a^0 = 1$ 				& $\qquad$	& $\displaystyle a^{-r} = \frac{1}{a^r}$ \\
+		$\displaystyle a^{r+s} = a^r \cdot a^s$ & $\qquad$	& $\displaystyle a^{r-s} = \frac{a^r}{a^s}$ \\
+		$\displaystyle (a \cdot b)^{r} = a^r \cdot b^r$ & $\qquad$	& $\displaystyle \left(\frac{a}{b}\right)^{r} = \frac{a^r}{b^r}$ \\
+		$\displaystyle (a^r)^{s} = a^{r \cdot s}$ & & \\
+	\end{tabular}
+:	Für positive Zahlen $a$ kann man die Potenz durch Exponentialfunktion und Logaritmus ausdrücken:
+:	$\displaystyle x^{r} =  \exp\left(r \cdot \ln(x)\right)$
+
+
+Wurzelrechnengesetze
+:	Für positive Zahlen $a$ und $b$ und $n,m,k \in \mathbb{N}$ gilt:
+:	\begin{tabular}{ l c l }
+	$\displaystyle \sqrt[n]{a}\cdot\sqrt[n]{b}=\sqrt[n]{a\cdot b}$ & & 
+	$\displaystyle \frac{\sqrt[n]{a}}{\sqrt[n]{b}}=\sqrt[n]{\frac{a}{b}}$ \\
+	$\displaystyle \sqrt[k]{\sqrt[n]{a}}=\sqrt[k\cdot n]{a}$ & & 
+	$\displaystyle a^{\frac{m}{n}}=\sqrt[n]{a^m}=\left(\sqrt[n]{a} \right)^m$ \\
+	$\displaystyle a^{-\frac{m}{n}}=\frac{1}{a^\frac{m}{n}}$ & &
+	$\displaystyle \sqrt[n]{a}\cdot\sqrt[m]{a}=a^{\frac{1}{n}+\frac{1}{m}}=\sqrt[nm]{a^{n+m}}$ \\
+	\end{tabular}
+: 	Höhere Wurzeln aus positiven Zahlen $x$ kann man wie jede Potenz durch Exponentialfunktion und Logarithmus ausdrücken:
+: 	$\displaystyle \sqrt[n]{x} = x^{1/n} =  \exp\left(\frac{\ln(x)}{n}\right)$
+
+
+Logarithmengesetze
+: 	Für reellen, positive Zahlen $a,b, x, y$ mit $a, b \neq 1$, einem reellen $r$ und einer natürlichen Zahl $n$ gilt:
+:	\begin{tabular}{ l c l }
+		$\displaystyle \log_a(1) = 0$ & & \\
+	\end{tabular}		
+:	\begin{tabular}{ l c l c l}
+		$\displaystyle \text{lb}(x) = \log_2(x)$ & $\;$ & $\displaystyle \ln(x) = \log_e(x)$ & $\;$ & $\displaystyle \text{lg}(x) = \log_{10}(x)$ \\
+	\end{tabular}
+:	\begin{tabular}{ l }
+		$\displaystyle \log_a (x \cdot y) = \log_a(x) + \log_a(y)$ \\
+		$\displaystyle \log_a \left(\frac{x}{y}\right) = \log_a(x) - \log_a(y)$ \\
+		$\displaystyle \log_a(x^r) = r \cdot \log_a(x)$ \\
+		$\displaystyle \log_a\left(\frac{1}{x}\right) = - \log_a(x)$ \\
+		$\displaystyle \log_a(x + y) = \log_a(x) + \log_a\left(1+ \frac{x}{y}\right)$ \\
+		$\displaystyle \log_b\left(\sqrt[n]{x}\right) = \log_b \left(x^{\frac 1n}\right) = \frac 1n\log_b x$ \\
+		$\displaystyle \log_a(x) = \frac{\log_b(x)}{\log_b(a)}$
+	\end{tabular}
+
+
+Binomische Formeln
+:	Für reelle Zahlen $x$ und $y$ gelten die folgenden Regeln:
+:	$\displaystyle (x+y)^2 = x^2 + 2 xy + y^2$
+:	$\displaystyle (x-y)^2 = x^2 - 2 xy + y^2$
+:	$\displaystyle (x-y)(x+y) = x^2-y^2$
+
+
+Binomischer Lehrsatz
+:	Für zwei reelle Zahlen $x$, $y$ und eine natürliche Zahl $n$ gilt:
+:	$\displaystyle (x+y)^n = \sum\limits_{k=0}^{n} \dbinom{k}{n} x^{n-k}y^{k}$
+
+
+Normalform von Polynomgleichungen
+:	Jede Polynomgleichung (2. Grades) der Form $a x^2+ bx +c = d$, mit $a\neq 0$ lässt sich umformen in **Normalform** der Art $x^2+px+q = 0$.
+
+
+Diskriminante
+:	Für eine Polynomgleichung (2. Grades) ist die **Diskriminante** definiert durch $D=\frac{p^2-4\cdot q}{4}$.
+:	Es gilt: 
+:	- $D < 0$: die Gleichung hat keine (reelle) Lösung!
+:	- $D = 0$: die Gleichung hat eine Lösung nämlich $-\frac{p}{2}$.
+:	- $D > 0$: die Gleichung hat zwei Lösungen. (-> pq-Formel)
+
+
+$pq$-Formel
+:	Für eine Polynomgleichung (2. Grades) mit positiver Diskriminante findet sich die Nullstellen $x_{1/2}$ durch
+:	$\displaystyle x_{1/2} = -\frac{p}{2} \pm \sqrt{D} = -\frac{p}{2} \pm \sqrt{\left(\frac{p}{2}\right)^2 - q}$
+
+
+Satz von Vieta
+:	Für die Lösungen $x_1$ und $x_2$ einer Polynomgleichung (2. Grades) in Normalform gilt:
+:	$x_1 \cdot x_2 = q$ und $-(x_1+x_2)=p$
+

@@ -1,0 +1,346 @@
+```{r setup-MGDWI-Logik, include=FALSE}
+# ---------------------------------------------------------------------------
+#% maintainer:
+#%   - Norman Markgraf
+#%
+# ---------------------------------------------------------------------------
+source("../../prelude.R")
+initPart(
+    "Logik",  # Dateiname ohne Suffix
+    "Logik"   # Verzeichnisname im Bilderverzeichnis 
+    )
+pathToImages = getPathToImages()
+# ---------------------------------------------------------------------------
+
+library(mosaic)
+```
+# Logik
+
+## Aussagen
+
+### Aussagen und deren Verneinung
+
+#### Aussagen {.definition}
+Eine [Aussage]{.cstrong} (engl. *proposition*) ist ein Satz, von dem man eindeutig entscheiden kann, ob er **wahr** ist oder **falsch** ist. 
+
+#### {.exsamples}
+- Berlin ist die Hauptstadt von Deutschland
+- $1 + 5 = 6$
+- 5 ist kleiner als 3
+- Guten Abend!
+- Heute ist Montag!
+- $x + 5 = 3$
+
+
+### Negation / Verneinung
+
+#### Negation / Verneinung {.definition}
+Die [Negation]{.cstrong} oder [Verneinung]{.cstrong} einer Aussage $A$ ist genau dann *wahr*, wenn $A$ *falsch* ist. 
+Die *Negation* von $A$ wird symbolisch als $\neg A$ geschrieben.
+
+#### {.exercise}
+Bilden sie die Negationen der folgenden Aussagen:
+
+- Der Tank ist voll
+- Alle Studierenden sind anwesend.
+- Ich bin vor 1990 geboren.
+
+
+## Verknüpfungen von Aussagen
+
+### UND / ODER Verknüpfungen
+
+#### UND {.definition}
+Die [UND]{.cstrong}-Verknüpfung oder [Konjunktion]{.cstrong} zweier Aussagen $A$ und $B$ ist eine
+Aussage, die genau dann *wahr* ist, wenn **beide** Aussagen *wahr* sind. 
+Sie wird symbolisch mit $A \wedge B$ bezeichnet und als „A und B“ gelesen.
+
+#### ODER {.definition}
+Die [ODER]{.cstrong}-Verknupfung oder [Disjunktinon]{.cstrong} zweier Aussagen $A$ und $B$ ist eine
+Aussage, die genau dann *wahr* ist, wenn **mindestens eine** der beiden
+Aussagen *wahr* ist. 
+Sie wird symbolisch mit $A \vee B$ bezeichnet und als „A oder B“ gelesen.
+
+#### EXKLUSIV-ODER {.definition}
+Das [EXKLUSIV ODER]{.cstrong} im Sinn von **ENTWEDER … ODER** wird
+symbolisch mit $A XOR B$ (vom engl. *eXclusive OR*) oder $A \oplus B$ bezeichnet. 
+Sie ist genau dann *wahr*, wenn **entweder $A$ oder $B$** – aber *nicht alle beide* – *wahr*
+sind.
+
+### Hinweise und Übung
+
+- Die Begriffe „UND“ und „ODER“ werden in der Mathematik exakt gebraucht und
+weichen häufig vom umgangssprachlichen Gebrauch ab!
+
+- Die Aussage „Rauchen und Hantieren mit offenem Feuer verboten“ versteht jeder, ist aber mathematisch gesehen falsch formuliert.
+    Warum? Wie müsste die korrekte Formulierung lauten?
+
+### Wahrheitstabellen
+
+
+ $A$ | $B$ | $A \wedge B$ | $A \vee B$ | $A \oplus B$
+:---:|:---:|:------------:|:----------:|:-------------
+  w  |  w  |       w      |      w     |       f
+  w  |  f  |       f      |      w     |       w
+  f  |  w  |       f      |      w     |       w
+  f  |  f  |       f      |      f     |       f
+
+
+### Übung: Verknüpfungen {.exercise}
+
+Geben Sie jeweils die Wahrheitswerte der Aussagen $A \wedge B$, $A \vee B$ und $A \oplus B$ an:
+
+A) $A$: Frankfurt liegt in Deutschland, $B$: London liegt in Deutschland
+
+B) $A$: $2 < 3$, $B$: $1+1=2$ 
+
+
+## Aussageformen
+
+### Aussagbeformen 
+
+#### Aussageform {.definition}
+Ersetzt man in Aussage $A$ irgendeine Konstante durch eine
+Variable $x$, so entsteht eine [Aussageform]{.cstrong} $A(x)$ (auch
+[Aussagefunktion]{.cstrong} oder [offene Aussage]{.cstrong} genannt). 
+Eine *Aussageform* wird zu einer *Aussage*, wenn man für $x$ ein konkretes Objekt einsetzt.
+
+#### {.exsamples}
+
+Gegeben sind die Aussageformen:
+
+$A(x): x^2 < 15$ und $B(x): x^2 + 1 = 5$
+
+#### {.exercises}
+
+- Ist die Aussage $A(1)$ *wahr* oder *falsch*?
+- Ist die Aussage $B(1)$ *wahr* oder *falsch*?
+
+
+## Quantoren
+
+### All- und Existenzquantoren
+Es sei $A(x)$ im folgenden immer eine Aussageform.
+
+#### All-Quantor {.definition}
+Die Aussage „Für alle x (aus einer bestimmten Menge) gilt $A(x)$“ ist
+genau dann *wahr*, wenn $A(x)$ für alle in Frage kommenden $x$ *wahr* ist.
+
+Abkürzend schreibt man für die **All-Aussage**
+$$\forall x : A(x)$$
+wobei $\forall$ „für alle“ gelesen wird (oder „für jedes“). $\forall$ heißt [All-
+Quantor]{cstrong}.
+
+#### Existenz-Quantor {.definition}
+Die Aussage „Es gibt ein x (aus einer bestimmten Menge), so dass $A(x)$“ ist genau dann *wahr*, wenn $A(x)$ für zumindest eines der in Frage kommenden $x$ *wahr* ist. 
+Abkürzend schreibt man diese **Existenz-Aussage** als
+$$\exists x: A(x),$$
+wobei $\exists$ „es gibt/existiert (mindestens) ein“ gelesen wird oder „für
+mindestens ein“. $\exists$ heißt [Existenz-Quantor]{.cstrong}.
+
+
+### Übung {.exercise}
+
+Welche der folgenden Aussagen sind für die *natürlichen Zahlen* wahr bzw. falsch:
+
+A) $\forall x: x+1 > x$
+
+B) $\forall x: x > 3$
+
+C) $\exists x: x^2 = 4$
+
+D) $\exists x: x^2 < 0$
+
+
+### Negation von All- und Existenzsaussagen
+
+#### von der Negation von All- und Existenzsaussagen {.theorem}
+Durch die Verneinung einer All-Aussage entsteht eine
+Existenzaussage, und umgekehrt entsteht durch die
+Verneinung einer Existenzaussage eine All-Aussage.
+
+Kurz:
+
+$$\neg(\forall x: A(x)) = \exists x: \neg A(x)$$
+$$\neg(\exists x: A(x)) = \forall x: \neg A(x)$$
+
+### Übung {.exercise}
+
+Bilden Sie das Komplement (die Verneinung) zu folgenden
+Aussagen unter Verwendung der Begrifflichkeiten der All- und
+Existenzaussagen:
+
+A) Alle Menschen mögen Mathematik
+
+B) Es gibt einen Menschen, der Spanisch spricht
+
+C) $\forall x: x > 3$
+
+
+## Junktoren
+
+### Subjektion und Bijunktion
+
+Es seinen $A$ und $B$ zwei Aussagen.
+
+#### WENN-DANN-Verknüpfung / Subjektion {.definition}
+Die [WENN-DANN]{.cstrong}-Verknüpfung, [Konditional]{.cstrong} oder [Subjunktion]{.cstrong} $A \rightarrow B$
+(gelesen „Wenn A, dann B“) ist definiert durch:
+$$A \rightarrow B = \neg A \vee B$$
+
+#### GENAU-DANN-Verknüpfung / Bijunktion {.definition}
+Die [GENAU-DANN]{.cstrong}-Verknüpfung oder [Bijunktion]{.cstrong} $A \leftrightarrow B$
+(gelesen „A genau dann, wenn B“) ist definiert durch:
+
+$$A \leftrightarrow B = (A \rightarrow B) \wedge (B \rightarrow A)$$
+
+
+### Übung: {.exercise}
+
+Erstellen Sie eine Wahrheitstafel für $A \rightarrow B$ und $A \leftrightarrow B$.
+
+
+### Beispiele
+
+Aussage A: „Es ist neblig“; 
+Aussage B: „Die Sicht ist schlecht“
+
+
+Die WENN-DANN-Verknüpfung (Subjunktion) $A \rightarrow B$
+ist *wahr* für folgende Kombinationen:
+
+- $A$ ist *wahr*, $B$ ist *wahr* (also Nebel $\rightarrow$ schlechte Sicht)
+- $A$ ist *falsch*, $B$ ist *wahr* (also kein Nebel $\rightarrow$ schlechte Sicht)^[z.B. es ist dunkel oder es regnet]
+- $A$ ist *falsch*, $B$ ist *falsch* (also kein Nebel $\rightarrow$ gute Sicht)
+
+Die GENAU-DANN-Verknüpfung (Bijunktion) $A \leftrightarrow B$
+ist *wahr* für folgende Kombinationen:
+
+- $A$ ist *wahr*, $B$ ist *wahr* (also Nebel $\leftrightarrow$ schlechte Sicht)
+- $A$ ist *falsch*, $B$ ist *falsch* (also kein Nebel $\leftrightarrow$ gute Sicht)
+
+
+### Implikation und Äquivalenz
+
+#### Implikation {.definition}
+Ist die verknüpfte Aussage $A \rightarrow B$ *wahr*, so spricht man von einem
+[logischen Schluss]{.cstrong} oder einer [Implikation]{.cstrong} und schreibt:
+$$A \Rightarrow B$$
+„Aus A folgt B“, „A impliziert B“, „Wenn A dann B“, „A ist hinreichend für B“ oder „B ist notwendig für A“.
+
+#### Äquivalenz {.definition}
+Wenn $A \leftrightarrow B$ *wahr* ist, dann spricht man von [Äquivalenz]{.cstrong} und
+schreibt
+$$A \Leftrightarrow B$$
+
+$A \Leftrightarrow B$ bedeutet dasselbe wie „ $A \Rightarrow B$ und $B \Rightarrow A$“. „A genau dann, wenn B“, „A dann und nur dann, wenn B“ oder „A ist notwendig und hinreichend für B“.
+
+
+### Beispiele
+
+A) Es gilt: für jede reelle Zahl x folgt aus $x > 3$ dass $x>0$ eine wahre Aussage ist. 
+    Somit ist $\forall x\in\mathbf{R}: x > 3 \rightarrow x > 0$ eine wahre Aussage und daher gilt:
+    $$\forall x \in \mathbf{R}: x>3 \Rightarrow x>0$$
+
+B) „x ist eine gerade Zahl $\leftrightarrow$ x ist durch 2 teilbar“ ist für jede ganze Zahl $x$ eine wahre Aussage, daher gilt:
+$$\forall x \in \mathbf{Z}: x \text{ gerade } \Leftrightarrow 2 | x$$
+
+
+### Tautologie und Kontradiktion
+
+#### Tautologie {.definition}
+[Tautologie]{.cstrong} ist eine verknüpfte Aussage, die immer *wahr* ist.
+
+#### Kontradiktion {.definition}
+[Kontradiktion]{.cstrong} ist eine verküpfte Aussage, die immer *falsch* ist.
+
+
+## Beweisführung
+
+### Direkter Beweis
+
+Aus der Gültigkeit von als wahr bekannten Aussagen und einer Implikation
+daraus kann die Gültigkeit der zu beweisenden Aussage abgeleitet werden:
+- $[A \wedge (A \Rightarrow B)] \Rightarrow B]$ ist immer eine Tauologie.
+- Wenn $A$ *wahr* ist und $A \Rightarrow B$ *wahr* ist, dann ist auch $B$ wahr.
+
+#### 1. Binomische Formel {.example}
+Es gilt: $c(a+b) = ca + cb$, $ab=ba$, $aa = a^2$. Somit ist dann:
+
+$$(a+b)^2 = (a+b)(a+b) = a(a+b)+ b(a+b) = a^2+ ab + ba + b^2 = a^2 + 2ab + b^2$$
+
+
+### Kettenschluss
+
+Wenn $A \Rightarrow B$ und $B \Rightarrow C$ *wahr* sind, dann ist auch $A \Rightarrow C$ *wahr*.
+
+#### {.example}
+Es seien die folgenden Aussageformen gegeben:
+$A(x): 4 | x$; $B(X): x \text{ ist eine gerade Zahl}$; $C(x): 2 | x$
+
+Es gilt: $A(x) \Rightarrow B(x)$ und $B(x) \Rightarrow C(x)$, daher gilt auch: $A(x) \Rightarrow C(x)$
+
+Oder mit Worten: „Wenn x durch 4 teilbar ist, dann ist x auch durch 2 teilbar.“
+
+
+### Indirekter Beweis
+
+[Ausgangspunkt:].{cemph} Negation der zu beweisenden Aussage.
+
+Wir zeigen nun, dass diese Aussage *falsch* ist, damit ist die Richtigkeit der zubeweisenden Aussage  bewiesen, denn es gilt:
+
+$$[A \wedge (\neg B \Rightarrow \neg A)] \Rightarrow B \quad\text{ ist immer wahr!}$$
+
+#### $\sqrt{2}$ ist irrational {.example}
+
+Angenommen es gäbe zwei teilerfremde ganze Zahlen $p$, $q$ mit $\sqrt{2} = p/q$. 
+Dann wäre $2 = p^2/q^2$ und daher auch $2\cdot q^2= p^2$. 
+Somit ist $p^2$ durch 2 teilbar und damit auch $p$ eine gerade Zahl. 
+Also gibt es ein ganze Zahl $r$ mit $p=2 \cdot r$. Somit ist $2q^2 = p^2 = (2r)^2=4r^2$ und somit $q^2 = 2r^2$. 
+Also muss auch $q$ eine gerade Zahl sein. 
+Dann haben $p$ und $q$ aber einen gemeinsamen Teiler (nämlich 2) und sind nicht teilerfremd. 
+Das Widerspricht aber der Annahme der Teilerfremdheit von $p$ und $q$! 
+Und somit ist die Irrationalität von $\sqrt{2}$ gezeigt.
+
+
+### Vollständige Induktion 
+
+Das Beweisprinzip der vollständigen Induktion haben wir bei den (Zahlen-)Mengen bereits kennen gelernt.
+
+Sei $A(n)$ eine Aussage. Gilt nun$A(n_0)$ für ein $n_0 \in \mathbf{N}_0$ und darüberhinaus 
+$\forall n \in \mathbf{N}_0: (n \geq n_0 \wedge A(n) \Rightarrow A(n+1))$ dann folgt daraus $\forall n \in \mathbf{N}_0: (n \geq n_0 \wedge A(n))$
+
+
+### Widerlegung einer Aussage
+
+Soll eine Aussage widerlegt werden, so genügt **ein** *Gegenbeispiel*.
+
+#### {.example}
+
+Für alle natürlichen Zahlen gilt $x > 3$.
+
+Diese Aussage wird z.B. durch $x=2$ widerlegt. 
+
+#### {.remark}
+Für den Beweis einer Aussage reicht ein Beispiel **nicht**!
+
+
+### Übung
+
+Beweisen oder widerlegen Sie die folgenden Aussagen:
+
+A) Wenn z eine gerade Zahl ist, ist z durch 3 teilbar.
+
+B) Wenn z gerade ist und b Primzahl ist, dann ist z + b ungerade.
+
+C) Wenn a eine natürliche Zahl ist, dann ist $a^2$ durch 4 teilbar oder beim Teilen
+von $a^2$ durch 4 bleibt der Rest 1.
+
+D) Für alle reellen Zahlen z gilt: $z^2 > 0$ oder $z^2 = 0$.
+
+E) Für alle positiven rationalen Zahlen $q$ gibt es eine rationale Zahl $w$ mit $w^2 = q$.
+
+
+```{r finish-MGDWI-Logik, include=FALSE}
+finalizePart(partname)
+```

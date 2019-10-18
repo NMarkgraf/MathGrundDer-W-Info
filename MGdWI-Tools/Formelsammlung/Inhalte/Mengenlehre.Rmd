@@ -1,0 +1,91 @@
+## Mengenlehre
+
+Für beliebige Mengen $A$ und $B$ gilt:
+
+Element
+: 	Ist $a$ ist ein **Element** von $A$, dann schreiben wir $a \in A$.
+
+Teilmenge
+:	$\displaystyle A \subset B \Longleftrightarrow  \left(x \in A \Rightarrow x \in B\right)$
+
+Echte Teilmenge
+:	$\displaystyle A \subsetneq B \Longleftrightarrow  \left(A \subset B \wedge \exists z \in B : z \notin A\right)$
+
+Gleichheit von Mengen
+:	$\displaystyle A = B \Longleftrightarrow A \subset B \wedge B \subset A$
+
+Vereinigungsmenge zweier Mengen
+:	$\displaystyle A \cup B = \{ x | x \in A \vee x \in B \}$
+
+Schnittmenge zweier Mengen
+:	$\displaystyle A \cap B = \{ x | x \in A \wedge x \in B \}$
+
+Kompliment einer Menge
+:	$\displaystyle A^c = \{x | x \in U \wedge x \not\in A \}, U$ ein *Universum* mit $A \subset U$
+
+Differenz von Mengen
+:	$\displaystyle A \setminus B = \{ x | x \in A \wedge x \notin B \} = A \cap B^c$
+
+Gleichmächtigkeit von Mengen
+:	$A$ und $B$ sind gleichmächtig, falls es eine Bijektion $f: A \leftrightarrow B$ gibt.
+
+Endlichkeit
+:	Eine Menge ist **endlich**, wenn sie *gleichmächtig* zu einem Element von $\mathbb{N}_0$ im Sinne von {\it von Neumann} ist.
+
+Abzählbar
+:	Eine Menge ist **abzählbar**, wenn sie *endlich* ist oder *gleichmächtig* zu einer *Teilmenge* von $\mathbb{N}$ ist.
+
+Unendlichkeit
+:	Eine nicht *endliche* Menge ist **unendlich** 
+
+Mächtigkeit von Mengen (allgemein)
+: 	$|A|$ heißt *Betrag* der Menge $A$ und bezeichnet die Mächtigkeit der Menge. 
+
+Mächtigkeit von endlichen Mengen
+:	$|A|$ ist die Anzahl der unterscheidbaren Elemente der (endlichen) Menge $A$.
+
+Potenzmenge
+:	$\displaystyle \Pot(A) = \{ U | U \subset A\}$
+
+Satz von Cantor
+:	Für jede Menge $A$ gilt: $|A| < |\Pot(A)|$
+
+Produktmenge
+:	$\displaystyle A \times B = \{(x;y) | x \in A \wedge y \in B\}$
+
+De Morgansche Regeln
+:	$\displaystyle (A \cup B)^c = A^c \cap B^c$  und $\displaystyle (A \cap B)^c = A^c \cup B^c$
+
+Disjunktheit
+:	$A$ und $B$ sind *disjunkt* $\displaystyle\Longleftrightarrow A \cap B = \emptyset$ 
+
+Zerlegung / Partition
+:	Die Mengen $A_1, ..., A_n$ mit $A_1 \cup A_2 \cup \cdots \cup A_n = A$ und $A_i \cap A_j = \emptyset$ für alle $0 \leq i \not= j \leq n$ heißt *Partition* oder *Zerlegung* von $A$. 
+
+
+## Zahlen
+
+Natürliche Zahlen
+:	$\displaystyle \mathbb{N} = \{1,2,3,4,...\}$ 
+
+Natürliche Zahlen mit Null:
+:	$\displaystyle \mathbb{N}_0 = \mathbb{N} \cup \{0\} = \{0,1,2,3,4,...\}$
+
+Ganze Zahlen
+: 	$\displaystyle \mathbb{Z} = \{...,-3,-2,-1,0,1,2,3,...\}$
+
+Rationale Zahlen
+:	$\displaystyle \mathbb{Q} = \left\{ \left. \frac{q}{p} \right| q\in \mathbb{Z}, p \in \mathbb{N}, p \text{ und } q \text{ sind teilerfremd}\right\}$
+
+Reelle Zahlen
+:	$\displaystyle \mathbb{R}$
+
+Komplexe Zahlen
+:	$\displaystyle \mathbb{C} = \left\{ x + y\cdot i \left| x,y \in \mathbb{R}\right. \right\}$
+
+
+Es gilt: 
+\begin{equation*}
+	\mathbb{N} \subsetneq  \mathbb{N}_0 \subsetneq  \mathbb{Z} \subsetneq \mathbb{Q} \subsetneq \mathbb{R}\subsetneq \mathbb{C}
+\end{equation*}
+

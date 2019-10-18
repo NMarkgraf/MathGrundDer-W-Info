@@ -1,0 +1,8 @@
+## Vollständige Induktion
+
+Sei $A(n)$ eine Aussageform, die es für alle $n \in \mathbb{N}$ zu beweisen gilt
+
+* **Induktionsanfang:** $A(1)$ gilt.
+* **Induktionsschritt:** Unter der Annahme das $A(n)$ gilt zeigt man, dass $A(n+1)$ gilt.
+	* **Induktionsannahme**: Es gelte $A(n)$.
+	* **Induktionsschluss**: Zu zeigen ist dann, dass $A(n+1)$ gilt.

@@ -1,0 +1,62 @@
+```{r setup_private_r, echo=FALSE}
+source("./private.R")
+```
+
+### Kurzvorstellung
+
+
+::::::: {.columns} 
+::::: {.column width="49%" .small} 
+
+
+:::: {.center}
+::: {.showAvatar}
+`r if (DozInfo$Avatar != "" && !is.null(DozInfo$Avatar)) {
+    paste0("\\includegraphics[width=0.5\\textwidth]{./private/", DozInfo$Avatar, "}\n")
+}`
+
+
+:::
+
+::: {.showDozName}
+
+`r paste(DozInfo$PreTitel, " ", DozInfo$Vorname, DozInfo$Nachname, " ", DozInfo$PostTitel)`
+
+
+:::
+::::
+
+
+
+`r if (DozInfo$Email != "") {
+    paste0("[Kontakt:]{.cstrong} [", DozInfo$Email,"](<","mailto:",DozInfo$Email,">)")
+}`
+
+
+`r if (DozInfo$Email != "") {
+    paste0("[Homepage:]{.cstrong} [", DozInfo$WebURL,"](",DozInfo$WebURL,")")
+}`
+
+
+:::::
+::::: {.column width="49%" .footnotesize} 
+
+[Akademische Ausbildung:]{.cstrong}
+
+- Diplom Mathematiker, Ruhr-Universität Bochum
+
+[Beruflicher Werdegang:]{.cstrong}
+
+- Wissenschaftlicher Mitarbeiter Fak. für Informations- und Elektrotechnik der Ruhr-Universität Bochum
+- Dozent für Mathematik, Statistik und Informatik u.a. an der 
+    - Hochschule Bochum, 
+    - Hochschule Rhein-Waal
+    - FOM an den Standorten:
+        - Aachen, Bonn, Böhnen, 
+        - Dortmund, Düsseldorf, Essen, 
+        - Köln, Münster, Neuss und 
+        - Gütersloh
+
+:::::
+:::::::
+

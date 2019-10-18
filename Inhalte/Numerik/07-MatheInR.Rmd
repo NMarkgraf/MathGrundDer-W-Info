@@ -1,0 +1,155 @@
+```{r setup-MatheInR-WI, include=FALSE}
+# ---------------------------------------------------------------------------
+#% maintainer:
+#%   - Norman Markgraf
+#%
+# ---------------------------------------------------------------------------
+source("../../prelude.R")
+initPart(
+    "00-EinfuehrungInR",  # Dateiname ohne Suffix
+    "EinfuehrungInR-WI"   # Verzeichnisname im Bilderverzeichnis 
+    )
+pathToImages = getPathToImages()
+# ---------------------------------------------------------------------------
+
+library(mosaic)
+library(mosaicCalc)
+```
+
+
+
+
+
+
+# Mathematische Grundlagen in R
+
+### Die ersten Schritte / **R** als Taschenrechner
+:::::::::::::: {.columns}
+::: {.column width="49%"}
+```{r}
+# Punkt- vor Strichrechnung
+2 * 3 + 2 - 25/5 + 2^3
+```
+```{r}
+# Trigometrische Funktionen
+cos(pi/2)^2 + sin(pi/2)^2
+```
+```{r}
+# Logarithmen/Exponentialfunktion
+log(exp(3))
+```
+```{r}
+# Unendlich
+1/0
+```
+:::
+::: {.column width="49%"}
+```{r}
+# Not a Number (keine Zahl)
+0/0
+```
+```{r}
+# Not Available; ein fehleder Wert
+NA
+```
+```{r}
+# Vektoren (combine)
+c(1, 4:8)
+```
+```{r}
+# Vektor/Liste ohne Inhalt
+c()
+```
+:::
+::::::::::::::
+
+### Übung: Berechnungen mit R {.exercise}
+
+Berechnen Sie folgende Ausdrücke mit R:
+
+A.  $3 \cdot \sqrt{97}$
+B.  $\sqrt{\pi}$
+C.  $\exp(\pi)$
+D.  $\pi^3$
+E.  $\left|- \frac{\pi}{4}\right|$
+
+
+
+
+
+### Übung {.exercise}
+
+Die folgenden R-Ausdrücke können Sie so in R (z.B. per Copy&Paste) einfügen:
+```{r eval=FALSE}
+alpha <- 7
+beta <- 3
+x <- 9
+```
+
+Aus den Werten berechnen wir nun einen neuen Wert:
+```{r eval=FALSE}
+res <- atan(sqrt(alpha^2-beta)+tan(x/alpha+beta/x))
+```
+
+A.  Ändern Sie den Wert für `alpha` in 17 und berechnen Sie `res` neu! Wie lautet der Wert von `res` nun?
+B.  Ändern Sie nun `beta` in $6.6$ und berechnen Sie `res` neu!
+C.  Ändern Sie nun `x` in $1$ und berechnen Sie `res` neu!
+D.  Ändern Sie nun `x` in $-1$ und berechnen Sie `res` neu!
+
+
+### Mathematische Funktionen in R
+
+Eine Funktion erstellen, hier $f(x) = x^2-2x+1$:
+```{r}
+f <- makeFun(x^2-2*x+1 ~ x)
+```
+
+Graph der Funktion $f$ auf dem Intervall $I=[-2; 3]$:
+```{r out.width="50%"}
+plotFun(f(x) ~ x, x.lim=range(-2,3))
+```
+
+### Übung: {.exercise}
+
+Wenn Sie Folgendes eingeben:
+
+```{r eval=FALSE}
+plotFun(A*x^2 ~ A, A.lim=range(-2,3), x=10)
+```
+
+erhalten wir eine gerade Linie. Warum?
+
+### Graphischer Vergleich zweier Funktionen
+
+```{r out.width="50%"}
+g <- makeFun(x^4-4*x^3+6*x^2-4*x+1 ~ x)
+r <- makeFun(f(x)-g(x) ~ x)
+plotFun(f, xlim=range(-2, 3), col="blue", add=FALSE, ylab="f(x), g(x), r(x)") +
+  plotFun(g, col="green", add=TRUE) +
+  plotFun(r, col="red", add=TRUE)
+
+```
+
+### Etwas kompliziertere Funktionen
+
+```{r out.width="50%"}
+f <- makeFun(sin(x*y) ~ x & y)
+plotFun(f(x,y) ~ x & y, x.lim=c(-2,2), y.lim=c(-2,2), 
+        xlim=c(-2.5,2.5), ylim=c(-2.5, 2.5) )
+```
+
+### Eine alte Aufgabe 
+
+
+```{r out.width="50%"}
+f <- makeFun(-2*x^2-2*x*y-y^2+5 ~ x & y)
+gf_function_2d(f, xlim= range(-2,2), ylim=range(-2,2)) %>%
+    gf_refine(scale_fill_viridis_c())
+```
+
+Alternativ:
+
+```{r eval = FALSE}
+f <- makeFun(-2*x^2-2*x*y-y^2+5 ~ x & y)
+plotFun(f(x,y) ~ x & y, x.lim= range(-2,2), y.lim=range(-2,2)) 
+```

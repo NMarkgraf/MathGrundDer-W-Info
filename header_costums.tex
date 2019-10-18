@@ -1,0 +1,64 @@
+% ---------------------------------------------------------------------------
+% header_costums.tex
+% ---------------------------------------------------------------------------
+\usepackage{verbatimbox}
+%
+% Für mehr Leerzeichen in den Dateinamen bei includegraphic und Co:
+% http://ftp.fau.de/ctan/macros/latex/contrib/oberdiek/grffile.pdf
+%
+%\usepackage[space]{grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+%
+\usepackage{booktabs}
+\usepackage{colortbl}
+
+\newcommand*{\dodo}[1]{ #1 }
+
+\input{person.tex}
+\input{AufgabenHinweis.tex}
+\input{moreblocks.tex}
+%\mode<beamer>
+%  \setbeamertemplate{headline}[nosectioninhead]
+%\mode<all>
+%\begin{frame}
+%  \frametitle{\contentsname}
+%  %\vspace*{-1cm}%
+%  \flushcolumns % \raggedcolumns% 
+%  \setlength{\columnsep}{0.2cm}%
+%  \begin{multicols}{2}
+%    \tableofcontents[hideallsubsections]
+%  \end{multicols}
+%\end{frame}
+%\mode<beamer>
+%  \setbeamertemplate{headline}[sectioninhead]
+%\mode<all>
+
+\makeatletter
+\def\oldtableofcontent\tableofcontent
+\def\tableofcontents#1{%
+  \setlength{\columnsep}{0.2cm}%
+  \begin{multicols}{2}
+        \oldtableofcontent[#1]
+  \end{multicols}}
+\makeatother
+
+
+%
+% SIunitx
+%
+%\usepackage{siunitx}
+%\DeclareSIUnit{\EUR}{\text{\officialeuro}}
+%%\DeclareSIUnit{\EUR}{\text{\euro}}
+%%\DeclareSIUnit{\EUR}{\text{\geneuro}}
+%\sisetup{
+%  output-decimal-marker = {,}
+%}
+
+\usepackage{trimclip}

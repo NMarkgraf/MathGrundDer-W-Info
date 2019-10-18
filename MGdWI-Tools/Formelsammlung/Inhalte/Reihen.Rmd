@@ -1,0 +1,58 @@
+## Reihen
+
+Reihe
+: 	Zu einer gegebenen Folge $(a_n)$ nennt man den (formalen) Ausdruck $\displaystyle\sum_{k=1}^\infty a_k = a_1 + a_2 + a_3 + ...$ (**unendliche**) **Reihe**.
+
+
+Partialsumme
+:	Für eine Folge $(a_n)$ ist $\displaystyle s_n = \sum_{k=1}^n a_k = a_1 + a_2 + \cdots + a_n$ die **n-te Partialsumme**.
+
+
+Konvergenz und Grenzwert 
+:	Konvergiert die Folge $(s_n)$ der *Partialsummen* einer Reihe gegen einen Wert $s$, so nennt man die Reihe **konvergent**.
+:	Man schreibt dann auch
+:	$\displaystyle \lim\limits_{n\to\infty} s_n = \sum_{k=0}^\infty a_k = \lim_{n \to \infty} \sum_{k=0}^{n} a_k = s$
+:	Damit eine Reihe $\sum a_k$ *konvergiert* **muss** $(a_k)$ eine *Nullfolge* sein. 
+
+
+Divergenz
+:	Eine nicht konvergente Reihe heißt **divergent**.
+
+
+Absolute Konvergenz
+:	Konvergiert nicht nur $\sum_{k=1}^\infty a_k$, sondern auch $\sum_{k=1}^\infty |a_k|$, so heißt die Reihe **absolut konvergent**.
+:	Jede *absolut konvergente* Reihe *konvergiert* auch gewöhnlich. Es gibt aber *konvergente* Reihen, die **nicht** *absolut konvergieren*.
+
+
+Arithmetische Reihen
+:	Basieren auf *arithmetischen Folgen*, es gilt
+:	$\displaystyle s_n = \frac{n}{2} \cdot (2 \cdot a_1 + (n-1)\cdot d)$
+
+
+Geometrische Reihen
+:	Basieren auf *geometrischen Folgen*, es gilt 
+:	$\displaystyle s_n = \sum_{k=0}^n q^k=\frac{q^{n+1}-1}{q-1}$.
+:	Für $|q|<1$ ist die Reihe dann *konvergent* gegen $\displaystyle \frac{1}{1-q}$, für $|q|>1$ ist sie *divergent*.
+
+
+Majorantenkriterium
+:	Eine Reihe $\sum a_k$ *konvergiert absolut*, wenn es eine konvergente Reihe $\sum b_k$ gibt mit $b_k\geq 0$, so dass ab einem Index $n_0$ $|a_n| \leq b_n$ gilt für alle $n>n_0$. 
+:	Man nennt dann die Reihe $\sum b_k$ die **Majorante** zu $\sum a_k$.
+
+
+Minorantenkriterium
+:	Eine Reihe $\sum a_k$ *divergiert*, wenn es eine divergente Reihe $\sum b_k$ gibt, so dass ab einem Index $n_0$ alle $a_n \geq b_n$ sind 	für alle $n>n_0$.
+:	Man nennt dann die Reihe $\sum a_k$ eine **Minorante** zu $\sum a_k$.
+
+
+Quotientenkriterium 
+:	Eine Reihe $\sum a_k$ mit $a_k \neq 0$ *konvergiert absolut*, wenn es eine Zahl $q$ gibt, mit $0 \leq 0 < 1$, so dass für alle $k$ ab einem Index $k_0$	$\displaystyle \left| \frac{a_{k+1}}{a_k}\right| \leq q < 1$ gilt.
+:	Das gilt insbesondere dann, falls $\lim\limits_{k\to\infty} \left| \frac{a_{k+1}}{a_k}\right| = q < 1$ ist.
+:	Wenn dagegen für alle $k$ ab einem Index $k_0$ $\displaystyle \left| \frac{a_{k+1}}{a_k}\right| > 1$ gilt, so ist die Reihe $\sum a_k$ *divergent*.
+:	Das gilt insbesondere dann, falls $\lim\limits_{k\to\infty} \left| \frac{a_{k+1}}{a_k}\right| = q > 1$ ist.
+
+	
+Konvergenzkriterium von Leibniz
+:	Sei $(a_n)$ eine reelle, monoton fallende Nullfolge, dann konvergiert die **alternierende Reihe**
+:	$\displaystyle s = \sum_{n=0}^\infty \left[(-1)^n \cdot a_n\right]\;.$
+
