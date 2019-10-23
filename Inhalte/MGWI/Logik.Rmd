@@ -243,7 +243,7 @@ A) Es gilt: für jede reelle Zahl x folgt aus $x > 3$ dass $x>0$ eine wahre Auss
     $$\forall x \in \mathbf{R}: x>3 \Rightarrow x>0$$
 
 B) „x ist eine gerade Zahl $\leftrightarrow$ x ist durch 2 teilbar“ ist für jede ganze Zahl $x$ eine wahre Aussage, daher gilt:
-$$\forall x \in \mathbf{Z}: x \text{ gerade } \Leftrightarrow 2 | x$$
+$$\forall x \in \mathbf{Z}: x \text{ gerade } \Leftrightarrow \; 2 \,|\, x$$
 
 
 ### Tautologie und Kontradiktion
@@ -261,8 +261,11 @@ $$\forall x \in \mathbf{Z}: x \text{ gerade } \Leftrightarrow 2 | x$$
 
 Aus der Gültigkeit von als wahr bekannten Aussagen und einer Implikation
 daraus kann die Gültigkeit der zu beweisenden Aussage abgeleitet werden:
+
 - $[A \wedge (A \Rightarrow B)] \Rightarrow B]$ ist immer eine Tauologie.
+
 - Wenn $A$ *wahr* ist und $A \Rightarrow B$ *wahr* ist, dann ist auch $B$ wahr.
+
 
 #### 1. Binomische Formel {.example}
 Es gilt: $c(a+b) = ca + cb$, $ab=ba$, $aa = a^2$. Somit ist dann:
@@ -276,7 +279,10 @@ Wenn $A \Rightarrow B$ und $B \Rightarrow C$ *wahr* sind, dann ist auch $A \Righ
 
 #### {.example}
 Es seien die folgenden Aussageformen gegeben:
-$A(x): 4 | x$; $B(X): x \text{ ist eine gerade Zahl}$; $C(x): 2 | x$
+
+- $A(x): 4 | x$; 
+- $B(X): x \text{ ist eine gerade Zahl}$; 
+- $C(x): 2 | x$
 
 Es gilt: $A(x) \Rightarrow B(x)$ und $B(x) \Rightarrow C(x)$, daher gilt auch: $A(x) \Rightarrow C(x)$
 
@@ -285,7 +291,7 @@ Oder mit Worten: „Wenn x durch 4 teilbar ist, dann ist x auch durch 2 teilbar.
 
 ### Indirekter Beweis
 
-[Ausgangspunkt:].{cemph} Negation der zu beweisenden Aussage.
+[Ausgangspunkt:]{.cemph} Negation der zu beweisenden Aussage.
 
 Wir zeigen nun, dass diese Aussage *falsch* ist, damit ist die Richtigkeit der zubeweisenden Aussage  bewiesen, denn es gilt:
 
@@ -299,6 +305,7 @@ Somit ist $p^2$ durch 2 teilbar und damit auch $p$ eine gerade Zahl.
 Also gibt es ein ganze Zahl $r$ mit $p=2 \cdot r$. Somit ist $2q^2 = p^2 = (2r)^2=4r^2$ und somit $q^2 = 2r^2$. 
 Also muss auch $q$ eine gerade Zahl sein. 
 Dann haben $p$ und $q$ aber einen gemeinsamen Teiler (nämlich 2) und sind nicht teilerfremd. 
+
 Das Widerspricht aber der Annahme der Teilerfremdheit von $p$ und $q$! 
 Und somit ist die Irrationalität von $\sqrt{2}$ gezeigt.
 
@@ -307,8 +314,13 @@ Und somit ist die Irrationalität von $\sqrt{2}$ gezeigt.
 
 Das Beweisprinzip der vollständigen Induktion haben wir bei den (Zahlen-)Mengen bereits kennen gelernt.
 
-Sei $A(n)$ eine Aussage. Gilt nun$A(n_0)$ für ein $n_0 \in \mathbf{N}_0$ und darüberhinaus 
-$\forall n \in \mathbf{N}_0: (n \geq n_0 \wedge A(n) \Rightarrow A(n+1))$ dann folgt daraus $\forall n \in \mathbf{N}_0: (n \geq n_0 \wedge A(n))$
+Sei $A(n)$ eine Aussage. Gilt nun 
+
+- $A(n_0)$ für ein $n_0 \in \mathbf{N}_0$ und darüberhinaus
+
+- $\forall n \in \mathbf{N}_0: (n \geq n_0 \wedge A(n) \Rightarrow A(n+1))$ 
+
+dann folgt daraus $\forall n \in \mathbf{N}_0: (n \geq n_0 \wedge A(n))$
 
 
 ### Widerlegung einer Aussage
@@ -333,12 +345,14 @@ A) Wenn z eine gerade Zahl ist, ist z durch 3 teilbar.
 
 B) Wenn z gerade ist und b Primzahl ist, dann ist z + b ungerade.
 
-C) Wenn a eine natürliche Zahl ist, dann ist $a^2$ durch 4 teilbar oder beim Teilen
+C) Wenn z gerade ist und b Primzahl größer als 2 ist, dann ist z + b ungerade.
+
+D) Wenn a eine natürliche Zahl ist, dann ist $a^2$ durch 4 teilbar oder beim Teilen
 von $a^2$ durch 4 bleibt der Rest 1.
 
-D) Für alle reellen Zahlen z gilt: $z^2 > 0$ oder $z^2 = 0$.
+E) Für alle reellen Zahlen z gilt: $z^2 > 0$ oder $z^2 = 0$.
 
-E) Für alle positiven rationalen Zahlen $q$ gibt es eine rationale Zahl $w$ mit $w^2 = q$.
+F) Für alle positiven rationalen Zahlen $q$ gibt es eine rationale Zahl $w$ mit $w^2 = q$.
 
 
 ```{r finish-MGDWI-Logik, include=FALSE}
