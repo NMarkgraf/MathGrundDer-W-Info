@@ -224,6 +224,12 @@ c)	Eine Rechnung über $3\,250$ € wird nicht bezahlt. Daher sind Verzugszinsen
 
 ::: {.notes}
 
+a) $K_t = 3\,055{,}00$
+
+b) $K_0 = 107{,}05$
+
+c) $T_2 - T_1 = 200$ Tage
+
 :::
 
 
@@ -239,6 +245,19 @@ d) Walter legt am 12. Januar eines Jahres $2\,100$ € zu $3{,}9\,\%$ Zinsen bei
 
 e) Frank legt am 3. März eines Jahres $22\,000$ € zu $4{,}7\,\%$ Zinsen an. Wie hoch ist sein Endkapital am 12. Oktober?
 
+::: {.notes}
+
+a) $i= 6{,}88\,\%$
+
+b) 12.10.
+
+c) $K_t = 12\,080{,}00$
+
+d) $2\,155{,}51$
+
+e) $K_t = 22\,629{,}02$
+
+:::
 
 ### Übung `r thisExercise()`: {.exercise}
 
@@ -256,6 +275,18 @@ k) Heinz hat am 20.05 insgesamt $2\,500{,}00$ € zu einem Zinssatz von %8\,\%$ 
 
 ::: {.notes}
 
+f) $K_t = 818{,}95$
+
+g) $K_0 = 2\,104{,}98$
+
+h) $i = 10\,\%$
+
+i) 240 Tage
+
+j) 300 Tage
+
+k) 20.08.
+
 
 :::
 
@@ -272,6 +303,21 @@ Stellen Sie die Abrechnung zum 1. April auf, wenn die Bank das Konto monatlich z
 
 ::: {.notes}
 
+- **Januar:**
+    - Zinsen bis 20. Januar: $2\,400 \cdot \left(0{,}5\,\% \cdot \frac{20}{360}\right) = +0{,}67$ 	
+	- Zinsen 21.Januar-31 Januar: $-1\,600 \cdot \left(12\,\%\cdot\frac{10}{360}\right) = -5{,}33$
+	- **Kontostand 1.2.:** $-1\,600 + 0{,}67 - 5{,}33 = -1\,604{,}67$
+
+- **Februar:**	
+    - Zinsen bis 15. Februar: $-1\,604,67\cdot \left(12\,\%\cdot\frac{15}{360}\right) = -8{,}02$
+	- Zinsen 16. bis 28 Februar: $-5\,604,67\cdot \left(12\,\%\cdot\frac{15}{360}\right)= -28{,}02$
+	- **Kontostand 1.3.:** $-5\,604{,}67-8{,}02-28{,}02= -5\,640{,}71$
+
+- **März:**	
+    - Zinsen bis 5. März: $-5\,640,71 \cdot \left(12\,\%\cdot\frac{5}{360}\right) = -9{,}40$
+	- Zinsen 6. bis 31 März. $4\,359,29 \left(0{,}5\,\% \cdot \frac{25}{360}\right) = +1{,}51$
+	- **Kontostand 1.4.:** $4\,359{,}29-9{,}40+1{,}51= 4\,351{,}40$
+
 
 :::
 
@@ -279,12 +325,6 @@ Stellen Sie die Abrechnung zum 1. April auf, wenn die Bank das Konto monatlich z
 ### Gemischte Verzinsung
 
 Ein- und Auszahlungen fallen in praktischen Fällen selten mit dem Anfang und dem Ende von Zinsperioden oder Jahren zusammen ...
-
-
-
-...
-
-### Gemische Verzinsung
 
 | Symbol | Bezeichnung                                |
 |:------:|:-------------------------------------------|
@@ -337,6 +377,13 @@ d) Sie legen am 13.12.2018 insgesamt $50\,000$ € zu einem Zinssatz von $4{,}5\
 
 ::: {.notes}
 
+a) 259 Tage in 2017, 3 Jahre und 270 Tage in 2021 ergibt $131\,114{,}74$ Euro.
+
+b) 312 Tage in 2018, 4 Jahre und 11 Tage in 2023 ergibt $86\,367{,}87$ Euro.
+
+c) 270 Tage in 2017, 3 Jahre und 42 Tage in 2021 ergibt $94\,562{,}73$ Euro.
+
+d) 18 Tage in 2018, 4 Jahre und 101 Tage in 2023 ergibt $60\,514{,}56$ Euro.
 
 :::
 
@@ -390,6 +437,122 @@ c) Eine Kapitalanlage hat sich in 10 Jahren verdoppelt. In der ersten Hälfte de
 d) Wie hoch muss der jährliche Zinssatz bei Zinseszinsrechnung sein, wenn sich ein Anfangskapital in 10 Jahren verdoppeln soll?
 
 ::: {.notes}
+
+a) In $14{,}21$ Jahren.
+
+b) In $13{,}54$ Jahren
+
+c) $10{,}45\,\%$
+
+d) $7{,}18\,\%$
+
+:::
+
+### Vergleich der Verzinsungen
+
+- Unterjährige Verzinsung gemäß der *deutschen kaufmännische Zinsmethode* ist **linear**, d. h., das Endkapital ist eine *lineare Funktion* der Laufzeit $t$. Es werden keine Zinseszinsen realisiert.
+$$K_t = K_0 \cdot \left( 1+ i \cdot t \right)$$
+
+- **Mehrjährige Verzinsung ist exponentiell**, d. h., das Endkapital ist eine *exponentielle Funktion* der Laufzeit $t$. Für kleine Zinsen und kurze Laufzeit (kleiner ein Jahr)  approximiert die exponentielle die lineare Verzinsung  gut.
+$$K_t = K_0 \cdot \left(1+i\right)^t$$
+```{r, echo=FALSE, out.width="90%", fig.asp=0.35}
+library(mosaic)
+x = seq(from=0, to= 1.5, by=0.05)
+K0=100
+i=0.45
+y.linear = K0*(1+i*x)
+y.exp = K0*(1+i)**x
+linear = tibble(x=x, y=y.linear, typ="linear")
+expo = tibble(x=x, y=y.exp, typ="exponentiell")
+gf_line(y ~ x, 
+        color=~ typ,
+        xlab="Jahre", ylab="",
+        data=bind_rows(linear, expo)) +
+    geom_line(size=1.2) +
+    scale_y_continuous(label=NULL, limits = c(80,K0*(1+i)**1.55)) 
+```
+
+### Äquivalenz von Zahlungen
+
+**Vergleichbarkeit von Zahlungen zu unterschiedlichen Zeitpunkten:**
+
+- Zahlungen, die zu unterschiedlichen Zeitpunkten anfallen, können nicht direkt miteinander verglichen werden, denn...
+    - ...bei zu leistenden Zahlungen haben frühere Zahlungen den Nachteil, dass die Liquidität zwischenzeitlich nicht mehr Zins bringend angelegt werden kann.
+    - ...bei zu erhaltenden Zahlungen haben die früheren Einnahmen den Vorteil, dass die Liquidität in der Zwischenzeit Zins bringend angelegt werden kann.
+
+#### {.example} 
+$1\,000$ Euro, die heute erhalten werden, haben einen höheren Wert als $1\,000$ Euro in einem Jahr. 
+Wird nämlich die heute erhaltene Zahlung für ein Jahr angelegt (Zins $i=3\,\%$), ergibt sich in einem Jahr mit $1\,030$ Euro ein höherer Wert als die Alternative.
+
+####  Schlussfolgerung: {.fact}
+Zahlungen können sinnvoll nur verglichen werden, wenn ihr jeweiliger Wert sich auf einen einheitlichen Zeitpunkt bezieht. 
+
+
+### Beispiel: Äquivalenz (I/II)
+
+Für den Verkauf eines Produktes liegen zwei Angebote vor: A bietet $20\,000$ Eurosofort und $10\,000$ in 3 Jahren; B bietet je $15\,000$ Euro in einem Jahr und in 2 Jahren. Welches Angebot ist -- bei einer alternativen Verzinsung von $5\,\%$ -- für den Verkäufer günstiger?
+
+
+**Lösungsansatz:**
+
+
+Zahlungen können dann miteinander verglichen werden, wenn die Werte inklusive möglicher Zinserträge einer alternativen Anlage zu einem einheitlichen Zeitpunkt bestimmt werden. Beispielweise können alle Zahlungen sofort, wenn sie erhalten werden, verzinst bis zum Ende des dritten Jahres angelegt werden.
+
+Am Ende des dritten Jahres ergibt sich dann: 
+
+$$A: 20\,000\cdot 1{,}05^3 + 10\,000 \cdot 1{,}05^0=33\,152{,}50$$ 
+$$B: 15\,000\cdot 1,05^2 + 15\,000 \cdot 1{,}05^1 = 32\,287{,}50$$ 
+
+### Beispiel: Äquivalenz (II/II)
+
+**Fortsetzung Lösungsansatz:**
+
+Alternativ könnten auch für alle der Zukunft zu erwartenden Zahlungen schon jetzt Kredite aufgenommen werden, die dann mit Eintritt der Zahlung zurückgezahlt werden. Der heute Wert (Gegenwartswert, Barwert oder Kapitalwert) einer in drei Jahren eintretenden Zahlung ist deshalb 10.000/1,053.
+
+$$A: 20\,000/1{,}05^0 + 10\,000/1{,}05^3	= 28\,638{,}38$$
+$$B: 15\,000/1{,}05^1 + 15\,000/1{,}05^2 	= 27\,891{,}16$$
+
+### Barwert / Kapitalwert / Endwert und Äquivalenz
+
+Der heutige Wert einer zukünftigen Zahlung oder einer zukünftigen Zahlungsreihe wird **Barwert**, **Kapitalwert** oder **Gegenwartswert** genannt.
+
+Die Begriffe Barwert und Kapitalwert bezeichnen bei Projekten (Investitionen, Aktivitäten, Renten) auch den Wert am **Anfang der Projektlaufzeit**. Beginnt das Projekt erst in der Zukunft, dann unterscheiden sich Bar- und Kapitalwert vom Gegenwartswert.
+
+Der Zeitwert am Ende der Laufzeit einer Zahlungsreihe heißt **Endwert**.
+
+Zwei Zahlungen, $A$ zum Zeitpunkt $t_A$, und $B$ zum Zeitpunkt $t_B$, sind dann gleichwertig oder äquivalent ($A \sim B$) , wenn Ihre Zeitwerte zu jedem Zeitpunkt übereinstimmen.^[Für die lineare Verzinsung kann es zu abweichenden Zeitwerten kommen, weshalb hier  Äquivalenz meistens durch den Zeitpunkt der letzten Zahlung definiert ist.]
+
+#### {.example}
+Folgende Zahlungen sind äquivalent ($i = 10\,\%$):
+
+- $\;8\,264{,}46$ Euro am 1.1.2018
+- $10\,000{,}00$ Euro am 1.1.2020	
+- $16\,105{,}10$ Euro am 1.1.2025
+
+### Übung `r nextExercise()`: {.exercise}
+
+a) Was ist der Gegenwartswert einer am 12.10. zu bezahlenden Rechnung in Höhe von $1,200$ Euro, wenn heute der 1.8. ist ($i = 3{,}5\,\%$)?
+
+b) Was ist der Gegenwartswert einer Zahlung in Höhe von $3\,000$ Euro, die in 4 Jahren anfällt ($i = 3\,\%$)?
+
+c) Sie erhalten eine Zahlung von $4\,000$ Euroin 4 Jahren. Bestimmen Sie den Zeitwert dieser Zahlung in einem Jahr und in 10 Jahren. ($i = 2\,\%$)
+
+d) Lohnt es sich, Ihre Rechnung (R) unter Abzug von $2\,\%$ Skonto 30 Tage früher zu bezahlen, wenn Sie alternativ Ihr Geld zum Zinssatz von $8\,\%$ anlegen können?
+
+e) Wie hoch ist der Barwert von $100\,000$ Euro, die Sie in 20 Jahren erhalten? (Zins $i=9\,\%$)
+
+::: {.notes}
+
+a) $1\,191{,}77$ Euro
+
+b) $2\,665{,}46$ Euro
+
+c) $K_1 = 3\,769{,}29$ und $K_10 = 4\,504{,}65$
+
+d) Ja, denn $R \cdot (100\,\%- 2\,\%) = R \cdot 0{,} 98 < \frac{R}{1+8\,\%\cdot\frac{1}{12}} = R \cdot 0{,}9934$
+
+e) $17\,843{,}09$ Euro
+
 :::
 
 

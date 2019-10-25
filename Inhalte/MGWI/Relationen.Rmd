@@ -231,6 +231,7 @@ $\mathbf{2} := [2]_3 = \{n \in \mathbf{Z}\,|\, 3 \text{ teilt } (n-2) \}$
 ::::::
 ::::::::::
 
+
 ### Beispiel: Volle Stunden der Uhr
 
 Ein einfaches und sehr anschauliches Beispiel hierfür ist eine (analoge) Uhr, bei der wir der Einfachheit halber annehmen, dass wir nur ganze Stunden ablesen wollen.
@@ -292,6 +293,47 @@ $\mathbf{3} := [3]_3 = \{n \in \mathbf{Z}\,|\,4 \text{ teilt } (n-3)\}$
 ::::
 
 ::::::
+
+### Beispiel: Anwendung bei ISBN
+
+Seit dem 01.01.2007 gibt es 13-stellige Internationale Standard Buchnummern (ISBN); vorher gab er 10-stellige ISBN.
+
+So hat zum Beispiel das Buch *Moderne Datenanalyse mit R: Daten einlesen, aufbereiten, visualisieren, modellieren und kommunizieren (FOM-Edition)* von Prof. Dr. Sebastian Sauer die ISBN: 978-3-6582-1586-6
+
+Der Aufbau dieser Nummer ist wie folgt:
+
+| 9 | 7 | 8 | - | 3 | - | 6 | 5 | 8 | 2 | - | 1 | 5 | 8 | 6 | - | 6 |
+|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+| $z_1$ | $z_2$ | $z_3$ |  | $z_4$ |  | $z_5$ | $z_6$ | $z_7$ | $z_8$ |  | $z_9$ | $z_{10}$ | $z_{11}$ | $z_{12}$ |  | $p$ |
+
+Die **Prüfzimmer* $p$ wird nun wie folgt berechnet:
+$$p = (10 - [(z_1+z_3+z_5+z_7+z_9+z_{11})+ 3 \cdot (z_2+z_4+z_6+z_8+z_{10}+ z_{12})]) \mod 10] \mod 10$$
+Hier im Beispiel also:
+
+\begin{align*}
+ p &= (10 - [(9+8+6+8+1+8)+3\cdot(7+3+5+2+5+6)] \mod 10) \mod 10\\
+   &= (10 - [40 + 3 \cdot 28] \mod 10) \mod 10 \\
+   &= (10 - [124] \mod 10) \mod 10 = (10 - 4) \mod 10 = 6 \mod 10 = 6
+\end{align*}
+
+
+### Übung `r nextExercise()`: {.exercise}
+
+a) Berechnen Sie die Prüfnummer des Buches *Numerisches Python: Arbeiten mit NumPy, Matplotlib und Pandas* von Berd Klein mit der ISBN 978-3-4464-5076-?
+
+b) Die 10-stellige ISBN kann man als $a-bcd-efghi-p$ mit den Ziffern a,b,c,d,e,f,g,h,i und der Prüfziffer $p$ darstellen. Dabei erfüllt $p$ die Gleichung $(10\cdot a + 9\cdot b + 8\cdot c + 7\cdot d + 6\cdot e + 5\cdot f + 4\cdot g + 3\cdot h + 2\cdot i + p) \mod 11 = 0$
+    - Ist 3-658-02803-3 eine gültige 10-stellige ISBN? (Und welches Buch ist es?)
+    - Ein Einzelfehler geschieht an der 2. Stelle und es wird 3-558-02803-3. Wird dieser Fehler erkannt?
+
+ 
+::: {.notes}
+a) Die vollständige ISBN lautet: 978-3-4464-5076-9, also $9$!
+
+b) Die Antworten lauten:
+    - Ja. Das Buch heißt *Angewandte Wirtschaftsstatistik: Daten und Zufall (FOM-Edition)* von den Autoren Karsten Lübke und Martin Vogt.
+    - Ja, denn den Prüfgleichung liefert nicht $0$, sondern $2$ modulo $11$.
+
+:::
 
 ### Funktionen (I/III)
 
