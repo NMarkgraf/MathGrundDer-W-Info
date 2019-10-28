@@ -1,5 +1,7 @@
 ---
 title: "Mathematische Grundlagen der (Wirtschafts-)Informatik"
+header-includes:
+  - \usepackage{systeme}
 ---
 
 ```{r setup, include=FALSE}
@@ -49,12 +51,12 @@ theme_set(
 
 ```{r setUpChildren, eval=TRUE, include=FALSE}
 childrenToInclude <- c(
-    "Organisatorisches", "Hinweise", "Mengenlehre", "Relationen", "Kombinatorik", "Logik", "Finanzmathematik"
+    "Organisatorisches", "Hinweise", "Mengenlehre", "Relationen", "Kombinatorik", "Logik", "Finanzmathematik", "LineareAlgebra"
 )
 ## Test! (TRUE oder FALSE ändern!)
 if (FALSE) {
   childrenToInclude <- c(
-    "Relationen"
+    "Mengenlehre", "Relationen", "Finanzmathematik","LineareAlgebra"
   )
   privateVorstellung <<- FALSE
   }
@@ -86,6 +88,9 @@ includeChild <- function(name, children=childrenToInclude, all=FALSE) {
 ```
 
 ```{r child = "./Inhalte/MGWI/Finanzmathematik.Rmd", eval=includeChild("Finanzmathematik")}
+```
+
+```{r child = "./Inhalte/MGWI/LineareAlgebra.Rmd", eval=includeChild("LineareAlgebra")}
 ```
 
 
