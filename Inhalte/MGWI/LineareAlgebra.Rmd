@@ -84,10 +84,15 @@ bringen.
 ### Bemerkungen zu LGS
 
 - Die $a_{ij}$ nennt man **Koeffizienten**.
+
 - Die $b_i$ nennt man kurz **rechte Seite**.
+
 - Sind alle Einträge auf der *rechten Seite* gleich $0$, dann nennt man das LGS **homogen**, sonst **inhomogen**.
+
 - *Homogene* LGS besitzen immer eine **triviale Lösung**, mit $x_i=0$ für alle $i$.
+
 - Gibt es genau so viele Gleichungen wie Unbekannte ($n=m$), so nennt man das LGS **quadratisch**.
+
 - In der **(Zeilen-)Stufenform** verringert sich in jeder Zeile die Zahl der Unbekannten um mindestens eine, die dann auch nicht mehr weiter vorkommt.
 
 
@@ -95,10 +100,14 @@ bringen.
 
 Man ändert die Lösungsmenge eines LGS nicht, wenn man
 
-* zwei Zeilen vertauscht,
-* eine Zeile auf beiden Seiten mit einer beliebigen Konstante $c \neq 0$ multipliziert,
-* das Vielfache einer Zeile zu einer anderen hinzuaddiert oder
-* das Vielfache einer Zeile von einer anderen subtrahiert.
+- zwei Zeilen vertauscht,
+
+- eine Zeile auf beiden Seiten mit einer beliebigen Konstante $c \neq 0$ multipliziert,
+
+- das Vielfache einer Zeile zu einer anderen hinzuaddiert oder
+
+- das Vielfache einer Zeile von einer anderen subtrahiert.
+
 
 ### Das Eliminationsverfahren
 
@@ -1057,6 +1066,370 @@ x_1	= \frac{\det(A_1)}{\det(A)} =
 
 Die senkrechten Striche sind eine gebräuchliche Notation der Determinante.
 
+
+## Eigenwerte und Eigenvektoren
+
+### Beispiel: Noch einmal die Bettwanzen
+
+```{r echo=FALSE, out.width = "90%", fig.align="center"}
+knitr::include_graphics(file.path(pathToImages, "Bettwanze1.png"))
+```
+
+### Beispiel: Der Lebenszyklus einer Bettwanze
+
+\begin{columns}[T]
+	\begin{column}[c]{6cm}
+		Sei $E_t$ die Anzahl der Eier, $A_t$ die Anzahl der Adulten Bettwanzen 
+		zu einem Zeitpunkt $t$.
+		\begin{align*}
+			E_{t+1} &= s \cdot E_t + f \cdot A_t \\
+			A_{t+1} &= d \cdot E_t + l \cdot A_t
+		\end{align*}		\pause
+		oder mit 
+		\begin{equation*}
+			L =	\begin{pmatrix}
+					s & f \\ d & l \\
+				\end{pmatrix},
+			\quad
+			x_t = \begin{pmatrix}
+					E_t \\ A_t \\
+				\end{pmatrix}
+		\end{equation*}
+		ist dann
+		\begin{equation*}
+			x_{t+1} = L \cdot x_t
+		\end{equation*}
+	\end{column}
+	\begin{column}[c]{5cm}
+```{r echo=FALSE, out.width = "95%", fig.align="center"}
+knitr::include_graphics(file.path(pathToImages, "Bettwanze2.png"))
+```
+	\end{column}
+	\pause
+\end{columns}
+
+
+### Beispiel: Situation A
+
+Für die erste Matrix $\displaystyle L = \begin{pmatrix} 0{,}1 & 1 \\ 0{,}5 & 0{,}2 \end{pmatrix}$ ergibt sich:
+
+\begin{columns}[T]
+	\begin{column}[c]{0.5\textwidth}
+```{r echo=FALSE, out.width = "95%", fig.align="center"}
+knitr::include_graphics(file.path(pathToImages, "BettwanzenPopulationAnzahl.png"))
+```
+	\end{column}
+	\begin{column}[c]{0.5\textwidth}
+```{r echo=FALSE, out.width = "95%", fig.align="center"}
+knitr::include_graphics(file.path(pathToImages, "BettwanzenPopulationGesamtAnzahl.png"))
+```
+	\end{column}
+\end{columns}
+
+
+### Beispiel: Situation A
+
+Für die erste Matrix $\displaystyle L = \begin{pmatrix} 0{,}1 & 1 \\ 0{,}5 & 0{,}2 \end{pmatrix}$ ergibt sich:
+
+\begin{columns}[T]
+	\begin{column}[c]{0.5\textwidth}
+```{r echo=FALSE, out.width = "95%", fig.align="center"}
+knitr::include_graphics(file.path(pathToImages, "BettwanzenPopulationAnzahl.png"))
+```
+	\end{column}
+	\begin{column}[c]{0.5\textwidth}
+```{r echo=FALSE, out.width = "95%", fig.align="center"}
+knitr::include_graphics(file.path(pathToImages, "BettwanzenPopulationPhasenraum.png"))
+```
+	\end{column}
+\end{columns}
+
+
+### Beispiel: Situation B
+
+Für die erste Matrix $\displaystyle L = \begin{pmatrix} 0{,}1 & 2 \\ 0{,}5 & 0{,}2 \end{pmatrix}$ ergibt sich:
+
+\begin{columns}[T]
+	\begin{column}[c]{0.5\textwidth}
+```{r echo=FALSE, out.width = "95%", fig.align="center"}
+knitr::include_graphics(file.path(pathToImages, "BettwanzenPopulationAnzahl2.png"))
+```
+	\end{column}
+	\begin{column}[c]{0.5\textwidth}
+```{r echo=FALSE, out.width = "95%", fig.align="center"}
+knitr::include_graphics(file.path(pathToImages, "BettwanzenPopulationGesamtAnzahl2.png"))
+```
+	\end{column}
+\end{columns}
+
+
+### Beispiel: Situation B
+
+Für die erste Matrix $\displaystyle L = \begin{pmatrix} 0{,}1 & 2 \\ 0{,}5 & 0{,}2 \end{pmatrix}$ ergibt sich:
+
+\begin{columns}[T]
+	\begin{column}[c]{0.5\textwidth}
+```{r echo=FALSE, out.width = "95%", fig.align="center"}
+knitr::include_graphics(file.path(pathToImages, "BettwanzenPopulationAnzahl2.png"))
+```
+	\end{column}
+	\begin{column}[c]{0.5\textwidth}
+```{r echo=FALSE, out.width = "95%", fig.align="center"}
+knitr::include_graphics(file.path(pathToImages, "BettwanzenPopulationPhasenraum2.png"))
+```
+	\end{column}
+\end{columns}
+
+
+### Wann wächst oder schrumpft die Population? (I)
+
+*Die Grundidee*:
+
+Falls wir nur die Gesamtanzahl $w_t$ der Bettwanzen zum Zeitpunkt $t$ betrachten würden, könnten wir eine einfache Form des Modells erstellen:
+
+$$w_{t+1} = r \cdot w_t$$
+
+Dann wäre mit $|r| < 1$ gesichert, dass die Population abnimmt. 
+
+
+Mit $|r|>1$ wäre klar, dass die Population wächst.
+
+
+### Wann wächst oder schrumpft die Population? (II)
+
+**1. Idee:**
+
+Wäre die Matrix $L$ eine Matrix zu einer *zentrischen Streckung*
+
+\begin{equation*}
+	L = \begin{pmatrix} k & 0 \\ 0 & k \end{pmatrix},
+\end{equation*}
+
+wüssten wir:
+
+\begin{equation*}
+	x_{t+1} = L \cdot x_t = k \cdot E_2 \cdot x_t = k \cdot x_t
+\end{equation*}
+
+Dann wäre mit $|k| < 1$ gesichert, dass die Population abnimmt.
+
+
+Mit $|k| > 1$ dagegen würde die Population wachsen.
+
+
+### Wann wächst oder schrumpft die Population? (II)
+
+**2. Idee:**
+
+Vielleicht gibt es zumindest für bestimmte Vektoren $v$ ein  $\lambda$, dass
+
+\begin{equation*}
+	\lambda \cdot v = L \cdot v
+\end{equation*}
+
+Die Population würde schrumpfen, wenn
+
+- $| \lambda | < 1$ und
+- wir imstande sind die $x_t$ als Linearkombination von *solchen* Vektoren $v$ auszudrücken.
+
+
+### Wann wächst oder schrumpft die Population? (III)
+
+Seien also $v_1$ und $v_2$ *solche* Vektoren mit $\lambda_1$ und $\lambda_2$ derart, dass
+zum einen
+
+\begin{equation*}
+	\lambda_1 \cdot v_1 = L \cdot v_1 \quad\text{ und }\quad\lambda_2 \cdot v_2 = L \cdot v_2
+\end{equation*}
+
+und zum anderen zwei Skalare $c_1$ und $c_2$ existiert, dass
+
+\begin{equation*}
+	x_t = c_1 \cdot v_1 + c_2 \cdot v_2
+\end{equation*}
+
+gilt. Dann ist
+\begin{align*}
+	L \cdot x_t	&= L \cdot (c_1 \cdot v_1 + c_2 \cdot v_2) = c_1 \cdot L \cdot v_1 + c_2 \cdot L \cdot v_2 \\
+			&= c_1 \cdot \lambda_1\cdot v_1 + c_2 \cdot \lambda_2\cdot v_2.
+\end{align*}
+
+
+### Wie findet man solche $\lambda$ und $v$?
+
+Für solche $\lambda$ und $v$ muss gelten:
+
+\begin{align*}
+	L \cdot v 					&= \lambda \cdot v \\
+	L \cdot v					&= \lambda \cdot E_n \cdot v  \\
+	(L-\lambda \cdot E_n) \cdot v 	&= 0 \\
+	M \cdot v					&= 0
+\end{align*}
+
+Wie muss nun $M$ aussehen, damit es sinnvolle $v$ gibt?
+
+
+### Zur Erinnerung: Lösung von LGS
+
+Für ein LGS $A \cdot x = b$ gilt:
+
+\begin{center}
+	\begin{tabular}{l|c|c|c}
+		Matrix $A$   		& $\det A$ 	& homogen  	& inhomogen \\
+				  		& 		 	& $b=0$ 		& $b\neq 0$ \\
+		\hline
+		$A$ invertierbar	& $\neq 0$	& nur triviale Lsg.	& genau eine Lösung \\[0.6em]
+		$A$ singulär		& $= 0$		& unendlich viele 	& unendlich viele oder \\
+		        				& 			& Lösungen	 	& keine Lösungen. \\
+	\end{tabular}
+\end{center}
+
+
+### Überlegungen
+
+- Es gibt diese Vektoren $v$, denn $M\cdot v = 0$ hat nicht nur die triviale Lösung, sondern unendlich viele.
+
+- *Unendlich viele* bedeutet hier: 
+	ein Vektor und alle seine Vielfachen.
+
+- Für jeden dieser Vektoren gilt obige Gleichung: 
+	ein verstecke zentrische Streckung um $\lambda$ durch $L$.
+		
+### Situation A: Berechnen von $\lambda$ 
+
+Weil $\det M = 0$ ist, berechnen wir $\det M$:
+\begin{align*}
+ 	\det  \begin{pmatrix} 0{,}1-\lambda & 1 \\ 0{,}5 & 0{,}2-\lambda \end{pmatrix}
+	&= (0{,}1-\lambda)\cdot(0{,}2-\lambda) - 1 \cdot 0{,}5 \\
+	&= \lambda^2-0{,}3\lambda -0{,}48
+\end{align*}
+
+Setzen wir nun $\det M = 0$, dann muss
+\begin{equation*}
+	\lambda^2-0{,}3\lambda -0{,}48 = 0
+\end{equation*}
+sein. ($\longrightarrow$ pq-Formel!)
+
+M.a.W.: $\lambda_1 \sim 0{,}8589$ und $\lambda_2 \sim -0{,}5589$
+
+
+### Situation A: Die Vektoren zu $\lambda_1$ und $\lambda_2$
+
+\begin{equation*}
+	\begin{pmatrix} 0{,}1-\lambda_1 & 1 \\ 0{,}5 & 0{,}2-\lambda_1 \end{pmatrix}
+	\cdot
+	v_{\lambda_1}	
+	=
+	\begin{pmatrix} -0{,}7589 & 1 \\ 0{,}5 & -0{,}6589 \end{pmatrix} 
+	\cdot
+	\begin{pmatrix} x_1 \\ x_2 \end{pmatrix}	
+	= 
+	\begin{pmatrix} 0 \\ 0 \end{pmatrix}
+\end{equation*}
+
+Hat die nichttriviale Lösung:
+
+\begin{equation*}
+	v_{\lambda_1}	
+	=
+	\begin{pmatrix} x_1 \\ x_2 \end{pmatrix}
+	=
+	\begin{pmatrix} -0{,}7966 \\ -0{,}6045 \end{pmatrix}
+\end{equation*}
+
+Nach der gleichen Methode kann man für $\lambda_2$ den Vektor 
+\begin{equation*}
+	v_{\lambda_2}	
+	=
+	\begin{pmatrix} -0{,}8350 \\ 0{,}5502 \end{pmatrix}
+\end{equation*}
+berechnen.
+
+
+### Situation B: Berechnen von $\lambda$
+
+Weil $\det M = 0$ ist, berechnen wir $\det M$:
+\begin{align*}
+ 	\det  \begin{pmatrix} 0{,}1-\lambda & 2 \\ 0{,}5 & 0{,}2-\lambda \end{pmatrix}
+	&= (0{,}1-\lambda)\cdot(0{,}2-\lambda) - 2 \cdot 0{,}5 \\
+	&= \lambda^2-0{,}3\lambda -0{,}98
+\end{align*}
+
+Setzen wir nun $\det M = 0$, dann muss
+\begin{equation*}
+	\lambda^2-0{,}3\lambda -0{,}98 = 0
+\end{equation*}
+sein. ($\longrightarrow$ pq-Formel!)
+
+M.a.W.: $\lambda_1 \sim 1{,}1512$ und $\lambda_2 \sim -0{,}8512$
+
+
+### Situation B: Die Vektoren zu $\lambda_1$ und $\lambda_2$
+
+Es ist hier:
+
+\begin{equation*}
+	v_{\lambda_1}	
+	=
+	\begin{pmatrix} -0{,}8852 \\ -0{,}4653 \end{pmatrix}
+\end{equation*}
+
+und
+
+\begin{equation*}
+	v_{\lambda_2}	
+	=
+	\begin{pmatrix} -0{,}9031 \\ 0{,}4295 \end{pmatrix}
+\end{equation*}
+
+berechnen.
+
+**Hausaufgabe:** Prüfen Sie die Ergebnisse nach, in dem Sie $L \cdot v = \lambda \cdot v$ berechnen! --  Was stellen Sie fest? -- Warum ist das so?
+
+
+### Überlegungen
+
+- Es gibt diese Vektoren $v$, denn $M \cdot v = 0$ hat nicht nur die triviale Lösung, sondern unendlich viele.
+
+- *Unendlich viele* bedeutet hier: 
+	ein Vektor und alle seine Vielfachen.
+
+- Für jeden dieser Vektoren gilt obige Gleichung: 
+	ein verstecke zentrische Streckung um $\lambda$ durch $L$.
+
+- Wir haben zwei $\lambda$ gefunden, d.h. es gibt zweimal einen Vektor und alle seine Vielfachen mit
+	jeweils einer zugehörigen zentrischen Streckung.
+
+
+### Charakteristisches Polynom und Eigenwerte
+
+Für eine *quadratische* Matrix $A$, ist das Polynom
+\begin{equation*}
+	\chi_A(\lambda) = \det(A - \lambda \cdot E_n)
+\end{equation*}
+ein Polynom $n$-ter Ordnung in $\lambda$ und wird **charakteristisches Polynom** von $A$ genannt.
+
+
+Es hat -- nach dem [Fundamentalsatz der Algebra](http://de.wikipedia.org/wiki/Fundamentalsatz_der_Algebra) -- genau $n$ Nullstellen (in $\mathbf{C}$, also den **[Komplexen Zahlen](http://de.wikipedia.org/wiki/Komplexe_Zahl)**).
+
+
+Die (ggf. **komplexen**) Nullstellen von $\chi_A(\lambda)$ sind die **Eigenwerte** von $A$.
+
+
+Die Vektoren $v_\lambda$ zu den *Eigenwerten* $\lambda$ mit $L \cdot v_\lambda = \lambda \cdot v_\lambda$ heißen **Eigenvektoren**.
+
+
+### Die Antwort auf unsere Frage
+
+**Frage:**  *Wächst oder schrumpft die Population?*
+
+**Antwort:**
+
+- Im Falle der Situation A schrumpft die Population, da beide Eigenwerte $\lambda$ gilt: 
+	$\displaystyle |\lambda | < 1$ und die zugehörigen Eigenvektoren den Phasenraum aufspannen.
+	
+- Im Falle der Situation B wächst die Population, da ein Eigenwert $\lambda$ gilt:
+	$\displaystyle |\lambda | > 1$ und die zugehörigen Eigenvektoren den Phasenraum aufspannen.
 
 ```{r finish-Lineare-Algebra, include=FALSE}
 finalizePart(partname)
