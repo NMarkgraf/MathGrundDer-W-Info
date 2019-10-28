@@ -1,0 +1,322 @@
+```{r setup-MGDWI-Lineare-Algebra, include=FALSE}
+# ---------------------------------------------------------------------------
+#% maintainer:
+#%   - Norman Markgraf
+#%
+# ---------------------------------------------------------------------------
+source("../../prelude.R")
+initPart(
+    "LineareAlgebra",  # Dateiname ohne Suffix
+    "LineareAlgebra"   # Verzeichnisname im Bilderverzeichnis 
+    )
+pathToImages = getPathToImages()
+# ---------------------------------------------------------------------------
+
+```
+
+# Lineare Algebra
+
+
+### Beispiel: Das Problem eines Apothekers
+
+**Das Problem:**
+
+Ein Apotheker hat 36%-igen und 21%igen Alkohl. 
+Welche Mengen von beiden Lösungen muss er mischen, damit er 5 Liter 30% igen Alkohols erhält?
+
+
+**Erste Schritte zum mathematischen Modell:**
+
+In 5 Litern Mischung sind $5 \cdot 0{,}3 =1{,}5$ Liter Alkohol aus $x$ Liter 36%-igen bzw. aus $y$ Liter 21%-igen Alkohol.
+Weiterhin muss $x+y=5$ Liter ergeben. 
+
+
+**Das Gleichungsystem:**
+$$\sysdelim..
+  \systeme{%
+		0.36x+0.21y=1.5,%
+		x+y=5}$$
+
+
+### Graphische Lösung
+
+```{r echo=FALSE, out.width = "12cm", fig.align="center"}
+knitr::include_graphics(file.path(pathToImages, "ApoGleich.png"))
+```
+
+
+### Rechnerische Lösung
+
+\begin{align*}
+		0{,}36x+0{,}21y &=1{,}5													\\[-0.4em]
+		x+y&=5 						& &| -x 									\\[0.6em]
+		0{,}36x+0{,}21y &=1{,}5 			& &| \text{~} y \text{ für } x \text{ einsetzen}			\\[-0.4em]
+		y&=5-x 																\\[0.6em]
+		0{,}36x+0{,}21(5-x) &=1{,}5 		& & | \text{ ausklammern \& zusammenfassen}		\\[-0.4em]
+		y&=5-x 																\\[0.6em]
+		(0{,}36-0{,}21) x + 1{,}05 &=1{,}5 	& &| - 1{,}05 								\\[-0.4em]
+		y&=5-x 																\\[0.6em]
+		0{,}15 x &=0{,}45 				& &| : 0{,}15								\\[-0.4em]
+		y&=5-x																\\[0.6em]
+		x &=3																\\[-0.4em]
+		y&=5-x = 2 															\\		
+\end{align*}
+
+
+### Lineare Gleichungssysteme
+
+Ein **lineares Gleichungssystem** (kurz: **LGS**) bezeichnet ein System *linearer Gleichungen*, die mehrere *unbekannte Größen* (**Variablen**) enthalten.
+
+
+Allgemein lässt sich ein LGS mit $m$ Gleichungen und $n$ Unbekannten immer in die Form 
+
+$$\begin{matrix}
+        a_{11} \cdot x_1 +  a_{12} \cdot x_2 \, + & \cdots & +\, a_{1n} \cdot x_n & = & b_1\\
+        a_{21} \cdot x_1 +  a_{22} \cdot x_2 \, + & \cdots & +\, a_{2n} \cdot x_n & = & b_2\\
+        &&&\vdots&\\
+        a_{m1} \cdot x_1 +  a_{m2} \cdot x_2 \, + & \cdots & +\, a_{mn} \cdot x_n & = & b_m\\
+    \end{matrix}$$
+
+bringen.
+
+
+### Bemerkungen zu LGS
+
+- Die $a_{ij}$ nennt man **Koeffizienten**.
+- Die $b_i$ nennt man kurz **rechte Seite**.
+- Sind alle Einträge auf der *rechten Seite* gleich $0$, dann nennt man das LGS **homogen**, sonst **inhomogen**.
+- *Homogene* LGS besitzen immer eine **triviale Lösung**, mit $x_i=0$ für alle $i$.
+- Gibt es genau so viele Gleichungen wie Unbekannte ($n=m$), so nennt man das LGS **quadratisch**.
+- In der **(Zeilen-)Stufenform** verringert sich in jeder Zeile die Zahl der Unbekannten um mindestens eine, die dann auch nicht mehr weiter vorkommt.
+
+
+### Elementare Zeilenumformungen
+
+Man ändert die Lösungsmenge eines LGS nicht, wenn man
+
+* zwei Zeilen vertauscht,
+* eine Zeile auf beiden Seiten mit einer beliebigen Konstante $c \neq 0$ multipliziert,
+* das Vielfache einer Zeile zu einer anderen hinzuaddiert oder
+* das Vielfache einer Zeile von einer anderen subtrahiert.
+
+### Das Eliminationsverfahren
+
+Man benutzt die *Elementaren Zeilenumformungen* um aus einem beliebigen LGS ein LGS in *Zeilenstufenform* zu erhalten:
+
+\begin{align*}
+		0{,}36x+0{,}21y 			&=1{,}5			& & \mathrm{I}							\\[-0.4em]
+		x+\phantom{0{,}21}y		&=5 				& & \mathrm{II}							\\[0.6em]
+		x+\phantom{0{,}21}y		&=5 				& & \mathrm{II}							\\[-0.4em]
+		0{,}36x+0{,}21y 			&=1{,}5			& & \mathrm{I}							\\[0.6em]
+		x+\phantom{0{,}15}y		&=5 				& & \mathrm{I}							\\[-0.4em]
+		-0{,}15y				&=-0{,}3			& & \mathrm{II}-0{,}36\cdot \mathrm{I} 		\\[0.6em]
+		x+y					&=5 				& & \mathrm{I}							\\[-0.4em]
+		y					&=2				& & \frac{-1}{0{,}15}\cdot \mathrm{II} 			\\[0.6em]
+		x\phantom{+y}			&=3 				& & \mathrm{II}-\mathrm{I}					\\[-0.4em]
+		y					&=2				& &									\\[0.6em]
+\end{align*}
+
+
+### Lösungsverhalten eines LGS
+
+Ein *homogenes* LGS besitzt entweder
+
+> - genau *eine* Lösung, nämlich die triviale Lösung oder
+> - *unendlich viele* Lösungen.
+
+Ein *inhomogenes* LGS besitzt entweder
+
+> - genau *eine* Lösung oder
+> - *unendlich viele* Lösungen oder
+> - überhaupt *keine* Lösung.
+
+
+### Konsequenzen
+
+> - Zu jedem  *inhomogenen* LGS gibt es ein *homogenes* LGS bei dem man die rechte Seite durch die Nullen ersetzt.
+> - Gibt es für das *homogene* LGS nur die *triviale Lösung*, so hat das *inhomogene* LGS **genau  eine** oder **gar keine** Lösung.
+> - Hat das *homogene* LGS *unendlich viele Lösungen*, dann hat das *inhomogene* LGS **unendlich viele** oder **gar keine** Lösung.
+> - Haben wir eine Lösung des *inhomogenen* LGS gefunden, entscheidet das *homogene* LGS darüber ob diese Lösung die einzige Lösung ist -- *homogenes* LGS hat nur triviale Lösung -- oder ob es unendlich viele Lösungen gibt -- *homogenes LGS* hat unendlich viele Lösungen.
+
+
+## Matrizen und Vektoren
+
+### Matrizen
+ Ein geordnetes, rechteckiges Schema von Zahlen oder Symbolen
+$$\renewcommand{\arraystretch}{.9}
+A=\begin{pmatrix}
+a_{11} & a_{12} & \ldots & a_{1j} &\ldots& a_{1n}\\
+a_{21} & a_{22} & \ldots & a_{2j} & \ldots & a_{2n}\\
+\vdots & \vdots & & \vdots & &\vdots \\
+a_{i1} & a_{i2} & \ldots & a_{ij} & \ldots & a_{in}\\
+\vdots & \vdots & & \vdots & &\vdots \\
+a_{m1} & a_{m2} & \ldots & a_{mj} & \ldots & a_{mn}\\
+\end{pmatrix}
+   = {(a_{ij})}_{m\times n}$$
+   
+mit $m,n \in \mathbf{N}$ heißt **Matrix mit $m$ Zeilen** und **$n$ Spalten** oder kurz **$m\times n$-Matrix**.
+
+
+### Bemerkungen zu Matrizen
+
+- Die $a_{11},\ldots,a_{mn}$ heißen **Elemente** der Matrix.
+- Dabei gibt $i$ die Zeile und $j$ die Spalte an, in der $a_{ij}$ steht.
+- $i$ heißt **Zeilenindex** und $j$ **Spaltenindex** von $a_{ij}$.
+
+**Beispiele:**
+
+$$B = 	\begin{pmatrix}
+			1 & 1 \\
+			0{,}36 & 0{,}21 \\		
+		\end{pmatrix},
+	\quad
+	A = 	\begin{pmatrix}
+			-2 & 3 & 0 \\
+			10 & \frac12 & 8\\
+		\end{pmatrix},
+	\quad
+	C = 	\begin{pmatrix}
+			-2 & 3 & 4 & 0\\
+			10 & 0 & 1 & 9 \\
+			8 & 7 & 2 & 3 \\
+			-8 & 7 & 4 & -8 \\
+			0 & 0 & -1 & 10 \\			
+		\end{pmatrix}$$
+
+
+### Vektoren
+
+> - $n\times 1$-Matrix heißt **Spaltenvektor mit $n$ Komponenten**:
+	$$a=\begin{pmatrix}
+				a_1 \\
+				\vdots \\
+				a_n
+		\end{pmatrix}$$
+		
+> - $1\times n$-Matrix heißt **Zeilenvektor mit $n$ Komponenten**:
+	$$a = (a_1, \ldots, a_n)$$
+
+
+### Vektoren in Koordinatensystemen
+
+```{r echo=FALSE, out.width = "9cm", fig.align="center"}
+knitr::include_graphics(file.path(pathToImages, "Vektoren.png"))
+```
+
+
+### Beispiel: Kaffeespezialitäten 
+
+```{r echo=FALSE, out.width = "8cm", fig.align="center"}
+knitr::include_graphics(file.path(pathToImages, "VektorenKaffee1.png"))
+```
+
+
+### Beispiel: Kaffeespezialitäten 
+
+```{r echo=FALSE, out.width = "8cm", fig.align="center"}
+knitr::include_graphics(file.path(pathToImages, "VektorenKaffee2.png"))
+```
+
+
+### Lineare Unabhängigkeit
+Eine Menge von Vektoren ist **linear unabhängig** falls keiner von ihnen als Linearkombination der anderen ausgedrückt werden kann.
+
+
+**Beispiel:**
+
+Die Vektoren $\displaystyle v_{lm}=\begin{pmatrix} \frac13 \\[0.1em] \frac13 \\[0.1em] \frac13 \end{pmatrix}$,
+$\displaystyle v_{mk}=\begin{pmatrix} \frac12 \\[0.1em] \frac12 \\[0.1em] 0 \end{pmatrix}$ und
+$\displaystyle v_{cap}=\begin{pmatrix} \frac13 \\[0.1em] \frac16 \\[0.1em] \frac12 \end{pmatrix}$
+sind *linear unabhängig*.
+
+
+### Addition & Subtraktion von Matrizen und Vektoren 
+
+> - Mit Matrizen bzw. Vektoren gleicher Ordnung kann man rechnen!
+> - *Addition* und *Subtraktion* erfolgt *komponentenweise*!
+
+
+**Beispiel:**
+
+Seien 
+$\displaystyle A= \begin{pmatrix} a_{11} & a_{12} & a_{13} \\ a_{21} & a_{22} & a_{23}\end{pmatrix}$
+und
+$\displaystyle B= \begin{pmatrix} b_{11} & b_{12} & b_{13} \\ b_{21} & b_{22} & b_{23}\end{pmatrix}$
+gegeben. 
+
+Dann gilt:
+$$A \pm B	= 	\begin{pmatrix} 
+					a_{11} \pm b{11} & a_{12} \pm b{12}& a_{13} \pm b{13}\\ 
+					a_{21} \pm b{21} & a_{22} \pm b{22}& a_{23} \pm b{23}
+				\end{pmatrix}$$
+				
+
+### Multiplikation mit einem Skalar 
+
+> - Eine *reelle Zahl* wollen wir zur besseren Unterscheidung **Skalar** nennen.
+> - Man kann eine *Matrix* (resp. einen *Vektor*) mit einem *Skalar* **multiplizieren**. 
+	In dem man *jedes Element* mit dem *Skalar multipliziert*.
+
+
+**Beispiel:**
+
+Sei 
+$\displaystyle A= \begin{pmatrix} a_{11} & a_{12} \\ a_{21} & a_{22} \end{pmatrix}$
+und
+$k$ ein Skalar. 
+
+Dann ist:
+
+$$k \cdot A= \begin{pmatrix} k \cdot a_{11} & k \cdot a_{12} \\ k \cdot a_{21} & k \cdot a_{22} \end{pmatrix}$$
+
+### Produkt zweier Matrizen
+
+> - Zwei Matrizen multipliziert man mit einander, wenn sie passend sind.
+> - Passend sind sie, wenn die Spaltenanzahl der ersten mit der Zeilenanzahl der zweiten Matrix übereinstimmt.
+> - Passen zwei Matrizen zueinander, dann ist das Produkt eine Matrix mit genauso viel Zeilen wie die erste und Spalten wie die zweite Matrix.
+> - Näheres regelt das Falk'sche Schema. ;-)
+
+
+### Falk'sches Schema
+
+
+### Sonderformen der Multiplikation
+
+> - Auch eine Matrix $A$ und ein Vektor $x$ können zueinander passen. 
+	Dann ist $A \cdot x$ erklärt und ergibt einen *Vektor*
+> - Zwei Vektoren mit gleicher Komponentenanzahl multipliziert man durch einen Trick zu einem Skalar
+	Man nennt das **Skalarprodukt** zweier (Spalten-)Vektoren 
+	$x$ und $y$
+	einfach 
+	$<x, y> = x^T \cdot y$
+> - Das 'hoch T' heißt **transponiert**. 
+> - Man **transponiert** eine *Matrix* (resp. *Vektor*) in dem man aus jeder Zeile eine Spalte macht.
+
+
+
+
+## Matrizen
+
+### ...
+
+## Lineare Gleichungssysteme
+
+### ...
+
+## Lineare Abbildungen
+
+### ...
+
+## Vektorräume und Unterräume
+
+### ...
+
+## Determinanten und andere Invarianten
+
+### ...
+
+
+
+```{r finish-Lineare-Algebra, include=FALSE}
+finalizePart(partname)
+```
