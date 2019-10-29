@@ -591,17 +591,20 @@ von $n-k$ Objekten, die nicht ausgewählt werden!
 \begin{columns}
 		\begin{column}{0.74\textwidth}
 			\begin{tabular}{ccccccccccccc}
-				&	&	&	&	&	& 1	&	&	&	& 	& \\  
+				&	&	&	&	&	& 1	&	&	&	& 	&   \\  
 				&	&	&	&	&	&	&	&	&	&	&	\\
-				&	&	&	&	& 1	&	& 1	&	&	& 	& \\  
+				&	&	&	&	& 1	&	& 1	&	&	& 	&   \\  
 				&	&	&	&	&	&	&	&	&	&	&	\\
-				&	&	&	& 1	&	& 2	&	& 1	&	& 	& \\  
+				&	&	&	& 1	&	& 2	&	& 1	&	& 	&   \\  
 				&	&	&	&	&	&	&	&	&	&	&	\\
-				&	&	& 1	&	& 3	&	& 3	&	& 1	& 	& \\  
+				&	&	& 1	&	& 3	&	& 3	&	& 1	& 	&   \\  
 				&	&	&	&	&	&	&	&	&	&	&	\\
-				&	& 1	&	& 4	&	& 6	&	& 4	&	& 1 & \\
+				&	& 1	&	& 4	&	& 6	&	& 4	&	& 1 &   \\
 				&	&	&	&	&	&	&	&	&	&	&	\\
-				& 1	&	& 5	&	& 10&	& 10&	& 5	&	& 1
+				& 1	&	& 5	&	& 10&	& 10&	& 5	&	& 1 \\
+				&	&	&	&	&	&	&	&	&	&	&	\\
+				&	&	&	&	&	&	&	&	&	&	&	\\
+				&	&	&	&	&	&	&	&	&	&	&
 			\end{tabular}
 		\end{column}
 		\begin{column}{0.24\textwidth}
@@ -614,10 +617,10 @@ von $n-k$ Objekten, die nicht ausgewählt werden!
 #### {.remark}
 Das Pascal'sche Dreieck war jedoch schon früher bekannt und wird deshalb auch heute noch nach anderen \glqq Entdeckern\grqq\xspace benannt.
 
-In China spricht man vom \textit{Yang-Hui-Dreieck}, in Italien vom \textit{Tartaglia-Dreieck} und im Iran vom \textit{Chayy\={a}m-Dreieck}.
+In China spricht man vom *Yang-Hui-Dreieck*, in Italien vom *Tartaglia-Dreieck* und im Iran vom *Chayy\={a}m-Dreieck*.
 
 
-### Übung `r nextExercise()` für Programmierer (zu Hause!) {.exercise}
+### Übung `r nextExercise()`: für Programmierer (zu Hause!) {.exercise}
 
 Schreiben Sie ein Programm, in einer Programmiersprache ihrer Wahl, dass möglichst effizient den Binomialkoeffizienten $\displaystyle \binom{n}{k}$ berechnet.
 
@@ -628,8 +631,37 @@ Testen Sie Ihr Programm mit den folgenden Werten:
 $$\binom{100}{1} = 100, \quad \binom{100}{50} = 100\,891\,344\,545\,564\,193\,334\,812\,497\,256 ,$$
 $$ \binom{1000}{3} = 166\,167\,000, \quad \binom{1000}{10}= 263\,409\,560\,461\,970\,212\,832\,400$$
 
+::: {.notes}
+
+#
+# Berechnung des Binomialkoeffizenten 
+# mit Hilfe des rekusiven Abstiegs in
+# Python
+
+def binom(n, k):
+    if k > n:
+        return 0
+    if n < 0:
+        return 0
+    if k == 0:
+        return 1
+    if k == 1:
+        return n
+    if k > n/2:
+        return binom(n, n-k)
+    return n * binom(n-1, k-1) // k
+
+
+if __name__ == '__main__':
+    print(binom(100, 1))
+    print(binom(100, 50))
+    print(binom(1000, 3))
+    print(binom(1000, 10))
+
+:::
 
 ### Erweiterung der binomischen Formeln
+
 \newcommand{\mycolor}{\color{blue}}	
 Es ist:
 \begin{align*}
@@ -680,8 +712,11 @@ Berechnen Sie von Hand, ohne Verwendung eines Taschenrechners, die folgenden Aus
 
 a) $99^3$
 a) $1001^4$
+a) $1{,}05^4$
 
 ::: {.notes}
+:::::: {.small}
+
 a) \begin{align*} 
     99^3 &= (100-1)^3\\
          &= {\color{blue} 1} \cdot 100^0 \cdot (-1)^3 + {\color{blue} 3}\cdot 100^1 \cdot (-1)^2 + {\color{blue} 3}\cdot 100^2 \cdot (-1)^1 + {\color{blue} 1} \cdot 100^3 \cdot (-1)^0 \\
@@ -695,6 +730,16 @@ a)  \begin{align*}
            &= 1000000000000 + 4000000000 + 6000000 + 4000 + 1 \\
            &= 1004006004001
    \end{align*}
+   
+a) \begin{align*}
+    1{,}05^4 &= (1+0{,}05)^4 = \left(1+\frac{1}{20})^4 \\
+             &= {\color{blue} 1} \cdot \frac{1}{20}^4  + {\color{blue} 4} \cdot \frac{1}{20}^3 + {\color{blue} 6} \cdot \frac{1}{20}^2 + \phantom{0}{\color{blue}  4} \cdot \frac{1}{20}^1 + {\color{blue} 1} \cdot \frac{1}{20}^0 \\
+             &= {\color{blue} 1} \cdot \frac{1}{160000}  + {\color{blue} 4} \cdot \frac{20}{160000} + {\color{blue} 6} \cdot \frac{400}{160000} + \phantom{0}{\color{blue}  4} \cdot \frac{8000}{160000} + {\color{blue} 1} \\
+             &=  \frac{1}{160000} + \frac{80}{160000} + \frac{2400}{160000} +  \frac{32000}{160000} + 1\\
+             &=  1 + \frac{34481}{160000}  = 1{,}21550625
+   \end{align*}
+   
+::::::
 :::
 
 
