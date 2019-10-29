@@ -727,11 +727,11 @@ a)  \begin{align*}
    \end{align*}
    
 a) \begin{align*}
-    1{,}05^4 &= (1+0{,}05)^4 = \left(1+\frac{1}{20})^4 \\
-             &= {\color{blue} 1} \cdot \frac{1}{20}^4  + {\color{blue} 4} \cdot \frac{1}{20}^3 + {\color{blue} 6} \cdot \frac{1}{20}^2 + \phantom{0}{\color{blue}  4} \cdot \frac{1}{20}^1 + {\color{blue} 1} \cdot \frac{1}{20}^0 \\
+    1{,}05^4 &= (1+0{,}05)^4 = \left(1+\frac{1}{20}\right)^4 \\
+             &= {\color{blue} 1} \cdot \frac{1}{20^4}  + {\color{blue} 4} \cdot \frac{1}{20^3} + {\color{blue} 6} \cdot \frac{1}{20^2} + \phantom{0}{\color{blue}  4} \cdot \frac{1}{20^1} + {\color{blue} 1} \cdot \frac{1}{20^0} \\
              &= {\color{blue} 1} \cdot \frac{1}{160000}  + {\color{blue} 4} \cdot \frac{20}{160000} + {\color{blue} 6} \cdot \frac{400}{160000} + \phantom{0}{\color{blue}  4} \cdot \frac{8000}{160000} + {\color{blue} 1} \\
-             &=  \frac{1}{160000} + \frac{80}{160000} + \frac{2400}{160000} +  \frac{32000}{160000} + 1\\
-             &=  1 + \frac{34481}{160000}  = 1{,}21550625
+             &= \frac{1}{160000} + \frac{80}{160000} + \frac{2400}{160000} +  \frac{32000}{160000} + 1 \\
+             &= 1 + \frac{34481}{160000}  = 1{,}21550625
    \end{align*}
    
 ::::::
