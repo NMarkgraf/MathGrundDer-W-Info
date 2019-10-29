@@ -451,6 +451,8 @@ Gegeben sei das Tuppel $(a,b,c,d)$
 
 3. *Für geübte Programmierer!!!* Schreiben Sie ein Programm, welches $n$ Zeichen einliest und danach alle möglichen Permutationen ausgibt!
 
+**Tipp:** Lesen Sie den Artikel von Donald E. Knuth dazu: http://www.cs.utsa.edu/~wagner/knuth&fasc2b.pdf
+
 ::: {.notes}
 
 1. Es gibt genau $4!=24$ verschiedene Permutationen
