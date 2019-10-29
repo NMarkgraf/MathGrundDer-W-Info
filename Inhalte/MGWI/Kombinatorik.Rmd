@@ -564,29 +564,22 @@ Für Binomialkoeffizienten gelten die folgenden Regeln ($n,k \in \mathbf{N}$ und
 	
 ### Rechenregeln für Binomialkoeffizienten (forts.)
 
-\textbf{Symmetrieeigenschaft:}
-\begin{equation*}
-	\binom{n}{n-k} = \binom{n}{k} 
-\end{equation*}
+**Symmetrieeigenschaft:**
+$$\binom{n}{n-k} = \binom{n}{k}$$
+
 $\Longrightarrow$ Die Auswahl von $k$ aus $n$ Objekten ist gleichbedeutend von der Bestimmung 
 von $n-k$ Objekten, die nicht ausgewählt werden!
 
-\textbf{Anzahl \textit{aller} Teilmengen einer $n$-elementigen Menge:}
-\begin{equation*}
-	\sum_{k=0}^{n} \binom{n}{k} = 2^n
-\end{equation*}
 
-\textbf{Additionseigenschaft:}
-\begin{equation*}
-	\binom{n}{k} + \binom{n}{k+1} = \binom{n+1}{k+1} 
-\end{equation*}
-	
+**Anzahl \textit{aller} Teilmengen einer $n$-elementigen Menge:**
+$$\sum_{k=0}^{n} \binom{n}{k} = 2^n$$
 
-\textbf{Rekursiver Abstieg:}
-\begin{equation*}
-	k \cdot \binom{n}{k} = n \cdot \binom{n-1}{k-1} 
-\end{equation*}
 
+**Additionseigenschaft:**
+$$\binom{n}{k} + \binom{n}{k+1} = \binom{n+1}{k+1}$$	
+
+**Rekursiver Abstieg:**
+$$k \cdot \binom{n}{k} = n \cdot \binom{n-1}{k-1}$$
 
 ### Das Pascal'sche Dreieck
 	
@@ -867,19 +860,23 @@ Wie viele Möglichkeiten hat er?
 
 **1. Aufgabe**
 
-Gehen wir davon aus, dass die Reihenfolge der Ziehungen zu beachten ist, so haben wir $n^k$ mögliche Experimente. 
-Würde die Reihenfolge keine Rolle spielen, wären es $\binom{n+k-1}{k}$ mögliche Experimente.
+Es gibt zwei Möglichkeiten das Experiment zu berechnen
+
+1. Gehen wir davon aus, dass die Reihenfolge der Ziehungen zu beachten ist, so haben wir $n^k$ mögliche Experimente. 
+
+2. Würde die Reihenfolge keine Rolle spielen, wären es $\binom{n+k-1}{k}$ mögliche Experimente.
+
 
 
 **2. Aufgabe**
 
 Bei der Dreierwetter wird (im Gegensatz zur Siegerwette) die Reihenfolge getippt in der Eingelaufen wird.
-Es ist eine Auswahl ohne Zurücklegen, aber mit Beachtung der Reihenfolge zu tätigen. Also $\displaystyle\frac{20!}{17!}=20P3=6\,840$
+Somit modellieren wir dies mit einer Auswahl ohne Zurücklegen, aber mit Beachtung der Reihenfolge: $\displaystyle\frac{20!}{17!}=20P3=6\,840$
 
 
 **3. Aufgabe**
 
-$\displaystyle 1 \cdot 2 \cdot 3 \cdot 4 \cdot 5 = 5! = 24$
+$\displaystyle 5! = 1 \cdot 2 \cdot 3 \cdot 4 \cdot 5 =24$
 
 :::
 
@@ -905,10 +902,10 @@ Auf wie viele Arten kann man aus 6 Frauen und 8 Männern einen Ausschuss aus 3 F
 ::: {.notes}
 **4. Aufgabe**
 
-Man kann einmal aus der Sicht der Hotelzimmer das Problem betrachten. Also nur die Frage stellen, welche Zimmer überhaupt belegt sind.
+Man kann einmal das Problem aus der Sicht des Reinigungspersonal betrachten. Also nur die Frage stellen, welche Zimmer überhaupt belegt sind.
 Dann kommt man auf $\displaystyle = 10C5 = \binom{10}{5} = 252$
 
-Oder man betrachtet das Problem aus der Sicht der Hotelgäste. Denen ist nicht egal wo Sie abends ins Bett sinken. Dann kommt man auf
+Oder man betrachtet das Problem aus der Sicht der Hotelgäste. Diesen ist nicht egal wo sie abends ins Bett sinken. Dann kommt mensch auf
 $\displaystyle 10P5 = \frac(10!)(5!)=30\,240$.
 
 **5. Aufgabe**
@@ -972,7 +969,7 @@ bilden?
 ::: {.notes}
 **8. Aufgabe**
 
-Es sind genau vier Wasserstoff substitutionsfähig. Durch Drehungen oder Spiegelungen lassen sich diese Positionen, wegen der COOH-Gruppe und dem Stickstoffatom, nicht ineinander überführen. Daher lauten die Antworten:
+Es sind genau vier Wasserstoff substitutionsfähig. Durch Drehungen oder Spiegelungen lassen sich diese Positionen, wegen der COOH-Gruppe (der Gruppe also, warum wir hier ein organische Säure haben) und dem Stickstoffatom (N), nicht ineinander überführen. Daher lauten die Antworten:
 
 a) $4C2 = \binom{4}{2} = 6$
 
@@ -981,7 +978,7 @@ b) $4C3 = \binom{4}{1} = 4$
 
 **9. Aufgabe**
 
-"Färbt" man im Wort $R\;O\;K\;O\;K\;O\;K\;O\;M\;M\;O\;D\;E$ die mehrfach vorkommenden Buchstaben, so erhält man mit $R\;O_1\;K_1\;O_2\;K_2\;O_3\;K_3\;O_4\;M_1\;M_2\;O_5\;D\;E$ ein Wort mit genau 13 unterscheidbaren Buchstaben. Diese lassen sich genau $13P13=13!$ permutierten.
+Färbt man im Wort $R\;O\;K\;O\;K\;O\;K\;O\;M\;M\;O\;D\;E$ die mehrfach vorkommenden Buchstaben, so erhält man mit $R\;O_1\;K_1\;O_2\;K_2\;O_3\;K_3\;O_4\;M_1\;M_2\;O_5\;D\;E$ ein Wort mit genau 13 unterscheidbaren Buchstaben. Diese Buchstaben lassen sich genau $13P13=13!$ mal permutierten.
 
 Um die Färbung wieder zurückzurechnen müssen wir die Permutationen innerhalb der $O$'s, der $K$'s und der $M$'s wieder herrauskürzen. Damit ergibt sich:
 
