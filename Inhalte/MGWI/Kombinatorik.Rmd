@@ -925,12 +925,20 @@ bilden?
 ::: {.notes}
 **8. Aufgabe**
 
-a) 
-a)
+Es sind genau vier Wasserstoff substitutionsfähig. Durch Drehungen oder Spiegelungen lassen sich diese Positionen, wegen der COOH-Gruppe und dem Stickstoffatom, nicht ineinander überführen. Daher lauten die Antworten:
+
+a) $4C2 = \binom{4}{2} = 6$
+
+b) $4C3 = \binom{4}{1} = 4$
 
 
 **9. Aufgabe**
 
+"Färbt" man im Wort $R\;O\;K\;O\;K\;O\;K\;O\;M\;M\;O\;D\;E$ die mehrfach vorkommenden Buchstaben, so erhält man mit $R\;O_1\;K_1\;O_2\;K_2\;O_3\;K_3\;O_4\;M_1\;M_2\;O_5\;D\;E$ ein Wort mit genau 13 unterscheidbaren Buchstaben. Diese lassen sich genau $13P13=13!$ permutierten.
+
+Um die Färbung wieder zurückzurechnen müssen wir die Permutationen innerhalb der $O$'s, der $K$'s und der $M$'s wieder herrauskürzen. Damit ergibt sich:
+
+$$\frac{13!}{5!\cdot 3!\cdot 2!} = 4\,324\,320$$
 
 :::
 
