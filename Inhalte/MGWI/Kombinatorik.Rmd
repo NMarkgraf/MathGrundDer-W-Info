@@ -832,7 +832,7 @@ Für die Anzahl der Möglichkeiten aus $n$ Objekten $k$ Objekte auszuwählen, ge
 \end{center}
 
 
-### Übungen für Zuhause {.exercise}
+### Übung `r nextExercise()`: {.exercise}
 
 **1. Aufgabe**
 
@@ -881,7 +881,7 @@ $\displaystyle 5! = 1 \cdot 2 \cdot 3 \cdot 4 \cdot 5 =24$
 :::
 
 
-### Übungen für Zuhause {.exercise}
+### Übung `r nextExercise()`: {.exercise}
 
 **4. Aufgabe**
 Auf wie viele Arten kann man fünf Hotelgäste in zehn Einzelzimmer unterbringen?
@@ -920,7 +920,7 @@ Die beiden Auswahlen erfolgen unabhängig, daher:
 :::
 
 
-### Übungen für Zuhause {.exercise}
+### Übung `r nextExercise()`: {.exercise}
 
 **7. Aufgabe**
 
@@ -943,7 +943,7 @@ a) $\displaystyle \binom{8}{8} + \binom{8}{7} + \binom{8}{6} + \binom{8}{5} = 8C
 :::
 
 
-### Übungen für Zuhause {.exercise}
+### Übung `r nextExercise()`: {.exercise}
 
 **8. Aufgabe**
 

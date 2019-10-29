@@ -67,6 +67,7 @@ symbolisch mit $A XOR B$ (vom engl. *eXclusive OR*) oder $A \oplus B$ bezeichnet
 Sie ist genau dann *wahr*, wenn **entweder $A$ oder $B$** – aber *nicht alle beide* – *wahr*
 sind.
 
+
 ### Hinweise und Übung
 
 - Die Begriffe „UND“ und „ODER“ werden in der Mathematik exakt gebraucht und
@@ -74,6 +75,7 @@ weichen häufig vom umgangssprachlichen Gebrauch ab!
 
 - Die Aussage „Rauchen und Hantieren mit offenem Feuer verboten“ versteht jeder, ist aber mathematisch gesehen falsch formuliert.
     Warum? Wie müsste die korrekte Formulierung lauten?
+
 
 ### Wahrheitstabellen
 
@@ -86,13 +88,15 @@ weichen häufig vom umgangssprachlichen Gebrauch ab!
   f  |  f  |       f      |      f     |       f
 
 
-### Übung: Verknüpfungen {.exercise}
+
+### Übung `r nextExercise()`: Verknüpfungen {.exercise}
 
 Geben Sie jeweils die Wahrheitswerte der Aussagen $A \wedge B$, $A \vee B$ und $A \oplus B$ an:
 
 A) $A$: Frankfurt liegt in Deutschland, $B$: London liegt in Deutschland
 
 B) $A$: $2 < 3$, $B$: $1+1=2$ 
+
 
 
 ## Aussageformen
@@ -105,13 +109,13 @@ Variable $x$, so entsteht eine [Aussageform]{.cstrong} $A(x)$ (auch
 [Aussagefunktion]{.cstrong} oder [offene Aussage]{.cstrong} genannt). 
 Eine *Aussageform* wird zu einer *Aussage*, wenn man für $x$ ein konkretes Objekt einsetzt.
 
-#### {.exsamples}
+#### {.examples}
 
 Gegeben sind die Aussageformen:
 
 $A(x): x^2 < 15$ und $B(x): x^2 + 1 = 5$
 
-#### {.exercises}
+#### {.exercise}
 
 - Ist die Aussage $A(1)$ *wahr* oder *falsch*?
 - Ist die Aussage $B(1)$ *wahr* oder *falsch*?
@@ -128,18 +132,21 @@ genau dann *wahr*, wenn $A(x)$ für alle in Frage kommenden $x$ *wahr* ist.
 
 Abkürzend schreibt man für die **All-Aussage**
 $$\forall x : A(x)$$
-wobei $\forall$ „für alle“ gelesen wird (oder „für jedes“). $\forall$ heißt [All-
-Quantor]{cstrong}.
+wobei $\forall$ „für alle“ gelesen wird (oder „für jedes“). 
+
+$\forall$ heißt [All-Quantor]{.cstrong}.
 
 #### Existenz-Quantor {.definition}
 Die Aussage „Es gibt ein x (aus einer bestimmten Menge), so dass $A(x)$“ ist genau dann *wahr*, wenn $A(x)$ für zumindest eines der in Frage kommenden $x$ *wahr* ist. 
 Abkürzend schreibt man diese **Existenz-Aussage** als
 $$\exists x: A(x),$$
 wobei $\exists$ „es gibt/existiert (mindestens) ein“ gelesen wird oder „für
-mindestens ein“. $\exists$ heißt [Existenz-Quantor]{.cstrong}.
+mindestens ein“. 
+
+$\exists$ heißt [Existenz-Quantor]{.cstrong}.
 
 
-### Übung {.exercise}
+### Übung `r nextExercise()`: {.exercise}
 
 Welche der folgenden Aussagen sind für die *natürlichen Zahlen* wahr bzw. falsch:
 
@@ -164,7 +171,8 @@ Kurz:
 $$\neg(\forall x: A(x)) = \exists x: \neg A(x)$$
 $$\neg(\exists x: A(x)) = \forall x: \neg A(x)$$
 
-### Übung {.exercise}
+
+### Übung `r nextExercise()`: {.exercise}
 
 Bilden Sie das Komplement (die Verneinung) zu folgenden
 Aussagen unter Verwendung der Begrifflichkeiten der All- und
@@ -195,7 +203,7 @@ Die [GENAU-DANN]{.cstrong}-Verknüpfung oder [Bijunktion]{.cstrong} $A \leftrigh
 $$A \leftrightarrow B = (A \rightarrow B) \wedge (B \rightarrow A)$$
 
 
-### Übung: {.exercise}
+### Übung `r nextExercise()`: {.exercise}
 
 Erstellen Sie eine Wahrheitstafel für $A \rightarrow B$ und $A \leftrightarrow B$.
 
@@ -337,23 +345,26 @@ Diese Aussage wird z.B. durch $x=2$ widerlegt.
 Für den Beweis einer Aussage reicht ein Beispiel **nicht**!
 
 
-### Übung
+### Übung `r nextExercise()`: {.exercise}
 
 Beweisen oder widerlegen Sie die folgenden Aussagen:
 
-A) Wenn z eine gerade Zahl ist, ist z durch 3 teilbar.
+A) Wenn $z$ eine gerade Zahl ist, ist $z$ durch 3 teilbar.
 
-B) Wenn z gerade ist und b Primzahl ist, dann ist z + b ungerade.
+B) Wenn $z$ gerade ist und $b$ Primzahl ist, dann ist $z + b$ ungerade.
 
-C) Wenn z gerade ist und b Primzahl größer als 2 ist, dann ist z + b ungerade.
+C) Wenn $z$ gerade ist und $b$ Primzahl größer als $2$ ist, dann ist $z + b$ ungerade.
 
-D) Wenn a eine natürliche Zahl ist, dann ist $a^2$ durch 4 teilbar oder beim Teilen
-von $a^2$ durch 4 bleibt der Rest 1.
+D) Wenn $a$ eine natürliche Zahl ist, dann ist $a^2$ durch $4$ teilbar oder beim Teilen
+von $a^2$ durch $4$ bleibt der Rest $1$.
 
-E) Für alle reellen Zahlen z gilt: $z^2 > 0$ oder $z^2 = 0$.
+E) Für alle reellen Zahlen $z$ gilt: $z^2 > 0$ oder $z^2 = 0$.
 
 F) Für alle positiven rationalen Zahlen $q$ gibt es eine rationale Zahl $w$ mit $w^2 = q$.
 
+::: {.notes}
+
+:::
 
 ```{r finish-MGDWI-Logik, include=FALSE}
 finalizePart(partname)
