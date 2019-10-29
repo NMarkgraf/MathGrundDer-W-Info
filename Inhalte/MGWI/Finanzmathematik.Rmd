@@ -28,10 +28,14 @@ Weiter ist der **Zinssatz**, zu dem Geld überlassen wird, von wesentlicher Bede
 ### Einführungsbeispiel (I/II)
 
 Nehmen wir an, Sie wollen $1\,000$ Euro für die Dauer von zwei Jahren anlegen. 
-Sie bekommen Angebote von drei Banken. Das Angebot der Bank A bietet in jedem Jahr $5\,\%$ Zinsen. 
+Sie bekommen Angebote von drei Banken:
+
+- Das Angebot der Bank A bietet in jedem Jahr $5\,\%$ Zinsen. 
 Die Zinsen werden nach dem ersten Jahr errechnet und im zweiten Jahr mitverzinst. 
-Dies gilt auch für das Angebot der Bank B, bei dem es im ersten Jahr $8\,\%$ und im zweiten nur $2\,\%$ Zinsen gibt. 
-Beim Angebot der Bank C erhalten Sie dagegen im ersten Jahr nur $2\,\%$, im zweiten allerdings $8\,\%$. 
+
+- Dies gilt auch für das Angebot der Bank B, bei dem es im ersten Jahr $8\,\%$ und im zweiten nur $2\,\%$ Zinsen gibt. 
+
+- Beim Angebot der Bank C erhalten Sie dagegen im ersten Jahr nur $2\,\%$, im zweiten allerdings $8\,\%$. 
 
 Welches der drei Angebote ist das beste?
 
@@ -47,14 +51,13 @@ Welches der drei Angebote ist das beste?
 
 Um diese Frage zu klären, muss das sogenannte Endkapital, hier: das Kapital nach 2 Jahren, bestimmt werden.
 
-- Angebot Bank A: nach einem Jahr hat man 1000 Euro plus 5 % Zinsen also plus 50 Euro. Ergibt 1050 Euro. Nach 2 Jahren sind es 1050 Euro plus 5 % Zinsen also plus 52, 50 Euro Zinsen. Das Endkapital beträgt $1102{,}50$ Euro.
+- **Angebot Bank A:** nach einem Jahr hat man 1000 Euro plus 5 % Zinsen also plus 50 Euro. Ergibt 1050 Euro. Nach 2 Jahren sind es 1050 Euro plus 5 % Zinsen also plus 52, 50 Euro Zinsen. Das Endkapital beträgt $1102{,}50$ Euro.
 
-- Angebot Bank B: nach einem Jahr hat man 1080 Euro ($1080 = 1000 + 0{,}08 \cdot 1000$), nach 2 Jahren (mit 2 % Zinsen auf 1080 Euro für das 2. Jahr: $21{,}60$ Euro) ist das Kapital $1101{,}60$ Euro. 
+- **Angebot Bank B:** nach einem Jahr hat man 1080 Euro ($1080 = 1000 + 0{,}08 \cdot 1000$), nach 2 Jahren (mit 2 % Zinsen auf 1080 Euro für das 2. Jahr: $21{,}60$ Euro) ist das Kapital $1101{,}60$ Euro. 
 
-- Angebot Bank C: nach dem 1. Jahr hat man 1020 Euro, nach dem 2. Jahr mit 8 % Zins ist das
-Kapital auch $1101{,}60$ Euro.
+- **Angebot Bank C:** nach dem 1. Jahr hat man 1020 Euro, nach dem 2. Jahr mit 8 % Zins ist das Kapital auch $1101{,}60$ Euro.
 
-**Fazit:** das Angebot der Bank A ist am höchsten. 
+[Fazit:]{.cstrong} das Angebot der Bank A ist am höchsten. 
 Die Angebote der Bank B und C ergeben dasselbe Endkapital. 
 Mit der Ermittlung der durchschnittlichen Verzinsung kann man die Angebote leicht vergleichen, mehr dazu beim effektiven Zins.
 
@@ -84,7 +87,8 @@ $$Z = i \cdot K$$
 :::
 ::::::
 
-**Hinweise und Definitionen:**
+::: {.small}
+[Hinweise und Definitionen:]{.cstrong}
 
 - Die *Zinsperiode* ist üblicherweise 1 Jahr, d.h., die genannten Zinssätze (i) beziehen sich auf den Zeitraum 1 Jahr (p.a.).
 
@@ -94,6 +98,7 @@ $$Z = i \cdot K$$
 
 - In Deutschland Einteilung des Zinsjahres in 12 Monate zu je 30 Tagen (30/360 oder deutsche Zinsmethode)
 
+:::
 
 ### Rechtsgrundlagen
 ::::: {.columns}
@@ -127,7 +132,7 @@ $$Z = i \cdot K$$
 ::::::: {.columns}
 ::: {.column width="49%"}
 
-Zum *Zeitpunkt* $t=0$ wird *Kapital* $K_0$ angelegt, welches sich mit dem *Zinssatz* $i$ verzinst, wobei die *Zinsen* zum Ende jeder *Zinsperiode* sofort wiederangelegt werden:
+Zum [Zeitpunkt]{.cemph} $t=0$ wird [Kapital]{.cemph} $K_0$ angelegt, welches sich mit dem [Zinssatz]{.cemph} $i$ verzinst, wobei die [Zinsen]{.cemph} zum Ende jeder [Zinsperiode]{.cemph} sofort wiederangelegt werden:
 
 :::
 ::: {.column width="49%"}
@@ -140,7 +145,7 @@ K_3 &= K_2 (1+i) = K_0 (1+i)^{3} \\
 K_n &= K_0 (1+i)^{n} = K_0 \cdot q^{n} \\
 \end{align*}
 
-mit dem *Aufzinsungsfaktor* $q=(1+i)$
+mit dem [Aufzinsungsfaktor]{.cemph} $q=(1+i)$
 
 :::
 :::::::
@@ -177,12 +182,12 @@ d) $\log_{1{,}04}\left(\frac{2\,921{,}85}{1\,500}\right) = 17{,}00$
 
 ### Unterjährige Verzinsung
 
-Die Methode der **unterjährigen Verzinsung** bezieht sich auf Zeiträume, die **innerhalb eines Jahres (unterjährig)** liegen. 
+Die Methode der [unterjährigen Verzinsung]{.cstrong} bezieht sich auf Zeiträume, die [innerhalb eines Jahres (unterjährig)]{.cstrong} liegen. 
 Das Grundprinzip ist hier, dass der Jahreszinssatz (linear) gewichtet wird mit dem entsprechenden Anteil ($t$) des Jahres:
 
 $$K_t = K_0 + Z \cdot t = K_0 + i\cdot K_0 \cdot t = K_0 (1+i\cdot t)$$
 
-Die **deutsche kaufmännische Zinsmethode** nimmt zusätzlich an, dass jeder Monat 30 Tage und das Jahr 360 Tage hat (wird auch 30/360-Methode genannt). Der unterjährige Jahresanteil $t$ berechnet sich gemäß:
+Die [deutsche kaufmännische Zinsmethode]{.cstrong} nimmt zusätzlich an, dass jeder Monat 30 Tage und das Jahr 360 Tage hat (wird auch [30/360-Methode]{.cemph} genannt). Der unterjährige Jahresanteil $t$ berechnet sich gemäß:
 
 $$t = \frac{T_2-T_1}{360}$$
 
@@ -337,7 +342,7 @@ Ein- und Auszahlungen fallen in praktischen Fällen selten mit dem Anfang und de
 
 $$K_t = K_0\cdot \left(1+i\cdot t_1\right)\cdot \left(1+i\right)^n\cdot \left(1+i\cdot t_2\right)$$
 
-Nach der *deutschen Zinsmethode* gilt (meistens^[nicht wirklich einheitlich; vgl. BGB §§187, 188]) der erste Tag der Kapitalanlage als Zinstag, der letzte Tag (an dem abgehoben wird) hingegen nicht. 
+Nach der [deutschen Zinsmethode]{.cemph} gilt (meistens^[nicht wirklich einheitlich; vgl. BGB §§187, 188]) der erste Tag der Kapitalanlage als Zinstag, der letzte Tag (an dem abgehoben wird) hingegen nicht. 
 Deshalb müssen die Zinszeiträume praktisch korrigiert werden:
 
 $$K_t = K_0\cdot \left(1+i\cdot \frac{360-T_0+1}{360}\right)\cdot \left(1+i\right)^n\cdot \left(1+i\cdot \frac{T_1-1}{360}\right)$$
@@ -349,16 +354,17 @@ Am 15.9.2016 werden $12\,000$ € zu $3{,}75\,\%$ angelegt.
 Wie hoch ist der Endbetrag bei Kontoauflösung am 24.9.2023?
 
 
-**Lösung:**
+[Lösung:]{.cstrong}
 
-1.  Berechnung der Zeiträume im ersten (t1) und letzten (t2)Jahr:
+1.  [Berechnung der Zeiträume im ersten ($T_1$) und letzten ($T_2$) Jahr:]{.cemph}
+
 $\qquad T_1:\qquad 15.9. \mathrel{\hat{=}}  (9-1) \cdot 30 + 15 = 255 \Longrightarrow t_1 = \frac{360-255+1}{360} = \frac{106}{360}$
     
 $\qquad T_2:\qquad 24.9. \mathrel{\hat{=}} (9-1) \cdot 30 + 24 = 264 \Longrightarrow t_1 = \frac{264-1}{360} = \frac{263}{360}$
 
 $\qquad n = \text{"Endjahr"} - \text{"Anfangsjahr"} - 1 = 2023 - 2016-1 = 6$
 
-2. Berechnung des Endbetrages: $K_t = K_0\cdot \left(1+i\cdot t_1\right)\cdot \left(1+i\right)^n\cdot \left(1+i\cdot t_2\right)$
+2. [Berechnung des Endbetrages:]{.cemph} $K_t = K_0\cdot \left(1+i\cdot t_1\right)\cdot \left(1+i\right)^n\cdot \left(1+i\cdot t_2\right)$
 
 $$K_t = 12\,000\cdot \left(1+0{,}0375\cdot \frac{106}{360}\right)\cdot 1{,}0375^6\cdot \left(1+0{,}0375\cdot \frac{263}{360}\right)=15\,545{,}93$$
 
@@ -390,7 +396,7 @@ d) 18 Tage in 2018, 4 Jahre und 101 Tage in 2023 ergibt $60\,514{,}56$ Euro.
 
 ### Approximative Verzinsung
 
-**Zinseszinsen mit nichtganzzahligen Exponenten:**
+[Zinseszinsen mit nichtganzzahligen Exponenten:]{.cstrong}
 
 Für kleine Zinsen gilt ungefähr: $(1+i\cdot t) \approx (1+i)^t$, wobei $t$ beliebige (nichtganzzahlige) Zeiträume in Jahren beschreibt. 
 Wird die Zinseszinsformel durch obige Annäherung ersetzt, ergibt sich:
@@ -402,7 +408,7 @@ $$K_t= K_0\cdot (1+i)^t$$
 Am 15.9.2016 werden  $12\,000$ € zu $3{,}75\,\%$ angelegt. 
 Wie hoch ist der approximierte Endbetrag bei Kontoauflösung am 24.9.2023, wenn die Verzinsung mit nichtganzzahligen Exponenten berechnet wird?
 
-**Lösung:**
+[Lösung:]{.cstrong}
 
 106 Tage im ersten und 263 Tage im letzten Jahr und 6 ganze Jahre ergeben einen Gesamtzeitraum von 7,025 Jahren:
 
@@ -411,17 +417,17 @@ $$K_t = K_0 \cdot (1+i)^t = 12\,000 \cdot \left(1+0{,}0375\right)^{7{,}025} = 15
 
 ### Approximierte und gemischte Verzinsung
 
-**Nachteil der gemischten Verzinsung:**
+[Nachteil der gemischten Verzinsung:]{.cstrong}
 
-- Die gemischte Verzinsung ist *inkonsistent* und vom Zeitpunkt des Zinszuschlages (bzw. der Einzahlung) abhängig.
+- Die gemischte Verzinsung ist {inkonsistent]{.cemph} und vom Zeitpunkt des Zinszuschlages (bzw. der Einzahlung) abhängig.
 
 - Wäre der Zeitraum vorheriger Beispielaufgabe um einen Monat verschoben (15.10.2016 bis 24.10.2023), so ergäbe sich ein leicht anderer Betrag:
 
 $$K_t = 12\,000\cdot \left(1+0{,}0375\cdot \frac{76}{360}\right)\cdot 1{,}0375^6\cdot \left(1+0{,}0375\cdot \frac{293}{360}\right)=15\,545{,}02$$
 
-- Weil die gemischte Verzinsung üblicherweise höhere Zinserträge als die “Verzinsung mit nicht ganzzahligen Exponenten” erbringt, ist sie im Grundsatz aber *verbraucherfreundlicher*.
+- Weil die gemischte Verzinsung üblicherweise höhere Zinserträge als die “Verzinsung mit nicht ganzzahligen Exponenten” erbringt, ist sie im Grundsatz aber [verbraucherfreundlicher]{.cemph}.
 
-- Die approximierte Verzinsung mit nichtganzzahligen Exponenten kann immer dann verwendet werden, wenn Startzeitpunkte nicht exakt bekannt sind, oder wenn aufgrund weiterer *Ungenauigkeiten*, welche gerade im betrieblichen Entscheidungsprozess häufig vorliegen, ein exaktes Ergebnis sowieso nicht berechenbar ist.
+- Die approximierte Verzinsung mit nichtganzzahligen Exponenten kann immer dann verwendet werden, wenn Startzeitpunkte nicht exakt bekannt sind, oder wenn aufgrund weiterer [Ungenauigkeiten]{.cemph}, welche gerade im betrieblichen Entscheidungsprozess häufig vorliegen, ein exaktes Ergebnis sowieso nicht berechenbar ist.
 
 
 ### Übung `r nextExercise()`: {.exercise}
@@ -450,11 +456,12 @@ d) $7{,}18\,\%$
 
 ### Vergleich der Verzinsungen
 
-- Unterjährige Verzinsung gemäß der *deutschen kaufmännische Zinsmethode* ist **linear**, d. h., das Endkapital ist eine *lineare Funktion* der Laufzeit $t$. Es werden keine Zinseszinsen realisiert.
+- Unterjährige Verzinsung gemäß der [deutschen kaufmännische Zinsmethode]{.cemph} ist [linear]{.cstrong}, d. h., das Endkapital ist eine [lineare Funktion*]{.cémph} der Laufzeit $t$. Es werden keine Zinseszinsen realisiert.
 $$K_t = K_0 \cdot \left( 1+ i \cdot t \right)$$
 
-- **Mehrjährige Verzinsung ist exponentiell**, d. h., das Endkapital ist eine *exponentielle Funktion* der Laufzeit $t$. Für kleine Zinsen und kurze Laufzeit (kleiner ein Jahr)  approximiert die exponentielle die lineare Verzinsung  gut.
+- [Mehrjährige Verzinsung ist exponentiell]{.cstrong}, d. h., das Endkapital ist eine [exponentielle Funktion]{.cemph} der Laufzeit $t$. Für kleine Zinsen und kurze Laufzeit (kleiner ein Jahr)  approximiert die exponentielle die lineare Verzinsung  gut.
 $$K_t = K_0 \cdot \left(1+i\right)^t$$
+
 ```{r, echo=FALSE, out.width="90%", fig.asp=0.35}
 library(mosaic)
 x = seq(from=0, to= 1.5, by=0.05)
@@ -472,9 +479,10 @@ gf_line(y ~ x,
     scale_y_continuous(label=NULL, limits = c(80,K0*(1+i)**1.55)) 
 ```
 
+
 ### Äquivalenz von Zahlungen
 
-**Vergleichbarkeit von Zahlungen zu unterschiedlichen Zeitpunkten:**
+[Vergleichbarkeit von Zahlungen zu unterschiedlichen Zeitpunkten:]{.cstrong}
 
 - Zahlungen, die zu unterschiedlichen Zeitpunkten anfallen, können nicht direkt miteinander verglichen werden, denn...
     - ...bei zu leistenden Zahlungen haben frühere Zahlungen den Nachteil, dass die Liquidität zwischenzeitlich nicht mehr Zins bringend angelegt werden kann.
@@ -493,7 +501,7 @@ Zahlungen können sinnvoll nur verglichen werden, wenn ihr jeweiliger Wert sich 
 Für den Verkauf eines Produktes liegen zwei Angebote vor: A bietet $20\,000$ Euro sofort und $10\,000$ in 3 Jahren; B bietet je $15\,000$ Euro in einem Jahr und in 2 Jahren. Welches Angebot ist -- bei einer alternativen Verzinsung von $5\,\%$ -- für den Verkäufer günstiger?
 
 
-**Lösungsansatz:**
+[Lösungsansatz:]{.cstrong}
 
 
 Zahlungen können dann miteinander verglichen werden, wenn die Werte inklusive möglicher Zinserträge einer alternativen Anlage zu einem einheitlichen Zeitpunkt bestimmt werden. Beispielweise können alle Zahlungen sofort, wenn sie erhalten werden, verzinst bis zum Ende des dritten Jahres angelegt werden.
@@ -503,22 +511,24 @@ Am Ende des dritten Jahres ergibt sich dann:
 $$A: 20\,000\cdot 1{,}05^3 + 10\,000 \cdot 1{,}05^0=33\,152{,}50$$ 
 $$B: 15\,000\cdot 1,05^2 + 15\,000 \cdot 1{,}05^1 = 32\,287{,}50$$ 
 
+
 ### Beispiel: Äquivalenz (II/II)
 
-**Fortsetzung Lösungsansatz:**
+[Fortsetzung Lösungsansatz:]{.cstrong}
 
 Alternativ könnten auch für alle der Zukunft zu erwartenden Zahlungen schon jetzt Kredite aufgenommen werden, die dann mit Eintritt der Zahlung zurückgezahlt werden. Der heute Wert (Gegenwartswert, Barwert oder Kapitalwert) einer in drei Jahren eintretenden Zahlung ist deshalb 10.000/1,053.
 
 $$A: 20\,000/1{,}05^0 + 10\,000/1{,}05^3	= 28\,638{,}38$$
 $$B: 15\,000/1{,}05^1 + 15\,000/1{,}05^2 	= 27\,891{,}16$$
 
+
 ### Barwert / Kapitalwert / Endwert und Äquivalenz
 
-Der heutige Wert einer zukünftigen Zahlung oder einer zukünftigen Zahlungsreihe wird **Barwert**, **Kapitalwert** oder **Gegenwartswert** genannt.
+Der heutige Wert einer zukünftigen Zahlung oder einer zukünftigen Zahlungsreihe wird [Barwert]{.cstrong}, [Kapitalwert]{.cstrong} oder [Gegenwartswert]{.cstrong} genannt.
 
-Die Begriffe Barwert und Kapitalwert bezeichnen bei Projekten (Investitionen, Aktivitäten, Renten) auch den Wert am **Anfang der Projektlaufzeit**. Beginnt das Projekt erst in der Zukunft, dann unterscheiden sich Bar- und Kapitalwert vom Gegenwartswert.
+Die Begriffe Barwert und Kapitalwert bezeichnen bei Projekten (Investitionen, Aktivitäten, Renten) auch den Wert am [Anfang der Projektlaufzeit]{.cstrong}. Beginnt das Projekt erst in der Zukunft, dann unterscheiden sich Bar- und Kapitalwert vom Gegenwartswert.
 
-Der Zeitwert am Ende der Laufzeit einer Zahlungsreihe heißt **Endwert**.
+Der Zeitwert am Ende der Laufzeit einer Zahlungsreihe heißt [Endwert]{.cstrong}.
 
 Zwei Zahlungen, $A$ zum Zeitpunkt $t_A$, und $B$ zum Zeitpunkt $t_B$, sind dann gleichwertig oder äquivalent ($A \sim B$) , wenn Ihre Zeitwerte zu jedem Zeitpunkt übereinstimmen.^[Für die lineare Verzinsung kann es zu abweichenden Zeitwerten kommen, weshalb hier  Äquivalenz meistens durch den Zeitpunkt der letzten Zahlung definiert ist.]
 
@@ -528,6 +538,7 @@ Folgende Zahlungen sind äquivalent ($i = 10\,\%$):
 - $\;8\,264{,}46$ Euro am 1.1.2018
 - $10\,000{,}00$ Euro am 1.1.2020	
 - $16\,105{,}10$ Euro am 1.1.2025
+
 
 ### Übung `r nextExercise()`: {.exercise}
 
