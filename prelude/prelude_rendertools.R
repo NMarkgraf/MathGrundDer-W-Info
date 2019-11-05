@@ -1,5 +1,5 @@
 # ===========================================================================
-# prelude_rendertools.R (Release 0.3.2)
+# prelude_rendertools.R (Release 0.4.0)
 # =====================------------------------------------------------------
 # (W) by Norman Markgraf in 2018/19
 #
@@ -16,9 +16,10 @@
 # 03. Sep. 2019  (nm)  "makeSkriptTypeOf()" ersetzt die make*() Funktionen.
 #                      (0.3.1)
 # 04. Sep. 2019  (nm)  "makeS*riptTypeOf()", "setTypeOfS*ript()" um *={k,c} 
-#                      erweitert, damit "pseudo-native-speaker" nicht merken.
+#                      erweitert, damit "pseudo-native-speaker" nichts merken.
 #                      Laysiness bei den drei Skriptarten erweitert. Cool man!
 #                      (0.3.2)
+# 05. Nov. 2019  (nm)  Jetzt wird UTF-8 auch auf Windows geschrieben.
 #
 #   (C)opyleft Norman Markgraf in 2018/19
 #
@@ -51,7 +52,32 @@ if (!exists("prelude.rendertools")) {
   inc.notes.lsgskript <- "include-notes-loesungen.tex"
   inc.notes <- "include-notes.tex"
 
-  
+#
+ 
+write_utf8 <- function(text, f = tempfile()) {
+    # step 1: ensure our text is utf8 encoded
+    utf8 <- enc2utf8(paste0("",text)) # \0xef\0xbb\0xbf
+#    print(text)
+#    print(utf8)
+    
+    # step 2: create a connection with 'native' encoding
+    # this signals to R that translation before writing
+    # to the connection should be skipped
+    
+    con <- file(f, open = "w+", encoding = "native.enc")
+
+    # step 3: write to the connection with 'useBytes = TRUE',
+    # telling R to skip translation to the native encoding
+    
+    writeLines(utf8, con = con, useBytes = TRUE)
+
+    # close our connection
+    close(con)
+    
+    print(readLines(f, encoding = "UTF-8"))
+    
+}
+   
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   createPrivateYaml <- function(
       DozInfo=NULL, 
@@ -80,7 +106,7 @@ if (!exists("prelude.rendertools")) {
         tmpInst <- Studienort
     }
     
-    out <- file(privymlfn, "w", encoding = "UTF-8")
+#    out <- file(privymlfn, "w", encoding = "UTF-8")
     if (is.null(DozInfo)) {
       tmp <- paste0(
         "---\nauthor: \"FOM\"\ndate: \"", Semester, "\"",
@@ -106,8 +132,11 @@ if (!exists("prelude.rendertools")) {
     }
     flog.info(paste0("Create new '", privymlfn, "'"))
     flog.info(paste0("Content of '", privymlfn, "':\n", tmp))
-    cat(iconv(tmp, to="UTF-8"), file = out)
-    close(out)
+
+    write_utf8(tmp, privymlfn)
+
+#    cat(iconv(tmp, to="UTF-8"), file = out)
+#    close(out)
   }
 
   

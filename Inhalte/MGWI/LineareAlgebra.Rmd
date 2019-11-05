@@ -22,20 +22,20 @@ pathToImages = getPathToImages()
 
 **Das Problem:**
 
-Ein Apotheker hat 36%-igen und 21%igen Alkohl. 
-Welche Mengen von beiden Lösungen muss er mischen, damit er 5 Liter 30% igen Alkohols erhält?
+Ein Apotheker hat $36\,\%$-igen und $21\,\%$-igen Alkohl. 
+Welche Mengen von beiden Lösungen muss er mischen, damit er $5$ Liter $30\,\%$- igen Alkohols erhält?
 
 
 **Erste Schritte zum mathematischen Modell:**
 
-In 5 Litern Mischung sind $5 \cdot 0{,}3 =1{,}5$ Liter Alkohol aus $x$ Liter 36%-igen bzw. aus $y$ Liter 21%-igen Alkohol.
+In $5$ Litern Mischung sind $5 \cdot 0{,}3 =1{,}5$ Liter Alkohol aus $x$ Liter $36\,\%$-igen bzw. aus $y$ Liter $21\,\%$-igen Alkohol.
 Weiterhin muss $x+y=5$ Liter ergeben. 
 
 
 **Das Gleichungsystem:**
 $$\sysdelim..
   \systeme{%
-		0.36x+0.21y=1.5,%
+		0{,}36\cdot x+0{,}21\cdot y=1.5,%
 		x+y=5}$$
 
 
@@ -66,7 +66,7 @@ knitr::include_graphics(file.path(pathToImages, "ApoGleich.png"))
 
 ### Lineare Gleichungssysteme
 
-Ein **lineares Gleichungssystem** (kurz: **LGS**) bezeichnet ein System *linearer Gleichungen*, die mehrere *unbekannte Größen* (**Variablen**) enthalten.
+Ein [lineares Gleichungssystem]{.cstrong} (kurz: [LGS]{.cstrong}) bezeichnet ein System [linearer Gleichungen]{.cemph}, die mehrere [unbekannte Größen]{.cemph} ([Variablen]{.cstrong}) enthalten.
 
 
 Allgemein lässt sich ein LGS mit $m$ Gleichungen und $n$ Unbekannten immer in die Form 
@@ -83,17 +83,17 @@ bringen.
 
 ### Bemerkungen zu LGS
 
-- Die $a_{ij}$ nennt man **Koeffizienten**.
+- Die $a_{ij}$ nennt man [Koeffizienten]{.cstrong}.
 
-- Die $b_i$ nennt man kurz **rechte Seite**.
+- Die $b_i$ nennt man kurz [rechte Seite]{.cstrong}.
 
-- Sind alle Einträge auf der *rechten Seite* gleich $0$, dann nennt man das LGS **homogen**, sonst **inhomogen**.
+- Sind alle Einträge auf der [rechten Seite]{.cemph} gleich $0$, dann nennt man das LGS [homogen]{.cstrong}, sonst [inhomogen]{.cstrong}.
 
-- *Homogene* LGS besitzen immer eine **triviale Lösung**, mit $x_i=0$ für alle $i$.
+- [Homogene]{.cemph} LGS besitzen immer eine [triviale Lösung]{.cstrong}, mit $x_i=0$ für alle $i$.
 
-- Gibt es genau so viele Gleichungen wie Unbekannte ($n=m$), so nennt man das LGS **quadratisch**.
+- Gibt es genau so viele Gleichungen wie Unbekannte ($n=m$), so nennt man das LGS [quadratisch]{.cstrong}.
 
-- In der **(Zeilen-)Stufenform** verringert sich in jeder Zeile die Zahl der Unbekannten um mindestens eine, die dann auch nicht mehr weiter vorkommt.
+- In der [(Zeilen-)Stufenform]{.cstrong} verringert sich in jeder Zeile die Zahl der Unbekannten um mindestens eine, die dann auch nicht mehr weiter vorkommt.
 
 
 ### Elementare Zeilenumformungen
@@ -111,7 +111,7 @@ Man ändert die Lösungsmenge eines LGS nicht, wenn man
 
 ### Das Eliminationsverfahren
 
-Man benutzt die *Elementaren Zeilenumformungen* um aus einem beliebigen LGS ein LGS in *Zeilenstufenform* zu erhalten:
+Man benutzt die [Elementaren Zeilenumformungen]{.cemph} um aus einem beliebigen LGS ein LGS in [Zeilenstufenform]{.cemph} zu erhalten:
 
 \begin{align*}
 		0{,}36x+0{,}21y 			&=1{,}5			& & \mathrm{I}							\\[-0.4em]
@@ -129,15 +129,18 @@ Man benutzt die *Elementaren Zeilenumformungen* um aus einem beliebigen LGS ein 
 
 ### Lösungsverhalten eines LGS
 
-Ein *homogenes* LGS besitzt entweder
+Ein [homogenes]{.cemph} LGS besitzt entweder
 
-- genau *eine* Lösung, nämlich die triviale Lösung oder
-- *unendlich viele* Lösungen.
+- genau [eine]{.cemph} Lösung, nämlich die triviale Lösung oder
 
-Ein *inhomogenes* LGS besitzt entweder
+- [unendlich viele]{.cemph} Lösungen.
 
-- genau *eine* Lösung oder
-- *unendlich viele* Lösungen oder
+Ein [inhomogenes]{.cemph} LGS besitzt entweder
+
+- genau [eine]{.cemph} Lösung oder
+
+- [unendlich viele]{.cemph} Lösungen oder
+
 - überhaupt *keine* Lösung.
 
 
@@ -167,16 +170,16 @@ a_{m1} & a_{m2} & \ldots & a_{mj} & \ldots & a_{mn}\\
 \end{pmatrix}
    = {(a_{ij})}_{m\times n}$$
    
-mit $m,n \in \mathbf{N}$ heißt **Matrix mit $m$ Zeilen** und **$n$ Spalten** oder kurz **$m\times n$-Matrix**.
+mit $m,n \in \mathbf{N}$ heißt [Matrix mit $m$ Zeilen]{.cstrong} und [$n$ Spalten]{.cstrong} oder kurz [$m\times n$-Matrix]{.cstrong}.
 
 
 ### Bemerkungen zu Matrizen
 
-- Die $a_{11},\ldots,a_{mn}$ heißen **Elemente** der Matrix.
+- Die $a_{11},\ldots,a_{mn}$ heißen [Elemente]{.cstrong} der Matrix.
 - Dabei gibt $i$ die Zeile und $j$ die Spalte an, in der $a_{ij}$ steht.
-- $i$ heißt **Zeilenindex** und $j$ **Spaltenindex** von $a_{ij}$.
+- $i$ heißt [Zeilenindex]{.cstrong} und $j$ [Spaltenindex]{.cstrong} von $a_{ij}$.
 
-**Beispiele:**
+[Beispiele:]{.cstrong}
 
 $$B = 	\begin{pmatrix}
 			1 & 1 \\
@@ -199,14 +202,14 @@ $$B = 	\begin{pmatrix}
 
 ### Vektoren
 
-- $n\times 1$-Matrix heißt **Spaltenvektor mit $n$ Komponenten**:
+- $n\times 1$-Matrix heißt [Spaltenvektor mit $n$ Komponenten]{.cstrong}:
 	$$a=\begin{pmatrix}
 				a_1 \\
 				\vdots \\
 				a_n
 		\end{pmatrix}$$
 		
-- $1\times n$-Matrix heißt **Zeilenvektor mit $n$ Komponenten**:
+- $1\times n$-Matrix heißt [Zeilenvektor mit $n$ Komponenten]{.cstrong}:
 	$$a = (a_1, \ldots, a_n)$$
 
 
@@ -232,10 +235,11 @@ knitr::include_graphics(file.path(pathToImages, "VektorenKaffee2.png"))
 
 
 ### Lineare Unabhängigkeit
-Eine Menge von Vektoren ist **linear unabhängig** falls keiner von ihnen als Linearkombination der anderen ausgedrückt werden kann.
+
+Eine Menge von Vektoren ist [linear unabhängig]{.cstrong} falls keiner von ihnen als Linearkombination der anderen ausgedrückt werden kann.
 
 
-**Beispiel:**
+[Beispiel:]{.cstrong}
 
 Die Vektoren $\displaystyle v_{lm}=\begin{pmatrix} \frac13 \\[0.1em] \frac13 \\[0.1em] \frac13 \end{pmatrix}$,
 $\displaystyle v_{mk}=\begin{pmatrix} \frac12 \\[0.1em] \frac12 \\[0.1em] 0 \end{pmatrix}$ und
@@ -249,7 +253,7 @@ sind *linear unabhängig*.
 - *Addition* und *Subtraktion* erfolgt *komponentenweise*!
 
 
-**Beispiel:**
+[Beispiel:]{.cstrong}
 
 Seien 
 $\displaystyle A= \begin{pmatrix} a_{11} & a_{12} & a_{13} \\ a_{21} & a_{22} & a_{23}\end{pmatrix}$
@@ -268,11 +272,11 @@ $$A \pm B	= 	\begin{pmatrix}
 
 - Eine *reelle Zahl* wollen wir zur besseren Unterscheidung **Skalar** nennen.
 
-- Man kann eine *Matrix* (resp. einen *Vektor*) mit einem *Skalar* **multiplizieren**. 
+- Man kann eine *Matrix* (resp. einen *Vektor*) mit einem *Skalar* [multiplizieren]{.cstrong}. 
 	In dem man *jedes Element* mit dem *Skalar multipliziert*.
 
 
-**Beispiel:**
+[Beispiel:]{.cstrong}
 
 Sei 
 $\displaystyle A= \begin{pmatrix} a_{11} & a_{12} \\ a_{21} & a_{22} \end{pmatrix}$
@@ -303,29 +307,30 @@ $$k \cdot A= \begin{pmatrix} k \cdot a_{11} & k \cdot a_{12} \\ k \cdot a_{21} &
 	Dann ist $A \cdot x$ erklärt und ergibt einen *Vektor*
 
 - Zwei Vektoren mit gleicher Komponentenanzahl multipliziert man durch einen Trick zu einem Skalar
-	Man nennt das **Skalarprodukt** zweier (Spalten-)Vektoren 
+	Man nennt das [Skalarprodukt]{.cstrong} zweier (Spalten-)Vektoren 
 	$x$ und $y$
 	einfach 
 	$<x, y> = x^T \cdot y$
 
-- Das 'hoch T' heißt **transponiert**. 
+- Das 'hoch T' heißt [transponiert]{.cstrong}.
 
-- Man **transponiert** eine *Matrix* (resp. *Vektor*) in dem man aus jeder Zeile eine Spalte macht.
+- Man [transponiert]{.cstrong} eine *Matrix* (resp. *Vektor*) in dem man aus jeder Zeile eine Spalte macht.
+
 
 ## Rechnen mit Matrizen und Vektoren
 
 ### Besondere Matrizen
 
-- **Einheitsmatrix** $E_n$:
-	Eine Matrix heißt Einheitsmatrix, wenn sie jeden Vektor auf sich selber abbildet.
+- [Einheitsmatrix]{.cstrong} $E_n$:
+	Eine Matrix heißt **Einheitsmatrix**, wenn sie jeden Vektor auf sich selber abbildet.
 
-- **Nullmatrix** $0_n$:
-	Jeder Vektor wird von der Nullmatrix auf den Nullvektor abgebildet.
+- [Nullmatrix]{.cstrong} $0_n$:
+	Jeder Vektor wird von der *Nullmatrix* auf den Nullvektor abgebildet.
 
-- **Streckungsmatrix**:
+- [Streckungsmatrix]{.cstrong}:
 	Jeder Vektor verändert seine Länge, aber nicht seine Richtung.
 
-- **Drehmatrix**:
+- [Drehmatrix]{.cstrong}:
 	Jeder Vektor verändert seine Länge nicht, aber seine Richtung.
 
 
@@ -368,7 +373,7 @@ knitr::include_graphics(file.path(pathToImages, "Bettwanze2.png"))
 	\end{column}
 \end{columns}
 
-**Übung:** Überlegen Sie sich, was hinter $s$, $f$, $d$ und $l$ steckt!
+[Übung:]{.cstrong} Überlegen Sie sich, was hinter $s$, $f$, $d$ und $l$ steckt!
 
 
 ### Umschreiben von LGSen
@@ -411,7 +416,7 @@ Wir brauchen also 'nur' $A \cdot x = b$ zu lösen.
 ### LGS in der Matrizenschreibweise (I)
 
 Wir können die LGS in Matrizenschreibweise ganz analog zu den normalen LGS lösen.
-Dazu schreiben wir sie in die **erweiterte Matrix**
+Dazu schreiben wir sie in die [erweiterte Matrix]{.cstrong}
 \begin{equation*}
 	(A|b) =
 	\begin{pmatrix}
@@ -422,13 +427,13 @@ Dazu schreiben wir sie in die **erweiterte Matrix**
 um.
 
 Mit den *elementaren Zeilenumformungen* bearbeiten wir nun die erweiterte Matrix $(A|b)$,
-bis wir links vom Strich eine **obere Dreiecksmatrix** (bzw. eine **Einheitsmatrix**) erhalten
+bis wir links vom Strich eine [obere Dreiecksmatrix]{.cstrong} (bzw. eine [Einheitsmatrix]{.cstrong}) erhalten
 haben. 
 
 
 ### LGS in der Matrizenschreibweise (II)
 
-**Partielle Elimination:** (Ziel: *Dreiecksmatrix*)
+[Partielle Elimination:]{.cstrong} (Ziel: *Dreiecksmatrix*)
 
 $$\begin{pmatrix}
 		0{,}36 	& 0{,}21	& | & 1{,}5\\
@@ -445,7 +450,7 @@ $$\begin{pmatrix}
 		0 	& -0{,}15	& | & -0{,}3\\
 	\end{pmatrix}$$
 
-**Vollständige Elimination:** (Ziel: *Einheitsmatrix*)
+[Vollständige Elimination:]{.cstrong} (Ziel: *Einheitsmatrix*)
 
 $$\phantom{%
 	\begin{pmatrix}
@@ -469,7 +474,7 @@ ist das LGS nicht lösbar oder hat unendlich viele Lösungen!
 
 ### Division von Matrizen
 
-Geht nicht! :-( Darum können wir  leider nicht einfach
+Geht nicht! :-( Darum können wir leider nicht einfach
 
 $$x = \frac{b}{A} \quad \text{ oder } \quad x = b : A$$
 
@@ -490,12 +495,12 @@ Zu einer *quadratischen* Matrix $A$ wollen wir eine Matrix $X$ mit der Eigenscha
 
 $$E_n = X \cdot A = A \cdot X = E_n$$
 
-die **Inverse** der Matrix $A$ nennen.
+die [Inverse]{.cstrong} der Matrix $A$ nennen.
 Wir schreiben dann auch $A^{-1}$ für eine solche Matrix.
 
-Dabei ist $E_n$ die **Einheitsmatrix** mit $n \times n$ Elementen.
+Dabei ist $E_n$ die [Einheitsmatrix]{.cstrong} mit $n \times n$ Elementen.
 
-**Beispiele für $E_n$:**
+[Beispiele für $E_n$:]{.cstrong}
 
 $$E_1 = (1), \quad
 	E_2 = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}, \quad
@@ -516,7 +521,7 @@ Falls man für ein LGS $A x = b$ die *Inverse* von $A$ kennt, kann man wie folgt
 und eine Lösung erhalten.
 
 
-**Probleme:**
+[Probleme:]{.cstrong}
 
 -  $A$ muss quadratisch sein!
 
@@ -599,9 +604,10 @@ $$A^{-1} = 	\begin{pmatrix}
 			 -3 &  0 &  0 &  1 \\
 		\end{pmatrix}$$
 
+
 ### Probe!
 
-Berechnen Sie bitte **zu Hause**:
+Berechnen Sie bitte [zu Hause]{.cstrong}:
 
 $$A \cdot A^{-1} \qquad \text{ und } \qquad A^{-1} \cdot A$$
 
@@ -625,7 +631,7 @@ $$\begin{pmatrix}
 … im 1-dimensionalen Fall:
 
 
-**Matrixscheibweise:**
+[Matrixscheibweise:]{.cstrong}
 
 $$\begin{pmatrix}
 		a_{11}
@@ -643,12 +649,13 @@ $$\begin{pmatrix}
 
 $$x_1 = \frac{b_1}{a_{11}}$$
 
+
 ### Matrixschreibweise und Lösungen 
 
 … im 2-dimensionalen Fall:
 
 
-**Matrixscheibweise:**
+[Matrixscheibweise:]{.cstrong}
 
 $$\begin{pmatrix}
 		a_{11}  & a_{12} \\
@@ -665,7 +672,7 @@ $$\begin{pmatrix}
 		b_{2} \\
 	\end{pmatrix}$$
 
-**Lösung:**
+[Lösung:]{.cstrong}
 
 \begin{align*}
 	x_1 &= \frac{b_1 \cdot a_{22} - a_{12} \cdot b_2}{a_{11} \cdot a_{22} - a_{12} \cdot a_{21}}\\[0.5em]
@@ -678,7 +685,7 @@ $$\begin{pmatrix}
 … im 3-dimensionalen Fall:
 
 
-**Matrixscheibweise:**
+[Matrixscheibweise:]{.cstrong}
 
 $$\begin{pmatrix}
 		a_{11}  & a_{12}  & a_{13}\\
@@ -698,7 +705,7 @@ $$\begin{pmatrix}
 		b_{3} \\
 	\end{pmatrix}$$
 
-**Lösung:**
+[Lösung:]{.cstrong}
 ::: {.center . footnotesize}
 
 \begin{align*}
@@ -713,10 +720,10 @@ $$\begin{pmatrix}
 
 ### Determinante
 
-- Ob eine **quadratisch**es LGS $A x = b$ eine Lösung hat, 
+- Ob eine [quadratisch]{.cstrong}es LGS $A x = b$ eine Lösung hat, 
 	hängt *entscheidend* vom Nenner des Bruchs ab!
 
-- Man nennt diesen Nenner auch **Determinante** von $A$. 
+- Man nennt diesen Nenner auch [Determinante]{.cstrong} von $A$. 
 
 - Der Wert der *Determinate* von $A$ wird $\det(A)$ geschrieben 
 	und ist eine *reelle Zahl*. 
@@ -730,9 +737,10 @@ $$\begin{pmatrix}
 	*Diese sind aber in der Praxis bedeutungslos*!
 	($\longrightarrow$ [Cramersche Regel](http://de.wikipedia.org/wiki/Cramersche_Regel "Link zur passenden Wikipedia-Seite")). 
 
+
 ### Determinanten 
 
-Sei $A$ eine **quadratische** resp. $n \times n$ Matrix. 
+Sei $A$ eine [quadratische]{.cstrong} resp. $n \times n$ Matrix. 
 
 \begin{center}
 	\begin{tabular}{c|l|l}
@@ -746,6 +754,7 @@ Sei $A$ eine **quadratische** resp. $n \times n$ Matrix.
 			& ...										& Eliminationsverfahren\\
 	\end{tabular}
 \end{center}
+
 
 ### Regeln für Determinanten
 
@@ -762,6 +771,7 @@ Sei $A$ eine **quadratische** resp. $n \times n$ Matrix.
 
 
 $\longrightarrow$ Vergleiche Aufgabe 20!
+
 
 ### Regel von Sarrus
 
@@ -808,6 +818,7 @@ knitr::include_graphics(file.path(pathToImages, "Pierre-Frederic_Sarrus.jpg"))
 	\end{column}
 \end{columns}
 
+
 ### [Laplace'scher Entwicklungssatz](http://de.wikipedia.org/wiki/Determinante#Laplacescher_Entwicklungssatz)
 \begin{columns}[T]
 	\begin{column}[c]{0.66\textwidth}
@@ -842,6 +853,7 @@ knitr::include_graphics(file.path(pathToImages, "Pierre-Simon_Laplace.jpg"))
 	\end{column}
 \end{columns}
 
+
 ### Beispiel: Laplace'scher Entwicklungssatz
 
 Entwicklung nach der ersten Zeile:
@@ -872,10 +884,11 @@ Entwicklung nach der ersten Zeile:
  	&= 0 + 1 + 2 \\
 	&= 3 \\
  \end{align*}
- 
+
+
 ### [Eliminationsverfahren](http://de.wikipedia.org/wiki/Determinante#Gau.C3.9Fsches_Eliminationsverfahren_zur_Determinantenberechnung) 
 
-Allgemein können Determinanten mit Hilfe der (Partiellen) Elimination ermittelt werden.
+Allgemein können Determinanten mit Hilfe der (partiellen) Elimination ermittelt werden.
 
 Dafür verwendet man folgende Regeln:
 
@@ -1037,6 +1050,7 @@ x_1	= \frac{\det(A_1)}{\det(A)} =
 		= \frac{1}{1} = 1
 \end{equation*}
 
+
 ### Cramersche Regel (III)
 
 \begin{equation*}
@@ -1182,7 +1196,7 @@ knitr::include_graphics(file.path(pathToImages, "BettwanzenPopulationPhasenraum2
 
 ### Wann wächst oder schrumpft die Population? (I)
 
-*Die Grundidee*:
+[Die Grundidee]{.cstrong}:
 
 Falls wir nur die Gesamtanzahl $w_t$ der Bettwanzen zum Zeitpunkt $t$ betrachten würden, könnten wir eine einfache Form des Modells erstellen:
 
@@ -1196,7 +1210,7 @@ Mit $|r|>1$ wäre klar, dass die Population wächst.
 
 ### Wann wächst oder schrumpft die Population? (II)
 
-**1. Idee:**
+[1. Idee:]{.cstrong}
 
 Wäre die Matrix $L$ eine Matrix zu einer *zentrischen Streckung*
 
@@ -1218,7 +1232,7 @@ Mit $|k| > 1$ dagegen würde die Population wachsen.
 
 ### Wann wächst oder schrumpft die Population? (II)
 
-**2. Idee:**
+[2. Idee:]{.cstrong}
 
 Vielleicht gibt es zumindest für bestimmte Vektoren $v$ ein  $\lambda$, dass
 
@@ -1293,7 +1307,8 @@ Für ein LGS $A \cdot x = b$ gilt:
 
 - Für jeden dieser Vektoren gilt obige Gleichung: 
 	ein verstecke zentrische Streckung um $\lambda$ durch $L$.
-		
+
+
 ### Situation A: Berechnen von $\lambda$ 
 
 Weil $\det M = 0$ ist, berechnen wir $\det M$:
@@ -1309,7 +1324,7 @@ Setzen wir nun $\det M = 0$, dann muss
 \end{equation*}
 sein. ($\longrightarrow$ pq-Formel!)
 
-M.a.W.: $\lambda_1 \sim 0{,}8589$ und $\lambda_2 \sim -0{,}5589$
+[M.a.W.]{.cemph}: $\lambda_1 \sim 0{,}8589$ und $\lambda_2 \sim -0{,}5589$
 
 
 ### Situation A: Die Vektoren zu $\lambda_1$ und $\lambda_2$
@@ -1360,7 +1375,7 @@ Setzen wir nun $\det M = 0$, dann muss
 \end{equation*}
 sein. ($\longrightarrow$ pq-Formel!)
 
-M.a.W.: $\lambda_1 \sim 1{,}1512$ und $\lambda_2 \sim -0{,}8512$
+[M.a.W.]{.cemph}: $\lambda_1 \sim 1{,}1512$ und $\lambda_2 \sim -0{,}8512$
 
 
 ### Situation B: Die Vektoren zu $\lambda_1$ und $\lambda_2$
@@ -1383,7 +1398,7 @@ und
 
 berechnen.
 
-**Hausaufgabe:** Prüfen Sie die Ergebnisse nach, in dem Sie $L \cdot v = \lambda \cdot v$ berechnen! --  Was stellen Sie fest? -- Warum ist das so?
+[Hausaufgabe:]{.cstrong} Prüfen Sie die Ergebnisse nach, in dem Sie $L \cdot v = \lambda \cdot v$ berechnen! --  Was stellen Sie fest? -- Warum ist das so?
 
 
 ### Überlegungen
@@ -1406,23 +1421,23 @@ Für eine *quadratische* Matrix $A$, ist das Polynom
 \begin{equation*}
 	\chi_A(\lambda) = \det(A - \lambda \cdot E_n)
 \end{equation*}
-ein Polynom $n$-ter Ordnung in $\lambda$ und wird **charakteristisches Polynom** von $A$ genannt.
+ein Polynom $n$-ter Ordnung in $\lambda$ und wird [charakteristisches Polynom]{.cstrong} von $A$ genannt.
 
 
 Es hat -- nach dem [Fundamentalsatz der Algebra](http://de.wikipedia.org/wiki/Fundamentalsatz_der_Algebra) -- genau $n$ Nullstellen (in $\mathbf{C}$, also den **[Komplexen Zahlen](http://de.wikipedia.org/wiki/Komplexe_Zahl)**).
 
 
-Die (ggf. **komplexen**) Nullstellen von $\chi_A(\lambda)$ sind die **Eigenwerte** von $A$.
+Die (ggf. [komplexen]{.cstrong}) Nullstellen von $\chi_A(\lambda)$ sind die [Eigenwerte]{.cstrong} von $A$.
 
 
-Die Vektoren $v_\lambda$ zu den *Eigenwerten* $\lambda$ mit $L \cdot v_\lambda = \lambda \cdot v_\lambda$ heißen **Eigenvektoren**.
+Die Vektoren $v_\lambda$ zu den *Eigenwerten* $\lambda$ mit $L \cdot v_\lambda = \lambda \cdot v_\lambda$ heißen [Eigenvektoren]{.cstrong}.
 
 
 ### Die Antwort auf unsere Frage
 
-**Frage:**  *Wächst oder schrumpft die Population?*
+[Frage:]{.cstrong}  *Wächst oder schrumpft die Population?*
 
-**Antwort:**
+[Antwort:]{.cstrong}
 
 - Im Falle der Situation A schrumpft die Population, da beide Eigenwerte $\lambda$ gilt: 
 	$\displaystyle |\lambda | < 1$ und die zugehörigen Eigenvektoren den Phasenraum aufspannen.
