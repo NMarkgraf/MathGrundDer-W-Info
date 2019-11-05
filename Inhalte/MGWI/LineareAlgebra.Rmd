@@ -306,7 +306,7 @@ $$k \cdot A= \begin{pmatrix} k \cdot a_{11} & k \cdot a_{12} \\ k \cdot a_{21} &
 - Auch eine Matrix $A$ und ein Vektor $x$ können zueinander passen. 
 	Dann ist $A \cdot x$ erklärt und ergibt einen *Vektor*
 
-- Zwei Vektoren mit gleicher Komponentenanzahl multipliziert man durch einen Trick zu einem Skalar
+- Zwei Vektoren mit gleicher Komponentenanzahl multipliziert man durch einen Trick zu einem Skalar.
 	Man nennt das [Skalarprodukt]{.cstrong} zweier (Spalten-)Vektoren 
 	$x$ und $y$
 	einfach 
@@ -706,7 +706,7 @@ $$\begin{pmatrix}
 	\end{pmatrix}$$
 
 [Lösung:]{.cstrong}
-::: {.center . footnotesize}
+::: {.center .footnotesize}
 
 \begin{align*}
 		x_1 &=\frac{b_1a_{22}a_{33} - b_1a_{32}a_{23} + a_{12}a_{23}b_3 - a_{32}a_{23}b_1 + b_1a_{21}a_{32} - a_{33}b_2a_{23}}{a_{11}a_{22}a_{33} - a_{11}a_{32}a_{23} - a_{21}a_{12}a_{33} + a_{21}a_{32}a_{13} + a_{31}a_{12}a_{23} - a_{31}a_{22}a_{13}}\\
@@ -769,8 +769,6 @@ Sei $A$ eine [quadratische]{.cstrong} resp. $n \times n$ Matrix.
 	Für eine $n \times n$-Matrix $A$ folgt daraus:
 	$$\det(k\cdot A) = k^n \cdot \det(A)$$
 
-
-$\longrightarrow$ Vergleiche Aufgabe 20!
 
 
 ### Regel von Sarrus
