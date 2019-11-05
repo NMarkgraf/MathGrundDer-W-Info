@@ -1,5 +1,5 @@
 # ------------------------------------------------------------------------
-# makerender.R                              Version 1.0   - 06. Sep. 2019
+# makerender.R                              Version 1.1   - 05. Nov. 2019
 # ============------------------------------------------------------------
 #
 # (C) by N. Markgraf & M. Gehrke in 2019
@@ -21,7 +21,7 @@ filename <- "MathGrundlDWInfo"
 overwrite_old <- TRUE   # Sollen bestehende Dateien überschrieben werden?
 use_private <- TRUE     # Die Werte aus "private/private.R" benutzen?
 Semester <- "WiSe 2019/20"  # Semesterangabe (SoSe XXXX / WiSe XXXX/XX)
-Studienort <- "Düsseldorf / Münster"  # Studienort(e)
+Studienort <- iconv("Düsseldorf / Münster")  # Studienort(e)
 midfix <- "" # Anhängsel an den Dateinamen, falls benötigt.
 
 # ------------------------------------------------------------------------

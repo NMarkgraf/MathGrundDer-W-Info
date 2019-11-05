@@ -6,3 +6,14 @@
 MathGrundlDWInfo*.pdf
 MathGrundlDWInfo*.tex
 MathGrundlDWInfo.*.md
+MathGrundlDWInfo*.aux
+MathGrundlDWInfo*.nav
+MathGrundlDWInfo*.snm
+MathGrundlDWInfo*.toc
+MathGrundlDWInfo*.vrb
+MathGrundlDWInfo*.nav
+MathGrundlDWInfo_files/
+pandoc-filter/__pycache__/
+
+JUNK
+

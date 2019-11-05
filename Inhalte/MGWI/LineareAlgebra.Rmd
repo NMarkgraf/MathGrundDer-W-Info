@@ -345,7 +345,7 @@ knitr::include_graphics(file.path(pathToImages, "Bettwanze1.png"))
 		\begin{align*}
 			E_{t+1} &= s \cdot E_t + f \cdot A_t \\
 			A_{t+1} &= d \cdot E_t + l \cdot A_t
-		\end{align*}		\pause
+		\end{align*}	
 		oder mit 
 		\begin{equation*}
 			L =	\begin{pmatrix}
@@ -1084,7 +1084,7 @@ knitr::include_graphics(file.path(pathToImages, "Bettwanze1.png"))
 		\begin{align*}
 			E_{t+1} &= s \cdot E_t + f \cdot A_t \\
 			A_{t+1} &= d \cdot E_t + l \cdot A_t
-		\end{align*}		\pause
+		\end{align*}		
 		oder mit 
 		\begin{equation*}
 			L =	\begin{pmatrix}
@@ -1105,7 +1105,6 @@ knitr::include_graphics(file.path(pathToImages, "Bettwanze1.png"))
 knitr::include_graphics(file.path(pathToImages, "Bettwanze2.png"))
 ```
 	\end{column}
-	\pause
 \end{columns}
 
 

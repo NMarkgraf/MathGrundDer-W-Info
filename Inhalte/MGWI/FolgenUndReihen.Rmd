@@ -13,7 +13,6 @@ der Folge.
 
 Wir schreiben für die Folge auch kurz $(a_n)$!
 
-. . .
 
 #### Folgen {.example}
 
@@ -35,7 +34,41 @@ Schauen Sie sich einmal \url{http://oeis.org/?language=german} zu Hause an!
  
 :::
 
-### AUFGABE 1
+### Übung `r nextExercise()`: {.exercise}
+
+Geben Sie an, auf welche Weise die Folge jeweils definiert wurde und berechnen Sie die ersten sieben
+Glieder.
+
+a) $\displaystyle f_n = \frac{a^n - b^n}{a-b}$ mit $\displaystyle a = \frac{1+\sqrt{5}}{2}, b=\frac{1-\sqrt{5}}{2}$
+
+b) $\displaystyle y_n = a^n + b^n$ mit $\displaystyle a = \frac{1+\sqrt{5}}{2}, b=\frac{1-\sqrt{5}}{2}$
+
+c) $\displaystyle a_{n+1} = \frac12 (a_n + 6)$ mit $a_1 = 2$
+
+d) $\displaystyle c_{n} = \frac{3n}{1+6n}$
+
+e) $\displaystyle l_{n+1} = l_n + l_{n-1}$ mit $l_1 = 2$ und $l_2=1$
+
+f) $\displaystyle x_{n+1} = x_n + x_{n-1}$ mit $x_1 = 1$ und $x_2=1$
+
+[Zusatzaufgabe:]{.cstrong} Sollte Ihnen bei den ersten beiden und den letzten beiden Folgen etwas auffallen, dann versuchen Sie bitte Ihre Vermutung zu formulieren und zu 'beweisen'.
+
+::: {.notes}
+
+a) `r a=(1+sqrt(5))/2; b=(1-sqrt(5))/2; for (n in 1:7) {print(paste0("f_{",n,"}=",(a^n-b^n)/(a-b)," "))}`
+
+b) `r a=(1+sqrt(5))/2; b=(1-sqrt(5))/2; for (n in 1:7) {print(paste0("y_{",n,"}=",(a^n+b^n)," "))}`
+
+c) `r a=1; for (n in 1:7) { print(paste0("a_{",n,"}=", a, " ")); a=(a+6)/2}`
+
+d) `r for (n in 1:7) { print(paste0("c_{",n,"}=", (3*n)/(1+6*n), " "))}`
+
+e) `r a=2; b=1; print("l_{1}=2 "); print("l_{2}=1"); for(n in 3:7){c=a+b; print(paste0("l_{",n,"}=", c, " ")); a=b; b=c}`
+
+f) `r a=1; b=1; print("x_{1}=1 "); print("x_{2}=1"); for(n in 3:7){c=a+b; print(paste0("x_{",n,"}=", c, " ")); a=b; b=c}`
+
+:::
+
 
 ### Beispiel: Fibonacci-Folge
  
@@ -115,7 +148,20 @@ Mehr zum Goldenen Schnitt finden Sie u.a. hier:
 - \href{http://bit.ly/1SRzN2J}{Auf der Suche nach einem Mandala  der Goldene Schnitt}
 - \href{https://de.wikipedia.org/wiki/Goldener_Schnitt}{Wikipedia}
 
-### AUFGABEN 3 und 4
+
+### Übung `r nextExercise()`: {.exercise}
+
+Aus der Vorlesung ist bekannt, dass man die eulersche Zahl $e$ durch eine Folge annähern kann. Wie gut diese Näherung ist, wollen wir nun prüfen:
+
+a) Berechnen Sie die Folgeglied $a_{1}, \dots, a_{5}$, $a_{10}$, $a_{100}$ und 
+	$a_{1000}$ der Folge $(a_n)$ die dem Bildungsgesetz 
+	\begin{equation*}
+		a_n = \left( 1 + \frac{1}{n} \right)^n
+	\end{equation*}
+	gehorcht.
+	
+a) Bestimmen Sie zu jedem Folgeglied den absoluten Fehler $|a_n - e|$.
+
 
 ### Beispiel: Heron-Verfahren
 
@@ -155,6 +201,20 @@ Iterieren wir unser Vorgehen, so erhalten wir die Folge
 	h_{n+1} = \frac{h_n}{2} + \frac{1}{h_n}\quad \text{ mit }h_1 = h\;
 \end{equation*}
 mit dem Startwert $h$, den wir nahezu beliebig wählen können.
+
+
+### Übung `r nextExercise()`: {.exercise}
+
+Formulieren Sie das Bildungsgesetz des Heron-Verfahrens (aus der Vorlesung) so um, dass sie zu jeder beliebigen (aber festen) positiven reellen Zahl $x$
+eine Folge $h_n(x)$ finden, so dass $h_n(x)$ mit steigendem $n$ gegen $\sqrt{x}$ strebt. Dabei sollten Sie den Startwert $h_1(x)=x$ setzen. 
+
+a) Berechnen Sie für $x = 4$ die ersten fünf Folgenglieder $h_1(4),$ $h_2(4),$ $h_3(4),$ 
+	$h_4(4)$ und $h_5(4)$.
+ 
+b) Berechnen Sie den **absoluten Fehler** $e_n=|h_n(4) - 2|$ von $h_n(4)$ zu 
+	$\sqrt{4}=2$!
+
+
 
 ### AUFGABE 2,5; 8 und 9
 

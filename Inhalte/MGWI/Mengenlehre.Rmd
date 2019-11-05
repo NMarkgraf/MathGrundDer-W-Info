@@ -44,7 +44,7 @@ Dedekind habe gesagt, für ihn seien Mengen \glqq geschlossene Säcke, die ganz 
 Dinge enthalten, von denen man nichts wisse, außer, dass sie vorhanden und bestimmt 
 seien\grqq. 
 
-Cantor habe daraufhin \glqq seine kolossale Figur\grqq~ aufgerichtet, erinnerte sich 
+Cantor habe daraufhin \glqq seine kolossale Figur\grqq  aufgerichtet, erinnerte sich 
 Bernstein: \glqq Er beschrieb mit erhobenem Arm eine großartige Geste und sagte mit einem 
 ins Unbestimmte gerichteten Blick: \glq Eine Menge stelle ich mir vor wie einen 
 Abgrund.\grq \grqq
@@ -118,6 +118,7 @@ d) Z.B.: $\displaystyle A_4 = \left\{x \, | \, x = 2\cdot n \text{ mit } n = 1,2
 
 :::
 
+
 ### Elemente von Mengen
 
 #### Element einer Menge {.definition}			
@@ -177,7 +178,8 @@ $2 \notin B$; $\quad$
 $2 \in C$; $\quad$
 $4 \in C$; $\quad$
 $-2 \notin C$;
-	
+
+
 ### Teilmengen und Gleichheit von Mengen
 
 #### Teilmenge {.definition}
@@ -188,7 +190,7 @@ Wir schreiben dann
 :::::: {.columns}
 ::: {.column width="49%"}
 
-$$A \subseteq B \, \text{ oder } A \subseteq B$$\footnote{Bzgl. $\subseteq$ oder $\subset$ siehe auch [https://www.enyclopediaofmath.org](https://www.encyclopediaofmath.org//index.php?title=Set_theory&oldid=24823)}
+$$A \subseteq B \, \text{ oder } A \subset B$$^[Bzgl. $\subseteq$ oder $\subset$ siehe auch [https://www.enyclopediaofmath.org](https://www.encyclopediaofmath.org//index.php?title=Set_theory&oldid=24823)]
 
 :::
 ::: {.column width="49%"}
@@ -236,6 +238,7 @@ $B \subseteq A$ gilt.
 #### {.fact}
 Jede Menge ist eine Teilmenge, aber *keine echte* Teilmenge von sich selber!
 
+
 ### Beispiele, Leere Menge, besondere Mengen
 
 #### {.example}
@@ -254,6 +257,7 @@ und schreiben dafür $\emptyset$ oder $\{ \}$.
 - $\mathbf{Q} = \left\{ \frac{z}{n} | z \in \mathbf{Z}, n \in \mathbf{N} \right\}$ Menge der **rationalen Zahlen** 
 - $\mathbf{R}$	Menge der **reellen Zahlen**
 - $\mathbf{C} = \left\{ z = a + b \cdot i | a,b \in \mathbf{R}, i^2 = -1 \right\}$ Menge der **komplexen Zahlen**
+
 
 ### Fakten und Beispiele
 
@@ -340,7 +344,8 @@ und sprechen von **dem Komplement von A**.
 - Sei $\mathbf{N}$ unsere Grundmenge, dann sind die *geraden Zahlen* das Komplement der *ungeraden Zahlen*.
 - Sei $\mathbf{Z}$ unsere Grundmenge, dann ist das Komplement von $\mathbf{N}$ die Menge $\mathbf{N}^c=\{0,-1,-2,-3, ...\}$.
 :::
- 
+
+
 ### Der (Durch-)Schnitt von Mengen
 			  
 #### Schnitt von Mengen {.definition}
@@ -376,6 +381,7 @@ $$ A \cap B := \left\{ x \, | \, x \in A \text{ und } x \in B \right\} $$
     			\node at (4,2) [below left] {$A\cap B$};
 		\end{tikzpicture}
 \end{center}
+
 
 ### Die Vereinigung von Mengen
 			  
@@ -451,6 +457,7 @@ $$ A \setminus B := A - B := \left\{ x \, |\,  x \in A \text{ aber } x \notin B 
     			\node at (4,2) [below left] {$A \setminus B$};
 		\end{tikzpicture}
 \end{center}
+
 
 ### Übung `r nextExercise()`: {.exercise}
 
@@ -600,6 +607,7 @@ b)
         - $G$ ist die *Menge der geraden natürlichen Zahlen*.
 :::
 
+
 ### Die Potenzmenge
 
 #### Potenzmenge {.definition}
@@ -656,9 +664,7 @@ schrieb Richard Dedekind 1888:
 
 Die Menge der **natürlichen Zahlen** 
 	
-\begin{equation*}
-		\mathbf{N} := \mathbf{N}^+ := \mathbf{N}^* := \{1,2,3,4,5,...\}
-\end{equation*}				
+$$\mathbf{N} := \mathbf{N}^+ := \mathbf{N}^* := \{1,2,3,4,5,...\}$$
 
 \begin{center}
 		\begin{tikzpicture}
@@ -853,19 +859,13 @@ Ist die Menge *gleichmächtig* zu ...
 
 #### Satz von Cantor {.theorem}
 - Für *endliche Mengen* $X$ gilt:
-	\begin{equation*}
-		|\mathcal{P}(X)| = 2^{|X|}
-	\end{equation*}
+	$$|\mathcal{P}(X)| = 2^{|X|}$$
 - Für (endliche  und) *unendliche Mengen* $X$ gilt (der Satz von Cantor):
-	\begin{equation*}
-		|X| < |\mathcal{P}(X)|
-	\end{equation*}
+	$$|X| < |\mathcal{P}(X)|$$
 
 #### {.examples}
-- Ist $A=\{a\}$, so ist |A|= 1. Mit $\mathcal{P}(A)=\{\emptyset, \{a\}\}$ ist 
-	\begin{equation*}
-		|\mathcal{P}(A)|=2 = 2^1 = 2^{|A|}.
-	\end{equation*}
+- Ist $A=\{a\}$, so ist |A|= 1. Mit $\mathcal{P}(A)=\{\emptyset, \{a\}\}$ ist
+    $$|\mathcal{P}(A)|=2 = 2^1 = 2^{|A|}.$$
 - $|\mathbf{N}| < |\mathcal{P}(\mathbf{N})|$.
 
 
@@ -898,6 +898,7 @@ Quelle: ["Domino - 2" von Joachim Mohr - Eigenes Werk.](http://tinyurl.com/op2rh
 
 Lizenziert unter CC BY-SA 3.0 über Wikimedia Commons 
 :::
+
 
 ### Die vollständige Induktion
 

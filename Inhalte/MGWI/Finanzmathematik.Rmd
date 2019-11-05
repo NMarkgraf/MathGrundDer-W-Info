@@ -276,11 +276,11 @@ i) Wie viel Tage müssen $5\,000$ € bei einem Zinssatz von $6\,\%$ angelegt we
 
 j) Wie viel Tage müssen $3\,000$ € bei einem Zinssatz von $8\,\%$ angelegt werden, um Zinsen von 200 € zu erhalten?
 
-k) Heinz hat am 20.05 insgesamt $2\,500{,}00$ € zu einem Zinssatz von %8\,\%$ angelegt. Wann kann er seine Anlage auflösen, wenn er insgesamt Zinsen in Höhe von genau 50 € erhalten will?
+k) Heinz hat am 20.05 insgesamt $2\,500{,}00$ € zu einem Zinssatz von $8\,\%$ angelegt. Wann kann er seine Anlage auflösen, wenn er insgesamt Zinsen in Höhe von genau 50 € erhalten will?
 
 ::: {.notes}
 
-f) $K_t = 818{,}95$
+f) $K_t = 818{,}85$
 
 g) $K_0 = 2\,104{,}98$
 
@@ -329,8 +329,10 @@ Stellen Sie die Abrechnung zum 1. April auf, wenn die Bank das Konto monatlich z
 
 ### Gemischte Verzinsung
 
-Ein- und Auszahlungen fallen in praktischen Fällen selten mit dem Anfang und dem Ende von Zinsperioden oder Jahren zusammen ...
-
+::: {.small}
+Ein- und Auszahlungen fallen in praktischen Fällen selten mit dem Anfang und dem Ende von Zinsperioden oder Jahren zusammen.
+:::
+::: {.footnotesize}
 | Symbol | Bezeichnung                                |
 |:------:|:-------------------------------------------|
 | $K_0$  | Anfangskapital                             |
@@ -339,13 +341,15 @@ Ein- und Auszahlungen fallen in praktischen Fällen selten mit dem Anfang und de
 | $t_2$	 | Zeitraum innerhalb der letzten Zinsperiode |
 | $K_t$  | Endkapital                                 |
 
-
+:::
+::: {.small}
 $$K_t = K_0\cdot \left(1+i\cdot t_1\right)\cdot \left(1+i\right)^n\cdot \left(1+i\cdot t_2\right)$$
 
 Nach der [deutschen Zinsmethode]{.cemph} gilt (meistens^[nicht wirklich einheitlich; vgl. BGB §§187, 188]) der erste Tag der Kapitalanlage als Zinstag, der letzte Tag (an dem abgehoben wird) hingegen nicht. 
 Deshalb müssen die Zinszeiträume praktisch korrigiert werden:
 
 $$K_t = K_0\cdot \left(1+i\cdot \frac{360-T_0+1}{360}\right)\cdot \left(1+i\right)^n\cdot \left(1+i\cdot \frac{T_1-1}{360}\right)$$
+:::
 
 
 ### Beispiel: Gemischte Verzinsung
@@ -419,7 +423,7 @@ $$K_t = K_0 \cdot (1+i)^t = 12\,000 \cdot \left(1+0{,}0375\right)^{7{,}025} = 15
 
 [Nachteil der gemischten Verzinsung:]{.cstrong}
 
-- Die gemischte Verzinsung ist {inkonsistent]{.cemph} und vom Zeitpunkt des Zinszuschlages (bzw. der Einzahlung) abhängig.
+- Die gemischte Verzinsung ist [inkonsistent]{.cemph} und vom Zeitpunkt des Zinszuschlages (bzw. der Einzahlung) abhängig.
 
 - Wäre der Zeitraum vorheriger Beispielaufgabe um einen Monat verschoben (15.10.2016 bis 24.10.2023), so ergäbe sich ein leicht anderer Betrag:
 
