@@ -20,22 +20,21 @@ pathToImages = getPathToImages()
 
 ### Beispiel: Das Problem eines Apothekers
 
-**Das Problem:**
+[Das Problem:]{.cstrong}
 
 Ein Apotheker hat $36\,\%$-igen und $21\,\%$-igen Alkohl. 
 Welche Mengen von beiden Lösungen muss er mischen, damit er $5$ Liter $30\,\%$- igen Alkohols erhält?
 
-
-**Erste Schritte zum mathematischen Modell:**
+[Erste Schritte zum mathematischen Modell:]{.cstrong}
 
 In $5$ Litern Mischung sind $5 \cdot 0{,}3 =1{,}5$ Liter Alkohol aus $x$ Liter $36\,\%$-igen bzw. aus $y$ Liter $21\,\%$-igen Alkohol.
 Weiterhin muss $x+y=5$ Liter ergeben. 
 
 
-**Das Gleichungsystem:**
+[Das Gleichungsystem:]{.cstrong}
 $$\sysdelim..
   \systeme{%
-		0{,}36\cdot x+0{,}21\cdot y=1.5,%
+		0{,}36\cdot x+0{,}21\cdot y=1{,}5%
 		x+y=5}$$
 
 
@@ -49,15 +48,15 @@ knitr::include_graphics(file.path(pathToImages, "ApoGleich.png"))
 ### Rechnerische Lösung
 
 \begin{align*}
-		0{,}36x+0{,}21y &=1{,}5													\\[-0.4em]
+		0{,}36\cdot x+0{,}21\cdot y &=1{,}5													\\[-0.4em]
 		x+y&=5 						& &| -x 									\\[0.6em]
-		0{,}36x+0{,}21y &=1{,}5 			& &| \text{~} y \text{ für } x \text{ einsetzen}			\\[-0.4em]
+		0{,}36\cdot x+0{,}21\cdot y &=1{,}5 			& &| \text{~} y \text{ für } x \text{ einsetzen}			\\[-0.4em]
 		y&=5-x 																\\[0.6em]
-		0{,}36x+0{,}21(5-x) &=1{,}5 		& & | \text{ ausklammern \& zusammenfassen}		\\[-0.4em]
+		0{,}36\cdot x+0{,}21\cdot (5-x) &=1{,}5 		& & | \text{ ausklammern \& zusammenfassen}		\\[-0.4em]
 		y&=5-x 																\\[0.6em]
-		(0{,}36-0{,}21) x + 1{,}05 &=1{,}5 	& &| - 1{,}05 								\\[-0.4em]
+		(0{,}36-0{,}21)\cdot  x + 1{,}05 &=1{,}5 	& &| - 1{,}05 								\\[-0.4em]
 		y&=5-x 																\\[0.6em]
-		0{,}15 x &=0{,}45 				& &| : 0{,}15								\\[-0.4em]
+		0{,}15\cdot  x &=0{,}45 				& &| : 0{,}15								\\[-0.4em]
 		y&=5-x																\\[0.6em]
 		x &=3																\\[-0.4em]
 		y&=5-x = 2 															\\		
@@ -114,12 +113,12 @@ Man ändert die Lösungsmenge eines LGS nicht, wenn man
 Man benutzt die [Elementaren Zeilenumformungen]{.cemph} um aus einem beliebigen LGS ein LGS in [Zeilenstufenform]{.cemph} zu erhalten:
 
 \begin{align*}
-		0{,}36x+0{,}21y 			&=1{,}5			& & \mathrm{I}							\\[-0.4em]
-		x+\phantom{0{,}21}y		&=5 				& & \mathrm{II}							\\[0.6em]
-		x+\phantom{0{,}21}y		&=5 				& & \mathrm{II}							\\[-0.4em]
-		0{,}36x+0{,}21y 			&=1{,}5			& & \mathrm{I}							\\[0.6em]
-		x+\phantom{0{,}15}y		&=5 				& & \mathrm{I}							\\[-0.4em]
-		-0{,}15y				&=-0{,}3			& & \mathrm{II}-0{,}36\cdot \mathrm{I} 		\\[0.6em]
+		0{,}36\cdot x+0{,}21\cdot y 			&=1{,}5			& & \mathrm{I}							\\[-0.4em]
+		x+\phantom{0{,}21}\cdot y		&=5 				& & \mathrm{II}							\\[0.6em]
+		x+\phantom{0{,}21}\cdot y		&=5 				& & \mathrm{II}							\\[-0.4em]
+		0{,}36\cdot x+0{,}21\cdot y 			&=1{,}5			& & \mathrm{I}							\\[0.6em]
+		x+\phantom{0{,}15}\cdot y		&=5 				& & \mathrm{I}							\\[-0.4em]
+		-0{,}15\cdot y				&=-0{,}3			& & \mathrm{II}-0{,}36\cdot \mathrm{I} 		\\[0.6em]
 		x+y					&=5 				& & \mathrm{I}							\\[-0.4em]
 		y					&=2				& & \frac{-1}{0{,}15}\cdot \mathrm{II} 			\\[0.6em]
 		x\phantom{+y}			&=3 				& & \mathrm{II}-\mathrm{I}					\\[-0.4em]
@@ -141,7 +140,7 @@ Ein [inhomogenes]{.cemph} LGS besitzt entweder
 
 - [unendlich viele]{.cemph} Lösungen oder
 
-- überhaupt *keine* Lösung.
+- überhaupt [keine]{.cemph} Lösung.
 
 
 ### Konsequenzen
@@ -170,7 +169,7 @@ a_{m1} & a_{m2} & \ldots & a_{mj} & \ldots & a_{mn}\\
 \end{pmatrix}
    = {(a_{ij})}_{m\times n}$$
    
-mit $m,n \in \mathbf{N}$ heißt [Matrix mit $m$ Zeilen]{.cstrong} und [$n$ Spalten]{.cstrong} oder kurz [$m\times n$-Matrix]{.cstrong}.
+mit $m,n \in \mathbf{N}$ heißt [Matrix]{.cstrong} mit [$m$ Zeilen]{.cstrong} und [$n$ Spalten]{.cstrong} oder kurz [$m\times n$-Matrix]{.cstrong}.
 
 
 ### Bemerkungen zu Matrizen
@@ -270,7 +269,7 @@ $$A \pm B	= 	\begin{pmatrix}
 
 ### Multiplikation mit einem Skalar 
 
-- Eine *reelle Zahl* wollen wir zur besseren Unterscheidung **Skalar** nennen.
+- Eine *reelle Zahl* wollen wir zur besseren Unterscheidung [Skalar]{.cstrong} nennen.
 
 - Man kann eine *Matrix* (resp. einen *Vektor*) mit einem *Skalar* [multiplizieren]{.cstrong}. 
 	In dem man *jedes Element* mit dem *Skalar multipliziert*.
@@ -382,7 +381,7 @@ Mit Hilfe der *Matrix-Multiplikation* kann man z.B. das LGS
 
 $$\sysdelim..
 	\systeme{%
-		0.36x+0.21y=1.5,%
+		0{,}36\cdot x+0{,}21\cdot y=1.5,%
 		x+y=5}$$
 		
 in
@@ -706,13 +705,15 @@ $$\begin{pmatrix}
 	\end{pmatrix}$$
 
 [Lösung:]{.cstrong}
-::: {.center .footnotesize}
+::: {.center}
+::::: {.footnotesize}
 
 \begin{align*}
 		x_1 &=\frac{b_1a_{22}a_{33} - b_1a_{32}a_{23} + a_{12}a_{23}b_3 - a_{32}a_{23}b_1 + b_1a_{21}a_{32} - a_{33}b_2a_{23}}{a_{11}a_{22}a_{33} - a_{11}a_{32}a_{23} - a_{21}a_{12}a_{33} + a_{21}a_{32}a_{13} + a_{31}a_{12}a_{23} - a_{31}a_{22}a_{13}}\\
 		x_2 &=\frac{a_{11}b_2a_{33} - a_{13}b_2a_{31} + b_1a_{23}a_{31} - b_3a_{23}a_{12} + a_{13}b_2a_{32} - a_{33}a_{21}b_2}{a_{11}a_{22}a_{33} - a_{11}a_{32}a_{23} - a_{21}a_{12}a_{33} + a_{21}a_{32}a_{13} + a_{31}a_{12}a_{23} - a_{31}a_{22}a_{13}}\\
 		x_3 &=\frac{a_{11}a_{22}b_3 - a_{12}a_{21}b_3 + a_{12}b_2a_{31} - a_{32}b_3a_{12} + a_{13}a_{21}b_3 - b_3a_{21}a_{23}}{a_{11}a_{22}a_{33} - a_{11}a_{32}a_{23} - a_{21}a_{12}a_{33} + a_{21}a_{32}a_{13} + a_{31}a_{12}a_{23} - a_{31}a_{22}a_{13}}\\
 	\end{align*}
+:::::
 :::
 
 
