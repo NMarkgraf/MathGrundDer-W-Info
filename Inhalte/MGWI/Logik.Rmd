@@ -31,19 +31,20 @@ Eine [Aussage]{.cstrong} (engl. *proposition*) ist ein Satz, von dem man eindeut
 - Heute ist Montag!
 - $x + 5 = 3$
 
-
-### Negation / Verneinung
-
 #### Negation / Verneinung {.definition}
 Die [Negation]{.cstrong} oder [Verneinung]{.cstrong} einer Aussage $A$ ist genau dann *wahr*, wenn $A$ *falsch* ist. 
 Die *Negation* von $A$ wird symbolisch als $\neg A$ geschrieben.
 
-#### {.exercise}
+
+### Übung `r nextExercise()`: {.exercise}
+
 Bilden sie die Negationen der folgenden Aussagen:
 
-- Der Tank ist voll
-- Alle Studierenden sind anwesend.
-- Ich bin vor 1990 geboren.
+a) Der Tank ist voll
+
+b) Alle Studierenden sind anwesend.
+
+c) Ich bin vor 1990 geboren.
 
 
 ## Verknüpfungen von Aussagen
@@ -61,6 +62,13 @@ Aussage, die genau dann *wahr* ist, wenn **mindestens eine** der beiden
 Aussagen *wahr* ist. 
 Sie wird symbolisch mit $A \vee B$ bezeichnet und als „A oder B“ gelesen.
 
+#### {.fact}
+Die Begriffe „UND“ und „ODER“ werden in der Mathematik exakt gebraucht und
+weichen häufig vom umgangssprachlichen Gebrauch ab!
+
+
+### EXKLUSIV-ODER 
+
 #### EXKLUSIV-ODER {.definition}
 Das [EXKLUSIV ODER]{.cstrong} im Sinn von **ENTWEDER … ODER** wird
 symbolisch mit $A XOR B$ (vom engl. *eXclusive OR*) oder $A \oplus B$ bezeichnet. 
@@ -68,13 +76,18 @@ Sie ist genau dann *wahr*, wenn **entweder $A$ oder $B$** – aber *nicht alle b
 sind.
 
 
-### Hinweise und Übung
+### Übung `r nextExercise()`: {.exercise}
 
-- Die Begriffe „UND“ und „ODER“ werden in der Mathematik exakt gebraucht und
-weichen häufig vom umgangssprachlichen Gebrauch ab!
+Die Aussage
 
-- Die Aussage „Rauchen und Hantieren mit offenem Feuer verboten“ versteht jeder, ist aber mathematisch gesehen falsch formuliert.
-    Warum? Wie müsste die korrekte Formulierung lauten?
+::: {.center}
+„Rauchen und Hantieren mit offenem Feuer verboten“ 
+:::
+
+versteht jeder, ist aber mathematisch gesehen falsch formuliert.
+
+a) Warum? 
+b) Wie müsste die korrekte Formulierung lauten?
 
 
 ### Wahrheitstabellen
@@ -93,9 +106,9 @@ weichen häufig vom umgangssprachlichen Gebrauch ab!
 
 Geben Sie jeweils die Wahrheitswerte der Aussagen $A \wedge B$, $A \vee B$ und $A \oplus B$ an:
 
-A) $A$: Frankfurt liegt in Deutschland, $B$: London liegt in Deutschland
+a) $A$: Frankfurt liegt in Deutschland, $B$: London liegt in Deutschland
 
-B) $A$: $2 < 3$, $B$: $1+1=2$ 
+b) $A$: $2 < 3$, $B$: $1+1=2$ 
 
 
 
@@ -109,21 +122,26 @@ Variable $x$, so entsteht eine [Aussageform]{.cstrong} $A(x)$ (auch
 [Aussagefunktion]{.cstrong} oder [offene Aussage]{.cstrong} genannt). 
 Eine *Aussageform* wird zu einer *Aussage*, wenn man für $x$ ein konkretes Objekt einsetzt.
 
-#### {.examples}
+#### Aussageformen {.examples}
 
-Gegeben sind die Aussageformen:
+- $A(x): x^2 < 15$ 
 
-$A(x): x^2 < 15$ und $B(x): x^2 + 1 = 5$
+- $B(x): x^2 + 1 = 5$
 
-#### {.exercise}
+### Übung `r nextExercise()`: {.exercise}
 
-- Ist die Aussage $A(1)$ *wahr* oder *falsch*?
-- Ist die Aussage $B(1)$ *wahr* oder *falsch*?
+Gegeben seien die Aussageformen $A(x): x^2 < 15$ und $B(x): x^2 + 1 = 5$.
+
+
+a) Ist die Aussage $A(1)$ *wahr* oder *falsch*?
+
+b) Ist die Aussage $B(1)$ *wahr* oder *falsch*?
 
 
 ## Quantoren
 
-### All- und Existenzquantoren
+### Allquantoren
+
 Es sei $A(x)$ im folgenden immer eine Aussageform.
 
 #### All-Quantor {.definition}
@@ -136,6 +154,21 @@ wobei $\forall$ „für alle“ gelesen wird (oder „für jedes“).
 
 $\forall$ heißt [All-Quantor]{.cstrong}.
 
+#### Allquantor {.example}
+
+Man kann die Aussage
+
+::: {.center}
+„Für alle reellen Zahlen ist das Quadrat nicht-negativ.“
+:::
+
+wie folgt formulieren:
+
+$$\forall x \in \mathbf{R}: x^2 \geq 0$$
+
+
+### Existenzquantoren
+
 #### Existenz-Quantor {.definition}
 Die Aussage „Es gibt ein x (aus einer bestimmten Menge), so dass $A(x)$“ ist genau dann *wahr*, wenn $A(x)$ für zumindest eines der in Frage kommenden $x$ *wahr* ist. 
 Abkürzend schreibt man diese **Existenz-Aussage** als
@@ -145,42 +178,60 @@ mindestens ein“.
 
 $\exists$ heißt [Existenz-Quantor]{.cstrong}.
 
+#### Existenzquantor {.example}
+
+Man kann die Aussage
+
+::: {.center}
+„Es gibt eine reelle Zahl, welche die mit 2 multipliziert 5 ergibt“
+:::
+
+wie folgt formulieren:
+
+$$\exists x \in \mathbf{R}: 2 \cdot x^2 =5$$
+
 
 ### Übung `r nextExercise()`: {.exercise}
 
 Welche der folgenden Aussagen sind für die *natürlichen Zahlen* wahr bzw. falsch:
 
-A) $\forall x: x+1 > x$
+a) $\forall x: x+1 > x$
 
-B) $\forall x: x > 3$
+b) $\forall x: x > 3$
 
-C) $\exists x: x^2 = 4$
+c) $\exists x: x^2 = 4$
 
-D) $\exists x: x^2 < 0$
+d) $\exists x: x^2 < 0$
 
 
 ### Negation von All- und Existenzsaussagen
 
 #### von der Negation von All- und Existenzsaussagen {.theorem}
-Durch die Verneinung einer All-Aussage entsteht eine
-Existenzaussage, und umgekehrt entsteht durch die
-Verneinung einer Existenzaussage eine All-Aussage.
+Durch die Verneinung einer All-Aussage entsteht eine Existenzaussage. 
+Umgekehrt entsteht durch die Verneinung einer Existenzaussage eine All-Aussage.
+
+
 
 Kurz:
 
-$$\neg(\forall x: A(x)) = \exists x: \neg A(x)$$
-$$\neg(\exists x: A(x)) = \forall x: \neg A(x)$$
+$$\neg(\forall x: A(x)) = \exists x: \neg A(x) \quad \text{und} \quad \neg(\exists x: A(x)) = \forall x: \neg A(x)$$
+
+#### {.example}
+
+- $\neg(\forall x \in \mathbf{R}: x^2 > 0) = \exists x\in\mathbf{R}: x^2 \leq 0$
+
+- $\neg(\exists x \in \mathbf{R}: x^2 = -1) = \forall x \in \mathbf{R}: x^2 \neq -1$
 
 
 ### Übung `r nextExercise()`: {.exercise}
 
-Bilden Sie das Komplement (die Verneinung) zu folgenden
+Bilden Sie (formal) das Komplement (die Verneinung) zu folgenden
 Aussagen unter Verwendung der Begrifflichkeiten der All- und
 Existenzaussagen:
 
-A) Alle Menschen mögen Mathematik
+a) „Alle Menschen mögen Mathematik“
 
-B) Es gibt einen Menschen, der Spanisch spricht
+B) „Es gibt einen Menschen, der Spanisch spricht“
 
 C) $\forall x: x > 3$
 
@@ -207,11 +258,23 @@ $$A \leftrightarrow B = (A \rightarrow B) \wedge (B \rightarrow A)$$
 
 Erstellen Sie eine Wahrheitstafel für $A \rightarrow B$ und $A \leftrightarrow B$.
 
+::: {.notes}
+
+ $A$ | $B$ | $A \rightarrow B$ | $A \leftrightarrow B$
+:---:|:---:|:-----------------:|:----------------------
+  w  |  w  |       w           |      w
+  w  |  f  |       f           |      f
+  f  |  w  |       w           |      f   
+  f  |  f  |       w           |      w
+
+:::
+
 
 ### Beispiele
 
-Aussage A: „Es ist neblig“; 
-Aussage B: „Die Sicht ist schlecht“
+**Aussage A:** „Es ist neblig“; 
+
+**Aussage B:** „Die Sicht ist schlecht“
 
 
 Die WENN-DANN-Verknüpfung (Subjunktion) $A \rightarrow B$
@@ -259,8 +322,18 @@ $$\forall x \in \mathbf{Z}: x \text{ gerade } \Leftrightarrow \; 2 \,|\, x$$
 #### Tautologie {.definition}
 [Tautologie]{.cstrong} ist eine verknüpfte Aussage, die immer *wahr* ist.
 
+#### Tautologie {.example}
+- $A \rightarrow A$
+- $A \vee \neg A$
+
+
 #### Kontradiktion {.definition}
 [Kontradiktion]{.cstrong} ist eine verküpfte Aussage, die immer *falsch* ist.
+
+
+#### Kontradiktion {.example}
+- $A \wedge  \neg A$
+- $A \leftrightarrow \neg A$
 
 
 ## Beweisführung
