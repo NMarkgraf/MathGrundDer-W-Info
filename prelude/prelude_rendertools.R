@@ -245,25 +245,30 @@ write_utf8 <- function(text, f = tempfile(), bom=FALSE) {
     
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   
-  our_include_graphics <- function(file, show_licence=TRUE, use_yaml=TRUE) {
-    knitr::include_graphics(file)
-    image.licence.yaml <- paste0(file,".yaml")
-    if (show_licence) {
-      if (use_yaml) {
-        if (file.exists(image.licence.yaml)) {
-          image.meta <- yaml::read_yaml(image.licence.yaml)
-          image.licence.text=
-            paste0("\n{\\tiny Quelle:",
-                   image.meta.author, ", ",
-                   image.meta.text, ", ",
-                   image.meta.licence,
-                   "}\n\n")
-          cat(image.licence.text, sep="\n")
-        }
+  show_source_data <- function(file, show_licence=TRUE, use_yaml=TRUE) {
+
+  image.licence.text <- ""
+    
+  image.licence.yaml <- paste0(file,".yaml")
+  if (show_licence) {
+    if (use_yaml) {
+      if (file.exists(image.licence.yaml)) {
+        image.meta <- yaml::read_yaml(image.licence.yaml)
+        image.licence.text=
+          paste0("\n{\\tiny Quelle:",
+                 image.meta$original$author, ", ",
+                 image.meta$original$url, ", ",
+                 "\\href{",image.meta$original$licencerefurl,"}{",image.meta$original$licence,"}",
+                 "}\n\n")
+        
+      } else {
+        print(paste0("Yaml ",image.licence.yaml,"' not found!"))
       }
     }
   }
-  
+  cat(paste(image.licence.text), sep="\n")
+}
+
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   cleanUp <- function(path) {
     flog.debug(paste("Remove:", file.path(path, "*_files")))

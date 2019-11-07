@@ -106,3 +106,5 @@ compileTeXFile(filename_tex, filename_pdf, filename_lsg,
                "Compile lsg file!", overwrite_old)
 
 # ========================================================================
+
+warnings()

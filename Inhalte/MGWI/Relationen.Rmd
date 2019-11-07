@@ -43,10 +43,8 @@ Sei $R \subseteq A \times B$ eine Relation, dann bezeichnet
 ### Beispiel
 
 ```{r echo=FALSE, out.width = "50%", fig.align="center"}
-knitr::include_graphics(file.path(pathToImages, "207px-Relationen-svg.png"))
+knitr::include_graphics(file.path(pathToImages, "2000px-Relationen.png"))
 ```
-
-
 [Quelle: Von Honina, Thexudox - https://de.wikipedia.org/wiki/Datei:Relation.PNG, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=22819676]{.tiny}
 
 

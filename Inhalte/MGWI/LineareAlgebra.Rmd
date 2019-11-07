@@ -34,7 +34,7 @@ Weiterhin muss $x+y=5$ Liter ergeben.
 [Das Gleichungsystem:]{.cstrong}
 $$\sysdelim..
   \systeme{%
-		0{,}36\cdot x+0{,}21\cdot y=1{,}5%
+		0{,}36\cdot x+0{,}21\cdot y=1{,}5,%
 		x+y=5}$$
 
 
@@ -82,15 +82,15 @@ bringen.
 
 ### Bemerkungen zu LGS
 
-- Die $a_{ij}$ nennt man [Koeffizienten]{.cstrong}.
+- Die $a_{ij}$ nennt mensch [Koeffizienten]{.cstrong}.
 
-- Die $b_i$ nennt man kurz [rechte Seite]{.cstrong}.
+- Die $b_i$ nennt mensch kurz [rechte Seite]{.cstrong}.
 
-- Sind alle Einträge auf der [rechten Seite]{.cemph} gleich $0$, dann nennt man das LGS [homogen]{.cstrong}, sonst [inhomogen]{.cstrong}.
+- Sind alle Einträge auf der [rechten Seite]{.cemph} gleich $0$, dann nennt mensch das LGS [homogen]{.cstrong}, sonst [inhomogen]{.cstrong}.
 
 - [Homogene]{.cemph} LGS besitzen immer eine [triviale Lösung]{.cstrong}, mit $x_i=0$ für alle $i$.
 
-- Gibt es genau so viele Gleichungen wie Unbekannte ($n=m$), so nennt man das LGS [quadratisch]{.cstrong}.
+- Gibt es genau so viele Gleichungen wie Unbekannte ($n=m$), so nennt mensch das LGS [quadratisch]{.cstrong}.
 
 - In der [(Zeilen-)Stufenform]{.cstrong} verringert sich in jeder Zeile die Zahl der Unbekannten um mindestens eine, die dann auch nicht mehr weiter vorkommt.
 
@@ -145,7 +145,7 @@ Ein [inhomogenes]{.cemph} LGS besitzt entweder
 
 ### Konsequenzen
 
-- Zu jedem  *inhomogenen* LGS gibt es ein *homogenes* LGS bei dem man die rechte Seite durch die Nullen ersetzt.
+- Zu jedem  *inhomogenen* LGS gibt es ein *homogenes* LGS bei dem mensch die rechte Seite durch die Nullen ersetzt.
 
 - Gibt es für das *homogene* LGS nur die *triviale Lösung*, so hat das *inhomogene* LGS **genau  eine** oder **gar keine** Lösung.
 
@@ -248,7 +248,7 @@ sind *linear unabhängig*.
 
 ### Addition & Subtraktion von Matrizen und Vektoren 
 
-- Mit Matrizen bzw. Vektoren gleicher Ordnung kann man rechnen!
+- Mit Matrizen bzw. Vektoren gleicher Ordnung kann mensch rechnen!
 - *Addition* und *Subtraktion* erfolgt *komponentenweise*!
 
 
@@ -271,8 +271,8 @@ $$A \pm B	= 	\begin{pmatrix}
 
 - Eine *reelle Zahl* wollen wir zur besseren Unterscheidung [Skalar]{.cstrong} nennen.
 
-- Man kann eine *Matrix* (resp. einen *Vektor*) mit einem *Skalar* [multiplizieren]{.cstrong}. 
-	In dem man *jedes Element* mit dem *Skalar multipliziert*.
+- Mensch kann eine *Matrix* (resp. einen *Vektor*) mit einem *Skalar* [multiplizieren]{.cstrong}. 
+	In dem mensch *jedes Element* mit dem *Skalar multipliziert*.
 
 
 [Beispiel:]{.cstrong}
@@ -288,7 +288,7 @@ $$k \cdot A= \begin{pmatrix} k \cdot a_{11} & k \cdot a_{12} \\ k \cdot a_{21} &
 
 ### Produkt zweier Matrizen
 
-- Zwei Matrizen multipliziert man mit einander, wenn sie passend sind.
+- Zwei Matrizen multipliziert mensch mit einander, wenn sie passend sind.
 
 - Passend sind sie, wenn die Spaltenanzahl der ersten mit der Zeilenanzahl der zweiten Matrix übereinstimmt.
 
@@ -305,7 +305,7 @@ $$k \cdot A= \begin{pmatrix} k \cdot a_{11} & k \cdot a_{12} \\ k \cdot a_{21} &
 - Auch eine Matrix $A$ und ein Vektor $x$ können zueinander passen. 
 	Dann ist $A \cdot x$ erklärt und ergibt einen *Vektor*
 
-- Zwei Vektoren mit gleicher Komponentenanzahl multipliziert man durch einen Trick zu einem Skalar.
+- Zwei Vektoren mit gleicher Komponentenanzahl multipliziert mensch durch einen Trick zu einem Skalar.
 	Man nennt das [Skalarprodukt]{.cstrong} zweier (Spalten-)Vektoren 
 	$x$ und $y$
 	einfach 
@@ -313,7 +313,7 @@ $$k \cdot A= \begin{pmatrix} k \cdot a_{11} & k \cdot a_{12} \\ k \cdot a_{21} &
 
 - Das 'hoch T' heißt [transponiert]{.cstrong}.
 
-- Man [transponiert]{.cstrong} eine *Matrix* (resp. *Vektor*) in dem man aus jeder Zeile eine Spalte macht.
+- Mensch [transponiert]{.cstrong} eine *Matrix* (resp. *Vektor*) in dem mensch aus jeder Zeile eine Spalte macht.
 
 
 ## Rechnen mit Matrizen und Vektoren
@@ -377,11 +377,11 @@ knitr::include_graphics(file.path(pathToImages, "Bettwanze2.png"))
 
 ### Umschreiben von LGSen
 
-Mit Hilfe der *Matrix-Multiplikation* kann man z.B. das LGS
+Mit Hilfe der *Matrix-Multiplikation* kann mensch z.B. das LGS
 
 $$\sysdelim..
 	\systeme{%
-		0{,}36\cdot x+0{,}21\cdot y=1.5,%
+		0{,}36\cdot x+0{,}21\cdot y=1{,}5,%
 		x+y=5}$$
 		
 in
@@ -467,13 +467,13 @@ $$\phantom{%
 		0 	& 1	& | & 2\\
 	\end{pmatrix}$$
 
-Kann mein keine *Dreiecksmatrix* (bzw. *Einheitsmatrix*) erhalten, 
+Kann mensch keine *Dreiecksmatrix* (bzw. *Einheitsmatrix*) erhalten, 
 ist das LGS nicht lösbar oder hat unendlich viele Lösungen!
 
 
 ### Division von Matrizen
 
-Geht nicht! :-( Darum können wir leider nicht einfach
+Leider gibt es keine Division von Matrizen! Mensch kann also nicht einfach
 
 $$x = \frac{b}{A} \quad \text{ oder } \quad x = b : A$$
 
@@ -508,7 +508,7 @@ $$E_1 = (1), \quad
 
 ### Anwendung der Inverse auf LGSe
 
-Falls man für ein LGS $A x = b$ die *Inverse* von $A$ kennt, kann man wie folgt rechnen
+Falls mensch für ein LGS $A x = b$ die *Inverse* von $A$ kennt, kann mensch wie folgt rechnen
 
 \begin{align*}
 	A \cdot x 				&= b  			& & | \text{ Auf beiden Seiten von links mal } A^{-1} \\
@@ -644,7 +644,8 @@ $$\begin{pmatrix}
 		b_{1}
 	\end{pmatrix}$$
 
-**Lösung:**
+
+[Lösung:]{.cstrong}
 
 $$x_1 = \frac{b_1}{a_{11}}$$
 
@@ -724,12 +725,12 @@ $$\begin{pmatrix}
 - Ob eine [quadratisch]{.cstrong}es LGS $A x = b$ eine Lösung hat, 
 	hängt *entscheidend* vom Nenner des Bruchs ab!
 
-- Man nennt diesen Nenner auch [Determinante]{.cstrong} von $A$. 
+- Mensch nennt diesen Nenner auch [Determinante]{.cstrong} von $A$. 
 
 - Der Wert der *Determinate* von $A$ wird $\det(A)$ geschrieben 
 	und ist eine *reelle Zahl*. 
 
-- Kennt man die *Determinante*, so weiß man ob es eine 
+- Kennt mensch die *Determinante*, so weiß mensch ob es eine 
 	*eindeutige* Lösung gibt oder *nicht*.
 
 - Eine Matrix $A$ ist genau dann *invertierbar*, wenn $det(A)\neq 0$ ist. 
@@ -889,21 +890,21 @@ Entwicklung nach der ersten Zeile:
 
 Allgemein können Determinanten mit Hilfe der (partiellen) Elimination ermittelt werden.
 
-Dafür verwendet man folgende Regeln:
+Dafür verwendet mensch folgende Regeln:
 
 - Ist $A$ eine *Dreiecksmatrix*, 
 	dann ist das Produkt der *Hauptdiagonalelemente* die Determinante von $A$.
 
 - Falls $B$ sich aus $A$ ergibt, 
-	indem man zwei Zeilen oder Spalten *vertauscht*, 
+	indem mensch zwei Zeilen oder Spalten *vertauscht*, 
 	dann ist $\det B=-\det A$.
 
 - Falls $B$ sich aus $A$ ergibt, 
-	indem man ein *Vielfaches* einer Zeile oder Spalte zu einer *anderen* Zeile oder Spalte addiert, 
+	indem mensch ein *Vielfaches* einer Zeile oder Spalte zu einer *anderen* Zeile oder Spalte addiert, 
 	dann ist $\det B=\det A$.
 
 - Falls $B$ sich aus $A$ ergibt, 
-	indem man ein $c$-faches einer Zeile oder Spalte bildet, 
+	indem mensch ein $c$-faches einer Zeile oder Spalte bildet, 
 	dann ist $\det B=c\cdot \det A$.
 
 
@@ -967,7 +968,7 @@ knitr::include_graphics(file.path(pathToImages, "Gabriel_Cramer.jpg"))
 				x_i = \frac{\det A_i}{\det A}
 			\end{equation*}
 			Dabei ist $A_i$ die Matrix, die entsteht, 
-			wenn man die $i$-te Spalte von $A$ durch $b$ ersetzt.
+			wenn mensch die $i$-te Spalte von $A$ durch $b$ ersetzt.
 		}		
 	\end{column}
 \end{columns}
@@ -1267,7 +1268,7 @@ gilt. Dann ist
 \end{align*}
 
 
-### Wie findet man solche $\lambda$ und $v$?
+### Wie findet mensch solche $\lambda$ und $v$?
 
 Für solche $\lambda$ und $v$ muss gelten:
 
@@ -1350,7 +1351,7 @@ Hat die nichttriviale Lösung:
 	\begin{pmatrix} -0{,}7966 \\ -0{,}6045 \end{pmatrix}
 \end{equation*}
 
-Nach der gleichen Methode kann man für $\lambda_2$ den Vektor 
+Nach der gleichen Methode kann mensch für $\lambda_2$ den Vektor 
 \begin{equation*}
 	v_{\lambda_2}	
 	=
