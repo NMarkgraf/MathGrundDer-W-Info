@@ -56,7 +56,9 @@ childrenToInclude <- c(
 ## Test! (TRUE oder FALSE ändern!)
 if (FALSE) {
   childrenToInclude <- c(
-    "Mengenlehre", "Relationen", "Finanzmathematik","LineareAlgebra"
+#    "Mengenlehre", 
+    "Relationen"
+#, "Finanzmathematik","LineareAlgebra"
   )
   privateVorstellung <<- FALSE
   }

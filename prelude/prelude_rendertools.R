@@ -54,18 +54,24 @@ if (!exists("prelude.rendertools")) {
 
 #
  
-write_utf8 <- function(text, f = tempfile()) {
-    # step 1: ensure our text is utf8 encoded
-    utf8 <- enc2utf8(paste0("",text)) # \0xef\0xbb\0xbf
-#    print(text)
-#    print(utf8)
+write_utf8 <- function(text, f = tempfile(), bom=FALSE) {
+    # step 0: Save BOM (it may be nessarry on Windows Systems only!)
+    BOM <- charToRaw('\xEF\xBB\xBF')
     
+    # step 1: ensure our text is utf8 encoded
+    utf8 <- enc2utf8(text) 
+
     # step 2: create a connection with 'native' encoding
     # this signals to R that translation before writing
     # to the connection should be skipped
     
     con <- file(f, open = "w+", encoding = "native.enc")
 
+    # steo 2a: write BOM if needed.
+    if (bom) {
+      writeBin(BOM, con = con, endian = "little")
+    }
+    
     # step 3: write to the connection with 'useBytes = TRUE',
     # telling R to skip translation to the native encoding
     
@@ -133,7 +139,8 @@ write_utf8 <- function(text, f = tempfile()) {
     flog.info(paste0("Create new '", privymlfn, "'"))
     flog.info(paste0("Content of '", privymlfn, "':\n", tmp))
 
-    write_utf8(tmp, privymlfn)
+    # Use BOM on windows systems
+    write_utf8(tmp, privymlfn, bom=(.Platform$OS.type == "windows"))
 
 #    cat(iconv(tmp, to="UTF-8"), file = out)
 #    close(out)
@@ -238,25 +245,30 @@ write_utf8 <- function(text, f = tempfile()) {
     
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   
-  our_include_graphics <- function(file, show_licence=TRUE, use_yaml=TRUE) {
-    knitr::include_graphics(file)
-    image.licence.yaml <- paste0(file,".yaml")
-    if (show_licence) {
-      if (use_yaml) {
-        if (file.exists(image.licence.yaml)) {
-          image.meta <- yaml::read_yaml(image.licence.yaml)
-          image.licence.text=
-            paste0("\n{\\tiny Quelle:",
-                   image.meta.author, ", ",
-                   image.meta.text, ", ",
-                   image.meta.licence,
-                   "}\n\n")
-          cat(image.licence.text, sep="\n")
-        }
+  show_source_data <- function(file, show_licence=TRUE, use_yaml=TRUE) {
+
+  image.licence.text <- ""
+    
+  image.licence.yaml <- paste0(file,".yaml")
+  if (show_licence) {
+    if (use_yaml) {
+      if (file.exists(image.licence.yaml)) {
+        image.meta <- yaml::read_yaml(image.licence.yaml)
+        image.licence.text=
+          paste0("\n{\\tiny Quelle:",
+                 image.meta$original$author, ", ",
+                 image.meta$original$url, ", ",
+                 "\\href{",image.meta$original$licencerefurl,"}{",image.meta$original$licence,"}",
+                 "}\n\n")
+        
+      } else {
+        print(paste0("Yaml ",image.licence.yaml,"' not found!"))
       }
     }
   }
-  
+  cat(paste(image.licence.text), sep="\n")
+}
+
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   cleanUp <- function(path) {
     flog.debug(paste("Remove:", file.path(path, "*_files")))

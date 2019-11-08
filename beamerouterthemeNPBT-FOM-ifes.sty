@@ -83,89 +83,6 @@
 
 % ---------------------------------------------------------------------------
 %
-% Frame title template:
-%
-\defbeamertemplate*{frametitle}{mydefault}
-{
-  \leavevmode
-  \hbox{%
-  \begin{beamercolorbox}[ht=6ex,leftskip=.25cm,wd=\paperwidth]{frametitle}%
-        \begin{tikzpicture}[remember picture, overlay]
-         % Sectiontitle
-          \node[anchor=west, yshift=-0.55cm, inner sep=10pt] at (current page.north west){%
-            {%
-            \usebeamercolor[fg]{section in head}%
-            \usebeamerfont{section in head}%
-            \NoHyper%
-            \insertsection
-            \endNoHyper%
-            }%
-          };
-         % Frametitle
-          \node[anchor=west, yshift=-1.1cm, inner sep=10pt] at (current page.north west){%
-            {%
-            \usebeamercolor[fg]{frametitle in head}%
-            \usebeamerfont{frametitle in head}%
-            \insertframetitle
-            }%
-          };
-          \node[shift={(\logoxshift,\logoyshift)},inner sep=0pt] at (current page.north east){%
-              \includegraphics[%
-                  width=\logowidth,%
-                  height=\logoheight%
-                ]{\logoimage}%
-          };%
-          \node[anchor=west, inner sep=8pt, yshift=-\logoheight-3pt] at (current page.north west){
-                \includegraphics[%
-                  width=0.78\paperwidth%
-                ]{\lineimage}%
-          };
-        \end{tikzpicture}%
-  \end{beamercolorbox}%
-  }%
-}
-\defbeamertemplate{frametitle}{inverse}
-{
-  \leavevmode
-  \hbox{%
-  \begin{beamercolorbox}[ht=6ex,leftskip=.25cm,wd=\paperwidth]{frametitle}%
-        \begin{tikzpicture}[remember picture, overlay]
-         % Sectiontitle
-          \node[anchor=west, yshift=-0.55cm, inner sep=10pt] at (current page.north west){%
-            {%
-            \usebeamercolor[fg]{section in head}%
-            \usebeamerfont{section in head}%
-            \hypersetup{hidelinks}%
-            \insertsection
-            }%
-          };
-          \node[anchor=west, inner sep=8pt, yshift=-\logoheight+3pt] at (current page.north west){
-                \includegraphics[%
-                  width=0.80\paperwidth%
-                ]{\titlebackgroundimage}%
-          };
-         % Frametitle
-          \node[anchor=west, yshift=-1.25cm, inner sep=10pt] at (current page.north west){%
-            {%
-            \usebeamercolor[fg]{whiteframetitle in head}%
-            \usebeamerfont{frametitle in head}%
-            \insertframetitle
-            }%
-          };
-          \node[shift={(\logoxshift,\logoyshift)},inner sep=0pt] at (current page.north east){%
-              \includegraphics[%
-                  width=\logowidth,%
-                  height=\logoheight%
-                ]{\logoimage}%
-          };%
-        \end{tikzpicture}%
-  \end{beamercolorbox}%
-  }%
-}
-
-
-% ---------------------------------------------------------------------------
-%
 % Footline template
 %
 \setbeamertemplate{footline}{% Skip first frame == Title frame !!!
@@ -210,11 +127,6 @@
 
 \setbeamertemplate{section page}{}
 \setbeamertemplate{subsection page}{}
-
-% ---------------------------------------------------------------------------
-
-\newcommand{\setnormaltitle}{\setbeamertemplate{frametitle}[mydefault]}
-\newcommand{\setinversetitle}{\setbeamertemplate{frametitle}[inverse]}
 
 % ---------------------------------------------------------------------------
 \mode<all>
