@@ -40,7 +40,7 @@ $$\sysdelim..
 
 ### Graphische Lösung
 
-```{r out.width="90%", echo=FALSE}
+```{r out.width="90%", echo=FALSE, fig.align="center"}
 library(mosaic)
 library(latex2exp)
 library(gridExtra)
@@ -59,7 +59,7 @@ p.1 = p + layer(
         stat = "function",
         position="identity",
         params = list(fun = fkt.f),
-        mapping = aes(color = "fkt.f")
+        mapping = aes(color = "fkt.f", size = "fkt.f")
     ) + 
     scale_x_continuous(
         limits = x_limits,
@@ -73,13 +73,18 @@ p.1 = p + layer(
         name = "Funktionen",
         values = c("fkt.f"= "blue", "fkt.g"="red" ), # Color specification
         labels = c("y+x = 5", unname(TeX("$0,21 \\cdot y -0,36 \\cdot x = 1,5$")))
-    ) +    
+    ) + 
+    scale_size_manual(
+        values = c("fkt.f"=1.2, "fkt.g"=1.2, "lot" = 1.1),
+        guide=FALSE
+    ) +
     theme(
         text = element_text(size=12),
         title = element_text(size=14),
         legend.position = c(0.8, 0.8),
         legend.text = element_text(size=10),
-        legend.title = element_text(size=10)
+        legend.title = element_text(size=10),
+        line = element_line(size=1.2)
     ) +
     labs(
         title = "Graphische Lösung (1. Schritt)",
@@ -93,14 +98,14 @@ p.2 = p.1 + layer(
         stat = "function",
         position="identity",
         params = list(fun = fkt.f),
-        mapping = aes(color = "fkt.f")
+        mapping = aes(color = "fkt.f", size = "fkt.f")
     ) +
     layer(
         geom = "line",
         stat = "function",
         position="identity",
         params = list(fun = fkt.g),
-        mapping = aes(color = "fkt.g")
+        mapping = aes(color = "fkt.g", size = "fkt.g")
     ) +
     labs(
         title = "Graphische Lösung (2. Schritt)",
@@ -110,7 +115,7 @@ p.2 = p.1 + layer(
     )
 
 p.3 = p.2 +
-    geom_vline(
+    geom_vline(aes=aes(size="lot"),
         xintercept = 3, 
         color = "red", 
         linetype = "dashed"
@@ -123,7 +128,7 @@ p.3 = p.2 +
     )
 
 p.4 = p.3 +
-     geom_hline(
+     geom_hline(aes=aes(size="lot"),
         yintercept = 2, 
         color = "red", 
         linetype = "dashed"
@@ -435,7 +440,7 @@ $$k \cdot A= \begin{pmatrix} k \cdot a_{11} & k \cdot a_{12} \\ k \cdot a_{21} &
 ```{r echo=FALSE, out.width = "10cm", fig.align="center"}
 knitr::include_graphics(file.path(pathToImages, "Bettwanze1.png"))
 ```
-
+[Quelle: [CDC - PHIL](https://phil.cdc.gov/details.aspx?pid=6283) - Lizenz: Gemeinfrei]{.right .tiny}
 
 ### Beispiel: Der Lebenszyklus einer Bettwanze
 
@@ -803,7 +808,9 @@ $$\begin{pmatrix}
 	\end{pmatrix}$$
 
 [Lösung:]{.cstrong}
+
 ::: {.center}
+
 ::::: {.footnotesize}
 
 \begin{align*}
@@ -812,6 +819,7 @@ $$\begin{pmatrix}
 		x_3 &=\frac{a_{11}a_{22}b_3 - a_{12}a_{21}b_3 + a_{12}b_2a_{31} - a_{32}b_3a_{12} + a_{13}a_{21}b_3 - b_3a_{21}a_{23}}{a_{11}a_{22}a_{33} - a_{11}a_{32}a_{23} - a_{21}a_{12}a_{33} + a_{21}a_{32}a_{13} + a_{31}a_{12}a_{23} - a_{31}a_{22}a_{13}}\\
 	\end{align*}
 :::::
+
 :::
 
 
@@ -1223,15 +1231,97 @@ knitr::include_graphics(file.path(pathToImages, "Bettwanze2.png"))
 
 Für die erste Matrix $\displaystyle L = \begin{pmatrix} 0{,}1 & 1 \\ 0{,}5 & 0{,}2 \end{pmatrix}$ ergibt sich:
 
+```{r Simulation-A, out.width="90%", echo=FALSE}
+library(mosaic)
+library(latex2exp)
+library(gridExtra)
+
+factor.2 <- 1.6 # Vergrößerung um von 4 auf 2 Bilder pro Seite den Text zu skalieren
+
+L <- matrix(c(0.1, 1, 0.5, 0.2), nrow=2, ncol=2, byrow=TRUE)
+x.0 <- matrix(c(100,0), nrow=2)
+x <- c(x.0)
+t <- x.0
+for(i in 2:25) {
+    xx <- t
+    t <- L %*% xx
+    x <- c(x, t)
+}
+x <- matrix(x, ncol=2, byrow=TRUE)
+colnames(x) <- c("Eier", "Adulte")
+df <- data.frame(x)
+
+x_limits <- c(1, 25)
+y_limits <- c(0, 100)
+
+```
+
 \begin{columns}[T]
 	\begin{column}[c]{0.5\textwidth}
-```{r echo=FALSE, out.width = "95%", fig.align="center"}
-knitr::include_graphics(file.path(pathToImages, "BettwanzenPopulationAnzahl.png"))
+```{r bettwanzen_A, echo=FALSE, out.width = "95%", fig.align="center"}
+p <- ggplot2::ggplot(data = df, aes(x=1:25, y=Eier)) +
+    geom_line(
+        aes(color="Eier", size="Eier")
+    ) +
+    geom_line(
+        aes(y=Adulte, color="Adulte", size="Adulte")
+    ) +
+    scale_x_continuous(
+        limits = x_limits,
+    ) +
+    scale_y_continuous(
+        limits = y_limits,
+    ) +
+    scale_size_manual(
+        values = c("Eier"= 1.2*factor.2, "Adulte"=1.2*factor.2),
+        guide = FALSE
+    ) +
+    theme(
+        text = element_text(size=12*factor.2),
+        title = element_text(size=14*factor.2),
+        legend.position = c(0.8, 0.8),
+        legend.text = element_text(size=10*factor.2),
+        legend.title = element_text(size=10*factor.2),
+        line = element_line(size=1.2*factor.2)
+    ) +
+    labs(
+        title = "Bettwanzenpopulation",
+        color = "",
+        x = "Zeit",
+        y = "Anzahl der Tiere"
+    )
+p
 ```
 	\end{column}
 	\begin{column}[c]{0.5\textwidth}
-```{r echo=FALSE, out.width = "95%", fig.align="center"}
-knitr::include_graphics(file.path(pathToImages, "BettwanzenPopulationGesamtAnzahl.png"))
+```{r bettwanzen_A_gesamt, echo=FALSE, out.width = "95%", fig.align="center"}
+p <- ggplot2::ggplot(data = df, aes(x=1:25, y=(Eier + Adulte), size="gesamt")) +
+    geom_line(color="green", )+
+    scale_x_continuous(
+        limits = x_limits,
+    ) +
+    scale_y_continuous(
+        limits = y_limits,
+    ) +
+    scale_size_manual(
+        values = c("gesamt" = 1.2*factor.2),
+        guide = FALSE
+    ) +
+    theme(
+        text = element_text(size=12*factor.2),
+        title = element_text(size=14*factor.2),
+        legend.position = c(0.8, 0.8),
+        legend.text = element_text(size=10*factor.2),
+        legend.title = element_text(size=10*factor.2),
+        line = element_line(size=1.2*factor.2)
+    ) +
+    labs(
+        title = "Bettwanzenpopulation",
+        color = "",
+        x = "Zeit",
+        y = "Gesamtanzahl der Tiere"
+    )
+p
 ```
 	\end{column}
 \end{columns}
@@ -1243,13 +1333,124 @@ Für die erste Matrix $\displaystyle L = \begin{pmatrix} 0{,}1 & 1 \\ 0{,}5 & 0{
 
 \begin{columns}[T]
 	\begin{column}[c]{0.5\textwidth}
-```{r echo=FALSE, out.width = "95%", fig.align="center"}
-knitr::include_graphics(file.path(pathToImages, "BettwanzenPopulationAnzahl.png"))
+```{r bettwanzen_A_reuse, ref.label="bettwanzen_A", echo=FALSE, out.width = "95%", fig.align="center"}
 ```
 	\end{column}
 	\begin{column}[c]{0.5\textwidth}
-```{r echo=FALSE, out.width = "95%", fig.align="center"}
-knitr::include_graphics(file.path(pathToImages, "BettwanzenPopulationPhasenraum.png"))
+```{r bettwanzen_A_phasenraum, echo=FALSE, out.width = "95%", fig.align="center"}
+p.1 <-  ggplot2::ggplot(data = df, aes(x=Eier, y=Adulte, size="red")) +
+    geom_path(color="red") +
+    scale_size_manual(
+        values = c("red" = 1.2*factor.2),
+        guide = FALSE
+    ) +
+    theme(
+        text = element_text(size=12*factor.2),
+        title = element_text(size=14*factor.2),
+        legend.position = c(0.8, 0.8),
+        legend.text = element_text(size=10*factor.2),
+        legend.title = element_text(size=10*factor.2),
+        line = element_line(size=1.2*factor.2)
+    ) +
+    labs(
+        title = "Bettwanzenpopulation (Phasenraum)",
+        color = "",
+        x = "Anzahl der Eier",
+        y = "Anzahl der Adulten"
+    )
+p.1
+```	
+    \end{column}
+\end{columns}
+
+
+### Beispiel: Situation B
+
+Für die erste Matrix $\displaystyle L = \begin{pmatrix} 0{,}1 & 2 \\ 0{,}5 & 0{,}2 \end{pmatrix}$ ergibt sich:
+```{r Simulation-B, out.width="90%", echo=FALSE}
+#library(mosaic)
+#library(latex2exp)
+#library(gridExtra)
+
+L <- matrix(c(0.1, 2, 0.5, 0.2), nrow=2, ncol=2, byrow=TRUE)
+x.0 <- matrix(c(100,0), nrow=2)
+x <- c(x.0)
+t <- x.0
+for(i in 2:25) {
+    xx <- t
+    t <- L %*% xx
+    x <- c(x, t)
+}
+x <- matrix(x, ncol=2, byrow=TRUE)
+colnames(x) <- c("Eier", "Adulte")
+df <- data.frame(x)
+
+x_limits <- c(1, 25)
+y_limits <- c(0, 1500)
+
+```
+
+\begin{columns}[T]
+	\begin{column}[c]{0.5\textwidth}
+```{r bettwanzen_B, echo=FALSE, out.width = "95%", fig.align="center"}
+p <- ggplot2::ggplot(data = df, aes(x=1:25, y=Eier)) +
+    geom_line(
+        aes(color="Eier", size="Eier")
+    ) +
+    geom_line(
+        aes(y=Adulte, color="Adulte", size="Adulte")
+    ) +
+    scale_x_continuous(
+        limits = x_limits,
+    ) +
+    scale_y_continuous(
+        limits = y_limits,
+    ) +
+    scale_size_manual(
+        values = c("Eier"= 1.2*factor.2, "Adulte"=1.2*factor.2),
+        guide = FALSE
+    ) +
+    theme(
+        text = element_text(size=12*factor.2),
+        title = element_text(size=14*factor.2),
+        legend.position = c(0.8, 0.8),
+        legend.text = element_text(size=10*factor.2),
+        legend.title = element_text(size=10*factor.2),
+        line = element_line(size=1.2*factor.2)
+    ) +
+    labs(
+        title = "Bettwanzenpopulation",
+        color = "",
+        x = "Zeit",
+        y = "Anzahl der Tiere"
+    )
+p
+```
+
+	\end{column}
+	\begin{column}[c]{0.5\textwidth}
+```{r bettwanzen_B_gesamt, echo=FALSE, out.width = "95%", fig.align="center"}
+p.1 <-  ggplot2::ggplot(data = df, aes(x=Eier, y=Adulte, size="red")) +
+    geom_path(color="red") +
+    scale_size_manual(
+        values = c("red" = 1.2*factor.2),
+        guide = FALSE
+    ) +
+    theme(
+        text = element_text(size=12*factor.2),
+        title = element_text(size=14*factor.2),
+        legend.position = c(0.8, 0.8),
+        legend.text = element_text(size=10*factor.2),
+        legend.title = element_text(size=10*factor.2),
+        line = element_line(size=1.2*factor.2)
+    ) +
+    labs(
+        title = "Bettwanzenpopulation",
+        color = "",
+        x = "Zeit",
+        y = "Gesamtanzahl der Tiere"
+    )
+p
 ```
 	\end{column}
 \end{columns}
@@ -1261,32 +1462,38 @@ Für die erste Matrix $\displaystyle L = \begin{pmatrix} 0{,}1 & 2 \\ 0{,}5 & 0{
 
 \begin{columns}[T]
 	\begin{column}[c]{0.5\textwidth}
-```{r echo=FALSE, out.width = "95%", fig.align="center"}
-knitr::include_graphics(file.path(pathToImages, "BettwanzenPopulationAnzahl2.png"))
+```{r bettwanzen_B_reuse, ref.label="bettwanzen_B", echo=FALSE, out.width = "95%", fig.align="center"}
 ```
 	\end{column}
 	\begin{column}[c]{0.5\textwidth}
-```{r echo=FALSE, out.width = "95%", fig.align="center"}
-knitr::include_graphics(file.path(pathToImages, "BettwanzenPopulationGesamtAnzahl2.png"))
-```
-	\end{column}
-\end{columns}
-
-
-### Beispiel: Situation B
-
-Für die erste Matrix $\displaystyle L = \begin{pmatrix} 0{,}1 & 2 \\ 0{,}5 & 0{,}2 \end{pmatrix}$ ergibt sich:
-
-\begin{columns}[T]
-	\begin{column}[c]{0.5\textwidth}
-```{r echo=FALSE, out.width = "95%", fig.align="center"}
-knitr::include_graphics(file.path(pathToImages, "BettwanzenPopulationAnzahl2.png"))
-```
-	\end{column}
-	\begin{column}[c]{0.5\textwidth}
-```{r echo=FALSE, out.width = "95%", fig.align="center"}
-knitr::include_graphics(file.path(pathToImages, "BettwanzenPopulationPhasenraum2.png"))
-```
+```{r bettwanzen_B_phasenraum, echo=FALSE, out.width = "95%", fig.align="center"}
+p.1 <-  ggplot2::ggplot(
+        data = df, 
+        aes(x=Eier, y=Adulte, size="red")
+    ) +
+    geom_path(
+        color="red"
+    ) +
+    scale_size_manual(
+        values = c("red" = 1.2*factor.2),
+        guide = FALSE
+    ) +
+    theme(
+        text = element_text(size=12*factor.2),
+        title = element_text(size=14*factor.2),
+        legend.position = c(0.8, 0.8),
+        legend.text = element_text(size=10*factor.2),
+        legend.title = element_text(size=10*factor.2),
+        line = element_line(size=1.2*factor.2)
+    ) +
+    labs(
+        title = "Bettwanzenpopulation (Phasenraum)",
+        color = "",
+        x = "Anzahl der Eier",
+        y = "Anzahl der Adulten"
+    )
+p.1
+```	
 	\end{column}
 \end{columns}
 
