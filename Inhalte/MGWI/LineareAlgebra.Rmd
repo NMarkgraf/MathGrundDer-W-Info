@@ -142,10 +142,6 @@ p.4 = p.3 +
 grid.arrange(p.1, p.2, p.3, p.4, nrow=2)
 ```
 
-```{r echo=FALSE, out.width = "12cm", fig.align="center"}
-knitr::include_graphics(file.path(pathToImages, "ApoGleich.png"))
-```
-
 
 ### Rechnerische Lösung
 
@@ -1430,10 +1426,16 @@ p
 	\end{column}
 	\begin{column}[c]{0.5\textwidth}
 ```{r bettwanzen_B_gesamt, echo=FALSE, out.width = "95%", fig.align="center"}
-p.1 <-  ggplot2::ggplot(data = df, aes(x=Eier, y=Adulte, size="red")) +
-    geom_path(color="red") +
+p <- ggplot2::ggplot(data = df, aes(x=1:25, y=(Eier + Adulte), size="gesamt")) +
+    geom_line(color="green", )+
+    scale_x_continuous(
+        limits = x_limits,
+    ) +
+    scale_y_continuous(
+        limits = y_limits,
+    ) +
     scale_size_manual(
-        values = c("red" = 1.2*factor.2),
+        values = c("gesamt" = 1.2*factor.2),
         guide = FALSE
     ) +
     theme(
