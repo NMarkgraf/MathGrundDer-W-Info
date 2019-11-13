@@ -23,20 +23,21 @@ library(gridExtra)
 
 #### Zweistellige/binäre Relation {.definition}
 
-Eine **zweistellige** oder auch **binäre Relation** zwischen zwei Mengen $A$ und $B$ ist eine Teilmenge des kartesichscn Produkts:
+Eine **zweistellige** oder auch **binäre Relation** zwischen zwei Mengen $A$ und $B$ ist eine Teilmenge des kartesischen Produkts:
 $$R \subseteq A \times B$$
 
 #### Definitions- und Werteberich einer Relation {.definition}
 
 Sei $R \subseteq A \times B$ eine Relation, dann bezeichnet
 
-- $\displaystyle \mathbf{D}_R =\left\{a \in A \,\left|\, \exists b \in B : (a,b) \in R \right.\right\}$ den **Definitionsbereich**
+- $\displaystyle \mathbf{D}_R =\left\{a \in A \,\left|\, \exists b \in B : (a,b) \in R \right.\right\}$ den [Definitionsbereich]{.cstrong}
 
-- $\displaystyle \mathbf{W}_R =\left\{b \in B \,\left|\, \exists a \in A : (a,b) \in R \right.\right\}$ den **Wertebereich**
+- $\displaystyle \mathbf{W}_R =\left\{b \in B \,\left|\, \exists a \in A : (a,b) \in R \right.\right\}$ den [Wertebereich]{.cstrong}
 
 #### {.examples}
 
-- Die Leeremenge $\emptyset$ als Teilmenge von $A \times B$ aufgefasst als Relation heißt **Nullrelation**.
+- Die Leeremenge $\emptyset$ als Teilmenge von $A \times B$ aufgefasst als Relation heißt [Nullrelation]{.cstrong}.
+
 - Für eine Funktion $f: A \to B$ ist der $Graph(f) = \{ (x, y)\,|\,x \in A, y = f(x) \in B \}$ eine Relation.
 
 
@@ -78,14 +79,16 @@ knitr::include_graphics(file.path(pathToImages, "845px-Relation-x-lernt-y-beim-L
 
 #### Homogene Relation {.definition}
 
-Eine zweistellige Relation $R\subseteq A \times A$ *auf* einer Menge $A$ heißt **homogene Relation**.
+Eine zweistellige Relation $R\subseteq A \times A$ *auf* einer Menge $A$ heißt [homogene Relation]{.cstrong}.
 
 #### Infix Notation von homogenen Relationen {.definition}
 
-Bei einer *homogene* Relation $R \subset A \times A$ schreibt am anstelle von $(x, y) \in R$ auch $xRy$.
+Bei einer *homogene* Relation $R \subseteq A \times A$ schreibt mensch anstelle von $(x, y) \in R$ auch $xRy$.
 
 #### Die Relationen $<$, $\leq$, $>$, $\leq$ und $=$ {.examples}
+
 - $<$, $\leq$, $>$, $\leq$ und $=$ sind Relationen auf $\mathbf{R}^2$, $\mathbf{Q}^2$ und $\mathbf{Z}^2$.
+
 - Statt $(1, 2) \in <$, $(1,2) \in \leq$, $(2,1) \in\;>$, $(2, 1) \in\;\geq$ oder $(1,1) \in\;=$ schreiben wir $1 < 2$, $1 \leq 2$, $2 > 1$, $2 \geq 1$ oder $1=1$.
 
 
@@ -116,11 +119,13 @@ a) $R^{\text{doppelt}}_B = \left\{(1, 2), (2, 4), (3, 6), (4, 8), (5, 10) \right
 
 ### Äquivalenzrelation
 
-Eine (homogene) Relation $\sim$ auf einer Menge A heißt **Äquivalenzrelation**, falls für alle $a,b,c \in A$ gilt:
+#### Äquivalenzrelation {.definition}
+Eine (homogene) Relation $\sim$ auf einer Menge A heißt [Äquivalenzrelation]{.cstrong}, falls für alle $a,b,c \in A$ gilt:
 
 1. Aus $a \sim b$ folgt $b \sim a$ (*Symmetrie*)
 2. Aus $a \sim b$ und $b \sim c$ folgt $a \sim c$ (*Transitivität*)
 3. Es ist $a \sim a$ (*Reflexivität*)
+
 
 ####  Äquivalenzrelationen {.example}
 
@@ -158,13 +163,13 @@ auf den ganzen Zahlen.
 
 Die Menge 
 $$[a]_n = \{m \in \mathbf{Z}\,|\,m \sim_n a\}$$
-aller zu $a$ *aquivalenten* Elemente nennen wir die **Äquivalenzklasse** von $a$ (bzgl. $\sim_n$ und $\mathbf{Z}$). Jedes Element der Klasse nennen wir einen **Repräsentanten** dieser Klasse. 
+aller zu $a$ *aquivalenten* Elemente nennen wir die [Äquivalenzklasse]{.cstrong} von $a$ (bzgl. $\sim_n$ und $\mathbf{Z}$). Jedes Element der Klasse nennen wir einen [Repräsentanten]{.cstrong} dieser Klasse. 
 
 
 
 Die Menge aller Äquivalenzklassen bezeichnen wir mit 
 $$\mathbf{Z_n} := \mathbf{Z}/n \mathbf{Z} := \mathbf{Z}/\sim_n := \{ [a]_n\,|\,a \in \mathbf{Z}\}.$$ 
-Zusammen mit der Addition $[a]_n + [b]_n = [a+b]_n$ und Multiplikation $[a]_n \cdot [b]_n = [a \cdot b]_n$ nennen wir den **Restklassenring $Z$ modulo $n$** $(\mathbf{Z_n}, +, \cdot)$.
+Zusammen mit der Addition $[a]_n + [b]_n = [a+b]_n$ und Multiplikation $[a]_n \cdot [b]_n = [a \cdot b]_n$ nennen wir den [Restklassenring $Z$ modulo $n$]{.cstrong} $(\mathbf{Z_n}, +, \cdot)$.
 
 
 ### Beispiele 
@@ -232,6 +237,7 @@ $\mathbf{2} := [2]_3 = \{n \in \mathbf{Z}\,|\, 3 \text{ teilt } (n-2) \}$
 
 ### Beispiel: Volle Stunden der Uhr
 
+::: {.small}
 Ein einfaches und sehr anschauliches Beispiel hierfür ist eine (analoge) Uhr, bei der wir der Einfachheit halber annehmen, dass wir nur ganze Stunden ablesen wollen.
 Eine solche Uhr kann z.B. nicht zwischen 9 Uhr und 21 Uhr unterscheiden, sie betrachtet also diese Zeiten -- oder allgemeiner alle Zeiten, die sich nur um ein Vielfaches von 12 unterscheiden -- als äquivalent, bzw. fasst sie zu einer Äquivalenzklasse zusammen.
 
@@ -249,6 +255,7 @@ Menge aller Äquivalenzklassen lautet somit
 $$\mathbf{Z}/\sim_{12} = \mathbf{Z_{12}} = \{[0]_{12}, [1]_{12}, [2]_{12}, [3]_{12}, [4]_{12}, [5]_{12}, [6]_{12}, [7]_{12}, [8]_{12}, [8]_{12}, [9]_{12}, [10]_{12}, [11]_{12}\}$$
 und entspricht den möglichen Ständen der Uhr.
 
+:::
 
 ### Übung `r nextExercise()`: {.exercise}
 
@@ -294,6 +301,8 @@ $\mathbf{3} := [3]_3 = \{n \in \mathbf{Z}\,|\,4 \text{ teilt } (n-3)\}$
 
 ### Beispiel: Anwendung bei ISBN
 
+::: {.small}
+
 Seit dem 01.01.2007 gibt es 13-stellige Internationale Standard Buchnummern (ISBN); vorher gab er 10-stellige ISBN.
 
 So hat zum Beispiel das Buch *Moderne Datenanalyse mit R: Daten einlesen, aufbereiten, visualisieren, modellieren und kommunizieren (FOM-Edition)* von Prof. Dr. Sebastian Sauer die ISBN: 978-3-6582-1586-6
@@ -304,7 +313,8 @@ Der Aufbau dieser Nummer ist wie folgt:
 |:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
 | $z_1$ | $z_2$ | $z_3$ |  | $z_4$ |  | $z_5$ | $z_6$ | $z_7$ | $z_8$ |  | $z_9$ | $z_{10}$ | $z_{11}$ | $z_{12}$ |  | $p$ |
 
-Die **Prüfzimmer* $p$ wird nun wie folgt berechnet:
+Die **Prüfziffer** $p$ wird nun wie folgt berechnet:
+
 $$p = (10 - [(z_1+z_3+z_5+z_7+z_9+z_{11})+ 3 \cdot (z_2+z_4+z_6+z_8+z_{10}+ z_{12})]) \mod 10] \mod 10$$
 Hier im Beispiel also:
 
@@ -314,6 +324,7 @@ Hier im Beispiel also:
    &= (10 - [124] \mod 10) \mod 10 = (10 - 4) \mod 10 = 6 \mod 10 = 6
 \end{align*}
 
+:::
 
 ### Übung `r nextExercise()`: {.exercise}
 

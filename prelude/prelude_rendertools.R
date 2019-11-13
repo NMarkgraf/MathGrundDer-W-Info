@@ -68,9 +68,9 @@ write_utf8 <- function(text, f = tempfile(), bom=FALSE) {
     con <- file(f, open = "w+", encoding = "native.enc")
 
     # steo 2a: write BOM if needed.
-    if (bom) {
-      writeBin(BOM, con = con, endian = "little")
-    }
+    #if (bom) {
+    #  writeLines(BOM, con = con), endian = "little")
+    #}
     
     # step 3: write to the connection with 'useBytes = TRUE',
     # telling R to skip translation to the native encoding
