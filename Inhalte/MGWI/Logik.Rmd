@@ -23,7 +23,7 @@ library(mosaic)
 #### Aussagen {.definition}
 Eine [Aussage]{.cstrong} (engl. *proposition*) ist ein Satz, von dem man eindeutig entscheiden kann, ob er **wahr** ist oder **falsch** ist. 
 
-#### {.exsamples}
+#### {.examples}
 - Berlin ist die Hauptstadt von Deutschland
 - $1 + 5 = 6$
 - 5 ist kleiner als 3

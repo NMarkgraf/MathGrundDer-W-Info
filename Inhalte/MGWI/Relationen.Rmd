@@ -309,9 +309,9 @@ Das Rechnen im Restklassenring $\mathbf{Z_n}$ enspricht als dem *normalen* Rechn
 
 Es ist
 \begin{align*}
-    [3]_5 + [2]_5 \cdot [4]_5 - [1]_5 &= [3]_5 + [2 \cdot 4]_5 - [1]_5 \\
+    [3]_5 + [2]_5 \cdot [4]_5 - [1]_5 &= [3]_5 + [2 \cdot 4]_5 - [1]_5 
                                       &= [3]_5 + [8]_5 - [1]_5 = [3]_5 + [3]_5 - [1]_5 \\
-                                      &= [3+3-1]_5 \\
+                                      &= [3+3-1]_5 
                                       &= [5]_5 \\
                                       &= [0]_5
 \end{align*}
@@ -320,9 +320,9 @@ Mit der Funktion $x \mod n$ erhalten den Rest bei der Division mit Rest von $x$ 
 $$x = \lfloor x / n \rfloor \cdot n + (x \mod n)$$
 Wir können daher auch schreiben:
 \begin{align*}
-    [3]_5 + [2]_5 \cdot [4]_5 - [1]_5 &= (3 \mod 5) + (2 \mod 5) \cdot (4 \mod 5) - (1 \mod 5) \\
+    [3]_5 + [2]_5 \cdot [4]_5 - [1]_5 &= (3 \mod 5) + (2 \mod 5) \cdot (4 \mod 5) - (1 \mod 5) 
                                       &= (3 \mod 5) + (2 \cdot 4) \mod 5 - (1 \mod 5) \\
-                                      &= (3 \mod 5 + (3 \mod 5) - (1 \mod 5) \\
+                                      &= (3 \mod 5 + (3 \mod 5) - (1 \mod 5) 
                                       &= (3 + 3 - 1) \mod 5 \\
                                       &= 5 \mod 5 = 0 = [0]_5
 \end{align*}
@@ -345,7 +345,7 @@ Der Aufbau dieser Nummer ist wie folgt:
 
 ### Beispiel: Anwendung bei ISBN (II/II)
 
-Die **Prüfzimmer* $p$ wird nun wie folgt berechnet:
+Die **Prüfziffer** $p$ wird nun wie folgt berechnet:
 
 ::: {.small}
 
@@ -366,17 +366,20 @@ Hier im Beispiel also:
 
 a) Berechnen Sie die Prüfnummer des Buches *Numerisches Python: Arbeiten mit NumPy, Matplotlib und Pandas* von Berd Klein mit der ISBN 978-3-4464-5076-?
 
-b) Die 10-stellige ISBN kann man als $a-bcd-efghi-p$ mit den Ziffern a,b,c,d,e,f,g,h,i und der Prüfziffer $p$ darstellen. Dabei erfüllt $p$ die Gleichung $(10\cdot a + 9\cdot b + 8\cdot c + 7\cdot d + 6\cdot e + 5\cdot f + 4\cdot g + 3\cdot h + 2\cdot i + p) \mod 11 = 0$
-    - Ist 3-658-02803-3 eine gültige 10-stellige ISBN? (Und welches Buch ist es?)
-    - Ein Einzelfehler geschieht an der 2. Stelle und es wird 3-558-02803-3. Wird dieser Fehler erkannt?
+b) Die 10-stellige ISBN kann man als $a-bcd-efghi-p$ mit den Ziffern a,b,c,d,e,f,g,h,i und der Prüfziffer $p$ darstellen. Dabei erfüllt $p$ die Gleichung: 
+$$(10\cdot a + 9\cdot b + 8\cdot c + 7\cdot d + 6\cdot e + 5\cdot f + 4\cdot g + 3\cdot h + 2\cdot i + p) \mod 11 = 0$$
+ 
+    i) Ist 3-658-02803-3 eine gültige 10-stellige ISBN? (Und welches Buch ist es?)
+ 
+    ii) Ein Einzelfehler geschieht an der 2. Stelle und es wird 3-558-02803-3. Wird dieser Fehler erkannt?
 
  
 ::: {.notes}
 a) Die vollständige ISBN lautet: 978-3-4464-5076-9, also $9$!
 
 b) Die Antworten lauten:
-    - Ja. (Das Buch heißt übrigens *Angewandte Wirtschaftsstatistik: Daten und Zufall (FOM-Edition)* von den Autoren Karsten Lübke und Martin Vogt. Hier berät sie, ausserhalb der Klausuren, ggf. die Buchhandlung ihres Vertrauens!)
-    - Ja, denn den Prüfgleichung liefert nicht $0$, sondern $2$ modulo $11$.
+    i) Ja. (Das Buch heißt übrigens *Angewandte Wirtschaftsstatistik: Daten und Zufall (FOM-Edition)* von den Autoren Karsten Lübke und Martin Vogt. Hier berät sie, ausserhalb der Klausuren, ggf. die Buchhandlung ihres Vertrauens!)
+    ii) Ja, denn den Prüfgleichung liefert nicht $0$, sondern $2$ modulo $11$.
 
 :::
 
