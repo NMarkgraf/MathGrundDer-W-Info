@@ -1,0 +1,71 @@
+```{r setup-MGDWI-Zahlentheorie, include=FALSE}
+# ---------------------------------------------------------------------------
+#% maintainer:
+#%   - Norman Markgraf
+#%
+# ---------------------------------------------------------------------------
+source("../../prelude.R")
+initPart(
+    "Logik",  # Dateiname ohne Suffix
+    "Logik"   # Verzeichnisname im Bilderverzeichnis 
+    )
+pathToImages = getPathToImages()
+# ---------------------------------------------------------------------------
+
+```
+
+# Zahlentheorie
+
+### Spielen mit den ganzen Zahlen
+
+### Einheiten
+
+Eine Zahl $a$ heißt **Einheit**, wenn es eine Zahl $b$ gibt mit $a\cdot b = 1$. 
+
+#### {.remark}
+Die Menge der Einheiten ist also die Menge der Zahlen, die $1$ (ohne Rest) teilen.
+
+#### {.example}
+
+- In den rationalen Zahlen und den reellen Zahlen sind alle Zahlen (außer der 0) Einheiten!
+
+- In den ganzen Zahlen sind nur die Zahlen $1$ und $-1$ Einheiten. $1 \cdot 1 = 1 = (-1) \cdot (-1)$.
+
+- In $\mathbf{Z_4}$ sind $1$ und $3$ Einheiten, da $[-1]_4 = [3]_4$ und $(3 \cdot 3) \mod 4 = 9\mod 4 = 1 \mod 4$
+
+- In $\mathbf{Z_3}$ sind $1$ und $2$ Einheiten, da $(2\cdot 2) \mod 3 = (-1)^2 \mod 3 =  1 \mod 3$
+
+
+### Primzahl
+
+Eine Zahl $p$ heißt **prim**, wenn sie weder 0 noch ein Teiler der 1 ist und darüberhinaus für alle Produkte $a\cdot b$ gilt:
+$$p \mid (a \cdot b) \Rightarrow (p \mid a )\vee (p \mid b)$$
+
+#### {.example}
+- $2$ ist *prim*, da $2\neq 0$ und $2 \not\mid 1$ und aus $2 \mid (a\cdot b)$, aber $2 \not\mid a$ und $2 \not\mid b$ folgen würde, das $a=2\cdot n +1$ und $b=2\cdot m +1$ und somit wegen
+$$\begin{align*}
+a\cdot b &= (2\cdot n +1) \cdot (2\cdot m +1) \\
+         &= 4\cdot n\cdot m + 2\cdot n + 2\cdot m + 1 \\
+         &= 2\cdot(2\cdot n\cdot m+n+m)+1
+\end{align*}$$ 
+
+folgen würde, dass $2 \not\mid a\cdot b$. *Widerspruch!*
+
+- $4$ ist *nicht prim*. Zwar ist $4 \neq 0$ und $4 \not\mid 1$, aber $4 \mid (2 \cdot 2)$, jedoch $4 \not\mid 2$.
+
+### Irriduzibel
+
+Eine Zahl $p$ heißt **irreduzibel**, wenn $p$ weder Null noch eine Einheit ist und aus $p=a\cdot b$ immer folgt, dass $a$ oder $b$ eine Einheit ist.
+
+#### {.example}
+
+- $2$ ist *irreduzibel*, da $2 \neq 0$ und $2 \not\mid 1$, gäbe es zwei Zahlen $a$ und $b$ mit $a \mid 2$ und $b \mid 2$, dann gabe es zwei zahlen $k$ und $j$ mit $0 < k < a$ und  $0 < j < b$, so dass $2 = k\cdot a$ und $2=j \cdot b$ und $2 = a \cdot b$ gelte.
+Es würde folgen:
+$$2 = k a = j b = a b$$
+und daher $j = a$ und $k = b$. Zusammen müsste dann$a < b$ und $b < a$ gelten, was nicht geht. *Widerspruch!*
+
+- $4$ ist *reduzibel*, da zwar $4 \neq 0$ und $4 \not\mid 1$, aber $4 = 2 \cdot 2$ und $4 \neq 2\neq 1$. 
+
+```{r finish-Zahlentheorie, include=FALSE}
+finalizePart(partname)
+```
