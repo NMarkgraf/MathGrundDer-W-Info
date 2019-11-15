@@ -1397,14 +1397,26 @@ Ist $A_1=A_2=\cdots=A_n=A$, so schreiben wir kurz $A^n$ für $A_1 \times A_2 \ti
 
 ### Übung `r nextExercise()`: {.exercise}
 
-Für die Mengen $A=\{a, b, c\}$ und $B=\{d, e\}$ bilden Sie die folgenden Produktmengen:
+Für die Mengen $A=\{a, b, c\}$ und $B=\{d, e\}$ bilden Sie die folgenden Produktmengen. Geben Sie zuerst die Anzahl der Elemente der Mengen an, dann die Mengen expliziet!
 	
 a) $\displaystyle A \times B$
+
 a) $\displaystyle A^2$
+
 a) $\displaystyle B \times A \times B$
+
 a) $\displaystyle A \times B \times A$
 
 ::: {.notes}
+
+a) $\displaystyle \left|A \times B\right| = 6$, $\displaystyle A \times B = \left\{ (a,\, d), (b,\, d), (c,\, d), (a,\,e), (b,\,e), (c,\,e) \right\}$
+
+a) $\displaystyle \left|A^2\right| = 9$, $\displaystyle A^2 = \left\{(a,\, a), (a,\, b), (a,\, c), (b,\, a), (b,\, b), (b,\, c), (c,\, a), (c,\, b), (c,\, c)\right\}$
+
+a) $\displaystyle \left|B \times A \times B\right| = 12$, $\displaystyle B \times A \times B = \left\{ ... \right\}$
+
+a) $\displaystyle \left|A \times B \times A\right| = 18$, $\displaystyle A \times B \times A = \left\{ ... \right\}$
+
 :::
 
 
@@ -1486,13 +1498,19 @@ Abhilfe schafft hier eine *eineindeutige Zuordnung*^[*eineindeutig* ist ein alte
 
 ### Teilmengen der reellen Zahlen
 
-Die folgenden *Teilmengen reeller Zahlen* nennen wir [Intervalle]{.cstrong}:
+Die folgenden *Teilmengen* ***reeller*** *Zahlen* nennen wir [Intervalle]{.cstrong}:
 
 - $\left[a,\, b\right] =                       \left\{ x \in \mathbf{R} \,|\, a \leq x \leq b \right\}$ geschlossenen Intervall
 - $\left(a,\, b\right) = \left]a,\, b\right[ = \left\{ x \in \mathbf{R} \,|\, a < x < b \right\}$       offenes Intervall
 - $\left[a,\, b\right) = \left[a,\, b\right[ = \left\{ x \in \mathbf{R} \,|\, a \leq x < b \right\}$    halboffenes Intervall
 - $\left(a,\, b\right] = \left]a,\, b\right] = \left\{ x \in \mathbf{R} \,|\, a < x \leq b \right\}$    halboffenes Intervall
 
+#### Schnitte, Vereinigungen und Subtraktionen von Intervallen {.example}
+
+- $\left[1{,}5;\, 3{,}1\right] \setminus \left(2;\, 4\right) = \left[1{,}5;\, 2\right]$
+- $\left[1{,}5;\, 3{,}1\right] \cup \left(2;\, 4\right) = \left[1{,}5;\, 4\right)$
+- $\left[1{,}5;\, 3{,}1\right] \cap \left(2;\, 4\right) = \left(2;\, 3{,}1\right]$
+- $\left[2;\, 3\right] \setminus \left(1;\, 4\right) = \emptyset$
 
 ### Übung `r nextExercise()`: {.exercise}
 
