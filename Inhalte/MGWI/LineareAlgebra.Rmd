@@ -78,7 +78,7 @@ p.1 = p + layer(
     scale_color_manual(
         name = "Funktionen",
         values = c("fkt.f"= "blue", "fkt.g"="red" ), # Color specification
-        labels = c("y+x = 5", unname(TeX("$0,21 \\cdot y -0,36 \\cdot x = 1,5$")))
+        labels = c(unname(TeX("$0,21 \\cdot y -0,36 \\cdot x = 1,5$")), "y+x = 5")
     ) + 
     scale_size_manual(
         values = c("fkt.f"=1.2, "fkt.g"=1.2, "lot" = 1.1),
