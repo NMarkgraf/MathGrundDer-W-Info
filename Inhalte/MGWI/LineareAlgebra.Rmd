@@ -384,7 +384,7 @@ $\displaystyle v_{cap}=\begin{pmatrix} \frac12 \\[0.1em] \frac16 \\[0.1em] \frac
 sind *linear unabhängig*.
 
 
-Denn $c_{lm} \cdot v_{lm} +  c_{mk} \cdot v_{mk} + c_{cap} \cdot v_{cap} = \begin{pmatrix}0 \\ 0 \\ 0 \end{pmatrix}$ hat nur die triviale Lösung $c_{lm} = c_{mk} = c_{cap} = 0$
+Denn $c_{lm} \cdot v_{lm} +  c_{mk} \cdot v_{mk} + c_{cap} \cdot v_{cap} = \begin{pmatrix}0 \\[0.1em] 0 \\[0.1em] 0 \end{pmatrix}$ hat nur die triviale Lösung $c_{lm} = c_{mk} = c_{cap} = 0$
 
 [Hausaufgabe:]{.cstrong}
 Bestimmen sie das Gleichungssystem und lösen Sie es.  
