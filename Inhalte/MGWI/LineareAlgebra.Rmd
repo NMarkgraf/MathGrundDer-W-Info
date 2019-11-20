@@ -27,7 +27,10 @@ Welche Mengen von beiden Lösungen muss er mischen, damit er $5$ Liter $30\,\%$-
 
 [Erste Schritte zum mathematischen Modell:]{.cstrong}
 
-In $5$ Litern Mischung sind $5 \cdot 0{,}3 =1{,}5$ Liter Alkohol aus $x$ Liter $36\,\%$-igen bzw. aus $y$ Liter $21\,\%$-igen Alkohol.
+In $5$ Litern Mischung sind $5 \cdot 0{,}3 =1{,}5$ Liter Alkohol.
+
+Diese $1,5$ Liter Alkohol sind aus $x$ Litern $36\,\%$-igen bzw. aus $y$ Litern $21\,\%$-igen Alkohol zu mischen.
+
 Weiterhin muss $x+y=5$ Liter ergeben. 
 
 
@@ -36,6 +39,9 @@ $$\sysdelim..
   \systeme{%
 		0{,}36\cdot x+0{,}21\cdot y=1{,}5,%
 		x+y=5}$$
+		
+[Idee:]{.cstrong}
+Wir können jede Gleichung als Gerade auffassen, also $y= \frac{1{,}5}{0{,}21} - \frac{0{,}36}{0{,}21} \cdot x$ und $y = 5-x$, und den Schnittpunkt bestimmen.
 
 
 ### Graphische Lösung
@@ -48,8 +54,8 @@ library(gridExtra)
 # y = 5 - x
 x_limits <- c(0, 6)
 y_limits <- c(0, 7)
-fkt.f <- function(x) 5 - x 
-fkt.g <- function(x) (1.5 -0.36 * x) / 0.21
+fkt.f <- function(x) (1.5 - 0.36 * x) / 0.21
+fkt.g <- function(x) 5 - x
 
 cols <- c("Funktion 1" = "blue", "Funtion 2" = "green")
 
@@ -180,17 +186,15 @@ bringen.
 
 ### Bemerkungen zu LGS
 
-- Die $a_{ij}$ nennt mensch [Koeffizienten]{.cstrong}.
+Wir nennen die $a_{ij}$ [Koeffizienten]{.cstrong} und die $b_i$ kurz [rechte Seite]{.cstrong}.
 
-- Die $b_i$ nennt mensch kurz [rechte Seite]{.cstrong}.
+Sind alle Einträge auf der [rechten Seite]{.cemph} gleich $0$, dann nennen wir das LGS [homogen]{.cstrong}, sonst [inhomogen]{.cstrong}.
 
-- Sind alle Einträge auf der [rechten Seite]{.cemph} gleich $0$, dann nennt mensch das LGS [homogen]{.cstrong}, sonst [inhomogen]{.cstrong}.
+[Homogene]{.cemph} LGS besitzen immer eine [triviale Lösung]{.cstrong}, bei der alle $x_i=0$ sind.
 
-- [Homogene]{.cemph} LGS besitzen immer eine [triviale Lösung]{.cstrong}, mit $x_i=0$ für alle $i$.
+Gibt es genau so viele Gleichungen wie Unbekannte ($n=m$), so nennt mensch das LGS [quadratisch]{.cstrong}.
 
-- Gibt es genau so viele Gleichungen wie Unbekannte ($n=m$), so nennt mensch das LGS [quadratisch]{.cstrong}.
-
-- In der [(Zeilen-)Stufenform]{.cstrong} verringert sich in jeder Zeile die Zahl der Unbekannten um mindestens eine, die dann auch nicht mehr weiter vorkommt.
+In der [(Zeilen-)Stufenform]{.cstrong} verringert sich in jeder Zeile die Zahl der Unbekannten um mindestens eine, die dann auch nicht mehr weiter vorkommt.
 
 
 ### Elementare Zeilenumformungen
@@ -208,18 +212,18 @@ Man ändert die Lösungsmenge eines LGS nicht, wenn man
 
 ### Das Eliminationsverfahren
 
-Man benutzt die [Elementaren Zeilenumformungen]{.cemph} um aus einem beliebigen LGS ein LGS in [Zeilenstufenform]{.cemph} zu erhalten:
+Man benutzt die [elementaren Zeilenumformungen]{.cemph} um aus einem beliebigen LGS ein LGS in [Zeilenstufenform]{.cemph} zu erhalten. Das Ziel ist dabei die Lösungen für $x$ und $y$ direkt abzulesen:
 
 \begin{align*}
 		0{,}36\cdot x+0{,}21\cdot y 			&=1{,}5			& & \mathrm{I}							\\[-0.4em]
-		x+\phantom{0{,}21}\cdot y		&=5 				& & \mathrm{II}							\\[0.6em]
-		x+\phantom{0{,}21}\cdot y		&=5 				& & \mathrm{II}							\\[-0.4em]
+		x+\phantom{0{,}21\cdot} y		&=5 				& & \mathrm{II}							\\[0.6em]
+		x+\phantom{0{,}21\cdot} y		&=5 				& & \mathrm{II}							\\[-0.4em]
 		0{,}36\cdot x+0{,}21\cdot y 			&=1{,}5			& & \mathrm{I}							\\[0.6em]
-		x+\phantom{0{,}15}\cdot y		&=5 				& & \mathrm{I}							\\[-0.4em]
+		x+\phantom{0{,}15\cdot} y		&=5 				& & \mathrm{I}							\\[-0.4em]
 		-0{,}15\cdot y				&=-0{,}3			& & \mathrm{II}-0{,}36\cdot \mathrm{I} 		\\[0.6em]
 		x+y					&=5 				& & \mathrm{I}							\\[-0.4em]
 		y					&=2				& & \frac{-1}{0{,}15}\cdot \mathrm{II} 			\\[0.6em]
-		x\phantom{+y}			&=3 				& & \mathrm{II}-\mathrm{I}					\\[-0.4em]
+		x\phantom{+y}			&=3 				& & \mathrm{I}-\mathrm{II}					\\[-0.4em]
 		y					&=2				& &									\\[0.6em]
 \end{align*}
 
@@ -243,19 +247,22 @@ Ein [inhomogenes]{.cemph} LGS besitzt entweder
 
 ### Konsequenzen
 
-- Zu jedem  *inhomogenen* LGS gibt es ein *homogenes* LGS bei dem mensch die rechte Seite durch die Nullen ersetzt.
+- Zu jedem  [inhomogenen]{.cemph} LGS gibt es ein [homogenes]{.cemph} LGS bei dem mensch die rechte Seite durch die Nullen ersetzt.
 
-- Gibt es für das *homogene* LGS nur die *triviale Lösung*, so hat das *inhomogene* LGS **genau  eine** oder **gar keine** Lösung.
+- Gibt es für das [homogene]{.cemph} LGS nur die [triviale Lösung]{.cemph}, so hat das [inhomogene]{.cemph} LGS [genau  eine]{.cstrong} oder [gar keine]{.cstrong} Lösung.
 
-- Hat das *homogene* LGS *unendlich viele Lösungen*, dann hat das *inhomogene* LGS **unendlich viele** oder **gar keine** Lösung.
+- Hat das [homogene]{.cemph} LGS [unendlich viele Lösungen]{.cemph}, dann hat das [inhomogene]{.cemph} LGS [unendlich viele]{.cstrong} oder [gar keine]{.cstrong} Lösung.
 
-- Haben wir eine Lösung des *inhomogenen* LGS gefunden, entscheidet das *homogene* LGS darüber ob diese Lösung die einzige Lösung ist -- *homogenes* LGS hat nur triviale Lösung -- oder ob es unendlich viele Lösungen gibt -- *homogenes LGS* hat unendlich viele Lösungen.
+- Haben wir eine Lösung des [inhomogenen]{.cemph} LGS gefunden, entscheidet das [homogene]{.cemph} LGS darüber ob diese Lösung die einzige Lösung ist -- [homogenes]{.cemph} LGS hat nur triviale Lösung -- oder ob es unendlich viele Lösungen gibt -- [homogenes LGS]{.cemph} hat unendlich viele Lösungen.
 
 
 ## Matrizen und Vektoren
 
 ### Matrizen
- Ein geordnetes, rechteckiges Schema von Zahlen oder Symbolen
+
+::: {.small}
+
+Ein geordnetes, rechteckiges Schema von Zahlen oder Symbolen
 $$\renewcommand{\arraystretch}{.9}
 A=\begin{pmatrix}
 a_{11} & a_{12} & \ldots & a_{1j} &\ldots& a_{1n}\\
@@ -267,23 +274,23 @@ a_{m1} & a_{m2} & \ldots & a_{mj} & \ldots & a_{mn}\\
 \end{pmatrix}
    = {(a_{ij})}_{m\times n}$$
    
-mit $m,n \in \mathbf{N}$ heißt [Matrix]{.cstrong} mit [$m$ Zeilen]{.cstrong} und [$n$ Spalten]{.cstrong} oder kurz [$m\times n$-Matrix]{.cstrong}.
+mit $m$ und $n \in \mathbf{N}$ heißt [Matrix]{.cstrong} mit [$m$ Zeilen]{.cstrong} und [$n$ Spalten]{.cstrong} oder kurz [$m\times n$-Matrix]{.cstrong}.
+Die $a_{11},\ldots,a_{mn}$ heißen [Elemente]{.cstrong} der Matrix.
+Dabei gibt $i$ die Zeile und $j$ die Spalte an, in der $a_{ij}$ steht, daher heißt $i$ [Zeilenindex]{.cstrong} und $j$ [Spaltenindex]{.cstrong} von $a_{ij}$.
+:::
 
+#### {.examples}
 
-### Bemerkungen zu Matrizen
+::: {.footnotesize}
 
-- Die $a_{11},\ldots,a_{mn}$ heißen [Elemente]{.cstrong} der Matrix.
-- Dabei gibt $i$ die Zeile und $j$ die Spalte an, in der $a_{ij}$ steht.
-- $i$ heißt [Zeilenindex]{.cstrong} und $j$ [Spaltenindex]{.cstrong} von $a_{ij}$.
+Es seien $A$ eine $2 \times 2$, $B$ eine $2 \times 3$ und $C$ eine $5 \times 4$ Matrix, wie folgt:
 
-[Beispiele:]{.cstrong}
-
-$$B = 	\begin{pmatrix}
+$$A = 	\begin{pmatrix}
 			1 & 1 \\
 			0{,}36 & 0{,}21 \\		
 		\end{pmatrix},
 	\quad
-	A = 	\begin{pmatrix}
+	B = 	\begin{pmatrix}
 			-2 & 3 & 0 \\
 			10 & \frac12 & 8\\
 		\end{pmatrix},
@@ -295,7 +302,8 @@ $$B = 	\begin{pmatrix}
 			-8 & 7 & 4 & -8 \\
 			0 & 0 & -1 & 10 \\			
 		\end{pmatrix}$$
-
+		
+:::
 
 ### Vektoren
 
@@ -309,6 +317,11 @@ $$B = 	\begin{pmatrix}
 - $1\times n$-Matrix heißt [Zeilenvektor mit $n$ Komponenten]{.cstrong}:
 	$$a = (a_1, \ldots, a_n)$$
 
+#### {.examples}
+
+$a=\begin{pmatrix} 1 \\ 2 \\ 3 \\ -4 \end{pmatrix}$ und $b = ( 1,\; 2,\; 3,\; -4)$
+
+
 
 ### Vektoren in Koordinatensystemen
 
@@ -317,31 +330,64 @@ knitr::include_graphics(file.path(pathToImages, "Vektoren.png"))
 ```
 
 
-### Beispiel: Kaffeespezialitäten 
+### Beispiel: Kaffeespezialitäten (I/III)
 
-```{r echo=FALSE, out.width = "8cm", fig.align="center"}
+:::::: {.columns}
+::: {.column width="45%"}
+
+```{r echo=FALSE, out.width = "80%", fig.align="center"}
 knitr::include_graphics(file.path(pathToImages, "VektorenKaffee1.png"))
 ```
 
+:::
+::: {.column width="45%"}
 
-### Beispiel: Kaffeespezialitäten 
-
-```{r echo=FALSE, out.width = "8cm", fig.align="center"}
+```{r echo=FALSE, out.width = "80%", fig.align="center"}
 knitr::include_graphics(file.path(pathToImages, "VektorenKaffee2.png"))
 ```
 
+:::
+::::::
+Wir können die Anteile von Kaffee, Milchschaum und Milch in einen Vektor schreiben: 
+$$v = \begin{pmatrix} \text{Anteil Kaffee}\\ \text{Anteil Milchschaum} \\ \text{Anteil Milch} \end{pmatrix}$$
 
-### Lineare Unabhängigkeit
+### Beispiel: Kaffeespezialitäten (II/III)
 
-Eine Menge von Vektoren ist [linear unabhängig]{.cstrong} falls keiner von ihnen als Linearkombination der anderen ausgedrückt werden kann.
+Wir können also die Mischungsverhältnisse der drei Kaffeespezialitäten wie folgt darstellen:
+
+- Latte Macchiato: $\displaystyle v_{lm}=\begin{pmatrix} \frac13 \\[0.1em] \frac13 \\[0.1em] \frac13 \end{pmatrix}$,
+
+- Milchkaffee: $\displaystyle v_{mk}=\begin{pmatrix} \frac12 \\[0.1em] \frac12 \\[0.1em] 0 \end{pmatrix}$ 
+
+- Cappuccino: $\displaystyle v_{cap}=\begin{pmatrix} \frac12 \\[0.1em] \frac16 \\[0.1em] \frac13 \end{pmatrix}$
+
+[Frage:]{.cstrong}
+Kann man eine dieser Kaffeespezialitäten (im Prinzip) durch das zusammenmischen zweier anderer erhalten?
+
+### Linearkombination / Lineare (Un-)Abhängigkeit
+
+#### Linearkombination {.definition}
+Seien $v_1, \dots v_n$ Vektoren. Eine [Linearkombination]{.cstrong} ein Vektor $v$, der sich durch die Vektoren $v_1, \dots, v_n$ und die Skalare $c_1, \dots c_n$ wie folgt ausdrücken lässt:
+
+$$v = c_1 \cdot v_1 + c_2 \cdot v_2 + \cdots + c_n \cdot v_n = \sum_{i=1}^{n} c_i v_i$$
+
+#### Lineare (Un-)abhängigkeit {.definition}
+
+Eine Menge von Vektoren ist [linear unabhängig]{.cstrong} falls keiner von ihnen als [Linearkombination]{.cemph} der anderen ausgedrückt werden kann. Ansonsten sind sie [linear abbhängig]{.cstrong}.
 
 
-[Beispiel:]{.cstrong}
+### Kaffeespezialitäten (III/III)
 
 Die Vektoren $\displaystyle v_{lm}=\begin{pmatrix} \frac13 \\[0.1em] \frac13 \\[0.1em] \frac13 \end{pmatrix}$,
 $\displaystyle v_{mk}=\begin{pmatrix} \frac12 \\[0.1em] \frac12 \\[0.1em] 0 \end{pmatrix}$ und
-$\displaystyle v_{cap}=\begin{pmatrix} \frac13 \\[0.1em] \frac16 \\[0.1em] \frac12 \end{pmatrix}$
+$\displaystyle v_{cap}=\begin{pmatrix} \frac12 \\[0.1em] \frac16 \\[0.1em] \frac13 \end{pmatrix}$
 sind *linear unabhängig*.
+
+
+Denn $c_{lm} \cdot v_{lm} +  c_{mk} \cdot v_{mk} + c_{cap} \cdot v_{cap} = \begin{pmatrix}0 \\ 0 \\ 0 \end{pmatrix}$ hat nur die triviale Lösung $c_{lm} = c_{mk} = c_{cap} = 0$
+
+[Hausaufgabe:]{.cstrong}
+Bestimmen sie das Gleichungssystem und lösen Sie es.  
 
 
 ### Addition & Subtraktion von Matrizen und Vektoren 
@@ -350,7 +396,7 @@ sind *linear unabhängig*.
 - *Addition* und *Subtraktion* erfolgt *komponentenweise*!
 
 
-[Beispiel:]{.cstrong}
+#### {.examples}
 
 Seien 
 $\displaystyle A= \begin{pmatrix} a_{11} & a_{12} & a_{13} \\ a_{21} & a_{22} & a_{23}\end{pmatrix}$
@@ -373,7 +419,7 @@ $$A \pm B	= 	\begin{pmatrix}
 	In dem mensch *jedes Element* mit dem *Skalar multipliziert*.
 
 
-[Beispiel:]{.cstrong}
+#### {.examples}
 
 Sei 
 $\displaystyle A= \begin{pmatrix} a_{11} & a_{12} \\ a_{21} & a_{22} \end{pmatrix}$
@@ -597,7 +643,7 @@ Wir schreiben dann auch $A^{-1}$ für eine solche Matrix.
 
 Dabei ist $E_n$ die [Einheitsmatrix]{.cstrong} mit $n \times n$ Elementen.
 
-[Beispiele für $E_n$:]{.cstrong}
+#### für $E_n$ {.examples}
 
 $$E_1 = (1), \quad
 	E_2 = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}, \quad
@@ -823,21 +869,21 @@ $$\begin{pmatrix}
 
 ### Determinante
 
-- Ob eine [quadratisch]{.cstrong}es LGS $A x = b$ eine Lösung hat, 
-	hängt *entscheidend* vom Nenner des Bruchs ab!
+- Ob eine [quadratisch]{.cstrong} es LGS $A x = b$ eine Lösung hat, 
+	hängt [entscheidend]{.cemph} vom Nenner des Bruchs ab!
 
-- Mensch nennt diesen Nenner auch [Determinante]{.cstrong} von $A$. 
+- Wir nennen diesen Nenner auch [Determinante]{.cstrong} von $A$. 
 
-- Der Wert der *Determinate* von $A$ wird $\det(A)$ geschrieben 
-	und ist eine *reelle Zahl*. 
+- Der Wert der [Determinate]{.cemph} von $A$ wird $\det(A)$ geschrieben 
+	und ist eine [reelle Zahl]{.cemph}. 
 
-- Kennt mensch die *Determinante*, so weiß mensch ob es eine 
-	*eindeutige* Lösung gibt oder *nicht*.
+- Kennt mensch die [Determinante]{.cemph}, so weiß mensch ob es eine 
+	[eindeutige]{.cemph} Lösung gibt oder [nicht]{.cemph}.
 
-- Eine Matrix $A$ ist genau dann *invertierbar*, wenn $det(A)\neq 0$ ist. 
+- Eine Matrix $A$ ist genau dann [invertierbar]{.cemph}, wenn $det(A)\neq 0$ ist. 
 
 - Es gibt Lösungsmethoden für LGS mit Hilfe von Matrizen. 
-	*Diese sind aber in der Praxis bedeutungslos*!
+	[Diese sind aber in der Praxis bedeutungslos]{.cemph}!
 	($\longrightarrow$ [Cramersche Regel](http://de.wikipedia.org/wiki/Cramersche_Regel "Link zur passenden Wikipedia-Seite")). 
 
 
@@ -845,18 +891,22 @@ $$\begin{pmatrix}
 
 Sei $A$ eine [quadratische]{.cstrong} resp. $n \times n$ Matrix. 
 
-\begin{center}
-	\begin{tabular}{c|l|l}
-		n 	& $\det(A)$									& Bemerkung \\\hline
-		1	& $a_{11}$									& Reelle Zahlen (s.o.)\\\hline
-		2	& $a_{11} \cdot a_{22} - a_{12} \cdot a_{21}$ & (s.o.) \\\hline
-			& $a_{11}a_{22}a_{33}+a_{12}a_{23}a_{31}+$	& \\
-		3	& $a_{13}a_{21}a_{32}-a_{31}a_{22}a_{13}-$	& Regel von Sarrus\\
-			& $a_{32}a_{23}a_{11}-a_{33}a_{21}a_{12}$ 	& \\\hline
-		n	& ...										& Laplace'scher Entwicklungssatz\\
-			& ...										& Eliminationsverfahren\\
-	\end{tabular}
-\end{center}
++---+---------------------------------------------+--------------------------------+
+| n | $\det(A)$                                   | Bemerkung                      |
++===+=============================================+================================+
+| 1 | $a_{11}$                                    | Reelle Zahlen (s.o.)           |
++---+---------------------------------------------+--------------------------------+
+| 2 | $a_{11} \cdot a_{22} - a_{12} \cdot a_{21}$ | (s.o.)                         |
++---+---------------------------------------------+--------------------------------+
+| 3 | $a_{11}a_{22}a_{33}+a_{12}a_{23}a_{31}+$    |                                |
+|   | $a_{13}a_{21}a_{32}-a_{31}a_{22}a_{13}-$    | Regel von Sarrus               |
+|   | $a_{32}a_{23}a_{11}-a_{33}a_{21}a_{12}$     |                                |
++---+---------------------------------------------+--------------------------------+
+| n | ...                                         | Laplace'scher Entwicklungssatz |
+|   |                                             | Eliminationsverfahren          |
++---+---------------------------------------------+--------------------------------+
+
+
 
 
 ### Regeln für Determinanten
