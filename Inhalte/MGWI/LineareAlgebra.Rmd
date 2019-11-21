@@ -256,6 +256,87 @@ Ein [inhomogenes]{.cemph} LGS besitzt entweder
 - Haben wir eine Lösung des [inhomogenen]{.cemph} LGS gefunden, entscheidet das [homogene]{.cemph} LGS darüber ob diese Lösung die einzige Lösung ist -- [homogenes]{.cemph} LGS hat nur triviale Lösung -- oder ob es unendlich viele Lösungen gibt -- [homogenes LGS]{.cemph} hat unendlich viele Lösungen.
 
 
+### Übung `r nextExercise()`:  {.exercise} 
+
+Lösen Sie die folgenden Gleichungssysteme für $x$, $y$ und $z$.
+
+a) $$\sysdelim.. \systeme{3x - 3y + 3 z = 0, 8x +10y + 2z = 6, -2x + y - 3z= 5}$$
+
+b) $$\sysdelim.. \systeme{ 2x + 5y - 3z = 0, 4x -4y+z = 0, 4x -2y= 0}$$
+
+c) $$\sysdelim.. \systeme{x + y + z = -2, -x + 2y + z  = 6, 2x -4y - 2z= -6}$$
+
+```{r echo=FALSE}
+A <- matrix(c(3,-3,3,8,10,2,-2,1,-3),nrow=3, ncol=3, byrow=TRUE)
+b <- matrix(c(0,6,5), nrow=3,ncol=1)
+sol <- solve(A,b)
+a.x <- sol[1,1]
+a.y <- sol[2,1]
+a.z <- sol[3,1]
+
+#A <- matrix(c(2,5,-3,4,-4,1,4,-2,0),nrow=3, ncol=3, byrow=TRUE)
+#b <- matrix(c(0,0,0), nrow=3,ncol=1)
+#sol <- solve(A,b)[]
+#a.x <- sol[1,1]
+#a.y <- sol[2,1]
+#a.z <- sol[3,1]
+
+#A <- matrix(c(1,1,1,-1,2,1,2,-4,-2),nrow=3, ncol=3, byrow=TRUE)
+#b <- matrix(c(-2,6,-6), nrow=3,ncol=1)
+#sol <- solve(A,b)[]
+#c.x <- sol[1,1]
+#c.y <- sol[2,1]
+#c.z <- sol[3,1]
+```
+
+::: {.notes}
+a) $x=`r a.x`$, $y=`r a.y`$, $z=`r a.z`$
+
+b) Gleichungssystem hat **unendlich viele Lösungen** der Form $y=2\cdot x$, $z=4 \cdot x$.
+
+c) Gleichungssystem hat **keine Lösung**!
+
+:::
+
+
+### Übung `r nextExercise()`:  {.exercise} 
+
+Lösen Sie die folgenden Gleichungssysteme für $x$, $y$ und $z$.
+
+:::::: {.columns}
+::: {.column width="45%"}
+
+a) $$\sysdelim.. \systeme{5x+2y+3z= 18,x+y+z= 6,4x + 2y -z= 5}$$
+
+b) $$\sysdelim.. \systeme{5x + 2y +3z = 0,x+y+z	 = 0, 4x + 2y -z= 0}$$
+
+:::
+::: {.column width="45%"}
+
+c) $$\sysdelim.. \systeme{5x+2y+3z= 0,-4x-8y-4z= 2, x+2y+z= 0}$$
+
+d) \begin{align*}
+	 8x -17 +9y 	&= 2z \\
+	 2(x+3y)	 	&= 11-z \\
+	3(z-3)+2y		&= 2x \\
+\end{align*}
+
+:::
+:::::
+
+::: {.notes}
+
+a) $x=1$, $y=2$, $z=3$
+
+b) Nur die *triviale Lösung* $x=y=z=0$
+
+c) Es gibt **keine Lösung** dieses LGS!
+
+d) $x=5$, $y=-1$, $z=7$
+
+:::
+
+
 ## Matrizen und Vektoren
 
 ### Matrizen
@@ -330,6 +411,103 @@ knitr::include_graphics(file.path(pathToImages, "Vektoren.png"))
 ```
 
 
+### Addition & Subtraktion von Matrizen und Vektoren 
+
+- Mit Matrizen bzw. Vektoren gleicher Ordnung kann mensch rechnen!
+- *Addition* und *Subtraktion* erfolgt *komponentenweise*!
+
+
+#### {.examples}
+
+Seien 
+$\displaystyle A= \begin{pmatrix} a_{11} & a_{12} & a_{13} \\ a_{21} & a_{22} & a_{23}\end{pmatrix}$
+und
+$\displaystyle B= \begin{pmatrix} b_{11} & b_{12} & b_{13} \\ b_{21} & b_{22} & b_{23}\end{pmatrix}$
+gegeben. 
+
+Dann gilt:
+$$A \pm B	= 	\begin{pmatrix} 
+					a_{11} \pm b{11} & a_{12} \pm b{12}& a_{13} \pm b{13}\\ 
+					a_{21} \pm b{21} & a_{22} \pm b{22}& a_{23} \pm b{23}
+				\end{pmatrix}$$
+
+				
+### Übung `r nextExercise()`: Addition und Subtraktion von Matrizen und Vektoren {.exercise} 
+
+<->TO DO<->
+
+### Multiplikation mit einem Skalar 
+
+- Eine *reelle Zahl* wollen wir zur besseren Unterscheidung [Skalar]{.cstrong} nennen.
+
+- Mensch kann eine *Matrix* (resp. einen *Vektor*) mit einem *Skalar* [multiplizieren]{.cstrong}. 
+	In dem mensch *jedes Element* mit dem *Skalar multipliziert*.
+
+
+#### {.examples}
+
+Sei 
+$\displaystyle A= \begin{pmatrix} a_{11} & a_{12} \\ a_{21} & a_{22} \end{pmatrix}$
+und
+$k$ ein Skalar. 
+
+Dann ist:
+
+$$k \cdot A= \begin{pmatrix} k \cdot a_{11} & k \cdot a_{12} \\ k \cdot a_{21} & k \cdot a_{22} \end{pmatrix}$$
+
+
+### Übung `r nextExercise()`: Multiplikation mit einem Skalar {.exercise} 
+
+Multiplizieren Sie die folgende Matrix mit $18$:
+
+$$A = \begin{pmatrix} 0 & \frac{1}{3} & -\frac{1}{9} \\ \frac{1}{2} & \frac{1}{6} &  1\end{pmatrix}$$
+
+::: {.notes}
+
+$$18 \cdot A = \begin{pmatrix} 0 & 6 & -2 \\ 9 & 3 &  18 \end{pmatrix}$$
+:::
+
+### Übung `r nextExercise()`:  {.exercise} 
+
+Berechnen Sie für die folgenden Matrizen: $(-3)A+2B-C$
+
+$$A = \begin{pmatrix} 1 & 2 & -\frac13 \\ 0 & -1 & 4\end{pmatrix}, \quad B = \begin{pmatrix} \frac{1}{2} & 1 & 3 \\ 2 & -1 & 0\end{pmatrix}, \quad C = \begin{pmatrix} 1 & 8 & 7 \\ 6 & -5 & 8\end{pmatrix}$$ 
+
+::: {.notes}
+
+<->TO DO<->
+
+:::
+
+### Rechenregeln für Addtion und skalare Multiplikation
+
+:::::: {.columns}
+::: {.column width="49%"}
+
+1. Die Addition von Matrizen ist **kommutativ**!
+$$A + B = B + A$$
+
+2. Die Addition von Matrizen ist **assoziativ**!
+$$(A + B) + C = A + B + C = A + (B + C)$$
+3. Die **Nullmatrix** ($\mathbf{0}$) ist das neutrale Element der Addition!
+$$A + \mathbf{0} = A$$
+
+4. Das *inverse Element* bzgl. der Addition einer Matrix $A$ ist $(-1)\cdot A$!
+$$A + (-1)\cdot A = 0$$
+:::
+::: {.column width="49%"}
+Für reelle Zahlen (Skalare) $a$ und $b$ und Matrizen $A$ und $B$ gilt:
+
+1. $(a \cdot b) \cdot A = a \cdot b \cdot A =a \cdot (b \cdot A)$
+
+2. $a \cdot (A+B) = a \cdot A + a \cdot B$
+
+3. $(a + b) \cdot A = a\cdot A + b \cdot A$
+
+4. $1 \cdot A = A$
+:::
+::::::
+
 ### Beispiel: Kaffeespezialitäten (I/III)
 
 :::::: {.columns}
@@ -390,46 +568,6 @@ Denn $c_{lm} \cdot v_{lm} +  c_{mk} \cdot v_{mk} + c_{cap} \cdot v_{cap} = \begi
 Bestimmen sie das Gleichungssystem und lösen Sie es.  
 
 
-### Addition & Subtraktion von Matrizen und Vektoren 
-
-- Mit Matrizen bzw. Vektoren gleicher Ordnung kann mensch rechnen!
-- *Addition* und *Subtraktion* erfolgt *komponentenweise*!
-
-
-#### {.examples}
-
-Seien 
-$\displaystyle A= \begin{pmatrix} a_{11} & a_{12} & a_{13} \\ a_{21} & a_{22} & a_{23}\end{pmatrix}$
-und
-$\displaystyle B= \begin{pmatrix} b_{11} & b_{12} & b_{13} \\ b_{21} & b_{22} & b_{23}\end{pmatrix}$
-gegeben. 
-
-Dann gilt:
-$$A \pm B	= 	\begin{pmatrix} 
-					a_{11} \pm b{11} & a_{12} \pm b{12}& a_{13} \pm b{13}\\ 
-					a_{21} \pm b{21} & a_{22} \pm b{22}& a_{23} \pm b{23}
-				\end{pmatrix}$$
-				
-
-### Multiplikation mit einem Skalar 
-
-- Eine *reelle Zahl* wollen wir zur besseren Unterscheidung [Skalar]{.cstrong} nennen.
-
-- Mensch kann eine *Matrix* (resp. einen *Vektor*) mit einem *Skalar* [multiplizieren]{.cstrong}. 
-	In dem mensch *jedes Element* mit dem *Skalar multipliziert*.
-
-
-#### {.examples}
-
-Sei 
-$\displaystyle A= \begin{pmatrix} a_{11} & a_{12} \\ a_{21} & a_{22} \end{pmatrix}$
-und
-$k$ ein Skalar. 
-
-Dann ist:
-
-$$k \cdot A= \begin{pmatrix} k \cdot a_{11} & k \cdot a_{12} \\ k \cdot a_{21} & k \cdot a_{22} \end{pmatrix}$$
-
 ### Produkt zweier Matrizen
 
 - Zwei Matrizen multipliziert mensch mit einander, wenn sie passend sind.
@@ -442,6 +580,11 @@ $$k \cdot A= \begin{pmatrix} k \cdot a_{11} & k \cdot a_{12} \\ k \cdot a_{21} &
 
 
 ### Falk'sches Schema
+
+
+### Übung `r nextExercise()`: Matrizen Multiplikation {.exercise} 
+
+<->TO DO<->
 
 
 ### Sonderformen der Multiplikation
@@ -459,6 +602,19 @@ $$k \cdot A= \begin{pmatrix} k \cdot a_{11} & k \cdot a_{12} \\ k \cdot a_{21} &
 
 - Mensch [transponiert]{.cstrong} eine *Matrix* (resp. *Vektor*) in dem mensch aus jeder Zeile eine Spalte macht.
 
+
+### Übung `r nextExercise()`: Skalarprodukte und Transponieren von Matrizen {.exercise} 
+
+<->TO DO<->
+
+
+### Übung `r nextExercise()`: {.exercise} 
+
+a) Eine Unternehmung stellt vier Produkte her, welche pro Mengeneinheit einen Gewinn von $2$, $3$, $5$ bzw. $7$ Euro abwerfen.
+Stellen Sie mit Hilfe eines Skalarproduktes den Gesamtgewinn in Abhängigkeit von der Erzeugnismenge dar!
+
+b) Die Länge (oder auch der Betrag) eines Vektors ist die Wurzel aus dem Skalarprodukt mit sich selber. Berechnen Sie die Länge der folgenden Vektoren: 
+$$a = \begin{pmatrix} 1 \\ 2 \\ 3 \\ 4 \end{pmatrix}, \quad b = \begin{pmatrix} 1 \\ -2 \\ 3 \end{pmatrix}\quad c = \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}$$
 
 ## Rechnen mit Matrizen und Vektoren
 
@@ -519,9 +675,44 @@ knitr::include_graphics(file.path(pathToImages, "Bettwanze2.png"))
 [Übung:]{.cstrong} Überlegen Sie sich, was hinter $s$, $f$, $d$ und $l$ steckt!
 
 
+### Übung `r nextExercise()`: Markanalyse und Käufer*innenwechsel {.exercise} 
+
+In einer Marktanalyse für Zahnpasta der Marken *Sauber* (S) und *Glänzend* (G) wurde Folgendes herausgefunden:
+
+- 70% der Nutzer*innen der Marke S benutzen auch im Folgemonat die Marke S, während 30% zur Marke G wechseln werden.
+- 80% der Nutzer*innen der Marke G benutzen auch im Folgemonat die Marke G, während 20% zur Marke S wechseln werden.
+- Von den 200 Zahnpastakäufer*innen des Betrachteten Monats haben 120 die Marke S und 80 die Marke G gekauft.
+
+a) Wie viele Käufer*innen werden im Folgemonat zur Marke S bzw. zur Marke G greifen? 
+
+b) Wenn die prozentualen Anteile gleich bleiben, wie viele Käufer*innen werden im Monat danach zur jeweiligen Marke greifen?
+
+```{r echo=FALSE}
+A <- matrix(c(0.7, 0.2, 0.3, 0.8), nrow=2, ncol=2)
+x <- matrix(c(120, 80), ncol=1)
+sol <- A %*% x
+sol.2 <- A %*% sol
+```
+
+
+::: {.notes}
+Es ist:
+
+$$x_{t+1} = \begin{pmatrix} 0{,}7 & 0{,}2 \\  0{,}3 & 0{,}8 \end{pmatrix} \cdot x_{t}, \quad \text{mit} \quad x_{0}=\begin{pmatrix}S \\ G\end{pmatrix}=\begin{pmatrix} 120 \\ 80 \end{pmatrix}$$
+
+
+Und daher:
+
+a) $S=`r sol[1,1]`$ und $G=`r sol[2,1]`$
+
+b) $S=`r sol.2[1,1]`$ und $G=`r sol.2[2,1]`$
+
+:::
+
+
 ### Umschreiben von LGSen
 
-Mit Hilfe der *Matrix-Multiplikation* kann mensch z.B. das LGS
+Wir können mit Hilfe der *Matrix-Multiplikation* z.B. das LGS
 
 $$\sysdelim..
 	\systeme{%
@@ -553,7 +744,7 @@ $$\underbrace{%
 	
 umschreiben.
 
-Wir brauchen also 'nur' $A \cdot x = b$ zu lösen.  
+Wir brauchen somit formal 'nur' $A \cdot x = b$ zu lösen.  
 
 
 ### LGS in der Matrizenschreibweise (I)
@@ -613,6 +804,12 @@ $$\phantom{%
 
 Kann mensch keine *Dreiecksmatrix* (bzw. *Einheitsmatrix*) erhalten, 
 ist das LGS nicht lösbar oder hat unendlich viele Lösungen!
+
+### Übung `r nextExercise()`: Vollständige Elimination {.exercise} 
+
+Lösen Sie die folgenden Gleichungssysteme mit Hilfe der *vollständigen Elimination*:
+
+<->TO DO<->
 
 
 ### Division von Matrizen
@@ -769,6 +966,13 @@ $$\begin{pmatrix}
 	\begin{pmatrix} 24 \\ 57 \\ -73 \\ 73 \end{pmatrix}$$
 
 
+### Übung `r nextExercise()`: Lösen mit Hilfe der Inversen {.exercise} 
+
+Bestimmen Sie für die folgenden LGS die Inverse zu $A$ und lösen Sie damit jeweilige LGS:
+
+<->TO DO<->
+
+
 ### Matrixschreibweise und Lösungen 
 
 … im 1-dimensionalen Fall:
@@ -907,8 +1111,6 @@ Sei $A$ eine [quadratische]{.cstrong} resp. $n \times n$ Matrix.
 +---+---------------------------------------------+--------------------------------+
 
 
-
-
 ### Regeln für Determinanten
 
 - Wenn eine ganze Zeile oder eine ganze Spalte einer Matrix $A$ gleich $0$ ist, 
@@ -921,7 +1123,6 @@ Sei $A$ eine [quadratische]{.cstrong} resp. $n \times n$ Matrix.
 	so ändert sich die Determinante ebenfalls um den Faktor $k$.
 	Für eine $n \times n$-Matrix $A$ folgt daraus:
 	$$\det(k\cdot A) = k^n \cdot \det(A)$$
-
 
 
 ### Regel von Sarrus
@@ -1036,6 +1237,12 @@ Entwicklung nach der ersten Zeile:
 	&= 3 \\
  \end{align*}
 
+### Übung `r nextExercise()`: Determinaten bestimmen {.exercise} 
+
+Bestimmen Sie für die folgenden Matrizen die jeweilige Determinate mit einem geeignetem Verfahren:
+
+<->TO DO<->
+
 
 ### [Eliminationsverfahren](http://de.wikipedia.org/wiki/Determinante#Gau.C3.9Fsches_Eliminationsverfahren_zur_Determinantenberechnung) 
 
@@ -1090,6 +1297,13 @@ Daher ist
  \begin{equation*}
 	\det A = \det A^* = 1 \cdot (-1) \cdot (-1) \cdot 1 = 1
 \end{equation*}
+
+
+### Übung `r nextExercise()`: Determinaten bestimmen {.exercise} 
+
+Bestimmen Sie für die folgenden Matrizen die jeweilige Determinate mit Hilfe des Eliminationsverfahrens:
+
+<->TO DO<->
 
 
 ### Cramersche Regel
@@ -1795,10 +2009,10 @@ Die Vektoren $v_\lambda$ zu den *Eigenwerten* $\lambda$ mit $L \cdot v_\lambda =
 
 [Antwort:]{.cstrong}
 
-- Im Falle der Situation A schrumpft die Population, da beide Eigenwerte $\lambda$ gilt: 
+- Im Falle der Situation A **schrumpft** die Population, da beide Eigenwerte $\lambda$ gilt: 
 	$\displaystyle |\lambda | < 1$ und die zugehörigen Eigenvektoren den Phasenraum aufspannen.
 	
-- Im Falle der Situation B wächst die Population, da ein Eigenwert $\lambda$ gilt:
+- Im Falle der Situation B **wächst** die Population, da ein Eigenwert $\lambda$ gilt:
 	$\displaystyle |\lambda | > 1$ und die zugehörigen Eigenvektoren den Phasenraum aufspannen.
 
 ```{r finish-Lineare-Algebra, include=FALSE}
