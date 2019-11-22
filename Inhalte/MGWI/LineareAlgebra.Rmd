@@ -153,14 +153,14 @@ grid.arrange(p.1, p.2, p.3, p.4, nrow=2)
 
 \begin{align*}
 		0{,}36\cdot x+0{,}21\cdot y &=1{,}5													\\[-0.4em]
-		x+y&=5 						& &| -x 									\\[0.6em]
-		0{,}36\cdot x+0{,}21\cdot y &=1{,}5 			& &| \text{~} y \text{ für } x \text{ einsetzen}			\\[-0.4em]
+		x+y&=5 						& &\mid -x 									\\[0.6em]
+		0{,}36\cdot x+0{,}21\cdot y &=1{,}5 			& & \mid \text{~} y \text{ für } x \text{ einsetzen}			\\[-0.4em]
 		y&=5-x 																\\[0.6em]
-		0{,}36\cdot x+0{,}21\cdot (5-x) &=1{,}5 		& & | \text{ ausklammern \& zusammenfassen}		\\[-0.4em]
+		0{,}36\cdot x+0{,}21\cdot (5-x) &=1{,}5 		& & \mid \text{ ausklammern \& zusammenfassen}		\\[-0.4em]
 		y&=5-x 																\\[0.6em]
-		(0{,}36-0{,}21)\cdot  x + 1{,}05 &=1{,}5 	& &| - 1{,}05 								\\[-0.4em]
+		(0{,}36-0{,}21)\cdot  x + 1{,}05 &=1{,}5 	& & \mid - 1{,}05 								\\[-0.4em]
 		y&=5-x 																\\[0.6em]
-		0{,}15\cdot  x &=0{,}45 				& &| : 0{,}15								\\[-0.4em]
+		0{,}15\cdot  x &=0{,}45 				& & \mid : 0{,}15								\\[-0.4em]
 		y&=5-x																\\[0.6em]
 		x &=3																\\[-0.4em]
 		y&=5-x = 2 															\\		
@@ -432,9 +432,79 @@ $$A \pm B	= 	\begin{pmatrix}
 				\end{pmatrix}$$
 
 				
-### Übung `r nextExercise()`: Addition und Subtraktion von Matrizen und Vektoren {.exercise} 
+### Übung `r nextExercise()`: Addition und Subtraktion von Matrizen {.exercise} 
 
-<->TO DO<->
+Seien $\displaystyle A = \begin{pmatrix} 2 & 3 & 5 \\ 1 & 4 & 7\end{pmatrix}$, $\displaystyle B = \begin{pmatrix} -1 & 2 & 0 \\ 0 & -7 & 1\end{pmatrix}$ und $\displaystyle C = \begin{pmatrix} -2 & -3 & -5 \\ 0 & 7 & 1\end{pmatrix}$ gegeben.
+
+Berechnen Sie:
+
+a) A+B
+
+b) A-B
+
+c) A+C
+
+d) B-C
+
+e) A+B+C
+
+f) A-B-C
+
+```{r echo=FALSE, eval=FALSE}
+library(xtable)
+
+A = matrix(c(2, 3, 5, 1, 4, 7), nrow=2, ncol=3)
+B = matrix(c( -1, 2, 0, 0, -7, 1), nrow=2, ncol=3)
+C = matrix(c( -2, -3, -5, 0, 7, 1), nrow=2, ncol=3)
+
+x.a =xtable(A+B,align=rep("",ncol(A+B)+1), digits=0); 
+x.b =xtable(A-B,align=rep("",ncol(A-B)+1), digits=0); 
+x.c =xtable(A+C,align=rep("",ncol(A+C)+1), digits=0);
+x.d =xtable(B-C,align=rep("",ncol(B-C)+1), digits=0);
+x.e =xtable(A+B+C,align=rep("",ncol(A+B+C)+1), digits=0);
+x.f =xtable(A-B-C,align=rep("",ncol(A-B-C)+1), digits=0);
+
+print(x.a, floating=FALSE, tabular.environment="pmatrix", 
+  hline.after=NULL, include.rownames=FALSE, include.colnames=FALSE)
+print(x.b, floating=FALSE, tabular.environment="pmatrix", 
+  hline.after=NULL, include.rownames=FALSE, include.colnames=FALSE)
+print(x.c, floating=FALSE, tabular.environment="pmatrix", 
+  hline.after=NULL, include.rownames=FALSE, include.colnames=FALSE)
+print(x.d, floating=FALSE, tabular.environment="pmatrix", 
+  hline.after=NULL, include.rownames=FALSE, include.colnames=FALSE)
+print(x.e, floating=FALSE, tabular.environment="pmatrix", 
+  hline.after=NULL, include.rownames=FALSE, include.colnames=FALSE)
+print(x.f, floating=FALSE, tabular.environment="pmatrix", 
+  hline.after=NULL, include.rownames=FALSE, include.colnames=FALSE)
+```
+
+::: {.notes}
+
+a) $\displaystyle \begin{pmatrix} 1 & 5 & -3 \\  5 & 1 & 8 \end{pmatrix}$
+
+b) $\displaystyle\begin{pmatrix} 3 & 5 & 11 \\  1 & 1 & 6 \\ \end{pmatrix}$
+
+c) $\displaystyle\begin{pmatrix} 0 & 0 & 11 \\  0 & 1 & 8 \\ \end{pmatrix}$
+
+d) $\displaystyle\begin{pmatrix} 1 & 5 & -14 \\  5 & 0 & 0 \\ \end{pmatrix}$
+
+e) $\displaystyle\begin{pmatrix} -1 & 0 & 4 \\  2 & 1 & 9 \\ \end{pmatrix}$
+
+f) $\displaystyle\begin{pmatrix} 5 & 10 & 4 \\  4 & 1 & 5 \\ \end{pmatrix}$
+
+:::
+
+### Übung `r nextExercise()`: Addition und Subtraktion von Vektoren {.exercise} 
+
+Die Produktionsmengen dreier Produkte seien im ersten Halbjahr bzw. im zweiten Halbjahr gegeben durch die Produktionsverktoren
+
+$$x_1 = \begin{pmatrix} 10\,000 \\ 8\,000 \\ 14\,000\end{pmatrix}\quad \text{ und }\quad x_2 = \begin{pmatrix} 18\,000 \\ 10\,000 \\ 17\,000\end{pmatrix}.$$
+
+Wie lautet der Jahresproduktionsvektor $x$?
+
+::: {.notes}
+$$x = x_1 + x_2 = \begin{pmatrix} 10\,000 \\ 8\,000 \\ 14\,000\end{pmatrix} +  \begin{pmatrix} 18\,000 \\ 10\,000 \\ 17\,000\end{pmatrix} = \begin{pmatrix} 28\,000 \\ 18\,000 \\ 31\,000\end{pmatrix}$$
+:::
 
 ### Multiplikation mit einem Skalar 
 
@@ -473,9 +543,23 @@ Berechnen Sie für die folgenden Matrizen: $(-3)A+2B-C$
 
 $$A = \begin{pmatrix} 1 & 2 & -\frac13 \\ 0 & -1 & 4\end{pmatrix}, \quad B = \begin{pmatrix} \frac{1}{2} & 1 & 3 \\ 2 & -1 & 0\end{pmatrix}, \quad C = \begin{pmatrix} 1 & 8 & 7 \\ 6 & -5 & 8\end{pmatrix}$$ 
 
+```{r echo=FALSE, eval=FALSE}
+library(xtable)
+
+A = matrix(c( 1, 2, -(1/3), 0, -1, 4), nrow=2, ncol=3)
+B = matrix(c( 0.5, 1, 3, 2, -2, 0), nrow=2, ncol=3)
+C = matrix(c( 1, 8, 7, 6,-5, 8), nrow=2, ncol=3)
+
+x =xtable(-3*A+2*B-C,align=rep("",ncol(A+B)+1), digits=0); 
+
+print(x, floating=FALSE, tabular.environment="pmatrix", 
+  hline.after=NULL, include.rownames=FALSE, include.colnames=FALSE)
+```
+
+
 ::: {.notes}
 
-<->TO DO<->
+$$(-3)A+2B-C = \begin{pmatrix} -3 & 0 & 4 \\ -12 & -2 & -20 \end{pmatrix}$$
 
 :::
 
@@ -584,7 +668,42 @@ Bestimmen sie das Gleichungssystem und lösen Sie es.
 
 ### Übung `r nextExercise()`: Matrizen Multiplikation {.exercise} 
 
-<->TO DO<->
+Gegeben seien die Matrizen
+$$A = \begin{pmatrix} 2 & 0 & 1 \\ 3 & 1 & 1 \\ 2 & 1 & 0 \end{pmatrix}, \quad
+  B = \begin{pmatrix} -1 & 3 & 2 \\ 4 & 1 & 5  \end{pmatrix}, \quad
+  C = \begin{pmatrix} 0 & 1 \\ 1 & 0 \\ 2 & 2 \end{pmatrix} \quad \text{und} \quad
+  D = \begin{pmatrix} 2 & -1 \\ 1 & 0 \end{pmatrix}.$$
+  
+Berechnen Sie, sofern es möglich ist, die folgenden Matrizen:
+
+:::::: {.columns}
+::: {.column width="48%"}
+
+a) $AB$
+
+b) $BA$
+
+c) $3BC-2D^2$
+
+e) $DC$
+
+:::
+::: {.column width="48%"}
+
+f) $CD$
+
+g) $CBA$
+
+h) $(CB)^2 + 2 CBA + A^2$
+
+:::
+::::::
+
+::: {.notes}
+
+...
+
+:::
 
 
 ### Sonderformen der Multiplikation
@@ -603,18 +722,60 @@ Bestimmen sie das Gleichungssystem und lösen Sie es.
 - Mensch [transponiert]{.cstrong} eine *Matrix* (resp. *Vektor*) in dem mensch aus jeder Zeile eine Spalte macht.
 
 
-### Übung `r nextExercise()`: Skalarprodukte und Transponieren von Matrizen {.exercise} 
+### Übung `r nextExercise()`: Transponieren von Matrizen {.exercise} 
 
-<->TO DO<->
+Gegeben seien die Matrizen
+$$A = \begin{pmatrix} 2 & 0 & 1 \\ 3 & 1 & 1 \\ 2 & 1 & 0 \end{pmatrix}, \quad
+  B = \begin{pmatrix} -1 & 3 & 2 \\ 4 & 1 & 5  \end{pmatrix}, \quad
+  C = \begin{pmatrix} 0 & 1 \\ 1 & 0 \\ 2 & 2 \end{pmatrix} \quad \text{und} \quad
+  D = \begin{pmatrix} 2 & -1 \\ 1 & 0 \end{pmatrix}.$$
 
+Bitte schreiben Sie die folgenden Matrizen auf:
 
-### Übung `r nextExercise()`: {.exercise} 
+:::::: {.columns}
+::: {.column width="48%"}
+
+a) $A^T$
+
+b) $B^T$
+
+c) $C^T$
+
+d) $D^T$
+
+:::
+::: {.column width="48%"}
+
+e) $(AB)^T$
+
+f) $B^TA^T$
+
+g) $(BC)^T$
+
+h) $C^T B^T$
+
+:::
+::::::
+
+::: {.notes}
+
+...
+
+:::
+
+### Übung `r nextExercise()`: Skalarprodukte {.exercise} 
 
 a) Eine Unternehmung stellt vier Produkte her, welche pro Mengeneinheit einen Gewinn von $2$, $3$, $5$ bzw. $7$ Euro abwerfen.
 Stellen Sie mit Hilfe eines Skalarproduktes den Gesamtgewinn in Abhängigkeit von der Erzeugnismenge dar!
 
 b) Die Länge (oder auch der Betrag) eines Vektors ist die Wurzel aus dem Skalarprodukt mit sich selber. Berechnen Sie die Länge der folgenden Vektoren: 
 $$a = \begin{pmatrix} 1 \\ 2 \\ 3 \\ 4 \end{pmatrix}, \quad b = \begin{pmatrix} 1 \\ -2 \\ 3 \end{pmatrix}\quad c = \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}$$
+
+::: {.notes}
+
+...
+
+::: 
 
 ## Rechnen mit Matrizen und Vektoren
 
@@ -696,6 +857,7 @@ sol.2 <- A %*% sol
 
 
 ::: {.notes}
+
 Es ist:
 
 $$x_{t+1} = \begin{pmatrix} 0{,}7 & 0{,}2 \\  0{,}3 & 0{,}8 \end{pmatrix} \cdot x_{t}, \quad \text{mit} \quad x_{0}=\begin{pmatrix}S \\ G\end{pmatrix}=\begin{pmatrix} 120 \\ 80 \end{pmatrix}$$
@@ -751,13 +913,9 @@ Wir brauchen somit formal 'nur' $A \cdot x = b$ zu lösen.
 
 Wir können die LGS in Matrizenschreibweise ganz analog zu den normalen LGS lösen.
 Dazu schreiben wir sie in die [erweiterte Matrix]{.cstrong}
-\begin{equation*}
-	(A|b) =
-	\begin{pmatrix}
-		0{,}36 	& 0{,}21	& | & 1{,}5\\
-		1		& 1			& | & 5\\
-	\end{pmatrix}
-\end{equation*}
+
+$$(A|b) = \begin{pmatrix} 0{,}36 & 0{,}21 & \mid & 1{,}5\\ 1 & 1 & \mid  & 5\\ \end{pmatrix}$$
+
 um.
 
 Mit den *elementaren Zeilenumformungen* bearbeiten wir nun die erweiterte Matrix $(A|b)$,
@@ -769,48 +927,62 @@ haben.
 
 [Partielle Elimination:]{.cstrong} (Ziel: *Dreiecksmatrix*)
 
-$$\begin{pmatrix}
-		0{,}36 	& 0{,}21	& | & 1{,}5\\
-		1		& 1			& | & 5\\
-	\end{pmatrix}
+$$\left(\begin{array}{rr|r}
+		0{,}36 	& 0{,}21	& 1{,}5\\
+		1		& 1			& 5\\
+	\end{array}\right)
 	=
-	\begin{pmatrix}
-		1		& 1			& | & 5\\
-		0{,}36 	& 0{,}21	& | & 1{,}5\\
-	\end{pmatrix}
+	\left(\begin{array}{rr|r}
+		1		& 1			& 5\\
+		0{,}36 	& 0{,}21	& 1{,}5\\
+	\end{array}\right)
 	=
-	\begin{pmatrix}
-		1	& 1			& | & 5\\
-		0 	& -0{,}15	& | & -0{,}3\\
-	\end{pmatrix}$$
+	\left(\begin{array}{rr|r}
+		1	& 1			& 5\\
+		0 	& -0{,}15	& -0{,}3\\
+	\end{array}\right)$$
 
 [Vollständige Elimination:]{.cstrong} (Ziel: *Einheitsmatrix*)
 
 $$\phantom{%
-	\begin{pmatrix}
-		0{,}36 	& 0{,}21	& | & 1{,}5\\
-		1		& 1			& | & 5\\
-	\end{pmatrix}}
+	\left(\begin{array}{rr|r}
+		0{,}36 	& 0{,}21	&  1{,}5\\
+		1		& 1			&  5\\
+	\end{array}\right)}
 	=
-	\begin{pmatrix}
-		1	& 1	& | & 5\\
-		0 	& 1	& | & 2\\
-	\end{pmatrix}
+	\left(\begin{array}{rr|r}
+		1	& 1	&  5\\
+		0 	& 1	& 2\\
+	\end{array}\right)
 	=
-	\begin{pmatrix}
-		1	& 0	& | & 3\\
-		0 	& 1	& | & 2\\
-	\end{pmatrix}$$
+	\left(\begin{array}{rr|r}
+		1	& 0	& 3\\
+		0 	& 1	& 2\\
+	\end{array}\right)$$
 
 Kann mensch keine *Dreiecksmatrix* (bzw. *Einheitsmatrix*) erhalten, 
 ist das LGS nicht lösbar oder hat unendlich viele Lösungen!
+
 
 ### Übung `r nextExercise()`: Vollständige Elimination {.exercise} 
 
 Lösen Sie die folgenden Gleichungssysteme mit Hilfe der *vollständigen Elimination*:
 
-<->TO DO<->
+a) $$\sysdelim.. \systeme{-y+z =38, 4x+2y+3z=-19, 3x-z=19}$$
 
+b) $$\sysdelim.. \systeme{x-4y+3z=16, -2x+y-5z=-12, 4x+5y+9z=4, 7y-z=-20}$$
+
+c) $$\sysdelim.. \systeme{-x-2y+z = 8, 2x+3y-z=-10, -x-4y+3z = 10}$$
+
+::: {.notes}
+
+a) $x=8$, $y=-33$, $z=5$
+
+b) Unendlich viele Lösungen der Form: $y = - \frac{1}{17}\cdot x - \frac{44}{17}$, $z = - \frac{7}{17}\cdot x + \frac{32}{17}$
+
+c) Das LGS hat **keine** Lösung!
+
+:::
 
 ### Division von Matrizen
 
@@ -852,9 +1024,9 @@ $$E_1 = (1), \quad
 Falls mensch für ein LGS $A x = b$ die *Inverse* von $A$ kennt, kann mensch wie folgt rechnen
 
 \begin{align*}
-	A \cdot x 				&= b  			& & | \text{ Auf beiden Seiten von links mal } A^{-1} \\
-	A^{-1} \cdot A \cdot x 	&= A^{-1} \cdot b 	& & | \text{ Zusammenfassen} \\
-	E_n \cdot x			&= A^{-1} \cdot b	& & | \text{ Einheitsmatrix ausnutzen} \\
+	A \cdot x 				&= b  			& & \mid \text{ Auf beiden Seiten von links mal } A^{-1} \\
+	A^{-1} \cdot A \cdot x 	&= A^{-1} \cdot b 	& & \mid \text{ Zusammenfassen} \\
+	E_n \cdot x			&= A^{-1} \cdot b	& & \mid \text{ Einheitsmatrix ausnutzen} \\
 	x					&= A^{-1} \cdot b	& & \\
 \end{align*}
 
@@ -914,12 +1086,12 @@ $$A =	\begin{pmatrix}
 
 Wir schreiben die Einheitsmatrix rechts daneben:
 
-$$\begin{pmatrix}
-			 1 & -2 &   4 &   5 & | & 1 & 0 & 0 & 0 \\
-			 2 & -5 &   9 &  12 & | & 0 & 1 & 0 & 0 \\
-			-3 &  6 & -13 & -15 & | & 0 & 0 & 1 & 0 \\
-			 3 & -6 &  12 &  16 & | & 0 & 0 & 0 & 1 \\
-		\end{pmatrix}$$
+$$\left(\begin{array}{rrrr|rrrrr}
+			 1 & -2 &   4 &   5 &  1 & 0 & 0 & 0 \\
+			 2 & -5 &   9 &  12 &  0 & 1 & 0 & 0 \\
+			-3 &  6 & -13 & -15 &  0 & 0 & 1 & 0 \\
+			 3 & -6 &  12 &  16 &  0 & 0 & 0 & 1 \\
+		\end{array}\right)$$
 		
 
 ### Bestimmen der Inversen (II)
@@ -928,12 +1100,12 @@ Wir formen -- mit Hilfe der elementaren Zeilenumformungen -- um,
 bis wir auf der linken Seite die Einheitsmatrix erhalten.
 Und erhalten so auf der rechten Seite die Inverse von $A$
 
-$$\begin{pmatrix}
-			 1 & 0 & 0 & 0 & | & 14 & -2 &  2 & -1 \\
-			 0 & 1 & 0 & 0 & | &  -7 & -1 & -1 & 2 \\
-			 0 & 0 & 1 & 0 & | &  -3 &  0 & -1 & 0 \\
-			 0 & 0 & 0 & 1 & | &  -3 &  0 &  0 & 1 \\
-		\end{pmatrix}$$
+$$\left(\begin{array}{rrrr|rrrrr}
+			 1 & 0 & 0 & 0 & \end{array}\right) 14 & -2 &  2 & -1 \\
+			 0 & 1 & 0 & 0 &   -7 & -1 & -1 & 2 \\
+			 0 & 0 & 1 & 0 &   -3 &  0 & -1 & 0 \\
+			 0 & 0 & 0 & 1 &   -3 &  0 &  0 & 1 \\
+		\end{array}\right)$$
 
 Es ist also 
 
@@ -968,9 +1140,23 @@ $$\begin{pmatrix}
 
 ### Übung `r nextExercise()`: Lösen mit Hilfe der Inversen {.exercise} 
 
-Bestimmen Sie für die folgenden LGS die Inverse zu $A$ und lösen Sie damit jeweilige LGS:
+Bestimmen Sie für die folgenden LGS die Inverse zu $A$ und lösen Sie damit jeweilige LGS $Ax=b_i$:
 
-<->TO DO<->
+a) $A=\begin{pmatrix} 1 & 2 & -1 \\ 2 & 4 & 1 \\ 1 & 1 & 1 \end{pmatrix}$, 
+    $b_1 = \begin{pmatrix}5 \\ 2 \\ -1 \end{pmatrix}$, 
+    $b_2 = \begin{pmatrix}-2 \\ 1 \\ 10 \end{pmatrix}$, 
+    $b_3 = \begin{pmatrix}9{,}8 \\4{,}2 \\ -7{,}5 \end{pmatrix}$
+
+b) $A=\begin{pmatrix} 2 & -2 & -1 \\ 1 & -1 & 2 \\ 1 & 1 & 3 \end{pmatrix}$, 
+    $b_1 = \begin{pmatrix}8 \\ 7 \\ -31 \end{pmatrix}$, 
+    $b_2 = \begin{pmatrix}100 \\ -200 \\ 500\end{pmatrix}$, 
+    $b_3 = \begin{pmatrix}21{,}7 \\ -1{,}6 \\ 3{,}7 \end{pmatrix}$
+
+::: {.notes}
+
+...
+
+:::
 
 
 ### Matrixschreibweise und Lösungen 
