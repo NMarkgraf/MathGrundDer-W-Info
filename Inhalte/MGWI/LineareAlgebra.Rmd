@@ -1101,7 +1101,7 @@ bis wir auf der linken Seite die Einheitsmatrix erhalten.
 Und erhalten so auf der rechten Seite die Inverse von $A$
 
 $$\left(\begin{array}{rrrr|rrrrr}
-			 1 & 0 & 0 & 0 & \end{array}\right) 14 & -2 &  2 & -1 \\
+			 1 & 0 & 0 & 0 &   14 & -2 &  2 & -1 \\
 			 0 & 1 & 0 & 0 &   -7 & -1 & -1 & 2 \\
 			 0 & 0 & 1 & 0 &   -3 &  0 & -1 & 0 \\
 			 0 & 0 & 0 & 1 &   -3 &  0 &  0 & 1 \\
@@ -1434,7 +1434,7 @@ b) $\displaystyle A = \begin{pmatrix} 1 & -1 & 3 \\  2 & -2 & -3 \\ 0 & 1 & 2 \e
 
 c) $\displaystyle A = \begin{pmatrix} 1 & 2 & 3\\ 3 & 2 & 1 \\ 2 & 4 & 6  \end{pmatrix}$
 
-d) $\displaystyle A = \begin{pmatrix} 1 & 2 & 3 & 4\\ 0 & 2 & 0 & 1 \\ -1 & 3 & 1 & 5 \\ 4 & -2 & 1 & 4  \end{pmatrix}$
+d) $\displaystyle A = \begin{pmatrix} 1 & 2 & 3 & 4 \\ 0 & 2 & 0 & 1 \\ -1 & 3 & 1 & 5 \\ 4 & -2 & 1 & 4  \end{pmatrix}$
 
 e) $\displaystyle A = \begin{pmatrix} 1 & 2 & 3 & 4\\ 0 & 2 & 0 & 1 \\ 0 & 0 & 5 & 5 \\ 0 & 0 & 0 & 1  \end{pmatrix}$
 
@@ -1512,9 +1512,9 @@ Daher ist
 
 Bestimmen Sie für die folgenden Matrizen die jeweilige Determinate mit Hilfe des Eliminationsverfahrens:
 
-a) $\displaystyleA = \begin{pmatrix} 1 & 2 & 3 & 4 \\ 2 & 1 & -2 & 3 \\ 3 & 4 & 2 & -1 \\ -1 & -2 & -3 & -3 \end{pmatrix}$
+a) $\displaystyle A = \begin{pmatrix} 1 & 2 & 3 & 4 \\ 2 & 1 & -2 & 3 \\ 3 & 4 & 2 & -1 \\ -1 & -2 & -3 & -3 \end{pmatrix}$
 
-b) $\displaystyleA = \begin{pmatrix} 1 & 2 & 3 & 4 \\ -1 & 1 & -2 & -3 \\ -2 & 4 & -2 & -1 \\ 0 & -2 & -3 & -3 \end{pmatrix}$
+b) $\displaystyle A = \begin{pmatrix} 1 & 2 & 3 & 4 \\ -1 & 1 & -2 & -3 \\ -2 & 4 & -2 & -1 \\ 0 & -2 & -3 & -3 \end{pmatrix}$
 
 ::: {.notes}
 
