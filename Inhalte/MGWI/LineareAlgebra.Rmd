@@ -1423,12 +1423,35 @@ Entwicklung nach der ersten Zeile:
 	&= 3 \\
  \end{align*}
 
+
 ### Übung `r nextExercise()`: Determinaten bestimmen {.exercise} 
 
 Bestimmen Sie für die folgenden Matrizen die jeweilige Determinate mit einem geeignetem Verfahren:
 
-<->TO DO<->
+a) $\displaystyle A = \begin{pmatrix} 1 & 2 \\ -1 & 2 \end{pmatrix}$
 
+b) $\displaystyle A = \begin{pmatrix} 1 & -1 & 3 \\  2 & -2 & -3 \\ 0 & 1 & 2 \end{pmatrix}$
+
+c) $\displaystyle A = \begin{pmatrix} 1 & 2 & 3\\ 3 & 2 & 1 \\ 2 & 4 & 6  \end{pmatrix}$
+
+d) $\displaystyle A = \begin{pmatrix} 1 & 2 & 3 & 4\\ 0 & 2 & 0 & 1 \\ -1 & 3 & 1 & 5 \\ 4 & -2 & 1 & 4  \end{pmatrix}$
+
+e) $\displaystyle A = \begin{pmatrix} 1 & 2 & 3 & 4\\ 0 & 2 & 0 & 1 \\ 0 & 0 & 5 & 5 \\ 0 & 0 & 0 & 1  \end{pmatrix}$
+
+
+::: {.notes}
+
+a) $\det(A) = 4$
+
+b) $\det(A) = 9$
+
+c) $\det(A) = 0$
+
+d) $\det(A) = 87$
+
+e) $\det(A) = 10$
+
+:::
 
 ### [Eliminationsverfahren](http://de.wikipedia.org/wiki/Determinante#Gau.C3.9Fsches_Eliminationsverfahren_zur_Determinantenberechnung) 
 
@@ -1489,8 +1512,17 @@ Daher ist
 
 Bestimmen Sie für die folgenden Matrizen die jeweilige Determinate mit Hilfe des Eliminationsverfahrens:
 
-<->TO DO<->
+a) $\displaystyleA = \begin{pmatrix} 1 & 2 & 3 & 4 \\ 2 & 1 & -2 & 3 \\ 3 & 4 & 2 & -1 \\ -1 & -2 & -3 & -3 \end{pmatrix}$
 
+b) $\displaystyleA = \begin{pmatrix} 1 & 2 & 3 & 4 \\ -1 & 1 & -2 & -3 \\ -2 & 4 & -2 & -1 \\ 0 & -2 & -3 & -3 \end{pmatrix}$
+
+::: {.notes}
+
+a) $\displaystyle \det(A) = 5$
+
+b) $\displaystyle \det(A) = 21$
+
+:::
 
 ### Cramersche Regel
 
