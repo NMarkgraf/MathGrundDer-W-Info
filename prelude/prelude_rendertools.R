@@ -70,7 +70,7 @@ write_utf8 <- function(text, f = tempfile(), bom=FALSE) {
     # steo 2a: write BOM if needed.
     if (bom) {
     #  writeLines(BOM, con = con), endian = "little")
-      writeChar("\ufeff", con, eos = NULL) 
+      writeChar("\ufeff", con=con, eos = NULL, useByte=TRUE) 
     }
     
     # step 3: write to the connection with 'useBytes = TRUE',
@@ -113,7 +113,6 @@ write_utf8 <- function(text, f = tempfile(), bom=FALSE) {
         tmpInst <- Studienort
     }
     
-#    out <- file(privymlfn, "w", encoding = "UTF-8")
     if (is.null(DozInfo)) {
       tmp <- paste0(
         "---\nauthor: \"FOM\"\ndate: \"", Semester, "\"",
@@ -140,8 +139,11 @@ write_utf8 <- function(text, f = tempfile(), bom=FALSE) {
     flog.info(paste0("Create new '", privymlfn, "'"))
     flog.info(paste0("Content of '", privymlfn, "':\n", tmp))
 
-    # Use BOM on windows systems
-    write_utf8(tmp, privymlfn, bom=(.Platform$OS.type == "windows"))
+    if (.Platform$OS.type == "windows") 
+        cat(iconv(tmp), to=privymlfn)
+    else
+        # Use BOM on windows systems
+        write_utf8(tmp, privymlfn, bom=(.Platform$OS.type == "windows"))
 
 #    cat(iconv(tmp, to="UTF-8"), file = out)
 #    close(out)
