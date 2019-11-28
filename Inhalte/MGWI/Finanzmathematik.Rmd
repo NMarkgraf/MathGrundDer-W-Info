@@ -212,7 +212,7 @@ Mit $T_2-T_1 = 253$ Zinstagen gilt für den Kapitalendwert:
 $$K_t = K_0\left(1+i\cdot\frac{T_2-T_1}{360}\right)= 5\,000\left(1+0{,}0175\cdot\frac{253}{360}\right) = 5\,061{,}49$$
 
 - Vom 28.02. bis zum 1.03. eines Jahres werden $3\,000$ € zu $2{,}2\,\%$ angelegt:
-$$K_t = K_0\left(1+i\cdot\frac{T_2-T_1}{360}\right)= 3\,000\left(1+0{,}022\cdot\frac{6158}{360}\right) = 3\,000{,}55$$
+$$K_t = K_0\left(1+i\cdot\frac{T_2-T_1}{360}\right)= 3\,000\left(1+0{,}022\cdot\frac{61-58}{360}\right) = 3\,000{,}55$$
 
 
 - Vom 10.09. bis zum 31.10. eines Jahres werden $9\,000$ € zu $1{,}1\,\%$ angelegt:
@@ -231,7 +231,7 @@ c)	Eine Rechnung über $3\,250$ € wird nicht bezahlt. Daher sind Verzugszinsen
 
 a) $K_t = 3\,055{,}00$
 
-b) $K_0 = 107{,}05$
+b) $K_0 = 107{,}58$
 
 c) $T_2 - T_1 = 200$ Tage
 
@@ -242,9 +242,9 @@ c) $T_2 - T_1 = 200$ Tage
 
 a)  Robin hatte am 20.2. $11\,000$ € angelegt und erhielt am 18.10. des selben Jahres $11\,500$ € Endkapital ausgezahlt. Wie hoch war sein Zinssatz?
 
-b) Rudolf hat am 12.02 insgesamt $9\,000,00$ € zu einem Zinssatz von $5\,\%$ angelegt. Wann kann er seine Anlage auflösen, wenn er insgesamt Zinsen in Höhe von genau 300 € erhalten will?
+b) Rudolf hat am 12.02. insgesamt $9\,000,00$ € zu einem Zinssatz von $5\,\%$ angelegt. Wann kann er seine Anlage auflösen, wenn er insgesamt Zinsen in Höhe von genau 300 € erhalten will?
 
-c) Hanna legt am 12. 11. eines Jahres $12\,000$ € zu $5{,}0\,\%$ Zinsen bei der Bank an. Wie hoch ist ihr Endkapital am 31.12.?
+c) Hanna legt am 12.11. eines Jahres $12\,000$ € zu $5{,}0\,\%$ Zinsen bei der Bank an. Wie hoch ist ihr Endkapital am 31.12.?
 
 d) Walter legt am 12. Januar eines Jahres $2\,100$ € zu $3{,}9\,\%$ Zinsen bei der Bank an. Wie hoch ist sein Endkapital am 16. September?
 
@@ -333,6 +333,7 @@ Stellen Sie die Abrechnung zum 1. April auf, wenn die Bank das Konto monatlich z
 Ein- und Auszahlungen fallen in praktischen Fällen selten mit dem Anfang und dem Ende von Zinsperioden oder Jahren zusammen.
 :::
 ::: {.footnotesize}
+
 | Symbol | Bezeichnung                                |
 |:------:|:-------------------------------------------|
 | $K_0$  | Anfangskapital                             |
@@ -564,7 +565,7 @@ b) $2\,665{,}46$ Euro
 
 c) $K_1 = 3\,769{,}29$ und $K_10 = 4\,504{,}65$
 
-d) Ja, denn $R \cdot (100\,\%- 2\,\%) = R \cdot 0{,} 98 < \frac{R}{1+8\,\%\cdot\frac{1}{12}} = R \cdot 0{,}9934$
+d) Ja, denn $R \cdot (100\,\%- 2\,\%) = R \cdot 0{,}98 < \frac{R}{1+8\,\%\cdot\frac{1}{12}} = R \cdot 0{,}9934$
 
 e) $17\,843{,}09$ Euro
 
