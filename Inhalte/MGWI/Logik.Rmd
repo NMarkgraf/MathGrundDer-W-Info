@@ -378,7 +378,35 @@ Wir zeigen nun, dass diese Aussage *falsch* ist, damit ist die Richtigkeit der z
 
 $$[A \wedge (\neg B \Rightarrow \neg A)] \Rightarrow B \quad\text{ ist immer wahr!}$$
 
-#### $\sqrt{2}$ ist irrational {.example}
+#### Widerspruchsbeweis {.example}
+
+**Behauptung:** Für alle Primzahlen $p \geq 2$ und $k \in \mathbf{N}$ ist $n = k\cdot p +1$ nicht durch $p$ teilbar!
+
+
+**Beweis:** Wir nehmen an, dass $p$ doch $n= k \cdot p + 1$ teilt, es also ein $j \in \mathbf{N}$ gibt, mit $n = j \cdot p$. 
+Dann muss $j-k \geq 1$ sein und es gilt:
+$$k \cdot p + 1 = j \cdot p \Leftrightarrow 1 = (j-k) \cdot p \geq 1 \cdot p \geq 2$$
+Da $1 \geq 2$ aber nicht seien kann, haben wir einen Widerspruch.
+
+### Beispiel: Es gibt unendliche viele Primzahlen
+
+**Behauptung:** Es gibt unendliche viele Primzahlen.
+
+
+**Beweis:** Angenommen es gebe nur endlich viele Primzahlen $p_1, \dots, p_{\text{max}}$.
+Dann ist jede natürliche Zahl $n>1$ durch mindestens eine dieser Primzahlen teilbar.
+
+Sei nun
+
+$$m = 1 + \prod_{i=1}^{\text{max}} p_i$$
+das Produkt aller Primzahlen plus 1.
+Dann ist $m$ wegen dem Beispiel oben durch keine der zahlen $p_i$ teilbar!
+Somit ist endweder $m$ eine neue Primzahl oder aber es gibt noch eine Primzahl, welche m teilt, aber nicht in den endlich vielen Primzahlen $p_i\dots, p_{\text{max}}$ enthalten war.
+Das ist aber ein Widerspruch zur Annahme, das dies alle Primzahlen waren. 
+Es gibt also unendlich viele Primzahlen.
+
+
+### Beispiel: $\sqrt{2}$ ist irrational 
 
 Angenommen es gäbe zwei teilerfremde ganze Zahlen $p$, $q$ mit $\sqrt{2} = p/q$. 
 Dann wäre $2 = p^2/q^2$ und daher auch $2\cdot q^2= p^2$. 

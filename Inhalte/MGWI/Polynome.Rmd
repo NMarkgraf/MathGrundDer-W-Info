@@ -33,6 +33,7 @@ Die $a_i$ werden [Koeffizienten]{.cstrong} des Polynoms genannt. Ist $a_n \neq 0
 - [Lineare Funktionen]{.cstrong} $p(x)= m \cdot x + b$ mit *Steigung* $0\neq m\in \mathbf{K}$ und *y-Achensabschnitt* $b\in \mathbf{K}$ sind Polynome vom Grad $1$. 
 - [Quadratische Funktionen]{.cstrong} $p(x) = a x^2+bx + c$ mit $0\neq a, b, c \in \mathbf{K}$ sind Polynome vom Grad $2$. 
 
+
 ### Der Polynomring $\mathbf{K[x]}$
 
 #### Polynomring {.definition}
@@ -45,6 +46,7 @@ Seien $p(x)=x^3+x$ und $q(x)=x+1$ aus $\mathbf{R[x]}$, dann ist:
 
 - $p+q = p(x)+q(x) = (x^3+x) + (x+1) = x^3 + 2x +1$
 - $p\cdot q = p(x) \cdot q(x) = (x^3+x) \cdot (x+1) = x^4+x^3+x^2+x$
+
 
 ### Übung : Rechnen mit Polynomringen über endlichen Körpern.
 
@@ -74,14 +76,51 @@ b)
 
 ### Polynomdivision
 
+#### Polynomdivision {.definition}
+Seien $p(x)$ und $q(x)$ Polynome mit $\deg(q)\leq \deg(p)$.
+Dann gibt es Polynome $s(x)$ und $r(x)$, so dass
+
+$$p(x) = s(x)q(x)+r(x)$$
+
+gilt. Weiter ist $\deg(s) = \deg(p)- \deg(q)$ und $\deg(r) < \deg(q)$.
+
+
+#### {.example}
+
+Es sind:
+
+a) $(3x^4+x^3-2x)= (x^2+1) \cdot (3x^2+x-3) + (-3x+3)$
+b) $(x^2+x-2) = (x+2) \cdot (x-1) + (0)$ 
+
+### Übung {.exercise}
+
+a) Geben Sie alle Teiler des reellen Polynoms $q(x) = (x-5)(x-3)$ an.
+
+b) Geben Sie alle (normierten) Teiler des reelen Polynoms $p(x) = (2x-1)(x-3)^2$ an.
+
+::: {.notes}
+
+a) $1$, $(x-5)$, $(x-3)$ und $x^2-8x+15$.
+
+b) Wegen $p(x) = 2 (x-1/2) (x-3)^2$ sind dasn $1$, $(x-1/2)$, $x-3$, $(x-1/2)(x-3)$, $(x-1/2)(x-3)^2$ und $(x-3)^2$. 
+
+:::
+
+
 ### Linearfaktor
+
+Für ein $x_0 \in  \mathbf{K}$ lässt sich eine Polynom $p(x)$ genau dann durch den **Linearfaktor** $q(x)=x-x_0$ ohne Rest teilen, also 
+
+$$p(x) = s(x)(x-x_0)$$
+
+für ein passendes Polynom $s(x)$, wenn $p(x_0)=0$, also $x_0$ eine Nullstelle von $p(x)$ ist.
+
 
 ### Größter gemeinsamer Teiler 
 
 ### Eukidscher Algorithmus für Polynome
 
 ### Erweiterter Eukidscher Algorithmus für Polynome
-
 
 ...
 ```{r finish-Polynome, include=FALSE}
