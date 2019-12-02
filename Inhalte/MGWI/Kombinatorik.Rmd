@@ -106,9 +106,7 @@ Jede Menge, die gleichmächtig zu $\mathbf{N}$ oder einem  Element aus $\mathbf{
 #### Produktregel (für endliche Mengen) {.theorem}
 		
 Für beliebige (endliche) Mengen $A$ und $B$ gilt:\vspace*{-.7em}
-\begin{equation*} 
-	|A \times B| = |A| \cdot |B| 
-\end{equation*}
+$$|A \times B| = |A| \cdot |B|$$
 
 #### Routenplanung {.example}
 
@@ -466,12 +464,13 @@ Gegeben sei das Tuppel $(a,b,c,d)$
 
 from itertools import permutations
 
+
 def main():
     print([x for x in permutations('abcd')])
 
+
 if __name__ == "__main__":
     main()
-
 :::
 
 
@@ -545,21 +544,18 @@ Berechnen Sie:
 ### Rechenregeln für Binomialkoeffizienten
 	
 Für Binomialkoeffizienten gelten die folgenden Regeln ($n,k \in \mathbf{N}$ und $k \leq n$):
-	
-\textbf{Wichtige Werte: (Randwerte)}
-\begin{equation*}
-	\binom{n}{0} = \binom{n}{n} = 1
-\end{equation*}  
-	
-\textbf{Summe:}
-\begin{equation*}
-	\binom{n}{1} = \binom{n}{n-1} =  \sum_{j=1}^{n-1} 1 = n
-\end{equation*}  
 
-\textbf{Gauß'sche-Summen:}
-\begin{equation*}
-	\binom{n}{2} = \binom{n}{n-2} = \sum_{j=1}^{n-1} j =  \frac{n\cdot(n-1)}{2}
-\end{equation*} 
+	
+**Wichtige Werte: (Randwerte)**
+$$\binom{n}{0} = \binom{n}{n} = 1$$
+
+
+**Summe:**
+$$\binom{n}{1} = \binom{n}{n-1} =  \sum_{j=1}^{n} 1 = n$$
+
+
+**Gauß'sche-Summen:**
+$$\binom{n}{2} = \binom{n}{n-2} = \sum_{j=1}^{n-1} j =  \frac{n\cdot(n-1)}{2}$$
 
 	
 ### Rechenregeln für Binomialkoeffizienten (forts.)
@@ -578,8 +574,10 @@ $$\sum_{k=0}^{n} \binom{n}{k} = 2^n$$
 **Additionseigenschaft:**
 $$\binom{n}{k} + \binom{n}{k+1} = \binom{n+1}{k+1}$$	
 
+
 **Rekursiver Abstieg:**
 $$k \cdot \binom{n}{k} = n \cdot \binom{n-1}{k-1}$$
+
 
 ### Das Pascal'sche Dreieck
 	
@@ -607,12 +605,12 @@ $$k \cdot \binom{n}{k} = n \cdot \binom{n-1}{k-1}$$
 		\end{column}
 \end{columns}
 
-  
 
 #### {.remark}
+
 Das Pascal'sche Dreieck war jedoch schon früher bekannt und wird deshalb auch heute noch nach anderen \glqq Entdeckern\grqq\xspace benannt.
 
-In China spricht man vom *Yang-Hui-Dreieck*, in Italien vom *Tartaglia-Dreieck* und im Iran vom *Chayy\={a}m-Dreieck*.
+In China spricht man vom *Yang-Hui-Dreieck*, in Italien vom *Tartaglia-Dreieck* und im Iran vom *Chayyam-Dreieck*.
 
 
 ### Übung `r nextExercise()`: für Programmierer (zu Hause!) {.exercise}
@@ -626,34 +624,28 @@ Testen Sie Ihr Programm mit den folgenden Werten:
 $$\binom{100}{1} = 100, \quad \binom{100}{50} = 100\,891\,344\,545\,564\,193\,334\,812\,497\,256 ,$$
 $$ \binom{1000}{3} = 166\,167\,000, \quad \binom{1000}{10}= 263\,409\,560\,461\,970\,212\,832\,400$$
 
-::: {.notes}
 
-#
+::: {.notes}
 # Berechnung des Binomialkoeffizenten 
 # mit Hilfe des rekusiven Abstiegs in
 # Python
 
 def binom(n, k):
-    if k > n:
+    if k > n or k < 0:
         return 0
-    if n < 0:
-        return 0
-    if k == 0:
+    if k > n - k:
+        k = n - k
+    if k == 0 or n <= 1:
         return 1
-    if k == 1:
-        return n
-    if k > n/2:
-        return binom(n, n-k)
     return n * binom(n-1, k-1) // k
-
 
 if __name__ == '__main__':
     print(binom(100, 1))
     print(binom(100, 50))
     print(binom(1000, 3))
     print(binom(1000, 10))
-
 :::
+
 
 ### Erweiterung der binomischen Formeln
 
@@ -710,7 +702,8 @@ a) $1001^4$
 a) $1{,}05^4$
 
 ::: {.notes}
-:::::: {.footnotesize}
+
+:::::: {.tiny}
 
 a) \begin{align*} 
     99^3 &= (100-1)^3\\
@@ -735,6 +728,7 @@ a) \begin{align*}
    \end{align*}
    
 ::::::
+
 :::
 
 
@@ -777,11 +771,9 @@ Ein Kandidat kann bis zu viermal ($k$-mal) bepunktet werden:
 
 
 Damit ergeben sich $8$ $(n+k-1)$ Optionen, aus denen ohne Wiederholung gewählt wird:
-\begin{equation*} 
-	\binom{5+4-1}{4} = \frac{8!}{4!(8-4)!}
+$$\binom{5+4-1}{4} = \frac{8!}{4!(8-4)!}
 					 =\frac{8 \cdot 7 \cdot 6 \cdot 5}{4 \cdot 3 \cdot 2 \cdot 1} 
-					 = 70 
-\end{equation*}
+					 = 70$$
 
 
 ### Beispiel
@@ -790,47 +782,40 @@ Damit ergeben sich $8$ $(n+k-1)$ Optionen, aus denen ohne Wiederholung gewählt 
 
 Es gibt Gummibären in $n=6$ Farben. Für die Auswahl von $k=4$ Gummibären, die nicht alle verschiedenfarbig sein müssen, gibt es dann
 
-\begin{equation*}
-	\binom{6+4-1}{4} = \binom{9}{4} = \frac{9\cdot 8\cdot 7 \cdot 6}{1 \cdot 2 \cdot 3 \cdot 4} = 126
-\end{equation*}
-
+$$\binom{6+4-1}{4} = \binom{9}{4} = \frac{9\cdot 8\cdot 7 \cdot 6}{1 \cdot 2 \cdot 3 \cdot 4} = 126$$
+	
 verschiedene Möglichkeiten.
 
 
 ### Regeln für Ziehungen mit Zurücklegen
 	
 #### Ziehungen mit Zurücklegen {.theorem}
-Die Anzahl der Möglichkeiten $k$ Elemente aus $n$ Elementen, auszuwählen, wobei jedes Element \textit{mehrfach} in der Auswahl vorkommen kann, ist
+Die Anzahl der Möglichkeiten $k$ Elemente aus $n$ Elementen, auszuwählen, wobei jedes Element *mehrfach* in der Auswahl vorkommen kann, ist
 
 - bei Beachtung der Reihenfolge: 
-	\begin{equation*} 
-		n^k 
-	\end{equation*}
+	$$n^k$$
 	
 - falls die Reihenfolge keine Rolle spielt:
-	\begin{equation*} 
-		\binom{n+k-1}{k} 
-	\end{equation*}
-
+	$$\binom{n+k-1}{k}$$
+	
 
 ### Zusammenfassung der Zählregeln
 	
 Für die Anzahl der Möglichkeiten aus $n$ Objekten $k$ Objekte auszuwählen, gelten die folgenden Regeln:
-	
-\begin{center}
-	\begin{tabular}{lcc}
-		\toprule
-		Auswahl & \textbf{mit} Beachtung	& \textbf{ohne} Beachtung 	\\
-		~		& der Reihenfolge			& der Reihenfolge 			\\
-		~		& (\textit{Variation})	 	& (\textit{Kombination}) 	\\
-		\midrule
-		ohne Zurücklegen & $\displaystyle\frac{n!}{(n-k)!}$	& $\displaystyle\binom{n}{k}$ \\
-		\midrule
-		mit  Zurücklegen & $\displaystyle n^k$			 	& $\displaystyle\binom{n+k-1}{k}$ \\
-		\bottomrule
-	\end{tabular}
-\end{center}
 
+::: {.center}
+
++------------------+----------------------------------+--------------------------------------------------------+
+| Auswahl          | **mit** Beachtung	              | **ohne** Beachtung                                     |
+|                  | der Reihenfolge                  | der Reihenfolge                                        |
+|                  | (*Variation*)                    | (*Kombination*)                                        |
++:=================+:================================:+:======================================================:+
+| ohne Zurücklegen | $\displaystyle\frac{n!}{(n-k)!}$ | $\displaystyle\binom{n}{k}$     |
++------------------+----------------------------------+--------------------------------------------------------+
+| mit  Zurücklegen | $\displaystyle n^k$              | $\displaystyle\binom{n+k-1}{k}$ |
++------------------+----------------------------------+--------------------------------------------------------+
+
+:::
 
 ### Übung `r nextExercise()`: {.exercise}
 
@@ -900,6 +885,7 @@ Auf wie viele Arten kann man aus 6 Frauen und 8 Männern einen Ausschuss aus 3 F
 4 Männern bilden?
 
 ::: {.notes}
+
 **4. Aufgabe**
 
 Man kann einmal das Problem aus der Sicht des Reinigungspersonal betrachten. Also nur die Frage stellen, welche Zimmer überhaupt belegt sind.
