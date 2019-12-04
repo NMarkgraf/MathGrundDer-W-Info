@@ -1,12 +1,24 @@
 ---
-title: "Formale Beschreinungsverfahren"
+title: "Formale Beschreinungsverfahren (WS 2019/20)"
+subtitle: "Probeklausur"
 author: "Norman Markgraf"
 date: "4.12.2019"
-output:
-  pdf_document: default
-  html_document:
-    df_print: paged
-subtitle: Probeklausur
+fontsize: 12pt
+papersize: a4
+# linestretch: 1.25
+indent: 0cm
+margin-left: 2.5cm
+margin-right: 2.5cm
+margin-top: 2.5cm
+margin-bottom: 2.5cm
+output: 
+    pdf_document:
+        latex_engine: pdflatex # sollte xelatex
+        template: NULL
+        keep_tex: true
+    html_document:
+        df_print: paged
+
 ---
 
 ```{r setup, include=FALSE}
