@@ -1,0 +1,127 @@
+---
+title: "Formale Beschreinungsverfahren"
+author: "Norman Markgraf"
+date: "4.12.2019"
+output:
+  pdf_document: default
+  html_document:
+    df_print: paged
+subtitle: Probeklausur
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+# library(Rgraphviz)
+pkt <- 0
+x <- 0
+```
+
+
+##  Aufgabe 1 (`r x<- 10; pkt<-pkt + x; x` Punkte)
+
+Erstellen Sie einen DEA, der nur Wörter akzeptiert, die mit 00 beginnen und mit 11 enden. Dazwischen können eine beliebige Anzahl von Nullen und Einsen stehen. 
+
+
+**Aufgaben:**
+
+a) Geben Sie das 5-Tupel des DEA an. (2 Punkte)
+
+b) Zeichnen Sie die Übgangsfunktion als Graph. (4 Punkte)
+
+c) Geben Sie die Übergangsfunktion als Tabelle an. (4 Punkte)
+
+
+## Aufgabe 2 (`r x<- 10; pkt<-pkt + x; x` Punkte)
+
+Gegeben sei der folgende NEA mit $\epsilon$-Übergangen:
+
+```{r NEA_1, engine="dot", engine.path="/opt/local/bin/dot", echo=FALSE, cache=TRUE}
+digraph nea_1 {
+    rankdir=LR;
+    size="7,5"
+
+    node [shape = doublecircle; label="q₁"]; q1;
+    node [shape = doublecircle; label="q₂"]; q2;
+    node [shape = point ]; Start;
+
+    node [shape = circle];
+    node [label = "q₀"]; q0;
+    
+    Start -> q0 [ label = "Start" ];
+
+    q0 -> q0 [ label = "a" ];
+    q0 -> q1 [ label = "ε" ];
+    q1 -> q2  [ label = "a" ];
+    q2 -> q1 [ label = "b" ];
+    q0 -> q2 [ label = "ε" ];
+
+    { rank=same; q1, q2}
+
+}
+
+```
+
+**Aufgaben:**
+
+a) Geben Sie die Sprache an, welche von diesem NEA akzeptiert wird.
+
+b) Geben Sie eine DEA an, welcher die selbe Sprache akzeptiert.
+
+
+\pagebreak
+
+## Aufgabe 3 (`r x<- 10; pkt<-pkt + x; x` Punkte)
+
+Entwickeln  Sie  einen  DEA,  der eine gültige Uhrzeit für die 12h-Anzeige (von 00:00 bis 11:59)  im  Format  11:56  (hh:mm)  akzeptiert.  
+
+**Beispielwörter:**
+
+ - **00:23**     wird akzeptiert 
+
+ - *45:12*     wird nicht akzeptiert 
+
+ - *:1234*     wird nicht akzeptiert 
+
+
+**Aufgaben:**
+
+
+a) Geben Sie das 5-Tupel des DEA an. (2 Punkte)
+
+b) Zeichnen Sie die Übgangsfunktion als Graph. (4 Punkte)
+
+c) Geben Sie die Übergangsfunktion als Tabelle an. (4 Punkte)
+
+
+
+## Aufgabe 4 (`r x<- 10; pkt<-pkt + x; x` Punkte)
+
+Entwickeln Sie einen NEA, der alle Eingabewörter über $\{a, b\}^*$ akzeptiert, die mindestens 2 mal das Teilwort „ab“ enthalten. 
+Die  Position  von  „ab“  innerhalb  des  Eingabewortes  spielt dabei keine Rolle. 
+
+**Beispielwörter:** 
+
+- **abab**      wird akzeptiert
+
+- *abaa*      wird nicht akzeptiert 
+
+- **abbaabb**   wird akzeptiert 
+
+
+**Hinweis:**
+
+Sie  werden  etwa  5  Zustände  für  diesen  Automaten benötigen. 
+
+
+**Aufgaben:**
+
+a) Geben Sie das 5-Tupel des NEA an. (2 Punkte)
+
+b) Zeichnen Sie die Übergangsfunktion als Graph. (4 Punkte)
+
+c) Geben Sie die Übergangsfunktion als Tabelle an. (4 Punkte)
+
+
+## Aufgabe 5 (`r x<- 10; pkt<-pkt + x; x` Punkte)
+
+Überführen Sie den NEA aus Aufgabe 4 in einen DEA mit möglichst wenigen Zuständen.

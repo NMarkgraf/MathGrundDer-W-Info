@@ -16,3 +16,5 @@ MathGrundlDWInfo_files/
 pandoc-filter/__pycache__/
 JUNK
 private.yaml
+*_files/
+*_cache/

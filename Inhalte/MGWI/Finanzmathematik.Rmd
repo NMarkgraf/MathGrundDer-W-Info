@@ -53,7 +53,7 @@ Um diese Frage zu klären, muss das sogenannte Endkapital, hier: das Kapital nac
 
 - **Angebot Bank A:** nach einem Jahr hat man 1000 Euro plus $5\,\%$ Zinsen also plus 50 Euro. Ergibt 1050 Euro. Nach 2 Jahren sind es 1050 Euro plus $5\,\%$ Zinsen also plus 52, 50 Euro Zinsen. Das Endkapital beträgt $1102{,}50$ Euro.
 
-- **Angebot Bank B:** nach einem Jahr hat man 1080 Euro ($1080 = 1000 + 0{,}08 \cdot 1000$), nach 2 Jahren (mit $2\.\%$ Zinsen auf 1080 Euro für das 2. Jahr: $21{,}60$ Euro) ist das Kapital $1101{,}60$ Euro. 
+- **Angebot Bank B:** nach einem Jahr hat man 1080 Euro ($1080 = 1000 + 0{,}08 \cdot 1000$), nach 2 Jahren (mit $2\,\%$ Zinsen auf 1080 Euro für das 2. Jahr: $21{,}60$ Euro) ist das Kapital $1101{,}60$ Euro. 
 
 - **Angebot Bank C:** nach dem 1. Jahr hat man 1020 Euro, nach dem 2. Jahr mit $8\,\%$ Zins ist das Kapital auch $1101{,}60$ Euro.
 

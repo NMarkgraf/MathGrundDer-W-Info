@@ -413,8 +413,9 @@ knitr::include_graphics(file.path(pathToImages, "Vektoren.png"))
 
 ### Addition & Subtraktion von Matrizen und Vektoren 
 
-- Mit Matrizen bzw. Vektoren gleicher Ordnung kann mensch rechnen!
-- *Addition* und *Subtraktion* erfolgt *komponentenweise*!
+Wir können Matrizen bzw. Vektoren gleicher Ordnung kann rechnen!
+
+Die **Addition** und **Subtraktion** von Matrizen gleicher Ordnung erfolgt **komponentenweise**!
 
 
 #### {.examples}
@@ -427,8 +428,8 @@ gegeben.
 
 Dann gilt:
 $$A \pm B	= 	\begin{pmatrix} 
-					a_{11} \pm b{11} & a_{12} \pm b{12}& a_{13} \pm b{13}\\ 
-					a_{21} \pm b{21} & a_{22} \pm b{22}& a_{23} \pm b{23}
+					a_{11} \pm b_{11} & a_{12} \pm b_{12}& a_{13} \pm b_{13}\\ 
+					a_{21} \pm b_{21} & a_{22} \pm b_{22}& a_{23} \pm b_{23}
 				\end{pmatrix}$$
 
 				
@@ -508,10 +509,10 @@ $$x = x_1 + x_2 = \begin{pmatrix} 10\,000 \\ 8\,000 \\ 14\,000\end{pmatrix} +  \
 
 ### Multiplikation mit einem Skalar 
 
-- Eine *reelle Zahl* wollen wir zur besseren Unterscheidung [Skalar]{.cstrong} nennen.
+Eine *reelle Zahl* wollen wir zur besseren Unterscheidung [Skalar]{.cstrong} nennen.
 
-- Mensch kann eine *Matrix* (resp. einen *Vektor*) mit einem *Skalar* [multiplizieren]{.cstrong}. 
-	In dem mensch *jedes Element* mit dem *Skalar multipliziert*.
+Wir können eine *Matrix* (resp. einen *Vektor*) mit einem *Skalar* [multiplizieren]{.cstrong}, 
+in dem wir *jedes Element* mit dem *Skalar multipliziert*.
 
 
 #### {.examples}
@@ -654,7 +655,7 @@ Bestimmen sie das Gleichungssystem und lösen Sie es.
 
 ### Produkt zweier Matrizen
 
-- Zwei Matrizen multipliziert mensch mit einander, wenn sie passend sind.
+- Zwei Matrizen können mit einander multipliziert, wenn sie passend sind.
 
 - Passend sind sie, wenn die Spaltenanzahl der ersten mit der Zeilenanzahl der zweiten Matrix übereinstimmt.
 
@@ -746,9 +747,9 @@ d) $D^T$
 :::
 ::: {.column width="48%"}
 
-e) $(AB)^T$
+e) $(BA)^T$
 
-f) $B^TA^T$
+f) $A^TB^T$
 
 g) $(BC)^T$
 
@@ -763,12 +764,13 @@ h) $C^T B^T$
 
 :::
 
-### Übung `r nextExercise()`: Skalarprodukte {.exercise} 
+### Übung `r nextExercise()`: Skalarprodukte {.exercise}
 
 a) Eine Unternehmung stellt vier Produkte her, welche pro Mengeneinheit einen Gewinn von $2$, $3$, $5$ bzw. $7$ Euro abwerfen.
 Stellen Sie mit Hilfe eines Skalarproduktes den Gesamtgewinn in Abhängigkeit von der Erzeugnismenge dar!
 
 b) Die Länge (oder auch der Betrag) eines Vektors ist die Wurzel aus dem Skalarprodukt mit sich selber. Berechnen Sie die Länge der folgenden Vektoren: 
+
 $$a = \begin{pmatrix} 1 \\ 2 \\ 3 \\ 4 \end{pmatrix}, \quad b = \begin{pmatrix} 1 \\ -2 \\ 3 \end{pmatrix}\quad c = \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}$$
 
 ::: {.notes}
@@ -782,16 +784,16 @@ $$a = \begin{pmatrix} 1 \\ 2 \\ 3 \\ 4 \end{pmatrix}, \quad b = \begin{pmatrix} 
 ### Besondere Matrizen
 
 - [Einheitsmatrix]{.cstrong} $E_n$:
-	Eine Matrix heißt **Einheitsmatrix**, wenn sie jeden Vektor auf sich selber abbildet.
+	Eine Matrix heißt **Einheitsmatrix**, wenn sie jeden (passenden) Vektor auf sich selber abbildet.
 
 - [Nullmatrix]{.cstrong} $0_n$:
-	Jeder Vektor wird von der *Nullmatrix* auf den Nullvektor abgebildet.
+	Jeder Vektor wird von der (passenden) **Nullmatrix** auf den **Nullvektor** abgebildet.
 
 - [Streckungsmatrix]{.cstrong}:
-	Jeder Vektor verändert seine Länge, aber nicht seine Richtung.
+	Jeder Vektor wird von einer passenden **Streckungsmatrix** in seiner Länge verändert, aber nicht seine Richtung.
 
 - [Drehmatrix]{.cstrong}:
-	Jeder Vektor verändert seine Länge nicht, aber seine Richtung.
+	Jeder Vektor wird von einer passenden **Drehmatrix** in seiner Richtung verändert, aber nicht in seiner Länge.
 
 
 ### Beispiel: Bettwanzen
@@ -836,7 +838,7 @@ knitr::include_graphics(file.path(pathToImages, "Bettwanze2.png"))
 [Übung:]{.cstrong} Überlegen Sie sich, was hinter $s$, $f$, $d$ und $l$ steckt!
 
 
-### Übung `r nextExercise()`: Markanalyse und Käufer*innenwechsel {.exercise} 
+### Übung `r nextExercise()`: Markanalyse und Käufer*innenwechsel {.exercise}
 
 In einer Marktanalyse für Zahnpasta der Marken *Sauber* (S) und *Glänzend* (G) wurde Folgendes herausgefunden:
 
@@ -849,7 +851,7 @@ a) Wie viele Käufer*innen werden im Folgemonat zur Marke S bzw. zur Marke G gre
 b) Wenn die prozentualen Anteile gleich bleiben, wie viele Käufer*innen werden im Monat danach zur jeweiligen Marke greifen?
 
 ```{r echo=FALSE}
-A <- matrix(c(0.7, 0.2, 0.3, 0.8), nrow=2, ncol=2)
+A <- matrix(c(0.7, 0.3, 0.2, 0.8), nrow=2, ncol=2)
 x <- matrix(c(120, 80), ncol=1)
 sol <- A %*% x
 sol.2 <- A %*% sol
@@ -964,7 +966,7 @@ Kann mensch keine *Dreiecksmatrix* (bzw. *Einheitsmatrix*) erhalten,
 ist das LGS nicht lösbar oder hat unendlich viele Lösungen!
 
 
-### Übung `r nextExercise()`: Vollständige Elimination {.exercise} 
+### Übung `r nextExercise()`: Vollständige Elimination {.exercise}
 
 Lösen Sie die folgenden Gleichungssysteme mit Hilfe der *vollständigen Elimination*:
 
