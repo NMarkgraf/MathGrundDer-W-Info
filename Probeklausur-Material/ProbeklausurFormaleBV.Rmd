@@ -6,7 +6,7 @@ date: "4.12.2019"
 fontsize: 12pt
 papersize: a4
 # linestretch: 1.25
-indent: 0cm
+indent: 0
 margin-left: 2.5cm
 margin-right: 2.5cm
 margin-top: 2.5cm
@@ -25,6 +25,9 @@ output:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(engine.path = list(
+  dot = '/opt/local/bin/dot'
+))
 # library(Rgraphviz)
 pkt <- 0
 x <- 0
@@ -50,7 +53,7 @@ c) Geben Sie die Übergangsfunktion als Tabelle an. (4 Punkte)
 
 Gegeben sei der folgende NEA mit $\epsilon$-Übergängen:
 
-```{r NEA_1, engine="dot", engine.path="dot", echo=FALSE, cache=TRUE}
+```{r NEA_1, engine="dot", echo=FALSE, cache=TRUE}
 digraph nea_1 {
     rankdir=LR;
     size="7,5"
@@ -158,7 +161,7 @@ a) Der Automat lässt sich beschreiben als $A=(Q, \Sigma, \delta, s, F)$ mit
 
 b) Der Graph zur Übergangsfunktion lautet:
 
-```{r DEA_Aufgabe_1, engine="dot", engine.path="dot", echo=FALSE, cache=TRUE}
+```{r DEA_Aufgabe_1, engine="dot", echo=FALSE, cache=TRUE}
 digraph nea_1 {
     rankdir=LR;
     size="7,5"
@@ -183,6 +186,8 @@ digraph nea_1 {
     q3 -> q4 [ label = "1" ];
     q4 -> q2 [ label = "0"];
     q4 -> q4 [ label = "1"];
+    
+    {rank=same; q4, q2}
 
 
 }
@@ -218,7 +223,7 @@ a) Der Automat lässt sich beschreiben als $A=(Q, \Sigma, \delta, s, F)$ mit
 
 b') Der Graph zur (totalen) Übergangsfunktion lautet:
 
-```{r DEA_Aufgabe_1_total, engine="dot", engine.path="dot", echo=FALSE, cache=TRUE}
+```{r DEA_Aufgabe_1_total, engine="dot", echo=FALSE, cache=TRUE}
 digraph nea_1 {
     rankdir=LR;
     size="7,5"
@@ -279,7 +284,7 @@ a) $L_A =\left\{w \in \{a,b\}^* \mid \exists n,m \in \mathbf{N}_0.w= lvr . l=a^n
 
 b) Ein möglicher 
 
-```{r DEA_zu_NEA_1, engine="dot", engine.path="dot", echo=FALSE, cache=TRUE}
+```{r DEA_zu_NEA_1, engine="dot", echo=FALSE, cache=TRUE}
 digraph nea_1 {
     rankdir=LR;
     size="7,5"
@@ -314,7 +319,7 @@ a) Der Automat lässt sich beschreiben als $A=(Q, \Sigma, \delta, s, F)$ mit
     
 b) Der Graph zur Übergangsfunktion lautet:
 
-```{r DEA_Aufgabe_3, engine="dot", engine.path="dot", echo=FALSE, cache=TRUE}
+```{r DEA_Aufgabe_3, engine="dot", echo=FALSE, cache=TRUE}
 digraph nea_1 {
     rankdir=LR;
     size="7,5"
@@ -383,7 +388,7 @@ a) Der Automat lässt sich beschreiben als $A=(Q, \Sigma, \delta, s, F)$ mit
     
 b) Der Graph zur Übergangsfunktion lautet:
 
-```{r DEA_Aufgabe_4, engine="dot", engine.path="dot", echo=FALSE, cache=TRUE}
+```{r NEA_Aufgabe_4, engine="dot", echo=FALSE, cache=TRUE}
 digraph nea_1 {
     rankdir=LR;
     size="7,5"
@@ -434,8 +439,94 @@ c) Die Übergangsfunktion als Tabelle lautet dann:
 
 a) Das 5-Tupel für den DEA lautet:
 
-$$A=\left\{\{\{q_0\},\{q_0, q_1\}, \{q_2\}, \{q_2, q_3\}, \{q_4\}\}, \{a, b\}, \delta, \{q_0\}, \{...\} \right\}$$
+$$\begin{aligned}
+  A &= \left( \{\{q_0\},\{q_0, q_1\}, \{q_0, q_2\}, \{q_0, q_1, q_2, q_3\}, \{q_0, q_2, q_4\}, \{q_0, q_1, q_2, q_3,q_4\}\}, \right.\\    
+    &\qquad \left.\{a, b\}, \delta, \{q_0\}, \{\{q_0, q_2, q_4\},\{q_0,q_1,q_2,q_3,q_4\} \} \right) 
+  \end{aligned}$$
+
+b) Die Tabelle der Übergangsfunktion lautet:
+
++----------------------------+---------------------------------+------------------------+
+|                            |   a                             |   b                    |
++===========================:+:===============================:+:======================:+
+| $\longrightarrow \{q_0\}$  |  $\{q_0, q_1\}$                 | $\{q_0\}$              |
++----------------------------+---------------------------------+------------------------+
+| $\{q_0, q_1\}$             |  $\{q_0, q_1\}$                 | $\{q_0, q_2\}$         |
++----------------------------+---------------------------------+------------------------+
+| $\{q_0, q_2\}$             |  $\{q_0, q_1, q_2, q_3\}$       | $\{q_0, q_2\}$         |
++----------------------------+---------------------------------+------------------------+
+| $\{q_0, q_1, q_2, q_3\}$   |  $\{q_0, q_1, q_2, q_3\}$       | $\{q_0, q_2, q_4\}$    |
++----------------------------+---------------------------------+------------------------+
+| $*\{q_0, q_2, q_4\}$       |  $\{q_0, q_1, q_2, q_3, q_4\}$  | $\{q_0, q_2, q_4\}$    |
++----------------------------+---------------------------------+------------------------+
+| $*\{q_0,q_1,q_2,q_3,q_4\}$ |  $\{q_0, q_1, q_2, q_3, q_4\}$  | $\{q_0, q_2, q_4\}$    |
++----------------------------+---------------------------------+------------------------+
+
+
+Wir ersetzen nun, damit es übersichtlicher wird, die Zustandsmengen in neue Zustände wie folgt:
+
+- $z_0 = \{q_0\}$
+- $z_1 = \{q_0, q_1\}$
+- $z_2 = \{q_0, q_2\}$
+- $z_3 = \{q_0, q_1, q_2, q_3\}$
+- $z_4 = \{q_0, q_2, q_4\}$
+- $z_5 = \{q_0,q_1,q_2,q_3,q_4\}$
+
+Damit erhalten wir den DEA:
+
+$$A=\left(\{z_0, z_1, z_2, z_3, z_4, z_5\}, \{a, b\}, \delta, \{z_0\}, \{z_4, z_5 \} \right)$$
+mit der Übergangsfunktionstabelle:
+
++------------------------+---------+--------+
+|                        |   a     |   b    |
++=======================:+:=======:+:======:+
+| $\longrightarrow z_0$  |  $z_1$  | $z_0$  |
++------------------------+---------+--------+
+| $z_1$                  |  $z_1$  | $z_2$  |
++------------------------+---------+--------+
+| $z_2$                  |  $z_3$  | $z_2$  |
++------------------------+---------+--------+
+| $z_3$                  |  $z_3$  | $z_4$  |
++------------------------+---------+--------+
+| $*z_4$                 |  $z_5$  | $z_4$  |
++------------------------+---------+--------+
+| $*z_5$                 |  $z_5$  | $z_4$  |
++------------------------+---------+--------+
+
 
 b) Der Graph der Übergangsfunktion lautet
 
-c) 
+```{r DEA_Aufgabe_4, engine="dot", echo=FALSE, cache=TRUE}
+digraph nea_1 {
+    rankdir=LR;
+    size="7,5"
+
+    node [shape = point ]; Start;
+    node [shape = doublecircle ]; z4, z5;
+
+    node [shape = circle];
+    node [label = "z₀"]; z0;
+    node [label = "z₁"]; z1;
+    node [label = "z₂"]; z2;
+    node [label = "z₃"]; z3;
+    node [label = "z₄"]; z4;
+    node [label = "z₅"]; z5;
+
+    Start -> z0 [ label = "Start" ];
+
+    z0 -> z1 [ label = "a" ];
+    z0 -> z0 [ label = "b" ];
+    z1 -> z1 [ label = "a" ];
+    z1 -> z2 [ label = "b" ];
+    z2 -> z3 [ label = "a" ];
+    z2 -> z2 [ label = "b" ];
+    z3 -> z3 [ label = "a" ];
+    z3 -> z4 [ label = "b" ];
+    z4 -> z5 [ label = "a" ];
+    z4 -> z4 [ label = "b" ];
+    z5 -> z5 [ label = "a" ];
+    z5 -> z4 [ label = "b" ];
+
+}
+
+```
