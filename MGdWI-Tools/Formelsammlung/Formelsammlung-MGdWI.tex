@@ -1,57 +1,52 @@
-\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
 %
-\documentclass[9pt,ngerman,a4paper,landscape]{scrartcl}
+\documentclass[
+  ngerman,
+  a4paper,
+  landscape, fontsize=9pt, version=first, enabledeprecatedfontcommands,
+  DIV=6]{scrartcl}
 \usepackage{lmodern}
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
-\usepackage{fixltx2e} % provides \textsubscript
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
-  \usepackage{textcomp} % provides euro and other symbols
-\else % if luatex or xelatex
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
   \usepackage{unicode-math}
-  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
 \fi
-% use upquote if available, for straight quotes in verbatim environments
+% Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
-% use microtype if available
-\IfFileExists{microtype.sty}{%
-\usepackage[]{microtype}
-\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 }{}
-\IfFileExists{parskip.sty}{%
-\usepackage{parskip}
-}{% else
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{6pt plus 2pt minus 1pt}
-}
-\usepackage{hyperref}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
 \hypersetup{
-            pdfborder={0 0 0},
-            breaklinks=true}
-\urlstyle{same}  % don't use monospace font for urls
-\usepackage[left=1cm,right=1cm,top=1cm,bottom=1cm,landscape]{geometry}
-\setlength{\emergencystretch}{3em}  % prevent overfull lines
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[left=1cm, right=1cm, top=1cm, bottom=1cm, landscape]{geometry}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-\setcounter{secnumdepth}{0}
-% Redefines (sub)paragraphs to behave more like sections
-\ifx\paragraph\undefined\else
-\let\oldparagraph\paragraph
-\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
-\fi
-\ifx\subparagraph\undefined\else
-\let\oldsubparagraph\subparagraph
-\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
-\fi
-
-% set default figure placement to htbp
-\makeatletter
-\def\fps@figure{htbp}
-\makeatother
-
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
 %
 % ZusatzPakete
 % ============
@@ -99,12 +94,12 @@
 \DeclareMathOperator*{\grad}{\text{grad}} 			% grad
 \DeclareMathOperator*{\Pot}{\mathcal{P}}
 % ---------------------------------------------------------------------------------------
-\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
-  \usepackage[shorthands=off,main=ngerman]{babel}
-\else
-  % load polyglossia as late as possible as it *could* call bidi if RTL lang (e.g. Hebrew or Arabic)
+\ifxetex
+  % Load polyglossia as late as possible: uses bidi with RTL langages (e.g. Hebrew, Arabic)
   \usepackage{polyglossia}
   \setmainlanguage[]{german}
+\else
+  \usepackage[shorthands=off,main=ngerman]{babel}
 \fi
 
 \date{}
@@ -120,7 +115,7 @@
 % ---------------------------------------------------------------------------
 
 %{\Huge\sffamily\textcolor{FOMVoll}{{\bfseries Formelsammlung} zur Klausur \enquote{Mathematik für Wirtschaftsinformatiker}}}
-{\Huge\sffamily\textcolor{FOMVoll}{{\bfseries Formelsammlung} zur Klausur \enquote{Mathematische Grundlagen der Wirtschaftsinformatik}}}
+{\Huge\sffamily\textcolor{FOMVoll}{{\bfseries Formelsammlung} zur Klausur \enquote{Mathematische Grundlagen der (Wirtschafts-)Informatik}}}
 
 \setlength{\columnsep}{0.75cm}
 \begin{multicols}{3}
@@ -149,7 +144,7 @@
 Für eine reelle Zahl \(x\) ist der \textbf{(Absolut-)Betrag} definiert
 durch:
 
-\(\displaystyle |x| = \sqrt{x^2} = \begin{cases} x : x > 0 \\ 0 : x=0 \\ -x : x <0 \end{cases}\)
+\(\displaystyle |x| = \sqrt{x^2} = \begin{cases} \phantom{-}x &: x > 0 \\ \phantom{-}0 &: x=0 \\ -x &: x <0 \end{cases}\)
 \item[Rechnen mit Beträgen]
 Für reelle Zahlen \(x\),\(y\) und eine nicht-negative reelle Zahl \(p\)
 gelten die folgenden Regeln:
@@ -211,7 +206,7 @@ reellen \(r\) und einer natürlichen Zahl \(n\) gilt:
 \end{tabular}
 
 \begin{tabular}{ l c l c l}
-    $\displaystyle \text{lb}(x) = \log_2(x)$ & $\;$ & $\displaystyle \ln(x) = \log_e(x)$ & $\;$ & $\displaystyle \text{lg}(x) = \log_{10}(x)$ \\
+    $\displaystyle \text{lb}(x) = \log_2(x)$ & $\,$ & $\displaystyle \ln(x) = \log_e(x)$ & $\;$ & $\displaystyle \text{lg}(x) = \log_{10}(x)$ \\
 \end{tabular}
 
 \begin{tabular}{ l }
@@ -238,7 +233,7 @@ Für zwei reelle Zahlen \(x\), \(y\) und eine natürliche Zahl \(n\) gilt:
 \item[Normalform von Polynomgleichungen]
 Jede Polynomgleichung (2. Grades) der Form \(a x^2+ bx +c = d\), mit
 \(a\neq 0\) lässt sich umformen in \textbf{Normalform} der Art
-\(x^2+px+q=0\).
+\(x^2+px+q = 0\).
 \item[Diskriminante]
 Für eine Polynomgleichung (2. Grades) ist die \textbf{Diskriminante}
 definiert durch \(D=\frac{p^2-4\cdot q}{4}\).
@@ -260,10 +255,10 @@ Es gilt:
 \begin{itemize}
 \tightlist
 \item
-  \(D > 0\): die Gleichung hat zwei Lösungen. (-\textgreater{}
+  \(D > 0\): die Gleichung hat zwei Lösungen. (\(\rightarrow\)
   pq-Formel)
 \end{itemize}
-\item[pq-Formel]
+\item[\(pq\)-Formel]
 Für eine Polynomgleichung (2. Grades) mit positiver Diskriminante findet
 sich die Nullstellen \(x_{1/2}\) durch
 
@@ -273,6 +268,46 @@ Für die Lösungen \(x_1\) und \(x_2\) einer Polynomgleichung (2. Grades)
 in Normalform gilt:
 
 \(x_1 \cdot x_2 = q\) und \(-(x_1+x_2)=p\)
+\end{description}
+
+\hypertarget{logik}{%
+\subsection{Logik}\label{logik}}
+
+\begin{description}
+\tightlist
+\item[Aussagen]
+Sätze, die entweder \emph{wahr} oder \emph{falsch} sind, heißen
+\textbf{Ausagen}.
+\item[Aussageformen / offene Aussagen]
+Hängte die Wahrheit einer Aussage von einem Parameter \(x\) ab, so nennt
+man die Aussage \(A(x)\) eine \textbf{offene Aussage} oder
+\textbf{Aussageform}.
+\item[Lösungsmenge]
+Die Menge der Werte \(x\), die eine Aussageform \(A(x)\) zu einer
+\emph{wahren Aussage} machen heißt \textbf{Lösungemenge}
+\end{description}
+
+Es seien \(A\) und \(B\) Aussagen, dann gilt:
+
+\begin{description}
+\tightlist
+\item[Implikation \emph{(Aus \(A\) folge \(B\))}]
+\(\displaystyle A \Longrightarrow B\) : falls \(A\) wahr ist, dann ist
+auch \(B\) wahr.
+\item[Äquivalenz]
+\(\displaystyle A \Longleftrightarrow B\) : \(A\) ist genau dann wahr,
+falls \(B\) wahr ist.
+\item[Konjunktion]
+\(\displaystyle A \wedge B\) : \(A\) ist wahr und \(B\) ist wahr.
+\item[Disjunktion]
+\(\displaystyle A \vee B\) : \(A\) ist wahr oder \(B\) ist wahr.
+\item[Negation]
+\(\displaystyle \lnot A\) ist wahr \(\Longleftrightarrow\) \(A\) ist
+falsch.
+\item[Allquantor]
+\(\displaystyle \forall\) : \enquote{Für alle}"
+\item[Existenzquantor]
+\(\displaystyle \exists\) : \enquote{Es gibt ein}
 \end{description}
 
 \hypertarget{mengenlehre}{%
@@ -286,26 +321,26 @@ Für beliebige Mengen \(A\) und \(B\) gilt:
 Ist \(a\) ist ein \textbf{Element} von \(A\), dann schreiben wir
 \(a \in A\).
 \item[Teilmenge]
-\(\displaystyle A \subset B \Longleftrightarrow \left(x \in A \Rightarrow x \in B\right)\)
+\(\displaystyle A \subseteq B \Longleftrightarrow \left(x \in A \Rightarrow x \in B\right)\)
 \item[Echte Teilmenge]
 \(\displaystyle A \subsetneq B \Longleftrightarrow \left(A \subset B \wedge \exists z \in B : z \notin A\right)\)
 \item[Gleichheit von Mengen]
-\(\displaystyle A = B \Longleftrightarrow A \subset B \wedge B \subset A\)
+\(\displaystyle A = B \Longleftrightarrow A \subseteq B \wedge B \subseteq A\)
 \item[Vereinigungsmenge zweier Mengen]
-\(\displaystyle A \cup B = \{ x | x \in A \vee x \in B \}\)
+\(\displaystyle A \cup B = \{ x \mid x \in A \vee x \in B \}\)
 \item[Schnittmenge zweier Mengen]
-\(\displaystyle A \cap B = \{ x | x \in A \wedge x \in B \}\)
+\(\displaystyle A \cap B = \{ x \mid x \in A \wedge x \in B \}\)
 \item[Kompliment einer Menge]
-\(\displaystyle A^c = \{x | x \in U \wedge x \not\in A \}, U\) ein
-Universum mit \(A \subset U\)
+\(\displaystyle A^c = \{x \mid x \in U \wedge x \not\in A \}, U\) ein
+\emph{Universum} mit \(A \subset U\)
 \item[Differenz von Mengen]
-\(\displaystyle A \setminus B = \{ x | x \in A \wedge x \notin B \} = A \cap B^c\)
+\(\displaystyle A \setminus B = \{ x \mid x \in A \wedge x \notin B \} = A \cap B^c\)
 \item[Gleichmächtigkeit von Mengen]
 \(A\) und \(B\) sind gleichmächtig, falls es eine Bijektion
 \(f: A \leftrightarrow B\) gibt.
 \item[Endlichkeit]
 Eine Menge ist \textbf{endlich}, wenn sie \emph{gleichmächtig} zu einem
-Element von \(\mathbb{N}_0\) im Sinne von von Neumann ist.
+Element von \(\mathbb{N}_0\) im Sinne von \{\it von Neumann\} ist.
 \item[Abzählbar]
 Eine Menge ist \textbf{abzählbar}, wenn sie \emph{endlich} ist oder
 \emph{gleichmächtig} zu einer \emph{Teilmenge} von \(\mathbb{N}\) ist.
@@ -318,11 +353,11 @@ Mächtigkeit der Menge.
 \(|A|\) ist die Anzahl der unterscheidbaren Elemente der (endlichen)
 Menge \(A\).
 \item[Potenzmenge]
-\(\displaystyle \Pot(A) = \{ U | U \subset A\}\)
+\(\displaystyle \Pot(A) = \{ U \mid U \subset A\}\)
 \item[Satz von Cantor]
 Für jede Menge \(A\) gilt: \(|A| < |\Pot(A)|\)
 \item[Produktmenge]
-\(\displaystyle A \times B = \{(x;y) | x \in A \wedge y \in B\}\)
+\(\displaystyle A \times B = \{(x;y) \mid x \in A \wedge y \in B\}\)
 \item[De Morgansche Regeln]
 \(\displaystyle (A \cup B)^c = A^c \cap B^c\) und
 \(\displaystyle (A \cap B)^c = A^c \cup B^c\)
@@ -348,19 +383,18 @@ Die Mengen \(A_1, ..., A_n\) mit
 \item[Ganze Zahlen]
 \(\displaystyle \mathbb{Z} = \{...,-3,-2,-1,0,1,2,3,...\}\)
 \item[Rationale Zahlen]
-\(\displaystyle \mathbb{Q} = \left\{ \left. \frac{q}{p} \right| q\in \mathbb{Z}, p \in \mathbb{N}, p \text{ und } q \text{ sind teilerfremd}\right\}\)
+\(\displaystyle \mathbb{Q} = \left\{ \left. \frac{q}{p} \right|\,q\in \mathbb{Z}, p \in \mathbb{N}, p \text{ und } q \text{ sind teilerfremd}\right\}\)
 \item[Reelle Zahlen]
 \(\displaystyle \mathbb{R}\)
 \item[Komplexe Zahlen]
-\(\displaystyle \mathbb{C} = \left\{ x+y\cdot i \left| x,y \in \mathbb{R}\right. \right\}\)
+\(\displaystyle \mathbb{C} = \left\{ x + y\cdot i \left| \,x,y \in \mathbb{R}\right. \right\}\)
 \end{description}
 
-Es gilt: \begin{equation*}
-    \mathbb{N} \subsetneq  \mathbb{N}_0 \subsetneq  \mathbb{Z} \subsetneq \mathbb{Q} \subsetneq \mathbb{R}\subsetneq \mathbb{C}
-\end{equation*}
+Es gilt:
+\[\mathbb{N} \subsetneq  \mathbb{N}_0 \subsetneq  \mathbb{Z} \subsetneq \mathbb{Q} \subsetneq \mathbb{R}\subsetneq \mathbb{C}\]
 
-\hypertarget{vollstandige-induktion}{%
-\subsection{Vollständige Induktion}\label{vollstandige-induktion}}
+\hypertarget{vollstuxe4ndige-induktion}{%
+\subsection{Vollständige Induktion}\label{vollstuxe4ndige-induktion}}
 
 Sei \(A(n)\) eine Aussageform, die es für alle \(n \in \mathbb{N}\) zu
 beweisen gilt
@@ -394,10 +428,10 @@ beweisen gilt
 \(\displaystyle |A \cup B \cup C| = |A| + |B| + |C| - |A \cap B| - |A \cap C| - |B \cap C| + |A \cap B \cap C|\)
 \item[Produktregel]
 \(\displaystyle |A \times B| = |A| \cdot |B|\)
-\item[k-Permutationen / Variation]
+\item[\(k\)-Permutationen / Variation]
 \(\displaystyle P(n, k) = n \cdot (n-1) \cdot (n-2) \cdot \dotsc \cdot (n-k+1) = \frac{n!}{(n-k)!}\)
 \item[Permutation]
-\(\displaystyle P(n, n) = n! = n \cdot (n-1) \cdot (n-2) \cdot \dotsc \cdot 1\)
+\(\displaystyle n! = P(n, n) = n \cdot (n-1) \cdot (n-2) \cdot \dotsc \cdot 1\)
 \item[Binomialkoeffizient]
 \(\displaystyle \dbinom{n}{k} = C(n,k) = \frac{P(n,k)}{k!} = \frac{n!}{k! \cdot (n-k)!}\)
 \end{description}
@@ -419,179 +453,215 @@ auszuwählen, gelten die folgenden Regeln:
     \end{tabular}
 \end{center}
 
-\hypertarget{differentialrechnung}{%
-\subsection{Differentialrechnung}\label{differentialrechnung}}
+\hypertarget{lineare-algebra}{%
+\subsection{Lineare Algebra}\label{lineare-algebra}}
 
 \begin{description}
-\tightlist
-\item[Differentialquotient erster Ordnung]
-Die \textbf{Ableitung} oder der \textbf{Differentialquotient} einer
-Funktion \(f\) an der Stelle \(x_0\) ist, falls der Grenzwert existiert
+\item[Lineares Gleichungssystem]
+Ein LGS mit \(m\) Gleichungen und \(n\) unbekannten Variabeln hat die
+Form :\[\begin{matrix}
+    a_{11} \cdot x_1 +  a_{12} \cdot x_2 \, + & \cdots & +\, a_{1n} \cdot x_n & = & b_1\\
+    a_{21} \cdot x_1 +  a_{22} \cdot x_2 \, + & \cdots & +\, a_{2n} \cdot x_n & = & b_2\\
+    &&&\vdots&\\
+    a_{m1} \cdot x_1 +  a_{m2} \cdot x_2 \, + & \cdots & +\, a_{mn} \cdot x_n & = & b_m\\
+\end{matrix}\]
 
-\(\displaystyle f'(x_0) = \frac{\text{d} f}{\text{d} x} (x_0) = \lim\limits_{x \to x_0} \frac{f(x_0)-f(x)}{x_0-x}\)
-\item[Differentialquotient zweiter Ordnung]
-Die \textbf{2. Ableitung} oder der \textbf{Differentialquotient 2.
-Ordnung} einer Funktion \(f\) an der Stelle \(_x0\) ist, falls der
-Grenzwert existiert, die Ableitung der 1. Ableitung.
+\(a_{ij}\) : Koeffizienten
+
+\(b_i\) : rechte Seite
+\item[Homogene / Inhomogene LGS]
+Sind alle \(b_i=0\), nennt man das LGS \textbf{homogen}, sonst
+\textbf{inhomogen}
+
+Homogene LGS besitzen immer eine \textbf{triviale Lösung}, bei der alle
+\(x_i=0\) sind.
+\item[Quandratische LGS]
+Ist \(m=n\) so nennt man das LGS \textbf{quadratisch}
+\item[Elementare Zeilenumformungen]
+Man ändert die Lösungsmenge eines LGS nicht, wenn man
+
+\begin{itemize}
+\tightlist
+\item
+  zwei Zeilen vertauscht,
+\end{itemize}
+
+\begin{itemize}
+\tightlist
+\item
+  eine Zeile auf beiden Seiten mit einer beliebigen Konstante
+  \(c \neq 0\) multipliziert,
+\end{itemize}
+
+\begin{itemize}
+\tightlist
+\item
+  das Vielfache einer Zeile zu einer anderen hinzuaddiert oder
+\end{itemize}
+
+\begin{itemize}
+\tightlist
+\item
+  das Vielfache einer Zeile von einer anderen subtrahiert.
+\end{itemize}
+\item[Eliminationsverfahren]
+Man benutzt die \emph{elementaren Zeilenumformungen} um aus einem
+beliebigen LGS ein LGS in \textbf{Zeilenstufenform} oder
+\textbf{Diagonalgestallt} zu erhalten. Das Ziel ist dabei die Lösungen
+einfach oder gar direkt abzulesen.
+\item[Lösungsverhalten eines LGS]
+Ein \textbf{homogenes} LGS besitzt entweder
+
+\begin{itemize}
+\tightlist
+\item
+  genau \textbf{eine} Lösung, nämlich die triviale Lösung oder
+\end{itemize}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{unendlich viele} Lösungen.
+\end{itemize}
+
+Ein \textbf{inhomogenes} LGS besitzt entweder
+
+\begin{itemize}
+\tightlist
+\item
+  genau \textbf{eine} Lösung oder
+\end{itemize}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{unendlich viele} Lösungen oder
+\end{itemize}
+
+\begin{itemize}
+\tightlist
+\item
+  überhaupt \textbf{keine} Lösung.
+\end{itemize}
+\item[Matrizen]
+\textbf{Matrizen} sind geordnete, rechteckige Schemata von Zahlen oder
+Symbolen. \[\renewcommand{\arraystretch}{.9}
+A=\begin{pmatrix}
+a_{11} & a_{12} & \ldots & a_{1j} &\ldots& a_{1n}\\
+a_{21} & a_{22} & \ldots & a_{2j} & \ldots & a_{2n}\\
+\vdots & \vdots & & \vdots & &\vdots \\
+a_{i1} & a_{i2} & \ldots & a_{ij} & \ldots & a_{in}\\
+\vdots & \vdots & & \vdots & &\vdots \\
+a_{m1} & a_{m2} & \ldots & a_{mj} & \ldots & a_{mn}\\
+\end{pmatrix}
+   = {(a_{ij})}_{m\times n}\]
+
+mit \(m\) und \(n \in \mathbf{N}\).
+
+\(m\) : Zeilen
+
+\(n\) : Spalten
+
+\(m\times n\) : Orndung der Matrix
+
+\(a_{11},\ldots,a_{mn}\) : Elemente der Matrix
+
+\(i\) : Zeilenindex
+
+\(j\) : Spaltenindex
+\item[Vektoren]
+\(n\times 1\)-Matrix heißt \textbf{Spaltenvektor mit \(n\) Komponenten}
+
+\(1\times n\)-Matrix heißt \textbf{Zeilenvektor mit \(n\) Komponenten}
+\item[Skalar]
+Einen Wert aus dem Grundkörper (meistens \(\mathbb{R}\)) nennen wir
+einen \textbf{Skalar}.
+\item[Addition \& Subtraktion von Matrizen und Vektoren]
+Die \textbf{Addition} und \textbf{Subtraktion} von Matrizen gleicher
+Ordnung erfolgt \textbf{komponentenweise}.
+\item[Multiplikation mit einem Skalar]
+\emph{Matrix} werden mit einem \emph{Skalar} multiplizieren, in dem wir
+\emph{jedes Element} mit dem \emph{Skalar multipliziert}.
+\item[Linearkombination]
+\(v_1, \dots v_n, v\) Vektoren. \(v\) ist \textbf{Linearkombination},
+falls gilt: \[v = \sum_{i=1}^{n} c_i v_i\]
+\item[Lineare (Un-)abhängigkeit]
+Eine Menge von Vektoren ist \textbf{linear unabhängig} falls keiner von
+ihnen als \emph{Linearkombination} der anderen ausgedrückt werden kann.
+
+Ansonsten sind sie \emph{linear abbhängig}.
+\item[Multiplikation von Matrizen]
+Sei \(A_{n \times p}\), \(B_{p \times m}\), dann lässt sich
+\(C_{n \times m} =A \cdot B\) berechnen mit
+\[c_{ij} = \sum_{k=1}^{p} a_{ik}\cdot b_{kj}\]
+
+für \(1 \leq i \leq n\) und \(1 \leq j \leq m\).
+\item[Transposition]
+Die transponierte Matrix \(A^T\) einer Matrix \(A\) ergibt sich in dem
+jede Spalte von \(A\), bei gleichbleibender Reihenfolge, zu einer Zeile
+von \(A^T\) wird.
+\item[Skalarprodukt]
+Das \textbf{Skalarprodukt} zweier (Spalten-)Vektoren \(x\) und \(y\)
+lautet: \[<x, y> = x^T \cdot y\] Einheitsmatrix
+
+\(E_n\) heißt \textbf{Einheitsmatrix} mit \(n \times n\) Elementen, wenn
+gilt: \[e_{ij} = \begin{cases}
+     1 & i=j \\ 
+     0 & i\neq j 
+\end{cases}\]
+\item[Inverse einer Matrix]
+Gibt es zu \(A_{n \times n}\) eine Matrix \(X\) mit
+\[E_n = X \cdot A = A \cdot X = E_n\]
+
+so nennen wir \(X\) die \textbf{Inverse der Matrix \(A\)} und schreiben
+dafür \(A^{-1}\).
 \end{description}
 
-\hypertarget{ableitungsregeln}{%
-\subsubsection{Ableitungsregeln:}\label{ableitungsregeln}}
-
-Für differenzierbare, reelle Funktionen \(f\), \(g\), \(z\) und \(n\)
-gelten die folgenden Regeln:
+\hypertarget{finanzmathematik}{%
+\subsection{Finanzmathematik}\label{finanzmathematik}}
 
 \begin{description}
 \tightlist
-\item[Summenregel]
-\(\displaystyle [f \pm g]'(x) = f'(x) \pm g'(x)\)
-\item[Produktregel]
-\(\displaystyle [f \cdot g]'(x) = f'(x) \cdot g(x) + f(x) \cdot g'(x)\)
-\item[Produktregel für eine reelle Konstante \(c\)]
-\(\displaystyle [c \cdot f]'(x) = c \cdot f'(x)\)
-\item[Quotientenregel]
-\(\displaystyle \left[\frac{z(x)}{n(x)}\right]' = \frac{z'(x)\cdot n(x) - z(x) \cdot n'(x)}{\left(n(x)\right)^2}\)
-\item[Kettenregel]
-\(\displaystyle \left[f\left(g(x)\right)\right]' = f'\left( g(x) \right) \cdot f'(x)\)
-\end{description}
+\item[Notationen]
+\(K\), \(K_0\), \(K_t\) : Kapital (zum Zeitpunkt 0 oder t)
 
-\hypertarget{ableitung-elementarer-funktionen}{%
-\subsubsection{Ableitung elementarer
-Funktionen}\label{ableitung-elementarer-funktionen}}
+\(t\) : Zeitpunkt oder Zeitraum
 
-\begin{tabular}{ l c l }
-    $\displaystyle\left[\ln(x)\right]' = \frac{1}{x}$                       & $\qquad$  & $\displaystyle\left[e^x\right]' =     e^x$            \\[0.75em]  
-    $\displaystyle\left[\log_a (x)\right]' = \frac{1}{x \cdot \ln(a)}$      & $\qquad$  & $\displaystyle\left[a^x\right]' = a^x \cdot \ln (a)$  \\[0.75em]
-    $\displaystyle\left[x^b\right]' = b \cdot x^{b-1}$                      & $\qquad$  & $\displaystyle\left[c\right]'  = 0$                   \\[0.75em]
-    $\displaystyle\left[\sin(x)\right]' = \cos(x)$                          & $\qquad$  & $\displaystyle\left[\cos(x)\right]'    = -\sin(x)$    \\[0.5em]
-\end{tabular}
+\(Z\),\(Z_t\) : Zinsen(für den Zeitraum \(t\))
 
-\hypertarget{multivariate-differentialrechnung}{%
-\subsubsection{Multivariate
-Differentialrechnung}\label{multivariate-differentialrechnung}}
+\(i\) : Zins, Zinssatz
 
-\begin{description}
-\tightlist
-\item[Partielle Ableitungen erster Ordnung]
-\(\displaystyle \frac{\partial f(x,y)}{\partial x} = f_x(x,y)\)
+\(q=1+i\) : Aufzinsungsfaktor
+\item[Zinseszinsformel]
+\(K_n = K_0 \cdot (1+i)^n = K_0 \cdot q^n\)
+\item[Unterjährige Verzinsung]
+\(K_t = K_0 + Z \cdot t = K_0 + i\cdot K_0 \cdot t = K_0 (1+i\cdot t)\)
 
-\(\displaystyle \frac{\partial f(x,y)}{\partial y} = f_y(x,y)\)
-\item[Partielle Ableitungen zweiter Ordnung]
-\(\displaystyle \frac{\partial^2 f(x,y)}{\partial x\partial x} = f_{xx}(x,y)\)
+\(t = \frac{T_2-T_1}{360}\)
 
-\(\displaystyle \frac{\partial^2 f(x,y)}{\partial y\partial x} = f_{xy}(x,y)\)
+\(T_2\) : Auszahlungszeitpunkt in Zinstagen
 
-\(\displaystyle \frac{\partial^2 f(x,y)}{\partial x\partial y} = f_{yx}(x,y)\)
+\(T_1\) : Einzahlungszeitpunkt in Zinstagen
 
-\(\displaystyle \frac{\partial^2 f(x,y)}{\partial y\partial y} = f_{yy}(x,y)\)
-\end{description}
+\(T_i = (\text{aktueller Monat} - 1) \cdot 30 + \text{Tag im Monat}\)
+\item[Gemischte Verzinsung]
+\(K_t = K_0\cdot \left(1+i\cdot t_1\right)\cdot \left(1+i\right)^n\cdot \left(1+i\cdot t_2\right)\)
 
-\hypertarget{hesse-matrix}{%
-\subsubsection{Hesse-Matrix}\label{hesse-matrix}}
+\(K_t = K_0\cdot \left(1+i\cdot \frac{360-T_0+1}{360}\right)\cdot \left(1+i\right)^n\cdot \left(1+i\cdot \frac{T_1-1}{360}\right)\)
 
-Für eine bivariate (zweimal partiell stetig differenzierbare) Funktion
-\(f(x,y)\) wird durch
+\(T_0\) : Einzahlungszeitpunkt in Zinstagen im ersten Jahr
 
-\[ 
-  A_{Hess(f(x,y))} =
-  \begin{pmatrix}
-    f_{xx}(x,y) & f_{xy}(x,y) \\
-    f_{yx}(x,y) & f_{yy}(x,y)  
-  \end{pmatrix}
-\]
+\(t_0\) : Anlagedauer in Zinstagen im ersten Jahr
 
-die \textbf{Hesse-Matrix} definiert.
+\(T_1\) : Auszahlungszeitpunkt in Zinstagen im letzten Jahr
 
-\begin{description}
-\tightlist
-\item[Satz von Schwarz]
-Für eine bivariate (zweimal partiell stetig differenzierbare) Funktion
-\(f(x,y)\) gilt \(f_{xy}(x,y) = f_{yx}(x,y)\).
-\end{description}
+\(t_1\) : Anlagedauer in Zinstagen im letzten Jahr
 
-\hypertarget{definitheit-symmetrischer-2-times-2-matrizen}{%
-\subsubsection{\texorpdfstring{Definitheit symmetrischer
-(\(2 \times 2\))
-Matrizen}{Definitheit symmetrischer (2 \textbackslash{}times 2) Matrizen}}\label{definitheit-symmetrischer-2-times-2-matrizen}}
+\(n\) : Anzahl der ganzen Jahre
+\item[Approximative Verzinsung]
+\(K_t = K_0 \cdot (1+i)^t = K_0 \cdot q^t\)
 
-Eine \((2\times 2)\) Matrix \(A\) ist \textbf{definit}, falls
-
-\[
-  \det A = \det \begin{pmatrix} a & c \\ c & b \end{pmatrix} = a \cdot b - c^2 > 0 \text{ und } a \neq 0
-\]
-
-gilt. Eine solche \emph{definite} Matrix ist für \(a>0\) \textbf{positiv
-definit} und für \(a<0\) \textbf{negativ definit}.
-
-\hypertarget{extremstellen-bivariater-funktionen}{%
-\subsubsection{Extremstellen bivariater
-Funktionen}\label{extremstellen-bivariater-funktionen}}
-
-\begin{description}
-\tightlist
-\item[Kritischer Punkt]
-\((x_0,y_0)\) ist ein \emph{kritischer Punkt} von \(f(x,y)\), falls
-\(f_x(x_0, y_0) = 0\) und \(f_y(x_0, y_0)=0\) gilt.
-\item[Extremstellen / Sattelpunkte]
-Ein kritischer Punkt \((x_0,y_0)\) ist ein \textbf{Maximum} von
-\(f(x,y)\), falls die \emph{Hesse-Matrix} von \(f(x,y)\) an der Stellte
-\((x_0,y_0)\) \emph{negativ definit} ist.
-
-Ist die Hesse-Matrix dort \emph{positiv definit}, dann hat \(f(x,y)\)
-dort ein \textbf{Minimum}.
-
-Ist die Hesse-Matrix dort \emph{indefinit}, so handelt es sich um einen
-\textbf{Sattelpunkt}.
-\end{description}
-
-\hypertarget{integralrechnung}{%
-\subsection{Integralrechnung}\label{integralrechnung}}
-
-\begin{description}
-\tightlist
-\item[Stammfunktion]
-Eine Funktion \(F\) heißt \textbf{Stammfunktion} von \(f\), falls gilt:
-
-\(\displaystyle F'(x) = f(x)\)
-\item[Unbestimmtest Integral]
-Damit gilt für das \textbf{unbestimmte Integral}:
-
-\(\displaystyle \int f(x) \,\textrm{d}x \int F'(x) \,\textrm{d}x F(x) + c\)
-\end{description}
-
-\hypertarget{elementare-stammfunktionen}{%
-\subsubsection{Elementare
-Stammfunktionen:}\label{elementare-stammfunktionen}}
-
-\begin{tabular}{ l c l }
-    $\displaystyle\int x^n \,\textrm{d}x$           & $\quad=\quad$ & $\displaystyle\frac{1}{n+1}x^{n+1}+c$ \hfil (für $n\neq-1$) \\[0.75em]
-    $\displaystyle\int \frac1x \,\textrm{d}x$       & $\quad=\quad$ & $\displaystyle\begin{cases}\ln(x) + c \phantom{-}\quad \text{für } x > 0\\ \ln(-x) + c \quad \text{für } x < 0 \end{cases}$ \hfil (für $n\neq-1$) \\[0.75em]
-    $\displaystyle\int e^x \,\textrm{d}x$           & $\quad=\quad$ & $\displaystyle e^x+c$\\[0.75em]
-    $\displaystyle\int a^x \,\textrm{d}x$           & $\quad=\quad$ & $\displaystyle \frac{a^x}{\ln(a)}+c$ \hfil (für $a>0$ und $a\neq 1$)\\[0.75em]
-    $\displaystyle\int \sin(x) \,\textrm{d}x$           & $\quad=\quad$ & $\displaystyle -\cos(x)+c$\\[0.75em]
-    $\displaystyle\int \cos(x) \,\textrm{d}x$           & $\quad=\quad$ & $\displaystyle \sin(x)+c$\\[0.75em]
-\end{tabular}
-
-\hypertarget{rechenregeln}{%
-\subsubsection{Rechenregeln:}\label{rechenregeln}}
-
-\begin{description}
-\tightlist
-\item[Hauptsatz der Integral- und Differentialrechnung:]
-\(\displaystyle \int_a^b f(x) \,\textrm{d}x =F(x)\bigg|_a^b = F(b)-F(a)\)
-\item[Punktregel]
-\(\displaystyle \int_a^a f(x) \,\textrm{d}x = 0\)
-\item[Umkehrregel]
-\(\displaystyle \int_a^b f(x) \,\textrm{d}x = -\int_b^a f(x) dx\)
-\item[Linearität]
-\(\displaystyle \int a f(x) + b g(x) \,\textrm{d}x = a \int f(x) dx + b \int g(x) dx\)
-\item[Partielle Integration]
-\(\displaystyle \int f(x) g'(x) \,\textrm{d}x = f(x)g(x) - \int f'(x)g(x) dx\)
-\item[Substitionsregel für lineare Substitution]
-Sei \(z=mx+d\) eine lineare Substitution und \(F(z)\) die Stammfunktion
-von f(z), dann gilt:
-
-\(\displaystyle \int_a^b f(mx+d) \,\textrm{d}x = \frac{1}{m} \int_{m\cdot a+d}^{m\cdot b+d}f(z)\,\textrm{d}z\)
+\(t\) : Anlagedauer als nicht-ganzzahliger Wert
 \end{description}
 
 %

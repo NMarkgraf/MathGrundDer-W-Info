@@ -1,0 +1,105 @@
+## Lineare Algebra
+
+Lineares Gleichungssystem
+:	Ein LGS mit $m$ Gleichungen und $n$ unbekannten Variabeln hat die Form
+:$$\begin{matrix}
+        a_{11} \cdot x_1 +  a_{12} \cdot x_2 \, + & \cdots & +\, a_{1n} \cdot x_n & = & b_1\\
+        a_{21} \cdot x_1 +  a_{22} \cdot x_2 \, + & \cdots & +\, a_{2n} \cdot x_n & = & b_2\\
+        &&&\vdots&\\
+        a_{m1} \cdot x_1 +  a_{m2} \cdot x_2 \, + & \cdots & +\, a_{mn} \cdot x_n & = & b_m\\
+    \end{matrix}$$
+:   $a_{ij}$ : Koeffizienten
+:   $b_i$    : rechte Seite
+
+Homogene / Inhomogene LGS
+: Sind alle $b_i=0$, nennt man das LGS **homogen**, sonst **inhomogen**
+: Homogene LGS besitzen immer eine **triviale Lösung**, bei der alle $x_i=0$ sind.
+
+Quandratische LGS
+: Ist $m=n$ so nennt man das LGS **quadratisch**
+
+Elementare Zeilenumformungen
+: Man ändert die Lösungsmenge eines LGS nicht, wenn man
+: - zwei Zeilen vertauscht,
+: - eine Zeile auf beiden Seiten mit einer beliebigen Konstante $c \neq 0$ multipliziert,
+: - das Vielfache einer Zeile zu einer anderen hinzuaddiert oder
+: - das Vielfache einer Zeile von einer anderen subtrahiert.
+
+Eliminationsverfahren
+: Man benutzt die *elementaren Zeilenumformungen* um aus einem beliebigen LGS ein LGS in **Zeilenstufenform** oder **Diagonalgestallt** zu erhalten. Das Ziel ist dabei die Lösungen einfach oder gar direkt abzulesen.
+
+Lösungsverhalten eines LGS
+: Ein **homogenes** LGS besitzt entweder
+: - genau **eine** Lösung, nämlich die triviale Lösung oder
+: - **unendlich viele** Lösungen.
+: Ein **inhomogenes** LGS besitzt entweder
+: - genau **eine** Lösung oder
+: - **unendlich viele** Lösungen oder
+: - überhaupt **keine** Lösung.
+
+Matrizen
+: **Matrizen** sind geordnete, rechteckige Schemata von Zahlen oder Symbolen.
+$$\renewcommand{\arraystretch}{.9}
+A=\begin{pmatrix}
+a_{11} & a_{12} & \ldots & a_{1j} &\ldots& a_{1n}\\
+a_{21} & a_{22} & \ldots & a_{2j} & \ldots & a_{2n}\\
+\vdots & \vdots & & \vdots & &\vdots \\
+a_{i1} & a_{i2} & \ldots & a_{ij} & \ldots & a_{in}\\
+\vdots & \vdots & & \vdots & &\vdots \\
+a_{m1} & a_{m2} & \ldots & a_{mj} & \ldots & a_{mn}\\
+\end{pmatrix}
+   = {(a_{ij})}_{m\times n}$$
+:  mit $m$ und $n \in \mathbf{N}$.
+: $m$ : Zeilen
+: $n$ : Spalten
+: $m\times n$ : Orndung der Matrix
+: $a_{11},\ldots,a_{mn}$ : Elemente der Matrix
+: $i$ : Zeilenindex
+: $j$ : Spaltenindex
+
+Vektoren
+: $n\times 1$-Matrix heißt **Spaltenvektor mit $n$ Komponenten**
+: $1\times n$-Matrix heißt **Zeilenvektor mit $n$ Komponenten**
+
+Skalar
+: Einen Wert aus dem Grundkörper (meistens $\mathbb{R}$) nennen wir einen **Skalar**.
+
+Addition & Subtraktion von Matrizen und Vektoren 
+: Die **Addition** und **Subtraktion** von Matrizen gleicher Ordnung erfolgt **komponentenweise**.
+
+Multiplikation mit einem Skalar 
+: *Matrix* werden mit einem *Skalar* multiplizieren, 
+in dem wir *jedes Element* mit dem *Skalar multipliziert*.
+
+Linearkombination
+: $v_1, \dots v_n, v$ Vektoren. $v$ ist **Linearkombination**, falls gilt:
+$$v = \sum_{i=1}^{n} c_i v_i$$
+
+Lineare (Un-)abhängigkeit
+: Eine Menge von Vektoren ist **linear unabhängig** falls keiner von ihnen als *Linearkombination* der anderen ausgedrückt werden kann. 
+: Ansonsten sind sie *linear abbhängig*.
+
+Multiplikation von Matrizen
+: Sei $A_{n \times p}$, $B_{p \times m}$, dann lässt sich $C_{n \times m} =A \cdot B$ berechnen mit
+$$c_{ij} = \sum_{k=1}^{p} a_{ik}\cdot b_{kj}$$ 
+: für $1 \leq i \leq n$ und $1 \leq j \leq m$.
+
+Transposition
+: Die transponierte Matrix $A^T$ einer Matrix $A$ ergibt sich in dem jede Spalte von $A$, bei gleichbleibender Reihenfolge, zu einer Zeile von $A^T$ wird.
+
+Skalarprodukt
+: Das **Skalarprodukt** zweier (Spalten-)Vektoren  $x$ und $y$ lautet:
+  $$<x, y> = x^T \cdot y$$
+Einheitsmatrix
+: $E_n$ heißt **Einheitsmatrix** mit $n \times n$ Elementen, wenn gilt:
+$$e_{ij} = \begin{cases}
+         1 & i=j \\ 
+         0 & i\neq j 
+    \end{cases}$$
+
+Inverse einer Matrix
+: Gibt es zu $A_{n \times n}$ eine Matrix $X$ mit
+$$E_n = X \cdot A = A \cdot X = E_n$$
+: so nennen wir $X$ die **Inverse der Matrix $A$** und schreiben dafür $A^{-1}$.
+
+  

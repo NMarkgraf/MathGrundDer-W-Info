@@ -630,7 +630,7 @@ Kann man eine dieser Kaffeespezialitäten (im Prinzip) durch das zusammenmischen
 ### Linearkombination / Lineare (Un-)Abhängigkeit
 
 #### Linearkombination {.definition}
-Seien $v_1, \dots v_n$ Vektoren. Eine [Linearkombination]{.cstrong} ein Vektor $v$, der sich durch die Vektoren $v_1, \dots, v_n$ und die Skalare $c_1, \dots c_n$ wie folgt ausdrücken lässt:
+Seien $v_1, \dots v_n$ Vektoren. Eine [Linearkombination]{.cstrong} ist ein Vektor $v$, der sich durch die Vektoren $v_1, \dots, v_n$ und die Skalare $c_1, \dots c_n$ wie folgt ausdrücken lässt:
 
 $$v = c_1 \cdot v_1 + c_2 \cdot v_2 + \cdots + c_n \cdot v_n = \sum_{i=1}^{n} c_i v_i$$
 

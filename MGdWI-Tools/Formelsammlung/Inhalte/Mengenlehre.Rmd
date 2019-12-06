@@ -6,25 +6,25 @@ Element
 : 	Ist $a$ ist ein **Element** von $A$, dann schreiben wir $a \in A$.
 
 Teilmenge
-:	$\displaystyle A \subset B \Longleftrightarrow  \left(x \in A \Rightarrow x \in B\right)$
+:	$\displaystyle A \subseteq B \Longleftrightarrow  \left(x \in A \Rightarrow x \in B\right)$
 
 Echte Teilmenge
 :	$\displaystyle A \subsetneq B \Longleftrightarrow  \left(A \subset B \wedge \exists z \in B : z \notin A\right)$
 
 Gleichheit von Mengen
-:	$\displaystyle A = B \Longleftrightarrow A \subset B \wedge B \subset A$
+:	$\displaystyle A = B \Longleftrightarrow A \subseteq B \wedge B \subseteq A$
 
 Vereinigungsmenge zweier Mengen
-:	$\displaystyle A \cup B = \{ x | x \in A \vee x \in B \}$
+:	$\displaystyle A \cup B = \{ x \mid x \in A \vee x \in B \}$
 
 Schnittmenge zweier Mengen
-:	$\displaystyle A \cap B = \{ x | x \in A \wedge x \in B \}$
+:	$\displaystyle A \cap B = \{ x \mid x \in A \wedge x \in B \}$
 
 Kompliment einer Menge
-:	$\displaystyle A^c = \{x | x \in U \wedge x \not\in A \}, U$ ein *Universum* mit $A \subset U$
+:	$\displaystyle A^c = \{x \mid x \in U \wedge x \not\in A \}, U$ ein *Universum* mit $A \subset U$
 
 Differenz von Mengen
-:	$\displaystyle A \setminus B = \{ x | x \in A \wedge x \notin B \} = A \cap B^c$
+:	$\displaystyle A \setminus B = \{ x \mid x \in A \wedge x \notin B \} = A \cap B^c$
 
 Gleichmächtigkeit von Mengen
 :	$A$ und $B$ sind gleichmächtig, falls es eine Bijektion $f: A \leftrightarrow B$ gibt.
@@ -45,13 +45,13 @@ Mächtigkeit von endlichen Mengen
 :	$|A|$ ist die Anzahl der unterscheidbaren Elemente der (endlichen) Menge $A$.
 
 Potenzmenge
-:	$\displaystyle \Pot(A) = \{ U | U \subset A\}$
+:	$\displaystyle \Pot(A) = \{ U \mid U \subset A\}$
 
 Satz von Cantor
 :	Für jede Menge $A$ gilt: $|A| < |\Pot(A)|$
 
 Produktmenge
-:	$\displaystyle A \times B = \{(x;y) | x \in A \wedge y \in B\}$
+:	$\displaystyle A \times B = \{(x;y) \mid x \in A \wedge y \in B\}$
 
 De Morgansche Regeln
 :	$\displaystyle (A \cup B)^c = A^c \cap B^c$  und $\displaystyle (A \cap B)^c = A^c \cup B^c$
@@ -75,17 +75,15 @@ Ganze Zahlen
 : 	$\displaystyle \mathbb{Z} = \{...,-3,-2,-1,0,1,2,3,...\}$
 
 Rationale Zahlen
-:	$\displaystyle \mathbb{Q} = \left\{ \left. \frac{q}{p} \right| q\in \mathbb{Z}, p \in \mathbb{N}, p \text{ und } q \text{ sind teilerfremd}\right\}$
+:	$\displaystyle \mathbb{Q} = \left\{ \left. \frac{q}{p} \right|\,q\in \mathbb{Z}, p \in \mathbb{N}, p \text{ und } q \text{ sind teilerfremd}\right\}$
 
 Reelle Zahlen
 :	$\displaystyle \mathbb{R}$
 
 Komplexe Zahlen
-:	$\displaystyle \mathbb{C} = \left\{ x + y\cdot i \left| x,y \in \mathbb{R}\right. \right\}$
+:	$\displaystyle \mathbb{C} = \left\{ x + y\cdot i \left| \,x,y \in \mathbb{R}\right. \right\}$
 
 
 Es gilt: 
-\begin{equation*}
-	\mathbb{N} \subsetneq  \mathbb{N}_0 \subsetneq  \mathbb{Z} \subsetneq \mathbb{Q} \subsetneq \mathbb{R}\subsetneq \mathbb{C}
-\end{equation*}
+$$\mathbb{N} \subsetneq  \mathbb{N}_0 \subsetneq  \mathbb{Z} \subsetneq \mathbb{Q} \subsetneq \mathbb{R}\subsetneq \mathbb{C}$$
 

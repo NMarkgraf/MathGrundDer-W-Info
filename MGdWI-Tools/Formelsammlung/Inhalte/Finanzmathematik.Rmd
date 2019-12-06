@@ -1,0 +1,35 @@
+## Finanzmathematik
+
+Notationen
+:  $K$, $K_0$, $K_t$ : Kapital (zum Zeitpunkt 0 oder t) 
+:  $t$               : Zeitpunkt oder Zeitraum          
+: $Z$,$Z_t$          : Zinsen(für den Zeitraum $t$)     
+: $i$                : Zins, Zinssatz                   
+: $q=1+i$            : Aufzinsungsfaktor                
+
+
+Zinseszinsformel
+:	$K_n = K_0 \cdot (1+i)^n = K_0 \cdot q^n$
+
+Unterjährige Verzinsung
+:   $K_t = K_0 + Z \cdot t = K_0 + i\cdot K_0 \cdot t = K_0 (1+i\cdot t)$
+:   $t = \frac{T_2-T_1}{360}$
+:   $T_2$ : Auszahlungszeitpunkt in Zinstagen
+:   $T_1$ : Einzahlungszeitpunkt in Zinstagen 
+:   $T_i = (\text{aktueller Monat} - 1) \cdot 30 + \text{Tag im Monat}$
+
+Gemischte Verzinsung
+:  $K_t = K_0\cdot \left(1+i\cdot t_1\right)\cdot \left(1+i\right)^n\cdot \left(1+i\cdot t_2\right)$
+:  $K_t = K_0\cdot \left(1+i\cdot \frac{360-T_0+1}{360}\right)\cdot \left(1+i\right)^n\cdot \left(1+i\cdot \frac{T_1-1}{360}\right)$
+:  $T_0$ : Einzahlungszeitpunkt in Zinstagen im ersten Jahr
+:  $t_0$ : Anlagedauer in Zinstagen im ersten Jahr
+:  $T_1$ : Auszahlungszeitpunkt in Zinstagen im letzten Jahr
+:  $t_1$ : Anlagedauer in Zinstagen im letzten Jahr
+:  $n$   : Anzahl der ganzen Jahre
+
+Approximative Verzinsung
+:	$K_t = K_0 \cdot (1+i)^t = K_0 \cdot q^t$
+:   $t$ : Anlagedauer als nicht-ganzzahliger Wert
+
+
+

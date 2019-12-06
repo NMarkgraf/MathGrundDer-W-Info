@@ -1,9 +1,9 @@
 ---
-fontsize: 9pt
+#fontsize: 9pt
 papersize: a4
 documentclass: scrartcl
-classoption: landscape
-geometry: left=1cm,right=1cm,top=1cm,bottom=1cm,landscape
+classoption: landscape, fontsize=9pt, version=first, enabledeprecatedfontcommands, DIV=6
+geometry: left=1cm, right=1cm, top=1cm, bottom=1cm, landscape
 lang: de
 output:
     pdf_document:
@@ -22,32 +22,63 @@ output:
             after_body: AfterBodyInclude.tex
 ---
 
-```{r child="Inhalte/Notationen.Rmd", eval=TRUE}
+```{r setUpChildren, eval=TRUE, include=FALSE}
+childrenToInclude <- c(
+    "Notationen", "EinfachesRechnen", "Logik", "Mengenlehre", "VollstaendigeInduktion", 
+    "Folgen", "Reihen", "Kombinatorik", "Differentialrechnung", "Integralrechnung",
+    "LineareAlgebra", "Finanzmathematik"
+)
+childrenToInclude <- c(
+    "Notationen", "EinfachesRechnen", "Logik", "Mengenlehre", "VollstaendigeInduktion", 
+    "Kombinatorik", "LineareAlgebra", "Finanzmathematik"
+)
+
+## Test! (TRUE oder FALSE ändern!)
+if (FALSE) {
+  childrenToInclude <- c(
+    "Finanzmathematik"
+    )
+  }
+##
+includeChild <- function(name, children=childrenToInclude, all=FALSE) {
+    all | ifelse(name %in% children, TRUE, FALSE)
+}
 ```
 
-```{r child="Inhalte/EinfachesRechnen.Rmd", eval=TRUE}
+
+```{r child="Inhalte/Notationen.Rmd", eval=includeChild("Notationen")}
 ```
 
-```{r child="Inhalte/Logik.Rmd", eval=FALSE}
+```{r child="Inhalte/EinfachesRechnen.Rmd", eval=includeChild("EinfachesRechnen")}
 ```
 
-```{r child="Inhalte/Mengenlehre.Rmd", eval=TRUE}
+```{r child="Inhalte/Logik.Rmd", eval=includeChild("Logik")}
 ```
 
-```{r child="Inhalte/VollstaendigeInduktion.Rmd", eval=TRUE}
+```{r child="Inhalte/Mengenlehre.Rmd", eval=includeChild("Mengenlehre")}
 ```
 
-```{r child="Inhalte/Folgen.Rmd", eval=FALSE}
+```{r child="Inhalte/VollstaendigeInduktion.Rmd", eval=includeChild("VollstaendigeInduktion")}
 ```
 
-```{r child="Inhalte/Reihen.Rmd", eval=FALSE}
+```{r child="Inhalte/Folgen.Rmd", eval=includeChild("Folgen")}
 ```
 
-```{r child="Inhalte/Kombinatorik.Rmd", eval=TRUE}
+```{r child="Inhalte/Reihen.Rmd", eval=includeChild("Reihen")}
 ```
 
-```{r child="Inhalte/Differentialrechnung.Rmd", eval=TRUE}
+```{r child="Inhalte/Kombinatorik.Rmd", eval=includeChild("Kombinatorik")}
 ```
 
-```{r child="Inhalte/Integralrechnung.Rmd", eval=TRUE}
+```{r child="Inhalte/Differentialrechnung.Rmd", eval=includeChild("Differentialrechnung")}
 ```
+
+```{r child="Inhalte/Integralrechnung.Rmd", eval=includeChild("Integralrechnung")}
+```
+
+```{r child="Inhalte/LineareAlgebra.Rmd", eval=includeChild("LineareAlgebra")}
+```
+
+```{r child="Inhalte/Finanzmathematik.Rmd", eval=includeChild("Finanzmathematik")}
+```
+
