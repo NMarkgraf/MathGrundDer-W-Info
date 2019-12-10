@@ -141,26 +141,28 @@ c) Geben Sie die Übergangsfunktion als Tabelle an. (4 Punkte)
 
 
 
-## Aufgabe 4 (`r x<- 10; pkt<-pkt + x; x` Punkte)
+## Aufgabe 5 (`r x<- 10; pkt<-pkt + x; x` Punkte)
 
 Überführen Sie den NEA aus Aufgabe 4 in einen DEA mit möglichst wenigen Zuständen.
 
 
-## Aufgabe 5 (`r x<- 10; pkt<-pkt + x; x` Punkte)
+## Aufgabe 6 (`r x<- 10; pkt<-pkt + x; x` Punkte)
 
-Zeigen Sie, an Hand der Übergangsfunktion, dass von Ihrem in Aufgabe 4 konstruierte DEA 
+Zeigen Sie an Hand der Übergangsfunktion, dass der von Ihren in Aufgabe 5 konstruierte DEA 
 
-- **abab**      wird akzeptiert,
+- **abab**      akzeptiert,
 
-- *abaa*      wird nicht akzeptiert  und
+- *abaa*      nicht akzeptiert  und
 
-- **abbaabb**   wird akzeptiert.
+- **abbaabb**   akzeptiert.
+
+Geben Sie dazu entweder die Kette der Übergangsfunktion an oder die Kette der Konfigurationen.
 
 
 ## Aufgabe 7 (`r x<- 10; pkt<-pkt + x; x` Punkte)
 
-Konstruieren Sie je einen deterministischenendlichen Automaten für den folgende reguläre Ausdrücke.
-Es reicht den Graphen der Übergangsfunktion anzugeben!
+Konstruieren Sie je einen deterministische nendlichen Automaten für jeden der folgenden regulären Ausdrücke.
+Es reicht jeweils den Graph der Übergangsfunktion anzugeben!
 
 a) $(a+b)^*a(b+\epsilon)$ (3 Punkte)
 b) $(a+b+c)^+$ (4 Punkte)
@@ -200,7 +202,7 @@ digraph nea_1_a {
 
 ## Aufgabe 10 (`r x<- 10; pkt<-pkt + x; x` Punkte)
 
-Ein DES hat folgenden Graph der Übergangsfunktion:
+Der DEA $A$ hat folgenden Graph der Übergangsfunktion:
 
 ```{r DEA_Aufgabe_10, engine="dot", echo=FALSE, cache=TRUE}
 digraph nea_1 {
