@@ -161,7 +161,7 @@ Geben Sie dazu entweder die Kette der Übergangsfunktion an oder die Kette der K
 
 ## Aufgabe 7 (`r x<- 10; pkt<-pkt + x; x` Punkte)
 
-Konstruieren Sie je einen deterministische nendlichen Automaten für jeden der folgenden regulären Ausdrücke.
+Konstruieren Sie je einen deterministischen endlichen Automaten für jeden der folgenden regulären Ausdrücke.
 Es reicht jeweils den Graph der Übergangsfunktion anzugeben!
 
 a) $(a+b)^*a(b+\epsilon)$ (3 Punkte)
@@ -200,7 +200,7 @@ digraph nea_1_a {
 ```
 
 
-## Aufgabe 10 (`r x<- 10; pkt<-pkt + x; x` Punkte)
+## Aufgabe 9 (`r x<- 10; pkt<-pkt + x; x` Punkte)
 
 Der DEA $A$ hat folgenden Graph der Übergangsfunktion:
 
