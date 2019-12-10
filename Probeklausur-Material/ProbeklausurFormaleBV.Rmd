@@ -2,7 +2,7 @@
 title: "Formale Beschreibungsverfahren (WiSe 2019/20)"
 subtitle: "Probeklausur"
 author: "Norman Markgraf"
-date: "4.12.2019"
+date: "9.12.2019"
 fontsize: 12pt
 papersize: a4
 # linestretch: 1.25
@@ -140,166 +140,56 @@ b) Zeichnen Sie die Übergangsfunktion als Graph. (4 Punkte)
 c) Geben Sie die Übergangsfunktion als Tabelle an. (4 Punkte)
 
 
-## Aufgabe 5 (`r x<- 10; pkt<-pkt + x; x` Punkte)
+
+## Aufgabe 4 (`r x<- 10; pkt<-pkt + x; x` Punkte)
 
 Überführen Sie den NEA aus Aufgabe 4 in einen DEA mit möglichst wenigen Zuständen.
 
 
-\pagebreak
+## Aufgabe 5 (`r x<- 10; pkt<-pkt + x; x` Punkte)
+
+Zeigen Sie, an Hand der Übergangsfunktion, dass von Ihrem in Aufgabe 4 konstruierte DEA 
+
+- **abab**      wird akzeptiert,
+
+- *abaa*      wird nicht akzeptiert  und
+
+- **abbaabb**   wird akzeptiert.
 
 
-## Lösung zur Aufgabe 1
+## Aufgabe 7 (`r x<- 10; pkt<-pkt + x; x` Punkte)
 
-Es ist Ihnen feigestellt hier eine **totale** oder **partielle** Übergangsfunktion zu wählen.
+Konstruieren Sie je einen deterministischenendlichen Automaten für den folgende reguläre Ausdrücke.
+Es reicht den Graphen der Übergangsfunktion anzugeben!
 
-a) Der Automat lässt sich beschreiben als $A=(Q, \Sigma, \delta, s, F)$ mit
-    - Zustandsmenge $Q =\{q_0, q_1, q_2, q_3, q_4\}$
-    - Alphabet $\Sigma = \{0, 1\}$
-    - *partielle* Übergangsfunktion $\delta: Q \times \Sigma \to Q$ wie unten.
-    - Startzustand $s=q_0 \in Q$
-    - Endzuständen $F=\{q_4\}\subseteq Q$
+a) $(a+b)^*a(b+\epsilon)$ (3 Punkte)
+b) $(a+b+c)^+$ (4 Punkte)
+c) $(a+\epsilon)b(a+b+c)$ (3 Punkte)
 
-b) Der Graph zur Übergangsfunktion lautet:
 
-```{r DEA_Aufgabe_1, engine="dot", echo=FALSE, cache=TRUE}
-digraph nea_1 {
+## Aufgabe 8 (`r x<- 10; pkt<-pkt + x; x` Punkte)
+
+Wandeln Sie den folgenden NEA schrittweise in einen regulären Ausdruck um:
+
+```{r NEA_1a, engine="dot", echo=FALSE, cache=TRUE}
+digraph nea_1_a {
     rankdir=LR;
     size="7,5"
 
-    node [shape = doublecircle]; q4;
-    node [shape = point ]; Start;
-
-    node [shape = circle];
-    node [label = "q₀"]; q0;
-    node [label = "q₁"]; q1;
-    node [label = "q₂"]; q2;
-    node [label = "q₃"]; q3;
-    node [label = "q₄"]; q4;
-
-    Start -> q0 [ label = "Start" ];
-
-    q0 -> q1 [ label = "0" ];
-    q1 -> q2 [ label = "0" ];
-    q2 -> q3 [ label = "1" ];
-    q2 -> q2 [ label = "0" ];
-    q3 -> q2 [ label = "0" ];
-    q3 -> q4 [ label = "1" ];
-    q4 -> q2 [ label = "0"];
-    q4 -> q4 [ label = "1"];
-    
-    {rank=same; q4, q2}
-
-
-}
-
-```
-
-c) Die Übergangsfunktion als Tabelle:
-
-
-+------------------------+----------+---------+
-|                        |   0      |   1     |
-+=======================:+:========:+:=======:+
-| $\longrightarrow q_0$  |  $q_1$   | $\bot$  |
-+------------------------+----------+---------+
-| $q_1$                  |  $q_2$   | $\bot$  |
-+------------------------+----------+---------+
-| $q_2$                  |  $q_2$   | $q_3$   |
-+------------------------+----------+---------+
-| $q_3$                  |  $q_2$   | $q_4$   |
-+------------------------+----------+---------+
-| $* \;q_4$              |  $q_2$   | $q_4$   |
-+------------------------+----------+---------+
-
-
-Alternativ können Sie auch mit einer *totalen* statt einer *partiellen* Übergangsfunktion arbeiten:
-
-a) Der Automat lässt sich beschreiben als $A=(Q, \Sigma, \delta, s, F)$ mit
-    - Zustandsmenge $Q =\{q_0, q_1, q_2, q_3, q_4, q_5\}$
-    - Alphabet $\Sigma = \{0, 1\}$
-    - *totale* Übergangsfunktion $\delta: Q \times \Sigma \to Q$ wie unten.
-    - Startzustand $s=q_0 \in Q$
-    - Endzuständen $F=\{q_4\}\subseteq Q$
-
-b') Der Graph zur (totalen) Übergangsfunktion lautet:
-
-```{r DEA_Aufgabe_1_total, engine="dot", echo=FALSE, cache=TRUE}
-digraph nea_1 {
-    rankdir=LR;
-    size="7,5"
-
-    node [shape = doublecircle]; q4;
-    node [shape = point ]; Start;
-
-    node [shape = circle];
-    node [label = "q₀"]; q0;
-    node [label = "q₁"]; q1;
-    node [label = "q₂"]; q2;
-    node [label = "q₃"]; q3;
-    node [label = "q₄"]; q4;
-    node [label = "q₅"]; 54;
-
-    Start -> q0 [ label = "Start" ];
-
-    q0 -> q1 [ label = "0" ];
-    q0 -> q5 [ label = "1" ];
-    q1 -> q2 [ label = "0" ];
-    q1 -> q5 [ label = "1" ];
-    q2 -> q3 [ label = "1" ];
-    q2 -> q2 [ label = "0" ];
-    q3 -> q2 [ label = "0" ];
-    q3 -> q4 [ label = "1" ];
-    q4 -> q2 [ label = "0" ];
-    q4 -> q4 [ label = "1" ];
-    q5 -> q5 [ label = "0,1" ];
-
-}
-
-```
-
-c') Die Übergangsfunktion als Tabelle:
-
-
-+------------------------+----------+---------+
-|                        |   0      |   1     |
-+=======================:+:========:+:=======:+
-| $\longrightarrow q_0$  |  $q_1$   | $q_5$   |
-+------------------------+----------+---------+
-| $q_1$                  |  $q_2$   | $q_5$   |
-+------------------------+----------+---------+
-| $q_2$                  |  $q_2$   | $q_3$   |
-+------------------------+----------+---------+
-| $q_3$                  |  $q_2$   | $q_4$   |
-+------------------------+----------+---------+
-| $* \;q_4$              |  $q_2$   | $q_4$   |
-+------------------------+----------+---------+
-| $q_5$                  |  $q_5$   | $q_5$   |
-+------------------------+----------+---------+
-
-
-
-## Lösung zur Aufgabe 2
-
-a) $L_A =\left\{w \in \{a,b\}^* \mid \exists n,m \in \mathbf{N}_0.w= lvr . l=a^n\wedge v=(ab)^m \wedge (r=b \vee r=\epsilon) \right\}$
-
-b) Ein möglicher 
-
-```{r DEA_zu_NEA_1, engine="dot", echo=FALSE, cache=TRUE}
-digraph nea_1 {
-    rankdir=LR;
-    size="7,5"
-
-    node [shape = doublecircle; label="q₀"]; q0;
     node [shape = doublecircle; label="q₁"]; q1;
     node [shape = doublecircle; label="q₂"]; q2;
     node [shape = point ]; Start;
 
+    node [shape = circle];
+    node [label = "q₀"]; q0;
+    
     Start -> q0 [ label = "Start" ];
 
     q0 -> q0 [ label = "a" ];
-    q0 -> q1 [ label = "b" ];
-    q1 -> q2  [ label = "a" ];
+    q0 -> q1 [ label = "ε" ];
+    q1 -> q2 [ label = "a" ];
     q2 -> q1 [ label = "b" ];
+    q0 -> q2 [ label = "ε" ];
 
     { rank=same; q1, q2}
 
@@ -308,225 +198,39 @@ digraph nea_1 {
 ```
 
 
-## Lösung zur Aufgabe 3
+## Aufgabe 10 (`r x<- 10; pkt<-pkt + x; x` Punkte)
 
-a) Der Automat lässt sich beschreiben als $A=(Q, \Sigma, \delta, s, F)$ mit
-    - Zustandsmenge $Q =\{q_0, q_1, q_2, q_3, q_4, q_5, q_6\}$
-    - Alphabet $\Sigma = \{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, :\}$
-    - *partielle* Übergangsfunktion $\delta: Q \times \Sigma^* \to Q$ wie unten.
-    - Startzustand $s=q_0 \in Q$
-    - Endzuständen $F=\{q_6\}\subseteq Q$
-    
-b) Der Graph zur Übergangsfunktion lautet:
+Ein DES hat folgenden Graph der Übergangsfunktion:
 
-```{r DEA_Aufgabe_3, engine="dot", echo=FALSE, cache=TRUE}
+```{r DEA_Aufgabe_10, engine="dot", echo=FALSE, cache=TRUE}
 digraph nea_1 {
     rankdir=LR;
     size="7,5"
 
+    node [shape = doublecircle]; q3;
     node [shape = point ]; Start;
-    node [shape = doublecircle ]; q6;
 
     node [shape = circle];
     node [label = "q₀"]; q0;
     node [label = "q₁"]; q1;
     node [label = "q₂"]; q2;
     node [label = "q₃"]; q3;
-    node [label = "q₄"]; q4;
-    node [label = "q₅"]; q5;
-    node [label = "q₆"]; q6;
-
-    {rank=same; q1; q2}
-    
-    Start -> q0 [ label = "Start" ];
-
-    q0 -> q1 [ label = "0" ];
-    q0 -> q2 [ label = "1" ];
-    q1 -> q3 [ label = "0,...,9" ];
-    q2 -> q3 [ label = "0,1" ];
-    q3 -> q4 [ label = ":" ];
-    q4 -> q5 [ label = "0,1,2,3,4,5" ];
-    q5 -> q6 [ label = "0,...,9" ];
-
-
-}
-
-```
-
-c) Die Übergangsfunktion als Tabelle:
-
-
-+------------------------+----------+---------+--------+--------+--------+--------+--------+--------+--------+--------+--------+
-|                        |   0      |   1     |    2   |    3   |    4   |    5   |    6   |    7   |    8   |    9   |    :   |   
-+=======================:+:========:+:=======:+:======:+:======:+:======:+:======:+:======:+:======:+:======:+:======:+:======:+
-| $\longrightarrow q_0$  |  $q_1$   | $q_2$   | $\bot$ | $\bot$ | $\bot$ | $\bot$ | $\bot$ | $\bot$ | $\bot$ | $\bot$ | $\bot$ | 
-+------------------------+----------+---------+--------+--------+--------+--------+--------+--------+--------+--------+--------+
-| $q_1$                  |  $q_3$   | $q_3$   | $q_3$  | $q_3$  | $q_3$  | $q_3$  | $q_3$  | $q_3$  | $q_3$  | $q_3$  | $\bot$ | 
-+------------------------+----------+---------+--------+--------+--------+--------+--------+--------+--------+--------+--------+
-| $q_2$                  |  $q_3$   | $q_3$   | $\bot$ | $\bot$ | $\bot$ | $\bot$ | $\bot$ | $\bot$ | $\bot$ | $\bot$ | $\bot$ | 
-+------------------------+----------+---------+--------+--------+--------+--------+--------+--------+--------+--------+--------+
-| $q_3$                  |  $\bot$  | $\bot$  | $\bot$ | $\bot$ | $\bot$ | $\bot$ | $\bot$ | $\bot$ | $\bot$ | $\bot$ | $q_4$  | 
-+------------------------+----------+---------+--------+--------+--------+--------+--------+--------+--------+--------+--------+
-| $q_4$                  |  $q_5$   | $q_5$   | $q_5$  | $q_5$  | $q_5$  | $q_5$  | $\bot$ | $\bot$ | $\bot$ | $\bot$ | $\bot$ | 
-+------------------------+----------+---------+--------+--------+--------+--------+--------+--------+--------+--------+--------+
-| $q_5$                  |  $q_6$   | $q_6$   | $q_6$  | $q_6$  | $q_6$  | $q_6$  | $q_6$  | $q_6$  | $q_6$  | $q_6$  | $q_6$  | 
-+------------------------+----------+---------+--------+--------+--------+--------+--------+--------+--------+--------+--------+
-| $* \;q_6$              |  $q_2$   | $q_4$   | $\bot$ | $\bot$ | $\bot$ | $\bot$ | $\bot$ | $\bot$ | $\bot$ | $\bot$ | $\bot$ |
-+------------------------+----------+---------+--------+--------+--------+--------+--------+--------+--------+--------+--------+
-
-
-
-## Lösung zur Aufgabe 4
-
-
-a) Der Automat lässt sich beschreiben als $A=(Q, \Sigma, \delta, s, F)$ mit
-    - Zustandsmenge $Q =\{q_0, q_1, q_2, q_3, q_4\}$
-    - Alphabet $\Sigma = \{a,b\}$
-    - *partielle* Übergangsfunktion $\delta: Q \times (\Sigma \cup \{\epsilon\}) \to P(Q)$ wie unten.
-    - Startzustand $s=q_0 \in Q$
-    - Endzuständen $F=\{q_6\}\subseteq Q$
-    
-b) Der Graph zur Übergangsfunktion lautet:
-
-```{r NEA_Aufgabe_4, engine="dot", echo=FALSE, cache=TRUE}
-digraph nea_1 {
-    rankdir=LR;
-    size="7,5"
-
-    node [shape = point ]; Start;
-    node [shape = doublecircle ]; q4;
-
-    node [shape = circle];
-    node [label = "q₀"]; q0;
-    node [label = "q₁"]; q1;
-    node [label = "q₂"]; q2;
-    node [label = "q₃"]; q3;
-    node [label = "q₄"]; q4;
 
     Start -> q0 [ label = "Start" ];
 
-    q0 -> q0 [ label = "a,b" ];
+    q0 -> q0 [ label = "b,c" ];
     q0 -> q1 [ label = "a" ];
+    q1 -> q1 [ label = "a,c" ];
     q1 -> q2 [ label = "b" ];
     q2 -> q2 [ label = "a,b" ];
-    q2 -> q3 [ label = "a" ];
-    q3 -> q4 [ label = "b" ];
-    q4 -> q4 [ label = "a,b" ];
+    q2 -> q3 [ label = "c" ];
+    q3 -> q3 [ label = "a,b,c" ];
+
 
 }
 
 ```
 
-
-c) Die Übergangsfunktion als Tabelle lautet dann:
-
-+------------------------+------------------+-----------------+
-|                        |   a              |   b             |
-+=======================:+:================:+:===============:+
-| $\longrightarrow q_0$  |  $\{q_0,q_1\}$   | $\{q_0\}$       |
-+------------------------+------------------+-----------------+
-| $q_1$                  |  $\emptyset$     | $\{q_2\}$       |
-+------------------------+------------------+-----------------+
-| $q_2$                  |  $\{q_2.q_3\}$   | $\{q_2\}$       |
-+------------------------+------------------+-----------------+
-| $q_3$                  |  $\emptyset$     | $\{q_4\}$       |
-+------------------------+------------------+-----------------+
-| $* \;q_4$              |  $\{q_4\}$       | $\{q_4\}$       |
-+------------------------+------------------+-----------------+
-
-
-## Lösung zur Aufgabe 5
-
-a) Das 5-Tupel für den DEA lautet:
-
-$$\begin{aligned}
-  A &= \left( \{\{q_0\},\{q_0, q_1\}, \{q_0, q_2\}, \{q_0, q_1, q_2, q_3\}, \{q_0, q_2, q_4\}, \{q_0, q_1, q_2, q_3,q_4\}\}, \right.\\    
-    &\qquad \left.\{a, b\}, \delta, \{q_0\}, \{\{q_0, q_2, q_4\},\{q_0,q_1,q_2,q_3,q_4\} \} \right) 
-  \end{aligned}$$
-
-b) Die Tabelle der Übergangsfunktion lautet:
-
-+----------------------------+---------------------------------+------------------------+
-|                            |   a                             |   b                    |
-+===========================:+:===============================:+:======================:+
-| $\longrightarrow \{q_0\}$  |  $\{q_0, q_1\}$                 | $\{q_0\}$              |
-+----------------------------+---------------------------------+------------------------+
-| $\{q_0, q_1\}$             |  $\{q_0, q_1\}$                 | $\{q_0, q_2\}$         |
-+----------------------------+---------------------------------+------------------------+
-| $\{q_0, q_2\}$             |  $\{q_0, q_1, q_2, q_3\}$       | $\{q_0, q_2\}$         |
-+----------------------------+---------------------------------+------------------------+
-| $\{q_0, q_1, q_2, q_3\}$   |  $\{q_0, q_1, q_2, q_3\}$       | $\{q_0, q_2, q_4\}$    |
-+----------------------------+---------------------------------+------------------------+
-| $*\{q_0, q_2, q_4\}$       |  $\{q_0, q_1, q_2, q_3, q_4\}$  | $\{q_0, q_2, q_4\}$    |
-+----------------------------+---------------------------------+------------------------+
-| $*\{q_0,q_1,q_2,q_3,q_4\}$ |  $\{q_0, q_1, q_2, q_3, q_4\}$  | $\{q_0, q_2, q_4\}$    |
-+----------------------------+---------------------------------+------------------------+
-
-
-Wir ersetzen nun, damit es übersichtlicher wird, die Zustandsmengen in neue Zustände wie folgt:
-
-- $z_0 = \{q_0\}$
-- $z_1 = \{q_0, q_1\}$
-- $z_2 = \{q_0, q_2\}$
-- $z_3 = \{q_0, q_1, q_2, q_3\}$
-- $z_4 = \{q_0, q_2, q_4\}$
-- $z_5 = \{q_0,q_1,q_2,q_3,q_4\}$
-
-Damit erhalten wir den DEA:
-
-$$A=\left(\{z_0, z_1, z_2, z_3, z_4, z_5\}, \{a, b\}, \delta, \{z_0\}, \{z_4, z_5 \} \right)$$
-mit der Übergangsfunktionstabelle:
-
-+------------------------+---------+--------+
-|                        |   a     |   b    |
-+=======================:+:=======:+:======:+
-| $\longrightarrow z_0$  |  $z_1$  | $z_0$  |
-+------------------------+---------+--------+
-| $z_1$                  |  $z_1$  | $z_2$  |
-+------------------------+---------+--------+
-| $z_2$                  |  $z_3$  | $z_2$  |
-+------------------------+---------+--------+
-| $z_3$                  |  $z_3$  | $z_4$  |
-+------------------------+---------+--------+
-| $*z_4$                 |  $z_5$  | $z_4$  |
-+------------------------+---------+--------+
-| $*z_5$                 |  $z_5$  | $z_4$  |
-+------------------------+---------+--------+
-
-
-b) Der Graph der Übergangsfunktion lautet
-
-```{r DEA_Aufgabe_4, engine="dot", echo=FALSE, cache=TRUE}
-digraph nea_1 {
-    rankdir=LR;
-    size="7,5"
-
-    node [shape = point ]; Start;
-    node [shape = doublecircle ]; z4, z5;
-
-    node [shape = circle];
-    node [label = "z₀"]; z0;
-    node [label = "z₁"]; z1;
-    node [label = "z₂"]; z2;
-    node [label = "z₃"]; z3;
-    node [label = "z₄"]; z4;
-    node [label = "z₅"]; z5;
-
-    Start -> z0 [ label = "Start" ];
-
-    z0 -> z1 [ label = "a" ];
-    z0 -> z0 [ label = "b" ];
-    z1 -> z1 [ label = "a" ];
-    z1 -> z2 [ label = "b" ];
-    z2 -> z3 [ label = "a" ];
-    z2 -> z2 [ label = "b" ];
-    z3 -> z3 [ label = "a" ];
-    z3 -> z4 [ label = "b" ];
-    z4 -> z5 [ label = "a" ];
-    z4 -> z4 [ label = "b" ];
-    z5 -> z5 [ label = "a" ];
-    z5 -> z4 [ label = "b" ];
-
-}
-
-```
+a) Geben Sie das zum DEA $A$ passende 5-Tupel an. (3 Punkte)
+b) Geben Sie 2 akzeptierte und 2 nicht akzeptierte Wörter an. (2 Punkte)
+c) Geben Sie die akzeptierte Sprache $L_A$ an. (5 Punkte)
