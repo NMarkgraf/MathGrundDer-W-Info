@@ -45,21 +45,24 @@ library(ggplot2)
 theme.fom <- theme_classic(22*1.02)
 theme.fom <- theme.fom
 theme_set(
-  theme.fom  
+  theme.fom
 )
 ```
 
 ```{r setUpChildren, eval=TRUE, include=FALSE}
 childrenToInclude <- c(
-    "Organisatorisches", "Hinweise", "Mengenlehre", "Relationen", "Kombinatorik", "Logik", "Finanzmathematik", "LineareAlgebra"
+    "Organisatorisches", "Hinweise", "Mengenlehre", "Relationen", 
+    #"Kombinatorik", 
+    "Logik", "Finanzmathematik", "LineareAlgebra"
 )
 ## Test! (TRUE oder FALSE ändern!)
-if (TRUE) {
+if (FALSE) {
   childrenToInclude <- c(
 #    "Mengenlehre", 
-#    "Relationen"
-#, "Finanzmathematik","LineareAlgebra"
-"LineareAlgebra"
+#    "Relationen",
+     "Kombinatorik" 
+#"Logik", "Finanzmathematik", "LineareAlgebra"
+#    "LineareAlgebra"
   )
   privateVorstellung <<- FALSE
   }
