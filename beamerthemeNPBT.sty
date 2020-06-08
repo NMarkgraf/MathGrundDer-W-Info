@@ -1,10 +1,10 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{beamerthemeNPBT}[2019/05/05 v4.2.1 Main Beamer Theme of NPBT]
+\ProvidesPackage{beamerthemeNPBT}[2020/02/25 v4.5.0 Main Beamer Theme of NPBT]
 % ===========================================================================
 % beamerthemeNPBT.sty
 % ===================---------------------------------------------------------
 % 
-% (C) in 2017-19 by Norman Markgraf (nmarkgraf(at)hotmail(dot)com)
+% (C) in 2017-20 by Norman Markgraf (nmarkgraf(at)hotmail(dot)com)
 %
 % NPBT <-> Norman's Pandoc Beamer Theme -> NPBT 
 % ----     =        =      =      =
@@ -39,11 +39,13 @@
 % title page
 % ---------------------------------------------------------------------------
 \setbeamercolor{title in titlepage}{fg=NPBTTitelColor}
+\setbeamercolor{subtitle in titlepage}{fg=NPBTTitelColor}
 \setbeamercolor{institute in titlepage}{fg=lightgray}
 \setbeamercolor{author in titlepage}{fg=darkgray}
 
 % ---------------------------------------------------------------------------
 \setbeamerfont{title in titlepage}{size=\Large, series=\bfseries}
+\setbeamerfont{subtitle in titlepage}{size=\large, series=\bfseries}
 \setbeamerfont{institute in titlepage}{size=\large, series=\bfseries}
 \setbeamerfont{author in titlepage}{series=\bfseries}
 
@@ -278,18 +280,10 @@
 		\setlength{\myPaperHeight}{126mm}
 	\typeout{Set ScreenRatio to 16:9 (224x126)}
 	}{%
-    	\ifthenelse{\equal{#1}{5x3}}{%
-%	\ifstrequal{#1}{16x9}{%
-    		%% 5:3 ->  224 x 126
-    		\setlength{\myPaperWidth}{200mm}
-    		\setlength{\myPaperHeight}{120mm}
-    	    \typeout{Set ScreenRatio to 5:3 (200x120)}
-    	}{%
-    		%% Default:
-    		\setlength{\myPaperWidth}{140mm}
-    		\setlength{\myPaperHeight}{105mm}
-    		\typeout{Set ScreenRatio to default (140x105)}
-    	}
+		%% Default:
+		\setlength{\myPaperWidth}{140mm}
+		\setlength{\myPaperHeight}{105mm}
+		\typeout{Set ScreenRatio to default (140x105)}
 	}
 }
 \geometry{paperwidth=\myPaperWidth,paperheight=\myPaperHeight}
@@ -429,6 +423,8 @@
 {
   \inserttitle
   \par
+  \insertsubtitle
+  \par\par
   
   \insertinstitute ~\xspace -- \insertdate
   \par
@@ -448,12 +444,15 @@
       xshift=-1.95cm,
       yshift=3.65cm
     ] at (current page.south east){%
-        \begin{minipage}[b]{\titleboxwidth}
+        \begin{minipage}[b]{0.8\textwidth}%{\titleboxwidth}
             \addtolength{\baselineskip}{1.5ex} 
             \begin{flushright} % XXXX
                 {\usebeamercolor[fg]{title in titlepage}%
                  \usebeamerfont{title in titlepage} \inserttitle}
                 \par
+                {\usebeamercolor[fg]{subtitle in titlepage}%
+                 \usebeamerfont{subtitle in titlepage} \insertsubtitle}
+                 \par
                 \vspace*{0.7em}
                 {\usebeamercolor[fg]{institute in titlepage}%
                  \usebeamerfont{institute in titlepage} \insertinstitute ~\xspace -- \insertdate}
@@ -523,81 +522,71 @@
 \newlength{\npbttitleboxheight}
 
 \defbeamertemplate{frametitle}{normal}{%
-  \setlength{\mytitleboxlength}{\textwidth}%
-  \addtolength{\mytitleboxlength}{-1.4cm}%
-  \npbtexercisemodefalse%
-  \makeatletter%
-  \expandarg%
-  \let\tmp\insertframetitle%
-  \IfSubStr*{\tmp}{bung}{\npbtexercisemodetrue}{}%
-  \IfBeginWith*{\tmp}{Offene}{\npbtexercisemodetrue}{}%
-  \makeatother%
-  \savebox{\myftbox}{%
-      \ifnpbtexercisemode{%
-        \usebeamercolor[fg]{frametitle in head exercise}%
-        \usebeamerfont{frametitle in head exercise}%
-        \insertframetitle\phantom{Üj/}%
-      }\else{%
-        \usebeamercolor[fg]{frametitle in head}%
-        \usebeamerfont{frametitle in head}%
-        \insertframetitle\phantom{Üj/}%
-     }\fi%
-     }% end of savebox!
-  \savebox{\maxheightbox}{%
-    \ifnpbtexercisemode{%
-        \usebeamercolor{frametitle in head exercise}%
-        \usebeamerfont{frametitle in head exercise}%
-      }\else{%
-        \usebeamercolor{frametitle in head}%
-        \usebeamerfont{frametitle in head}%
-     }\fi%
-     XÜygfÄÖß!qpjJ}%
-  \usebeamercolor{frametitle in head exercise}
-  \settoheight{\npbttitleboxheight}{\maxheightbox}%
-  \ifnpbtexercisemode{%
-    \addtolength{\npbttitleboxheight}{3pt}
-    \begin{tikzpicture}[remember picture, overlay]
-        \node[anchor=west, inner sep=0pt, xshift=0.32cm, yshift=-\logoheight+1pt] at (current page.north west){%
+    \setlength{\mytitleboxlength}{\textwidth}%
+    \addtolength{\mytitleboxlength}{-1.4cm}%
+    \npbtexercisemodefalse%
+    \makeatletter%
+    \expandarg%
+    \let\tmp\insertframetitle%
+    \IfSubStr*{\tmp}{bung}{\npbtexercisemodetrue}{}%
+    \IfBeginWith*{\tmp}{Offene}{\npbtexercisemodetrue}{}%
+    \makeatother%
+    \savebox{\myftbox}{%
+        \ifnpbtexercisemode{%
+            \usebeamercolor[fg]{frametitle in head exercise}%
             \usebeamerfont{frametitle in head exercise}%
-            \usebeamercolor{frametitle in head exercise}%
-            \colorbox{bg}{\makebox[\mytitleboxlength][l]{\parbox[b][\npbttitleboxheight][c]{0pt}{}}}
-          };%
-    \end{tikzpicture}%
-  }\else {
-    \begin{tikzpicture}[remember picture, overlay]
-        \node[anchor=west, inner sep=0pt, xshift=0.32cm, yshift=-\logoheight-3pt] at (current page.north west){%
+            \insertframetitle\phantom{Üj}%
+        }\else{%
+            \usebeamercolor[fg]{frametitle in head}%
             \usebeamerfont{frametitle in head}%
+            \insertframetitle\phantom{Üj}%
+        }\fi%
+     }% end of savebox!
+    \savebox{\maxheightbox}{%
+        \ifnpbtexercisemode{%
+            \usebeamercolor{frametitle in head exercise}%
+            \usebeamerfont{frametitle in head exercise}%
+        }\else{%
             \usebeamercolor{frametitle in head}%
-            \addtolength{\mytitleboxlength}{4pt}%
-            \parbox[b][\npbttitleboxheight][c]{0pt}{}\hspace{-4pt}
-            {\textcolor{fg}{\rule{\mytitleboxlength}{1pt}}}
-          };%
-    \end{tikzpicture}%
-  }\fi% end of ifnpbtexercisemode
-  \vskip-4.0\npbttitleboxheight%
-  \ifxetex\vskip-2pt%
-  \else\vskip1px%
-  \fi%
-  \settowidth{\myftboxwidth}{\usebox{\myftbox}}%
-  \vskip6pt\vskip0pt%
-  \begin{beamercolorbox}[%
-      sep=0pt %
-    ]{frametitle}%
+            \usebeamerfont{frametitle in head}%
+        }\fi%
+        XÜygfÄÖß!qpjJ%
+    }% end of savebox!
+    \usebeamercolor{frametitle in head exercise}%
+    \settoheight{\npbttitleboxheight}{\maxheightbox}%
+    \vskip-3pt%
+    \ifnpbtexercisemode{%
+        \vskip-3pt%
+        \addtolength{\npbttitleboxheight}{6pt}%
+        {\usebeamerfont{frametitle in head exercise}%
+        \usebeamercolor{frametitle in head exercise}%
+        \colorbox{bg}{\makebox[\mytitleboxlength][l]{\parbox[b][\npbttitleboxheight][c]{0pt}{}}}}%
+        \vskip3pt%
+    }\else{
+        {\usebeamerfont{frametitle in head}%
+        \usebeamercolor{frametitle in head}%
+        \addtolength{\mytitleboxlength}{4pt}%
+        \parbox[b][\npbttitleboxheight][c]{0pt}{}\hspace{-4pt}{\textcolor{fg}{\rule{\mytitleboxlength}{1pt}}}}%
+    }\fi% end of ifnpbtexercisemode
+    \vskip-\npbttitleboxheight%
+    \vskip-4pt%
+    \settowidth{\myftboxwidth}{\usebox{\myftbox}}%
     \ifnpbtexercisemode{%
         \usebeamercolor[fg]{frametitle in head exercise}%
         \usebeamerfont{frametitle in head exercise}%
-      }\else{%
+        \vskip2pt%
+    }\else{%
         \usebeamercolor[fg]{frametitle in head}%
         \usebeamerfont{frametitle in head}%
-     }\fi%
-      \ifdim\myftboxwidth>\mytitleboxlength%
+    }\fi%  end of ifnpbtexercisemode
+    \vskip-1em%\vskip4.5pt%
+    \ifdim\myftboxwidth>\mytitleboxlength{%
         \resizebox{\mytitleboxlength}{!}{\usebox{\myftbox}}\\[-0.85em]
-      \else%
+    }\else{ %
         \usebox{\myftbox}\\[-0.85em]
-      \fi
-  \end{beamercolorbox}%
-  \showLogoRightSide%
-  \vskip0pt%
+    }\fi% end of ifdem
+    \showLogoRightSide%
+    \vskip0pt%
 }
 
 % ---------------------------------------------------------------------------
@@ -695,6 +684,7 @@
   \begin{tikzpicture}[remember picture, overlay]
     \node[anchor=south east,xshift=-1cm,yshift=1.5cm] at (current page.south east){%
         \begin{minipage}[b][\sectionpageheight][t]{\sectionpagewidth}
+        \sectionpageheight x \sectionpagewidth
           \begin{FlushRight}
               \usebeamercolor{sectionnumber title}%
               \usebeamerfont{sectionnumber title}\insertsectionnumber %
@@ -718,8 +708,11 @@
 \defbeamertemplate{subsection page}{normal}
 {
   \begin{tikzpicture}[remember picture, overlay]
-    \node[anchor=south east,xshift=-1cm,yshift=1.5cm] at (current page.south east){%
+    \node[anchor=south east,xshift=-3cm,yshift=3.5cm] at (current page.south east){%
         \begin{minipage}[b][\sectionpageheight][t]{\sectionpagewidth}
+
+          \sectionpageheight x \sectionpagewidth
+
           \begin{FlushRight}
               \usebeamercolor{sectionnumber title}%
               \usebeamerfont{sectionnumber title}\insertsubsectionnumber %
