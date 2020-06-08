@@ -2,7 +2,7 @@
 toc-title: "\\contentsname"
 lang: de-DE
 header-includes: 
-    - "\\usepackage{csquotes}"
+    #- "\\usepackage{csquotes}"
     - "\\InputIfFileExists{header.tex}{\\relax}{\\relax}"
 output:
     beamer_presentation:

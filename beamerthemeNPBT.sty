@@ -278,10 +278,18 @@
 		\setlength{\myPaperHeight}{126mm}
 	\typeout{Set ScreenRatio to 16:9 (224x126)}
 	}{%
-		%% Default:
-		\setlength{\myPaperWidth}{140mm}
-		\setlength{\myPaperHeight}{105mm}
-		\typeout{Set ScreenRatio to default (140x105)}
+    	\ifthenelse{\equal{#1}{5x3}}{%
+%	\ifstrequal{#1}{16x9}{%
+    		%% 5:3 ->  224 x 126
+    		\setlength{\myPaperWidth}{200mm}
+    		\setlength{\myPaperHeight}{120mm}
+    	    \typeout{Set ScreenRatio to 5:3 (200x120)}
+    	}{%
+    		%% Default:
+    		\setlength{\myPaperWidth}{140mm}
+    		\setlength{\myPaperHeight}{105mm}
+    		\typeout{Set ScreenRatio to default (140x105)}
+    	}
 	}
 }
 \geometry{paperwidth=\myPaperWidth,paperheight=\myPaperHeight}

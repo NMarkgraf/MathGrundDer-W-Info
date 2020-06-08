@@ -1,7 +1,7 @@
 ---
 title: "Mathematische Grundlagen der (Wirtschafts-)Informatik"
 header-includes:
-  - \usepackage{systeme}
+  - "\\usepackage{systeme}"
 ---
 
 ```{r setup, include=FALSE}
@@ -54,11 +54,12 @@ childrenToInclude <- c(
     "Organisatorisches", "Hinweise", "Mengenlehre", "Relationen", "Kombinatorik", "Logik", "Finanzmathematik", "LineareAlgebra"
 )
 ## Test! (TRUE oder FALSE ändern!)
-if (FALSE) {
+if (TRUE) {
   childrenToInclude <- c(
 #    "Mengenlehre", 
-    "Relationen"
+#    "Relationen"
 #, "Finanzmathematik","LineareAlgebra"
+"LineareAlgebra"
   )
   privateVorstellung <<- FALSE
   }
