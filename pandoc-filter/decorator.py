@@ -254,7 +254,23 @@ class LaTeXDecorator(Decorator):
 
 
 class HTMLDecorator(Decorator):
-    pass
+    def handle_class_columns(self, elem):
+      if "style" not in elem.attributes:
+          elem.attributes["style"] = "grid-template-columns:"
+
+    def handle_class_column(self, elem):
+      if "style" not in elem.parent.attributes:
+          elem.parent.attributes["style"] = "grid-template-columns:"
+      elem.parent.attributes["style"] = elem.parent.attributes["style"] + " " + elem.attributes["width"]
+      elem.attributes.pop("width", None)
+  
+    def handle_div(self, elem):
+        """Handle DIV Blocks in HTML Context.
+        """
+        if 'columns' in elem.classes:
+            self.handle_class_columns(elem)
+        if 'column' in elem.classes:
+            self.handle_class_column(elem)
 
 
 def main():

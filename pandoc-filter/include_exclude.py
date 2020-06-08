@@ -4,7 +4,7 @@
 """
   Quick-Pandoc-Filter: include_exclude.py
 
-  (C)opyleft in 2018,19 by Norman Markgraf (nmarkgraf@hotmail.com)
+  (C)opyleft in 2018-20 by Norman Markgraf (nmarkgraf@hotmail.com)
 
   Release:
   ========
@@ -12,6 +12,10 @@
   0.2   - 27.12.2018 (nm) - "include-only" als Mischung von 
                             "exclude=all include=<taglist>" einbaut.
   0.3   - 03.01.2019 (nm) - Bugfixe
+  0.4   - 21.02.2019 (nm) - Bugfixe. "include=yes, no , foo" wird nun 
+                            richtig zu "['yes','no','foo']" gewandelt.
+  0.5   - 19.02.2020 (nm) - Bugfix. Endlich auch am Ende löschen.
+                            Richtig und fehlerfrei!
 
   WICHTIG:
   ========
@@ -95,7 +99,7 @@ def action(e, doc):
     global exclude_flag
     
     logging.debug("-"*50)
-    logging.debug("current:" + str(e))
+    logging.debug("current:" + str(e) + " " + str(type(e)) +" current.doc:" + str(e.doc) + " " + str(type(e.doc)))
     ret = e
     
     if isinstance(e, pf.Header):
@@ -126,24 +130,34 @@ def action(e, doc):
         if "all" in exclude_list:
             exclude_flag = True
             ret = []
+            logging.debug("Set flag to true and empty return! (ALL)")
         
         if intersection_not_empty(doc.tag_list, include_list):
             exclude_flag = False
             ret = e
+            logging.debug("Set flag to false and return!")
 
         if intersection_not_empty(doc.tag_list, exclude_list):
             exclude_flag = True
             ret = []
+            logging.debug("Set flag to true and empty return!")
+
             
         logging.debug("------------- New exclude_flag: "+str(exclude_flag))
         
-    elif exclude_flag and not isinstance(e.next, pf.Header):
-        logging.debug("next found: "+str(e))
-        ret = []
-    elif exclude_flag and isinstance(e.next, pf.Header):
-        exclude_flag = False
+    elif exclude_flag:
+        logging.debug("Flag is true!")
+        if isinstance(e.next, pf.Header) or ((e.next == None) and (isinstance(e, pf.Header))):
+            exclude_flag = False
+            logging.debug("Set flag to false!")
+        else:
+            ret = []
+            logging.debug("Do an empty return!")
 
-    logging.debug("Next found: "+str(e))
+    
+    #logging.debug("Next found: "+str(e))
+    #logging.debug("Next found: "+str(type(e)))
+
     logging.debug("return:"+str(ret))
     return ret
 

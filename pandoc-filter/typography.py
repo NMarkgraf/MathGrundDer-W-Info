@@ -79,6 +79,7 @@ elif os.path.exists("typography.loglevel.error"):
 else:
     DEBUGLEVEL = logging.ERROR  # .ERROR or .DEBUG  or .INFO
 
+
 logging.basicConfig(filename='typography.log', level=DEBUGLEVEL)
 
 """
@@ -225,7 +226,7 @@ def make_inline(a, frmt):
     """
     if frmt in ("latex", "beamer"):
         return make_latex_inline(a)
-    if frmt == "html":
+    if frmt == ("html", "reaveljs"):
         return make_html_inline(a)
 
 
@@ -248,7 +249,7 @@ def get_narrow_slash_html():
 def get_narrow_slash(frmt):
     if frmt in ("latex", "beamer"):
         return get_narrow_slash_latex()
-    if frmt == "html":
+    if frmt in ("html", "reaveljs"):
         return get_narrow_slash
 
 
@@ -447,6 +448,7 @@ def _prepare(doc):
 
 def _finalize(doc):
     def __add_header_includes(rawstr, frmt):
+        logging.debug("Append line '"+rawstr+"' to `header-includes`")
         if not rawstr in doc.get_metadata("header-includes"):
             doc.metadata[hdr_inc].append(
                 pf.MetaInlines(pf.RawInline(rawstr, frmt))
@@ -466,6 +468,10 @@ def _finalize(doc):
     # Convert header-includes to MetaList if necessary
 
     logging.debug("Append background packages to `header-includes`")
+    
+    for x in doc.metadata[hdr_inc]:
+        logging.debug("Pre:"+str(x))
+
 
     if not isinstance(doc.metadata[hdr_inc], pf.MetaList):
         logging.debug("The '" + hdr_inc + "' is not a list? Converted!")
@@ -478,6 +484,9 @@ def _finalize(doc):
     if doc.format in ("tex", "latex", "beamer"):
         __add_header_includes("\\usepackage{xspace}", frmt)
         __add_header_includes("\\usepackage{trimclip}", frmt)
+
+    for x in doc.metadata[hdr_inc]:
+        logging.debug("Post:"+str(x))
 
 
 def main(doc=None):

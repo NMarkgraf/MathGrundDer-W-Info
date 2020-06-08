@@ -123,16 +123,22 @@ slidelevel = 2
 def set_decorator(doc):
     global dec
 
+    logging.debug("Set decorator to:"+str(doc.format))
+    
     if doc.format in ["latex", "beamer"]:
+        logging.debug("LaTeXDecorator('latex')")
         dec = LaTeXDecorator("latex")
 
     if doc.format == "tex":
+        logging.debug("LaTeXDecorator('tex')")
         dec = LaTeXDecorator("tex")
 
     if doc.format == "context":
+        logging.debug("LaTeXDecorator('context')")
         dec = LaTeXDecorator("context")
 
-    if doc.format == "html":
+    if doc.format in ["html", "revealjs"]:
+        logging.debug("HTMLDecorator()")
         dec = HTMLDecorator()
 
 
@@ -291,6 +297,7 @@ def _finalize(doc):
     :return: current document
     """
     def __add_header_includes(rawstr, frmt):
+        logging.debug("Append line '"+rawstr+"' to `header-includes`")
         if not rawstr in doc.get_metadata("header-includes"):
             doc.metadata[hdr_inc].append(
                 pf.MetaInlines(pf.RawInline(rawstr, frmt))
@@ -312,6 +319,9 @@ def _finalize(doc):
 
     logging.debug("Append background packages to `header-includes`")
 
+    for x in doc.metadata[hdr_inc]:
+        logging.debug("Pre:"+str(x))
+
     if not isinstance(doc.metadata[hdr_inc], pf.MetaList):
         logging.debug("The '" + hdr_inc + "' is not a list? Converted!")
         doc.metadata[hdr_inc] = pf.MetaList(doc.metadata[hdr_inc])
@@ -325,6 +335,9 @@ def _finalize(doc):
         __add_header_includes("\\usepackage[german=quotes]{csquotes}", frmt)
         __add_header_includes("\\usepackage{xspace}", frmt)
         __add_header_includes("\\InputIfFileExists{header.tex}{\\relax}{\\relax}", frmt)
+    
+    for x in doc.metadata[hdr_inc]:
+        logging.debug("Post:"+str(x))
 
 
 def main(doc=None):
