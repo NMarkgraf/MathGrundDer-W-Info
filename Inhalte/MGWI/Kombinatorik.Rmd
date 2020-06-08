@@ -225,7 +225,7 @@ Für drei Mengen $A$, $B$, $C$ erhalten wir:\vspace*{-1.5em}
 ::: {.column width="40%"}
 
 ```{r echo=FALSE, out.width = "55%", fig.align="center"}
-knitr::include_graphics(file.path(pathToImages, "2000px-Inclusion-exclusion.png"))
+knitr::include_graphics(file.path(pathToImages, "2000px-Inclusion-exclusion.png"), error=FALSE)
 ```
 
 :::
@@ -274,7 +274,7 @@ Somit ist\vspace*{-1.8em}
 1. Wie viele Wege führen von A nach D?
 
 ```{r echo=FALSE, out.width = "70%", fig.align="center"}
-knitr::include_graphics(file.path(pathToImages, "WegeVonAnachD.png"))
+knitr::include_graphics(file.path(pathToImages, "WegeVonAnachD.png"), error=FALSE)
 ```
 
 
@@ -941,7 +941,7 @@ a) zwei Wasserstoffatome durch Chloratome,
 a) drei Wasserstoffatome durch drei Chloratome ersetzt werden?
 
 ```{r echo=FALSE, out.width = "25%", fig.align="center"}
-knitr::include_graphics(file.path(pathToImages, "Nicotinsaeure.png"))
+knitr::include_graphics(file.path(pathToImages, "Nicotinsaeure.png"), error=FALSE)
 ```
 
 **9. Aufgabe**

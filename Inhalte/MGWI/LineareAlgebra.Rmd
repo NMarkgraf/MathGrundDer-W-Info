@@ -23,13 +23,15 @@ pathToImages = getPathToImages()
 [Das Problem:]{.cstrong}
 
 Ein Apotheker hat $36\,\%$-igen und $21\,\%$-igen Alkohl. 
-Welche Mengen von beiden Lösungen muss er mischen, damit er $5$ Liter $30\,\%$- igen Alkohols erhält?
+Welche Mengen von beiden Lösungen muss er mischen, damit er $5$ Liter 
+$30\,\%$-igen Alkohols erhält?
 
 [Erste Schritte zum mathematischen Modell:]{.cstrong}
 
 In $5$ Litern Mischung sind $5 \cdot 0{,}3 =1{,}5$ Liter Alkohol.
 
-Diese $1,5$ Liter Alkohol sind aus $x$ Litern $36\,\%$-igen bzw. aus $y$ Litern $21\,\%$-igen Alkohol zu mischen.
+Diese $1,5$ Liter Alkohol sind aus $x$ Litern $36\,\%$-igen bzw. aus $y$ Litern 
+$21\,\%$-igen Alkohol zu mischen.
 
 Weiterhin muss $x+y=5$ Liter ergeben. 
 
@@ -41,7 +43,9 @@ $$\sysdelim..
 		x+y=5}$$
 		
 [Idee:]{.cstrong}
-Wir können jede Gleichung als Gerade auffassen, also $y= \frac{1{,}5}{0{,}21} - \frac{0{,}36}{0{,}21} \cdot x$ und $y = 5-x$, und den Schnittpunkt bestimmen.
+Wir können jede Gleichung als Gerade auffassen, also 
+$y= \frac{1{,}5}{0{,}21} - \frac{0{,}36}{0{,}21} \cdot x$ und $y = 5-x$, 
+und den Schnittpunkt bestimmen.
 
 
 ### Graphische Lösung
@@ -169,10 +173,13 @@ grid.arrange(p.1, p.2, p.3, p.4, nrow=2)
 
 ### Lineare Gleichungssysteme
 
-Ein [lineares Gleichungssystem]{.cstrong} (kurz: [LGS]{.cstrong}) bezeichnet ein System [linearer Gleichungen]{.cemph}, die mehrere [unbekannte Größen]{.cemph} ([Variablen]{.cstrong}) enthalten.
+Ein [lineares Gleichungssystem]{.cstrong} (kurz: [LGS]{.cstrong}) bezeichnet 
+ein System [linearer Gleichungen]{.cemph}, die mehrere 
+[unbekannte Größen]{.cemph} ([Variablen]{.cstrong}) enthalten.
 
 
-Allgemein lässt sich ein LGS mit $m$ Gleichungen und $n$ Unbekannten immer in die Form 
+Allgemein lässt sich ein LGS mit $m$ Gleichungen und $n$ Unbekannten immer in 
+die Form 
 
 $$\begin{matrix}
         a_{11} \cdot x_1 +  a_{12} \cdot x_2 \, + & \cdots & +\, a_{1n} \cdot x_n & = & b_1\\
@@ -186,15 +193,20 @@ bringen.
 
 ### Bemerkungen zu LGS
 
-Wir nennen die $a_{ij}$ [Koeffizienten]{.cstrong} und die $b_i$ kurz [rechte Seite]{.cstrong}.
+Wir nennen die $a_{ij}$ [Koeffizienten]{.cstrong} und die $b_i$ kurz 
+[rechte Seite]{.cstrong}.
 
-Sind alle Einträge auf der [rechten Seite]{.cemph} gleich $0$, dann nennen wir das LGS [homogen]{.cstrong}, sonst [inhomogen]{.cstrong}.
+Sind alle Einträge auf der [rechten Seite]{.cemph} gleich $0$, dann nennen wir 
+das LGS [homogen]{.cstrong}, sonst [inhomogen]{.cstrong}.
 
-[Homogene]{.cemph} LGS besitzen immer eine [triviale Lösung]{.cstrong}, bei der alle $x_i=0$ sind.
+[Homogene]{.cemph} LGS besitzen immer eine [triviale Lösung]{.cstrong}, bei der 
+alle $x_i=0$ sind.
 
-Gibt es genau so viele Gleichungen wie Unbekannte ($n=m$), so nennt mensch das LGS [quadratisch]{.cstrong}.
+Gibt es genau so viele Gleichungen wie Unbekannte ($n=m$), so nennt mensch das 
+LGS [quadratisch]{.cstrong}.
 
-In der [(Zeilen-)Stufenform]{.cstrong} verringert sich in jeder Zeile die Zahl der Unbekannten um mindestens eine, die dann auch nicht mehr weiter vorkommt.
+In der [(Zeilen-)Stufenform]{.cstrong} verringert sich in jeder Zeile die Zahl 
+der Unbekannten um mindestens eine, die dann auch nicht mehr weiter vorkommt.
 
 
 ### Elementare Zeilenumformungen
@@ -203,7 +215,8 @@ Man ändert die Lösungsmenge eines LGS nicht, wenn man
 
 - zwei Zeilen vertauscht,
 
-- eine Zeile auf beiden Seiten mit einer beliebigen Konstante $c \neq 0$ multipliziert,
+- eine Zeile auf beiden Seiten mit einer beliebigen Konstante $c \neq 0$ 
+    multipliziert,
 
 - das Vielfache einer Zeile zu einer anderen hinzuaddiert oder
 
@@ -212,7 +225,9 @@ Man ändert die Lösungsmenge eines LGS nicht, wenn man
 
 ### Das Eliminationsverfahren
 
-Man benutzt die [elementaren Zeilenumformungen]{.cemph} um aus einem beliebigen LGS ein LGS in [Zeilenstufenform]{.cemph} zu erhalten. Das Ziel ist dabei die Lösungen für $x$ und $y$ direkt abzulesen:
+Man benutzt die [elementaren Zeilenumformungen]{.cemph} um aus einem beliebigen 
+LGS ein LGS in [Zeilenstufenform]{.cemph} zu erhalten. 
+Das Ziel ist dabei die Lösungen für $x$ und $y$ direkt abzulesen:
 
 \begin{align*}
 		0{,}36\cdot x+0{,}21\cdot y 			&=1{,}5			& & \mathrm{I}							\\[-0.4em]
@@ -247,13 +262,19 @@ Ein [inhomogenes]{.cemph} LGS besitzt entweder
 
 ### Konsequenzen
 
-- Zu jedem  [inhomogenen]{.cemph} LGS gibt es ein [homogenes]{.cemph} LGS bei dem mensch die rechte Seite durch die Nullen ersetzt.
+- Zu jedem  [inhomogenen]{.cemph} LGS gibt es ein [homogenes]{.cemph} LGS bei 
+  dem mensch die rechte Seite durch die Nullen ersetzt.
 
-- Gibt es für das [homogene]{.cemph} LGS nur die [triviale Lösung]{.cemph}, so hat das [inhomogene]{.cemph} LGS [genau  eine]{.cstrong} oder [gar keine]{.cstrong} Lösung.
+- Gibt es für das [homogene]{.cemph} LGS nur die [triviale Lösung]{.cemph}, so 
+  hat das [inhomogene]{.cemph} LGS [genau  eine]{.cstrong} oder [gar keine]{.cstrong} Lösung.
 
-- Hat das [homogene]{.cemph} LGS [unendlich viele Lösungen]{.cemph}, dann hat das [inhomogene]{.cemph} LGS [unendlich viele]{.cstrong} oder [gar keine]{.cstrong} Lösung.
+- Hat das [homogene]{.cemph} LGS [unendlich viele Lösungen]{.cemph}, dann hat 
+  das [inhomogene]{.cemph} LGS [unendlich viele]{.cstrong} oder [gar keine]{.cstrong} Lösung.
 
-- Haben wir eine Lösung des [inhomogenen]{.cemph} LGS gefunden, entscheidet das [homogene]{.cemph} LGS darüber ob diese Lösung die einzige Lösung ist -- [homogenes]{.cemph} LGS hat nur triviale Lösung -- oder ob es unendlich viele Lösungen gibt -- [homogenes LGS]{.cemph} hat unendlich viele Lösungen.
+- Haben wir eine Lösung des [inhomogenen]{.cemph} LGS gefunden, entscheidet das 
+  [homogene]{.cemph} LGS darüber ob diese Lösung die einzige Lösung ist -- 
+  [homogenes]{.cemph} LGS hat nur triviale Lösung -- oder ob es unendlich viele 
+  Lösungen gibt -- [homogenes LGS]{.cemph} hat unendlich viele Lösungen.
 
 
 ### Übung `r nextExercise()`:  {.exercise} 
@@ -292,7 +313,8 @@ a.z <- sol[3,1]
 ::: {.notes}
 a) $x=`r a.x`$, $y=`r a.y`$, $z=`r a.z`$
 
-b) Gleichungssystem hat **unendlich viele Lösungen** der Form $y=2\cdot x$, $z=4 \cdot x$.
+b) Gleichungssystem hat **unendlich viele Lösungen** der Form $y=2\cdot x$, 
+   $z=4 \cdot x$.
 
 c) Gleichungssystem hat **keine Lösung**!
 
@@ -355,16 +377,20 @@ a_{m1} & a_{m2} & \ldots & a_{mj} & \ldots & a_{mn}\\
 \end{pmatrix}
    = {(a_{ij})}_{m\times n}$$
    
-mit $m$ und $n \in \mathbf{N}$ heißt [Matrix]{.cstrong} mit [$m$ Zeilen]{.cstrong} und [$n$ Spalten]{.cstrong} oder kurz [$m\times n$-Matrix]{.cstrong}.
+mit $m$ und $n \in \mathbf{N}$ heißt [Matrix]{.cstrong} mit 
+[$m$ Zeilen]{.cstrong} und [$n$ Spalten]{.cstrong} oder kurz 
+[$m\times n$-Matrix]{.cstrong}.
 Die $a_{11},\ldots,a_{mn}$ heißen [Elemente]{.cstrong} der Matrix.
-Dabei gibt $i$ die Zeile und $j$ die Spalte an, in der $a_{ij}$ steht, daher heißt $i$ [Zeilenindex]{.cstrong} und $j$ [Spaltenindex]{.cstrong} von $a_{ij}$.
+Dabei gibt $i$ die Zeile und $j$ die Spalte an, in der $a_{ij}$ steht, daher 
+heißt $i$ [Zeilenindex]{.cstrong} und $j$ [Spaltenindex]{.cstrong} von $a_{ij}$.
 :::
 
 #### {.examples}
 
 ::: {.footnotesize}
 
-Es seien $A$ eine $2 \times 2$, $B$ eine $2 \times 3$ und $C$ eine $5 \times 4$ Matrix, wie folgt:
+Es seien $A$ eine $2 \times 2$, $B$ eine $2 \times 3$ und $C$ eine $5 \times 4$ 
+Matrix, wie folgt:
 
 $$A = 	\begin{pmatrix}
 			1 & 1 \\
@@ -386,6 +412,7 @@ $$A = 	\begin{pmatrix}
 		
 :::
 
+
 ### Vektoren
 
 - $n\times 1$-Matrix heißt [Spaltenvektor mit $n$ Komponenten]{.cstrong}:
@@ -400,14 +427,14 @@ $$A = 	\begin{pmatrix}
 
 #### {.examples}
 
-$a=\begin{pmatrix} 1 \\ 2 \\ 3 \\ -4 \end{pmatrix}$ und $b = ( 1,\; 2,\; 3,\; -4)$
-
+$a=\begin{pmatrix} 1 \\ 2 \\ 3 \\ -4 \end{pmatrix}$ und 
+$b = ( 1,\; 2,\; 3,\; -4)$
 
 
 ### Vektoren in Koordinatensystemen
 
 ```{r echo=FALSE, out.width = "9cm", fig.align="center"}
-knitr::include_graphics(file.path(pathToImages, "Vektoren.png"))
+knitr::include_graphics(file.path(pathToImages, "Vektoren.png"), error=FALSE)
 ```
 
 
@@ -415,7 +442,8 @@ knitr::include_graphics(file.path(pathToImages, "Vektoren.png"))
 
 Wir können Matrizen bzw. Vektoren gleicher Ordnung kann rechnen!
 
-Die **Addition** und **Subtraktion** von Matrizen gleicher Ordnung erfolgt **komponentenweise**!
+Die **Addition** und **Subtraktion** von Matrizen gleicher Ordnung 
+erfolgt **komponentenweise**!
 
 
 #### {.examples}
@@ -432,10 +460,13 @@ $$A \pm B	= 	\begin{pmatrix}
 					a_{21} \pm b_{21} & a_{22} \pm b_{22}& a_{23} \pm b_{23}
 				\end{pmatrix}$$
 
-				
+
 ### Übung `r nextExercise()`: Addition und Subtraktion von Matrizen {.exercise} 
 
-Seien $\displaystyle A = \begin{pmatrix} 2 & 3 & 5 \\ 1 & 4 & 7\end{pmatrix}$, $\displaystyle B = \begin{pmatrix} -1 & 2 & 0 \\ 0 & -7 & 1\end{pmatrix}$ und $\displaystyle C = \begin{pmatrix} -2 & -3 & -5 \\ 0 & 7 & 1\end{pmatrix}$ gegeben.
+Seien $\displaystyle A = \begin{pmatrix} 2 & 3 & 5 \\ 1 & 4 & 7\end{pmatrix}$, 
+$\displaystyle B = \begin{pmatrix} -1 & 2 & 0 \\ 0 & -7 & 1\end{pmatrix}$ und 
+$\displaystyle C = \begin{pmatrix} -2 & -3 & -5 \\ 0 & 7 & 1\end{pmatrix}$ 
+gegeben.
 
 Berechnen Sie:
 
@@ -495,9 +526,11 @@ f) $\displaystyle\begin{pmatrix} 5 & 4 & 10 \\  1 & 4 & 5 \\ \end{pmatrix}$
 
 :::
 
+
 ### Übung `r nextExercise()`: Addition und Subtraktion von Vektoren {.exercise} 
 
-Die Produktionsmengen dreier Produkte seien im ersten Halbjahr bzw. im zweiten Halbjahr gegeben durch die Produktionsverktoren
+Die Produktionsmengen dreier Produkte seien im ersten Halbjahr bzw. im zweiten 
+Halbjahr gegeben durch die Produktionsverktoren
 
 $$x_1 = \begin{pmatrix} 10\,000 \\ 8\,000 \\ 14\,000\end{pmatrix}\quad \text{ und }\quad x_2 = \begin{pmatrix} 18\,000 \\ 10\,000 \\ 17\,000\end{pmatrix}.$$
 
@@ -507,12 +540,15 @@ Wie lautet der Jahresproduktionsvektor $x$?
 $$x = x_1 + x_2 = \begin{pmatrix} 10\,000 \\ 8\,000 \\ 14\,000\end{pmatrix} +  \begin{pmatrix} 18\,000 \\ 10\,000 \\ 17\,000\end{pmatrix} = \begin{pmatrix} 28\,000 \\ 18\,000 \\ 31\,000\end{pmatrix}$$
 :::
 
+
 ### Multiplikation mit einem Skalar 
 
-Eine *reelle Zahl* wollen wir zur besseren Unterscheidung [Skalar]{.cstrong} nennen.
+Eine *reelle Zahl* wollen wir zur besseren Unterscheidung [Skalar]{.cstrong} 
+nennen.
 
-Wir können eine *Matrix* (resp. einen *Vektor*) mit einem *Skalar* [multiplizieren]{.cstrong}, 
-in dem wir *jedes Element* mit dem *Skalar multipliziert*.
+Wir können eine *Matrix* (resp. einen *Vektor*) mit einem *Skalar* 
+[multiplizieren]{.cstrong}, in dem wir *jedes Element* mit dem 
+*Skalar multipliziert*.
 
 
 #### {.examples}
@@ -537,6 +573,7 @@ $$A = \begin{pmatrix} 0 & \frac{1}{3} & -\frac{1}{9} \\ \frac{1}{2} & \frac{1}{6
 
 $$18 \cdot A = \begin{pmatrix} 0 & 6 & -2 \\ 9 & 3 &  18 \end{pmatrix}$$
 :::
+
 
 ### Übung `r nextExercise()`:  {.exercise} 
 
@@ -563,6 +600,7 @@ print(x, floating=FALSE, tabular.environment="pmatrix",
 $$(-3)A+2B-C = \begin{pmatrix} -3 & 0 & 4 \\ -12 & -2 & -20 \end{pmatrix}$$
 
 :::
+
 
 ### Rechenregeln für Addtion und skalare Multiplikation
 
@@ -593,30 +631,34 @@ Für reelle Zahlen (Skalare) $a$ und $b$ und Matrizen $A$ und $B$ gilt:
 :::
 ::::::
 
+
 ### Beispiel: Kaffeespezialitäten (I/III)
 
 :::::: {.columns}
 ::: {.column width="45%"}
 
 ```{r echo=FALSE, out.width = "80%", fig.align="center"}
-knitr::include_graphics(file.path(pathToImages, "VektorenKaffee1.png"))
+knitr::include_graphics(file.path(pathToImages, "VektorenKaffee1.png"), error=FALSE)
 ```
 
 :::
 ::: {.column width="45%"}
 
 ```{r echo=FALSE, out.width = "80%", fig.align="center"}
-knitr::include_graphics(file.path(pathToImages, "VektorenKaffee2.png"))
+knitr::include_graphics(file.path(pathToImages, "VektorenKaffee2.png"), error=FALSE)
 ```
 
 :::
 ::::::
-Wir können die Anteile von Kaffee, Milchschaum und Milch in einen Vektor schreiben: 
+Wir können die Anteile von Kaffee, Milchschaum und Milch in einen Vektor 
+schreiben: 
 $$v = \begin{pmatrix} \text{Anteil Kaffee}\\ \text{Anteil Milchschaum} \\ \text{Anteil Milch} \end{pmatrix}$$
+
 
 ### Beispiel: Kaffeespezialitäten (II/III)
 
-Wir können also die Mischungsverhältnisse der drei Kaffeespezialitäten wie folgt darstellen:
+Wir können also die Mischungsverhältnisse der drei Kaffeespezialitäten wie 
+folgt darstellen:
 
 - Latte Macchiato: $\displaystyle v_{lm}=\begin{pmatrix} \frac13 \\[0.1em] \frac13 \\[0.1em] \frac13 \end{pmatrix}$,
 
@@ -625,18 +667,24 @@ Wir können also die Mischungsverhältnisse der drei Kaffeespezialitäten wie fo
 - Cappuccino: $\displaystyle v_{cap}=\begin{pmatrix} \frac12 \\[0.1em] \frac16 \\[0.1em] \frac13 \end{pmatrix}$
 
 [Frage:]{.cstrong}
-Kann man eine dieser Kaffeespezialitäten (im Prinzip) durch das zusammenmischen zweier anderer erhalten?
+Kann man eine dieser Kaffeespezialitäten (im Prinzip) durch das zusammenmischen 
+zweier anderer erhalten?
+
 
 ### Linearkombination / Lineare (Un-)Abhängigkeit
 
 #### Linearkombination {.definition}
-Seien $v_1, \dots v_n$ Vektoren. Eine [Linearkombination]{.cstrong} ist ein Vektor $v$, der sich durch die Vektoren $v_1, \dots, v_n$ und die Skalare $c_1, \dots c_n$ wie folgt ausdrücken lässt:
+Seien $v_1, \dots v_n$ Vektoren. Eine [Linearkombination]{.cstrong} ist ein 
+Vektor $v$, der sich durch die Vektoren $v_1, \dots, v_n$ und die Skalare 
+$c_1, \dots c_n$ wie folgt ausdrücken lässt:
 
 $$v = c_1 \cdot v_1 + c_2 \cdot v_2 + \cdots + c_n \cdot v_n = \sum_{i=1}^{n} c_i v_i$$
 
 #### Lineare (Un-)abhängigkeit {.definition}
 
-Eine Menge von Vektoren ist [linear unabhängig]{.cstrong} falls keiner von ihnen als [Linearkombination]{.cemph} der anderen ausgedrückt werden kann. Ansonsten sind sie [linear abbhängig]{.cstrong}.
+Eine Menge von Vektoren ist [linear unabhängig]{.cstrong} falls keiner von 
+ihnen als [Linearkombination]{.cemph} der anderen ausgedrückt werden kann. 
+Ansonsten sind sie [linear abbhängig]{.cstrong}.
 
 
 ### Kaffeespezialitäten (III/III)
@@ -657,9 +705,11 @@ Bestimmen sie das Gleichungssystem und lösen Sie es.
 
 - Zwei Matrizen können mit einander multipliziert, wenn sie passend sind.
 
-- Passend sind sie, wenn die Spaltenanzahl der ersten mit der Zeilenanzahl der zweiten Matrix übereinstimmt.
+- Passend sind sie, wenn die Spaltenanzahl der ersten mit der Zeilenanzahl der 
+  zweiten Matrix übereinstimmt.
 
-- Passen zwei Matrizen zueinander, dann ist das Produkt eine Matrix mit genauso viel Zeilen wie die erste und Spalten wie die zweite Matrix.
+- Passen zwei Matrizen zueinander, dann ist das Produkt eine Matrix mit genauso 
+  viel Zeilen wie die erste und Spalten wie die zweite Matrix.
 
 - Näheres regelt das Falk'sche Schema. ;-)
 
@@ -764,6 +814,7 @@ h) $C^T B^T$
 
 :::
 
+
 ### Übung `r nextExercise()`: Skalarprodukte {.exercise}
 
 a) Eine Unternehmung stellt vier Produkte her, welche pro Mengeneinheit einen Gewinn von $2$, $3$, $5$ bzw. $7$ Euro abwerfen.
@@ -779,7 +830,9 @@ $$a = \begin{pmatrix} 1 \\ 2 \\ 3 \\ 4 \end{pmatrix}, \quad b = \begin{pmatrix} 
 
 ::: 
 
+
 ## Rechnen mit Matrizen und Vektoren
+
 
 ### Besondere Matrizen
 
@@ -799,9 +852,10 @@ $$a = \begin{pmatrix} 1 \\ 2 \\ 3 \\ 4 \end{pmatrix}, \quad b = \begin{pmatrix} 
 ### Beispiel: Bettwanzen
 
 ```{r echo=FALSE, out.width = "10cm", fig.align="center"}
-knitr::include_graphics(file.path(pathToImages, "Bettwanze1.png"))
+knitr::include_graphics(file.path(pathToImages, "Bettwanze1.png"), error=FALSE)
 ```
 [Quelle: [CDC - PHIL](https://phil.cdc.gov/details.aspx?pid=6283) - Lizenz: Gemeinfrei]{.right .tiny}
+
 
 ### Beispiel: Der Lebenszyklus einer Bettwanze
 
@@ -830,7 +884,7 @@ knitr::include_graphics(file.path(pathToImages, "Bettwanze1.png"))
 	\end{column}
 	\begin{column}[c]{5cm}
 ```{r echo=FALSE, out.width = "5cm", fig.align="center"}
-knitr::include_graphics(file.path(pathToImages, "Bettwanze2.png"))
+knitr::include_graphics(file.path(pathToImages, "Bettwanze2.png"), error=FALSE)
 ```
 	\end{column}
 \end{columns}
@@ -986,6 +1040,7 @@ c) Das LGS hat **keine** Lösung!
 
 :::
 
+
 ### Division von Matrizen
 
 Leider gibt es keine Division von Matrizen! Mensch kann also nicht einfach
@@ -1095,6 +1150,7 @@ $$\left(\begin{array}{rrrr|rrrrr}
 			 3 & -6 &  12 &  16 &  0 & 0 & 0 & 1 \\
 		\end{array}\right)$$
 		
+
 
 ### Bestimmen der Inversen (II)
 
@@ -1331,7 +1387,7 @@ Sei $A$ eine [quadratische]{.cstrong} resp. $n \times n$ Matrix.
 			\end{equation*}
 			besteht die Determinante aus 6 Summanden von je 3 Faktoren, die  mit dem Schema
 ```{r echo=FALSE, out.width = "2.5cm", fig.align="center"}
-knitr::include_graphics(file.path(pathToImages, "Regel_von_Sarrus.png"))
+knitr::include_graphics(file.path(pathToImages, "Regel_von_Sarrus.png"), error=FALSE)
 ```
 			ermittelt werden.
 			
@@ -1347,7 +1403,7 @@ knitr::include_graphics(file.path(pathToImages, "Regel_von_Sarrus.png"))
 		
 
 ```{r echo=FALSE, out.width = "4cm", fig.align="center"}
-knitr::include_graphics(file.path(pathToImages, "Pierre-Frederic_Sarrus.jpg"))
+knitr::include_graphics(file.path(pathToImages, "Pierre-Frederic_Sarrus.jpg"), error=FALSE)
 ```
 
 		
@@ -1382,7 +1438,7 @@ knitr::include_graphics(file.path(pathToImages, "Pierre-Frederic_Sarrus.jpg"))
 		
 		
 ```{r echo=FALSE, out.width = "4cm", fig.align="center"}
-knitr::include_graphics(file.path(pathToImages, "Pierre-Simon_Laplace.jpg"))
+knitr::include_graphics(file.path(pathToImages, "Pierre-Simon_Laplace.jpg"), error=FALSE)
 ```
 
 
@@ -1464,6 +1520,7 @@ e) $\det(A) = 10$
 
 :::
 
+
 ### [Eliminationsverfahren](http://de.wikipedia.org/wiki/Determinante#Gau.C3.9Fsches_Eliminationsverfahren_zur_Determinantenberechnung) 
 
 Allgemein können Determinanten mit Hilfe der (partiellen) Elimination ermittelt werden.
@@ -1535,152 +1592,13 @@ b) $\displaystyle \det(A) = 21$
 
 :::
 
-### Cramersche Regel
-
-\begin{columns}[T]
-	\begin{column}[c]{0.33\textwidth}
-		{\tiny%
-		Diese Regel ist von
-		
-		
-		
-```{r echo=FALSE, out.width = "3.5cm", fig.align="center"}
-knitr::include_graphics(file.path(pathToImages, "Gabriel_Cramer.jpg"))
-```
-
-		
-		Gabriel Cramer 
-		
-		(* 1704; † 1752)
-		}
-	\end{column}
-	\begin{column}[c]{0.66\textwidth}
-		{\small%
-			Sei $b$ ein $n$-dimensionaler Vektor, $A$ eine $n\times n$-Matrix. 
-			Die Lösung $x$ des LGS $Ax=b$ lautet, falls $\det(A) \neq 0$:
-			\begin{equation*}
-				x_i = \frac{\det A_i}{\det A}
-			\end{equation*}
-			Dabei ist $A_i$ die Matrix, die entsteht, 
-			wenn mensch die $i$-te Spalte von $A$ durch $b$ ersetzt.
-		}		
-	\end{column}
-\end{columns}
-
-
-### Beispiel: Cramersche Regel (I)
-
-Diesem Beispiel liegt das folgende lineare Gleichungssystem zu Grunde:
-\begin{equation*}
-	\begin{matrix}
-		\color{blue}{82}\,\color{black}x_1+\color{blue}{45}\,\color{black}x_2+\color{blue}{9}\,\color{black}x_3=\color{green}{1}\\
-		\color{blue}{27}\,\color{black}x_1+\color{blue}{16}\,\color{black}x_2+\color{blue}{3}\,\color{black}x_3=\color{green}{1}\\
-		\color{blue}{9}\,\color{black}x_1+\color{blue}{5}\,\color{black}x_2+\color{blue}{1}\,\color{black}x_3=\color{green}{0}\\
-	\end{matrix}
-\end{equation*}
-
-Die erweiterte Koeffizientenmatrix des Gleichungssystems ist dann:
-
-\begin{equation*}
-	\begin{pmatrix}\color{blue}{A} & \color{green}b\end{pmatrix} = 
-	  \left(\begin{array}{ccc|c}
-		\color{blue}{82} & \color{blue}{45} & \color{blue}{9} &  \color{green}{1} \\
-		\color{blue}{27} & \color{blue}{16} & \color{blue}{3} &  \color{green}{1} \\
-		\color{blue}{9} & \color{blue}{5} & \color{blue}{1} &  \color{green}{0} 
-	  \end{array}\right)
-\end{equation*}
-
-
-### Beispiel: Cramersche Regel (II)
-Nach der cramer'schen Regel berechnet sich die Lösung des Gleichungssystems wie folgt:
-
-\begin{equation*}
-x_1	= \frac{\det(A_1)}{\det(A)} =
-		\frac{\begin{vmatrix}\color{green}{1}
-		&\color{blue}{45}
-		&\color{blue}{9}
-		\\ \color{green}{1}
-		&\color{blue}{16}
-		&\color{blue}{3}
-		\\ \color{green}{0}
-		&\color{blue}{5}
-		&\color{blue}{1}
-		\end{vmatrix}}
-		{\begin{vmatrix}\color{blue}{82}
-		&\color{blue}{45}
-		&\color{blue}{9}
-		\\ \color{blue}{27}
-		&\color{blue}{16}
-		&\color{blue}{3}
-		\\ \color{blue}{9}
-		&\color{blue}{5}
-		&\color{blue}{1}
-		\end{vmatrix}}
-		= \frac{1}{1} = 1
-\end{equation*}
-
-\begin{equation*}
-	x_2	= \frac{\det(A_2)}{\det(A)} =
-		\frac{\begin{vmatrix}\color{blue}{82}
-		&\color{green}{1}
-		&\color{blue}{9}
-		\\ \color{blue}{27}
-		&\color{green}{1}
-		&\color{blue}{3}
-		\\ \color{blue}{9}
-		&\color{green}{0}
-		&\color{blue}{1}
-		\end{vmatrix}}
-		{\begin{vmatrix}\color{blue}{82}
-		&\color{blue}{45}
-		&\color{blue}{9}
-		\\ \color{blue}{27}
-		&\color{blue}{16}
-		&\color{blue}{3}
-		\\ \color{blue}{9}
-		&\color{blue}{5}
-		&\color{blue}{1}
-		\end{vmatrix}}
-		= \frac{1}{1} = 1
-\end{equation*}
-
-
-### Cramersche Regel (III)
-
-\begin{equation*}
-	x_3	= \frac{\det(A_3)}{\det(A)} =
-		\frac{\begin{vmatrix}\color{blue}{82}
-		&\color{blue}{45}
-		&\color{green}{1}
-		\\ \color{blue}{27}
-		&\color{blue}{16}
-		&\color{green}{1}
-		\\ \color{blue}{9}
-		&\color{blue}{5}
-		&\color{green}{0}
-		\end{vmatrix}}
-		{\begin{vmatrix}\color{blue}{82}
-		&\color{blue}{45}
-		&\color{blue}{9}
-		\\ \color{blue}{27}
-		&\color{blue}{16}
-		&\color{blue}{3}
-		\\ \color{blue}{9}
-		&\color{blue}{5}
-		&\color{blue}{1}
-		\end{vmatrix}}
-		= \frac{-14}{1} = -14
-\end{equation*}
-
-Die senkrechten Striche sind eine gebräuchliche Notation der Determinante.
-
 
 ## Eigenwerte und Eigenvektoren
 
 ### Beispiel: Noch einmal die Bettwanzen
 
 ```{r echo=FALSE, out.width = "90%", fig.align="center"}
-knitr::include_graphics(file.path(pathToImages, "Bettwanze1.png"))
+knitr::include_graphics(file.path(pathToImages, "Bettwanze1.png"), error=FALSE)
 ```
 
 ### Beispiel: Der Lebenszyklus einer Bettwanze
@@ -1710,7 +1628,7 @@ knitr::include_graphics(file.path(pathToImages, "Bettwanze1.png"))
 	\end{column}
 	\begin{column}[c]{5cm}
 ```{r echo=FALSE, out.width = "95%", fig.align="center"}
-knitr::include_graphics(file.path(pathToImages, "Bettwanze2.png"))
+knitr::include_graphics(file.path(pathToImages, "Bettwanze2.png"), error=FALSE)
 ```
 	\end{column}
 \end{columns}
@@ -1818,7 +1736,8 @@ p
 
 ### Beispiel: Situation A
 
-Für die erste Matrix $\displaystyle L = \begin{pmatrix} 0{,}1 & 1 \\ 0{,}5 & 0{,}2 \end{pmatrix}$ ergibt sich:
+Für die erste Matrix $\displaystyle L = \begin{pmatrix} 0{,}1 & 1 \\ 0{,}5 & 0{,}2 \end{pmatrix}$ 
+ergibt sich:
 
 \begin{columns}[T]
 	\begin{column}[c]{0.5\textwidth}
@@ -1855,7 +1774,9 @@ p.1
 
 ### Beispiel: Situation B
 
-Für die erste Matrix $\displaystyle L = \begin{pmatrix} 0{,}1 & 2 \\ 0{,}5 & 0{,}2 \end{pmatrix}$ ergibt sich:
+Für die erste Matrix $\displaystyle L = \begin{pmatrix} 0{,}1 & 2 \\ 0{,}5 & 0{,}2 \end{pmatrix}$ 
+ergibt sich:
+
 ```{r Simulation-B, out.width="90%", echo=FALSE}
 #library(mosaic)
 #library(latex2exp)
@@ -1919,8 +1840,8 @@ p
 	\end{column}
 	\begin{column}[c]{0.5\textwidth}
 ```{r bettwanzen_B_gesamt, echo=FALSE, out.width = "95%", fig.align="center"}
-p <- ggplot2::ggplot(data = df, aes(x=1:25, y=(Eier + Adulte), size="gesamt")) +
-    geom_line(color="green", )+
+p <- ggplot2::ggplot(data = df, aes(x = 1:25, y = (Eier + Adulte), size = "gesamt")) +
+    geom_line(color = "green", ) +
     scale_x_continuous(
         limits = x_limits,
     ) +
@@ -1932,12 +1853,12 @@ p <- ggplot2::ggplot(data = df, aes(x=1:25, y=(Eier + Adulte), size="gesamt")) +
         guide = FALSE
     ) +
     theme(
-        text = element_text(size=12*factor.2),
-        title = element_text(size=14*factor.2),
+        text = element_text(size = 12*factor.2),
+        title = element_text(size = 14*factor.2),
         legend.position = c(0.8, 0.8),
-        legend.text = element_text(size=10*factor.2),
-        legend.title = element_text(size=10*factor.2),
-        line = element_line(size=1.2*factor.2)
+        legend.text = element_text(size = 10*factor.2),
+        legend.title = element_text(size = 10*factor.2),
+        line = element_line(size = 1.2*factor.2)
     ) +
     labs(
         title = "Bettwanzenpopulation",
@@ -1964,22 +1885,22 @@ Für die erste Matrix $\displaystyle L = \begin{pmatrix} 0{,}1 & 2 \\ 0{,}5 & 0{
 ```{r bettwanzen_B_phasenraum, echo=FALSE, out.width = "95%", fig.align="center"}
 p.1 <-  ggplot2::ggplot(
         data = df, 
-        aes(x=Eier, y=Adulte, size="red")
+        aes(x = Eier, y = Adulte, size = "red")
     ) +
     geom_path(
-        color="red"
+        color = "red"
     ) +
     scale_size_manual(
         values = c("red" = 1.2*factor.2),
         guide = FALSE
     ) +
     theme(
-        text = element_text(size=12*factor.2),
-        title = element_text(size=14*factor.2),
+        text = element_text(size = 12*factor.2),
+        title = element_text(size = 14*factor.2),
         legend.position = c(0.8, 0.8),
-        legend.text = element_text(size=10*factor.2),
-        legend.title = element_text(size=10*factor.2),
-        line = element_line(size=1.2*factor.2)
+        legend.text = element_text(size = 10*factor.2),
+        legend.title = element_text(size = 10*factor.2),
+        line = element_line(size = 1.2*factor.2)
     ) +
     labs(
         title = "Bettwanzenpopulation (Phasenraum)",
@@ -1995,9 +1916,10 @@ p.1
 
 ### Wann wächst oder schrumpft die Population? (I)
 
-[Die Grundidee]{.cstrong}:
+[Die Grundidee:]{.cstrong:
 
-Falls wir nur die Gesamtanzahl $w_t$ der Bettwanzen zum Zeitpunkt $t$ betrachten würden, könnten wir eine einfache Form des Modells erstellen:
+Falls wir nur die Gesamtanzahl $w_t$ der Bettwanzen zum Zeitpunkt $t$ 
+betrachten würden, könnten wir eine einfache Form des Modells erstellen:
 
 $$w_{t+1} = r \cdot w_t$$
 
@@ -2013,15 +1935,11 @@ Mit $|r|>1$ wäre klar, dass die Population wächst.
 
 Wäre die Matrix $L$ eine Matrix zu einer *zentrischen Streckung*
 
-\begin{equation*}
-	L = \begin{pmatrix} k & 0 \\ 0 & k \end{pmatrix},
-\end{equation*}
+$$L = \begin{pmatrix} k & 0 \\ 0 & k \end{pmatrix},$$
 
 wüssten wir:
 
-\begin{equation*}
-	x_{t+1} = L \cdot x_t = k \cdot E_2 \cdot x_t = k \cdot x_t
-\end{equation*}
+$$x_{t+1} = L \cdot x_t = k \cdot E_2 \cdot x_t = k \cdot x_t$$
 
 Dann wäre mit $|k| < 1$ gesichert, dass die Population abnimmt.
 
@@ -2035,9 +1953,7 @@ Mit $|k| > 1$ dagegen würde die Population wachsen.
 
 Vielleicht gibt es zumindest für bestimmte Vektoren $v$ ein  $\lambda$, dass
 
-\begin{equation*}
-	\lambda \cdot v = L \cdot v
-\end{equation*}
+$$\lambda \cdot v = L \cdot v$$
 
 Die Population würde schrumpfen, wenn
 
@@ -2047,36 +1963,33 @@ Die Population würde schrumpfen, wenn
 
 ### Wann wächst oder schrumpft die Population? (III)
 
-Seien also $v_1$ und $v_2$ *solche* Vektoren mit $\lambda_1$ und $\lambda_2$ derart, dass
-zum einen
+Seien also $v_1$ und $v_2$ *solche* Vektoren mit $\lambda_1$ und $\lambda_2$ 
+derart, dass zum einen
 
-\begin{equation*}
-	\lambda_1 \cdot v_1 = L \cdot v_1 \quad\text{ und }\quad\lambda_2 \cdot v_2 = L \cdot v_2
-\end{equation*}
+$$\lambda_1 \cdot v_1 = L \cdot v_1 \quad\text{ und }\quad\lambda_2 \cdot v_2 = L \cdot v_2$$
 
 und zum anderen zwei Skalare $c_1$ und $c_2$ existiert, dass
 
-\begin{equation*}
-	x_t = c_1 \cdot v_1 + c_2 \cdot v_2
-\end{equation*}
+$$x_t = c_1 \cdot v_1 + c_2 \cdot v_2$$
 
 gilt. Dann ist
-\begin{align*}
+
+$$\begin{aligned}
 	L \cdot x_t	&= L \cdot (c_1 \cdot v_1 + c_2 \cdot v_2) = c_1 \cdot L \cdot v_1 + c_2 \cdot L \cdot v_2 \\
 			&= c_1 \cdot \lambda_1\cdot v_1 + c_2 \cdot \lambda_2\cdot v_2.
-\end{align*}
+\end{aligned}$$
 
 
 ### Wie findet mensch solche $\lambda$ und $v$?
 
 Für solche $\lambda$ und $v$ muss gelten:
 
-\begin{align*}
+$$\begin{aligned}
 	L \cdot v 					&= \lambda \cdot v \\
 	L \cdot v					&= \lambda \cdot E_n \cdot v  \\
 	(L-\lambda \cdot E_n) \cdot v 	&= 0 \\
 	M \cdot v					&= 0
-\end{align*}
+\end{aligned}$$
 
 Wie muss nun $M$ aussehen, damit es sinnvolle $v$ gibt?
 
@@ -2092,44 +2005,45 @@ Für ein LGS $A \cdot x = b$ gilt:
 		\hline
 		$A$ invertierbar	& $\neq 0$	& nur triviale Lsg.	& genau eine Lösung \\[0.6em]
 		$A$ singulär		& $= 0$		& unendlich viele 	& unendlich viele oder \\
-		        				& 			& Lösungen	 	& keine Lösungen. \\
+		        			& 			& Lösungen	     	& keine Lösungen. \\
 	\end{tabular}
 \end{center}
 
 
 ### Überlegungen
 
-- Es gibt diese Vektoren $v$, denn $M\cdot v = 0$ hat nicht nur die triviale Lösung, sondern unendlich viele.
+- Es gibt diese Vektoren $v$, denn $M\cdot v = 0$ hat nicht nur die triviale 
+  Lösung, sondern unendlich viele.
 
-- *Unendlich viele* bedeutet hier: 
-	ein Vektor und alle seine Vielfachen.
+- *Unendlich viele* bedeutet hier:
+  ein Vektor und alle seine Vielfachen.
 
-- Für jeden dieser Vektoren gilt obige Gleichung: 
-	ein verstecke zentrische Streckung um $\lambda$ durch $L$.
+- Für jeden dieser Vektoren gilt obige Gleichung:
+  ein verstecke zentrische Streckung um $\lambda$ durch $L$.
 
 
 ### Situation A: Berechnen von $\lambda$ 
 
 Weil $\det M = 0$ ist, berechnen wir $\det M$:
-\begin{align*}
- 	\det  \begin{pmatrix} 0{,}1-\lambda & 1 \\ 0{,}5 & 0{,}2-\lambda \end{pmatrix}
+
+$$\begin{aligned}
+    \det\begin{pmatrix} 0{,}1-\lambda & 1 \\ 0{,}5 & 0{,}2-\lambda \end{pmatrix}
 	&= (0{,}1-\lambda)\cdot(0{,}2-\lambda) - 1 \cdot 0{,}5 \\
 	&= \lambda^2-0{,}3\lambda -0{,}48
-\end{align*}
+  \end{aligned}$$
 
 Setzen wir nun $\det M = 0$, dann muss
-\begin{equation*}
-	\lambda^2-0{,}3\lambda -0{,}48 = 0
-\end{equation*}
+
+$$\lambda^2-0{,}3\lambda -0{,}48 = 0$$
+	
 sein. ($\longrightarrow$ pq-Formel!)
 
-[M.a.W.]{.cemph}: $\lambda_1 \sim 0{,}8589$ und $\lambda_2 \sim -0{,}5589$
+[M.a.W.:]{.cemph} $\lambda_1 \simeq 0{,}8589$ und $\lambda_2 \simeq -0{,}5589$
 
 
 ### Situation A: Die Vektoren zu $\lambda_1$ und $\lambda_2$
 
-\begin{equation*}
-	\begin{pmatrix} 0{,}1-\lambda_1 & 1 \\ 0{,}5 & 0{,}2-\lambda_1 \end{pmatrix}
+$$\begin{pmatrix} 0{,}1-\lambda_1 & 1 \\ 0{,}5 & 0{,}2-\lambda_1 \end{pmatrix}
 	\cdot
 	v_{\lambda_1}	
 	=
@@ -2137,112 +2051,114 @@ sein. ($\longrightarrow$ pq-Formel!)
 	\cdot
 	\begin{pmatrix} x_1 \\ x_2 \end{pmatrix}	
 	= 
-	\begin{pmatrix} 0 \\ 0 \end{pmatrix}
-\end{equation*}
+	\begin{pmatrix} 0 \\ 0 \end{pmatrix}$$
 
 Hat die nichttriviale Lösung:
 
-\begin{equation*}
-	v_{\lambda_1}	
-	=
-	\begin{pmatrix} x_1 \\ x_2 \end{pmatrix}
-	=
-	\begin{pmatrix} -0{,}7966 \\ -0{,}6045 \end{pmatrix}
-\end{equation*}
+$$v_{\lambda_1}	= \begin{pmatrix} x_1 \\ x_2 \end{pmatrix}
+	= \begin{pmatrix} -0{,}7966 \\ -0{,}6045 \end{pmatrix}$$
+
 
 Nach der gleichen Methode kann mensch für $\lambda_2$ den Vektor 
-\begin{equation*}
-	v_{\lambda_2}	
-	=
-	\begin{pmatrix} -0{,}8350 \\ 0{,}5502 \end{pmatrix}
-\end{equation*}
+
+$$v_{\lambda_2}	= \begin{pmatrix} -0{,}8350 \\ 0{,}5502 \end{pmatrix}$$
+
 berechnen.
 
 
 ### Situation B: Berechnen von $\lambda$
 
 Weil $\det M = 0$ ist, berechnen wir $\det M$:
-\begin{align*}
- 	\det  \begin{pmatrix} 0{,}1-\lambda & 2 \\ 0{,}5 & 0{,}2-\lambda \end{pmatrix}
+
+$$\begin{aligned}
+ 	\det\begin{pmatrix} 0{,}1-\lambda & 2 \\ 0{,}5 & 0{,}2-\lambda \end{pmatrix}
 	&= (0{,}1-\lambda)\cdot(0{,}2-\lambda) - 2 \cdot 0{,}5 \\
 	&= \lambda^2-0{,}3\lambda -0{,}98
-\end{align*}
+\end{aligned}$$
 
 Setzen wir nun $\det M = 0$, dann muss
-\begin{equation*}
-	\lambda^2-0{,}3\lambda -0{,}98 = 0
-\end{equation*}
+
+$$\lambda^2-0{,}3\lambda -0{,}98 = 0$$
+
 sein. ($\longrightarrow$ pq-Formel!)
 
-[M.a.W.]{.cemph}: $\lambda_1 \sim 1{,}1512$ und $\lambda_2 \sim -0{,}8512$
+[M.a.W.:]{.cemph} $\lambda_1 \simeq 1{,}1512$ und $\lambda_2 \simeq -0{,}8512$
 
 
 ### Situation B: Die Vektoren zu $\lambda_1$ und $\lambda_2$
 
 Es ist hier:
 
-\begin{equation*}
-	v_{\lambda_1}	
+$$v_{\lambda_1}	
 	=
-	\begin{pmatrix} -0{,}8852 \\ -0{,}4653 \end{pmatrix}
-\end{equation*}
+	\begin{pmatrix} -0{,}8852 \\ -0{,}4653 \end{pmatrix}$$
 
 und
 
-\begin{equation*}
-	v_{\lambda_2}	
+$$v_{\lambda_2}
 	=
-	\begin{pmatrix} -0{,}9031 \\ 0{,}4295 \end{pmatrix}
-\end{equation*}
+	\begin{pmatrix} -0{,}9031 \\ 0{,}4295 \end{pmatrix}$$
 
 berechnen.
 
-[Hausaufgabe:]{.cstrong} Prüfen Sie die Ergebnisse nach, in dem Sie $L \cdot v = \lambda \cdot v$ berechnen! --  Was stellen Sie fest? -- Warum ist das so?
+[Hausaufgabe:]{.cstrong} Prüfen Sie die Ergebnisse nach, in dem Sie 
+$L \cdot v = \lambda \cdot v$ berechnen! 
+--  Was stellen Sie fest? -- Warum ist das so?
 
 
 ### Überlegungen
 
-- Es gibt diese Vektoren $v$, denn $M \cdot v = 0$ hat nicht nur die triviale Lösung, sondern unendlich viele.
+- Es gibt diese Vektoren $v$, denn $M \cdot v = 0$ hat nicht nur die triviale 
+  Lösung, sondern unendlich viele.
 
 - *Unendlich viele* bedeutet hier: 
-	ein Vektor und alle seine Vielfachen.
+  ein Vektor und alle seine Vielfachen.
 
 - Für jeden dieser Vektoren gilt obige Gleichung: 
-	ein verstecke zentrische Streckung um $\lambda$ durch $L$.
+  ein verstecke zentrische Streckung um $\lambda$ durch $L$.
 
-- Wir haben zwei $\lambda$ gefunden, d.h. es gibt zweimal einen Vektor und alle seine Vielfachen mit
-	jeweils einer zugehörigen zentrischen Streckung.
+- Wir haben zwei $\lambda$ gefunden, d.h. es gibt zweimal einen Vektor und 
+  alle seine Vielfachen mit jeweils einer zugehörigen zentrischen Streckung.
 
 
 ### Charakteristisches Polynom und Eigenwerte
 
 Für eine *quadratische* Matrix $A$, ist das Polynom
-\begin{equation*}
-	\chi_A(\lambda) = \det(A - \lambda \cdot E_n)
-\end{equation*}
-ein Polynom $n$-ter Ordnung in $\lambda$ und wird [charakteristisches Polynom]{.cstrong} von $A$ genannt.
+
+$$\chi_A(\lambda) = \det(A - \lambda \cdot E_n)$$
+
+ein Polynom $n$-ter Ordnung in $\lambda$ und wird 
+[charakteristisches Polynom]{.cstrong} von $A$ genannt.
 
 
 Es hat -- nach dem [Fundamentalsatz der Algebra](http://de.wikipedia.org/wiki/Fundamentalsatz_der_Algebra) -- genau $n$ Nullstellen (in $\mathbf{C}$, also den **[Komplexen Zahlen](http://de.wikipedia.org/wiki/Komplexe_Zahl)**).
 
 
-Die (ggf. [komplexen]{.cstrong}) Nullstellen von $\chi_A(\lambda)$ sind die [Eigenwerte]{.cstrong} von $A$.
+Die (ggf. [komplexen]{.cstrong}) Nullstellen von $\chi_A(\lambda)$ sind 
+die [Eigenwerte]{.cstrong} von $A$.
 
 
-Die Vektoren $v_\lambda$ zu den *Eigenwerten* $\lambda$ mit $L \cdot v_\lambda = \lambda \cdot v_\lambda$ heißen [Eigenvektoren]{.cstrong}.
+Die Vektoren $v_\lambda$ zu den *Eigenwerten* $\lambda$ mit 
+$L \cdot v_\lambda = \lambda \cdot v_\lambda$ heißen [Eigenvektoren]{.cstrong}.
 
 
 ### Die Antwort auf unsere Frage
 
-[Frage:]{.cstrong}  *Wächst oder schrumpft die Population?*
+[Frage:]{.cstrong} *Wächst oder schrumpft die Population?*
 
 [Antwort:]{.cstrong}
 
-- Im Falle der Situation A **schrumpft** die Population, da beide Eigenwerte $\lambda$ gilt: 
-	$\displaystyle |\lambda | < 1$ und die zugehörigen Eigenvektoren den Phasenraum aufspannen.
-	
-- Im Falle der Situation B **wächst** die Population, da ein Eigenwert $\lambda$ gilt:
-	$\displaystyle |\lambda | > 1$ und die zugehörigen Eigenvektoren den Phasenraum aufspannen.
+- Im Falle der Situation A **schrumpft** die Population, da beide 
+  Eigenwerte $\lambda$ gilt: 
+  $\displaystyle |\lambda | < 1$ und die zugehörigen Eigenvektoren den 
+  Phasenraum aufspannen.
+
+- Im Falle der Situation B **wächst** die Population, da ein 
+  Eigenwert $\lambda$ gilt:
+  $\displaystyle |\lambda | > 1$ und die zugehörigen Eigenvektoren den 
+  Phasenraum aufspannen.
+
+<!-- -->
 
 ```{r finish-Lineare-Algebra, include=FALSE}
 finalizePart(partname)

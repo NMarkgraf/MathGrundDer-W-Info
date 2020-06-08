@@ -18,9 +18,12 @@ pathToImages = getPathToImages()
 
 ### Was ist Finanzmathematik?
 
-In der **Finanzmathematik** spielt neben **Geld** (in Form von Zahlungen) der Faktor **Zeit** (als *Zeitpunkt*, zu dem die Zahlungen erfolgen, bzw. als *Zeitraum* zwischen Zahlungen) eine entscheidende Rolle. 
+In der **Finanzmathematik** spielt neben **Geld** (in Form von Zahlungen) der 
+Faktor **Zeit** (als *Zeitpunkt*, zu dem die Zahlungen erfolgen, bzw. 
+als *Zeitraum* zwischen Zahlungen) eine entscheidende Rolle. 
 
-Weiter ist der **Zinssatz**, zu dem Geld überlassen wird, von wesentlicher Bedeutung.
+Weiter ist der **Zinssatz**, zu dem Geld überlassen wird, von wesentlicher 
+Bedeutung.
 
 
 ## Zinsrechnung
@@ -33,9 +36,11 @@ Sie bekommen Angebote von drei Banken:
 - Das Angebot der Bank A bietet in jedem Jahr $5\,\%$ Zinsen. 
 Die Zinsen werden nach dem ersten Jahr errechnet und im zweiten Jahr mitverzinst. 
 
-- Dies gilt auch für das Angebot der Bank B, bei dem es im ersten Jahr $8\,\%$ und im zweiten nur $2\,\%$ Zinsen gibt. 
+- Dies gilt auch für das Angebot der Bank B, bei dem es im ersten Jahr $8\,\%$ 
+  und im zweiten nur $2\,\%$ Zinsen gibt. 
 
-- Beim Angebot der Bank C erhalten Sie dagegen im ersten Jahr nur $2\,\%$, im zweiten allerdings $8\,\%$. 
+- Beim Angebot der Bank C erhalten Sie dagegen im ersten Jahr nur $2\,\%$, im 
+  zweiten allerdings $8\,\%$. 
 
 Welches der drei Angebote ist das beste?
 
@@ -49,7 +54,8 @@ Welches der drei Angebote ist das beste?
 
 ### Einführungsbeispiel (II/II)
 
-Um diese Frage zu klären, muss das sogenannte Endkapital, hier: das Kapital nach 2 Jahren, bestimmt werden.
+Um diese Frage zu klären, muss das sogenannte Endkapital, hier: 
+das Kapital nach 2 Jahren, bestimmt werden.
 
 - **Angebot Bank A:** nach einem Jahr hat man 1000 Euro plus $5\,\%$ Zinsen also plus 50 Euro. Ergibt 1050 Euro. Nach 2 Jahren sind es 1050 Euro plus $5\,\%$ Zinsen also plus 52, 50 Euro Zinsen. Das Endkapital beträgt $1102{,}50$ Euro.
 
@@ -531,11 +537,17 @@ $$B: 15\,000/1{,}05^1 + 15\,000/1{,}05^2 	= 27\,891{,}16$$
 
 Der heutige Wert einer zukünftigen Zahlung oder einer zukünftigen Zahlungsreihe wird [Barwert]{.cstrong}, [Kapitalwert]{.cstrong} oder [Gegenwartswert]{.cstrong} genannt.
 
-Die Begriffe Barwert und Kapitalwert bezeichnen bei Projekten (Investitionen, Aktivitäten, Renten) auch den Wert am [Anfang der Projektlaufzeit]{.cstrong}. Beginnt das Projekt erst in der Zukunft, dann unterscheiden sich Bar- und Kapitalwert vom Gegenwartswert.
+Die Begriffe Barwert und Kapitalwert bezeichnen bei Projekten 
+(Investitionen, Aktivitäten, Renten) auch den Wert am 
+[Anfang der Projektlaufzeit]{.cstrong}. 
+Beginnt das Projekt erst in der Zukunft, dann unterscheiden sich 
+Bar- und Kapitalwert vom Gegenwartswert.
 
 Der Zeitwert am Ende der Laufzeit einer Zahlungsreihe heißt [Endwert]{.cstrong}.
 
-Zwei Zahlungen, $A$ zum Zeitpunkt $t_A$, und $B$ zum Zeitpunkt $t_B$, sind dann gleichwertig oder äquivalent ($A \sim B$) , wenn Ihre Zeitwerte zu jedem Zeitpunkt übereinstimmen.^[Für die lineare Verzinsung kann es zu abweichenden Zeitwerten kommen, weshalb hier  Äquivalenz meistens durch den Zeitpunkt der letzten Zahlung definiert ist.]
+Zwei Zahlungen, $A$ zum Zeitpunkt $t_A$, und $B$ zum Zeitpunkt $t_B$, 
+sind dann gleichwertig oder äquivalent ($A \sim B$), wenn Ihre Zeitwerte zu 
+jedem Zeitpunkt übereinstimmen.^[Für die lineare Verzinsung kann es zu abweichenden Zeitwerten kommen, weshalb hier Äquivalenz meistens durch den Zeitpunkt der letzten Zahlung definiert ist.]
 
 #### {.example}
 Folgende Zahlungen sind äquivalent ($i = 10\,\%$):

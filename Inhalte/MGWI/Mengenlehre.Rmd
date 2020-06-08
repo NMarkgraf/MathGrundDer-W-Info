@@ -24,7 +24,7 @@ library(mosaic)
 Was dachte der Vater der Mengenlehre einst, was Mengen sind:
 		
 ```{r echo=FALSE, out.width = "95%", fig.align="center"}
-knitr::include_graphics(file.path(pathToImages, "TextstelleMitDerMengendefinitionVonGeorgCantor.png"))
+knitr::include_graphics(file.path(pathToImages, "TextstelleMitDerMengendefinitionVonGeorgCantor.png"), error=FALSE)
 ```
 
 ::: {.tiny .raggedright}
@@ -519,7 +519,7 @@ Zwei Mengen $A$ und $B$ heißen **disjunkt**, wenn ihre Schnittmenge leer ist.
 ::: {.column width="33%"}
 
 ```{r echo=FALSE, out.width = "80%", fig.align="center"}
-knitr::include_graphics(file.path(pathToImages, "220px-Disjunkte_Mengen.png"))
+knitr::include_graphics(file.path(pathToImages, "220px-Disjunkte_Mengen.png"), error=FALSE)
 ```
 
 :::
@@ -549,7 +549,7 @@ $$ M_i \cap M_j = \emptyset \quad \text{ für } \!\,i \ne j \text{ und } 1 \leq 
 ::: {.column width="33%"}
 
 ```{r echo=FALSE, out.width = "60%", fig.align="center"}
-knitr::include_graphics(file.path(pathToImages, "126px-Disjuct-sets.png"))
+knitr::include_graphics(file.path(pathToImages, "126px-Disjuct-sets.png"), error=FALSE)
 ```
 
 :::
@@ -795,7 +795,7 @@ Abbildung zwischen den Mengen gibt.
 ::: {.column width="33%"}
 
 ```{r echo=FALSE, out.width = "70%", fig.align="center"}
-knitr::include_graphics(file.path(pathToImages, "Bijektivitaet_Mengenwolke.png"))
+knitr::include_graphics(file.path(pathToImages, "Bijektivitaet_Mengenwolke.png"), error=FALSE)
 ```
 
 :::
@@ -890,7 +890,7 @@ zeigen, dass sie für :
 #### {.endblock}
 
 ```{r echo=FALSE, out.width = "60%", fig.align="center"}
-knitr::include_graphics(file.path(pathToImages, "Domino.png"))
+knitr::include_graphics(file.path(pathToImages, "Domino.png"), error=FALSE)
 ```
 
 ::: {.tiny}

@@ -43,7 +43,7 @@ Sei $R \subseteq A \times B$ eine Relation, dann bezeichnet
 ### Beispiel
 
 ```{r echo=FALSE, out.width = "50%", fig.align="center"}
-knitr::include_graphics(file.path(pathToImages, "2000px-Relationen.png"))
+knitr::include_graphics(file.path(pathToImages, "2000px-Relationen.png"), error=FALSE)
 ```
 [Quelle: Von Honina, Thexudox - https://de.wikipedia.org/wiki/Datei:Relation.PNG, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=22819676]{.tiny}
 
@@ -51,7 +51,7 @@ knitr::include_graphics(file.path(pathToImages, "2000px-Relationen.png"))
 ### Beispiel
 
 ```{r echo=FALSE, out.width = "40%", fig.align="center"}
-knitr::include_graphics(file.path(pathToImages, "512px-Relation-x-studiert-y-svg.png"))
+knitr::include_graphics(file.path(pathToImages, "512px-Relation-x-studiert-y-svg.png"), error=FALSE)
 ```
 
 
@@ -67,7 +67,7 @@ Eine $n$-stellige Relation $R$ ist eine Teilmenge von $A_1 \times A_2 \times \cd
 #### {.example}
 
 ```{r echo=FALSE, out.width = "40%", fig.align="center"}
-knitr::include_graphics(file.path(pathToImages, "845px-Relation-x-lernt-y-beim-Lehrer-svg.png"))
+knitr::include_graphics(file.path(pathToImages, "845px-Relation-x-lernt-y-beim-Lehrer-svg.png"), error=FALSE)
 ```
 
 
@@ -527,7 +527,7 @@ Für eine endliche Menge $A$ und $B$ (bzgl. einer *universalen Menge* $U$) ist n
 ### Typen von Relationen 
 
 ```{r echo=FALSE, out.width = "80%", fig.align="center"}
-knitr::include_graphics(file.path(pathToImages, "TypenVonRelationen.pdf"))
+knitr::include_graphics(file.path(pathToImages, "TypenVonRelationen.pdf"), error=FALSE)
 ```
 
 ::: {.tiny}
