@@ -13,7 +13,7 @@ MathGrundlDWInfo*.toc
 MathGrundlDWInfo*.vrb
 MathGrundlDWInfo*.nav
 MathGrundlDWInfo_files/
-pandoc-filter/__pycache__/
+pandoc-filter/__pycache__/**
 JUNK
 private.yaml
 *_files/
