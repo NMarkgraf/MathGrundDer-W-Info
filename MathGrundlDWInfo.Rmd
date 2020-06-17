@@ -52,15 +52,15 @@ theme_set(
 ```{r setUpChildren, eval=TRUE, include=FALSE}
 childrenToInclude <- c(
     "Organisatorisches", "Hinweise", "Mengenlehre", "Relationen", 
-    #"Kombinatorik", 
-    "Logik", "Finanzmathematik", "LineareAlgebra"
+    "Kombinatorik", "Logik", "Finanzmathematik", "LineareAlgebra"
 )
 ## Test! (TRUE oder FALSE ändern!)
-if (FALSE) {
+if (TRUE) {
   childrenToInclude <- c(
 #    "Mengenlehre", 
 #    "Relationen",
-     "Kombinatorik" 
+#     "Kombinatorik" 
+    "Differenzialrechnung"
 #"Logik", "Finanzmathematik", "LineareAlgebra"
 #    "LineareAlgebra"
   )
@@ -72,31 +72,34 @@ includeChild <- function(name, children=childrenToInclude, all=FALSE) {
 }
 ```
 
-```{r child = './Inhalte/MGWI-Organisatorisches.Rmd', eval=includeChild("Organisatorisches")}
+```{r child = './Inhalte/MGWI-Organisatorisches.Rmd', eval = includeChild("Organisatorisches")}
 ```
 
 ```{r child = './private/private-Vorstellung.Rmd', eval = privateVorstellung}
 ```
 
-```{r child = './Inhalte/Organisatorisches/MGWI-Hinweise.Rmd', eval=includeChild("Hinweise")}
+```{r child = './Inhalte/Organisatorisches/MGWI-Hinweise.Rmd', eval = includeChild("Hinweise")}
 ```
 
-```{r child = './Inhalte/MGWI/Mengenlehre.Rmd', eval=includeChild("Mengenlehre")}
+```{r child = './Inhalte/MGWI/Mengenlehre.Rmd', eval = includeChild("Mengenlehre")}
 ```
 
-```{r child = './Inhalte/MGWI/Relationen.Rmd', eval=includeChild("Relationen")}
+```{r child = './Inhalte/MGWI/Relationen.Rmd', eval = includeChild("Relationen")}
 ```
 
-```{r child = './Inhalte/MGWI/Kombinatorik.Rmd', eval=includeChild("Kombinatorik")}
+```{r child = './Inhalte/MGWI/Kombinatorik.Rmd', eval = includeChild("Kombinatorik")}
 ```
 
-```{r child = "./Inhalte/MGWI/Logik.Rmd", eval=includeChild("Logik")}
+```{r child = "./Inhalte/MGWI/Logik.Rmd", eval = includeChild("Logik")}
 ```
 
-```{r child = "./Inhalte/MGWI/Finanzmathematik.Rmd", eval=includeChild("Finanzmathematik")}
+```{r child = "./Inhalte/MGWI/Differenzialrechnung.Rmd", eval = includeChild("Differenzialrechnung")}
 ```
 
-```{r child = "./Inhalte/MGWI/LineareAlgebra.Rmd", eval=includeChild("LineareAlgebra")}
+```{r child = "./Inhalte/MGWI/Finanzmathematik.Rmd", eval = includeChild("Finanzmathematik")}
+```
+
+```{r child = "./Inhalte/MGWI/LineareAlgebra.Rmd", eval = includeChild("LineareAlgebra")}
 ```
 
 

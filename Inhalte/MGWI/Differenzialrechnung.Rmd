@@ -20,46 +20,53 @@ pathToImages = getPathToImages()
 
 ### Univariate Funktion
 
-Wir wollen uns zunächst mit **univariaten**, **reellwertigen** Funktionen, 
-also Funktionen in einer Variabeln mit Werten in den reellen Zahlen beschäftigen.
+Unter einer **univariaten** Funktionen, also Funktionen in einer Variabeln, 
+verstehen wir:
 
 $$\begin{aligned}
 f\,:\, & D \to Z \\
        & x \,\mapsto\, y = f(x)
 \end{aligned}$$
 
-Dabei bezeichnet $f$ eine Funktion, welche jedem Element $x$ aus der 
-*Definitionsmenge* $D$ mit Hilfe der 
-*Zuordnungsvorschrift* $f(x)$ genau ein Element $y$ aus der 
-*Zielmenge* $Z \subseteq \mathbf{R}$ gemäß der *Funktionsgleichung* $y=f(x)$ 
+Dabei bezeichnet $f$ eine **Funktion**, welche jedem Element $x$ aus der 
+**Definitionsmenge** $D$ mit Hilfe der 
+**Zuordnungsvorschrift** $f(x)$ genau ein Element $y$ aus der 
+**Zielmenge** $Z$ gemäß der **Funktionsgleichung** $y=f(x)$ 
 zuordnet.
+
+Ist $Z \subseteq \mathbf{R}$, so nennen wir die Funktion **reellwertig**.
 
 Zunächst soll dabei $D\subseteq \mathbf{R}$ gelten.
 
 Die Menge $G_f = \left\{(x,y) \in D \times Z \,|\, y = f(x)\right\}$ wollen wir 
 den *Graph der Funktion $f$* nennen.
 
-Fasst man den Graphen von $f$ als Relation auf, so ist diese Relation
-*linkstotal* und *rechtseindeutig* (also *funktional*).
+Fasst man den Graphen von $f$ als Relation ($x \sim_f y :\Leftrightarrow y=f(x))$ 
+auf, so ist $\sim_f$ *linkstotal* und *rechtseindeutig* (also *funktional*).
 
 
 ### Beispiele für Funktionen der Wirtschaftswissenschaften
 
 - **Kostenfunktion $K(x) = K_{var}(x) + K_{fix}$:** 
-Zusammenhang zwischen Produktionsmenge und Gesamtkosten, setzt sich zusammen aus variablen Kosten $K_{var}(x)$ (abhängig von der Menge x) sowie den Fixkosten $K_{fix}$. 
+  Zusammenhang zwischen Produktionsmenge und Gesamtkosten, setzt sich zusammen 
+  aus *variablen Kosten* $K_{var}(x)$ (abhängig von der Menge $x$) sowie den 
+  *Fixkosten* $K_{fix}$. 
 
 - **Durchschnittskostenfunktion $DK(x)=K(x)/x$:**
-Auch **Stückkostenfunktion** gennannt, liefert den Kostenanteil einer produzierten Einheit.
+  Auch **Stückkostenfunktion** gennannt, liefert den Kostenanteil einer 
+  produzierten Einheit.
 
+- **Preis-Absatz-Funktion $P(x)$:**
+  Zusammenhang zwischen Stückpreis $P$ und der Absatzmenge $x$ 
+  (Nachfragefunktion).
 
-- **Preis-Absatz-Funktion $P(x)$:** 
-Zusammenhang zwischen Stückpreis und Absatz (Nachfragefunktion)
-
-- **Umsatz- oder Erlösfunktion $E(x)$:** 
-Zusammenhang zwischen Preis $P(x)$, Absatz(menge) $x$ und Erlös $E(x) = P(x)\cdot x$.
+- **Umsatz- oder Erlösfunktion $E(x)$:**
+  Zusammenhang zwischen Preis $P(x)$, Absatz(menge) $x$ und 
+  Erlös $E(x) = P(x)\cdot x$.
 
 - **Gewinnfunktion $G(x)$:** 
-Zusammenhang zwischen Produktions bzw. Absatzmenge und den Gewinn $G(x) = E(x) - K(x)$. 
+  Zusammenhang zwischen Produktions- bzw. Absatzmenge und dem Gewinn 
+  $G(x) = E(x) - K(x)$. 
 
 
 ### Bild und Urbild {include-only=LangeFassung}
@@ -67,6 +74,34 @@ Zusammenhang zwischen Produktions bzw. Absatzmenge und den Gewinn $G(x) = E(x) -
 ...
 
 <!-- -->
+
+### Transformation von Funktionen
+
+Eine Funktion 
+
+$$\begin{aligned}
+f\,:\, & D \to Z \\
+       & x \,\mapsto\, y = f(x) \phantom{\left(\frac{1}{1} ()\right)}
+\end{aligned}
+ \text{ geht über in } \quad
+\begin{aligned}
+g\,:\, & D \to Z \\
+       & x \,\mapsto\, y = a \cdot f\left(\frac{1}{b} \cdot (x-c)\right)+ d
+\end{aligned}$$
+
+
+durch eine 
+
+- **Streckung** um $a$ in $y$-Richtung
+- **Streckung** um $b$ in $x$-Richtung
+- **Verschiebung** um $c$ in $x$-Richtung
+- **Verschiebung** um $d$ in $y$-Richtung
+
+Insbesondere ist
+
+- $a=-1$ eine **Spiegelung** an der $x$-Achse
+- $b=-1$ eine **Spiegelung** an der $y$-Achse
+
 
 ### Konstante Funktionen
 
@@ -110,18 +145,47 @@ welche keine konstante Funktion ist.
 
 Sie lässt sich durch die folgenden *Zuordnungsvorschriften* beschreiben:
 
+:::::: {.columns}
+::: {.column width="49%"}
+
 **Steigungsform:**
 $$y = f(x) = m \cdot x + b$$
 Mit der *Steigung* $m$ und dem Y-Achsenabschnitt $b$. 
 Die Nullstelle $a$ von $f$ lautet: $a=-\frac{b}{m}$
 
+:::
+::: {.column width="49%"}
+
 **Normalenform:**
 $$\frac{1}{a} \cdot x + \frac{1}{b} \cdot y = 1$$
 Mit dem Y-Achsenabschnitt $b \neq 0$ und der Nullstelle $a \neq 0$. 
 Die Steigung $m$ lautet dann: $m=-\frac{b}{a}$. 
+::: 
+::::::
 
-Ist $b=0$, also $f(x) = m\cdot x$, so sprechen wir auch von einer *homogen linearen Funktion* oder 
-*Proportionalität*.
+
+
+:::::: {.columns}
+::: {.column width="49%"}
+
+**Punkt-Steigungsform:**
+$$y = f(x) = m \cdot (x-x_0) + b$$
+Mit der *Steigung* $m$ und dem Y-Achsenabschnitt $b$. 
+Die Nullstelle $a$ von $f$ lautet: $a=-\frac{b}{m}$
+
+:::
+::: {.column width="49%"}
+
+**Linear Faktorform:**
+$$y = m \cdot (x-x_0)$$
+Mit dem Y-Achsenabschnitt $b \neq 0$ und der Nullstelle $a \neq 0$. 
+Die Steigung $m$ lautet dann: $m=-\frac{b}{a}$. 
+::: 
+::::::
+
+
+Ist $b=0$, also $f(x) = m\cdot x$, so sprechen wir auch von einer 
+*homogen linearen Funktion* oder *Proportionalität*.
 
 
 ### Übung
@@ -153,73 +217,72 @@ Falls ja, welche und wieso?
 
 Betrachten Sie den Markt für ein Produkt ($P$=Preis, $x$=(Absatz-)Menge), 
 für das aufgrund von Erfahrungen die beiden Preis-Verkaufsmengenkombinationen 
-$(P_1, x_1) = (30, 100)$ und  $(P_2, x_2) = (25, 150)$ vorliegen. 
-Wie lautet die Nachfragefunktion, wenn eine lineare Beziehung unterstellt wird, 
-und wie viel kann dann voraussichtlich verkauft werden, wenn der Preis auf 20 
-gesenkt wird? 
+$(P_1, x_1) = (30, 100)$ und  $(P_2, x_2) = (25, 150)$ vorliegen.
+
+a) Wie lautet die Nachfragefunktion, wenn eine lineare Beziehung unterstellt 
+   wird?
+   
+b) Wie viel kann dann voraussichtlich verkauft werden, wenn der Preis auf $20$ 
+   gesenkt wird? 
 
 
-### Quadratische Funktionen 
+### Übung (nach Steward, Calculus, 7th ed.)
 
-Eine nicht konstante und nicht lineare Funktion, deren Funktionsterm ein
-*Polynom zweiten Gerades* ist wollen wir **quadratische Funktion** nennen:
+Der Manager einer Möbelﬁrma ﬁndet heraus, dass die Herstellung von 100 Stühlen 
+am Tag $2\,200$ US-\$, während die Herstellung von 300 Stühlen am Tag 
+$4\,800$ US-\$ kostet.
 
-$$\begin{aligned}
-f\,:\, & D\to Z \\
-       & x \,\mapsto\, y = a \cdot x^2 + b \cdot x + c
-\end{aligned}$$
+- Stellen Sie die Kosten als eine Funktion der Anzahl hergestellter Stühle dar.
 
-Dabei sind $a \neq 0$, $b$, $c$ die *Koeffizienten* der Funktion.
+- Was bedeuten in diesem Zusammenhang Achsenabschnitt und Steigung?
 
 
-### Kubische Funktionen {import-only=LangeFassung}
-
-...
-
-<!-- -->
-
-
-### Ganzrationale Funktionen / Polynome
+### Polynome
 
 Der formale Ausdruck
+
 $$a_n x^n + a_{n-1} x^{n-1} + \dotsb + a_2 x^2 + a_1 x + a_0 = \sum_{k=0}^n a_k x^k$$
-mit $n \in \mathbf{N}$ und den *Koeffizienten* 
+
+mit den $n \in \mathbf{N}$ **Koeffizienten** 
 $a_0, ..., a_{n-1}$ und $a_n\neq 0$ aus einer Menge $R$ 
-bezeichnet man als *Polynom vom Grad $n$*. 
+bezeichnet man als **Polynom vom Grad $n$ über $R$** . 
 
-Die Menge aller Polynome über R bezeichnet mensch mit $R[x]$. 
-
-Eine Funktion $f$, die sich mit Hilfe eines Polynoms aus $\mathbf{R}(x)$ 
-schreiben lässt bezeichnen wir als *ganzrationale Funktion*:
-
-$$\begin{aligned}
-f\,:\, & D\to Z \\
-       & x \,\mapsto\, y = \sum_{k=0}^n a_k x^k
-\end{aligned}$$
+Die Menge aller Polynome über $R$ bezeichnet mensch mit $R[x]$. 
 
 
 ### Die Gradfunktion für Polynome
 
-Die **Gradfunktion** ist definitiert durch
+Die **Gradfunktion** $\deg$ ist definiert durch:
+
 $$\begin{array}{rccl}
 \deg\colon & R[x] & \to & \quad \mathbf{N}_0 \cup \{-\infty\} \\
   & f & \mapsto & \begin{cases}
-  \max\left\{k\in\mathbf{N}_0\mid a_k\ne 0\right\}, & \text{wenn } f \neq 0\\
-  -\infty, & \text{wenn } f = 0
+  \max\left\{k\in\mathbf{N}_0\mid a_k\ne 0\right\}, & \text{falls } f \neq 0\\
+  -\infty, & \text{falls } f = 0
 \end{cases}
-\end{array}
-$$ 
+\end{array}$$ 
 
 Sie liefert für jedes Polynom den dazugehörigen Grad.
-
-:::::: {.columns}
-:::{.column width="39%"}
 
 Für zwei Polynome $p$ und $q$ gilt dann:
 
 - $\deg(p \cdot q) \leq \deg(p) \cdot \deg(q)$
 - $\deg(p + q) \leq \max\left(\deg(p), \deg(q)\right)$
 
+
+### Ganzrationale Funktionen
+
+Eine Funktion $f$, die sich mit Hilfe eines Polynoms aus $\mathbf{R}[x]$ 
+darstellen lässt bezeichnen wir als *ganzrationale Funktion*:
+
+
+:::::: {.columns}
+:::{.column width="39%"}
+
+$$\begin{aligned}
+f\,:\, & D\to Z \\
+       & x \,\mapsto\, y = \sum_{k=0}^n a_k x^k
+\end{aligned}$$
 :::
 ::: {.column width="59%"}
 
@@ -273,8 +336,11 @@ hat die dreifache Nullstelle $x_1 = 0$, die einfache Nullstelle $x_2 = 2$
 und die doppelte/zweifache Nullstelle $x_3 = -3$; 
 die Faktoren $-0{,}01$ und $x^2+1$ können dagegen für kein $x$ zu null werden,
 liefern also keine weiteren Nullstellen. 
+
 Somit ist dann mit $g(x)= -0{,}01(x^2+1)$:
+
 $$f(x)= x^3 \cdot (x - 2) \cdot (x + 3)^2 \cdot g(x)$$
+
 
 
 ### Übung 
@@ -282,17 +348,146 @@ $$f(x)= x^3 \cdot (x - 2) \cdot (x + 3)^2 \cdot g(x)$$
 
 <!-- -->
 
+### Quadratische Funktionen 
 
-### Potenzfunktionen
+Eine nicht konstante und nicht lineare Funktion, die man mit Hilfe eines
+*Polynom zweiten Gerades* darstellen kann wollen wir **quadratische Funktion** 
+nennen:
 
-...
+:::::: {.columns}
+::: {.column width="49%"}
+
+$$\begin{aligned}
+f\,:\, & D\to Z \\
+       & x \,\mapsto\, y = a \cdot x^2 + b \cdot x + c
+\end{aligned}$$
+
+Dabei sind $a \neq 0$, $b$, $c$ die *Koeffizienten* der Funktion.
+:::
+::: {.column width="49%"}
+**Nullstellen:**
+Falls vorhanden sind die Nullstellen $x_1$, $x_2$ gegeben durch:
+
+$$x_{1,2} =  \frac{-b\pm\sqrt{b^2-4ac}}{2a}$$
+
+
+**Scheitelpunktsform**:
+Die Funktion $f$ kann auch durch
+$$f(x) = a \cdot \left(x - x_s\right)^2 + y_s$$
+mit $x_s = \frac{x_1 + x_2}{2}$, 
+$y_s = f(x_s) = -\frac{a}{4}\cdot\left(x_2-x_1\right)^2$ dargestellt werden.
+
+:::
+::::::
+
+Den Graph einer *quadratischen Funktion* nennt man **Parabel**.
+
+
+### Beispiele quadratischer Funktionen
+
+:::::: {.columns}
+::: {.column width="49%"}
+```{r warning=FALSE, echo=FALSE, fig.align="center", out.width="95%"}
+library(ggplot2)
+
+myFun <- function(x, a, xs, ys) {
+  res <- a*(x - xs)**2 + ys
+  return(res)
+}
+
+my.df <- data.frame(x = c(-3.5,3.5))
+ggplot(my.df, aes(x = x)) +
+  geom_vline(aes(xintercept = 0)) +
+  geom_hline(aes(yintercept = 0)) +
+  stat_function(fun = myFun, n = 1000, 
+                args = list(a =  2, xs =  0, ys =  0), 
+                aes(colour = "2*x^2")) +
+  stat_function(fun = myFun, n = 1000, 
+                args = list(a =  2, xs = -2, ys = -2), 
+                aes(colour = "2*(x-2)^2-2")) +
+  stat_function(fun = myFun, n = 1000, 
+                args = list(a =  2, xs =  2, ys =  2), 
+                aes(colour = "2*(x+2)^2+2")) +
+  stat_function(fun = myFun, n = 1000, 
+                args = list(a = -2, xs = -2, ys =  2), 
+                aes(colour = "-2*(x-2)^2+2")) +
+  stat_function(fun = myFun, n = 1000, 
+                args = list(a = -2, xs =  2, ys = -2), 
+                aes(colour = "-2*(x+2)^2-2")) +
+  scale_colour_manual("Funktionen:", 
+                      values = c("blue", "green", "orange", "yellow", "red")) +
+  theme(legend.title = element_text(size = 22, face = "bold")) +
+  theme(legend.text = element_text(size = 18)) +
+  coord_cartesian(xlim =  c(-3, 3), ylim = c(-10, 10)) + 
+  theme(legend.position = "bottom") +
+  guides(colour = guide_legend(ncol = 3,nrow = 2,byrow = TRUE))
+
+
+```
+
+:::
+::: {.column width="49%"}
+:::: {.small}
+Es gilt
+$$a\cdot(x-x_s)^2+y_s = a\cdot x^2 + b\cdot x + c$$
+mit $b = -2\cdot a \cdot x_s \cdot x$ und $c =  a \cdot x_s^2 + y_s$
+
+
+
+**Zum Beispiel:**
+
+- $-2(x-2)^2+2 = -2x^2 + 8x - 6$
+
+- $-2(x+2)^2-2 = -2x^2 - 8x - 10$
+
+- $\phantom{-}2(x-2)^2-2 = \phantom{-}2x^2 - 8x + 6$
+
+- $\phantom{-}2(x+2)^2+2 = \phantom{-}2x^2 + 8x+ 10$
+
+::::
+:::
+::::::
+
+### Kubische Funktionen {import-only=LangeFassung}
+
+Eine Funktion, die man mit Hilfe eines
+*Polynom dritten Gerades* darstellen kann wollen wir **kubische Funktion** 
+nennen:
+
+$$\begin{aligned}
+f\,:\, & D\to Z \\
+       & x \,\mapsto\, y = a \cdot x^3 + b \cdot x^2 + c \cdot x + d
+\end{aligned}$$
+
+Dabei sind $a \neq 0$, $b$, $c$ und $d$ die *Koeffizienten* der Funktion.
+
+
+<!-- -->
+
+
+### Potenzfunktionen / Wurzelfunktionen
+
+Als **Potenzfunktionen** bezeichnen wir eind Funktion der Form:
+
+$$f : x \mapsto a x^r \qquad a, r \in \mathbf{R}.$$
+
+Ist der **Exponent** $r$ darstellbar durch $r= \frac{1}{n}$ für ein 
+$n \in \mathbf{N}$, so nennen wir die Funktion auch **Wurzelfunktion**.
 
 <!-- -->
 
 
 ### Exponetialfunktionen
 
-...
+Die Exponentialfunktion zu der Basis $e$ kann auf den reellen Zahlen u.a. durch
+$$\exp(x) = \lim_{n \to \infty} \left( 1 + \frac{x}{n} \right)^n$$
+definiert werden. Es ist dann 
+$$e=exp(1)\approx 2{,}71828 \, 18284 \, 59045 \, 23536 \, 02874 \, 71352 \, 66249 \, 77572 \, 47093 \, 69995 \, \dots$$ 
+und umgekehrt $\exp(x) = e^x$.
+
+Eine Exponentialfunktion zu einer beliebigen Basis $a$ ist dann:
+$$a^x = exp(x \cdot \ln(a))$$
+Wobei $\ln(x)$ die Umkehrfunktion von $\exp(x)$ ist und **natürlicher Logarithmus** genannt wird.
 
 <!-- -->
 
@@ -322,10 +517,22 @@ $$f(x)= x^3 \cdot (x - 2) \cdot (x + 3)^2 \cdot g(x)$$
 <!-- -->
 
 
-## Steigungen von Funktionen
-...
+## Stetigkeit
 
-<!-- -->
+Eine Funktion ist **(folgen-)stetig**, wenn für alle $h>0$ gilt:
+
+$$\lim_{h \to 0} f(x+h) = f(x) = \lim_{h \to 0} f(x-h)$$
+
+Eine stetige Funktion hat keine **Sprungstellen** und "lässt ich ohne Absetzen durchzeichnen".
+
+
+## Zwischenwertsatz
+
+Eine *stetige Funktion* $f$, die zwischen zwei Stellen $x_0$ und $x_1$ das Vorzeichen wechselt, also
+$f(x_0)\cdot f(x_1) < 0$, hat zwischen $x_0$ und $x_1$ mindestens eine Nullstelle.
+
+
+## Steigungen von Funktionen
 
 ### Sekante
 
@@ -390,6 +597,7 @@ Damit lässt sich der Differenzenquotient wie folgt zusammenfassen:
 
 $$m_s = \frac{f(x_1)- f(x_0)}{x_1-x_0} = \frac{\Delta f(x_0)}{\Delta x_0}$$
 
+
 ### Tangentensteigung / Differenzialquotient / Ableitung
 
 Eine (reelle) Funktion $f : D \to Z$ heisst an der Stelle $x_0 \in D$  differenzierbar, falls
@@ -403,9 +611,23 @@ Die erste Ableitung $f'(x_0)$ ist gleich der **Tangentensteigung** in dem Punkt 
 also einer Geraden $t(x) = m_t \cdot x + b_t$, welche die Funktion $f$ im Punkt $(x_0, f(x_0))$ berührt und in diesem Punkt die selbe Steigung wie $f$ hat, also $m_t = f'(x_0)$ und $b_t = f(x_0) - m_t \cdot x_0$. 
 
 
+### Näherungseigenschaften der Tangente
+
+Durch eine leichte Umformung erhalten wir aus der Tangenten
+$$t(x) = m_t \cdot x + b_t$$ 
+für die Funktion $f$ an der Stelle $x_0$ die Gestalt:
+$$t(x) = f(x_0) + f'(x_0) \cdot(x- x_0)$$
+(Rechnen Sie das bitte nach!)
+
+Die Tangente $t(x)$ ist dann die *beste lineare Näherung* der Funktion $f$ an 
+der Stelle $x_0$!
+
+Es ist somit für $x \approx x_0$:
+
+$$f(x) \approx t(x) = f(x_0) + f'(x_0) \cdot(x- x_0)$$
+
 
 ## Ableitungsregeln
-
 
 ### Ableitung elementarer Funktionen
 

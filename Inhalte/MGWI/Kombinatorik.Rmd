@@ -698,9 +698,8 @@ $$ \binom{1000}{3} = 166\,167\,000, \quad \binom{1000}{10}= 263\,409\,560\,461\,
 
 
 ::: {.notes}
-# Berechnung des Binomialkoeffizenten 
-# mit Hilfe des rekusiven Abstiegs in
-# Python
+Berechnung des Binomialkoeffizenten  mit Hilfe des rekusiven Abstiegs in Python
+
 
 def binom(n, k):
     if k > n or k < 0:
@@ -716,6 +715,7 @@ if __name__ == '__main__':
     print(binom(100, 50))
     print(binom(1000, 3))
     print(binom(1000, 10))
+
 :::
 
 <!-- -->
@@ -738,7 +738,7 @@ $$\begin{aligned}
 
 
 ### Der binomische Lehrsatz
-	
+
 \begin{columns}
 	\begin{column}[t]{0.74\textwidth}
 		\begin{Satz}[Newton's binomische Formeln]
@@ -750,7 +750,7 @@ $$\begin{aligned}
 	\end{column}
 	\begin{column}[t]{0.24\textwidth}
 	\vspace*{-1em}
-	%personDB{Newton}
+	personDB{Newton}
 	\end{column}
 \end{columns}
 

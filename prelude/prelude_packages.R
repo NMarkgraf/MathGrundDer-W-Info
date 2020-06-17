@@ -115,8 +115,8 @@ releaseCompare <- function(relA, relB) {
       
       new.pkgs <- needed_pkgs[!(needed_pkgs %in% installed.packages())]
       del.pkgs <- unwanted_pkgs[(unwanted_pkgs %in% installed.packages())]
-      print(new.pkgs)
-      print(del.pkgs)
+      # print(new.pkgs)
+      # print(del.pkgs)
       if (length(new.pkgs)) {
           install.packages(new.pkgs, dependencies = dependencies, repos = repos)
       }
@@ -138,10 +138,10 @@ releaseCompare <- function(relA, relB) {
       {
           if (noupdates || pkg %in% loadedNamespaces()) {
               warning(paste0("WARNUNG: ",
-                             "Das Paket `", pkg, "` muss upgedatet werden!"))
+                             "Das Paket `", pkg, "` muss aktualisiert werden!"))
           }
           else {
-              message("das Paket '", pkg, "' wird upgedatet ... ")
+              message("das Paket '", pkg, "' wird aktualisiert ... ")
               install.packages(pkg, dependencies = dependencies, repos = repos) # besser als update.packages!
           }
       }
