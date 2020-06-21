@@ -448,7 +448,7 @@ mit $b = -2\cdot a \cdot x_s \cdot x$ und $c =  a \cdot x_s^2 + y_s$
 :::
 ::::::
 
-### Kubische Funktionen {import-only=LangeFassung}
+### Kubische Funktionen {include-only=LangeFassung}
 
 Eine Funktion, die man mit Hilfe eines
 *Polynom dritten Gerades* darstellen kann wollen wir **kubische Funktion** 
@@ -499,7 +499,7 @@ Wobei $\ln(x)$ die Umkehrfunktion von $\exp(x)$ ist und **natürlicher Logarithm
 <!-- -->
 
 
-### Sinus / Cosinus {import-only=LangeFassung}
+### Sinus / Cosinus {include-only=LangeFassung}
 ...
 
 <!-- -->
@@ -526,7 +526,7 @@ $$\lim_{h \to 0} f(x+h) = f(x) = \lim_{h \to 0} f(x-h)$$
 Eine stetige Funktion hat keine **Sprungstellen** und "lässt ich ohne Absetzen durchzeichnen".
 
 
-## Zwischenwertsatz
+### Zwischenwertsatz
 
 Eine *stetige Funktion* $f$, die zwischen zwei Stellen $x_0$ und $x_1$ das Vorzeichen wechselt, also
 $f(x_0)\cdot f(x_1) < 0$, hat zwischen $x_0$ und $x_1$ mindestens eine Nullstelle.
@@ -690,39 +690,364 @@ $$f'(x) = \left(g\left(h(x)\right)\right)' = g'(h(x)) \cdot h'(x)$$
 ## Extremstellen von Funktionen
 
 ### Monotonie
-...
 
-<!-- -->
+Eine Funktion deren Werte die auf einem Intervall $I$ nicht abnehmen heißt
+**monoton steigend** und es gilt:
+$$x < y \Longrightarrow f(x) \leq f(y) \quad \forall x,y \in I$$
+Umgekehrt, nehmen die Werte auf einem Intervall $I$ nicht zu, dann heißt die
+Funktion **monoton fallend** und es gilt:
+
+$$x < y \Longrightarrow f(x) \geq f(y) \quad \forall x,y \in I$$
+Gilt in beiden Fällen jeweils auf der rechten Seite die *strikte Ungleichung* 
+($<$ bzw. $>$), so nennen wir die Funktionen auch **streng** *monoton* 
+*steigend* bzw. *fallend*.
+
+**Monotonie** setzt voraus, dass die *Steigungen* im jeweiligen Intervall $I$
+*nicht negativ* (im *strengen* Fall *positiv*) bzw. 
+*nicht postiv* (im strengen Fall *negativ*) sind.
+
+Es gilt daher:
+
+- $f$ ist auf $I$ *(streng) monoton steigend* 
+  $\Longleftrightarrow f'(x) \geq (>) 0$
+- $f$ ist auf $I$ *(streng) monoton fallend* 
+  $\Longleftrightarrow f'(x) \leq (<) 0$
+
 
 ### Krümmung
-...
+
+Eine reellwertige Funktion heißt **konvex** auf dem Intervall $I$, wenn
+für je zwei Stellen $a < b$ mit $a,b \in I$ die Funktionswerte von $f$ unterhalb
+der Verbingdsstrecke von $(a; f(a))$ und $(b; f(b))$ liegt.
+Liegen alle Funktionswerte oberhalb, so nennen wir die Funktion **konkav** auf 
+$I$:
+
+Es gilt dann:
+
+- $f$ ist **konvex** auf $I$ $\Longleftrightarrow$ 
+$\forall t \in [0,1], x, y \in I:$ 
+$$f(t \cdot x + (1-t) \cdot y) \leq t\cdot f(x) + (1-t)\cdot f(y)$$
+
+
+- $f$ ist **konkav** auf $I$ $\Longleftrightarrow$ 
+$\forall t \in [0,1], x, y \in I:$ 
+$$f(t \cdot x + (1-t) \cdot y) \geq t\cdot f(x) + (1-t)\cdot f(y)$$
+
+
+### Zweite (und höhere) Ableitung
+
+Falls für eine differenzierbare Funktion $f$ die Ableitungsfunktion $f'$ ebenfalls
+differenzierbar ist, nennen wir diese **2. Ableitung von f** und schreiben 
+dafür
+
+$$f''(x) = \left[f'(x)\right]' = \frac{d}{dx} \left(\frac{d}{dx} f\right) = \frac{d^2}{dx^2} f$$
+
+Rekursiv definieren wir die $n$-te Ableitung, falls die $n-1$ Ableitungfunktion
+exisiert und differenzierbar ist. Wir schreiben dann:
+
+$$f^{(n)}(x) = \left[f^{(n-1)}(x)\right]' = \frac{d}{dx} \left(\frac{d^{n-1}}{dx^{n-1}} f\right) = \frac{d^n}{dx^n} f$$
+
+### Krümmung und die 2. Ableitung / Wendepunkte
+
+Die 2. Ableitung einer Funktion beschreibt ihr Krümmungsverhalten, denn es gilt:
+
+Eine *zweimal differenzierbare* Funktion $f$ ist auf dem Intervall $I$
+
+- **(streng)** **konvex** $\Longleftrightarrow f''(x) (>)\geq 0$
+- **(streng)** **konkav** $\Longleftrightarrow f''(x) (<)\leq 0$
+
+für alle $x \in I$.
+
+Der Punkt, an dem eine Funktion von einem konvexen Bereich in einen konkaven 
+Bereich bzw. von einem konkaven in einen konvexen Bereich übergeht bezeichnen 
+wir als **Wendepunkt**. 
+
+Daher ist eine notwendige Bedingung für eine *Wendestelle* $x_{WP}$, dass 
+$f''(x_{WP})=0$ gilt. Der *Wendepunkt* ist dann $(x_{WP}, f(x_{WP}))$.
+
+
+### Globale und lokale Extremstellen
+
+
+
 
 <!-- -->
 
-### Lokale Extremstellen
-...
+## Univariate Funktionen
 
-<!-- -->
-
-## Univariate Differenzialrechnung
-...
 
 <!-- -->
 
 ### Partielle Ableitung
-...
 
-<!-- -->
+Werden für eine univariate, reellwertige Funktion 
+$$f: D \to Z
+    (x_1,\cdot,x_n) \mapsto y = f(x_1,\cdot,x_n)$$
+Alle Variabeln $x_.$ bis auf die $i$-te als Konstanten betrachtet 
+(c.p. = ceteris paribus), dann heißt die Ableitun von $f$ nach $x_i$ die 
+**partielle Ableitung von $f$ nach $x_i$**:
+
+$$\frac{\partial f(x_1,\dotsc,x_n)}{\partial x_1} = f_{x_i}(x_1,\cdot,x_n)$$
+
+### Beispiele
+
 
 ### Gradient
-...
+
+Unter dem *Gradienten* einer univariaten, reellwertigen Funktion 
+$$\begin{aligned}
+f\,:\, & D \phantom{(x, \dotsc, x)}\to Z \\
+       & (x_1, \dotsc, x_n) \mapsto\, y = f(x_1, \dotsc, x_n)
+\end{aligned}$$
+
+mit $D \subseteq \mathbf{R}^n$ und $Z \subseteq \mathbf{R}$ verstehen wir 
+den Ausdruck
+
+$$
+\nabla f = \operatorname{grad}(f) =  \begin{pmatrix}\frac{\partial f}{\partial x_{1}}\\ \vdots\\ \frac{\partial f}{\partial x_{n}} \end{pmatrix},
+$$
+dem Vektor der partiellen Ableitung in die Richtungen $x_1, \dotsc, x_n$.
+
+
+Der Gradient zeigt in die Richtung der größten Änderung.
+
+Der Betrag des Gradienten gibt den Wert der größten Änderungsrate an
+diesem Punkt an.
+
+
+### Beispiel Gradient
+
+Gegeben sei ein Funktion $f: \mathbf{R}^2 \to \mathbf{R}$ mittels
+$f(x,y)=2x^2-y^2.$ 
+Die partiellen Ableitungen sind somit $\frac{{\partial f}}{{\partial x}} = 4x$
+und $\frac{{\partial f}}{{\partial y}} = -2y$.
+
+Damit ist 
+$\operatorname{grad}(f) = \nabla f = \begin{pmatrix}4x\\-2y\end{pmatrix}.$
+
+Für den Punkt $P(-2; -1)$ lautet der Gradientvektor 
+$\begin{pmatrix}-8\\2\end{pmatrix}$.
+
+Der Betrag ist 
+$\left|\begin{pmatrix}-8\\2\\\end{pmatrix}\right| = \sqrt{(-8)^2 + 2^2} \approx 8{,}25$.
+
+
+### 3D-Plot von $f(x,y)=2x^2-y^2$ 
+
+```{r echo=FALSE}
+fkt <- function(x,y) {
+  return(2*x^2 - y^2)
+}
+
+x <- seq(-5, 5, 0.1)
+y <- seq(-5, 5, 0.1)
+z <- array(0:0, c(length(x),length(y)))
+
+xi <- 0
+yi <- 0
+
+for (xx in x) {
+  xi <- xi + 1
+  yi <- 0
+  for (yy in y) {
+    yi <- yi + 1
+    z[xi,yi] <- fkt(xx, yy)
+  }
+}
+
+
+```
+
+```{r echo=FALSE}
+library("plot3D")
+t <- seq(-5, 5, 0.1)
+m <- mesh(t, t)
+x <- m$x
+y <- m$y
+z <- fkt(x,y)
+
+persp3D(x, y, z, 
+        box=TRUE, 
+        phi=30, 
+        theta= 35,
+        nticks=5,
+        axes=TRUE,
+        scale=1.5,
+        ticktype="detailed",
+        colkey = list(
+          length = 0.5, 
+          width = 0.5, 
+          shift = 0.15,
+        cex.axis = 0.8, cex.clab = 0.85),
+        boder = TRUE,
+        clab = c("z = f(x,y)"),
+        plot=TRUE,
+        colvar=z)
+```
+
+
+
+
+## Extremstellen univariaten Funktionen
+
+
+
+### Notwendigebedinung 1 / stationäre Punkte
+
+Damit ein Punkt $x=(x_1, \dotsc, x_n) \in D \subseteq \mathbf{R}^n$ eine 
+Extremstelle der Funktion $f:D \to Z \subseteq \mathbf{R}$ seien
+kann, muss für den Gradient gelten:
+
+$$\nabla f(x) = 0^n = \begin{pmatrix}0\\ \vdots \\0\end{pmatrix} \in \mathbf{R}^n$$
+
+Punkte welche diese Bedingung erfüllen, nennen wir **stationäre Punkte**.
+
+Mathematisch heißt das:
+
+$$x \text{ ist eine Extremstelle von } f \Longrightarrow \nabla f(x) = 0^n$$
+
+### Beispiel
+
+Aus dem Beispiel $f(x,y)=2x^2-y^2$ mit dem Gradienten 
+$\nabla f(x,y) = \begin{pmatrix}4x\\-2y\end{pmatrix}$ wissen wir, dass
+der Punkt $(0; 0)$ ein *stationärer Punkt* ist, weil 
+$$\nabla f(0,0) = \begin{pmatrix}\phantom{-}4\cdot 0\\-2 \cdot 0\end{pmatrix}= \begin{pmatrix}0\\0\end{pmatrix}$$
+gilt.
+Aber aus dem 3D Plot wissen wir, dass $(0; 0)$ keine Extremstelle ist!
+
+
+### Hesse-Matrix
+
+Für eine hinreichend oft differenzierbare Funktion $f: D \to Z$, mit 
+$D \subseteq \mathbf{R}^n$ und $Z \subseteq \mathbf{R}$ ist für ein 
+$x \in D$ die **Hesse-Matrix** wie folgt gegeben:
+
+$$
+\operatorname{Hess}\left(f(x)\right) =
+\begin{pmatrix}
+ f_{x_1x_1}(x) & f_{x_1x_2}(x) & \cdots & f_{x_1x_n}(x) \\
+ f_{x_2x_1}(x) & f_{x_2x_2}(x) & \cdots & f_{x_2x_n}(x) \\
+ \vdots        & \vdots        & \ddots & \vdots \\
+ f_{x_nx_1}(x) & f_{x_nx_2}(x) & \cdots & f_{x_nx_n}(x)
+\end{pmatrix}
+$$
+
+### KLassifikation stationärer Punkte
+
+Sie $f: D \to Z$ eine hinreichend differenzierbare Funktion und 
+$D \subseteq \mathbf{R}^n$ und $Z \subseteq \mathbf{R}$.und $x_0$ ein
+stationärer Punkt ($\nabla f(x_0) = 0^n$).
+
+a) **Notwendige Bedingung:**
+   Ist $x_0$ ein lokales Extremum von $f(x)$, so gilt:
+   
+   - $x_0$ ist lokales Minimum $\Longrightarrow$ 
+     $\operatorname{Hess}\left(f(x_0)\right)$ ist positiv semidefinit 
+    
+   - $x_0$ ist lokales Maximum $\Longrightarrow$ 
+     $\operatorname{Hess}\left(f(x_0)\right)$ ist negativ semidefinit 
+
+b) **Hinreichende Bedingung:**
+   
+   - Ist $\operatorname{Hess}\left(f(x_0)\right)$ positiv definit 
+     (bzw. negativ definit), so ist $x_0$ ein strenges lokales Minimum 
+     (bzw. Maximum) von $f(x)$.
+     
+   - Ist $\operatorname{Hess}\left(f(x_0)\right)$ indefinit, so ist
+     $x_0$ ein Sattelpunkt.
+
 
 <!-- -->
 
-## Extremstellen von univariaten Funktionen
-...
 
-<!-- -->
+### Beispiel $f(x,y) = 4x^2+xy+7x+3y^2-5y$
+
+Für $f(x,y) = 4x^2+xy+7x+3y^2-5y$ lautet der Gradient
+
+$$\nabla f = \begin{pmatrix}8x+y+7\\x+6y-5\end{pmatrix}$$
+und hat den stationären Punkt $(-1; 1)$. (TR!)
+
+Die Hesse-Matrix für den Punkt $(-1; 1)$ lautet:
+$$\operatorname{Hess}\left(f(1,1)\right) = \begin{pmatrix}
+ 8 & 1  \\
+ 1 & 6
+\end{pmatrix}$$
+
+Das charakteristische Polynom $\chi(\lambda) = (8-\lambda)(6-\lambda)-1=x^2-14x+49 = (x-7)^2$
+liefert die Eigenwerte $\lambda_1=7$ und $\lambda_2=7$.
+
+Da beide Eigenwerte positiv sind ist die Hesse-Matrix positiv definit und wir
+haben an der Stelle $(-1; 1)$ ein strenges lokales Minimum.
+
+
+### Beispiel $f(x,y) = -3x^2+xy+5x-4y^2+7y$
+
+Für $f(x,y) = -3x^2+xy+5x-4y^2+7y$ lautet der Gradient
+
+$$\nabla f = \begin{pmatrix}-6x+\phantom{8}y+5\\\phantom{-6}x-8y+7\end{pmatrix}$$
+und hat den stationären Punkt $(1; 1)$. (TR!)
+
+Die Hesse-Matrix für den Punkt $(-1; 1)$ lautet:
+
+$$\operatorname{Hess}\left(f(1,1)\right) = \begin{pmatrix}
+ -6 & 1  \\
+ 1 & -8
+\end{pmatrix}$$
+
+Das charakteristische Polynom $\chi(\lambda) = (-6-\lambda)(-8-\lambda)-1=x^2+14x+49 = (x+7)^2$
+liefert die Eigenwerte $\lambda_1=-7$ und $\lambda_2=-7$.
+
+Da beide Eigenwerte negativ sind ist die Hesse-Matrix negativ definit und wir
+haben an der Stelle $(1; 1)$ ein strenges lokales Maximum.
+
+
+### Beispiel $f(x,y)=2x^2-y^2$
+
+Für $f(x,y)=2x^2-y^2$ lautet der Gradient 
+
+$$\nabla f= \begin{pmatrix}4x\\-2y\end{pmatrix}$$
+
+Es gibt einen stationären Punkt $(0; 0)$ und die Hesse-Matrix lautet:
+
+$$\operatorname{Hess}\left(f(x,y)\right) = \begin{pmatrix}
+ 4 & 0  \\
+ 0 & -2
+\end{pmatrix}$$
+
+Da die Hesse-Matrix in diagonalgestalt ist, können wir die Eigenwerte ablesen:
+$\lambda_1 = 4$, $\lambda_2 = -2$.
+
+Da die beiden Eigenwerte unterschiedliche Vorzeichen haben, ist die 
+Hesse-Matrix indefinit. 
+
+Der Punkt $(0; 0)$ liefert somit einen Sattelpunkt.
+
+
+### Übungen:
+<!-- Aufgabe von Ross/Christians -->
+
+Bestimmen Sie für die folgenden Funktionen den stationären Punkt $(x_0; y_0)$
+und geben Sie an, ob es sich um eine Maximum, Minimum oder einen Sattelpunkt 
+handelt:
+
+a) $f(x,y) = -x^2+24x-2y^2+40y-2xy-3$
+b) $f(x,y) = 2x^2-24x+2y^2-18y+2xy+3$
+c) $f(x,y) = 2x^2-10x-2y^2+2xy-2$
+d) $f(x,y) = x^2+24x+2y^2+40y-3xy$
+e) $f(x,y) = 2x^2-30x+3y^2-10y-2xy$
+f) $f(x,y) = -2x^2+24x-5y^2+5xy-1$
+g) $f(x,y) = x^2+4x-5y^2+10y-4xy$
+h) $f(x,y) = -x^2+120x+2y^2+120y-4xy$
+
+
+### Übung
+
+Die Funktion $f(x,y) = y^2(x-1) + x^2(x+1)$ besitzt **zwei** stationäre Punkte.
+
+a) Bestimmen Sie die beiden stationären Punkt $(x_0;y_0)$ und $(x_1; y_1)$.
+
+b) Berechnen Sie die Hesse-Matrizen und entscheiden Sie, ob die Punkte lokale 
+   Extremstellen sind (und welcher Typ) oder Sattelpunkte.
 
 
 ### Minimierungsproblem
@@ -743,25 +1068,70 @@ $$f'(x) = \left(g\left(h(x)\right)\right)' = g'(h(x)) \cdot h'(x)$$
 <!-- -->
 
 
-## Extremstellen von univariaten Funktionen unter Nebenbedingungen 
+## Extrema unter Nebenbedingungen 
+
+### Das allgemeine Problem
+
+Gegeben ist eine (Ziel-)Funktion $f: D \to Z$ mit $D \subseteq\mathbf{R}^n$ und
+$Z \subseteq \mathbf{R}$. Weiterhin seien $m$ verschiedene Nebenbedingungen in 
+der Form $g_i: D \to Z$ ($i=1,...,m)$ mit $g_i(x) = 0$.
+
+Wir suchen nun das $x$ aus der Menge der aller $x$, welche die Nebenbedingungen 
+$g_i$ erfüllen, bei dem $f(x)$ den größten bzw. kleinsten Wert annimmt.
+
+
+
 
 ### Lagrangemethode
+
+Wir formulieren zunächst eine *Lagrangefunktion* $L_f(x,\lambda)$ mit 
+$x\in\mathbf{R}^n$ und $\lambda=\mathbf{R}^m$ mittels:
+
+$$L_f(x_1,...x_n,\lambda_1,...\lambda_m) = f(x_1,...,x_n) + \sum_{i=1}^m \lambda_i \cdot g_i$$
+Bestimmt man nun die Lösung von 
+
+$$\nabla L_f(x,\lambda) = 0^{n+m}$$
+
+So liefern die Werte $x_1,...,x_n$ die gesuchte(n) Werte für eine Extremstelle.
+
+
+### Beispiel
+
+Betrachtet werden zwei Güter, deren Konsummengen $x_1$ und $x_2$ dem Verbraucher 
+einen Nutzen stiften, der durch die Nutzenfunktion $U(x_1,x_2)=x_1 \cdot x_2$ 
+beschrieben wird. 
+
+Weiterhin verfügt der Verbraucher über ein begrenztes Einkommen in Höhe von 
+$Y = 300$, und die Preise der beiden Güter sind $p_1 = 3$ und $p_2 = 6$. 
+
+
+*Wir erhalten:* Zielfunktion $f(x_1, x_2) = U(x_1, x_2) = x_1 \cdot x_2$ und 
+Nebenbedingung $g(x_1, x_2) = 300 - (3 x_1 + 6 x_2)$
+
+Die Lagrangefunktion lautet dann:
+$$L(x_1, x_2, \lambda) = x_1 \cdot x_2 + \lambda (300 - 3 x_1 - 6 x_2)$$
+Damit ist
+
+$$\nabla L(x_1, x_2, \lambda) = \begin{pmatrix} x_2 - 3 \lambda\\ x_1 - 6 \lambda \\ 300 - 3 x_1 - 6 x_2\end{pmatrix}$$
+
+Und wir erhalten als Lösung von $\nabla L(x_1, x_2, \lambda) = 0^3$:
+$x_1=50$, $x_2=25$, $\lambda=25/3$
+
+
+### Einsetzungsverfahren {include-only=LangeFassung}
 ...
 
 <!-- -->
 
-### Einsetzungsverfahren
+
+## Taylorreihe {include-only=LangeFassung}
 ...
 
 <!-- -->
 
+### ...
 
-## Taylorreihe {import-only=LangeFassung}
 ...
-
-<!-- -->
-
-
 
 ```{r finish-Differenzialrechnung, include=FALSE}
 finalizePart(partname)
