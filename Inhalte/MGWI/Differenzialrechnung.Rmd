@@ -648,6 +648,27 @@ Sei $f: D \to Z$ eine Funktion und $a>0$, $b$, $c$ reelle Zahlen. Dann gilt:
 
 ### Übung
 
+<!-- Übung vn Ross/Christians -->
+
+Bestimmen sie für die folgenden Funktionen $f(x)$, die Ableitungen $f'(x)$ und
+werten Sie dann die Funktion $f'(x)$ an der Stelle $x_0$ aus.
+
++------+-----------------+------------------+
+|      | $f(x)$          | $x_0$            |
++:====:+:================+:=================+
+| a$)$ | $x^4$           | $0{,}5$          |
++------+-----------------+------------------+
+| b$)$ | $3$             | $-4$             |
++------+-----------------+------------------+
+| c$)$ | $x$             | $-4$             |
++------+-----------------+------------------+
+| d$)$ | $x^{0{,}5}$     | $4$              |
++------+-----------------+------------------+
+| e$)$ | $x^{-1{,}5}$    | $4$              | 
++------+-----------------+------------------+
+| f$)$ | $3^x$           | $0$              |
++------+-----------------+------------------+
+
 
 <!-- -->
 
@@ -657,6 +678,20 @@ Sei $f(x) = g(x) +  h(x)$, dann gilt für die Ableitung gemäß **Summenregel**:
 
 $$f'(x) = g'(x)+h'(x)$$
 
+**Beispiele:**
+
+- $\left(x^3+x^2\right)' = 3x^2+2x$
+
+- $\left(x+1\right)' = 1+0 = 1$
+
+- $\left(x^2+\ln(x)\right)' = 2x+\frac{1}{x}$
+
+- $\left(e^x+\ln(x)\right)' = e^x+\frac{1}{x}$
+
+- $\left(4^x+x^4\right)' = 4^x\cdot\ln(4) + 4x^3$
+
+- $\left(\log_3(x)+x^{-2}\right)' = (x \ln(3))^{-1}-2x^{-3} = \frac{1}{x \cdot \ln(3)} - \frac{2}{x^3}$
+
 <!-- -->
 
 ### Produktregel
@@ -665,27 +700,157 @@ Sei $f(x) = g(x) \cdot h(x)$, dann gilt für die Ableitung gemäß Produktregel:
 
 $$f'(x) = g'(x) \cdot h(x) + g(x) \cdot h'(x)$$
 
-**Sonderfall:** *Produktregel mit Konstanter (Funktion)*
+**Sonderfall:** *Produktregel mit Konstanter (Funktion)* / **Faktorregel**
 
 Sei $f(x) = c \cdot g(x)$, dann ist $f'(x)= c \cdot g'(x)$.
 
+**Beispiele:**
+
+::: {.scriptsize}
+
+- $\displaystyle \left(x^2 \cdot x\right)' = 2x\cdot x + x^2 \cdot 1 = 3x^2$
+
+- $\displaystyle \left(\ln(x) \cdot x\right)' = x^{-1} \cdot x + \ln(x) \cdot 1 = 1+ \ln(x)$
+
+- $\displaystyle \left(\sqrt{x} \cdot e^x\right)' = \left(x^{0{,}5} \cdot e^x\right)' = 0{,}5x^{-0{,}5} \cdot e^x + x^{0{,}5} \cdot e^x = \frac{(0{,}5+x)\cdot e^x}{\sqrt{x}}$
+
+- $\displaystyle \left(4 \cdot x\right)' = 0 \cdot x + 4 \cdot 1 = 4$
+
+- $\displaystyle \left(10 \cdot x^2\right)' = 10 \cdot \left( x^2\right)' = 10 \cdot 2 \cdot x = 20 x$
+
+- $\displaystyle \left(4 \cdot e^x\right)' = 4 \cdot \left( e^x\right)' = 4 \cdot e^x$
+
+- $\displaystyle \left(5  \cdot \ln(x) \cdot x\right)' = 5  \cdot \left(\ln(x) \cdot x\right)' = 5 \cdot (1+ \ln(x)) = 5+5\ln(x)$
+
+- $\displaystyle \left(\frac{5}{x}\right)' = 5 \cdot \left(\frac{1}{x}\right)' = 5 \cdot \left(x^{-1}\right)' = 5 \cdot (-1)\cdot x^{-2} =-\frac{5}{x^2}$
+
+:::
+
 <!-- -->
+
+
+### Übungen
+
+Bestimmen Sie die ersten Ableitungen der folgenden Funktionen
+
+:::::: {.columns}
+::: {.column width="49%"}
+
+a) $\displaystyle 4x^3+6x^2$
+
+b) $\displaystyle 10e^x+4x^{2{,}5}$
+
+c) $\displaystyle 2x^{-1}+\ln(x)$
+
+d) $\displaystyle 2\sqrt{x}$
+
+e) $\displaystyle 2\sqrt{x} \cdot e^x$
+
+f) $\displaystyle e^{2+x}$
+
+g) $\displaystyle (x+2)x$
+
+h) $\displaystyle \left(x^2+x^3\right)e^x$
+
+:::
+::: {.column width="49%"}
+
+i) $\displaystyle 4x^3 \ln(x)$
+
+j) $\displaystyle 4^x \ln(x)$
+
+k) $\displaystyle \log_2(x) \ln(x)$
+
+l) $\displaystyle x^2\sqrt{x}$
+
+m) $\displaystyle e^x \cdot e^x$
+
+n) $\displaystyle x^2e^x\ln(x)$
+
+o) $\displaystyle \ln(x)\sqrt{x}$
+
+p) $\displaystyle 5e^xx^{-2}$
+
+:::
+::::::
 
 ### Quotientenregel
 
-Sei $f(x) = \frac{g(x)}{h(x)}$, dann gilt für die Ableitung gemäß **Quotientenregel**:
+Sei $\displaystyle f(x) = \frac{g(x)}{h(x)}$, dann gilt für die Ableitung gemäß **Quotientenregel**:
 
 $$f'(x) = \left(\frac{g(x)}{h(x)}\right)' = \frac{g'(x)\cdot h(x)- g(x) \cdot h'(x)}{\left(h(x)\right)^2}$$
 
+**Beispiele:**
+
+- $\displaystyle \left(\frac{x^3}{x^2}\right)' = \frac{3x^2\cdot x^2- x^3\cdot 2x}{(x^2)^2} = \frac{3x^4- 2x^4}{x^{2\cdot 2}} = \frac{x^4}{x^4} = 1$
+
+
+- $\displaystyle \left(\frac{\ln(x)}{x^2}\right)' = \frac{\frac{1}{x} \cdot x^2- \ln(x) \cdot 2x}{x^4} = \frac{1-2 \ln(x)}{x^3}$
+
+- $\displaystyle \left(\frac{e^x}{\sqrt{x}}\right)' =\frac{e^x \cdot \sqrt{x}- 0{,}5\cdot e^x \cdot x^{-0{,}5}}{(\sqrt{x})^2} = \frac{e^x \cdot(\sqrt{x}-\frac{1}{2\sqrt{x}})}{x} = \frac{e^x \cdot(\frac{2x}{2\sqrt{x}}-\frac{1}{2\sqrt{x}})}{x} = \frac{e^x \cdot(2x-1)}{2x\sqrt{x}}$
 <!-- -->
 
 ### Kettenregel
 
-Sei $f(x) = g(h(x))$, dann gilt für die Ableitung gemäß Kettenregel:
+Sei $\displaystyle f(x) = g\left(h(x)\right)$, dann gilt für die Ableitung gemäß Kettenregel:
 
 $$f'(x) = \left(g\left(h(x)\right)\right)' = g'(h(x)) \cdot h'(x)$$
 
+**Beispiele:**
+
+- $\displaystyle \left(\left(2x\right)^3\right)' = 3 \cdot \left(2x^2\right) \cdot 2 = 24 x^2$
+
+- $\displaystyle \left(\ln\left(x^2\right)\right)' = \frac{1}{x^2} \cdot 2x = \frac{2}{x}$
+
+- $\displaystyle \left(e^{2x^2}\right)' = e^{2x^2} \cdot 4x$
+
+- $\displaystyle \left(\left(3x^2+4x\right)^3\right)' = 3 \cdot \left(3x^2+4x\right)^2 \cdot (6x+4)$
+
 <!-- -->
+
+
+### Übungen {include-only=LangeFassung}
+
+
+<!-- -->
+
+
+### Übungen
+
+Bestimmen Sie die ersten Ableitungen der folgenden Funktionen:
+
+:::::: {.columns}
+::: {.column width="49%"}
+
+a) $\displaystyle \ln(4x+1)$
+
+b) $\displaystyle \ln(2x^{-2})$
+
+c) $\displaystyle \frac{0{,}5x+1}{x^{-1}}$
+
+d) $\displaystyle \ln\left(\sqrt[3]{x}\right)$
+
+e) $\displaystyle \sqrt[4]{\frac{16x^{101}}{\sqrt[2]{x^2}}}$
+
+f) $\displaystyle \sqrt{e^{(x^4)}}$
+
+:::
+::: {.column width="49%"}
+
+g) $\displaystyle \frac{4x^3+6x^2}{\ln(x)}$
+
+h) $\displaystyle \frac{10e^x+4x^{2{,}5}}{\sqrt{x}}$
+
+i) $\displaystyle \frac{2x^{-0{,}5}}{e^x}$
+
+j) $\displaystyle \sqrt[4]{4x^2-1}$
+
+k) $\displaystyle \frac{x^2+x^3}{e^{-x}}$
+
+:::
+::::::
+<!-- -->
+
 
 ## Extremstellen von Funktionen
 
@@ -747,6 +912,7 @@ exisiert und differenzierbar ist. Wir schreiben dann:
 
 $$f^{(n)}(x) = \left[f^{(n-1)}(x)\right]' = \frac{d}{dx} \left(\frac{d^{n-1}}{dx^{n-1}} f\right) = \frac{d^n}{dx^n} f$$
 
+
 ### Krümmung und die 2. Ableitung / Wendepunkte
 
 Die 2. Ableitung einer Funktion beschreibt ihr Krümmungsverhalten, denn es gilt:
@@ -768,28 +934,346 @@ $f''(x_{WP})=0$ gilt. Der *Wendepunkt* ist dann $(x_{WP}, f(x_{WP}))$.
 
 ### Globale und lokale Extremstellen
 
+Für eine univariate, reellwertige Funktion $f: D \to Z$ und $x_0 \in D$ gilt:
+$x_0$ heißt
 
+- **globales Maximum**, falls $f(x) \leq f(x_0)$ für alle $x\in D$ gilt
+
+- **strenges globales Maximum**, falls $f(x) < f(x_0) für alle $x \in D \setminus {x_0}$ gilt.
+
+- **lokales Maximum**, falls $f(x) \leq f(x_0)$ für alle $x$ in einer echten Umgebung von $x_0$ gilt
+
+- **strenges lokales Maximum**, falls $f(x) \leq f(x_0)$ für alle $x$ in einer echten Umgebung von $x_0$ gilt.
+
+Analog die Definition mit **Minimum**. 
+
+### Übung
+
+Schreiben Sie die Definitionen von 
+**globles Minimum**, 
+**strenges globales Minimum**, 
+**lokales Minimum** und **strenges lokales Minimum** einmal konkret auf!
 
 
 <!-- -->
 
-## Univariate Funktionen
+### Beispiel
+
+$f(x) = x^3-9x^2$, $f'(x)=3x^2-18x$, $f''(x)=6x-18$
+
+```{r warnings=FALSE, echo=FALSE, fig.align="center", out.width="70%", }
+library(mosaic)
+library(ggplot2)
+
+myFun <- function(x) {
+    x**3 - 9*x**2
+}
+
+myDFun <- function(x) {
+    3*x**2 - 18 * x
+}
+
+myDDFun <- function(x) {
+    6*x - 18
+}
+
+my.df <- data.frame(x = c(-10.5,10.5))
+my.df.text <- data.frame(
+    x = c(0,6,3),
+    y = c(myFun(0), myFun(6), myFun(3)),
+    text = c("lok. Maximum", "lok. Minimum", "Wendepunkt")
+)
+
+ggplot(my.df, aes(x = x)) +
+    geom_vline(aes(xintercept = 0)) +
+    geom_hline(aes(yintercept = 0)) +
+    stat_function(fun = myFun, n = 1000, size = 1.25,
+                  aes(colour = "f(x)")) +
+    stat_function(fun = myDFun, n = 1000,
+                  aes(colour = "f'(x)")) +
+    stat_function(fun = myDDFun, n = 1000,
+                  aes(colour = "f''(x)")) +
+    geom_vline(aes(xintercept = 3), linetype = "dashed", size = 0.5, color = "orange") +
+    geom_vline(aes(xintercept = 0), linetype = "dashed", size = 0.5, color = "orange") +
+    geom_vline(aes(xintercept = 6), linetype = "dashed", size = 0.5, color = "orange") +
+    geom_point(data = my.df.text,
+               aes(x = x, y = y),
+               size = 2,
+               color = "red") +
+    geom_label(data = my.df.text,
+               aes(x = x, y = y, label = text),
+               hjust = 0, 
+               vjust = 0,
+               nudge_x = 0.3,
+               nudge_y = 0.75
+               ) + 
+    coord_cartesian(ylim = c(-200, 100)) 
+
+```
 
 
-<!-- -->
+### Beispiel Sattelpunkt
+
+$f(x) = x^3-9x^2+27x$, $f'(x)=3x^2-18x+27$, $f''(x)=6x-18$
+
+```{r warnings=FALSE, echo=FALSE, fig.align="center", out.width="70%", }
+library(mosaic)
+library(ggplot2)
+
+myFun <- function(x) {
+    x**3 - 9*x**2 + 27*x
+}
+
+myDFun <- function(x) {
+    3*x**2 - 18 * x + 27
+}
+
+myDDFun <- function(x) {
+    6*x - 18
+}
+
+my.df <- data.frame(x = c(-2.5,8.5))
+my.df.text <- data.frame(
+    x = c(3),
+    y = c(myFun(3)),
+    text = c("Sattelpunkt")
+)
+
+ggplot(my.df, aes(x = x)) +
+    geom_vline(aes(xintercept = 0)) +
+    geom_hline(aes(yintercept = 0)) +
+    stat_function(fun = myFun, n = 1000, size = 1.25,
+                  aes(colour = "f(x)")) +
+    stat_function(fun = myDFun, n = 1000,
+                  aes(colour = "f'(x)")) +
+    stat_function(fun = myDDFun, n = 1000,
+                  aes(colour = "f''(x)")) +
+    geom_vline(aes(xintercept = 3), linetype = "dashed", size = 0.5, color = "orange") +
+    geom_point(data = my.df.text,
+               aes(x = x, y = y),
+               size = 2,
+               color = "red") +
+    geom_label(data = my.df.text,
+               aes(x = x, y = y, label = text),
+               hjust = 0, 
+               vjust = 0,
+               nudge_x = 0.3,
+               nudge_y = 0.75
+               ) + 
+    coord_cartesian(ylim = c(-100, 100)) 
+
+```
+
+
+### Beispiel
+
+Bestimmen Sie die Nullstellen der ersten und zweiten Ableitung von 
+$f(x) = x^3-3x^2-24x+2$. 
+Überprüfen Sie, ob es sich bei diesen Nullstellen um Maxima, Minima, Wende- 
+oder Sattelpunkte handelt.
+
+**Lösung:**
+$f(x)=x^3-3x^2-24x+2$, $f'(x)=3x^2-6x-24$, $f''(x)=6x-6$, $f'''(x)=6$
+
+$f'(x)=0 \Leftrightarrow 3x^2-6x-24 \Leftrightarrow x_1=-2; x_2=4$
+
+$f''(-2) = -18 < 0$, also ist bei $x_1=-2$ ein lokales Maximum.
+
+$f''(5) = 18 > 0$, also ist bei $x_2=-4$ ein lokales Minimum.
+
+Wegen $f''(x) = 0 \Leftrightarrow x=1$ und $f'''(1)=6 \neq 0$ gibt es bei
+$x=1$ einen Wendepunkt. 
+
+Wegen $f(1)=-27 \neq 0$ gibt es keine Sattelpunkte.
+
+
+### Übungen
+
+<!-- Übung von Ross/Christiaans -->
+
+Bestimmen Sie bei den folgenden Funktionen die Maxima, Minima, Wende- und 
+Sattelpunkte.
+
+a) $\displaystyle f(x) = x^2 + 4x +10$
+
+b) $\displaystyle f(x) = -2x^2 + 16x +12$
+
+c) $\displaystyle f(x) = 2x^3 - 12x^2 + 18x +1$
+
+d) $\displaystyle f(x) = -x(3-x)^2+2$
+
+e) $\displaystyle f(x) = 2x^3-6x^2-48x+4$
+
+f) $\displaystyle f(x) = 2x^3-18x^2+54x+1$
+
+g) $\displaystyle f(x) = x^3-6x^2+12x-8$
+
+h) $\displaystyle f(x) = -2x^3 + 24x$
+
+i) $\displaystyle f(x) = -2x^3 + 6x^2$
+
+
+### Übungen
+
+<!-- Übung von Ross/Christiaans -->
+
+Bestimmen Sie bei den folgenden Funktionen die Maxima, Minima, Wende- und 
+Sattelpunkte.
+
+a) $\displaystyle f(x) = -x^2$
+
+b) $\displaystyle f(x) = x^2-x-1$
+
+c) $\displaystyle f(x) = 0{,}\overline{3}x^3-4x$
+
+d) $\displaystyle f(x) = \ln(x)-x$
+
+e) $\displaystyle f(x) = \sqrt{x}-x\quad (\text{für }x>0)$
+
+f) $\displaystyle f(x) = e^{\left(x^2\right)}$
+
+g) $\displaystyle f(x) = xe^{-x}$
+
+h) $\displaystyle f(x) = e^x$
+
+i) $\displaystyle f(x) = x^{-1{,}5}+1{,}5x\quad (\text{für }x>0)$
+
+
+### Gewinnmaximum und Break Even mit Konkurrenz
+
+**Beispiel:**
+Betrachten Sie ein Unternehmen, welches sich einem konstanten Marktpreis 
+$p = 10$ gegenübersieht. 
+Die Kosten sind abhängig von der produzierten Menge $x$ und gegeben durch 
+$K(x) = 0{,}64x^2 -6x + 64$.
+
+**Erlöse:** $E = E(X)= p \cdot x = 10x$
+
+**Gewinnfunktion:** $G(x)=E(x)-K(x) = 10x - (0{,}64x^2 -6x + 64) = -0{,}64x^2 + 16x + -64$ 
+
+**Gewinnmaximum:** $G'(x)=0 \Leftrightarrow -1{,}28x+16 = 0 \Leftrightarrow x_{max} = 12{,}5$
+
+**Gewinne im Maximum:** $G_{max} = G(x_{max}) = 36$
+
+
+### Gewinnmaximum und Break Even mit Konkurrenz (Fortset.)
+
+**Break Even (BE):** $G(x) = 0 \Leftrightarrow -0{,}64x^2 + 16x + -64 = 0$
+$x_{BE} = x_1 = 5$, $x_2 = 20$ (*obere Gewinngrenze*)
+
+**Betriebsoptimum:** (Miniumum der Durchschnittskosten)
+$DK(x) = \frac{K(x)}{x} = \frac{0{,}64x^2 -6x + 64}{x} = 0{,}64x -6 + \frac{64}{x}$
+$DK'(x) = 0{,}64 - \frac{64}{x^2} = 0 \Leftrightarrow x_{BO}= x_1=10, x_2=-10$
+
+
+### Gewinnmaximum und Break Even mit Marktmacht
+
+Betrachten Sie ein Unternehmen mit Marktmacht, welches sich der Marktnachfrage 
+$p = 30-x$ gegenübersieht, wobei hier $p$ den Preis und $x$ die Menge bezeichnet. 
+Die Kosten $K$ sind gegeben durch $K = 0{,}5x^2 +18x + 18$. 
+
+...
+
+### Übungen
+
+Bestimmen Sie für ein Unternehmen ohne Marktmacht, welches sich nachfolgendem 
+Marktpreis $p$ und Kosten $K(x)$ gegenübersieht, die Break-Even-Menge $x_{BE}$, 
+sowie für das Gewinnmaximum Menge $x_{max}$ und Gewinn $G_{max}$. 
+Wo ist das Minimum der Durchschnittskosten (Betriebsoptimum) $x_{BO}$?
+
+a) $p=5; K(x)=x^2-5x+9$
+
+b) $p=24; K(x)= 0{,}5x^2+19x+8$
+
+c) $p=16; K(x)= 2x^2+6x+8$
+
+d) $p=12; K(x) = x^2+7x+4$
+
+e) $p=10; K(x) = 0{,}25x^2+7{,}5x+4$
+
+f) $p=4; K(x) = x^2-22x+144$
+
+g) $p=20; K(x) = x^2-6x+144$
+
+h) $p=60; K(x) = 2x^2+2x+200$
+
+
+### Univariate Funktionen
+
+Unter einer reelwertigen, **univariaten Funktion**, wollen wir eine Funktion
+
+$$\begin{aligned}
+f\,:\, & D \phantom{(x, \dotsc, x)}\to Z \\
+       & (x_1, \dotsc, x_n) \mapsto\, y = f(x_1, \dotsc, x_n)
+\end{aligned}$$
+
+mit $D \subseteq \mathbf{R}^n$ und $Z\subseteq \mathbf{R}$ verstehen.
+
+$f$ bildet $x=(x_1,...,x_n)$ auf reelle Zahlen $y$ ab und mensch bezeichnet sie 
+daher auch als **skalare Funktion**. 
+
+Ihr Graph lässt sich als die Punktmenge
+$$\operatorname{Graph}(f) = \left\{\left.(x_1,...,x_n, y) \in \mathbf{R}^{n+1} \right| f(x_1,...,x_n)=y\right\}$$
+auffassen.
+<!-- Beispiele von Ross/Christians -->
+
+**Beispiele:** 
+
+::: {.small}
+
+a) $\displaystyle f(x,y) = x^2+ y^3$
+
+b) $\displaystyle f(x_1, x_2) = x_1^2x_2^3$
+
+c) $\displaystyle f(x, y) = \frac{x}{y}+xy$
+
+:::
 
 ### Partielle Ableitung
 
-Werden für eine univariate, reellwertige Funktion 
-$$f: D \to Z
-    (x_1,\cdot,x_n) \mapsto y = f(x_1,\cdot,x_n)$$
-Alle Variabeln $x_.$ bis auf die $i$-te als Konstanten betrachtet 
-(c.p. = ceteris paribus), dann heißt die Ableitun von $f$ nach $x_i$ die 
+Werden für eine univariate, reellwertige Funktion
+
+$$\begin{aligned}
+f\,:\, & D \phantom{(x, \dotsc, x)}\to Z \\
+       & (x_1, \dotsc, x_n) \mapsto\, y = f(x_1, \dotsc, x_n)
+\end{aligned}$$
+
+Alle Variabeln $x_j$ bis auf die $i$-te als Konstanten betrachtet 
+(c.p. = ceteris paribus), dann heißt die Ableitung von $f$ nach $x_i$ die 
 **partielle Ableitung von $f$ nach $x_i$**:
 
-$$\frac{\partial f(x_1,\dotsc,x_n)}{\partial x_1} = f_{x_i}(x_1,\cdot,x_n)$$
+$$\frac{\partial f(x_1,\dotsc,x_n)}{\partial x_1} = f_{x_i}(x_1,\dotsc,x_n)$$
 
-### Beispiele
+**Beispiele:**
+
+<!-- Beispiel von Ross/Christians -->
+
+a) $f(x,y) = x^2+ y^3$, $f_x(x,y) = 2x$, $f_y(x,y)= 3y^2$
+
+b) $f(x_1, x_2) = x_1^2 x_2^3$, $f_{x_1}(x_1, x_2) =2 x_1 x_2^3$, $f_{x_2}(x_1, x_2) =3x_1^2 x_2^2$
+
+c) $\displaystyle f(x, y) = \frac{x}{y}+xy$, $\displaystyle f_x(x,y) = \frac{1}{y} + y$, $\displaystyle f_y(x,y) = -\frac{x}{y^2}+x$
+
+
+### Übung
+
+<!-- Übung von Ross/Christians -->
+
+Bestimmen sie die partiellen Ableitungen nach $x$ und $y$:
+
+a) $\displaystyle 4x^3+2y^4$
+
+b) $\displaystyle 2x^2+6y$
+
+c) $\displaystyle 3x^{-1}y^2$
+
+d) $\displaystyle e^{x^2y}$
+
+e) $\displaystyle e^{0{,}5x^2+0{,}5y^{-2}}$
+
+f) $\displaystyle e^{\ln(x)}e^{\ln(y)}$
+
+g) $\displaystyle x^y$
 
 
 ### Gradient
@@ -803,9 +1287,8 @@ f\,:\, & D \phantom{(x, \dotsc, x)}\to Z \\
 mit $D \subseteq \mathbf{R}^n$ und $Z \subseteq \mathbf{R}$ verstehen wir 
 den Ausdruck
 
-$$
-\nabla f = \operatorname{grad}(f) =  \begin{pmatrix}\frac{\partial f}{\partial x_{1}}\\ \vdots\\ \frac{\partial f}{\partial x_{n}} \end{pmatrix},
-$$
+$$\nabla f = \operatorname{grad}(f) =  \begin{pmatrix}\frac{\partial f}{\partial x_{1}}\\ \vdots\\ \frac{\partial f}{\partial x_{n}} \end{pmatrix},$$
+
 dem Vektor der partiellen Ableitung in die Richtungen $x_1, \dotsc, x_n$.
 
 
@@ -826,15 +1309,15 @@ Damit ist
 $\operatorname{grad}(f) = \nabla f = \begin{pmatrix}4x\\-2y\end{pmatrix}.$
 
 Für den Punkt $P(-2; -1)$ lautet der Gradientvektor 
-$\begin{pmatrix}-8\\2\end{pmatrix}$.
+$\displaystyle \begin{pmatrix}-8\\2\end{pmatrix}$.
 
 Der Betrag ist 
-$\left|\begin{pmatrix}-8\\2\\\end{pmatrix}\right| = \sqrt{(-8)^2 + 2^2} \approx 8{,}25$.
+$\displaystyle \left|\begin{pmatrix}-8\\2\\\end{pmatrix}\right| = \sqrt{(-8)^2 + 2^2} \approx 8{,}25$.
 
 
 ### 3D-Plot von $f(x,y)=2x^2-y^2$ 
 
-```{r echo=FALSE}
+```{r echo=FALSE, fig.align="center", out.width="75%"}
 fkt <- function(x,y) {
   return(2*x^2 - y^2)
 }
@@ -858,8 +1341,9 @@ for (xx in x) {
 
 ```
 
-```{r echo=FALSE}
+```{r echo=FALSE,fig.align="center", out.width="75%"}
 library("plot3D")
+
 t <- seq(-5, 5, 0.1)
 m <- mesh(t, t)
 x <- m$x
@@ -867,13 +1351,13 @@ y <- m$y
 z <- fkt(x,y)
 
 persp3D(x, y, z, 
-        box=TRUE, 
-        phi=30, 
-        theta= 35,
-        nticks=5,
-        axes=TRUE,
-        scale=1.5,
-        ticktype="detailed",
+        box = TRUE, 
+        phi = 30, 
+        theta = 35,
+        nticks = 5,
+        axes = TRUE,
+        scale = 1.5,
+        ticktype = "detailed",
         colkey = list(
           length = 0.5, 
           width = 0.5, 
@@ -881,8 +1365,8 @@ persp3D(x, y, z,
         cex.axis = 0.8, cex.clab = 0.85),
         boder = TRUE,
         clab = c("z = f(x,y)"),
-        plot=TRUE,
-        colvar=z)
+        plot = TRUE,
+        colvar = z)
 ```
 
 
@@ -892,7 +1376,7 @@ persp3D(x, y, z,
 
 
 
-### Notwendigebedinung 1 / stationäre Punkte
+### Notwendige Bedingung / stationäre Punkte
 
 Damit ein Punkt $x=(x_1, \dotsc, x_n) \in D \subseteq \mathbf{R}^n$ eine 
 Extremstelle der Funktion $f:D \to Z \subseteq \mathbf{R}$ seien
@@ -906,10 +1390,11 @@ Mathematisch heißt das:
 
 $$x \text{ ist eine Extremstelle von } f \Longrightarrow \nabla f(x) = 0^n$$
 
+
 ### Beispiel
 
 Aus dem Beispiel $f(x,y)=2x^2-y^2$ mit dem Gradienten 
-$\nabla f(x,y) = \begin{pmatrix}4x\\-2y\end{pmatrix}$ wissen wir, dass
+$\displaystyle \nabla f(x,y) = \begin{pmatrix}4x\\-2y\end{pmatrix}$ wissen wir, dass
 der Punkt $(0; 0)$ ein *stationärer Punkt* ist, weil 
 $$\nabla f(0,0) = \begin{pmatrix}\phantom{-}4\cdot 0\\-2 \cdot 0\end{pmatrix}= \begin{pmatrix}0\\0\end{pmatrix}$$
 gilt.
@@ -922,17 +1407,16 @@ Für eine hinreichend oft differenzierbare Funktion $f: D \to Z$, mit
 $D \subseteq \mathbf{R}^n$ und $Z \subseteq \mathbf{R}$ ist für ein 
 $x \in D$ die **Hesse-Matrix** wie folgt gegeben:
 
-$$
-\operatorname{Hess}\left(f(x)\right) =
+$$\operatorname{Hess}\left(f(x)\right) =
 \begin{pmatrix}
  f_{x_1x_1}(x) & f_{x_1x_2}(x) & \cdots & f_{x_1x_n}(x) \\
  f_{x_2x_1}(x) & f_{x_2x_2}(x) & \cdots & f_{x_2x_n}(x) \\
  \vdots        & \vdots        & \ddots & \vdots \\
  f_{x_nx_1}(x) & f_{x_nx_2}(x) & \cdots & f_{x_nx_n}(x)
-\end{pmatrix}
-$$
+\end{pmatrix}$$
 
-### KLassifikation stationärer Punkte
+
+### Klassifikation stationärer Punkte
 
 Sie $f: D \to Z$ eine hinreichend differenzierbare Funktion und 
 $D \subseteq \mathbf{R}^n$ und $Z \subseteq \mathbf{R}$.und $x_0$ ein
@@ -949,11 +1433,11 @@ a) **Notwendige Bedingung:**
 
 b) **Hinreichende Bedingung:**
    
-   - Ist $\operatorname{Hess}\left(f(x_0)\right)$ positiv definit 
+   - Ist $\displaystyle \operatorname{Hess}\left(f(x_0)\right)$ positiv definit 
      (bzw. negativ definit), so ist $x_0$ ein strenges lokales Minimum 
      (bzw. Maximum) von $f(x)$.
      
-   - Ist $\operatorname{Hess}\left(f(x_0)\right)$ indefinit, so ist
+   - Ist $\displaystyle \operatorname{Hess}\left(f(x_0)\right)$ indefinit, so ist
      $x_0$ ein Sattelpunkt.
 
 
@@ -994,7 +1478,7 @@ $$\operatorname{Hess}\left(f(1,1)\right) = \begin{pmatrix}
  1 & -8
 \end{pmatrix}$$
 
-Das charakteristische Polynom $\chi(\lambda) = (-6-\lambda)(-8-\lambda)-1=x^2+14x+49 = (x+7)^2$
+Das charakteristische Polynom $\displaystyle \chi(\lambda) = (-6-\lambda)(-8-\lambda)-1=x^2+14x+49 = (x+7)^2$
 liefert die Eigenwerte $\lambda_1=-7$ und $\lambda_2=-7$.
 
 Da beide Eigenwerte negativ sind ist die Hesse-Matrix negativ definit und wir
@@ -1030,39 +1514,46 @@ Bestimmen Sie für die folgenden Funktionen den stationären Punkt $(x_0; y_0)$
 und geben Sie an, ob es sich um eine Maximum, Minimum oder einen Sattelpunkt 
 handelt:
 
-a) $f(x,y) = -x^2+24x-2y^2+40y-2xy-3$
-b) $f(x,y) = 2x^2-24x+2y^2-18y+2xy+3$
-c) $f(x,y) = 2x^2-10x-2y^2+2xy-2$
-d) $f(x,y) = x^2+24x+2y^2+40y-3xy$
-e) $f(x,y) = 2x^2-30x+3y^2-10y-2xy$
-f) $f(x,y) = -2x^2+24x-5y^2+5xy-1$
-g) $f(x,y) = x^2+4x-5y^2+10y-4xy$
-h) $f(x,y) = -x^2+120x+2y^2+120y-4xy$
+a) $\displaystyle f(x,y) = -x^2+24x-2y^2+40y-2xy-3$
+
+b) $\displaystyle f(x,y) = 2x^2-24x+2y^2-18y+2xy+3$
+
+c) $\displaystyle f(x,y) = 2x^2-10x-2y^2+2xy-2$
+
+d) $\displaystyle f(x,y) = x^2+24x+2y^2+40y-3xy$
+
+e) $\displaystyle f(x,y) = 2x^2-30x+3y^2-10y-2xy$
+
+f) $\displaystyle f(x,y) = -2x^2+24x-5y^2+5xy-1$
+
+g) $\displaystyle f(x,y) = x^2+4x-5y^2+10y-4xy$
+
+h) $\displaystyle f(x,y) = -x^2+120x+2y^2+120y-4xy$
 
 
 ### Übung
 
 Die Funktion $f(x,y) = y^2(x-1) + x^2(x+1)$ besitzt **zwei** stationäre Punkte.
 
-a) Bestimmen Sie die beiden stationären Punkt $(x_0;y_0)$ und $(x_1; y_1)$.
+a) Bestimmen Sie die beiden stationären Punkt $(x_0; y_0)$ und $(x_1; y_1)$.
 
 b) Berechnen Sie die Hesse-Matrizen und entscheiden Sie, ob die Punkte lokale 
    Extremstellen sind (und welcher Typ) oder Sattelpunkte.
 
 
-### Minimierungsproblem
+### Minimierungsproblem {include-only=LangeFassung}
 ...
 
 <!-- -->
 
 
-### Maximierungsproblem
+### Maximierungsproblem {include-only=LangeFassung}
 ...
 
 <!-- -->
 
 
-### Ausblick: Gradientenverfahren
+### Ausblick: Gradientenverfahren {include-only=LangeFassung}
 ...
 
 <!-- -->
@@ -1116,6 +1607,32 @@ $$\nabla L(x_1, x_2, \lambda) = \begin{pmatrix} x_2 - 3 \lambda\\ x_1 - 6 \lambd
 
 Und wir erhalten als Lösung von $\nabla L(x_1, x_2, \lambda) = 0^3$:
 $x_1=50$, $x_2=25$, $\lambda=25/3$
+
+
+### Übungen
+
+<!-- Übungen von Ross/Christians -->
+
+Gegeben sei die eine Nutzenfunktion $U(x_1,x_2)$, das Haushaltseinkommen $Y$ und
+die Preise zweier Konsumgüter $p_1$ und $p_2$. 
+Berechnen Sie das nutzenmaximale Güterbündel!
+
+a) $\displaystyle U(x_1,x_2)=2x_1+6x_2+2x_1x_2+3$; $Y=70$; $p_1=2$; $p_2=4$
+
+b) $\displaystyle U(x_1,x_2)=2x_1+2x_2+x_1x_2+4$; $Y=76$; $p_1=2$; $p_2=4$
+
+c) $\displaystyle U(x_1,x_2)=3x_1+2x_2+x_1x_2$; $Y=501$; $p_1=3$; $p_2=1$
+
+d) $\displaystyle U(x_1,x_2)=4x_1+4x_2+2x_1x_2+4$; $Y=22$; $p_1=4$; $p_2=1$
+
+e) $\displaystyle U(x_1,x_2)=4x_1+2x_2+x_1x_2+6$; $Y=24$; $p_1=3$; $p_2=2$
+
+f) $\displaystyle U(x_1,x_2)=-30x_1-3x_2+3x_1x_2+10$; $Y=48$; $p_1=4$; $p_2=2$
+
+g) $\displaystyle U(x_1,x_2)=-3x_1-2x_2+x_1x_2+6$; $Y=64$; $p_1=4$; $p_2=8$
+
+h) $\displaystyle U(x_1,x_2)=-x_1+3x_2+x_1x_2-3$; $Y=86$; $p_1=6$; $p_2=8$
+
 
 
 ### Einsetzungsverfahren {include-only=LangeFassung}
