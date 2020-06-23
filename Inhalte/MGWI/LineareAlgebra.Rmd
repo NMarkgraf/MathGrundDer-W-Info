@@ -18,29 +18,28 @@ pathToImages = getPathToImages()
 
 ## Eliminationsverfahren
 
-### Beispiel: Das Problem eines Apothekers
+### Beispiel: Problem eines Apothekers
 
 [Das Problem:]{.cstrong}
 
-Ein Apotheker hat $36\,\%$-igen und $21\,\%$-igen Alkohl. 
+Ein Apotheker hat $36\,\%$-igen und $21\,\%$-igen Alkohol. 
 Welche Mengen von beiden Lösungen muss er mischen, damit er $5$ Liter 
-$30\,\%$-igen Alkohols erhält?
+$30\,\%$-igen Alkohol erhält?
 
 [Erste Schritte zum mathematischen Modell:]{.cstrong}
 
-In $5$ Litern Mischung sind $5 \cdot 0{,}3 =1{,}5$ Liter Alkohol.
+In $5$ Litern Mischung sind $5 \cdot 30\,\%= 5 \cdot 0{,}3 =1{,}5$ Liter Alkohol.
 
-Diese $1,5$ Liter Alkohol sind aus $x$ Litern $36\,\%$-igen bzw. aus $y$ Litern 
-$21\,\%$-igen Alkohol zu mischen.
-
-Weiterhin muss $x+y=5$ Liter ergeben. 
+Diese $1{,}5$ Liter Alkohol sind aus $x$ Litern $36\,\%$-igen bzw. aus $y$ 
+Litern  $21\,\%$-igen Alkohol zu mischen und zusammen müssen es $5$ Liter sein,
+also $x+y=5$.
 
 
 [Das Gleichungsystem:]{.cstrong}
 $$\sysdelim..
   \systeme{%
 		0{,}36\cdot x+0{,}21\cdot y=1{,}5,%
-		x+y=5}$$
+		x            +            y=5}$$
 		
 [Idee:]{.cstrong}
 Wir können jede Gleichung als Gerade auffassen, also 
@@ -67,7 +66,7 @@ p <- ggplot(data = data.frame(x = 0), mapping = aes(x = x))
 p.1 = p + layer(
         geom = "line",
         stat = "function",
-        position="identity",
+        position = "identity",
         params = list(fun = fkt.f),
         mapping = aes(color = "fkt.f", size = "fkt.f")
     ) + 
@@ -77,24 +76,24 @@ p.1 = p + layer(
     ) +
     scale_y_continuous(
         limits = y_limits,
-        breaks=0:7
+        breaks = 0:7
     ) +
     scale_color_manual(
         name = "Funktionen",
-        values = c("fkt.f"= "blue", "fkt.g"="red" ), # Color specification
+        values = c("fkt.f" = "blue", "fkt.g" = "red" ), # Color specification
         labels = c(unname(TeX("$0,21 \\cdot y -0,36 \\cdot x = 1,5$")), "y+x = 5")
     ) + 
     scale_size_manual(
-        values = c("fkt.f"=1.2, "fkt.g"=1.2, "lot" = 1.1),
-        guide=FALSE
+        values = c("fkt.f" = 1.2, "fkt.g" = 1.2, "lot" = 1.1),
+        guide = FALSE
     ) +
     theme(
-        text = element_text(size=12),
-        title = element_text(size=14),
+        text = element_text(size = 12),
+        title = element_text(size = 14),
         legend.position = c(0.8, 0.8),
-        legend.text = element_text(size=10),
-        legend.title = element_text(size=10),
-        line = element_line(size=1.2)
+        legend.text = element_text(size = 10),
+        legend.title = element_text(size = 10),
+        line = element_line(size = 1.2)
     ) +
     labs(
         title = "Graphische Lösung (1. Schritt)",
@@ -106,14 +105,14 @@ p.1 = p + layer(
 p.2 = p.1 + layer(
         geom = "line",
         stat = "function",
-        position="identity",
+        position = "identity",
         params = list(fun = fkt.f),
         mapping = aes(color = "fkt.f", size = "fkt.f")
     ) +
     layer(
         geom = "line",
         stat = "function",
-        position="identity",
+        position = "identity",
         params = list(fun = fkt.g),
         mapping = aes(color = "fkt.g", size = "fkt.g")
     ) +
@@ -125,7 +124,7 @@ p.2 = p.1 + layer(
     )
 
 p.3 = p.2 +
-    geom_vline(aes=aes(size="lot"),
+    geom_vline(aes = aes(size = "lot"),
         xintercept = 3, 
         color = "red", 
         linetype = "dashed"
@@ -138,7 +137,7 @@ p.3 = p.2 +
     )
 
 p.4 = p.3 +
-     geom_hline(aes=aes(size="lot"),
+     geom_hline(aes = aes(size = "lot"),
         yintercept = 2, 
         color = "red", 
         linetype = "dashed"
@@ -149,7 +148,7 @@ p.4 = p.3 +
         x = "36%-iger Alkohol [x]",
         y = "21%-iger Alkohol [y]"
     )
-grid.arrange(p.1, p.2, p.3, p.4, nrow=2)
+grid.arrange(p.1, p.2, p.3, p.4, nrow = 2)
 ```
 
 
@@ -174,9 +173,12 @@ grid.arrange(p.1, p.2, p.3, p.4, nrow=2)
 ### Lineare Gleichungssysteme
 
 Ein [lineares Gleichungssystem]{.cstrong} (kurz: [LGS]{.cstrong}) bezeichnet 
-ein System [linearer Gleichungen]{.cemph}, die mehrere 
-[unbekannte Größen]{.cemph} ([Variablen]{.cstrong}) enthalten.
+ein System von $m$ [linearer Gleichungen]{.cemph}, die mehrere 
+[unbekannte Größen]{.cemph} ([Variablen]{.cstrong}) $x_i$ ($i=1,...,n$) 
+enthalten.
 
+:::::: {.columns}
+::: {.column width="59%"}
 
 Allgemein lässt sich ein LGS mit $m$ Gleichungen und $n$ Unbekannten immer in 
 die Form 
@@ -190,14 +192,23 @@ $$\begin{matrix}
 
 bringen.
 
-
-### Bemerkungen zu LGS
+:::
+::: {.column width="39%"}
 
 Wir nennen die $a_{ij}$ [Koeffizienten]{.cstrong} und die $b_i$ kurz 
 [rechte Seite]{.cstrong}.
 
+:::
+::::::
+
+::: {.small}
+
 Sind alle Einträge auf der [rechten Seite]{.cemph} gleich $0$, dann nennen wir 
 das LGS [homogen]{.cstrong}, sonst [inhomogen]{.cstrong}.
+
+:::
+
+### Bemerkungen zu LGSen
 
 [Homogene]{.cemph} LGS besitzen immer eine [triviale Lösung]{.cstrong}, bei der 
 alle $x_i=0$ sind.
@@ -245,11 +256,17 @@ Das Ziel ist dabei die Lösungen für $x$ und $y$ direkt abzulesen:
 
 ### Lösungsverhalten eines LGS
 
+:::::: {.columns}
+::: {.column width="49%"}
+
 Ein [homogenes]{.cemph} LGS besitzt entweder
 
 - genau [eine]{.cemph} Lösung, nämlich die triviale Lösung oder
 
 - [unendlich viele]{.cemph} Lösungen.
+
+:::
+::: {.column width="49%"}
 
 Ein [inhomogenes]{.cemph} LGS besitzt entweder
 
@@ -259,6 +276,8 @@ Ein [inhomogenes]{.cemph} LGS besitzt entweder
 
 - überhaupt [keine]{.cemph} Lösung.
 
+:::
+::::::
 
 ### Konsequenzen
 
@@ -288,8 +307,8 @@ b) $$\sysdelim.. \systeme{ 2x + 5y - 3z = 0, 4x -4y+z = 0, 4x -2y= 0}$$
 c) $$\sysdelim.. \systeme{x + y + z = -2, -x + 2y + z  = 6, 2x -4y - 2z= -6}$$
 
 ```{r echo=FALSE}
-A <- matrix(c(3,-3,3,8,10,2,-2,1,-3),nrow=3, ncol=3, byrow=TRUE)
-b <- matrix(c(0,6,5), nrow=3,ncol=1)
+A <- matrix(c(3,-3,3,8,10,2,-2,1,-3),nrow = 3, ncol = 3, byrow = TRUE)
+b <- matrix(c(0,6,5), nrow = 3,ncol = 1)
 sol <- solve(A,b)
 a.x <- sol[1,1]
 a.y <- sol[2,1]
@@ -311,6 +330,7 @@ a.z <- sol[3,1]
 ```
 
 ::: {.notes}
+
 a) $x=`r a.x`$, $y=`r a.y`$, $z=`r a.z`$
 
 b) Gleichungssystem hat **unendlich viele Lösungen** der Form $y=2\cdot x$, 
@@ -434,7 +454,7 @@ $b = ( 1,\; 2,\; 3,\; -4)$
 ### Vektoren in Koordinatensystemen
 
 ```{r echo=FALSE, out.width = "9cm", fig.align="center"}
-knitr::include_graphics(file.path(pathToImages, "Vektoren.png"), error=FALSE)
+knitr::include_graphics(file.path(pathToImages, "Vektoren.png"), error = FALSE)
 ```
 
 
@@ -619,6 +639,7 @@ $$A + \mathbf{0} = A$$
 $$A + (-1)\cdot A = 0$$
 :::
 ::: {.column width="49%"}
+
 Für reelle Zahlen (Skalare) $a$ und $b$ und Matrizen $A$ und $B$ gilt:
 
 1. $(a \cdot b) \cdot A = a \cdot b \cdot A =a \cdot (b \cdot A)$
@@ -628,6 +649,7 @@ Für reelle Zahlen (Skalare) $a$ und $b$ und Matrizen $A$ und $B$ gilt:
 3. $(a + b) \cdot A = a\cdot A + b \cdot A$
 
 4. $1 \cdot A = A$
+
 :::
 ::::::
 
@@ -650,6 +672,7 @@ knitr::include_graphics(file.path(pathToImages, "VektorenKaffee2.png"), error=FA
 
 :::
 ::::::
+
 Wir können die Anteile von Kaffee, Milchschaum und Milch in einen Vektor 
 schreiben: 
 $$v = \begin{pmatrix} \text{Anteil Kaffee}\\ \text{Anteil Milchschaum} \\ \text{Anteil Milch} \end{pmatrix}$$
