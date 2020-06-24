@@ -59,10 +59,11 @@ if (TRUE) {
   childrenToInclude <- c(
 #    "Mengenlehre", 
 #    "Relationen",
-#     "Kombinatorik" 
-    "Differenzialrechnung"
+#     "Kombinatorik",
+    "LineareAlgebra"
+#    "Differenzialrechnung"
 #"Logik", "Finanzmathematik", "LineareAlgebra"
-#    "LineareAlgebra"
+
   )
   privateVorstellung <<- FALSE
   }
@@ -93,14 +94,15 @@ includeChild <- function(name, children=childrenToInclude, all=FALSE) {
 ```{r child = "./Inhalte/MGWI/Logik.Rmd", eval = includeChild("Logik")}
 ```
 
+```{r child = "./Inhalte/MGWI/LineareAlgebra.Rmd", eval = includeChild("LineareAlgebra")}
+```
+
 ```{r child = "./Inhalte/MGWI/Differenzialrechnung.Rmd", eval = includeChild("Differenzialrechnung")}
 ```
 
 ```{r child = "./Inhalte/MGWI/Finanzmathematik.Rmd", eval = includeChild("Finanzmathematik")}
 ```
 
-```{r child = "./Inhalte/MGWI/LineareAlgebra.Rmd", eval = includeChild("LineareAlgebra")}
-```
 
 
 ```{r finalize, include=FALSE}
