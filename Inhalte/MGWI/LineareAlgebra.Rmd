@@ -18,13 +18,13 @@ pathToImages = getPathToImages()
 
 ## Eliminationsverfahren
 
-### Beispiel: Problem eines Apothekers
+### Beispiel: Problem einer Apotheke
 
 [Das Problem:]{.cstrong}
 
-Ein Apotheker hat $36\,\%$-igen und $21\,\%$-igen Alkohol. 
-Welche Mengen von beiden Lösungen muss er mischen, damit er $5$ Liter 
-$30\,\%$-igen Alkohol erhält?
+In einer Apotheke gibt es $36\,\%$-igen und $21\,\%$-igen Alkohol. 
+Welche Mengen von beiden Lösungen muss mensch mischen, damit $5$ Liter 
+$30\,\%$-igen Alkohol entstehen?
 
 [Erste Schritte zum mathematischen Modell:]{.cstrong}
 
@@ -42,7 +42,7 @@ $$\sysdelim..
 		x            +            y=5}$$
 		
 [Idee:]{.cstrong}
-Wir können jede Gleichung als Gerade auffassen, also 
+Wir können jede Gleichung als Gerade auffassen, 
 $y= \frac{1{,}5}{0{,}21} - \frac{0{,}36}{0{,}21} \cdot x$ und $y = 5-x$, 
 und den Schnittpunkt bestimmen.
 
@@ -152,21 +152,21 @@ grid.arrange(p.1, p.2, p.3, p.4, nrow = 2)
 ```
 
 
-### Rechnerische Lösung
+### Rechnerische Lösung (Einsetzungsverfahren)
 
 \begin{align*}
-		0{,}36\cdot x+0{,}21\cdot y &=1{,}5													\\[-0.4em]
-		x+y&=5 						& &\mid -x 									\\[0.6em]
-		0{,}36\cdot x+0{,}21\cdot y &=1{,}5 			& & \mid \text{~} y \text{ für } x \text{ einsetzen}			\\[-0.4em]
-		y&=5-x 																\\[0.6em]
-		0{,}36\cdot x+0{,}21\cdot (5-x) &=1{,}5 		& & \mid \text{ ausklammern \& zusammenfassen}		\\[-0.4em]
-		y&=5-x 																\\[0.6em]
-		(0{,}36-0{,}21)\cdot  x + 1{,}05 &=1{,}5 	& & \mid - 1{,}05 								\\[-0.4em]
-		y&=5-x 																\\[0.6em]
-		0{,}15\cdot  x &=0{,}45 				& & \mid : 0{,}15								\\[-0.4em]
-		y&=5-x																\\[0.6em]
-		x &=3																\\[-0.4em]
-		y&=5-x = 2 															\\		
+    0{,}36\cdot x+0{,}21\cdot     y &= 1{,}5    & & \\[-0.4em]
+    x+\phantom{0{,}21\cdot }      y &= 5        & & \mid -x\\[0.6em]
+    0{,}36\cdot x+0{,}21\cdot     y &= 1{,}5    & & \mid \text{~} y \text{ für } x \text{ einsetzen} \\[-0.4em]
+                                  y &= 5-x      & & \\[0.6em]
+    0{,}36\cdot x+0{,}21\cdot (5-x) &= 1{,}5    & & \mid \text{ ausklammern \& zusammenfassen}		\\[-0.4em]
+                                  y &= 5-x      & & \\[0.6em]
+    (0{,}36-0{,}21)\cdot  x + 1{,}05 &=1{,}5 	& & \mid - 1{,}05 \\[-0.4em]
+                                  y &= 5-x      & & \\[0.6em]
+    0{,}15\cdot  x                  &= 0{,}45   & & \mid : 0{,}15 \\[-0.4em]
+                                  y &= 5-x      & & \\[0.6em]
+                                  x &= 3        & & \\[-0.4em]
+                                  y &=5-x = 2   & & \\
 \end{align*}
 
 
@@ -220,18 +220,32 @@ In der [(Zeilen-)Stufenform]{.cstrong} verringert sich in jeder Zeile die Zahl
 der Unbekannten um mindestens eine, die dann auch nicht mehr weiter vorkommt.
 
 
+
+
 ### Elementare Zeilenumformungen
 
-Man ändert die Lösungsmenge eines LGS nicht, wenn man
+[Idee:]{.cstrong} Für ein LGS $A$ bezeichnen wir mit $L_A$ die **Lösungsmenge**:
+$$L_A = \left\{x=(x_1,...,x_n) \,|\, x \text{ löst das LGS } A\right\}$$
+**Elementare Zeilenumformungen** ändern zwar das LGS, *nicht* aber die 
+Lösungsmenge. 
+
+[Ziel:]{.cstrong} Das LGS so umformen, ohne das sich die Lösungsmenge ändert, 
+das man die Lösung(en) leicht ablesen kann.
+
+[Es gilt:]{.cstrong}
+
+Geht das LGS $B$ aus dem LGS $A$ hervor, in dem mensch
 
 - zwei Zeilen vertauscht,
 
 - eine Zeile auf beiden Seiten mit einer beliebigen Konstante $c \neq 0$ 
-    multipliziert,
+  multipliziert,
 
-- das Vielfache einer Zeile zu einer anderen hinzuaddiert oder
+- das Vielfache einer Zeile zu einer anderen hinzu addiert oder
 
-- das Vielfache einer Zeile von einer anderen subtrahiert.
+- das Vielfache einer Zeile von einer anderen subtrahiert,
+
+dann ist $L_A = L_B$.
 
 
 ### Das Eliminationsverfahren
@@ -283,17 +297,28 @@ Ein [inhomogenes]{.cemph} LGS besitzt entweder
 
 - Zu jedem  [inhomogenen]{.cemph} LGS gibt es ein [homogenes]{.cemph} LGS bei 
   dem mensch die rechte Seite durch die Nullen ersetzt.
+  $$\sysdelim.. \systeme{0{,}36\cdot x+0{,}21\cdot y= 1{,}5, x+y= 5}\quad\leftrightarrow\quad \systeme{0{,}36\cdot x+0{,}21\cdot y= 0, x+y= 0}$$
 
 - Gibt es für das [homogene]{.cemph} LGS nur die [triviale Lösung]{.cemph}, so 
-  hat das [inhomogene]{.cemph} LGS [genau  eine]{.cstrong} oder [gar keine]{.cstrong} Lösung.
+  hat das [inhomogene]{.cemph} LGS [genau  eine]{.cstrong} Lösung: 
+  $$\sysdelim.. \systeme{2\cdot x + 1 \cdot y = 0, y= 0} \quad\Rightarrow\quad \systeme{2\cdot x + 1 \cdot y = 3, y= 1} , \text{hat die Lösung: } y=1; x=1$$
+  oder [gar keine]{.cstrong} Lösung:
+  $$\sysdelim.. \systeme{2\cdot x + 4 \cdot y = 0, 1 \cdot x + 2 \cdot y= 0} \quad\Rightarrow\quad \systeme{2\cdot x + 4 \cdot y = 6, 1 \cdot x + 2 \cdot y= 6} , \text{hat die keine Lösung! }$$
+
+### Konsequenzen
 
 - Hat das [homogene]{.cemph} LGS [unendlich viele Lösungen]{.cemph}, dann hat 
-  das [inhomogene]{.cemph} LGS [unendlich viele]{.cstrong} oder [gar keine]{.cstrong} Lösung.
+  das [inhomogene]{.cemph} LGS [unendlich viele]{.cstrong} Lösungen:
+  $$\sysdelim.. \systeme{-1\cdot x + 1 \cdot y = 0, 1 \cdot x - 1 \cdot y= 0} \quad\Rightarrow\quad \systeme{-1\cdot x + 1 \cdot y = 1, 1 \cdot x - 1 \cdot y= -1} , \text{hat Lösungen:} y=x+1$$
+  
+  oder [gar keine]{.cstrong} Lösung:
+  $$\sysdelim.. \systeme{-1\cdot x + 1 \cdot y = 0, 1 \cdot x - 1 \cdot y= 0} \quad\Rightarrow\quad \systeme{-1\cdot x + 1 \cdot y = 1, 1 \cdot x - 1 \cdot y= 1} , \text{hat die keine Lösung! }$$
 
-- Haben wir eine Lösung des [inhomogenen]{.cemph} LGS gefunden, entscheidet das 
-  [homogene]{.cemph} LGS darüber ob diese Lösung die einzige Lösung ist -- 
-  [homogenes]{.cemph} LGS hat nur triviale Lösung -- oder ob es unendlich viele 
-  Lösungen gibt -- [homogenes LGS]{.cemph} hat unendlich viele Lösungen.
+[Es gilt:]{.cstrong}
+Haben wir eine Lösung des [inhomogenen]{.cemph} LGS gefunden, entscheidet das 
+[homogene]{.cemph} LGS darüber ob diese Lösung die einzige Lösung ist -- 
+[homogenes]{.cemph} LGS hat nur triviale Lösung -- oder ob es unendlich viele 
+Lösungen gibt -- [homogenes LGS]{.cemph} hat unendlich viele Lösungen.
 
 
 ### Übung `r nextExercise()`:  {.exercise} 
@@ -346,22 +371,22 @@ c) Gleichungssystem hat **keine Lösung**!
 Lösen Sie die folgenden Gleichungssysteme für $x$, $y$ und $z$.
 
 :::::: {.columns}
-::: {.column width="45%"}
+::: {.column width="49%"}
 
 a) $$\sysdelim.. \systeme{5x+2y+3z= 18,x+y+z= 6,4x + 2y -z= 5}$$
 
 b) $$\sysdelim.. \systeme{5x + 2y +3z = 0,x+y+z	 = 0, 4x + 2y -z= 0}$$
 
 :::
-::: {.column width="45%"}
+::: {.column width="49%"}
 
 c) $$\sysdelim.. \systeme{5x+2y+3z= 0,-4x-8y-4z= 2, x+2y+z= 0}$$
 
-d) \begin{align*}
-	 8x -17 +9y 	&= 2z \\
-	 2(x+3y)	 	&= 11-z \\
-	3(z-3)+2y		&= 2x \\
-\end{align*}
+d) $$\begin{aligned}
+    8x -17 +9y &= 2z \\
+    2(x+3y)    &= 11-z \\
+    3(z-3)+2y  &= 2x \\
+\end{aligned}$$
 
 :::
 :::::
@@ -387,22 +412,24 @@ d) $x=5$, $y=-1$, $z=7$
 
 Ein geordnetes, rechteckiges Schema von Zahlen oder Symbolen
 $$\renewcommand{\arraystretch}{.9}
-A=\begin{pmatrix}
+A= {(a_{ij})}_{m\times n} =\begin{pmatrix}
 a_{11} & a_{12} & \ldots & a_{1j} &\ldots& a_{1n}\\
 a_{21} & a_{22} & \ldots & a_{2j} & \ldots & a_{2n}\\
 \vdots & \vdots & & \vdots & &\vdots \\
 a_{i1} & a_{i2} & \ldots & a_{ij} & \ldots & a_{in}\\
 \vdots & \vdots & & \vdots & &\vdots \\
 a_{m1} & a_{m2} & \ldots & a_{mj} & \ldots & a_{mn}\\
-\end{pmatrix}
-   = {(a_{ij})}_{m\times n}$$
-   
+\end{pmatrix}$$
+
 mit $m$ und $n \in \mathbf{N}$ heißt [Matrix]{.cstrong} mit 
 [$m$ Zeilen]{.cstrong} und [$n$ Spalten]{.cstrong} oder kurz 
-[$m\times n$-Matrix]{.cstrong}.
-Die $a_{11},\ldots,a_{mn}$ heißen [Elemente]{.cstrong} der Matrix.
-Dabei gibt $i$ die Zeile und $j$ die Spalte an, in der $a_{ij}$ steht, daher 
-heißt $i$ [Zeilenindex]{.cstrong} und $j$ [Spaltenindex]{.cstrong} von $a_{ij}$.
+[$m\times n$-Matrix]{.cstrong}. 
+Wir nennenn $n\times m$ auch die [Ordnung]{.cstrong} der Matrix.
+Die $a_{11},\ldots,a_{mn}$ heißen [Elemente]{.cstrong} oder 
+[Komponenten]{.cstrong} der Matrix.
+Dabei gibt $i$ die *Zeile* und $j$ die *Spalte* an, 
+in der $a_{ij}$ steht, daher heißt $i$ [Zeilenindex]{.cstrong} und 
+$j$ [Spaltenindex]{.cstrong} von $a_{ij}$.
 :::
 
 #### {.examples}
@@ -435,15 +462,25 @@ $$A = 	\begin{pmatrix}
 
 ### Vektoren
 
-- $n\times 1$-Matrix heißt [Spaltenvektor mit $n$ Komponenten]{.cstrong}:
+Wir nennen eine ...
+:::::: {.columns}
+::: {.column width="49%"}
+
+... $n\times 1$-Matrix auch [Spaltenvektor mit $n$ Komponenten]{.cstrong}:
 	$$a=\begin{pmatrix}
 				a_1 \\
 				\vdots \\
 				a_n
 		\end{pmatrix}$$
 		
-- $1\times n$-Matrix heißt [Zeilenvektor mit $n$ Komponenten]{.cstrong}:
+:::
+::: {.column width="49%"}
+
+... $1\times n$-Matrix auch  [Zeilenvektor mit $n$ Komponenten]{.cstrong}:
 	$$a = (a_1, \ldots, a_n)$$
+
+:::
+::::::
 
 #### {.examples}
 
@@ -460,11 +497,15 @@ knitr::include_graphics(file.path(pathToImages, "Vektoren.png"), error = FALSE)
 
 ### Addition & Subtraktion von Matrizen und Vektoren 
 
-Wir können Matrizen bzw. Vektoren gleicher Ordnung kann rechnen!
+Wir können mit Matrizen bzw. Vektoren gleicher Ordnung rechnen!
 
 Die **Addition** und **Subtraktion** von Matrizen gleicher Ordnung 
-erfolgt **komponentenweise**!
+erfolgt **komponentenweise**:
 
+Seien $A=(a_{ij})_{m\times n}$, $B=(b_{ij})_{m\times n}$ und $C=(c_{ij})_{m\times n}$ 
+Matrizen, dann ist $A\pm B=C$ definiert durch:
+
+$$(a_{ij})_{m\times n} \pm (b_{ij})_{m\times n} = (a_{ij} \pm b_{ij})_{m\times n} = (c_{ij})_{m\times n}$$
 
 #### {.examples}
 
@@ -490,17 +531,26 @@ gegeben.
 
 Berechnen Sie:
 
+:::::: {.columns}
+::: {.column width="49%"}
+
 a) A+B
 
 b) A-B
 
 c) A+C
 
+:::
+::: {.column width="49%"}
+
 d) B-C
 
 e) A+B+C
 
 f) A-B-C
+
+:::
+::::::
 
 ```{r echo=FALSE, eval=FALSE}
 library(xtable)
@@ -532,17 +582,26 @@ print(x.f, floating=FALSE, tabular.environment="pmatrix",
 
 ::: {.notes}
 
+:::::: {.columns}
+:::: {.column width="49%"}
+
 a) $\displaystyle \begin{pmatrix} 1 & 5 &  5\\   1 & -3 & 8 \end{pmatrix}$
 
 b) $\displaystyle\begin{pmatrix} 3 & 1 & 5 \\  1 & 11 & 6 \\ \end{pmatrix}$
 
 c) $\displaystyle\begin{pmatrix} 0 & 0 & 0 \\  11 & 1 & 8 \\ \end{pmatrix}$
 
+::::
+:::: {.column width="49%"}
+
 d) $\displaystyle\begin{pmatrix} 1 & 5 & 5 \\  0 & 14 & 0 \\ \end{pmatrix}$
 
 e) $\displaystyle\begin{pmatrix} -1 & 2 & 0 \\  1 & 4 & 9 \\ \end{pmatrix}$
 
 f) $\displaystyle\begin{pmatrix} 5 & 4 & 10 \\  1 & 4 & 5 \\ \end{pmatrix}$
+
+::::
+::::::
 
 :::
 
@@ -568,17 +627,19 @@ nennen.
 
 Wir können eine *Matrix* (resp. einen *Vektor*) mit einem *Skalar* 
 [multiplizieren]{.cstrong}, in dem wir *jedes Element* mit dem 
-*Skalar multipliziert*.
+*Skalar multipliziert*:
+
+Sei $A=(a_{ij})_{m \times n}$ eine Matrix und $k \in \mathbf{R}$ ein Skalar,
+dann ist
+
+$$ k \cdot A = k \cdot (a_{ij})_{m \times n} = (k \cdot a_{ij})_{m \times n}$$
 
 
 #### {.examples}
 
 Sei 
 $\displaystyle A= \begin{pmatrix} a_{11} & a_{12} \\ a_{21} & a_{22} \end{pmatrix}$
-und
-$k$ ein Skalar. 
-
-Dann ist:
+und $k$ ein Skalar; dann ist:
 
 $$k \cdot A= \begin{pmatrix} k \cdot a_{11} & k \cdot a_{12} \\ k \cdot a_{21} & k \cdot a_{22} \end{pmatrix}$$
 
@@ -656,6 +717,10 @@ Für reelle Zahlen (Skalare) $a$ und $b$ und Matrizen $A$ und $B$ gilt:
 
 ### Beispiel: Kaffeespezialitäten (I/III)
 
+[Frage:]{.cstrong}(Für falsche Barista!) 
+
+Kann man eine Kaffeespezialität aus den anderen durch mischen erhalten?
+
 :::::: {.columns}
 ::: {.column width="45%"}
 
@@ -683,18 +748,35 @@ $$v = \begin{pmatrix} \text{Anteil Kaffee}\\ \text{Anteil Milchschaum} \\ \text{
 Wir können also die Mischungsverhältnisse der drei Kaffeespezialitäten wie 
 folgt darstellen:
 
-- Latte Macchiato: $\displaystyle v_{lm}=\begin{pmatrix} \frac13 \\[0.1em] \frac13 \\[0.1em] \frac13 \end{pmatrix}$,
+:::::: {.columns}
+::: {.column width="33%"}
 
-- Milchkaffee: $\displaystyle v_{mk}=\begin{pmatrix} \frac12 \\[0.1em] \frac12 \\[0.1em] 0 \end{pmatrix}$ 
+Latte Macchiato:
 
-- Cappuccino: $\displaystyle v_{cap}=\begin{pmatrix} \frac12 \\[0.1em] \frac16 \\[0.1em] \frac13 \end{pmatrix}$
+$$v_{lm}=\begin{pmatrix} \frac13 \\[0.1em] \frac13 \\[0.1em] \frac13 \end{pmatrix}$$
+:::
+::: {.column width="33%"}
+
+Milchkaffee:
+
+$$v_{mk}=\begin{pmatrix} \frac12 \\[0.1em] \frac12 \\[0.1em] 0 \end{pmatrix}$$
+
+:::
+::: {.column width="33%"}
+
+Cappuccino: 
+
+$$\displaystyle v_{cap}=\begin{pmatrix} \frac12 \\[0.1em] \frac16 \\[0.1em] \frac13 \end{pmatrix}$$
+
+:::
+::::::
 
 [Frage:]{.cstrong}
 Kann man eine dieser Kaffeespezialitäten (im Prinzip) durch das zusammenmischen 
 zweier anderer erhalten?
 
 
-### Linearkombination / Lineare (Un-)Abhängigkeit
+### Linearkombination
 
 #### Linearkombination {.definition}
 Seien $v_1, \dots v_n$ Vektoren. Eine [Linearkombination]{.cstrong} ist ein 
@@ -702,12 +784,41 @@ Vektor $v$, der sich durch die Vektoren $v_1, \dots, v_n$ und die Skalare
 $c_1, \dots c_n$ wie folgt ausdrücken lässt:
 
 $$v = c_1 \cdot v_1 + c_2 \cdot v_2 + \cdots + c_n \cdot v_n = \sum_{i=1}^{n} c_i v_i$$
+#### {.endblock}
+
+<!-- --->
+
+Statt jeden Vektor einzeln zu prüfen, formen wir wie folgt um:
+
+$$v = c_1 \cdot v_1 + c_2 \cdot v_2 + \cdots + c_n \cdot v_n \Leftrightarrow c_1 \cdot v_1 + c_2 \cdot v_2 + \cdots + c_n \cdot v_n + c_v \cdot v = 0$$
+
+
+
+### Lineare (Un-)Abhängigkeit
 
 #### Lineare (Un-)abhängigkeit {.definition}
 
-Eine Menge von Vektoren ist [linear unabhängig]{.cstrong} falls keiner von 
-ihnen als [Linearkombination]{.cemph} der anderen ausgedrückt werden kann. 
-Ansonsten sind sie [linear abbhängig]{.cstrong}.
+Eine Menge von Vektoren $\{v_1, \dotsc, v_n\}$ nennen wir [linear unabhängig]{.cstrong},
+falls keiner von  ihnen als [Linearkombination]{.cemph} der anderen ausgedrückt 
+werden kann. 
+
+Andernfalls nennen wir sie [linear abbhängig]{.cstrong}.
+
+#### {.endblock}
+
+ <!-- --->
+
+**Mit anderen Worten:**
+
+Genau dann hat für Gleichung
+$$c_1 \cdot v_1 + c_2 \cdot v_2 + \cdots + c_n \cdot v_n= 0_n$$
+
+für $n$ Vektoren $v_1,\dotsc, v_n$ und $n$ Skalare (Variablen) $c_1, \dotsc, c_n$
+nur die triviale Lösung $c_1 = c_2 = \cdots c_n=0$, 
+falls die Vektoren **lineare unabhängig** sind.
+
+Ansonsten sind sie **lineare abhängig**.
+
 
 
 ### Kaffeespezialitäten (III/III)
@@ -720,8 +831,11 @@ sind *linear unabhängig*.
 
 Denn $c_{lm} \cdot v_{lm} +  c_{mk} \cdot v_{mk} + c_{cap} \cdot v_{cap} = \begin{pmatrix}0 \\[0.1em] 0 \\[0.1em] 0 \end{pmatrix}$ hat nur die triviale Lösung $c_{lm} = c_{mk} = c_{cap} = 0$
 
+
 [Hausaufgabe:]{.cstrong}
-Bestimmen sie das Gleichungssystem und lösen Sie es.  
+
+Schreiben sie das (lineare) Gleichungssystem zur Überprüfung der linearen 
+(Un-)Abhängigkeit explizit auf und lösen Sie es!
 
 
 ### Produkt zweier Matrizen
@@ -1626,35 +1740,40 @@ knitr::include_graphics(file.path(pathToImages, "Bettwanze1.png"), error=FALSE)
 
 ### Beispiel: Der Lebenszyklus einer Bettwanze
 
-\begin{columns}[T]
-	\begin{column}[c]{6cm}
-		Sei $E_t$ die Anzahl der Eier, $A_t$ die Anzahl der Adulten Bettwanzen 
-		zu einem Zeitpunkt $t$.
-		\begin{align*}
-			E_{t+1} &= s \cdot E_t + f \cdot A_t \\
-			A_{t+1} &= d \cdot E_t + l \cdot A_t
-		\end{align*}		
-		oder mit 
-		\begin{equation*}
-			L =	\begin{pmatrix}
-					s & f \\ d & l \\
-				\end{pmatrix},
-			\quad
-			x_t = \begin{pmatrix}
-					E_t \\ A_t \\
-				\end{pmatrix}
-		\end{equation*}
-		ist dann
-		\begin{equation*}
-			x_{t+1} = L \cdot x_t
-		\end{equation*}
-	\end{column}
-	\begin{column}[c]{5cm}
+:::::: {.columns}
+::: {.column width="64%"}
+Sei $E_t$ die Anzahl der Eier, $A_t$ die Anzahl der Adulten Bettwanzen 
+zu einem Zeitpunkt $t$.
+
+$$\begin{aligned}
+    E_{t+1} &= s \cdot E_t + f \cdot A_t \\
+    A_{t+1} &= d \cdot E_t + l \cdot A_t
+\end{aligned}$$
+
+oder mit
+$$L =   \begin{pmatrix}
+            s & f \\ d & l \\
+        \end{pmatrix},
+        \quad
+        x_t = \begin{pmatrix}
+        	E_t \\ A_t \\
+        \end{pmatrix}$$
+ist dann
+
+$$x_{t+1} = L \cdot x_t$$
+:::
+::: {.column width="34%"}
+
 ```{r echo=FALSE, out.width = "95%", fig.align="center"}
-knitr::include_graphics(file.path(pathToImages, "Bettwanze2.png"), error=FALSE)
+    knitr::include_graphics(file.path(pathToImages, "Bettwanze2.png"), 
+                            error = FALSE)
 ```
-	\end{column}
-\end{columns}
+
+:::
+::::::
+
+Wir starten mit $100$ Eiern und $0$ Adulten, 
+also $x_0 = \begin{pmatrix} 100\\ 0\end{pmatrix}$
 
 
 ### Beispiel: Situation A
@@ -1686,15 +1805,16 @@ y_limits <- c(0, 100)
 
 ```
 
-\begin{columns}[T]
-	\begin{column}[c]{0.5\textwidth}
+:::::: {.columns}
+::: {.column width="49%"}
+
 ```{r bettwanzen_A, echo=FALSE, out.width = "95%", fig.align="center"}
-p <- ggplot2::ggplot(data = df, aes(x=1:25, y=Eier)) +
+p <- ggplot2::ggplot(data = df, aes(x = 1:25, y = Eier)) +
     geom_line(
         aes(color="Eier", size="Eier")
     ) +
     geom_line(
-        aes(y=Adulte, color="Adulte", size="Adulte")
+        aes(y = Adulte, color = "Adulte", size = "Adulte")
     ) +
     scale_x_continuous(
         limits = x_limits,
@@ -1703,16 +1823,16 @@ p <- ggplot2::ggplot(data = df, aes(x=1:25, y=Eier)) +
         limits = y_limits,
     ) +
     scale_size_manual(
-        values = c("Eier"= 1.2*factor.2, "Adulte"=1.2*factor.2),
+        values = c("Eier" = 1.2*factor.2, "Adulte" = 1.2*factor.2),
         guide = FALSE
     ) +
     theme(
-        text = element_text(size=12*factor.2),
-        title = element_text(size=14*factor.2),
+        text = element_text(size = 12*factor.2),
+        title = element_text(size = 14*factor.2),
         legend.position = c(0.8, 0.8),
-        legend.text = element_text(size=10*factor.2),
-        legend.title = element_text(size=10*factor.2),
-        line = element_line(size=1.2*factor.2)
+        legend.text = element_text(size = 10*factor.2),
+        legend.title = element_text(size = 10*factor.2),
+        line = element_line(size = 1.2*factor.2)
     ) +
     labs(
         title = "Bettwanzenpopulation",
@@ -1722,11 +1842,13 @@ p <- ggplot2::ggplot(data = df, aes(x=1:25, y=Eier)) +
     )
 p
 ```
-	\end{column}
-	\begin{column}[c]{0.5\textwidth}
+
+:::
+::: {.column width="49%"}
+
 ```{r bettwanzen_A_gesamt, echo=FALSE, out.width = "95%", fig.align="center"}
 p <- ggplot2::ggplot(data = df, aes(x=1:25, y=(Eier + Adulte), size="gesamt")) +
-    geom_line(color="green", )+
+    geom_line(color = "green", )+
     scale_x_continuous(
         limits = x_limits,
     ) +
@@ -1738,12 +1860,12 @@ p <- ggplot2::ggplot(data = df, aes(x=1:25, y=(Eier + Adulte), size="gesamt")) +
         guide = FALSE
     ) +
     theme(
-        text = element_text(size=12*factor.2),
-        title = element_text(size=14*factor.2),
+        text = element_text(size = 12*factor.2),
+        title = element_text(size = 14*factor.2),
         legend.position = c(0.8, 0.8),
-        legend.text = element_text(size=10*factor.2),
-        legend.title = element_text(size=10*factor.2),
-        line = element_line(size=1.2*factor.2)
+        legend.text = element_text(size = 10*factor.2),
+        legend.title = element_text(size = 10*factor.2),
+        line = element_line(size = 1.2*factor.2)
     ) +
     labs(
         title = "Bettwanzenpopulation",
@@ -1753,8 +1875,9 @@ p <- ggplot2::ggplot(data = df, aes(x=1:25, y=(Eier + Adulte), size="gesamt")) +
     )
 p
 ```
-	\end{column}
-\end{columns}
+
+:::
+::::::
 
 
 ### Beispiel: Situation A
@@ -1762,26 +1885,29 @@ p
 Für die erste Matrix $\displaystyle L = \begin{pmatrix} 0{,}1 & 1 \\ 0{,}5 & 0{,}2 \end{pmatrix}$ 
 ergibt sich:
 
-\begin{columns}[T]
-	\begin{column}[c]{0.5\textwidth}
+:::::: {.columns}
+::: {.column width="49%"}
+
 ```{r bettwanzen_A_reuse, ref.label="bettwanzen_A", echo=FALSE, out.width = "95%", fig.align="center"}
 ```
-	\end{column}
-	\begin{column}[c]{0.5\textwidth}
+
+:::
+::: {.column width="49%"}
+
 ```{r bettwanzen_A_phasenraum, echo=FALSE, out.width = "95%", fig.align="center"}
-p.1 <-  ggplot2::ggplot(data = df, aes(x=Eier, y=Adulte, size="red")) +
-    geom_path(color="red") +
+p.1 <-  ggplot2::ggplot(data = df, aes(x = Eier, y = Adulte, size = "red")) +
+    geom_path(color = "red") +
     scale_size_manual(
         values = c("red" = 1.2*factor.2),
         guide = FALSE
     ) +
     theme(
-        text = element_text(size=12*factor.2),
-        title = element_text(size=14*factor.2),
+        text = element_text(size = 12*factor.2),
+        title = element_text(size = 14*factor.2),
         legend.position = c(0.8, 0.8),
-        legend.text = element_text(size=10*factor.2),
-        legend.title = element_text(size=10*factor.2),
-        line = element_line(size=1.2*factor.2)
+        legend.text = element_text(size = 10*factor.2),
+        legend.title = element_text(size = 10*factor.2),
+        line = element_line(size = 1.2*factor.2)
     ) +
     labs(
         title = "Bettwanzenpopulation (Phasenraum)",
@@ -1791,8 +1917,8 @@ p.1 <-  ggplot2::ggplot(data = df, aes(x=Eier, y=Adulte, size="red")) +
     )
 p.1
 ```	
-    \end{column}
-\end{columns}
+:::
+::::::
 
 
 ### Beispiel: Situation B
@@ -1823,8 +1949,9 @@ y_limits <- c(0, 1500)
 
 ```
 
-\begin{columns}[T]
-	\begin{column}[c]{0.5\textwidth}
+:::::: {.columns}
+::: {.column width="49%"}
+
 ```{r bettwanzen_B, echo=FALSE, out.width = "95%", fig.align="center"}
 p <- ggplot2::ggplot(data = df, aes(x=1:25, y=Eier)) +
     geom_line(
@@ -1860,8 +1987,9 @@ p <- ggplot2::ggplot(data = df, aes(x=1:25, y=Eier)) +
 p
 ```
 
-	\end{column}
-	\begin{column}[c]{0.5\textwidth}
+:::
+::: {.column width="49%"}
+
 ```{r bettwanzen_B_gesamt, echo=FALSE, out.width = "95%", fig.align="center"}
 p <- ggplot2::ggplot(data = df, aes(x = 1:25, y = (Eier + Adulte), size = "gesamt")) +
     geom_line(color = "green", ) +
@@ -1891,20 +2019,23 @@ p <- ggplot2::ggplot(data = df, aes(x = 1:25, y = (Eier + Adulte), size = "gesam
     )
 p
 ```
-	\end{column}
-\end{columns}
 
+:::
+::::::
 
 ### Beispiel: Situation B
 
 Für die erste Matrix $\displaystyle L = \begin{pmatrix} 0{,}1 & 2 \\ 0{,}5 & 0{,}2 \end{pmatrix}$ ergibt sich:
 
-\begin{columns}[T]
-	\begin{column}[c]{0.5\textwidth}
+:::::: {.columns}
+::: {.column width="49%"}
+
 ```{r bettwanzen_B_reuse, ref.label="bettwanzen_B", echo=FALSE, out.width = "95%", fig.align="center"}
 ```
-	\end{column}
-	\begin{column}[c]{0.5\textwidth}
+
+:::
+::: {.column width="49%"}
+
 ```{r bettwanzen_B_phasenraum, echo=FALSE, out.width = "95%", fig.align="center"}
 p.1 <-  ggplot2::ggplot(
         data = df, 
@@ -1933,15 +2064,16 @@ p.1 <-  ggplot2::ggplot(
     )
 p.1
 ```	
-	\end{column}
-\end{columns}
+
+:::
+::::::
 
 
 ### Wann wächst oder schrumpft die Population? (I)
 
-[Die Grundidee:]{.cstrong:
+[Die Grundidee:]{.cstrong}
 
-Falls wir nur die Gesamtanzahl $w_t$ der Bettwanzen zum Zeitpunkt $t$ 
+Falls wir nur die Gesamtzahl $w_t$ der Bettwanzen zum Zeitpunkt $t$ 
 betrachten würden, könnten wir eine einfache Form des Modells erstellen:
 
 $$w_{t+1} = r \cdot w_t$$
@@ -1981,7 +2113,8 @@ $$\lambda \cdot v = L \cdot v$$
 Die Population würde schrumpfen, wenn
 
 - $| \lambda | < 1$ und
-- wir imstande sind die $x_t$ als Linearkombination von *solchen* Vektoren $v$ auszudrücken.
+- wir imstande sind die $x_t$ als Linearkombination von *solchen* Vektoren 
+  $v$ auszudrücken.
 
 
 ### Wann wächst oder schrumpft die Population? (III)
@@ -1998,8 +2131,8 @@ $$x_t = c_1 \cdot v_1 + c_2 \cdot v_2$$
 gilt. Dann ist
 
 $$\begin{aligned}
-	L \cdot x_t	&= L \cdot (c_1 \cdot v_1 + c_2 \cdot v_2) = c_1 \cdot L \cdot v_1 + c_2 \cdot L \cdot v_2 \\
-			&= c_1 \cdot \lambda_1\cdot v_1 + c_2 \cdot \lambda_2\cdot v_2.
+    L \cdot x_t	&= L \cdot (c_1 \cdot v_1 + c_2 \cdot v_2) = c_1 \cdot L \cdot v_1 + c_2 \cdot L \cdot v_2 \\
+    		&= c_1 \cdot \lambda_1\cdot v_1 + c_2 \cdot \lambda_2\cdot v_2.
 \end{aligned}$$
 
 
@@ -2082,7 +2215,7 @@ $$v_{\lambda_1}	= \begin{pmatrix} x_1 \\ x_2 \end{pmatrix}
 	= \begin{pmatrix} -0{,}7966 \\ -0{,}6045 \end{pmatrix}$$
 
 
-Nach der gleichen Methode kann mensch für $\lambda_2$ den Vektor 
+Nach der gleichen Methode finden wir für $\lambda_2$ den Vektor 
 
 $$v_{\lambda_2}	= \begin{pmatrix} -0{,}8350 \\ 0{,}5502 \end{pmatrix}$$
 
@@ -2182,6 +2315,92 @@ $L \cdot v_\lambda = \lambda \cdot v_\lambda$ heißen [Eigenvektoren]{.cstrong}.
   Phasenraum aufspannen.
 
 <!-- -->
+
+### Definitheit von Matrizen
+
+Eine quadratische Matrix $A$ wollen wir ...
+
+::: {.small}
+
+- ... **positiv definit** nennen,
+  falls alle Eigenwerte von $A$ positiv ($>0$) sind.
+
+- ... **positiv semidefinit** nennen,
+  falls alle Eigenwerte von $A$ nicht-negativ ($\geq 0$) sind.
+
+- ... **negativ definit** nennen,
+  falls alle Eigenwerte von $A$ negativ ($<0$) sind.
+
+- ... **negativ definit** nennen,
+  falls alle Eigenwerte von $A$ nicht-positiv ($\leq 0$) sind.
+
+- ... **indefinit** nennen,
+  falls $A$ sowohl negative als auch positive Eigenwerte hat.
+
+:::
+
+
+### Beispiele 
+
+Für die Matrix
+$$A = \begin{pmatrix}{}
+  5 & -3 & 1 \\ 
+  8 & -5 & 2 \\ 
+  10 & -11 & 6 \\ 
+  \end{pmatrix}$$
+
+ist das *charakteristische Polynom* gegeben durch:
+
+$$\begin{aligned}
+    \chi_A(\lambda) &= \det(A-\lambda\cdot E_3) \\
+                    &=(5-\lambda)(-5-\lambda)(6-\lambda)+((-3)\cdot 2\cdot 10)+(1\cdot 8\cdot (-11)) \\
+                    &\quad -(10 \cdot (-5-\lambda)\cdot 1)-((-11)\cdot 2 \cdot (5-\lambda))- ((6-\lambda)\cdot 8 \cdot (-3)) \\
+                    &= -\lambda^3+6\lambda^2-11\lambda+6 \\
+                    &=-(\lambda-1)(\lambda-2)(\lambda-3)
+  \end{aligned}$$
+
+Die Nullstellen von $\chi_A(\lambda)$, und somit die Eigenwerte, sind:
+
+$$\lambda_1 = 1; \quad \lambda_2 = 2; \quad \lambda_3 = 3$$
+Da alle Eigenwerte positiv sind, ist $A$ *positiv definit*.
+
+
+### Übung
+
+Überprüfen Sie die folgenden Matrizen auf ihre Definitheit:
+
+a) $\begin{pmatrix}
+        -7 & 0 & 0 & 0 \\ 
+         0 & 0 & 0 & 0 \\ 
+         0 & 0 & -\frac{1}{5} & 0 \\ 
+         0 & 0 & 0 & -2 \\ 
+    \end{pmatrix}$
+    
+b) $\begin{pmatrix}
+        1 & 1 \\
+        1 & 1 \\
+    \end{pmatrix}$
+
+c) $\begin{pmatrix}
+        1 & 1 \\
+        1 & -1 \\
+    \end{pmatrix}$
+
+<!-- -->
+
+
+::: {.notes}
+
+a) negativ semidefinit, da für alle Eigenwerte $EW=\{-7, -2, -\frac{1}{5}, 0\}$ 
+   gilt $x\in EW \Rightarrow x \leq 0$.
+
+b) positiv semidefinit, da für alle Eigenwerte $EW=\{0, 2\}$ 
+   gilt $x\in EW \Rightarrow x \geq 0$.
+
+c) indefinit, da die Eigenwerte $EW= \{-\sqrt{2}, +\sqrt{2}\}$ sowohl positiv,
+  als auch negativ sind.
+
+:::
 
 ```{r finish-Lineare-Algebra, include=FALSE}
 finalizePart(partname)
