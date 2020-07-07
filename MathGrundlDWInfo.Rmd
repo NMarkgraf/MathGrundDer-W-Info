@@ -31,11 +31,14 @@ if (!exists("prelude.rendertools")) {
 }
 
 privateVorstellung <<- TRUE   # Zeige die Private Vorstellung
-showVorlesungsplan <<- FALSE  # Zeige den Vorlesungsplan
 
 UseCache <<- FALSE
 
-createPrivateYaml("Dipl.-Math. Norman Markgraf", "WS 2020/21", "Münster/Düsseldorf")
+createPrivateYaml(
+    "Dipl.-Math. Norman Markgraf",  # Dozent*innenname
+    "WS 2020/21",                   # Semesterkennzeichen
+    "Münster/Düsseldorf"            # Studienort(e)
+)
 
 # Erzeuge Skript "DozentenSkript", "StudierendenSkript" oder "LösungsSkript": 
 makeSkriptOfType("DozentenSkript") 
@@ -43,35 +46,40 @@ makeSkriptOfType("DozentenSkript")
 
 ```{r ggplot2Setup, eval=TRUE, echo=FALSE, include=FALSE}
 library(ggplot2)
+
 # ggformula, also ggplot2 muss noch etwas konfiguriert werden.
-theme.fom <- theme_classic(22*1.02)
-theme.fom <- theme.fom
 theme_set(
-  theme.fom
+  theme_classic(22.44)
 )
 ```
 
 ```{r setUpChildren, eval=TRUE, include=FALSE}
+## Liste aller Teilskripte, die in das Skript integriert werden sollen.
 childrenToInclude <- c(
-    "Organisatorisches", "Hinweise", "Mengenlehre", "Relationen", 
-    "Kombinatorik", "Logik", "Finanzmathematik", "LineareAlgebra"
-)
-## Test! (TRUE oder FALSE ändern!)
-if (TRUE) {
-  childrenToInclude <- c(
-#    "Mengenlehre", 
-#    "Relationen",
-#     "Kombinatorik",
+    "Organisatorisches", 
+    "Hinweise", 
+    "Mengenlehre", 
+    "Relationen", 
+    "Kombinatorik", 
+    "Logik", 
+    "Finanzmathematik", 
+    "Differenzialrechnung",
     "LineareAlgebra"
-#    "Differenzialrechnung"
-#"Logik", "Finanzmathematik", "LineareAlgebra"
+)
 
+## Für einen Testlauf einzelner Teilskripte einfach diesen Abschnitt
+## auf TRUE setzen und nur die Teilskripte einfügen, die benötigt werden.
+if (FALSE) {
+  childrenToInclude <- c(
+    "LineareAlgebra"
   )
+  # Zur Sicherheit die private Vorstellung NICHT in das Testlauf-Skript!
   privateVorstellung <<- FALSE
-  }
-##
+}
+
+## Funktion, die auswertet ob ein Teilskript eingesetzt werden soll oder nicht.
 includeChild <- function(name, children=childrenToInclude, all=FALSE) {
-    all | ifelse(name %in% children, TRUE, FALSE)
+    all | (name %in% children)
 }
 ```
 
