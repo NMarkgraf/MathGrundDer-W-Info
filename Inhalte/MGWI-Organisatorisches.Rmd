@@ -50,9 +50,6 @@ Workload:
 - ECTS-Credit Punkte:	5
 
 
-```{r child = './Organisatorisches/Vorlesungsplan.Rmd', eval = showVorlesungsplan}
-```
-
 ```{r, include=FALSE}
 abschluss <<- TRUE
 rm(pathToImages)

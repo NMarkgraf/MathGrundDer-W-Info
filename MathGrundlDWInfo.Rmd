@@ -5,13 +5,15 @@ header-includes:
 ---
 
 ```{r setup, include=FALSE}
+# .aux Dateien vom LaTeX-Übersetzungsprozess löschen? 
+options(tinytex.clean = FALSE)
+
 # ---------------------------------------------------------------------------
 # Einige Funktionen und Variabeln sind in die Datei 'prelude.R' ausgelagert.
 # Diese werden hier nachgeladen und angepasst.
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 source("prelude.R")
 initPrelude(
-    "MGWI-",        # Prefix für Terminlisten etc.
     TRUE           # Soll geprüft werden ob alle Pakete installiert sind?
 )
 
@@ -33,7 +35,7 @@ showVorlesungsplan <<- FALSE  # Zeige den Vorlesungsplan
 
 UseCache <<- FALSE
 
-createPrivateYaml("Dipl.-Math. Norman Markgraf", "WS 2019/20", "Münster/Düsseldorf")
+createPrivateYaml("Dipl.-Math. Norman Markgraf", "WS 2020/21", "Münster/Düsseldorf")
 
 # Erzeuge Skript "DozentenSkript", "StudierendenSkript" oder "LösungsSkript": 
 makeSkriptOfType("DozentenSkript") 
