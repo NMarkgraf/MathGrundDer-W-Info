@@ -222,7 +222,7 @@ der Unbekannten um mindestens eine, die dann auch nicht mehr weiter vorkommt.
 
 
 
-### Elementare Zeilenumformungen
+### Elementare Zeilenumformungen {#elemzeilum}
 
 [Idee:]{.cstrong} Für ein LGS $A$ bezeichnen wir mit $L_A$ die **Lösungsmenge**:
 $$L_A = \left\{x=(x_1,...,x_n) \,|\, x \text{ löst das LGS } A\right\}$$

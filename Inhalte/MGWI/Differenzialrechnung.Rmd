@@ -517,7 +517,7 @@ Wobei $\ln(x)$ die Umkehrfunktion von $\exp(x)$ ist und **natürlicher Logarithm
 <!-- -->
 
 
-## Stetigkeit
+### Stetigkeit
 
 Eine Funktion ist **(folgen-)stetig**, wenn für alle $h>0$ gilt:
 
