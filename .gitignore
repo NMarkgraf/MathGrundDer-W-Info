@@ -4,6 +4,8 @@
 .Ruserdata
 *.log
 MathGrundlDWInfo*.pdf
+MathGrundlDWInfo*.bbl
+MathGrundlDWInfo*.bcl
 MathGrundlDWInfo*.tex
 MathGrundlDWInfo.*.md
 MathGrundlDWInfo*.aux
@@ -13,6 +15,9 @@ MathGrundlDWInfo*.toc
 MathGrundlDWInfo*.vrb
 MathGrundlDWInfo*.nav
 MathGrundlDWInfo_files/
+DasIstNurEinTest*.Rmd
+DasIstNurEinTest*.bbl
+DasIstNurEinTest*.bcl
 DasIstNurEinTest*.pdf
 DasIstNurEinTest*.tex
 DasIstNurEinTest*.*.md
