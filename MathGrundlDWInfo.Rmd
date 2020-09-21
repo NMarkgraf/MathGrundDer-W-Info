@@ -1,5 +1,6 @@
 ---
-title: "Mathematische Grundlagen der (Wirtschafts-)Informatik"
+# title: "Mathematische Grundlagen der (Wirtschafts-)Informatik"
+title: "Mathematische Grundlagen der Informatik"
 header-includes:
   - "\\usepackage{systeme}"
 ---
@@ -36,8 +37,8 @@ UseCache <<- FALSE
 
 createPrivateYaml(
     "Dipl.-Math. Norman Markgraf",  # Dozent*innenname
-    "WS 2020/21",                   # Semesterkennzeichen
-    "Münster/Düsseldorf"            # Studienort(e)
+    "WiSe 2020/21",                   # Semesterkennzeichen
+    "Münster / Düsseldorf"            # Studienort(e)
 )
 
 # Erzeuge Skript "DozentenSkript", "StudierendenSkript" oder "LösungsSkript": 
@@ -71,7 +72,9 @@ childrenToInclude <- c(
 ## auf TRUE setzen und nur die Teilskripte einfügen, die benötigt werden.
 if (FALSE) {
   childrenToInclude <- c(
-    "LineareAlgebra"
+    "Mengenlehre",
+    # "LineareAlgebra",
+    ""
   )
   # Zur Sicherheit die private Vorstellung NICHT in das Testlauf-Skript!
   privateVorstellung <<- FALSE

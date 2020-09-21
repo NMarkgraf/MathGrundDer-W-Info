@@ -13,6 +13,16 @@ MathGrundlDWInfo*.toc
 MathGrundlDWInfo*.vrb
 MathGrundlDWInfo*.nav
 MathGrundlDWInfo_files/
+DasIstNurEinTest*.pdf
+DasIstNurEinTest*.tex
+DasIstNurEinTest*.*.md
+DasIstNurEinTest*.aux
+DasIstNurEinTest*.nav
+DasIstNurEinTest*.snm
+DasIstNurEinTest*.toc
+DasIstNurEinTest**.vrb
+DasIstNurEinTest*.nav
+DasIstNurEinTest_files/
 pandoc-filter/__pycache__/**
 pandoc-filter/__pycache__/*
 pandoc-filter/__pycache__/*.pyc
@@ -22,3 +32,4 @@ JUNK
 private.yaml
 *_files/
 *_cache/
+.DS_Store

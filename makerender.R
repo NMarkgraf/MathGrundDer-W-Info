@@ -13,14 +13,22 @@
 # ------------------------------------------------------------------------
 
 # ------------------------------------------------------------------------
+# Setup für Python mit reticulate
+# ------------------------------------------------------------------------
+
+#library(reticulate)
+## Hier muss der Link zu Python3 stehen!
+reticulate::use_python("/usr/local/bin/python3", required = TRUE) 
+
+# ------------------------------------------------------------------------
 # Dateiname (ohne ".Rmd") der übersetzt werden soll:
 # ------------------------------------------------------------------------
 
-filename <- "Wissenschaftliche-Methodik"
 filename <- "MathGrundlDWInfo"
 overwrite_old <- TRUE   # Sollen bestehende Dateien überschrieben werden?
 use_private <- TRUE     # Die Werte aus "private/private.R" benutzen?
-Semester <- "WiSe 2019/20"  # Semesterangabe (SoSe XXXX / WiSe XXXX/XX)
+# DozentIn <- "Dr. rer. nat. Daniel Bembé"  # "Dozent*in" 
+Semester <- "WiSe 2020/21"  # Semesterangabe (SoSe XXXX / WiSe XXXX/XX)
 Studienort <- iconv("Düsseldorf / Münster")  # Studienort(e)
 midfix <- "" # Anhängsel an den Dateinamen, falls benötigt.
 
@@ -39,7 +47,7 @@ source("prelude/prelude_rendertools.R")
 
 UseCache <<- FALSE
 
-privateVorstellung <<- TRUE   # Zeige die Private Vorstellung
+privateVorstellung <<- FALSE   # Zeige die Private Vorstellung
 showVorlesungsplan <<- FALSE  # Zeige den Vorlesungsplan
 showuseR <<- TRUE             # Zeige Umfrage an
 
@@ -48,7 +56,7 @@ if (use_private) {
   source("private/private.R")
   createPrivateYaml(DozInfo, Semester, "FOM", Studienort)
 } else {
-  createPrivateYaml("Dozent*in", Semester, "FOM", Studienort)
+  createPrivateYaml(DozentIn, Semester, "FOM", Studienort)
 }
 
 # ------------------------------------------------------------------------
@@ -86,7 +94,7 @@ cat("Render and compile dozi file!\n")
 rmarkdown::render(
     input = filename_rmd,
     encoding = "UTF-8",
-    clean=FALSE
+    clean = FALSE
   )
 
 file.copy(filename_pdf, filename_dozi, overwrite = overwrite_old)
@@ -105,6 +113,5 @@ makeSkriptOfType("LösungsSkript")
 compileTeXFile(filename_tex, filename_pdf, filename_lsg, 
                "Compile lsg file!", overwrite_old)
 
+cat(paste0("makerender ", filename,".Rmd ... DONE!\n"))
 # ========================================================================
-
-warnings()
