@@ -73,6 +73,7 @@ childrenToInclude <- c(
 if (FALSE) {
   childrenToInclude <- c(
     "Mengenlehre",
+    "Relationen",
     # "LineareAlgebra",
     ""
   )
@@ -86,7 +87,7 @@ includeChild <- function(name, children=childrenToInclude, all=FALSE) {
 }
 ```
 
-```{r child = './Inhalte/MGWI-Organisatorisches.Rmd', eval = includeChild("Organisatorisches")}
+```{r child = './Inhalte/MGWI-Organisatorisches-60min.Rmd', eval = includeChild("Organisatorisches")}
 ```
 
 ```{r child = './private/private-Vorstellung.Rmd', eval = privateVorstellung}

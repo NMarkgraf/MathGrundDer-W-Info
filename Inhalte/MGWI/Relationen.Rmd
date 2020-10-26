@@ -23,7 +23,7 @@ library(gridExtra)
 
 #### Zweistellige/binäre Relation {.definition}
 
-Eine **zweistellige** oder auch **binäre Relation** zwischen zwei Mengen $A$ und $B$ ist eine Teilmenge des kartesichscn Produkts:
+Eine **zweistellige** oder auch **binäre Relation** zwischen zwei Mengen $A$ und $B$ ist eine Teilmenge des kartesischen Produktes:
 $$R \subseteq A \times B$$
 
 #### Definitions- und Werteberich einer Relation {.definition}
@@ -91,7 +91,7 @@ Bei einer *homogene* Relation $R \subset A \times A$ schreibt am anstelle von $(
 
 ### Übung `r nextExercise()`: {.exercise}
 
-Für die Mengen $A=\left\{1, 2, 3\right\}$ und $B=\left\{1,2,3,4,5, 6, 7, 8, 9, 10\right\}$ bilden Sie explizit die folgenden Relationen auf $A$ bzw. $B$:
+Für die Mengen $A=\left\{1, 2, 3\right\}$ und $B=\left\{1,2,3,4,5, 6, 7, 8, 9, 10\right\}$ geben Sie die folgenden Relationen auf $A$ bzw. $B$ explizit an:
 
 a) $\displaystyle <_A = \left\{(x,y) \in A^2\,\left|\, x < y \right.\right\}$
 
@@ -107,7 +107,7 @@ a) $<_A = \left\{(1, 2), (1, 3), (2, 3) \right\}$
 
 a) $>_A = \left\{(3, 2), (3, 1), (2, 1) \right\}$
 
-a) $R^{\text{quad}}_B = \left\{(1, 1), (2, 4), (3, 9) \right\}$
+a) $R^{\text{quad}}_B = \left\{(1, 1), (4, 2), (9, 3) \right\}$
 
 a) $R^{\text{doppelt}}_B = \left\{(1, 2), (2, 4), (3, 6), (4, 8), (5, 10) \right\}$
 
@@ -124,7 +124,9 @@ Eine (homogene) Relation $\sim$ auf einer Menge A heißt **Äquivalenzrelation**
 
 ####  Äquivalenzrelationen {.example}
 
-Auf jeder Zahlenmenge bildet $=$ eine Äquivalenzrelation.
+- Auf jeder Zahlenmenge bildet $=$ eine Äquivalenzrelation.
+
+- *Gleichmächtigkeit* war eine Äquivalentrelation auf den Mengen.
 
 
 ### Übung `r nextExercise()`: {.exercise}
@@ -240,6 +242,8 @@ $\mathbf{2} := [2]_3 = \{n \in \mathbf{Z}\,|\, 3 \text{ teilt } (n-2) \}$
 
 ### Beispiel: Volle Stunden der Uhr
 
+::: {.footnotesize}
+
 Ein einfaches und sehr anschauliches Beispiel hierfür ist eine (analoge) Uhr, bei der wir der Einfachheit halber annehmen, dass wir nur ganze Stunden ablesen wollen.
 Eine solche Uhr kann z.B. nicht zwischen 9 Uhr und 21 Uhr unterscheiden, sie betrachtet also diese Zeiten -- oder allgemeiner alle Zeiten, die sich nur um ein Vielfaches von 12 unterscheiden -- als äquivalent, bzw. fasst sie zu einer Äquivalenzklasse zusammen.
 
@@ -257,6 +261,7 @@ Menge aller Äquivalenzklassen lautet somit
 $$\mathbf{Z}/\sim_{12} = \mathbf{Z_{12}} = \{[0]_{12}, [1]_{12}, [2]_{12}, [3]_{12}, [4]_{12}, [5]_{12}, [6]_{12}, [7]_{12}, [8]_{12}, [8]_{12}, [9]_{12}, [10]_{12}, [11]_{12}\}$$
 und entspricht den möglichen Ständen der Uhr.
 
+:::
 
 ### Übung `r nextExercise()`: {.exercise}
 
@@ -305,7 +310,7 @@ $\mathbf{3} := [3]_3 = \{n \in \mathbf{Z}\,|\,4 \text{ teilt } (n-3)\}$
 Das Rechnen im Restklassenring $\mathbf{Z_n}$ enspricht als dem *normalen* Rechnen mit ganzen Zahlen, bei dem man nach jeder Operation ($+$, $-$, $\cdot$, $\div$) nur noch den Rest bei der Division (mit Rest) mit $n$ betrachtet.
 
 #### {.example}
-::: {.small}
+::: {.footnotesize}
 
 Es ist
 \begin{align*}
@@ -320,7 +325,7 @@ Mit der Funktion $x \mod n$ erhalten den Rest bei der Division mit Rest von $x$ 
 $$x = \lfloor x / n \rfloor \cdot n + (x \mod n)$$
 Wir können daher auch schreiben:
 \begin{align*}
-    [3]_5 + [2]_5 \cdot [4]_5 - [1]_5 &= (3 \mod 5) + (2 \mod 5) \cdot (4 \mod 5) - (1 \mod 5) 
+    [3]_5 + [2]_5 \cdot [4]_5 - [1]_5 &= (3 \mod 5) + (2 \mod 5) \cdot (4 \mod 5) - (1 \mod 5) \\
                                       &= (3 \mod 5) + (2 \cdot 4) \mod 5 - (1 \mod 5) \\
                                       &= (3 \mod 5 + (3 \mod 5) - (1 \mod 5) 
                                       &= (3 + 3 - 1) \mod 5 \\
@@ -386,7 +391,8 @@ b) Die Antworten lauten:
 
 ### Funktionen (I/III)
 
-Eine *Abbildung* (oder *Funktion*) $$f: A \to B$$ mit der *Zuordnungsvorschrift* $a \mapsto b=f(a)$ 
+Eine *Abbildung* (oder *Funktion*) $$f: A \to B$$ mit der *Zuordnungsvorschrift* 
+$a \mapsto b=f(a)$, also die $a \in A$ ein $b \in B$ mit $b = f(a)$ zuordnet, 
 ist wegen $(a, f(a))$ eine Relation auf $A \times B$.
 
 Der **Definitionsbereich** (**Domain von $f$**) ist dabei:
@@ -411,6 +417,9 @@ b) **surjektiv** (oder **rechtstotal**), falls die Gleichung $f(a)=b$ für jedes
 
 c) **bijektiv**, falls $f$ sowohl *injektiv* als auch *surjektiv* ist.
 
+#### {.fact}
+Die *Funktionen* $f: A \to B$ sind also die **linkstotalen** und **rechtseindeutigen** Relation auf $A \times B$.
+Die *injektiven Funktionen* sind zusätzlich **linkseindeutig**, die *surjektiven Funktionen* **rechtstotal** und die *bijektiven Funktionen* sind **bitotal** und **eineindeutig**. 
 
 ### Beispiele Funktionen
 
@@ -472,9 +481,6 @@ Unter einer **partiell-charakteristische Funktion**  $\phi_M$ einer Menge $M$ ve
 
 $$\phi_M(x) = \begin{cases}1 &: x \in M \\ \bot &: \text{sonst}\end{cases}$$
 
-#### {.fact}
-Die *Funktionen* $f: A \to B$ sind also die **linkstotalen** und **rechtseindeutigen** Relation auf $A \times B$.
-Die *injektiven Funktionen* sind zusätzlich **linkseindeutig**, die *surjektiven Funktionen* **rechtstotal** und die *bijektiven Funktionen* sind **bitotal** und **eineindeutig**. 
 
 
 ### Übung `r nextExercise()`: {.exercise}
@@ -486,10 +492,14 @@ B. Für ein *Universum* $U$ ist charakteristische Funktion $\chi_U$  *injektiv*,
 C. Die Funktion $f:\mathbf{Z_5} \to \mathbf{Z}_5$ mit $f(\mathbf{a}) = [\mathbf{a}+\mathbf{1}]_5$ ist *injektiv*, *surjektiv* und/oder *bijektiv*?
 
 D. Es seien $\max(x,y) := \begin{cases}x &: x \geq y \\ y &: x < y\end{cases}$ und $\min(x,y) := -\max(-x,-y)$ sowie zwei beliebige Teilmengen $A$ und $B$ von $\mathbf{Z}$ gegeben. 
-Schreiben  Sie die folgenden Funktionen nur mit charakteristischen Funktionen, den Funktionen $\max(.,.)$ und $\min(.,.)$ und den Zeichen $+$, $-$, $\cdot$:
+Schreiben  Sie die folgenden Funktionen nur mit charakteristischen Funktionen, den Funktionen $\max(.,.)$ und $\min(.,.)$ und den Zeichen $+$, $\cdot$, $-$, :
+    
 1) $\chi_{A \cap B}$
+
 2) $\chi_{A \cup B}$
+
 3) $\chi_{A \setminus B}$
+
 4) $\chi_{A^c}$
 
 ::: {.notes}
@@ -500,10 +510,10 @@ B. weder injektiv, noch surjektiv und somit auch nicht bijektiv.
 C. bijektiv mit $f^{-1}(\mathbf{a}) = [\mathbf{a}-\mathbf{1}]_5$
 
 D. Es ist:
-1) $\chi_{A \cap B} = \min(\chi_A, \chi_B) = \chi_A \cdot \chi_B$
-2) $\chi_{A \cup B} = \max(\chi_A, \chi_B) = \chi_A + \chi_B - \chi_{A \cap B} = \chi_A + \chi_B - \chi_A \cdot \chi_B$
-1) $\chi_{A \setminus B} = \max(\chi_A - \chi_B, 0) = \chi_A - \chi_{A \cap B} = \chi_A - \chi_A \cdot \chi_B = \chi_A \cdot (1-\chi_B)$
-4) $\chi_{A^c} = 1 - \chi_A$
+    1) $\chi_{A \cap B} = \min(\chi_A, \chi_B) = \chi_A \cdot \chi_B$
+    2) $\chi_{A \cup B} = \max(\chi_A, \chi_B) = \chi_A + \chi_B - \chi_{A \cap B} = \chi_A + \chi_B - \chi_A \cdot \chi_B$
+    1) $\chi_{A \setminus B} = \max(\chi_A - \chi_B, 0) = \chi_A - \chi_{A \cap B} = \chi_A - \chi_A \cdot \chi_B = \chi_A \cdot (1-\chi_B)$
+    4) $\chi_{A^c} = 1 - \chi_A$
 
 :::
 

@@ -229,7 +229,7 @@ Die *Summenregel* liefert für zwei Mengen $A$ und $B$ die Formel:
 
 $$|A \cup B| = |A| + |B| - |A \cap B|$$
 	
-Für drei Mengen $A$, $B$, $C$ erhalten wir:\vspace*{-1.5em}
+Für drei Mengen $A$, $B$, $C$ erhalten wir:
 
 :::::: {.columns}
 ::: {.column width="60%"}
@@ -250,18 +250,6 @@ knitr::include_graphics(file.path(pathToImages, "2000px-Inclusion-exclusion.png"
 :::
 ::::::
 
-\vspace*{-0.7em}
-
-#### Prinzip von Inklusion und Exklusion {.theorem}
-
-Sei $X = \bigcup_{i=1}^n A_i$ eine *endliche Menge* die sich als eine 
-Vereinigung von $n$ (endlichen) Teilmengen $A_1,A_2, \dots, A_n$ 
-schreiben lässt. 
-Zu einer *Indexmenge* $I \subseteq \left\{1, 2, \dots, n\right\}$ sei 
-$A_I:= \bigcap_{i \in I} A_i$ der Schnitt über alle durch die Elemente der 
-Indexmenge bezeichneten Teilmengen, wobei $A_\emptyset = X$ entspricht. 
-Dann gilt
-$$|X| = \sum_{\emptyset \neq I \subseteq \{1,\ldots, n\}} \left( -1 \right)^{|I|+1}\left|A_I\right|~.$$
 
 <!-- -->
 
@@ -312,13 +300,15 @@ knitr::include_graphics(file.path(pathToImages, "WegeVonAnachD.png"), error = FA
 
 
 :::::: {.small}
-(Die 13er-Wette ist die klassische Fußballwette, bei der auf die Ergebnisse 
+**Hinweis:**
+
+Die 13er-Wette ist die klassische Fußballwette, bei der auf die Ergebnisse 
 von 13 vorgegebenen Fußballspielen getippt wird, mit der Tippformel:
 
 1 = Heimsieg, 0 = unentschieden, 2 = Gastsieg. 
 
 Es müssen die Ergebnisse von allen 13 Spielpaarungen nach der regulären 
-Spielzeit (ohne Verlängerung oder Elfmeterschießen) getippt werden.)
+Spielzeit (ohne Verlängerung oder Elfmeterschießen) getippt werden.
 ::::::
 
 ::: {.notes}
@@ -594,14 +584,6 @@ der **Binomialkoeffizient $n$ über $k$**.
 
 Für $k>n$ ist der Binomialkoeffizient gleich Null.
 
-<!-- -->
-
-#### Binomialkoeffizienten {.example}
-
-Berechnen Sie:
-
-* $\binom{5}{0}$, $\binom{5}{1}$, $\binom{5}{2}$, $\binom{5}{3}$, 
-  $\binom{5}{4}$ und $\binom{5}{5}$
 
 <!-- -->
 
@@ -669,7 +651,7 @@ $$k \cdot \binom{n}{k} = n \cdot \binom{n-1}{k-1}$$
 \end{tabular}
 :::
 ::: {.column width="24%"}
-personDB{Pascal}
+\personDB{Pascal}
 :::
 ::::::
 
@@ -750,7 +732,7 @@ $$\begin{aligned}
 	\end{column}
 	\begin{column}[t]{0.24\textwidth}
 	\vspace*{-1em}
-	personDB{Newton}
+	\personDB{Newton}
 	\end{column}
 \end{columns}
 

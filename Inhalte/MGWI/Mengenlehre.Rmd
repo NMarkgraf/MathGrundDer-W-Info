@@ -24,7 +24,7 @@ library(mosaic)
 Was dachte der Vater der Mengenlehre einst, was Mengen sind:
 		
 ```{r echo=FALSE, out.width = "95%", fig.align="center"}
-knitr::include_graphics(file.path(pathToImages, "TextstelleMitDerMengendefinitionVonGeorgCantor.png"), error=FALSE)
+knitr::include_graphics(file.path(pathToImages, "TextstelleMitDerMengendefinitionVonGeorgCantor.png"), error = FALSE)
 ```
 
 ::: {.tiny .raggedright}
@@ -118,6 +118,29 @@ d) Z.B.: $\displaystyle A_4 = \left\{x \, | \, x = 2\cdot n \text{ mit } n = 1,2
 
 :::
 
+### Übung `r nextExercise()`: {.exercise}
+
+Es sei $\Sigma = \{a,b,c\}$ ein Menge von Symbolen, welche wir **Alphabet** 
+nennen wollen.
+Mit $\Sigma^*$ wollen wit die Menge aller *Wörter* aus Symbolen des *Alphabets* 
+$\Sigma$ bezeichnen. 
+Für ein Wort $w \in \Sigma^*$ bezeichnen wir mit $|w|$ die Länge des Wortes. 
+(Bsp.: $w = abc, |w|=|abc|=3$) 
+Es ist immer auch das **leere Wort** $\epsilon$ in $\Sigma^*$ und es ist 
+$|\epsilon|=0$
+
+a) $\displaystyle A_5=\left\{w \in \Sigma^* \,\Big|\, |w|=2\right\}$
+
+b) $\displaystyle A_6=\left\{w \in \Sigma^* \,\Big|\, |w|=3\right\}$
+
+::: {.notes}
+
+a) $\displaystyle A_5 = \left\{aa, ab, ac, ba, bb, bc, ca, cb, cc\right\}$
+
+b) $\displaystyle A_6 = \left\{aaa, aab, aac, aba, abb, abc, aca, acb, acc, baa, bab, bac, bba, bbb, bbc, bca, bcb, bcc, caa, cab, cac, cba, cbb, cbc, cca, ccb, ccc\right\}$
+
+:::
+
 
 ### Elemente von Mengen
 
@@ -185,20 +208,20 @@ $-2 \notin C$;
 #### Teilmenge {.definition}
 Eine Menge $A$ heißt **Teilmenge** der Menge $B$, 
 wenn jedes Element von $A$ auch ein Element von $B$ ist.
-Wir schreiben dann
+Wir schreiben dann^[Bzgl. $\subseteq$ oder $\subset$ siehe auch [https://www.enyclopediaofmath.org](https://www.encyclopediaofmath.org//index.php?title=Set_theory&oldid=24823)]
 
 :::::: {.columns}
 ::: {.column width="49%"}
 
-$$A \subseteq B \, \text{ oder } A \subset B$$^[Bzgl. $\subseteq$ oder $\subset$ siehe auch [https://www.enyclopediaofmath.org](https://www.encyclopediaofmath.org//index.php?title=Set_theory&oldid=24823)]
+$$A \subseteq B \, \text{ oder } A \subset B$$
 
 :::
 ::: {.column width="49%"}
 
 \begin{tikzpicture}
 	\begin{scope}
-		\draw[blue] (0,0) ellipse  (20pt and 13pt);			
-		\draw[black!60!green] (0.3,0) ellipse (28pt and 15pt);	
+		\draw[blue] (0,0) ellipse  (20pt and 13pt);
+		\draw[black!60!green] (0.3,0) ellipse (28pt and 15pt);
 	\end{scope}
 	\node at (-0.6,0) [left, blue] {$A$};
 	\node at (1.2,0) [right, black!60!green] {$B$};
@@ -220,8 +243,8 @@ $$ A \subsetneq B $$
 
 \begin{tikzpicture}
 	\begin{scope}
-		\draw[blue] (0,0) ellipse (20pt and 13pt);			
-		\draw[black!60!green] (0.3,0) ellipse (28pt and 15pt);	
+		\draw[blue] (0,0) ellipse (20pt and 13pt);
+		\draw[black!60!green] (0.3,0) ellipse (28pt and 15pt);
 	\end{scope}
 	\node at (-0.6,0) [left, blue] {$A$};
 	\node at (1.2,0) [right, black!60!green] {$B$};
@@ -501,7 +524,7 @@ Alle Aussagen sind wahr.
 
 :::
 
-
+<!-- brauchen wir nicht mehr!
 ### Disjunkte Mengen
 
 :::::: {.columns}
@@ -519,7 +542,7 @@ Zwei Mengen $A$ und $B$ heißen **disjunkt**, wenn ihre Schnittmenge leer ist.
 ::: {.column width="33%"}
 
 ```{r echo=FALSE, out.width = "80%", fig.align="center"}
-knitr::include_graphics(file.path(pathToImages, "220px-Disjunkte_Mengen.png"), error=FALSE)
+knitr::include_graphics(file.path(pathToImages, "220px-Disjunkte_Mengen.png"), error = FALSE)
 ```
 
 :::
@@ -549,7 +572,7 @@ $$ M_i \cap M_j = \emptyset \quad \text{ für } \!\,i \ne j \text{ und } 1 \leq 
 ::: {.column width="33%"}
 
 ```{r echo=FALSE, out.width = "60%", fig.align="center"}
-knitr::include_graphics(file.path(pathToImages, "126px-Disjuct-sets.png"), error=FALSE)
+knitr::include_graphics(file.path(pathToImages, "126px-Disjuct-sets.png"), error = FALSE)
 ```
 
 :::
@@ -607,6 +630,7 @@ b)
         - $G$ ist die *Menge der geraden natürlichen Zahlen*.
 :::
 
+-->
 
 ### Die Potenzmenge
 
@@ -795,7 +819,7 @@ Abbildung zwischen den Mengen gibt.
 ::: {.column width="33%"}
 
 ```{r echo=FALSE, out.width = "70%", fig.align="center"}
-knitr::include_graphics(file.path(pathToImages, "Bijektivitaet_Mengenwolke.png"), error=FALSE)
+knitr::include_graphics(file.path(pathToImages, "Bijektivitaet_Mengenwolke.png"), error = FALSE)
 ```
 
 :::
@@ -816,6 +840,15 @@ Es seien die Mengen $A=\{1,2,3\}$ und $B=\{a,b,c\}$ gegeben.
 - Gleichmächtigkeit ist **transitiv**, d.h. $C$ ist auch *gleichmächtig* zu $B$, 
 	da $B$ zu $A$ gleichmächtig ist!
 
+#### {.fact}
+
+::: {footnotesize}
+Gleichmächtigkeit ist eine *Beziehung* oder **Relation** von Mengen. 
+Sie ist **relexiv**, da $|A|=|A|$ gilt; 
+sie ist **symmetrisch**, da $|A|=|B| \Rightarrow |B|=|A|$; 
+sie ist **transitiv**, da $|A|=|B|, |B|=|C| \Rightarrow |A|=|C|$ gilt.
+So eine Relation nennen wir auch **Aquivalenzrelation**.
+:::
 
 ### Die Mächtigkeit von Mengen
 	
@@ -827,7 +860,7 @@ Ist eine Menge $A$ *gleichmächtig* zu einer natürlichen Zahl $n$
 
 Wir setzen in diesem Fall dann  
 $$ \#A := |A| := n $$
-und sprechen von der *Anzahl der Elemente* von $A$ oder dem **Betrag** von $A$.
+und sprechen von der **Anzahl der Elemente** von $A$ oder dem **Betrag** von $A$.
 
 
 #### {.fact}
@@ -890,7 +923,7 @@ zeigen, dass sie für :
 #### {.endblock}
 
 ```{r echo=FALSE, out.width = "60%", fig.align="center"}
-knitr::include_graphics(file.path(pathToImages, "Domino.png"), error=FALSE)
+knitr::include_graphics(file.path(pathToImages, "Domino.png"), error = FALSE)
 ```
 
 ::: {.tiny}
@@ -976,26 +1009,6 @@ Wir zeigen $1 + 3 + 5 + \cdots + (2n-1) = n^2$ mit Hilfe der **vollständigen In
 #### Video gefällig? {.remark}
 -  [Beweis des Satzes von Maurolicus als Video!](https://youtu.be/y8B8fl_usm0)
 
-
-### Die Menge der ganzen Zahlen
-
-Die Menge der **ganzen Zahlen** ist
-	
-$$ \mathbf{Z} := \{0, -1, 1, -2, 2, -3, 3,...\} = \{...,-3,-2,-1,0,1,2,3,...\} $$
-
-\begin{center}
-		\begin{tikzpicture}
-			  \draw[<->] (-5.5,0) -- (5.5,0) node [above] {$\mathbf{Z}$};
-			  \foreach \x in {-5,...,5}
-			  	\draw (\x,0.1) -- (\x,-0.1) node [below] {\x};
-			\foreach \x in {-5,...,5}
-				\filldraw[ball color=red!80,shading=ball] (\x, 0) circle  (0.06cm);
-		\end{tikzpicture}
-\end{center}
-
-#### {.remark}
-
-Die Menge der ganzen Zahlen ist gleichmächtig zur Menge der natürlichen Zahlen!
 
 
 ### Übung `r nextExercise()`: Summen {.exercise}
@@ -1105,6 +1118,27 @@ Inzwischen wird sogar vermutet, dass alle weiteren Fermat-Zahlen $F_n$ mit $n \g
 **keine** Primzahlen sind, aber ein formaler Beweis steht bislang noch aus.^[In der Tat hat man (vgl. https://de.wikipedia.org/wiki/Fermat-Zahl) bis $n= 11$ alle Fermat-Zahlen vollständig und bis $n=14$ teilweise faktorisiert! Bis $n=32$ ist man sicher sicher, dass diese zusammengesetzt sind.]
 
 
+### Die Menge der ganzen Zahlen
+
+Die Menge der **ganzen Zahlen** ist
+	
+$$ \mathbf{Z} := \{0, -1, 1, -2, 2, -3, 3,...\} = \{...,-3,-2,-1,0,1,2,3,...\} $$
+
+\begin{center}
+		\begin{tikzpicture}
+			  \draw[<->] (-5.5,0) -- (5.5,0) node [above] {$\mathbf{Z}$};
+			  \foreach \x in {-5,...,5}
+			  	\draw (\x,0.1) -- (\x,-0.1) node [below] {\x};
+			\foreach \x in {-5,...,5}
+				\filldraw[ball color=red!80,shading=ball] (\x, 0) circle  (0.06cm);
+		\end{tikzpicture}
+\end{center}
+
+#### {.remark}
+
+Die Menge der ganzen Zahlen ist gleichmächtig zur Menge der natürlichen Zahlen!
+
+
 ### Die Menge der rationalen Zahlen
 Die Menge der **rationalen Zahlen**
 	
@@ -1166,52 +1200,6 @@ Die Menge der reellen Zahlen ist **nicht** gleichmächtig zur Menge der natürli
 )
 
 
-### Positive und negative Zahlen
-
-#### Zur Erinnerung {.definition}
-- Wir nennen eine Zahl $x$ mit $x > 0$ **positiv**. 
-- Wir sprechen bei $x < 0$ von einer **negativen** Zahl $x$. 
-- Die Zahl $0$ ist weder *positiv* noch *negativ*!
-- Für $x \geq 0$ sagen wir, dass $x$ **nicht negativ** ist und sprechen bei $x \leq 0$ 
-	von einer **nicht positiven** Zahl.
-- Die Menge der *positiven reellen Zahlen* bezeichnen wir als 
-	\begin{equation*}
-		\mathbf{R}^+ \text{  oder  }\mathbf{R}^{>0}.
-	\end{equation*}
-- Für die Menge der *nicht negativen ganzen Zahlen* schreiben wir 
-	\begin{equation*}
-		\mathbf{Z}^{\geq 0} = \mathbf{N}_0. 
-	\end{equation*}
-
-
-### Der Betrag
-
-#### (Absolut-)Betrag einer Zahl {.definition}
-Für eine beliebige reelle Zahl $x$, ist der **Betrag** definiert als
-\begin{equation*}
-    	|x| := \begin{cases}
-    				x 	&: x \geq 0 \\
-    				-x 	&: x < 0
-    			\end{cases}
-\end{equation*}
-
-#### {.examples}
-    
-\begin{equation*}
-    	|-6|	  = -(-6)	  = 6,   \qquad 
-		|4| 	  = 4, 	  \qquad 
-		|0| 	  = 0, 	  \qquad 
-		|-a| 	  = |a|,
-\end{equation*}
-    		   
-\begin{equation*}
-	| x-5 | = 	\begin{cases}
-    				x-5 			&: x \geq 5 \\
-    				-(x-5)=-x+5 	&: x < 5
-    			\end{cases}
-\end{equation*}
-
-
 ## Mengen als abstrakte Datenstruktur
 
 ### Mengen in Programmiersprachen
@@ -1232,17 +1220,22 @@ Falls Sie ohne aufwändige Installation Python und die Befehle einmal selber aus
 :::
 
 
-### Python I/III
+### Python
+
+::::::::: {.footnotesize}
+
+:::::: {.columns}
+::: {.column width="49%"}
 
 Erstellen von Mengen in *Python*:
-```
+```{python, eval=F}
 A = set([1,2,3]) # Menge via constructor
 B = set([2,3])
 C = {3,4,5} # Menge via '{' , '}'
 ```
 
 Differenz von Mengen
-```
+```{python, eval=F}
 A = {1,2,3} 
 B = {2,3}  
 # Mengendiffferenz A \ B:
@@ -1250,20 +1243,19 @@ A.difference(B)  # {1}
 A-B  # {1}
 ```
 
-
-### Python II/III
-
 Schnitt zweier Mengen
-```
+```{python, eval=F}
 A = {1,2,3}
 C = {3,4,5} 
 # Schnittmenge von A und C:
 A.intersection(C)  # {3}
 A & C  # {3}
 ```
+:::
+::: {.column width="49%"}
 
 Vereinigung zweier Mengen
-```
+```{python, eval=F}
 A = {1,2,3}
 C = {3,4,5}
 # Vereinigungsmenge von A und C
@@ -1271,31 +1263,65 @@ A.union(C)  # {1, 2, 3, 4, 5}
 A | C #  {1, 2, 3, 4, 5}
 ```
 
-
-### Python III/III
-
 Teilmengen
 
-```
+```{python, eval=F}
 A = {1,2,3}
 C = {1,2,3,4}
 # Teilmengenbeziehungen:
 A.issubset(C)  # True
 A < C  # True 
 A <= C  # True
-C < A  # False
 C <= A  # False
 A < A  # False
 A <= A  # True
 ```
 
 Elemente
-```
+```{python, eval=F}
 A = {1,2,3}
 # Prüfung ob Element der Menge:
 1 in A  # True
 4 in A  # False
 ```
+:::
+::::::
+:::::::::
+
+
+### Übung `r nextExercise()`: Für Python-Programmierer {.exercise .fragile}
+
+Lösen sie die folgende Aufgabe mit Python:
+
+Gegeben seien die Mengen $A=\{1,2,3,4\}$, $B=\{3,4,5,6\}$ und $C=\{1,2,5\}$.
+
+Bestimmen Sie die folgenden Mengen:
+
+a) $A \cup (B \cap C)$
+a) $A \cap (B \cup C)$
+a) $A \setminus C$
+a) $B \setminus (A \cup C)$
+a) $(A \cap B) - (B \cup C)$
+
+\newsavebox{\PythonCodeSetExerciseSolution}
+\begin{lrbox}{\PythonCodeSetExerciseSolution}
+A={1,2,3,4}
+B={3,4,5,6}
+C={1,2,5}
+
+A | (B \& C)  \# {1, 2, 3, 4, 5}
+A \& (B | C)  \# {1, 2, 3, 4}
+A - C  \# {3, 4}
+B - (A | C)  \# {6}
+(A \& C) - (B | C)  \# set()
+\end{lrbox}
+
+::: {.notes}
+Mögliche Lösung:
+
+\usebox{\PythonCodeSetExerciseSolution}
+:::
+
 
 ## Mengenlehre (Fortsetzung)
 
@@ -1496,9 +1522,9 @@ Abhilfe schafft hier eine *eineindeutige Zuordnung*^[*eineindeutig* ist ein alte
 #### {.endblock}
 
 
-### Teilmengen der reellen Zahlen
+### Intervalle, die Teilmengen der reellen Zahlen
 
-Die folgenden *Teilmengen* ***reeller*** *Zahlen* nennen wir [Intervalle]{.cstrong}:
+Die folgenden *Teilmengen* der ***reellen*** *Zahlen* nennen wir [Intervalle]{.cstrong}:
 
 - $\left[a,\, b\right] =                       \left\{ x \in \mathbf{R} \,|\, a \leq x \leq b \right\}$ geschlossenen Intervall
 - $\left(a,\, b\right) = \left]a,\, b\right[ = \left\{ x \in \mathbf{R} \,|\, a < x < b \right\}$       offenes Intervall
@@ -1507,10 +1533,10 @@ Die folgenden *Teilmengen* ***reeller*** *Zahlen* nennen wir [Intervalle]{.cstro
 
 #### Schnitte, Vereinigungen und Subtraktionen von Intervallen {.example}
 
-- $\left[1{,}5;\, 3{,}1\right] \setminus \left(2;\, 4\right) = \left[1{,}5;\, 2\right]$
-- $\left[1{,}5;\, 3{,}1\right] \cup \left(2;\, 4\right) = \left[1{,}5;\, 4\right)$
-- $\left[1{,}5;\, 3{,}1\right] \cap \left(2;\, 4\right) = \left(2;\, 3{,}1\right]$
-- $\left[2;\, 3\right] \setminus \left(1;\, 4\right) = \emptyset$
+- $\left[1{,}5\,;\, 3{,}1\right] \setminus \left(2\,;\, 4\right) = \left[1{,}5\,;\, 2\right]$
+- $\left[1{,}5\,;\, 3{,}1\right] \cup \left(2\,;\, 4\right) = \left[1{,}5\,;\, 4\right)$
+- $\left[1{,}5\,;\, 3{,}1\right] \cap \left(2\,;\, 4\right) = \left(2\,;\, 3{,}1\right]$
+- $\left[2\,;\, 3\right] \setminus \left(1\,;\, 4\right) = \emptyset$
 
 ### Übung `r nextExercise()`: {.exercise}
 
