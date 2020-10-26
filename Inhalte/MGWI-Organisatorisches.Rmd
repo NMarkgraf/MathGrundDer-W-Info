@@ -6,7 +6,7 @@
 # ---------------------------------------------------------------------------
 source("../prelude.R")
 initPart(
-    "QFM-Organisatorisches",  # Dateiname ohne Suffix
+    "MGWI-Organisatorisches",  # Dateiname ohne Suffix
     "Organisatorisches"              # Verzeichnisname im Bilderverzeichnis 
     )
 pathToImages = getPathToImages()
