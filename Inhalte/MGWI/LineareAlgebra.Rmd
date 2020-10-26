@@ -463,6 +463,7 @@ $$A = 	\begin{pmatrix}
 ### Vektoren
 
 Wir nennen eine ...
+
 :::::: {.columns}
 ::: {.column width="49%"}
 
@@ -1107,7 +1108,10 @@ Wir brauchen somit formal 'nur' $A \cdot x = b$ zu lösen.
 Wir können die LGS in Matrizenschreibweise ganz analog zu den normalen LGS lösen.
 Dazu schreiben wir sie in die [erweiterte Matrix]{.cstrong}
 
-$$(A|b) = \begin{pmatrix} 0{,}36 & 0{,}21 & \mid & 1{,}5\\ 1 & 1 & \mid  & 5\\ \end{pmatrix}$$
+$$(A|b) = \left(\begin{array}{rr|r}
+		0{,}36 	& 0{,}21	& 1{,}5\\
+		1		& 1			& 5\\
+	\end{array}\right)$$
 
 um.
 
@@ -1172,6 +1176,8 @@ c) $$\sysdelim.. \systeme{-x-2y+z = 8, 2x+3y-z=-10, -x-4y+3z = 10}$$
 a) $x=8$, $y=-33$, $z=5$
 
 b) Unendlich viele Lösungen der Form: $y = - \frac{1}{17}\cdot x - \frac{44}{17}$, $z = - \frac{7}{17}\cdot x + \frac{32}{17}$
+    Man kann das auch so schreiben:
+$$\pmatrix{x\\y \\ z} = \pmatrix{0 \\ -\frac{44}{17} \\ \frac{32}{17}}+ t \cdot \pmatrix{1 \\ -\frac{1}{17} \\ -\frac{7}{17}}  $$
 
 c) Das LGS hat **keine** Lösung!
 
