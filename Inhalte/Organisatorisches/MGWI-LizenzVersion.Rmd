@@ -8,6 +8,6 @@ Der verwendete Code sowie das Beamer Template aus dem [NPBT-Projekt](http://gith
 - R Version: `r getRversion()`
 - `mosaic` Version: `r packageVersion("mosaic")`
 
-Bitte melden Sie Fehler und Verbesserungsvorschläge: [nmarkgraf@hotmail.de](<mailto:nmarkgraf@hotmail.de>)
+Bitte melden Sie Fehler und Verbesserungsvorschläge: [nmarkgraf@hotmail.com](<mailto:nmarkgraf@hotmail.com>)
 
 Mitarbeit und Hinweise von Thomas Christiaans, Mathias Ross, Oliver Gansser, Matthias Gehrke, Jörg Horst, Bianca Krol, Karsten Lübke, Sebastian Sauer, Daniel Ziggel. **Vielen Dank!**
