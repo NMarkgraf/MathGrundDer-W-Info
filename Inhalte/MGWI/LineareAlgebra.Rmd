@@ -1177,7 +1177,7 @@ a) $x=8$, $y=-33$, $z=5$
 
 b) Unendlich viele Lösungen der Form: $y = - \frac{1}{17}\cdot x - \frac{44}{17}$, $z = - \frac{7}{17}\cdot x + \frac{32}{17}$
     Man kann das auch so schreiben:
-$$\pmatrix{x\\y \\ z} = \pmatrix{0 \\ -\frac{44}{17} \\ \frac{32}{17}}+ t \cdot \pmatrix{1 \\ -\frac{1}{17} \\ -\frac{7}{17}}  $$
+$$\begin{pmatrix}x\\y \\ z\end{pmatrix} = \begin{pmatrix}0 \\ -\frac{44}{17} \\ \frac{32}{17}\end{pmatrix}+ t \cdot \begin{pmatrix}1 \\ -\frac{1}{17} \\ -\frac{7}{17}\end{pmatrix}$$
 
 c) Das LGS hat **keine** Lösung!
 

@@ -137,7 +137,7 @@ b) $\displaystyle A_6=\left\{w \in \Sigma^* \,\Big|\, |w|=3\right\}$
 
 a) $\displaystyle A_5 = \left\{aa, ab, ac, ba, bb, bc, ca, cb, cc\right\}$
 
-b) $\displaystyle A_6 = \left\{aaa, aab, aac, aba, abb, abc, aca, acb, acc, baa, bab, bac, bba, bbb, bbc, bca, bcb, bcc, caa, cab, cac, cba, cbb, cbc, cca, ccb, ccc\right\}$
+b) $\displaystyle \begin{aligned} A_6  &= \{aaa, aab, aac, aba, abb, abc, aca, acb, acc, baa, \\ &\qquad    bab, bac, bba, bbb, bbc, bca, bcb, bcc, caa, cab, \\ &\qquad    cac, cba, cbb, cbc, cca, ccb, ccc \}\end{aligned}$
 
 :::
 
@@ -208,7 +208,7 @@ $-2 \notin C$;
 #### Teilmenge {.definition}
 Eine Menge $A$ heißt **Teilmenge** der Menge $B$, 
 wenn jedes Element von $A$ auch ein Element von $B$ ist.
-Wir schreiben dann^[Bzgl. $\subseteq$ oder $\subset$ siehe auch [https://www.enyclopediaofmath.org](https://www.encyclopediaofmath.org//index.php?title=Set_theory&oldid=24823)]
+Wir schreiben dann
 
 :::::: {.columns}
 ::: {.column width="49%"}
@@ -259,7 +259,8 @@ Zwei Mengen $A$ und $B$ heißen **gleich**, falls $A \subseteq B$ und
 $B \subseteq A$ gilt.
 
 #### {.fact}
-Jede Menge ist eine Teilmenge, aber *keine echte* Teilmenge von sich selber!
+- Jede Menge ist eine Teilmenge, aber *keine echte* Teilmenge von sich selber!
+- Bzgl. $\subseteq$ oder $\subset$ siehe auch [https://www.enyclopediaofmath.org](https://www.encyclopediaofmath.org//index.php?title=Set_theory&oldid=24823)
 
 
 ### Beispiele, Leere Menge, besondere Mengen
