@@ -86,7 +86,15 @@ Bei einer *homogene* Relation $R \subset A \times A$ schreibt am anstelle von $(
 
 #### Die Relationen $<$, $\leq$, $>$, $\leq$ und $=$ {.examples}
 - $<$, $\leq$, $>$, $\leq$ und $=$ sind Relationen auf $\mathbf{R}^2$, $\mathbf{Q}^2$ und $\mathbf{Z}^2$.
-- Statt $(1, 2) \in <$, $(1,2) \in \leq$, $(2,1) \in\;>$, $(2, 1) \in\;\geq$ oder $(1,1) \in\;=$ schreiben wir $1 < 2$, $1 \leq 2$, $2 > 1$, $2 \geq 1$ oder $1=1$.
+- Statt der *Element*-Notation schreiben wir oft die *Infix Notation* von bekannten Relationen, z.B.:
+
+| Elemnt-Notation  | Infix Notation  |
+|:-:|:-:|
+| $(1, 2) \in <$     | $1 < 2$    |
+| $(1,2) \in \leq$   | $1 \leq 2$ |
+| $(2,1) \in\;>$     | $2 > 1$    |
+| $(2, 1) \in\;\geq$ | $2 \geq 1$ | 
+| $(1,1) \in\;=$     | $1=1$      |
 
 
 ### Übung `r nextExercise()`: {.exercise}
@@ -118,15 +126,23 @@ a) $R^{\text{doppelt}}_B = \left\{(1, 2), (2, 4), (3, 6), (4, 8), (5, 10) \right
 
 Eine (homogene) Relation $\sim$ auf einer Menge A heißt **Äquivalenzrelation**, falls für alle $a,b,c \in A$ gilt:
 
-1. Aus $a \sim b$ folgt $b \sim a$ (*Symmetrie*)
-2. Aus $a \sim b$ und $b \sim c$ folgt $a \sim c$ (*Transitivität*)
-3. Es ist $a \sim a$ (*Reflexivität*)
+1. [*Symmetrie*]     Aus $a \sim b$ folgt $b \sim a$ 
+2. [*Transitivität*] Aus $a \sim b$ und $b \sim c$ folgt $a \sim c$ 
+3. [*Reflexivität*]  Es ist $a \sim a$ 
 
 ####  Äquivalenzrelationen {.example}
 
 - Auf jeder Zahlenmenge bildet $=$ eine Äquivalenzrelation.
+    Denn für Zahlen $a$, $b$ und $c$ gilt: 
+    - Ist $a = b$, dann ist $b = a$
+    - Ist $a = b$ und $b = c$, dann ist $a = c$
+    - Und für alle Zahlen $a$ gilt $a=a$
 
 - *Gleichmächtigkeit* war eine Äquivalentrelation auf den Mengen.
+   Denn seien drei Mengen (z.B. $A=\{1,2,3\}$, $B=\{a,b,c\}$ und $C=\{X,Y,Z\}$) gegeben, so gilt: 
+   - $|A| = |B|$, also ist $|B| = |A|$
+   - $|A| = |B|$ und $|B|=|C|$, so ist $|A|=|C|$
+   - $|A| = |A|$
 
 
 ### Übung `r nextExercise()`: {.exercise}
@@ -145,6 +161,12 @@ d) $\geq_A \,= \{ (a; b) \in A^2\,|\,a \geq b \}$
 
 e) $\sim_2 \,= \{(a; b) \in A^2\,|\,2 \text{ teilt }  a-b\}$
 
+**Hinweis:** $2$ *teilt* $(a-b)$ wird auch als $2\,|\,(a-b)$ geschrieben und bedeutet: es gibt $m\in\mathbf{Z}$ mit $2 \cdot m=(a-b)$. 
+
+Z.B. sei $a=6$ und $b=10$, dann ist $(a-b) = -4 = 2 \cdot (-2)$, m.a.W. $m = -2$! und daher gilt: $2\,|\, (6-10)$.
+
+Aber für $a=7$ und $b=10$ gibt es aber keine ganze Zahl $m$ mit $2 \cdot m = 7-10 = -3$! Daher schreiben wir $2 \not|\, (7-10)$ bzw. sagen $2$ *teilt nicht* $(7-10)$.
+
 ::: {.notes}
 
 a) Keine Äquibalentrelation, da z.B. $(1; 1) \,\not\in\; <_A$. (Nicht reflexiv!)
@@ -155,7 +177,17 @@ c) Keine Äquibalentrelation, da z.B. $(1; 2) \in\; \leq_A$ aber $(2; 1) \,\not\
 
 d) Keine Äquibalentrelation, da z.B. $(2; 1) \in\; \geq_A$ aber $(1; 2) \,\not\in\; \geq_A$ (Nicht symmetrisch!)
 
-e) Äquivalenzrelation!
+e) Äquivalenzrelation! Da:
+    
+    1.) *Symmetrie*: 
+        Es gilt $2 \,|\, (a-b) \Longleftrightarrow \exists k \in \mathbf{Z} .(a-b) = 2 \cdot k$
+        Dann gilt $2 \,|\, (b-a)$, weil $(b-a) = -a +b = -(a-b) = -(2 \cdot k) = 2 \cdot (-k)$ und $-k \in \mathbf{Z}$.
+    
+    2.) *Transitivität*:
+        Aus $2 \,|\, (a-b)$ und $2 \,|\, (b-c)$ folgt es gibt $k$ und $l$ mit $(a-b)= 2 \cdot k$ und $(b-c) = 2 \cdot l$. Dann ist aber $a-c = a-b + b-c = 2 \cdot k + 2 \cdot l = 2 \cdot (k+l)$ und somit $2 \,|\, (a-c)$.
+    
+    3.) *Refelxivität*:
+        $2 \,|\, a-a = 0$, da $2 \cdot 0 = 0$ ist.
 
 :::
 
@@ -491,16 +523,27 @@ B. Für ein *Universum* $U$ ist charakteristische Funktion $\chi_U$  *injektiv*,
 
 C. Die Funktion $f:\mathbf{Z_5} \to \mathbf{Z}_5$ mit $f(\mathbf{a}) = [\mathbf{a}+\mathbf{1}]_5$ ist *injektiv*, *surjektiv* und/oder *bijektiv*?
 
-D. Es seien $\max(x,y) := \begin{cases}x &: x \geq y \\ y &: x < y\end{cases}$ und $\min(x,y) := -\max(-x,-y)$ sowie zwei beliebige Teilmengen $A$ und $B$ von $\mathbf{Z}$ gegeben. 
+D. Es seien $\max(x,y) := \begin{cases}x &: x \geq y \\ y &: x < y\end{cases}$ und $\min(x,y) := -\max(-x,-y)$ sowie zwei beliebige Teilmengen $A$ und $B$ von $\mathbf{R}$ gegeben. 
 Schreiben  Sie die folgenden Funktionen nur mit charakteristischen Funktionen, den Funktionen $\max(.,.)$ und $\min(.,.)$ und den Zeichen $+$, $\cdot$, $-$, :
     
+:::::: {.columns}
+::: {.column width="49%"}
+
 1) $\chi_{A \cap B}$
 
 2) $\chi_{A \cup B}$
 
+:::
+::: {.column width="49%"}
+
 3) $\chi_{A \setminus B}$
 
 4) $\chi_{A^c}$
+
+:::
+::::::
+
+
 
 ::: {.notes}
 A. nur injektiv.
@@ -510,13 +553,24 @@ B. weder injektiv, noch surjektiv und somit auch nicht bijektiv.
 C. bijektiv mit $f^{-1}(\mathbf{a}) = [\mathbf{a}-\mathbf{1}]_5$
 
 D. Es ist:
+
+:::::: {.columns}
+::: {.column width="49%"}
+
     1) $\chi_{A \cap B} = \min(\chi_A, \chi_B) = \chi_A \cdot \chi_B$
+    
     2) $\chi_{A \cup B} = \max(\chi_A, \chi_B) = \chi_A + \chi_B - \chi_{A \cap B} = \chi_A + \chi_B - \chi_A \cdot \chi_B$
-    1) $\chi_{A \setminus B} = \max(\chi_A - \chi_B, 0) = \chi_A - \chi_{A \cap B} = \chi_A - \chi_A \cdot \chi_B = \chi_A \cdot (1-\chi_B)$
+    
+:::
+::: {.column width="49%"}
+
+    3) $\chi_{A \setminus B} = \max(\chi_A - \chi_B, 0) = \chi_A - \chi_{A \cap B} = \chi_A - \chi_A \cdot \chi_B = \chi_A \cdot (1-\chi_B)$
+    
     4) $\chi_{A^c} = 1 - \chi_A$
+    
 
 :::
-
+::::::
 
 ### Ein paar Ideen zu den charateristischen Funktionen
 
