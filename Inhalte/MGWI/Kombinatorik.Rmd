@@ -633,22 +633,10 @@ $$k \cdot \binom{n}{k} = n \cdot \binom{n-1}{k-1}$$
 
 :::::: {.columns}
 ::: {.column width="74%"}
-\begin{tabular}{cccccccccccc}
-	&	&	&	&	&	& 1	&	&	&	& 	&   \\
-	&	&	&	&	&	&	&	&	&	&	&	\\
-	&	&	&	&	& 1	&	& 1	&	&	& 	&   \\
-	&	&	&	&	&	&	&	&	&	&	&	\\
-	&	&	&	& 1	&	& 2	&	& 1	&	& 	&   \\
-	&	&	&	&	&	&	&	&	&	&	&	\\
-	&	&	& 1	&	& 3	&	& 3	&	& 1	& 	&   \\
-	&	&	&	&	&	&	&	&	&	&	&	\\
-	&	& 1	&	& 4	&	& 6	&	& 4	&	& 1 &   \\
-	&	&	&	&	&	&	&	&	&	&	&	\\
-	& 1	&	& 5	&	& 10 &	& 10 &	& 5	&	& 1 \\
-	&	&	&	&	&	&	&	&	&	&	&	\\
-	&	&	&	&	&	&	&	&	&	&	&	\\
-	&	&	&	&	&	&	&	&	&	&	&
-\end{tabular}
+```{r echo=FALSE, fig.align="center"}
+knitr::include_graphics(file.path(pathToImages, "PascalTriange.pdf"), error=FALSE)
+```
+
 :::
 ::: {.column width="24%"}
 \personDB{Pascal}
@@ -682,21 +670,11 @@ $$ \binom{1000}{3} = 166\,167\,000, \quad \binom{1000}{10}= 263\,409\,560\,461\,
 ::: {.notes}
 Berechnung des Binomialkoeffizenten  mit Hilfe des rekusiven Abstiegs in Python
 
-
-def binom(n, k):
-    if k > n or k < 0:
-        return 0
-    if k > n - k:
-        k = n - k
-    if k == 0 or n <= 1:
-        return 1
-    return n * binom(n-1, k-1) // k
-
-if __name__ == '__main__':
-    print(binom(100, 1))
-    print(binom(100, 50))
-    print(binom(1000, 3))
-    print(binom(1000, 10))
+\lstset{language=Python, showstringspaces=false}
+\lstset{commentstyle=\color{FOMLstComment}\bfseries,
+keywordstyle=\color{FOMLstKeywords}\bfseries,
+stringstyle=\ttfamily\color{FOMLstStrings}}
+\lstinputlisting{python-sources/Binomialkoeffizient.py}
 
 :::
 
