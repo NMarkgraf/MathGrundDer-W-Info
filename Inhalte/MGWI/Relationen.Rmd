@@ -177,7 +177,7 @@ c) Keine Äquivalenzrelation, da z.B. $(1; 2) \in\; \leq_A$ aber $(2; 1) \,\not\
 
 d) Keine Äquivalenzrelation, da z.B. $(2; 1) \in\; \geq_A$ aber $(1; 2) \,\not\in\; \geq_A$ (Nicht symmetrisch!)
 
-e) $~_2$ ist eineÄquivalenzrelation! Denn es gilt:
+e) $~_2$ ist eine Äquivalenzrelation! Denn es gilt:
     
     1.) *Symmetrie*: 
         Es gilt $2 \,|\, (a-b) \Longleftrightarrow \exists k \in \mathbf{Z} .(a-b) = 2 \cdot k$
@@ -192,21 +192,132 @@ e) $~_2$ ist eineÄquivalenzrelation! Denn es gilt:
 :::
 
 
+### Modulare Arithmetik 
+
+Aus der Schule kennen wir die **Division mit Rest**: 
+Für eine ganze Zahl $a$ und eine natürliche Zahl $m$ finden sich ein 
+$q\in\mathbf{Z}$ und $r\in\mathbf{N}$ (gennant **Rest**),
+so dass gilt:
+$$ a = q \cdot m + r$$
+#### $m$ teilt $a$ {.definition}
+Teilt die natürliche Zahl $m$ die ganze Zahl $a$ ohne Rest, so schreiben wir 
+dafür auch
+$$m \, | \, a$$ 
+und sagen dazu **$m$ teilt $a$**.
+
+#### Kongruenz {.definition}
+Für eine natürliche Zahl $n$ und zwei ganze Zahlen $a$ und $b$ sagen wir $a$ 
+und $b$ sind **kongruent modulo $n$**, falls $a$ und $b$ den selben *Rest* bei 
+der Division mit $n$ haben.
+
+Wir schreiben dann:
+$$a=b \pmod n \quad \text{ oder auch }\quad a \equiv b \pmod n$$
+
+#### {.theorem}
+$$a=b \pmod m \Longleftrightarrow \exists k\in\mathbf{Z}: a-b = k \cdot m \Longleftrightarrow m \,|\,  (a-b)$$
+
+### Beispiele
+
+Weil $17 = 3 \cdot 5 + 2$ ist, gilt 
+$17 = 2 \pmod 5$ und $5 \,\not|\;\, 17$, aber $5 \,|\, (17-2)$.
+
+Weil $22 = 4 \cdot 5 + 2$ ist, gilt
+$22 = 2 \pmod 5$ und $5 \,\not|\;\, 22$, aber $5 \,|\, (22-2)$.
+
+Weil $38 = 4 \cdot 9 + 2$ ist, gilt
+$38 = 2 \pmod 9$ und $9 \,|\, (38-2)$.
+
+Weil $22 = 2 \cdot 9 + 4$ ist, gilt $22 = 4 \pmod 9$ und $9 \,|\, (22-4)$.
+
+
+#### Übung {.exercise}
+
+Geben sie für $a$ und $b$ möglichst kleine nicht negative Zahlen an, für die gilt:
+
+- $101 = a \pmod 5$
+- $234 = b \pmod 5$
+
+
+### Restklassen (modulo n)
+
+Für jede natürliche Zahl $n$ kann man $n$ Mengen bestimmmen, die jeweils alle
+ganzen Zahlen enthalten kongruent $0$, $1$, ... bzw. $(n-1)$ modulo $n$ sind.
+
+Wir bezeichen diese Mengen als **Restklassen modulo n**.
+
+**Beispiel:** Sei $n=3$.
+
+Es gibt dann genau drei *Restklassen modulo 3*:
+
+- $[0]_3 = A_0 = \{ x \in \mathbf{Z} \,|\, x = 0 \pmod 3\} = \{..., -9, -6, -3, 0, 3, 6, 9, ...\}$
+- $[1]_3 = A_1 = \{ x \in \mathbf{Z} \,|\, x = 1 \pmod 3\} = \{..., -8, -5, -2, 1, 4, 7, 10, ...\}$
+- $[2]_3 = A_2 = \{ x \in \mathbf{Z} \,|\, x = 2 \pmod 3\} = \{..., -7, -4, -1, 2, 5, 8, 11, ...\}$
+
+Da jede ganze Zahl genau in eine Restklasse fällt, gilt:
+$\mathbf{Z} = A_0 \cup A_1 \cup A_2$ und 
+$A_0 \cap A_1 = A_0 \cap A2 = A_1 \cap A_2 = \emptyset$.
+
+
+#### Übung {.exercise}
+
+Geben Sie die *Restklassen modulo 4* an.
+
+::: {.notes}
+Es gibt genau die folgenden vier *Restklassen modulo 4*:
+
+- $[0]_4 = A_0 = \{ x \in \mathbf{Z} \,|\, x = 0 \pmod 4\}$
+- $[1]_4 = A_1 = \{ x \in \mathbf{Z} \,|\, x = 1 \pmod 4\}$
+- $[2]_4 = A_2 = \{ x \in \mathbf{Z} \,|\, x = 2 \pmod 4\}$
+- $[3]_4 = A_3 = \{ x \in \mathbf{Z} \,|\, x = 3 \pmod 4\}$
+
+:::
+
+
+### Rechnen modulo n 
+
+Sei $m$ eine natürliche Zahl, und $a$, $b$, $c$ und $d$ ganze Zahlen mit
+$$a = b \pmod m \qquad\text{ und }\qquad c = d \pmod m.$$
+Dann gilt:
+$$ a + c = b + d \pmod m \quad\text{ sowie }\quad a \cdot c = b \cdot d \pmod m$$
+
+### Rechnen mit Restklassen modulo $m$
+
+Für $x$ aus einer Restklasse $[a]_m$ setzen wir $[x]_m = [a]_m$ und nennen $x$ 
+einen **Repräsentanten** der Restklasse.
+
+Es gilt dann $[x]_m = [y]_m$, falls $x \in [a]_m$ und auch $y \in [a]_m$. 
+Das ist eine Umformulierung von $x = y = a \pmod m$ mit $a, x, y \in \mathbf{Z}$ und
+$0 \leq a < m$.
+
+Wir können das auf die Restklassen $[.]_m$ übertragen und schreiben:
+
+$$[a]_m + [c]_m = [a+c]_m \qquad\text{ bzw.}\qquad  [a]_m \cdot [c]_m = [a \cdot c]_m$$
+
+
+
 ### Der Restklassenring $\mathbf{Z}/n\mathbf{Z}$
 
-Wir definierten für jedes $n \in \mathbf{N}$ die Relation 
-$$\sim_n \,= \{(a; b) \in \mathbf{Z}^2\,|\,n \text{ teilt } a-b\} $$
-auf den ganzen Zahlen.
-
-Die Menge 
-$$[a]_n = \{m \in \mathbf{Z}\,|\,m \sim_n a\}$$
-aller zu $a$ *aquivalenten* Elemente nennen wir die **Äquivalenzklasse** von $a$ (bzgl. $\sim_n$ und $\mathbf{Z}$). Jedes Element der Klasse nennen wir einen **Repräsentanten** dieser Klasse. 
-
-
-
 Die Menge aller Äquivalenzklassen bezeichnen wir mit 
+
 $$\mathbf{Z_n} := \mathbf{Z}/n \mathbf{Z} := \mathbf{Z}/\sim_n := \{ [a]_n\,|\,a \in \mathbf{Z}\}.$$ 
+
 Zusammen mit der Addition $[a]_n + [b]_n = [a+b]_n$ und Multiplikation $[a]_n \cdot [b]_n = [a \cdot b]_n$ nennen wir den **Restklassenring $Z$ modulo $n$** $(\mathbf{Z_n}, +, \cdot)$.
+
+
+### Rechenregeln für kommutative Ringe mit Einselement
+
+Für den *Restklassenring $Z$ modulo $n$* gelten die folgenden (Ring-)Gesetze für einen **kommutativen Ring mit Eins**:
+
+- **Kommutativität der Addition:** $[a]_n + [b]_n = [a+b]_n = [b+a]_n = [b]_n + [a]_n$
+- **Assoziativgesetz der Addition**, $([a]_n + [b]_n) + [c_n] = [a]_n + [b]_n +[c]_n = [a]_n + ([b]_n +[c]_n)$
+- **Existenz neutrales Element ($[0]_n) der Addition:** $[a]_n + [0]_n =[a]_n =[0]_n + [a]_n$
+- **Existenz des inversen Elements der Addition:** Für jedes $[a]_n \neq [0]_n$ ist $[n-a]_n = [-a]_n$ das *inverse Element* so dass $[a]_n + [n-a]_n = [a+n-a]_n = [n]_n = [0]_n$.
+
+- **Kommutativität der Multiplikation:** $[a]_n \cdot [b]_n = [a\cdot b]_n = [b\cdot a]_n = [b]_n \cdot [a]_n$
+- **Assoziativgesetz der Multiplikation**, $([a]_n  [b]_n) \cdot [c_n] = [a]_n \cdot [b]_n \cdot [c]_n = [a]_n \cdot ([b]_n \cdot[c]_n)$
+- **Existenz neutrales Element ($[1]_n) der Multiplikation:** $[a]_n \cdot [1]_n =[a]_n =[1]_n \cdot [a]_n$
+
+- **Distributivgesetz:** $[a]_n \cdot ([b]_n + [c]_n) = [a]_n \cdot [b]_n + [a]_n \cdot [c]_n$.
 
 
 ### Beispiele 
@@ -272,29 +383,6 @@ $\mathbf{2} := [2]_3 = \{n \in \mathbf{Z}\,|\, 3 \text{ teilt } (n-2) \}$
 ::::::::::
 
 
-### Beispiel: Volle Stunden der Uhr
-
-::: {.footnotesize}
-
-Ein einfaches und sehr anschauliches Beispiel hierfür ist eine (analoge) Uhr, bei der wir der Einfachheit halber annehmen, dass wir nur ganze Stunden ablesen wollen.
-Eine solche Uhr kann z.B. nicht zwischen 9 Uhr und 21 Uhr unterscheiden, sie betrachtet also diese Zeiten -- oder allgemeiner alle Zeiten, die sich nur um ein Vielfaches von 12 unterscheiden -- als äquivalent, bzw. fasst sie zu einer Äquivalenzklasse zusammen.
-
-Es ist somit
-$$a \sim b :\Leftrightarrow b-a = 12 \cdot k \,\text{ für ein }\, k \in \mathbf{Z} \Leftrightarrow 12 \text{ teilt } (b-a) \Leftrightarrow (b-a) \in 12\mathbf{Z}.$$
-D.h. es gilt genau dann $a \sim b$, wenn auf einer Uhr die $a.$ und $b.$ Stunden nicht unterscheiden kann.
-
-Bezüglich dieser Relation ist z.B.:
-
-$$[9]_{12} = \{b \in \mathbf{Z} \,|\, (b-9) \in 12\mathbf{Z}\}=\{..., -15, -3, 9, 21, ...\}$$
-die Menge aller Zeiten, die von der Uhr als zu 9 Uhr äquivalent angesehen werden.
-
-Menge aller Äquivalenzklassen lautet somit
-
-$$\mathbf{Z}/\sim_{12} = \mathbf{Z_{12}} = \{[0]_{12}, [1]_{12}, [2]_{12}, [3]_{12}, [4]_{12}, [5]_{12}, [6]_{12}, [7]_{12}, [8]_{12}, [8]_{12}, [9]_{12}, [10]_{12}, [11]_{12}\}$$
-und entspricht den möglichen Ständen der Uhr.
-
-:::
-
 ### Übung `r nextExercise()`: {.exercise}
 
 Beschreiben Sie $\mathbf{Z_4}$ und geben Sie die Additions- und Multiplikationstabelle an.
@@ -346,16 +434,14 @@ Das Rechnen im Restklassenring $\mathbf{Z_n}$ enspricht als dem *normalen* Rechn
 
 Es ist
 \begin{align*}
-    [3]_5 + [2]_5 \cdot [4]_5 - [1]_5 &= [3]_5 + [2 \cdot 4]_5 - [1]_5 
+    [3]_5 + [2]_5 \cdot [4]_5 - [1]_5 &= [3]_5 + [2 \cdot 4]_5 - [1]_5 \\
                                       &= [3]_5 + [8]_5 - [1]_5 = [3]_5 + [3]_5 - [1]_5 \\
-                                      &= [3+3-1]_5 
+                                      &= [3+3-1]_5 \\
                                       &= [5]_5 \\
                                       &= [0]_5
 \end{align*}
 
-Mit der Funktion $x \mod n$ erhalten den Rest bei der Division mit Rest von $x$ geteilt durch $n$. Mit $\lfloor x \rfloor := \max \{k\in\mathbf{Z} \mid k\leq x\}$ gilt also:
-$$x = \lfloor x / n \rfloor \cdot n + (x \mod n)$$
-Wir können daher auch schreiben:
+Alternativ können auch schreiben:
 \begin{align*}
     [3]_5 + [2]_5 \cdot [4]_5 - [1]_5 &= (3 \mod 5) + (2 \mod 5) \cdot (4 \mod 5) - (1 \mod 5) \\
                                       &= (3 \mod 5) + (2 \cdot 4) \mod 5 - (1 \mod 5) \\
@@ -365,6 +451,32 @@ Wir können daher auch schreiben:
 \end{align*}
 
 :::
+
+### Beispiel: Hashfunktionen 
+
+Eine **Hashfunktion** $H$ ist eine Abbildung aus einem Alphabet $\Sigma$ in einen 
+Zahlenmenge (z.B. $\mathbf{Z_n}$). Zum Beispiel:
+
+Neben wir an, wir haben ein Feld (Array) mit $n=8$ Einträgen. Die Schlüssen 
+für dieses Feld sind Zeichenketten (zur Vereinfachung aus Großbuchstaben).
+
+Die Funktion $\text{chr}(X)$ wandelt jeden Buchstaben des Alphabets ("A", "B", ... bis "Z") in die Zahlen $0$, $1$, ... bis $25$ um. 
+
+Sei $w$ ein Wort mit Buchstanden aus dem Alphabet, so bezeichnen wir mit $w_i$ den
+$i$-ten Buchstaben des Wortes. Für das Wort "XYZ" wäre das also 
+$w_1 =$"X", $w_2 =$"Y" und $w_3=$"Z"
+
+Eine mögliche Hashfunktion wäre dann z.B. $H(w) = \sum_{i} \text{chr}(w_i) \pmod n$.
+
+$$H(WIEN)= \text{chr}(W) + \text{chr}(I) + \text{chr}(E) + \text{chr}(N) \pmod 7 = 22 + 8 + 4 + 13 \pmod 7 = 5 \pmod 7$$
+
+Man könnte also die Informationen über "WIEN" ins 5. Feld ablegen. 
+
+**Übung für zu Hause:** 
+
+Berechnen Sie die Hashwerte für "GRAZ", "BONN", "ULM", "BOCHUM". -- 
+Gibt es Kollisionen? -- 
+Was ändert sich, wenn wir das Feld auf $n=25$ aufstocken? 
 
 
 ### Beispiel: Anwendung bei ISBN (I/II)
@@ -401,7 +513,7 @@ Hier im Beispiel also:
 
 ### Übung `r nextExercise()`: {.exercise}
 
-a) Berechnen Sie die Prüfnummer des Buches *Numerisches Python: Arbeiten mit NumPy, Matplotlib und Pandas* von Berd Klein mit der ISBN 978-3-4464-5076-?
+a) Berechnen Sie die Prüfnummer des Buches *Numerisches Python: Arbeiten mit NumPy, Matplotlib und Pandas* von Bernd Klein mit der ISBN 978-3-4464-5076-?
 
 b) Die 10-stellige ISBN kann man als $a-bcd-efghi-p$ mit den Ziffern a,b,c,d,e,f,g,h,i und der Prüfziffer $p$ darstellen. Dabei erfüllt $p$ die Gleichung: 
 $$(10\cdot a + 9\cdot b + 8\cdot c + 7\cdot d + 6\cdot e + 5\cdot f + 4\cdot g + 3\cdot h + 2\cdot i + p) \mod 11 = 0$$
@@ -502,6 +614,41 @@ Wir bezeichnen für eine Menge $M$ das **Urbild von $M$** mit
 $$f^{-1}(M) = \{a \in A \,|\, f(a) \in M\}.$$
 
 
+### Übung `r nextExercise()`: {.exercise}
+
+Seien $A$ und $B$ zwei beliebige endliche Mengen, $f: A \to B$ eine Funktion.
+
+Entscheiden Sie ob die folgenden Aussagen *wahr* oder *falsch* sind:
+
+A) $f$ ist injektiv, dann ist $|A| \leq |B|$.
+
+A) $f$ ist injektiv, dann ist $|A| = |B|$.
+
+A) $f$ ist injektiv, dann ist $|A| \geq |B|$.
+
+A) $f$ ist surjektiv, dann ist $|A| \leq |B|$.
+
+A) $f$ ist surjektiv, dann ist $|A| = |B|$.
+
+A) $f$ ist surjektiv, dann ist $|A| \geq |B|$.
+
+A) $f$ ist bijektiv, dann ist $A \neq B$.
+
+A) $f$ ist bijektiv, dann ist $A = B$.
+
+
+::: {.notes}
+
+Richtig sind die Aussagen: 
+
+- $f$ injektiv, dann ist $|A| \leq |B|$ und 
+
+- ist $f$ sujektiv, dann ist $|A| \geq |B|$.
+
+Der Rest ist falsch. Ist $f$ bijektiv, so ist (bekanntermassen) $|A| = |B|$.
+
+:::
+
 ### (Partiell-)Charakteristische Funktionen
 
 Wir bezeichnen mit $\bot$ einen Zustand, für den etwas nicht definiert ist.
@@ -514,6 +661,26 @@ Unter einer **partiell-charakteristische Funktion**  $\phi_M$ einer Menge $M$ ve
 $$\phi_M(x) = \begin{cases}1 &: x \in M \\ \bot &: \text{sonst}\end{cases}$$
 
 
+### Beispiel in Python
+
+```{python, eval=FALSE}
+
+def charFkt(x, M):
+    if x in M:
+        return 1
+    else:
+        return 0
+
+
+def partCharFkt(x, M):
+    if x in ;:
+        return 1
+    else:
+        raise ValueError()
+
+```
+
+
 
 ### Übung `r nextExercise()`: {.exercise}
 
@@ -523,9 +690,15 @@ B. Für ein *Universum* $U$ ist charakteristische Funktion $\chi_U$  *injektiv*,
 
 C. Die Funktion $f:\mathbf{Z_5} \to \mathbf{Z}_5$ mit $f(\mathbf{a}) = [\mathbf{a}+\mathbf{1}]_5$ ist *injektiv*, *surjektiv* und/oder *bijektiv*?
 
-D. Es seien $\max(x,y) := \begin{cases}x &: x \geq y \\ y &: x < y\end{cases}$ und $\min(x,y) := -\max(-x,-y)$ sowie zwei beliebige Teilmengen $A$ und $B$ von $\mathbf{R}$ gegeben. 
-Schreiben  Sie die folgenden Funktionen nur mit charakteristischen Funktionen, den Funktionen $\max(.,.)$ und $\min(.,.)$ und den Zeichen $+$, $\cdot$, $-$, :
-    
+D. Es seien $\max(x,y) := \begin{cases}x &: x \geq y \\ y &: x < y\end{cases}$ 
+    und $\min(x,y) := -\max(-x,-y)$ sowie zwei beliebige Teilmengen $A$ und $B$ 
+    von $\mathbf{R}$ gegeben. 
+    Schreiben Sie die folgenden Funktionen ausschließlich unter Verwendung von 
+    charakteristischen Funktionen ($\chi_A$ und $\chi_B$), 
+    den Funktionen $\max(.,.)$ und $\min(.,.)$, 
+    den Zahlen $0$ oder $1$, 
+    sowie  der Zeichen $+$, $\cdot$, $-$, $:$.
+
 :::::: {.columns}
 ::: {.column width="49%"}
 
@@ -545,32 +718,41 @@ Schreiben  Sie die folgenden Funktionen nur mit charakteristischen Funktionen, d
 
 
 
-::: {.notes}
-A. nur injektiv.
+::::::::: {.notes}
+A. Wegen $f(1)=1 \neq 2 = f(2)$ und weil $f(x) = 3$ keine Lösung hat, ist $f$
+   injektiv. Da $\text{range}(f) = \{1,2\} \neq \{1,2,3\}$ ist $f$ nicht 
+   surjektiv und somit auch nicht bijektiv!
+   
+B. Da $\chi_U(x) \equiv 1$, ist für $|U| > 1$ $\chi_U$ nicht injektiv, da sonst
+   O.B.d.A. es zwei Elemente von $U$ mit $a \neq b$ gäbe, mit 
+   $\chi_U(a) = 1 =\chi_U(b)$.
+   Weil $\text{range}(\chi_U) = \{1\} \neq \{0,1\}$ gilt, folgt nicht surjektiv,
+   insgesamt also  auch nicht bijektiv.
+   Weder injektiv, noch surjektiv und somit auch nicht bijektiv.
 
-B. weder injektiv, noch surjektiv und somit auch nicht bijektiv.
-
-C. bijektiv mit $f^{-1}(\mathbf{a}) = [\mathbf{a}-\mathbf{1}]_5$
+C. $f$ ist bijektiv, da mit $f^{-1}(\mathbf{a}) = [\mathbf{a}-\mathbf{1}]_5$ 
+   eine injektive Umkehrabbildung exisiert.
 
 D. Es ist:
 
 :::::: {.columns}
 ::: {.column width="49%"}
 
-    1) $\chi_{A \cap B} = \min(\chi_A, \chi_B) = \chi_A \cdot \chi_B$
-    
-    2) $\chi_{A \cup B} = \max(\chi_A, \chi_B) = \chi_A + \chi_B - \chi_{A \cap B} = \chi_A + \chi_B - \chi_A \cdot \chi_B$
+1) $\chi_{A \cap B} = \min(\chi_A, \chi_B) = \chi_A \cdot \chi_B$
+
+2) $\chi_{A \cup B} = \max(\chi_A, \chi_B) = \chi_A + \chi_B - \chi_{A \cap B} = \chi_A + \chi_B - \chi_A \cdot \chi_B$
     
 :::
 ::: {.column width="49%"}
 
-    3) $\chi_{A \setminus B} = \max(\chi_A - \chi_B, 0) = \chi_A - \chi_{A \cap B} = \chi_A - \chi_A \cdot \chi_B = \chi_A \cdot (1-\chi_B)$
-    
-    4) $\chi_{A^c} = 1 - \chi_A$
-    
+3) $\chi_{A \setminus B} = \max(\chi_A - \chi_B, 0) = \chi_A - \chi_{A \cap B} = \chi_A - \chi_A \cdot \chi_B = \chi_A \cdot (1-\chi_B)$
 
+4) $\chi_{A^c} = 1 - \chi_A$
+    
 :::
 ::::::
+:::::::::
+
 
 ### Ein paar Ideen zu den charateristischen Funktionen
 
