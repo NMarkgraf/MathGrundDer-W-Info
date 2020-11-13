@@ -169,13 +169,13 @@ Aber für $a=7$ und $b=10$ gibt es aber keine ganze Zahl $m$ mit $2 \cdot m = 7-
 
 ::: {.notes}
 
-a) Keine Äquibalentrelation, da z.B. $(1; 1) \,\not\in\; <_A$. (Nicht reflexiv!)
+a) Keine Äquivalenzrelation, da z.B. $(1; 1) \,\not\in\; <_A$. (Nicht reflexiv!)
 
-b) Keine Äquibalentrelation, da z.B. $(1; 1) \,\not\in\; >_A$. (Nicht reflexiv!)
+b) Keine Äquivalenzrelation, da z.B. $(1; 1) \,\not\in\; >_A$. (Nicht reflexiv!)
 
-c) Keine Äquibalentrelation, da z.B. $(1; 2) \in\; \leq_A$ aber $(2; 1) \,\not\in\; \leq_A$ (Nicht symmetrisch!)
+c) Keine Äquivalenzrelation, da z.B. $(1; 2) \in\; \leq_A$ aber $(2; 1) \,\not\in\; \leq_A$ (Nicht symmetrisch!)
 
-d) Keine Äquibalentrelation, da z.B. $(2; 1) \in\; \geq_A$ aber $(1; 2) \,\not\in\; \geq_A$ (Nicht symmetrisch!)
+d) Keine Äquivalenzrelation, da z.B. $(2; 1) \in\; \geq_A$ aber $(1; 2) \,\not\in\; \geq_A$ (Nicht symmetrisch!)
 
 e) Äquivalenzrelation! Da:
     

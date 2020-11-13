@@ -43,7 +43,8 @@ $$\sysdelim..
 		
 [Idee:]{.cstrong}
 Wir können jede Gleichung als Gerade auffassen, 
-$y= \frac{1{,}5}{0{,}21} - \frac{0{,}36}{0{,}21} \cdot x$ und $y = 5-x$, 
+
+$$y= \frac{1{,}5}{0{,}21} - \frac{0{,}36}{0{,}21} \cdot x \quad\text{ sowie }\quad y = 5-x,$$ 
 und den Schnittpunkt bestimmen.
 
 
@@ -183,6 +184,15 @@ enthalten.
 Allgemein lässt sich ein LGS mit $m$ Gleichungen und $n$ Unbekannten immer in 
 die Form 
 
+:::
+::: {.column width="39%"}
+
+:::
+::::::
+
+:::::: {.columns}
+::: {.column width="59%"}
+
 $$\begin{matrix}
         a_{11} \cdot x_1 +  a_{12} \cdot x_2 \, + & \cdots & +\, a_{1n} \cdot x_n & = & b_1\\
         a_{21} \cdot x_1 +  a_{22} \cdot x_2 \, + & \cdots & +\, a_{2n} \cdot x_n & = & b_2\\
@@ -210,42 +220,51 @@ das LGS [homogen]{.cstrong}, sonst [inhomogen]{.cstrong}.
 
 ### Bemerkungen zu LGSen
 
-[Homogene]{.cemph} LGS besitzen immer eine [triviale Lösung]{.cstrong}, bei der 
+* [Homogene]{.cemph} LGS besitzen immer eine [triviale Lösung]{.cstrong}, bei der 
 alle $x_i=0$ sind.
 
-Gibt es genau so viele Gleichungen wie Unbekannte ($n=m$), so nennt mensch das 
+* Gibt es genau so viele Gleichungen wie Unbekannte ($n=m$), so nennt mensch das 
 LGS [quadratisch]{.cstrong}.
 
-In der [(Zeilen-)Stufenform]{.cstrong} verringert sich in jeder Zeile die Zahl 
-der Unbekannten um mindestens eine, die dann auch nicht mehr weiter vorkommt.
+* In der [(Zeilen-)Stufenform]{.cstrong} verringert sich in jeder Zeile die Zahl 
+der Unbekannten um mindestens eine. 
+    Diese kommt bzw. kommen dann auch nicht mehr weiter vor.
+    
+* Für ein LGS $A$ mit $n$ Unbekannten können wir die **Lösungsmenge** 
+    $L_A$ bezeichnen durch:
+    $$L_A = \left\{x=(x_1,...,x_n) \,|\, x \text{ löst das LGS } A\right\}$$
+    
+* Unterschiedliche LGS mit gleicher Anzahl an Unbekannten können die selbe
+    Lösungsmenge haben. (LGS $A \neq$ LGS $B$, aber $L_A = L_B$!)
+    
+* Einem LGS kann man die Lösung sofort ansehen, wenn in jeder Zeile 
+    nur eine Variable existiert!
 
 
 
 
 ### Elementare Zeilenumformungen {#elemzeilum}
 
-[Idee:]{.cstrong} Für ein LGS $A$ bezeichnen wir mit $L_A$ die **Lösungsmenge**:
-$$L_A = \left\{x=(x_1,...,x_n) \,|\, x \text{ löst das LGS } A\right\}$$
-**Elementare Zeilenumformungen** ändern zwar das LGS, *nicht* aber die 
-Lösungsmenge. 
+[Idee:]{.cstrong} Das LGS so umformen, ohne Änderung der Lösungsmenge, 
+dass man die Lösung(en) leicht ablesen kann.
 
-[Ziel:]{.cstrong} Das LGS so umformen, ohne das sich die Lösungsmenge ändert, 
-das man die Lösung(en) leicht ablesen kann.
+
+[Hilfsmittel::]{.cstrong} **Elementare Zeilenumformungen** diese ändern zwar 
+das LGS, *nicht* aber die Lösungsmenge! 
 
 [Es gilt:]{.cstrong}
 
-Geht das LGS $B$ aus dem LGS $A$ hervor, in dem mensch
+Geht das LGS $B$ aus dem LGS $A$ hervor, durch 
 
-- zwei Zeilen vertauscht,
+- *das Vertauschen zweier Zeilen*,
 
-- eine Zeile auf beiden Seiten mit einer beliebigen Konstante $c \neq 0$ 
-  multipliziert,
+- *die Multiplikation eine Zeile, auf beiden Seiten, mit einer beliebigen Konstante $c \neq 0$*
 
-- das Vielfache einer Zeile zu einer anderen hinzu addiert oder
+- *die Addition des Vielfachen einer Zeile zu einer anderen* oder
 
-- das Vielfache einer Zeile von einer anderen subtrahiert,
+- *die Subtraktion des Vielfachen einer Zeile von einer anderen*
 
-dann ist $L_A = L_B$.
+dann gilt $L_A = L_B$.
 
 
 ### Das Eliminationsverfahren
@@ -293,32 +312,34 @@ Ein [inhomogenes]{.cemph} LGS besitzt entweder
 :::
 ::::::
 
-### Konsequenzen
+### Konsequenzen (I/II)
 
-- Zu jedem  [inhomogenen]{.cemph} LGS gibt es ein [homogenes]{.cemph} LGS bei 
-  dem mensch die rechte Seite durch die Nullen ersetzt.
+- Zu jedem [inhomogenen]{.cemph} LGS gibt es ein [homogenes]{.cemph} LGS bei 
+  dem die rechte Seite durch die Nullen ersetzt wurde.
   $$\sysdelim.. \systeme{0{,}36\cdot x+0{,}21\cdot y= 1{,}5, x+y= 5}\quad\leftrightarrow\quad \systeme{0{,}36\cdot x+0{,}21\cdot y= 0, x+y= 0}$$
 
 - Gibt es für das [homogene]{.cemph} LGS nur die [triviale Lösung]{.cemph}, so 
-  hat das [inhomogene]{.cemph} LGS [genau  eine]{.cstrong} Lösung: 
+  hat das [inhomogene]{.cemph} LGS entweder [genau  eine]{.cstrong} Lösung:
   $$\sysdelim.. \systeme{2\cdot x + 1 \cdot y = 0, y= 0} \quad\Rightarrow\quad \systeme{2\cdot x + 1 \cdot y = 3, y= 1} , \text{hat die Lösung: } y=1; x=1$$
   oder [gar keine]{.cstrong} Lösung:
   $$\sysdelim.. \systeme{2\cdot x + 4 \cdot y = 0, 1 \cdot x + 2 \cdot y= 0} \quad\Rightarrow\quad \systeme{2\cdot x + 4 \cdot y = 6, 1 \cdot x + 2 \cdot y= 6} , \text{hat die keine Lösung! }$$
 
-### Konsequenzen
+### Konsequenzen (I/II)
 
 - Hat das [homogene]{.cemph} LGS [unendlich viele Lösungen]{.cemph}, dann hat 
-  das [inhomogene]{.cemph} LGS [unendlich viele]{.cstrong} Lösungen:
+  das [inhomogene]{.cemph} LGS entweder [unendlich viele]{.cstrong} Lösungen:
   $$\sysdelim.. \systeme{-1\cdot x + 1 \cdot y = 0, 1 \cdot x - 1 \cdot y= 0} \quad\Rightarrow\quad \systeme{-1\cdot x + 1 \cdot y = 1, 1 \cdot x - 1 \cdot y= -1} , \text{hat Lösungen:} y=x+1$$
   
   oder [gar keine]{.cstrong} Lösung:
   $$\sysdelim.. \systeme{-1\cdot x + 1 \cdot y = 0, 1 \cdot x - 1 \cdot y= 0} \quad\Rightarrow\quad \systeme{-1\cdot x + 1 \cdot y = 1, 1 \cdot x - 1 \cdot y= 1} , \text{hat die keine Lösung! }$$
 
 [Es gilt:]{.cstrong}
+
 Haben wir eine Lösung des [inhomogenen]{.cemph} LGS gefunden, entscheidet das 
-[homogene]{.cemph} LGS darüber ob diese Lösung die einzige Lösung ist -- 
-[homogenes]{.cemph} LGS hat nur triviale Lösung -- oder ob es unendlich viele 
-Lösungen gibt -- [homogenes LGS]{.cemph} hat unendlich viele Lösungen.
+[homogene]{.cemph} LGS darüber ob diese Lösung die einzige Lösung ist 
+(dann hat das [homogenes]{.cemph} LGS hat nur triviale Lösung) oder ob es 
+unendlich viele Lösungen gibt (dann hat das [homogenes LGS]{.cemph} hat 
+unendlich viele Lösungen).
 
 
 ### Übung `r nextExercise()`:  {.exercise} 
@@ -465,23 +486,23 @@ $$A = 	\begin{pmatrix}
 Wir nennen eine ...
 
 :::::: {.columns}
-::: {.column width="49%"}
+::: {.column width="45%"}
 
 ... $n\times 1$-Matrix auch [Spaltenvektor mit $n$ Komponenten]{.cstrong}:
-	$$a=\begin{pmatrix}
-				a_1 \\
-				\vdots \\
-				a_n
-		\end{pmatrix}$$
-		
+    $$a=\begin{pmatrix}a_1 \\ \vdots \\ a_n \end{pmatrix}$$
+
 :::
-::: {.column width="49%"}
+::: {.column width="8%"}
+
+:::
+::: {.column width="45%"}
 
 ... $1\times n$-Matrix auch  [Zeilenvektor mit $n$ Komponenten]{.cstrong}:
-	$$a = (a_1, \ldots, a_n)$$
+    $$a = (a_1, \ldots, a_n)$$
 
 :::
 ::::::
+
 
 #### {.examples}
 
@@ -785,6 +806,9 @@ Vektor $v$, der sich durch die Vektoren $v_1, \dots, v_n$ und die Skalare
 $c_1, \dots c_n$ wie folgt ausdrücken lässt:
 
 $$v = c_1 \cdot v_1 + c_2 \cdot v_2 + \cdots + c_n \cdot v_n = \sum_{i=1}^{n} c_i v_i$$
+
+<!-- --->
+
 #### {.endblock}
 
 <!-- --->
@@ -804,6 +828,7 @@ falls keiner von  ihnen als [Linearkombination]{.cemph} der anderen ausgedrückt
 werden kann. 
 
 Andernfalls nennen wir sie [linear abbhängig]{.cstrong}.
+
 
 #### {.endblock}
 

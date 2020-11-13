@@ -183,12 +183,12 @@ $\exists$ heißt [Existenz-Quantor]{.cstrong}.
 Man kann die Aussage
 
 ::: {.center}
-„Es gibt eine reelle Zahl, welche die mit 2 multipliziert 5 ergibt“
+„Es gibt eine reelle Zahl, welche mit 2 multipliziert 5 ergibt“
 :::
 
 wie folgt formulieren:
 
-$$\exists x \in \mathbf{R}: 2 \cdot x^2 =5$$
+$$\exists x \in \mathbf{R}: 2 \cdot x =5$$
 
 
 ### Übung `r nextExercise()`: {.exercise}
@@ -229,7 +229,7 @@ Bilden Sie (formal) das Komplement (die Verneinung) zu folgenden
 Aussagen unter Verwendung der Begrifflichkeiten der All- und
 Existenzaussagen:
 
-a) „Alle Menschen mögen Mathematik“
+A) „Alle Menschen mögen Mathematik“
 
 B) „Es gibt einen Menschen, der Spanisch spricht“
 

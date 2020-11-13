@@ -695,7 +695,7 @@ schrieb Richard Dedekind 1888:
 ::: {.center}
 Alles ist Zahl!
 :::
-::: {.justifiedright}
+::: {.justifiedleft}
 -- Pythagoras von Samos
 :::
 <!-- :::: -->
