@@ -177,7 +177,7 @@ c) Keine Äquivalenzrelation, da z.B. $(1; 2) \in\; \leq_A$ aber $(2; 1) \,\not\
 
 d) Keine Äquivalenzrelation, da z.B. $(2; 1) \in\; \geq_A$ aber $(1; 2) \,\not\in\; \geq_A$ (Nicht symmetrisch!)
 
-e) Äquivalenzrelation! Da:
+e) $~_2$ ist eineÄquivalenzrelation! Denn es gilt:
     
     1.) *Symmetrie*: 
         Es gilt $2 \,|\, (a-b) \Longleftrightarrow \exists k \in \mathbf{Z} .(a-b) = 2 \cdot k$
@@ -186,7 +186,7 @@ e) Äquivalenzrelation! Da:
     2.) *Transitivität*:
         Aus $2 \,|\, (a-b)$ und $2 \,|\, (b-c)$ folgt es gibt $k$ und $l$ mit $(a-b)= 2 \cdot k$ und $(b-c) = 2 \cdot l$. Dann ist aber $a-c = a-b + b-c = 2 \cdot k + 2 \cdot l = 2 \cdot (k+l)$ und somit $2 \,|\, (a-c)$.
     
-    3.) *Refelxivität*:
+    3.) *Reflexivität*:
         $2 \,|\, a-a = 0$, da $2 \cdot 0 = 0$ ist.
 
 :::
