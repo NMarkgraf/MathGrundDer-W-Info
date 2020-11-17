@@ -756,7 +756,7 @@ a) $$\begin{aligned}
              &= {\color{blue} 1} \cdot \frac{1}{20^4}  + {\color{blue} 4} \cdot \frac{1}{20^3} + {\color{blue} 6} \cdot \frac{1}{20^2} + \phantom{0}{\color{blue}  4} \cdot \frac{1}{20^1} + {\color{blue} 1} \cdot \frac{1}{20^0} \\
              &= {\color{blue} 1} \cdot \frac{1}{160000}  + {\color{blue} 4} \cdot \frac{20}{160000} + {\color{blue} 6} \cdot \frac{400}{160000} + \phantom{0}{\color{blue}  4} \cdot \frac{8000}{160000} + {\color{blue} 1} \\
              &= \frac{1}{160000} + \frac{80}{160000} + \frac{2400}{160000} +  \frac{32000}{160000} + 1 \\
-             &= 1 + \frac{34481}{160000}  = 1{,}21550625
+             &= 1 + \frac{34481}{160000}  = 1 + \frac{21550625}{100000000} =1{,}21550625
 \end{aligned}$$
    
 ::::::
