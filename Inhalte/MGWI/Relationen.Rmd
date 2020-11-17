@@ -503,9 +503,10 @@ stringstyle=\ttfamily\color{FOMLstStrings}}
 
 ### Beispiel: Anwendung bei ISBN (I/II)
 
-Seit dem 01.01.2007 gibt es 13-stellige Internationale Standard Buchnummern (ISBN); vorher gab er 10-stellige ISBN.
+Seit dem 01.01.2007 gibt es 13-stellige Internationale Standard Buchnummern (ISBN); 
+vorher gab es 10-stellige ISBN.
 
-So hat zum Beispiel das Buch *Moderne Datenanalyse mit R: Daten einlesen, aufbereiten, visualisieren, modellieren und kommunizieren (FOM-Edition)* von Prof. Dr. Sebastian Sauer die ISBN: 978-3-6582-1586-6
+Zum Beispiel hat das Buch *Moderne Datenanalyse mit R: Daten einlesen, aufbereiten, visualisieren, modellieren und kommunizieren (FOM-Edition)* von Prof. Dr. Sebastian Sauer die ISBN: 978-3-6582-1586-6
 
 Der Aufbau dieser Nummer ist wie folgt:
 
@@ -523,7 +524,7 @@ Die **Prüfziffer** $p$ wird nun wie folgt berechnet:
 $$p = (10 - [(z_1+z_3+z_5+z_7+z_9+z_{11})+ 3 \cdot (z_2+z_4+z_6+z_8+z_{10}+ z_{12})]) \mod 10] \mod 10$$
 :::
 
-Hier im Beispiel also:
+Hier im Beispiel somit:
 
 \begin{align*}
  p &= (10 - [(9+8+6+8+1+8)+3\cdot(7+3+5+2+5+6)] \mod 10) \mod 10\\
