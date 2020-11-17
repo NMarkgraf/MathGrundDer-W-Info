@@ -509,16 +509,8 @@ http://www.cs.utsa.edu/~wagner/knuth/fasc2b.pdf
 
 3. Etwas "gefaket" in Python:
 
+\lstinputlisting{python-sources/Permutationen.py}
 
-from itertools import permutations
-
-
-def main():
-    print([x for x in permutations('abcd')])
-
-
-if __name__ == "__main__":
-    main()
 :::
 
 <!-- -->
@@ -1009,11 +1001,11 @@ knitr::include_graphics(file.path(pathToImages, "Nicotinsaeure.png"), error = FA
 
 **9. Aufgabe**
 
-Wie viele, größtenteils sinnfreie, Wörter lassen sich aus den Buchstaben
+Wie viele, größtenteils sinnfreie, Wörter lassen sich aus (genau) den Buchstaben
 
 "ROKOKOKOMMODE"
 
-bilden?
+bilden? (Jedes Wort hat somit genau 13 Zeichen!)
 
 ::: {.notes}
 **8. Aufgabe**
