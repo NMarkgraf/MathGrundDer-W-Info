@@ -1,7 +1,7 @@
 def simple_hash(txt, modulus=7):
     hash_value = 0
     for c in txt:
-        hash_value += (ord(c) - 64) % modulus
+        hash_value += (ord(c) - 65) % modulus
     return hash_value % modulus
 
 

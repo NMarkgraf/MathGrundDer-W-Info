@@ -456,24 +456,30 @@ Alternativ können auch schreiben:
 :::
 
 ### Beispiel: Hashfunktionen 
-::: {.small}
+
+::: {.footnotesize}
 Eine **Hashfunktion** $H$ ist eine Abbildung aus einem Alphabet $\Sigma$ in einen 
 Zahlenmenge (z.B. $\mathbf{Z_n}$). Zum Beispiel:
 
 Neben wir an, wir haben ein Feld (Array) mit $n=8$ Einträgen. Die Schlüssen 
 für dieses Feld sind Zeichenketten (zur Vereinfachung aus Großbuchstaben).
 
-Die Funktion $\text{chr}(X)$ wandelt jeden Buchstaben des Alphabets ("A", "B", ... bis "Z") in die Zahlen $0$, $1$, ... bis $25$ um. 
+Die Funktion $\text{ord}(X)$ wandelt jeden Buchstaben des Alphabets 
+("A", "B", ... bis "Z") in die Zahlen $0$, $1$, ... bis $25$ um. 
 
 Sei $w$ ein Wort mit Buchstanden aus dem Alphabet, so bezeichnen wir mit $w_i$ den
 $i$-ten Buchstaben des Wortes. Für das Wort "XYZ" wäre das also 
 $w_1 =$"X", $w_2 =$"Y" und $w_3=$"Z"
 
-Eine mögliche Hashfunktion wäre dann z.B. $H(w) = \sum_{i} \text{chr}(w_i) \pmod n$.
+Eine mögliche Hashfunktion wäre dann z.B. $H(w) = \sum_{i} \text{ord}(w_i) \pmod n$.
 
-$$H(WIEN)= \text{chr}(W) + \text{chr}(I) + \text{chr}(E) + \text{chr}(N) \pmod 7 = 22 + 8 + 4 + 13 \pmod 7 = 5 \pmod 7$$
+$$\begin{aligned}
+H(WIEN) &= \text{ord}(W) + \text{ord}(I) + \text{ord}(E) + \text{ord}(N) \pmod 7 \\ 
+        &= 22 + 8 + 4 + 13 \pmod 7 = 5 \pmod 7
+\end{aligned}$$
 
-Man könnte also die Informationen über "WIEN" ins 5. Feld ablegen. 
+Man könnte also die Informationen über "WIEN" in das 5. Feld (wir zählen ab 0) 
+ablegen. 
 
 **Übung für zu Hause:** 
 
