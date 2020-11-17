@@ -499,7 +499,6 @@ stringstyle=\ttfamily\color{FOMLstStrings}}
 ::: {.footnotesize}
 \lstinputlisting{python-sources/SimpleHashBsp.py}
 :::
-...
 
 
 ### Beispiel: Anwendung bei ISBN (I/II)
