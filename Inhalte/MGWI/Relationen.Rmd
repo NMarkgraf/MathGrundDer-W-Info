@@ -685,18 +685,18 @@ $$\chi_M(x) = \begin{cases}1 &: x \in M \\ 0 &: \text{sonst}\end{cases}$$
 
 :::
 ::: {.column width="55%"}
-**Beispiel:** $\chi_{[1; 3]]}$
-```{r echo=FALSE, out.height="1cm"}
+**Beispiel:** $y=\chi_{[1; 3]}(x)$
+```{r echo=FALSE, out.height="2.9cm"}
 M <- tibble(x = c(0, 1, 1, 2, 3, 3, 4, 5), y= c(0, 0, 1, 1, 1, 0, 0, 0) )
 M1 <- tibble(x = c(-1,1), y=c(0,0))
 M2 <- tibble(x = c(1, 3), y=c(1,1))
 M3 <- tibble(x = c(3, 8), y=c(0,0))
 
-gf_line(y ~x, size=1.5, color = "blue", data = M1) %>%
-    gf_line(y ~ x, size=1.5, color = "blue", data=M2) %>%
-    gf_line(y ~ x, size=1.5, color = "blue", data=M3) %>%
+gf_line(y ~x, size=2.5, color = "blue", data = M1) %>%
+    gf_line(y ~ x, size=2.5, color = "blue", data=M2) %>%
+    gf_line(y ~ x, size=2.5, color = "blue", data=M3) %>%
     gf_lims(x = c(-1, 8), y = c(0,1))  %>%
-    gf_theme(theme_bw()) %>%
+    gf_theme(theme_bw(base_size=33)) %>%
     gf_refine(scale_x_continuous(breaks = seq(-1, 8, 1))) %>%
     gf_refine(scale_y_continuous(breaks = c(0, 1)))
 ```
@@ -713,18 +713,18 @@ $$\phi_M(x) = \begin{cases}1 &: x \in M \\ \bot &: \text{sonst}\end{cases}$$
 :::
 ::: {.column width="55%"}
 
-**Beispiel:** $\phi_{[1; 3]}$
-```{r echo=FALSE, out.height="1cm"}
+**Beispiel:** $y=\phi_{[1; 3]}(x)$
+```{r echo=FALSE, out.height="2.9cm"}
 M <- tibble(x = c(0, 1, 1, 2, 3, 3, 4, 5), y= c(0, 0, 1, 1, 1, 0, 0, 0) )
 M1 <- tibble(x = c(-1,1), y=c(0,0))
 M2 <- tibble(x = c(1, 3), y=c(1,1))
 M3 <- tibble(x = c(3, 8), y=c(0,0))
 
 gf_line(y ~x, size=1.5, color = "white", data = M1) %>%
-    gf_line(y ~ x, size=1.5, color = "red", data=M2) %>%
+    gf_line(y ~ x, size=2.5, color = "red", data=M2) %>%
     gf_line(y ~ x, size=1.5, color = "white", data=M3) %>%
     gf_lims(x = c(-1, 8), y = c(0,1))  %>%
-    gf_theme(theme_bw()) %>%
+    gf_theme(theme_bw(base_size=33)) %>%
     gf_refine(scale_x_continuous(breaks = seq(-1, 8, 1))) %>%
     gf_refine(scale_y_continuous(breaks = c(0, 1)))
 ```
@@ -743,10 +743,12 @@ def charFkt(x, M):
 
 
 def partCharFkt(x, M):
-    if x in ;:
+    if x in M:
         return 1
     else:
         raise ValueError()
+
+
 
 ```
 
