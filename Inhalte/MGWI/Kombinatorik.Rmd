@@ -509,8 +509,13 @@ http://www.cs.utsa.edu/~wagner/knuth/fasc2b.pdf
 
 3. Etwas "gefaket" in Python:
 
+\lstset{language=Python, showstringspaces=false}
+\lstset{commentstyle=\color{FOMLstComment}\bfseries,
+keywordstyle=\color{FOMLstKeywords}\bfseries,
+stringstyle=\ttfamily\color{FOMLstStrings}}
+:::::: {.footnotesize}
 \lstinputlisting{python-sources/Permutationen.py}
-
+::::::
 :::
 
 <!-- -->
@@ -666,8 +671,9 @@ Berechnung des Binomialkoeffizenten  mit Hilfe des rekusiven Abstiegs in Python
 \lstset{commentstyle=\color{FOMLstComment}\bfseries,
 keywordstyle=\color{FOMLstKeywords}\bfseries,
 stringstyle=\ttfamily\color{FOMLstStrings}}
+:::::: {.footnotesize}
 \lstinputlisting{python-sources/Binomialkoeffizient.py}
-
+::::::
 :::
 
 <!-- -->
@@ -679,11 +685,11 @@ stringstyle=\ttfamily\color{FOMLstStrings}}
 Es ist:
 $$\begin{aligned}
 		(a+b)^0 &= {\mycolor 1}\\
-		(a+b)^1 &= {\mycolor 1 \cdot} a \; + {\mycolor 1 \, \cdot} \phantom{a}\;b\\
-		(a+b)^2 &= {\mycolor 1 \cdot} a^2 + {\mycolor 2} \cdot a\;b + \phantom{0} {\mycolor 1 \, \cdot} \phantom{a}b^2\\ 
-		(a+b)^3 &= {\mycolor 1 \cdot} a^3 + {\mycolor 3} \cdot a^2b + \phantom{0} {\mycolor 3}   \cdot a\;b^2 + \phantom{0}{\mycolor  1 \, \cdot} \,\phantom{a}b^3 \\ 
-		(a+b)^4 &= {\mycolor 1 \cdot} a^4 + {\mycolor 4} \cdot a^3b + \phantom{0} {\mycolor 6}   \cdot a^2b^2 + \phantom{0}{\mycolor  4}   \cdot a\;b^3 + {\mycolor 1 \, \cdot}\phantom{a}b^4 \\
-		(a+b)^5 &= {\mycolor 1 \cdot} a^5 + {\mycolor 5} \cdot a^4b + 			 {\mycolor 10}   \cdot a^3b^2 +            {\mycolor 10}   \cdot a^2b^3 + {\mycolor 5 \cdot}ab^4 + {\mycolor 1 \cdot}\phantom{a}b^5
+		(a+b)^1 &= {\mycolor 1 \cdot} a \phantom{b^{00}} + {\mycolor 1 \, \cdot} \phantom{a^0}\;b\\
+		(a+b)^2 &= {\mycolor 1 \cdot} a^2 \phantom{b^{0}} + {\mycolor 2} \cdot a\;b + \phantom{0} {\mycolor 1 \, \cdot} \phantom{a^0}b^2\\ 
+		(a+b)^3 &= {\mycolor 1 \cdot} a^3\phantom{b^{0}} + {\mycolor 3} \cdot a^2b + \phantom{0} {\mycolor 3}   \cdot a\;b^2 + \phantom{0}{\mycolor  1 \, \cdot} \,\phantom{a^0}b^3 \\ 
+		(a+b)^4 &= {\mycolor 1 \cdot} a^4 \phantom{b^{0}} + {\mycolor 4} \cdot a^3b + \phantom{0} {\mycolor 6}   \cdot a^2b^2 + \phantom{0}{\mycolor  4}   \cdot a\;b^3 + {\mycolor 1 \, \cdot}\phantom{a^0}b^4 \\
+		(a+b)^5 &= {\mycolor 1 \cdot} a^5 \phantom{b^{0}} + {\mycolor 5} \cdot a^4b + 			 {\mycolor 10}   \cdot a^3b^2 +            {\mycolor 10}   \cdot a^2b^3 + {\mycolor 5 \cdot}ab^4 + {\mycolor 1 \cdot}\phantom{a^0}b^5
 \end{aligned}$$
 
 <!-- -->
