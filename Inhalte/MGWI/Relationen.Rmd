@@ -308,17 +308,20 @@ Zusammen mit der Addition $[a]_n + [b]_n = [a+b]_n$ und Multiplikation $[a]_n \c
 
 Für den *Restklassenring $Z$ modulo $n$* gelten die folgenden (Ring-)Gesetze für einen **kommutativen Ring mit Eins**:
 
+::: {.small}
+
 - **Kommutativität der Addition:** $[a]_n + [b]_n = [a+b]_n = [b+a]_n = [b]_n + [a]_n$
 - **Assoziativgesetz der Addition**, $([a]_n + [b]_n) + [c_n] = [a]_n + [b]_n +[c]_n = [a]_n + ([b]_n +[c]_n)$
-- **Existenz neutrales Element ($[0]_n) der Addition:** $[a]_n + [0]_n =[a]_n =[0]_n + [a]_n$
+- **Existenz neutrales Element ($[0]_n$) der Addition:** $[a]_n + [0]_n =[a]_n =[0]_n + [a]_n$
 - **Existenz des inversen Elements der Addition:** Für jedes $[a]_n \neq [0]_n$ ist $[n-a]_n = [-a]_n$ das *inverse Element* so dass $[a]_n + [n-a]_n = [a+n-a]_n = [n]_n = [0]_n$.
 
 - **Kommutativität der Multiplikation:** $[a]_n \cdot [b]_n = [a\cdot b]_n = [b\cdot a]_n = [b]_n \cdot [a]_n$
 - **Assoziativgesetz der Multiplikation**, $([a]_n  [b]_n) \cdot [c_n] = [a]_n \cdot [b]_n \cdot [c]_n = [a]_n \cdot ([b]_n \cdot[c]_n)$
-- **Existenz neutrales Element ($[1]_n) der Multiplikation:** $[a]_n \cdot [1]_n =[a]_n =[1]_n \cdot [a]_n$
+- **Existenz neutrales Element ($[1]_n$) der Multiplikation:** $[a]_n \cdot [1]_n =[a]_n =[1]_n \cdot [a]_n$
 
 - **Distributivgesetz:** $[a]_n \cdot ([b]_n + [c]_n) = [a]_n \cdot [b]_n + [a]_n \cdot [c]_n$.
 
+:::
 
 ### Beispiele 
 
@@ -453,7 +456,7 @@ Alternativ können auch schreiben:
 :::
 
 ### Beispiel: Hashfunktionen 
-
+::: {.small}
 Eine **Hashfunktion** $H$ ist eine Abbildung aus einem Alphabet $\Sigma$ in einen 
 Zahlenmenge (z.B. $\mathbf{Z_n}$). Zum Beispiel:
 
@@ -477,6 +480,20 @@ Man könnte also die Informationen über "WIEN" ins 5. Feld ablegen.
 Berechnen Sie die Hashwerte für "GRAZ", "BONN", "ULM", "BOCHUM". -- 
 Gibt es Kollisionen? -- 
 Was ändert sich, wenn wir das Feld auf $n=25$ aufstocken? 
+
+:::
+
+
+### Beispiel: Unsere Hashfunktion in Python 
+
+\lstset{language=Python, showstringspaces=false}
+\lstset{commentstyle=\color{FOMLstComment}\bfseries,
+keywordstyle=\color{FOMLstKeywords}\bfseries,
+stringstyle=\ttfamily\color{FOMLstStrings}}
+::: {.footnotesize}
+\lstinputlisting{python-sources/SimpleHashBsp.py}
+:::
+...
 
 
 ### Beispiel: Anwendung bei ISBN (I/II)
@@ -655,11 +672,58 @@ Wir bezeichnen mit $\bot$ einen Zustand, für den etwas nicht definiert ist.
 
 Dann gibt es für eine Menge $M$ eine **charakteristische Funktion** $\chi_M$ die wie folgt definiert ist:
 
+:::::: {.columns}
+::: {.column width="40%"}
+
 $$\chi_M(x) = \begin{cases}1 &: x \in M \\ 0 &: \text{sonst}\end{cases}$$
+
+:::
+::: {.column width="55%"}
+**Beispiel:** $\chi_{[1; 3]]}$
+```{r echo=FALSE, out.height="1cm"}
+M <- tibble(x = c(0, 1, 1, 2, 3, 3, 4, 5), y= c(0, 0, 1, 1, 1, 0, 0, 0) )
+M1 <- tibble(x = c(-1,1), y=c(0,0))
+M2 <- tibble(x = c(1, 3), y=c(1,1))
+M3 <- tibble(x = c(3, 8), y=c(0,0))
+
+gf_line(y ~x, size=1.5, color = "blue", data = M1) %>%
+    gf_line(y ~ x, size=1.5, color = "blue", data=M2) %>%
+    gf_line(y ~ x, size=1.5, color = "blue", data=M3) %>%
+    gf_lims(x = c(-1, 8), y = c(0,1))  %>%
+    gf_theme(theme_bw()) %>%
+    gf_refine(scale_x_continuous(breaks = seq(-1, 8, 1))) %>%
+    gf_refine(scale_y_continuous(breaks = c(0, 1)))
+```
+:::
+::::::
+
+
 Unter einer **partiell-charakteristische Funktion**  $\phi_M$ einer Menge $M$ verstehen wir:
 
-$$\phi_M(x) = \begin{cases}1 &: x \in M \\ \bot &: \text{sonst}\end{cases}$$
+:::::: {.columns}
+::: {.column width="40%"}
 
+$$\phi_M(x) = \begin{cases}1 &: x \in M \\ \bot &: \text{sonst}\end{cases}$$
+:::
+::: {.column width="55%"}
+
+**Beispiel:** $\phi_{[1; 3]}$
+```{r echo=FALSE, out.height="1cm"}
+M <- tibble(x = c(0, 1, 1, 2, 3, 3, 4, 5), y= c(0, 0, 1, 1, 1, 0, 0, 0) )
+M1 <- tibble(x = c(-1,1), y=c(0,0))
+M2 <- tibble(x = c(1, 3), y=c(1,1))
+M3 <- tibble(x = c(3, 8), y=c(0,0))
+
+gf_line(y ~x, size=1.5, color = "white", data = M1) %>%
+    gf_line(y ~ x, size=1.5, color = "red", data=M2) %>%
+    gf_line(y ~ x, size=1.5, color = "white", data=M3) %>%
+    gf_lims(x = c(-1, 8), y = c(0,1))  %>%
+    gf_theme(theme_bw()) %>%
+    gf_refine(scale_x_continuous(breaks = seq(-1, 8, 1))) %>%
+    gf_refine(scale_y_continuous(breaks = c(0, 1)))
+```
+:::
+::::::
 
 ### Beispiel in Python
 
