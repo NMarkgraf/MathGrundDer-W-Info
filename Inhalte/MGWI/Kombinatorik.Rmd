@@ -918,7 +918,7 @@ Beachtung der Reihenfolge: $\displaystyle\frac{20!}{17!}=20P3=6\,840$
 
 **3. Aufgabe**
 
-$\displaystyle 5! = 1 \cdot 2 \cdot 3 \cdot 4 \cdot 5 =24$
+$\displaystyle 5! = 1 \cdot 2 \cdot 3 \cdot 4 \cdot 5 = 120$
 
 :::
 
@@ -934,13 +934,13 @@ Auf wie viele Arten kann man fünf Hotelgäste in zehn Einzelzimmer unterbringen
 
 **5. Aufgabe**
 
-Wie viele Möglichkeiten gibt es beim Lotto 6 aus 49?
+Wie viele mögliche Ergebnisse gibt es beim Lotto-Spiel "6 aus 49"?
 
 
 **6. Aufgabe**
 
 Auf wie viele Arten kann man aus 6 Frauen und 8 Männern einen Ausschuss aus 
-3 Frauen und 4 Männern bilden?
+4 Frauen und 3 Männern bilden?
 
 ::: {.notes}
 
@@ -961,7 +961,7 @@ $\displaystyle \binom{49}{6}=13\,983\,816$.
 **6. Aufgabe**
 
 Die beiden Auswahlen erfolgen unabhängig, daher:
-$$\binom{6}{3} \cdot \binom{8}{4} = 6CF3 \cdot 8C4 = 1\,400$$
+$$\binom{6}{4} \cdot \binom{8}{3} = 6C4 \cdot 8C3 = 15 \cdot 56 = 840$$
 
 :::
 
