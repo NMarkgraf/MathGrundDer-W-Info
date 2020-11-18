@@ -452,7 +452,7 @@ $\mathbf{3} := [3]_3 = \{n \in \mathbf{Z}\,|\,4 \text{ teilt } (n-3)\}$
 
 ::::::
 
-### Bemerkung {.deprecated}
+### Bemerkung {include-only=deprecated}
 
 Das Rechnen im Restklassenring $\mathbf{Z_n}$ entspricht dem *normalen* Rechnen 
 mit ganzen Zahlen, bei dem man nach jeder Operation ($+$, $-$, $\cdot$, $\div$) 
