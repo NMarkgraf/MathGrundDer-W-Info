@@ -452,35 +452,6 @@ $\mathbf{3} := [3]_3 = \{n \in \mathbf{Z}\,|\,4 \text{ teilt } (n-3)\}$
 
 ::::::
 
-### Bemerkung {include-only=deprecated}
-
-Das Rechnen im Restklassenring $\mathbf{Z_n}$ entspricht dem *normalen* Rechnen 
-mit ganzen Zahlen, bei dem man nach jeder Operation ($+$, $-$, $\cdot$, $\div$) 
-nur noch den Rest bei der Division (mit Rest) mit $n$ betrachtet.
-
-#### {.example}
-::: {.footnotesize}
-
-Es ist
-\begin{align*}
-    [3]_5 + [2]_5 \cdot [4]_5 - [1]_5 &= [3]_5 + [2 \cdot 4]_5 - [1]_5 \\
-                                      &= [3]_5 + [8]_5 - [1]_5 = [3]_5 + [3]_5 - [1]_5 \\
-                                      &= [3+3-1]_5 \\
-                                      &= [5]_5 \\
-                                      &= [0]_5
-\end{align*}
-
-Alternativ können auch schreiben:
-\begin{align*}
-    [3]_5 + [2]_5 \cdot [4]_5 - [1]_5 &= (3 \mod 5) + (2 \mod 5) \cdot (4 \mod 5) - (1 \mod 5) \\
-                                      &= (3 \mod 5) + (2 \cdot 4) \mod 5 - (1 \mod 5) \\
-                                      &= (3 \mod 5 + (3 \mod 5) - (1 \mod 5) 
-                                      &= (3 + 3 - 1) \mod 5 \\
-                                      &= 5 \mod 5 = 0 = [0]_5
-\end{align*}
-
-:::
-
 <!-- -->
 
 
