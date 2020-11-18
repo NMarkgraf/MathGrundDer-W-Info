@@ -88,7 +88,7 @@ Bei einer *homogene* Relation $R \subset A \times A$ schreibt am anstelle von $(
 - $<$, $\leq$, $>$, $\leq$ und $=$ sind Relationen auf $\mathbf{R}^2$, $\mathbf{Q}^2$ und $\mathbf{Z}^2$.
 - Statt der *Element*-Notation schreiben wir oft die *Infix Notation* von bekannten Relationen, z.B.:
 
-| Elemnt-Notation  | Infix Notation  |
+| Element-Notation  | Infix Notation  |
 |:-:|:-:|
 | $(1, 2) \in <$     | $1 < 2$    |
 | $(1,2) \in \leq$   | $1 \leq 2$ |
@@ -198,11 +198,15 @@ Aus der Schule kennen wir die **Division mit Rest**:
 Für eine ganze Zahl $a$ und eine natürliche Zahl $m$ finden sich ein 
 $q\in\mathbf{Z}$ und $r\in\mathbf{N}$ (gennant **Rest**),
 so dass gilt:
+
 $$ a = q \cdot m + r$$
+
 #### $m$ teilt $a$ {.definition}
 Teilt die natürliche Zahl $m$ die ganze Zahl $a$ ohne Rest, so schreiben wir 
 dafür auch
+
 $$m \, | \, a$$ 
+
 und sagen dazu **$m$ teilt $a$**.
 
 #### Kongruenz {.definition}
@@ -211,6 +215,7 @@ und $b$ sind **kongruent modulo $n$**, falls $a$ und $b$ den selben *Rest* bei
 der Division mit $n$ haben.
 
 Wir schreiben dann:
+
 $$a=b \pmod n \quad \text{ oder auch }\quad a \equiv b \pmod n$$
 
 #### {.theorem}
@@ -265,10 +270,10 @@ Geben Sie die *Restklassen modulo 4* an.
 ::: {.notes}
 Es gibt genau die folgenden vier *Restklassen modulo 4*:
 
-- $[0]_4 = A_0 = \{ x \in \mathbf{Z} \,|\, x = 0 \pmod 4\}$
-- $[1]_4 = A_1 = \{ x \in \mathbf{Z} \,|\, x = 1 \pmod 4\}$
-- $[2]_4 = A_2 = \{ x \in \mathbf{Z} \,|\, x = 2 \pmod 4\}$
-- $[3]_4 = A_3 = \{ x \in \mathbf{Z} \,|\, x = 3 \pmod 4\}$
+- $[0]_4 = A_0 = \{ x \in \mathbf{Z} \,|\, x = 0 \pmod 4\} = \{...,-8,-4,0,4,8,...\}$
+- $[1]_4 = A_1 = \{ x \in \mathbf{Z} \,|\, x = 1 \pmod 4\} = \{...,-7,-3,1,5,9,...\}$
+- $[2]_4 = A_2 = \{ x \in \mathbf{Z} \,|\, x = 2 \pmod 4\} = \{...,-6,-2,2,6,10,...\}$
+- $[3]_4 = A_3 = \{ x \in \mathbf{Z} \,|\, x = 3 \pmod 4\} = \{...,-5,-1,3,7,11,...\}$
 
 :::
 
@@ -278,20 +283,34 @@ Es gibt genau die folgenden vier *Restklassen modulo 4*:
 Sei $m$ eine natürliche Zahl, und $a$, $b$, $c$ und $d$ ganze Zahlen mit
 $$a = b \pmod m \qquad\text{ und }\qquad c = d \pmod m.$$
 Dann gilt:
-$$ a + c = b + d \pmod m \quad\text{ sowie }\quad a \cdot c = b \cdot d \pmod m$$
+$$a + c = b + d \pmod m \quad\text{ sowie }\quad a \cdot c = b \cdot d \pmod m$$
+
+
+**Beispiel:**
+Wegen $4 = - 5 \pmod 9$, $6 = 15 \pmod 9$ gilt:
+
+- $4 + 6 = -5 + 15 = -5 + 6 = 1 \pmod 9$
+- $4 \cdot 6 = -5 \cdot 15 = 24 = 6 \pmod 9$
 
 ### Rechnen mit Restklassen modulo $m$
 
 Für $x$ aus einer Restklasse $[a]_m$ setzen wir $[x]_m = [a]_m$ und nennen $x$ 
 einen **Repräsentanten** der Restklasse.
 
-Es gilt dann $[x]_m = [y]_m$, falls $x \in [a]_m$ und auch $y \in [a]_m$. 
+Es gilt dann $[x]_m = [y]_m$, falls sowohl $x \in [a]_m$ als auch $y \in [a]_m$ ist. 
+
 Das ist eine Umformulierung von $x = y = a \pmod m$ mit $a, x, y \in \mathbf{Z}$ und
 $0 \leq a < m$.
 
-Wir können das auf die Restklassen $[.]_m$ übertragen und schreiben:
+Wir können somit das *Rechnen modulo $n$* auf die Restklassen $[.]_m$ 
+übertragen und schreiben:
 
 $$[a]_m + [c]_m = [a+c]_m \qquad\text{ bzw.}\qquad  [a]_m \cdot [c]_m = [a \cdot c]_m$$
+**Beispiel:**
+Wegen $[4]_9 = [-5]_9$ und $[6]_9 = [15]_9$ gilt:
+
+- $[4]_9 + [6]_9 = [-5]_9 + [15]_9 = [-5]_9 + [6]_9 = [1]_9$
+- $[4]_9 \cdot [6]_9 = [-5]_9 \cdot [15]_9 = [24]_9 = [6]_9$
 
 
 
@@ -428,9 +447,11 @@ $\mathbf{3} := [3]_3 = \{n \in \mathbf{Z}\,|\,4 \text{ teilt } (n-3)\}$
 
 ::::::
 
-### Bemerkung
+### Bemerkung {.deprecated}
 
-Das Rechnen im Restklassenring $\mathbf{Z_n}$ enspricht als dem *normalen* Rechnen mit ganzen Zahlen, bei dem man nach jeder Operation ($+$, $-$, $\cdot$, $\div$) nur noch den Rest bei der Division (mit Rest) mit $n$ betrachtet.
+Das Rechnen im Restklassenring $\mathbf{Z_n}$ entspricht dem *normalen* Rechnen 
+mit ganzen Zahlen, bei dem man nach jeder Operation ($+$, $-$, $\cdot$, $\div$) 
+nur noch den Rest bei der Division (mit Rest) mit $n$ betrachtet.
 
 #### {.example}
 ::: {.footnotesize}
@@ -455,21 +476,26 @@ Alternativ können auch schreiben:
 
 :::
 
+<!-- -->
+
+
 ### Beispiel: Hashfunktionen 
 
 ::: {.footnotesize}
-Eine **Hashfunktion** $H$ ist eine Abbildung aus einem Alphabet $\Sigma$ in einen 
-Zahlenmenge (z.B. $\mathbf{Z_n}$). Zum Beispiel:
+Eine **Hashfunktion** $H$ ist eine Abbildung die Zeichenfolgen aus einem 
+Alphabet $\Sigma$ in einen Werte einer Zahlenmenge (z.B. $\mathbf{Z_n}$) zuweist. 
 
-Neben wir an, wir haben ein Feld (Array) mit $n=8$ Einträgen. Die Schlüssen 
-für dieses Feld sind Zeichenketten (zur Vereinfachung aus Großbuchstaben).
+Zum Beispiel:
+Neben wir an, wir haben ein (assoziatives) Feld (Array) mit $n=7$ Einträgen. 
+Die "Schlüssel" für dieses Feld sind Zeichenketten 
+(zur Vereinfachung aus nur Großbuchstaben).
 
-Die Funktion $\text{ord}(X)$ wandelt jeden Buchstaben des Alphabets 
-("A", "B", ... bis "Z") in die Zahlen $0$, $1$, ... bis $25$ um. 
+Die Funktion $\text{ord}(X)$ ordnet jedem Buchstaben des Alphabets eine Zahl zu:
+"A"$\leftrightarrow 0$, "B"$\leftrightarrow 1$, ...,"Z"\leftrightarrow 25$ 
 
-Sei $w$ ein Wort mit Buchstanden aus dem Alphabet, so bezeichnen wir mit $w_i$ den
-$i$-ten Buchstaben des Wortes. Für das Wort "XYZ" wäre das also 
-$w_1 =$"X", $w_2 =$"Y" und $w_3=$"Z"
+Sei $w$ ein Wort mit Buchstanden aus dem Alphabet, so bezeichnen wir mit $w_i$ 
+den $i$-ten Buchstaben des Wortes. 
+Für das Wort "XYZ" wäre das also $w_1 =$"X", $w_2 =$"Y" und $w_3=$"Z"
 
 Eine mögliche Hashfunktion wäre dann z.B. $H(w) = \sum_{i} \text{ord}(w_i) \pmod n$.
 

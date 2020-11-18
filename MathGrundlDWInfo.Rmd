@@ -58,7 +58,8 @@ theme_set(
 ## Liste aller Teilskripte, die in das Skript integriert werden sollen.
 childrenToInclude <- c(
     "Organisatorisches", 
-    "Hinweise", 
+#    "Hinweise",   # Hinweise für reguläre Präsenzlehre
+    "Hinweise_virtuell",  # Hinweise für vituelle Präsenzlehre
     "Mengenlehre", 
     "Relationen", 
     "Kombinatorik", 
@@ -73,7 +74,8 @@ childrenToInclude <- c(
 if (FALSE) {
   childrenToInclude <- c(
     "Mengenlehre",
-    "Relationen",
+    # "Relationen",
+    #"Kombinatorik",
     # "LineareAlgebra",
     ""
   )
@@ -94,6 +96,9 @@ includeChild <- function(name, children=childrenToInclude, all=FALSE) {
 ```
 
 ```{r child = './Inhalte/Organisatorisches/MGWI-Hinweise.Rmd', eval = includeChild("Hinweise")}
+```
+
+```{r child = './Inhalte/Organisatorisches/MGWI-Hinweise_virtuelle_Lehre.Rmd', eval = includeChild("Hinweise_virtuell")}
 ```
 
 ```{r child = './Inhalte/MGWI/Mengenlehre.Rmd', eval = includeChild("Mengenlehre")}
