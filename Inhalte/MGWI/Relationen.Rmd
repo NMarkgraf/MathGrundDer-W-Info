@@ -564,21 +564,47 @@ Hier im Beispiel somit:
 
 a) Berechnen Sie die Prüfnummer des Buches *Numerisches Python: Arbeiten mit NumPy, Matplotlib und Pandas* von Bernd Klein mit der ISBN 978-3-4464-5076-?
 
-b) Die 10-stellige ISBN kann man als $a-bcd-efghi-p$ mit den Ziffern a,b,c,d,e,f,g,h,i und der Prüfziffer $p$ darstellen. Dabei erfüllt $p$ die Gleichung: 
+b) Die 10-stellige ISBN kann man als $a-bcd-efghi-p$ mit den Ziffern a,b,c,d,e,f,g,h,i und der Prüfziffer $p$ darstellen. Ein "X" für die Prüfziffer $p$ entspricht dem Wert $10$. 
+Dabei erfüllt $p$ die Gleichung: 
 $$(10\cdot a + 9\cdot b + 8\cdot c + 7\cdot d + 6\cdot e + 5\cdot f + 4\cdot g + 3\cdot h + 2\cdot i + p) \mod 11 = 0$$
  
-    i) Ist 3-658-02803-3 eine gültige 10-stellige ISBN? (Und welches Buch ist es?)
+    i) Ist 3-658-02691-X eine gültige 10-stellige ISBN? (Und welches Buch ist es?)
+    
+    ii) Ist 3-658-02803-3 eine gültige 10-stellige ISBN? (Und welches Buch ist es?)
  
-    ii) Ein Einzelfehler geschieht an der 2. Stelle und es wird 3-558-02803-3. Wird dieser Fehler erkannt?
+    iii) Ein Einzelfehler geschieht an der 2. Stelle und es wird 3-558-02803-3. Wird dieser Fehler erkannt?
 
  
 ::: {.notes}
 a) Die vollständige ISBN lautet: 978-3-4464-5076-9, also $9$!
 
 b) Die Antworten lauten:
-    i) Ja. (Das Buch heißt übrigens *Angewandte Wirtschaftsstatistik: Daten und Zufall (FOM-Edition)* von den Autoren Karsten Lübke und Martin Vogt. Hier berät sie, ausserhalb der Klausuren, ggf. die Buchhandlung ihres Vertrauens!)
-    ii) Ja, denn den Prüfgleichung liefert nicht $0$, sondern $2$ modulo $11$.
+    i) Ja. (Das Buch heißt *Formale Sprachen, abstrakte Automaten und Compiler* von Christian Wagenknecht und Michael Hielscher!)
+    ii) Ja. (Das Buch heißt übrigens *Angewandte Wirtschaftsstatistik: Daten und Zufall (FOM-Edition)* von den Autoren Karsten Lübke und Martin Vogt!)
+    iii) Ja, denn den Prüfgleichung liefert nicht $0$, sondern $2$ modulo $11$.
 
+:::
+
+
+### Beispiel: ISBN-13 in Python prüfen
+
+\lstset{language=Python, showstringspaces=false}
+\lstset{commentstyle=\color{FOMLstComment}\bfseries,
+keywordstyle=\color{FOMLstKeywords}\bfseries,
+stringstyle=\ttfamily\color{FOMLstStrings}}
+::: {.footnotesize}
+\lstinputlisting{python-sources/ISBN-13.py}
+:::
+
+
+### Beispiel: ISBN-10 in Python prüfen
+
+\lstset{language=Python, showstringspaces=false}
+\lstset{commentstyle=\color{FOMLstComment}\bfseries,
+keywordstyle=\color{FOMLstKeywords}\bfseries,
+stringstyle=\ttfamily\color{FOMLstStrings}}
+::: {.footnotesize}
+\lstinputlisting{python-sources/ISDN-10.py}
 :::
 
 
