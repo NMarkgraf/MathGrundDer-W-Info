@@ -10,6 +10,8 @@ def isbn_10_pruefer(ziffernfolge):
 if __name__ == "__main__":
     isbn_liste = ("3-658-02691-X", "3-658-02803-3", "3-558-02803-3")
     for isbn in isbn_liste:
-        korrekt = isbn_10_pruefer([10 if c == 'X' else int(c) for c in isbn.replace('-', '')])
+        isbn_x = isbn.replace('-', '')
+        ziffern = [10 if c == 'X' else int(c) for c in isbn_x]
+        korrekt = isbn_10_pruefer(ziffern)
         print(f"Die ISBN {isbn} ist {'' if korrekt else 'nicht '}korrekt")
 

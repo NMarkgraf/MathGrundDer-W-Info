@@ -218,10 +218,15 @@ Wir schreiben dann:
 
 $$a=b \pmod n \quad \text{ oder auch }\quad a \equiv b \pmod n$$
 
+<!-- -->
+
+
+### Modulare Arithmetik 
+
 #### {.theorem}
 $$a=b \pmod m \Longleftrightarrow \exists k\in\mathbf{Z}: a-b = k \cdot m \Longleftrightarrow m \,|\,  (a-b)$$
 
-### Beispiele
+#### Beispiele {.examples}
 
 Weil $17 = 3 \cdot 5 + 2$ ist, gilt 
 $17 = 2 \pmod 5$ und $5 \,\not|\;\, 17$, aber $5 \,|\, (17-2)$.
@@ -491,7 +496,7 @@ Die "Schlüssel" für dieses Feld sind Zeichenketten
 (zur Vereinfachung aus nur Großbuchstaben).
 
 Die Funktion $\text{ord}(X)$ ordnet jedem Buchstaben des Alphabets eine Zahl zu:
-"A"$\leftrightarrow 0$, "B"$\leftrightarrow 1$, ...,"Z"\leftrightarrow 25$ 
+"A"$\leftrightarrow 0$, "B"$\leftrightarrow 1$, ...,"Z"$\leftrightarrow 25$ 
 
 Sei $w$ ein Wort mit Buchstanden aus dem Alphabet, so bezeichnen wir mit $w_i$ 
 den $i$-ten Buchstaben des Wortes. 
@@ -604,7 +609,7 @@ stringstyle=\ttfamily\color{FOMLstStrings}}
 keywordstyle=\color{FOMLstKeywords}\bfseries,
 stringstyle=\ttfamily\color{FOMLstStrings}}
 ::: {.footnotesize}
-\lstinputlisting{python-sources/ISDN-10.py}
+\lstinputlisting{python-sources/ISBN-10.py}
 :::
 
 
