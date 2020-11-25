@@ -445,7 +445,7 @@ a_{m1} & a_{m2} & \ldots & a_{mj} & \ldots & a_{mn}\\
 mit $m$ und $n \in \mathbf{N}$ heißt [Matrix]{.cstrong} mit 
 [$m$ Zeilen]{.cstrong} und [$n$ Spalten]{.cstrong} oder kurz 
 [$m\times n$-Matrix]{.cstrong}. 
-Wir nennenn $n\times m$ auch die [Ordnung]{.cstrong} der Matrix.
+Wir nennen $n\times m$ auch die [Ordnung]{.cstrong} der Matrix.
 Die $a_{11},\ldots,a_{mn}$ heißen [Elemente]{.cstrong} oder 
 [Komponenten]{.cstrong} der Matrix.
 Dabei gibt $i$ die *Zeile* und $j$ die *Spalte* an, 
@@ -700,7 +700,7 @@ print(x, floating=FALSE, tabular.environment="pmatrix",
 
 ::: {.notes}
 
-$$(-3)A+2B-C = \begin{pmatrix} -3 & 0 & 4 \\ -12 & -2 & -20 \end{pmatrix}$$
+$$(-3)A+2B-C = \begin{pmatrix} -3 & -12 & 0 \\ -2 & 6 & -20 \end{pmatrix}$$
 
 :::
 
@@ -827,7 +827,7 @@ Eine Menge von Vektoren $\{v_1, \dotsc, v_n\}$ nennen wir [linear unabhängig]{.
 falls keiner von  ihnen als [Linearkombination]{.cemph} der anderen ausgedrückt 
 werden kann. 
 
-Andernfalls nennen wir sie [linear abbhängig]{.cstrong}.
+Andernfalls nennen wir sie [linear abhängig]{.cstrong}.
 
 
 #### {.endblock}
@@ -1490,7 +1490,7 @@ $$\begin{pmatrix}
 
 - Wir nennen diesen Nenner auch [Determinante]{.cstrong} von $A$. 
 
-- Der Wert der [Determinate]{.cemph} von $A$ wird $\det(A)$ geschrieben 
+- Der Wert der [Determinante]{.cemph} von $A$ wird $\det(A)$ geschrieben 
 	und ist eine [reelle Zahl]{.cemph}. 
 
 - Kennt mensch die [Determinante]{.cemph}, so weiß mensch ob es eine 
@@ -1652,7 +1652,7 @@ Entwicklung nach der ersten Zeile:
 
 ### Übung `r nextExercise()`: Determinanten bestimmen {.exercise} 
 
-Bestimmen Sie für die folgenden Matrizen die jeweilige Determinate mit einem geeignetem Verfahren:
+Bestimmen Sie für die folgenden Matrizen die jeweilige Determinante mit einem geeignetem Verfahren:
 
 :::::: {.columns}
 ::: {.column width="48%"}

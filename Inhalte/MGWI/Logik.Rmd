@@ -21,67 +21,95 @@ library(mosaic)
 ### Aussagen und deren Verneinung
 
 #### Aussagen {.definition}
-Eine [Aussage]{.cstrong} (engl. *proposition*) ist ein Satz, von dem man eindeutig entscheiden kann, ob er **wahr** ist oder **falsch** ist. 
+Eine [Aussage]{.cstrong} (engl. *proposition*) ist ein *Satz*, bei dem eindeutig 
+entscheiden werden kann, ob er **wahr** ist oder **falsch** ist. 
 
 #### {.examples}
+Welche Sätze sind hier Aussagen?
+
+:::::: {.columns}
+::: {.column width="59%"}
+
 - Berlin ist die Hauptstadt von Deutschland
 - $1 + 5 = 6$
 - 5 ist kleiner als 3
+
+:::
+::: {.column width="39%"}
+
 - Guten Abend!
-- Heute ist Montag!
+- Heute ist Montag.
 - $x + 5 = 3$
 
+:::
+::::::
+
 #### Negation / Verneinung {.definition}
-Die [Negation]{.cstrong} oder [Verneinung]{.cstrong} einer Aussage $A$ ist genau dann *wahr*, wenn $A$ *falsch* ist. 
+Die [Negation]{.cstrong} oder [Verneinung]{.cstrong} einer Aussage $A$ ist 
+genau dann *wahr*, wenn $A$ *falsch* ist. 
 Die *Negation* von $A$ wird symbolisch als $\neg A$ geschrieben.
 
 
 ### Übung `r nextExercise()`: {.exercise}
+```{r, echo=FALSE}
+akt_jahr <- Sys.Date()
+jahr <- akt_jahr - 20 * 365
+jahr_str <-format(jahr, "%Y")
+jahr_davor_str <- format(jahr-365, "%Y")
+```
 
 Bilden sie die Negationen der folgenden Aussagen:
 
-a) Der Tank ist voll
+a) Der Tank ist voll.
 
 b) Alle Studierenden sind anwesend.
 
-c) Ich bin vor 1990 geboren.
+c) Ich bin vor `r jahr_str` geboren.
 
+
+::: {.notes}
+
+a) **Der Tank ist nicht voll.**. Nicht aber *der Tank ist leer*. Ein Tank kann u.a. auch halb voll sein, dann ist er nicht voll, aber eben auch noch nicht leer.
+
+b) **Es fehlt (mindestens) ein Studierender.** Nicht aber *alle Studierende sind abwesend* oder
+ *kein Studierender ist anwesend.*
+ 
+c) **Ich bin nach `r jahr_davor_str` geboren.** Nicht aber *ich bin nach `r jahr_str`* geboten, denn sonst würden wir den Jahrgang `r jahr_str` komplettvergessen!
+:::
 
 ## Verknüpfungen von Aussagen
 
-### UND / ODER Verknüpfungen
+### UND / ODER / EXKLUSIVES ODER Verknüpfungen
 
-#### UND {.definition}
-Die [UND]{.cstrong}-Verknüpfung oder [Konjunktion]{.cstrong} zweier Aussagen $A$ und $B$ ist eine
+#### UND  (Konjunktion) {.definition}
+Die [UND]{.cstrong}-Verknüpfung oder [Konjunktion]{.cstrong} 
+zweier Aussagen $A$ und $B$ ist eine
 Aussage, die genau dann *wahr* ist, wenn **beide** Aussagen *wahr* sind. 
 Sie wird symbolisch mit $A \wedge B$ bezeichnet und als „A und B“ gelesen.
 
-#### ODER {.definition}
-Die [ODER]{.cstrong}-Verknupfung oder [Disjunktinon]{.cstrong} zweier Aussagen $A$ und $B$ ist eine
+#### ODER (Disjunktion) {.definition}
+Die [ODER]{.cstrong}-Verknupfung oder [Disjunktinon]{.cstrong} 
+zweier Aussagen $A$ und $B$ ist eine
 Aussage, die genau dann *wahr* ist, wenn **mindestens eine** der beiden
 Aussagen *wahr* ist. 
 Sie wird symbolisch mit $A \vee B$ bezeichnet und als „A oder B“ gelesen.
 
-#### {.fact}
-Die Begriffe „UND“ und „ODER“ werden in der Mathematik exakt gebraucht und
-weichen häufig vom umgangssprachlichen Gebrauch ab!
-
-
-### EXKLUSIV-ODER 
-
 #### EXKLUSIV-ODER {.definition}
 Das [EXKLUSIV ODER]{.cstrong} im Sinn von **ENTWEDER … ODER** wird
-symbolisch mit $A XOR B$ (vom engl. *eXclusive OR*) oder $A \oplus B$ bezeichnet. 
-Sie ist genau dann *wahr*, wenn **entweder $A$ oder $B$** – aber *nicht alle beide* – *wahr*
-sind.
+symbolisch mit $A\;XOR\;B$ (vom engl. *eXclusive OR*) oder $A \oplus B$ 
+bezeichnet. 
+Sie ist genau dann *wahr*, wenn **entweder $A$ oder $B$** 
+-- aber *nicht alle beide* -- *wahr* sind.
 
+<!-- --->
 
 ### Übung `r nextExercise()`: {.exercise}
+
 
 Die Aussage
 
 ::: {.center}
-„Rauchen und Hantieren mit offenem Feuer verboten“ 
+„Rauchen und Hantieren mit offenem Feuer verboten!“ 
 :::
 
 versteht jeder, ist aber mathematisch gesehen falsch formuliert.
@@ -89,8 +117,25 @@ versteht jeder, ist aber mathematisch gesehen falsch formuliert.
 a) Warum? 
 b) Wie müsste die korrekte Formulierung lauten?
 
+::: {.notes}
+
+a)  Aus der Sicht der Logik wäre nur das gleichzeitige *Rauchen* und *Hantieren mit offenem Feuer* verboten.
+
+b) Entgegen unserem Sprachgefühl müsste es eigentlich heissen:
+"Rauchen oder Hantieren mit offenem Feuer verboten!"
+
+:::
+
+#### {.fact}
+Die Begriffe „UND“ und „ODER“ werden in der Mathematik exakt(er) gebraucht und
+weichen häufig vom *umgangssprachlichen Gebrauch* ab!
+
+<!-- -->
+
 
 ### Wahrheitstabellen
+
+Verknüpfte Aussagen lassen sich durch **Wahrheits(werte)tabellen** beschreiben:
 
 
  $A$ | $B$ | $A \wedge B$ | $A \vee B$ | $A \oplus B$
@@ -110,6 +155,16 @@ a) $A$: Frankfurt liegt in Deutschland, $B$: London liegt in Deutschland
 
 b) $A$: $2 < 3$, $B$: $1+1=2$ 
 
+::: {.notes}
+a) Wir solten uns zunächst daraus einigen, dass $A$ *wahr* und $B$ *falsch* ist. 
+    Dann können wir die  Wahrheitswerte aus der entsprechenden Tabellenzeile
+    übernehmen: $A \wedge B=f$, $A \vee B=w$ und $A \oplus B=w$
+    
+b) Da hier beide Aussagen *wahr* sind übernehmen wir aus der Tabelle:
+    $A \wedge B=w$, $A \vee B=w$ und $A \oplus B=f$
+    
+
+:::
 
 
 ## Aussageformen
@@ -120,13 +175,20 @@ b) $A$: $2 < 3$, $B$: $1+1=2$
 Ersetzt man in Aussage $A$ irgendeine Konstante durch eine
 Variable $x$, so entsteht eine [Aussageform]{.cstrong} $A(x)$ (auch
 [Aussagefunktion]{.cstrong} oder [offene Aussage]{.cstrong} genannt). 
-Eine *Aussageform* wird zu einer *Aussage*, wenn man für $x$ ein konkretes Objekt einsetzt.
+
+Eine *Aussageform* wird zu einer *Aussage*, wenn man für $x$ ein konkretes 
+Objekt einsetzt.
 
 #### Aussageformen {.examples}
 
-- $A(x): x^2 < 15$ 
+- $A(x): x^2 < 15$
 
 - $B(x): x^2 + 1 = 5$
+
+#### Lösungsmenge {.definition}
+Die Menge aller Objekte $x$, die eine Aussageform $A(x)$ zu einer wahren Aussage 
+machen nennen wir **Lösungsmenge von A(x)** und 
+schreiben dafür $\mathbf{L}_{A(X)}$.
 
 
 ### Übung `r nextExercise()`: {.exercise}
@@ -138,6 +200,21 @@ a) Ist die Aussage $A(1)$ *wahr* oder *falsch*?
 
 b) Ist die Aussage $B(1)$ *wahr* oder *falsch*?
 
+c) Geben Sie $\mathbf{L}_{A(x)}$ an.
+
+d) Geben Sie $\mathbf{L}_{B(X)}$ an.
+
+::: {.notes}
+
+a) Wegen $1^2 = 1 < 15$ ist $A(1)$ **wahr**.
+
+b) Wegen $1^2+1 = 1+1 = 2 \neq 5$ ist $B(1)$ **falsch**.
+
+c) $\displaystyle\mathbf{L}_{A(x)} = \left\{x \in \mathbf{R} \,|\, x^2 < 15\right\} = \left(-\sqrt{15} \, ;\, +\sqrt{15}\right)$
+
+d) $\displaystyle\mathbf{L}_{B(x)} = \left\{x \in \mathbf{R} \,|\, x^2 +1 =5\right\} = \left\{x \in \mathbf{R} \,|\, x^2 =4\right\}= \left\{-2 \,;\,+2\right\}$
+
+:::
 
 ## Quantoren
 
@@ -171,7 +248,9 @@ $$\forall x \in \mathbf{R}: x^2 \geq 0$$
 ### Existenzquantoren
 
 #### Existenz-Quantor {.definition}
-Die Aussage „Es gibt ein x (aus einer bestimmten Menge), so dass $A(x)$“ ist genau dann *wahr*, wenn $A(x)$ für zumindest eines der in Frage kommenden $x$ *wahr* ist. 
+Die Aussage „Es gibt ein x (aus einer bestimmten Menge), 
+so dass $A(x)$“ ist genau dann *wahr*, wenn $A(x)$ für zumindest eines der 
+in Frage kommenden $x$ *wahr* ist. 
 Abkürzend schreibt man diese **Existenz-Aussage** als
 $$\exists x: A(x),$$
 wobei $\exists$ „es gibt/existiert (mindestens) ein“ gelesen wird oder „für
@@ -184,7 +263,7 @@ $\exists$ heißt [Existenz-Quantor]{.cstrong}.
 Man kann die Aussage
 
 ::: {.center}
-„Es gibt eine reelle Zahl, welche mit 2 multipliziert 5 ergibt“
+„Es gibt eine reelle Zahl, welche mit 2 multipliziert 5 ergibt.“
 :::
 
 wie folgt formulieren:
@@ -194,7 +273,8 @@ $$\exists x \in \mathbf{R}: 2 \cdot x =5$$
 
 ### Übung `r nextExercise()`: {.exercise}
 
-Welche der folgenden Aussagen sind für die *natürlichen Zahlen* wahr bzw. falsch:
+Welche der folgenden Aussagen sind für die **natürlichen Zahlen** 
+*wahr* bzw. *falsch*:
 
 a) $\forall x: x+1 > x$
 
@@ -203,6 +283,17 @@ b) $\forall x: x > 3$
 c) $\exists x: x^2 = 4$
 
 d) $\exists x: x^2 < 0$
+
+::: {.notes}
+
+a) $\forall x: x+1 > x$ ist **wahr**.
+
+b) $\forall x: x > 3$ ist **falsch**, denn $2 < 3$ und $2 \in \mathbf{N}$!
+
+c) $\exists x: x^2 = 4$ ist **wahr**, denn $2^2 = 4$ und $2 \in \mathbf{N}$!
+
+d) $\exists x: x^2 < 0$ ist **falsch**.
+:::
 
 
 ### Negation von All- und Existenzsaussagen
@@ -236,6 +327,17 @@ B) „Es gibt einen Menschen, der Spanisch spricht“
 
 C) $\forall x: x > 3$
 
+::: {.notes}
+
+A) Zunächst formalisieren wir den Satz etwas:$\forall x \in \text{Mensch} : x \text{ mag Mathematik}$. Dann ist die Negation: $\exists x \in \text{Mensch}: x \text{ mag Mathamtik nicht}$
+   Noch formaler: Sei $M$ die Menge aller Menschen, $L\subseteq M$ die Menge aller derer die Mathematik mögen, dann ist die Aussage: $\forall x \in M: x \in L$ und die Negation: $\exists x \in M : x \not\in L$  
+   
+B) Sei nun weitergehen $S$ die Menge aller der Menschen, die Spanisch sprechen.
+   Dann ist die Aussage formal: $\exists x \in M : x \in S$ und die Negation lautet : $\forall x \in M : x \not\in S$
+   
+C) $\exists x : x \leq 3$
+
+:::
 
 ## Junktoren
 
@@ -401,22 +503,36 @@ Sei nun
 
 $$m = 1 + \prod_{i=1}^{\text{max}} p_i$$
 das Produkt aller Primzahlen plus 1.
-Dann ist $m$ wegen dem Beispiel oben durch keine der zahlen $p_i$ teilbar!
-Somit ist endweder $m$ eine neue Primzahl oder aber es gibt noch eine Primzahl, welche m teilt, aber nicht in den endlich vielen Primzahlen $p_i\dots, p_{\text{max}}$ enthalten war.
-Das ist aber ein Widerspruch zur Annahme, das dies alle Primzahlen waren. 
-Es gibt also unendlich viele Primzahlen.
+Dann ist $m$ wegen dem Beispiel oben durch keine der Zahlen $p_i$ teilbar!
+Somit ist endweder $m$ eine neue Primzahl oder aber es gibt noch eine Primzahl, 
+welche $m$ teilt, aber nicht in den endlich vielen 
+Primzahlen $p_i\dots, p_{\text{max}}$ enthalten war.
+
+Beides wäre aber ein Widerspruch zur Annahme, das $p_i\dots, p_{\text{max}}$ 
+alle Primzahlen waren. 
+
+Daraus folgt: **Es gibt also unendlich viele Primzahlen.**
 
 
 ### Beispiel: $\sqrt{2}$ ist irrational 
 
-Angenommen es gäbe zwei teilerfremde ganze Zahlen $p$, $q$ mit $\sqrt{2} = p/q$. 
+**Behauptung:** $\sqrt{2}$ ist irrational.
+
+
+**Beweis:**
+Angenommen $\sqrt{2}$ wäre rational, dann gäbe es zwei teilerfremde ganze 
+Zahlen $p$, $q$ mit $\sqrt{2} = p/q$.
+
 Dann wäre $2 = p^2/q^2$ und daher auch $2\cdot q^2= p^2$. 
+
 Somit ist $p^2$ durch 2 teilbar und damit auch $p$ eine gerade Zahl. 
 Also gibt es ein ganze Zahl $r$ mit $p=2 \cdot r$. Somit ist $2q^2 = p^2 = (2r)^2=4r^2$ und somit $q^2 = 2r^2$. 
+
 Also muss auch $q$ eine gerade Zahl sein. 
 Dann haben $p$ und $q$ aber einen gemeinsamen Teiler (nämlich 2) und sind nicht teilerfremd. 
 
 Das Widerspricht aber der Annahme der Teilerfremdheit von $p$ und $q$! 
+
 Und somit ist die Irrationalität von $\sqrt{2}$ gezeigt.
 
 

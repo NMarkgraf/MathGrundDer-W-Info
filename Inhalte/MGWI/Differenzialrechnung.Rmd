@@ -7,7 +7,7 @@
 source("../../prelude.R")
 initPart(
     "Differenzialrechnung",  # Dateiname ohne Suffix
-    "Differenzialrechnung"   # Verzeichnisname im Bilderverzeichnis 
+    "Differenzialrechnung"   # Verzeichnisname im Bildverzeichnis 
     )
 pathToImages = getPathToImages()
 # ---------------------------------------------------------------------------
@@ -16,510 +16,11 @@ pathToImages = getPathToImages()
 
 # Differenzialrechnung 
 
-## Elementare Funktionen 
-
-### Univariate Funktion
-
-Unter einer **univariaten** Funktionen, also Funktionen in einer Variabeln, 
-verstehen wir:
-
-$$\begin{aligned}
-f\,:\, & D \to Z \\
-       & x \,\mapsto\, y = f(x)
-\end{aligned}$$
-
-Dabei bezeichnet $f$ eine **Funktion**, welche jedem Element $x$ aus der 
-**Definitionsmenge** $D$ mit Hilfe der 
-**Zuordnungsvorschrift** $f(x)$ genau ein Element $y$ aus der 
-**Zielmenge** $Z$ gemäß der **Funktionsgleichung** $y=f(x)$ 
-zuordnet.
-
-Ist $Z \subseteq \mathbf{R}$, so nennen wir die Funktion **reellwertig**.
-
-Zunächst soll dabei $D\subseteq \mathbf{R}$ gelten.
-
-Die Menge $G_f = \left\{(x,y) \in D \times Z \,|\, y = f(x)\right\}$ wollen wir 
-den *Graph der Funktion $f$* nennen.
-
-Fasst man den Graphen von $f$ als Relation ($x \sim_f y :\Leftrightarrow y=f(x))$ 
-auf, so ist $\sim_f$ *linkstotal* und *rechtseindeutig* (also *funktional*).
-
-
-### Beispiele für Funktionen der Wirtschaftswissenschaften
-
-- **Kostenfunktion $K(x) = K_{var}(x) + K_{fix}$:** 
-  Zusammenhang zwischen Produktionsmenge und Gesamtkosten, setzt sich zusammen 
-  aus *variablen Kosten* $K_{var}(x)$ (abhängig von der Menge $x$) sowie den 
-  *Fixkosten* $K_{fix}$. 
-
-- **Durchschnittskostenfunktion $DK(x)=K(x)/x$:**
-  Auch **Stückkostenfunktion** gennannt, liefert den Kostenanteil einer 
-  produzierten Einheit.
-
-- **Preis-Absatz-Funktion $P(x)$:**
-  Zusammenhang zwischen Stückpreis $P$ und der Absatzmenge $x$ 
-  (Nachfragefunktion).
-
-- **Umsatz- oder Erlösfunktion $E(x)$:**
-  Zusammenhang zwischen Preis $P(x)$, Absatz(menge) $x$ und 
-  Erlös $E(x) = P(x)\cdot x$.
-
-- **Gewinnfunktion $G(x)$:** 
-  Zusammenhang zwischen Produktions- bzw. Absatzmenge und dem Gewinn 
-  $G(x) = E(x) - K(x)$. 
-
-
-### Bild und Urbild {include-only=LangeFassung}
-
-...
-
-<!-- -->
-
-### Transformation von Funktionen
-
-Eine Funktion 
-
-$$\begin{aligned}
-f\,:\, & D \to Z \\
-       & x \,\mapsto\, y = f(x) \phantom{\left(\frac{1}{1} ()\right)}
-\end{aligned}
- \text{ geht über in } \quad
-\begin{aligned}
-g\,:\, & D \to Z \\
-       & x \,\mapsto\, y = a \cdot f\left(\frac{1}{b} \cdot (x-c)\right)+ d
-\end{aligned}$$
-
-
-durch eine 
-
-- **Streckung** um $a$ in $y$-Richtung
-- **Streckung** um $b$ in $x$-Richtung
-- **Verschiebung** um $c$ in $x$-Richtung
-- **Verschiebung** um $d$ in $y$-Richtung
-
-Insbesondere ist
-
-- $a=-1$ eine **Spiegelung** an der $x$-Achse
-- $b=-1$ eine **Spiegelung** an der $y$-Achse
-
-
-### Konstante Funktionen
-
-Eine *konstante Funktion* ist eine Funktion $f$, die für alle Argumente 
-denselben Wert $c \in Z$ annimmt.
-
-$$\begin{aligned}
-f\,:\, & D \to Z \\
-       & x \,\mapsto\, y = c
-\end{aligned}$$
-
-
-Der Graph einer *konstante reelwertige Funktion*, 
-ist eine parallele zur X-Achse:
-$$G_f = \left\{(x, c) \,|\, c \in Z \wedge \forall x \in D \right\}$$
-
-### Beispiele
-
-a) Im Allgemeinen muss $f$ nicht immer eine reellwertige Funktion sein. 
-   Betrachten wir als Beispiel einmal die folgende Funktion auf dem 
-   Restklassenring modolo 2:
-$$\begin{aligned}
-f\,:\, & \mathbf{Z}/2 \mathbf{Z} \to \mathbf{Z}/2 \mathbf{Z} \\
-       & x \,\mapsto\, y = x^2-x
-\end{aligned}$$
-   Wegen $0^2 - 0 = 0$ und $1^2 - 1 = 0$ ist diese Funktion eine konstante Funktion!
-
-b) Ist der Wert der konstanten Funktion immer Null, so nennt man die Funktion
-   auch *Nullfunktion*. Ist also $0 \in Z$, so ist 
-$$\begin{aligned}
-f\,:\, & D\to Z \\
-       & x \,\mapsto\, y = 0
-\end{aligned}$$
-   eine Nullfunktion.
-
-
-### Lineare Funktionen / Geraden
-
-Unter einer *(affin-)linearen Funktion* $f$ wollen wir die *Geraden* verstehen, 
-welche keine konstante Funktion ist.
-
-Sie lässt sich durch die folgenden *Zuordnungsvorschriften* beschreiben:
-
-:::::: {.columns}
-::: {.column width="49%"}
-
-**Steigungsform:**
-$$y = f(x) = m \cdot x + b$$
-Mit der *Steigung* $m$ und dem Y-Achsenabschnitt $b$. 
-Die Nullstelle $a$ von $f$ lautet: $a=-\frac{b}{m}$
-
-:::
-::: {.column width="49%"}
-
-**Normalenform:**
-$$\frac{1}{a} \cdot x + \frac{1}{b} \cdot y = 1$$
-Mit dem Y-Achsenabschnitt $b \neq 0$ und der Nullstelle $a \neq 0$. 
-Die Steigung $m$ lautet dann: $m=-\frac{b}{a}$. 
-::: 
-::::::
-
-
-
-:::::: {.columns}
-::: {.column width="49%"}
-
-**Punkt-Steigungsform:**
-$$y = f(x) = m \cdot (x-x_0) + b$$
-Mit der *Steigung* $m$ und dem Y-Achsenabschnitt $b$. 
-Die Nullstelle $a$ von $f$ lautet: $a=-\frac{b}{m}$
-
-:::
-::: {.column width="49%"}
-
-**Linear Faktorform:**
-$$y = m \cdot (x-x_0)$$
-Mit dem Y-Achsenabschnitt $b \neq 0$ und der Nullstelle $a \neq 0$. 
-Die Steigung $m$ lautet dann: $m=-\frac{b}{a}$. 
-::: 
-::::::
-
-
-Ist $b=0$, also $f(x) = m\cdot x$, so sprechen wir auch von einer 
-*homogen linearen Funktion* oder *Proportionalität*.
-
-
-### Übung
-
-Eine lineare Funktion lässt sich immer durch die Angabe
-- von zwei (nicht identischen) Punkten ($P$ und $Q$) oder
-- eines Punktes $P$ und der Steigung $m$
-bestimmen.
-
-Geben Sie für folgenden zwei Punkte ($P$ und $Q$) bzw. für den Punkt $P$ und 
-die Steigung $m$ jeweils die lineare Funktion in der Steigungsform und 
-der Normalenform an:
-
-a) $P=(1; 2)$, $Q=(2; 4)$
-
-b) $P=(100; 50)$, $Q=(-5; 75)$
-
-c) $P=(5; 5)$, $m=-2$
-
-d) $P=(2; 4)$, $m=4$
-
-e) $P=(1; 7)$, $m=7$
-
-**Zusatzfrage:** Ist eine der obigen Funktionen *homogen lineare*? -- 
-Falls ja, welche und wieso?
-
-
-### Übung
-
-Betrachten Sie den Markt für ein Produkt ($P$=Preis, $x$=(Absatz-)Menge), 
-für das aufgrund von Erfahrungen die beiden Preis-Verkaufsmengenkombinationen 
-$(P_1, x_1) = (30, 100)$ und  $(P_2, x_2) = (25, 150)$ vorliegen.
-
-a) Wie lautet die Nachfragefunktion, wenn eine lineare Beziehung unterstellt 
-   wird?
-   
-b) Wie viel kann dann voraussichtlich verkauft werden, wenn der Preis auf $20$ 
-   gesenkt wird? 
-
-
-### Übung (nach Steward, Calculus, 7th ed.)
-
-Der Manager einer Möbelﬁrma ﬁndet heraus, dass die Herstellung von 100 Stühlen 
-am Tag $2\,200$ US-\$, während die Herstellung von 300 Stühlen am Tag 
-$4\,800$ US-\$ kostet.
-
-- Stellen Sie die Kosten als eine Funktion der Anzahl hergestellter Stühle dar.
-
-- Was bedeuten in diesem Zusammenhang Achsenabschnitt und Steigung?
-
-
-### Polynome
-
-Der formale Ausdruck
-
-$$a_n x^n + a_{n-1} x^{n-1} + \dotsb + a_2 x^2 + a_1 x + a_0 = \sum_{k=0}^n a_k x^k$$
-
-mit den $n \in \mathbf{N}$ **Koeffizienten** 
-$a_0, ..., a_{n-1}$ und $a_n\neq 0$ aus einer Menge $R$ 
-bezeichnet man als **Polynom vom Grad $n$ über $R$** . 
-
-Die Menge aller Polynome über $R$ bezeichnet mensch mit $R[x]$. 
-
-
-### Die Gradfunktion für Polynome
-
-Die **Gradfunktion** $\deg$ ist definiert durch:
-
-$$\begin{array}{rccl}
-\deg\colon & R[x] & \to & \quad \mathbf{N}_0 \cup \{-\infty\} \\
-  & f & \mapsto & \begin{cases}
-  \max\left\{k\in\mathbf{N}_0\mid a_k\ne 0\right\}, & \text{falls } f \neq 0\\
-  -\infty, & \text{falls } f = 0
-\end{cases}
-\end{array}$$ 
-
-Sie liefert für jedes Polynom den dazugehörigen Grad.
-
-Für zwei Polynome $p$ und $q$ gilt dann:
-
-- $\deg(p \cdot q) \leq \deg(p) \cdot \deg(q)$
-- $\deg(p + q) \leq \max\left(\deg(p), \deg(q)\right)$
-
-
-### Ganzrationale Funktionen
-
-Eine Funktion $f$, die sich mit Hilfe eines Polynoms aus $\mathbf{R}[x]$ 
-darstellen lässt bezeichnen wir als *ganzrationale Funktion*:
-
-
-:::::: {.columns}
-:::{.column width="39%"}
-
-$$\begin{aligned}
-f\,:\, & D\to Z \\
-       & x \,\mapsto\, y = \sum_{k=0}^n a_k x^k
-\end{aligned}$$
-:::
-::: {.column width="59%"}
-
-+--------------+--------------------------------------------+
-| $\deg(f)$    | Bezeichnung                                |
-+:=============+:===========================================+
-| $-\infty$    | Nullfunktion                               |
-+--------------+--------------------------------------------+
-| $0$          | Konstante Funktion                         |
-+--------------+--------------------------------------------+
-| $1$          | Lineare Funktion                           |
-+--------------+--------------------------------------------+
-| $2$          | Quadratische Funktion                      |
-+--------------+--------------------------------------------+
-| $3$          | Kubische Funktion                          |
-+--------------+--------------------------------------------+
-| $4$          | Quartische Funktion                        |
-+--------------+--------------------------------------------+
-
-:::
-::::::
-
-### Übung
-
-
-a) Seien $p=1+2x$ und $q=1+3x$ zwei Polynome über $\mathbf{Z}$ vom Grad 1.
-   - Berechnen Sie $p \cdot q$ und bestimmen sie den Grad dieses Polynoms!
-   - Berechnen Sie $p + q$ und bestimmen sie den Grad dieses Polynoms!
-
-
-b) Seien $p=1+2x$ und $q=1+3x$ zwei Polynome über dem Restklassenring 
-   $\mathbf{Z}/6\mathbf{Z}$ vom Grad 1.
-   - Berechnen Sie $p \cdot q$ und bestimmen sie den Grad dieses Polynoms!
-   - Berechnen Sie $p + q$ und bestimmen sie den Grad dieses Polynoms!
-
-
-### Linearfaktoren und Linearfaktorzerlegung
-
-Ist der Funktionsterm einer ganzrationalen Funktion als Produkt von 
-linearen Faktoren (von denen manche auch mehrfach auftreten können) und evtl. 
-einer ganzrationalen Funktion $g$ ohne Nullstellen gegeben, also
-
-$$f(x) = (x - x_1)^{k_1} \cdot (x - x_2)^{k_2} \dotsm (x - x_m)^{k_m} \cdot g(x),$$
-
-so sind $x_1, x_2, \dotsc, x_m$ die *Nullstellen*. 
-Die natürlichen Zahlen $k_1, k_2, \dotsc, k_m$ heißen die **Vielfachheiten der Nullstellen**.
-
-**Beispiel:** Die Funktion
-$$f\colon x \mapsto -0{,}01 \cdot x^3 \cdot (x - 2) \cdot (x + 3)^2 \cdot (x^2 + 1)$$
-hat die dreifache Nullstelle $x_1 = 0$, die einfache Nullstelle $x_2 = 2$ 
-und die doppelte/zweifache Nullstelle $x_3 = -3$; 
-die Faktoren $-0{,}01$ und $x^2+1$ können dagegen für kein $x$ zu null werden,
-liefern also keine weiteren Nullstellen. 
-
-Somit ist dann mit $g(x)= -0{,}01(x^2+1)$:
-
-$$f(x)= x^3 \cdot (x - 2) \cdot (x + 3)^2 \cdot g(x)$$
-
-
-
-### Übung 
-...
-
-<!-- -->
-
-### Quadratische Funktionen 
-
-Eine nicht konstante und nicht lineare Funktion, die man mit Hilfe eines
-*Polynom zweiten Gerades* darstellen kann wollen wir **quadratische Funktion** 
-nennen:
-
-:::::: {.columns}
-::: {.column width="49%"}
-
-$$\begin{aligned}
-f\,:\, & D\to Z \\
-       & x \,\mapsto\, y = a \cdot x^2 + b \cdot x + c
-\end{aligned}$$
-
-Dabei sind $a \neq 0$, $b$, $c$ die *Koeffizienten* der Funktion.
-:::
-::: {.column width="49%"}
-**Nullstellen:**
-Falls vorhanden sind die Nullstellen $x_1$, $x_2$ gegeben durch:
-
-$$x_{1,2} =  \frac{-b\pm\sqrt{b^2-4ac}}{2a}$$
-
-
-**Scheitelpunktsform**:
-Die Funktion $f$ kann auch durch
-$$f(x) = a \cdot \left(x - x_s\right)^2 + y_s$$
-mit $x_s = \frac{x_1 + x_2}{2}$, 
-$y_s = f(x_s) = -\frac{a}{4}\cdot\left(x_2-x_1\right)^2$ dargestellt werden.
-
-:::
-::::::
-
-Den Graph einer *quadratischen Funktion* nennt man **Parabel**.
-
-
-### Beispiele quadratischer Funktionen
-
-:::::: {.columns}
-::: {.column width="49%"}
-```{r warning=FALSE, echo=FALSE, fig.align="center", out.width="95%"}
-library(ggplot2)
-
-myFun <- function(x, a, xs, ys) {
-  res <- a*(x - xs)**2 + ys
-  return(res)
-}
-
-my.df <- data.frame(x = c(-3.5,3.5))
-ggplot(my.df, aes(x = x)) +
-  geom_vline(aes(xintercept = 0)) +
-  geom_hline(aes(yintercept = 0)) +
-  stat_function(fun = myFun, n = 1000, 
-                args = list(a =  2, xs =  0, ys =  0), 
-                aes(colour = "2*x^2")) +
-  stat_function(fun = myFun, n = 1000, 
-                args = list(a =  2, xs = -2, ys = -2), 
-                aes(colour = "2*(x-2)^2-2")) +
-  stat_function(fun = myFun, n = 1000, 
-                args = list(a =  2, xs =  2, ys =  2), 
-                aes(colour = "2*(x+2)^2+2")) +
-  stat_function(fun = myFun, n = 1000, 
-                args = list(a = -2, xs = -2, ys =  2), 
-                aes(colour = "-2*(x-2)^2+2")) +
-  stat_function(fun = myFun, n = 1000, 
-                args = list(a = -2, xs =  2, ys = -2), 
-                aes(colour = "-2*(x+2)^2-2")) +
-  scale_colour_manual("Funktionen:", 
-                      values = c("blue", "green", "orange", "yellow", "red")) +
-  theme(legend.title = element_text(size = 22, face = "bold")) +
-  theme(legend.text = element_text(size = 18)) +
-  coord_cartesian(xlim =  c(-3, 3), ylim = c(-10, 10)) + 
-  theme(legend.position = "bottom") +
-  guides(colour = guide_legend(ncol = 3,nrow = 2,byrow = TRUE))
-
-
-```
-
-:::
-::: {.column width="49%"}
-:::: {.small}
-Es gilt
-$$a\cdot(x-x_s)^2+y_s = a\cdot x^2 + b\cdot x + c$$
-mit $b = -2\cdot a \cdot x_s \cdot x$ und $c =  a \cdot x_s^2 + y_s$
-
-
-
-**Zum Beispiel:**
-
-- $-2(x-2)^2+2 = -2x^2 + 8x - 6$
-
-- $-2(x+2)^2-2 = -2x^2 - 8x - 10$
-
-- $\phantom{-}2(x-2)^2-2 = \phantom{-}2x^2 - 8x + 6$
-
-- $\phantom{-}2(x+2)^2+2 = \phantom{-}2x^2 + 8x+ 10$
-
-::::
-:::
-::::::
-
-### Kubische Funktionen {include-only=LangeFassung}
-
-Eine Funktion, die man mit Hilfe eines
-*Polynom dritten Gerades* darstellen kann wollen wir **kubische Funktion** 
-nennen:
-
-$$\begin{aligned}
-f\,:\, & D\to Z \\
-       & x \,\mapsto\, y = a \cdot x^3 + b \cdot x^2 + c \cdot x + d
-\end{aligned}$$
-
-Dabei sind $a \neq 0$, $b$, $c$ und $d$ die *Koeffizienten* der Funktion.
-
-
-<!-- -->
-
-
-### Potenzfunktionen / Wurzelfunktionen
-
-Als **Potenzfunktionen** bezeichnen wir eind Funktion der Form:
-
-$$f : x \mapsto a x^r \qquad a, r \in \mathbf{R}.$$
-
-Ist der **Exponent** $r$ darstellbar durch $r= \frac{1}{n}$ für ein 
-$n \in \mathbf{N}$, so nennen wir die Funktion auch **Wurzelfunktion**.
-
-<!-- -->
-
-
-### Exponetialfunktionen
-
-Die Exponentialfunktion zu der Basis $e$ kann auf den reellen Zahlen u.a. durch
-$$\exp(x) = \lim_{n \to \infty} \left( 1 + \frac{x}{n} \right)^n$$
-definiert werden. Es ist dann 
-$$e=exp(1)\approx 2{,}71828 \, 18284 \, 59045 \, 23536 \, 02874 \, 71352 \, 66249 \, 77572 \, 47093 \, 69995 \, \dots$$ 
-und umgekehrt $\exp(x) = e^x$.
-
-Eine Exponentialfunktion zu einer beliebigen Basis $a$ ist dann:
-$$a^x = exp(x \cdot \ln(a))$$
-Wobei $\ln(x)$ die Umkehrfunktion von $\exp(x)$ ist und **natürlicher Logarithmus** genannt wird.
-
-<!-- -->
-
-
-### Logarithmenfunktionen
-
-...
-
-<!-- -->
-
-
-### Sinus / Cosinus {include-only=LangeFassung}
-...
-
-<!-- -->
-
-
-### Logistische Funktionen
-
-
-<!-- -->
-
-
-### Betragsfunktion
-
-
-<!-- -->
-
+## Der Begriff der Stetigkeit
 
 ### Stetigkeit
 
-Eine Funktion ist **(folgen-)stetig**, wenn für alle $h>0$ gilt:
+Eine (reellwertige) Funktion ist **(folgen-)stetig**, wenn für alle $h>0$ gilt:
 
 $$\lim_{h \to 0} f(x+h) = f(x) = \lim_{h \to 0} f(x-h)$$
 
@@ -528,8 +29,32 @@ Eine stetige Funktion hat keine **Sprungstellen** und "lässt ich ohne Absetzen 
 
 ### Zwischenwertsatz
 
-Eine *stetige Funktion* $f$, die zwischen zwei Stellen $x_0$ und $x_1$ das Vorzeichen wechselt, also
-$f(x_0)\cdot f(x_1) < 0$, hat zwischen $x_0$ und $x_1$ mindestens eine Nullstelle.
+Eine *stetige Funktion* $f$, die zwischen zwei Stellen $x_0$ und $x_1$ das 
+Vorzeichen wechselt, also $f(x_0)\cdot f(x_1) < 0$, hat zwischen 
+$x_0$ und $x_1$ mindestens eine Nullstelle.
+
+
+**Beispiel:**
+
+Die Funktion $f$ hat an den Stellen $f(-2) = 1 > 0$ und $f(4)= -1 <0$ jeweils
+ein unterschiedlichen Vorzeichen, also muss zwischen $-2$ und $4$ (mindestens)
+eine Nullstelle existieren:
+
+```{r echo=FALSE, out.height="40%"}
+my_size = 1.5
+my_zero_line_color = "black"
+my_line_color = "blue"
+my_point_color = "red"
+
+gf_fun( cos(0.4*(x+2))  ~ x, color = "blue", xlim=c(-2, 6)) %>%
+  gf_hline(color = my_zero_line_color, yintercept = ~ 0, show.legend = FALSE) %>%
+  gf_point(1 ~ -2, color = my_line_color) %>%
+  gf_point(-1 ~ 6, color = my_line_color) %>%
+  gf_path(c(0, 1) ~ c(-2, -2), linetype = "dotted") %>%
+  gf_path(c(0, -1) ~ c(6, 6), linetype = "dotted") %>%
+  gf_point(0 ~ 2.5*(3.14/2)-2, color = my_point_color) %>%
+  gf_theme(theme_bw(base_size = my_size*11)) 
+```
 
 
 ## Steigungen von Funktionen
@@ -544,6 +69,24 @@ Sollte für alle $c \in (a, b)$ die Punkte $S(c, f(c))$ nicht auf der Geraden
 liegen, so nennen wir die Gerade $g_{PQ}$ eine **Sekante**.
 
 
+```{r echo=FALSE, out.height="40%"}
+my_size = 1.5
+my_zero_line_color = "black"
+my_line_color = "blue"
+my_sec_color = "green"
+my_fkt = makeFun(cos(0.6*(x+2))  ~ x)
+
+gf_function( fun = my_fkt, color = "blue", xlim=c(-1, 6)) %>%
+  gf_hline(color = my_zero_line_color, yintercept = ~ 0, show.legend = FALSE) %>%
+  gf_point(my_fkt(0) ~ 0, color = my_line_color) %>%
+  gf_text(my_fkt(0) ~ 0, label = "P", size = 4, angle = 0, hjust = 0, nudge_x = 0.1, nudge_y = 0.1) %>%
+  gf_point(my_fkt(5) ~ 5, color = my_line_color) %>%
+  gf_text(my_fkt(5) ~ 5, label = "Q", size = 4, angle = 0, hjust = 0, nudge_x = 0.1, nudge_y = -0.1) %>%
+  gf_abline(slope = ((my_fkt(5) - my_fkt(0)) / (5 - 0)), intercept = my_fkt(0), color = my_sec_color) %>%
+  gf_theme(theme_bw(base_size = my_size*11)) 
+```
+
+
 ### Sekantensteigung / Differenzenquotient
 
 Für eine Funktion $f:D \to Z$ und zwei Werte $x_0 < x_1$ aus $D$ nennen wir 
@@ -552,15 +95,15 @@ $Q(x_1; f(x_1))$
 
 $$m_s = \frac{f(x_1)- f(x_0)}{x_1-x_0}$$
 
-die **Sekantensteigung** oder auch **Durchschnittssteigung** bzw 
+die **Sekantensteigung** oder auch **Durchschnittssteigung** bzw.
 **Differenzenquotient** von $f$ im Intervall $[x_0, x_1]$.
 
-Die Sekante wird dann durch den folgendenFunktionsterm beschieben:
+Die Sekante wird dann durch den folgenden Funktionsterm beschrieben:
 $$m_s \cdot x + b_s$$
 Dabei ist $b_s = f(x_0) - m_x \cdot x_0 = f(x_1) - m_x \cdot x_1$.
 
 
-### Übung
+### Übung `r nextExercise()`: {.exercise} 
 
 Bestimmen Sie jeweils die Sekante und die Sekantensteigung für die 
 angegebenen Funktionen $f$ an den Stellen $x_0$ und $x_1$.
@@ -583,11 +126,17 @@ Alternativ schauen Sie sich jeweils die Graphen mit Hilfe eines "Plotprogramms" 
 Z.B.: https://www.mathe-fa.de/de 
 
 
+::: {.notes}
+a) $m_s = \frac{16-0}{4-0}= 4$ und $b_s=0$, Die Sekante lautet also: $4\cdot x$
+
+d) $...$
+:::
+
 ### Die $\Delta$-Notation
 
 Statt $x_1 - x_0$ wollen wir zur Abkürzeung $\Delta x_0$ schreiben, in dem wir festlegen:
 
-$$x_1 = x_0 + \Delta x_0 \quad \Longleftrightarrow \Delta x_0 = x_1 - x_0$$
+$$x_1 = x_0 + \Delta x_0 \quad \Longleftrightarrow \quad \Delta x_0 = x_1 - x_0$$
 
 Analog wollen wir statt $f(x_1) - f(x_0)$ kurz $\Delta f(x_0)$ schreiben, in dem wir festlegen:
 
@@ -600,9 +149,9 @@ $$m_s = \frac{f(x_1)- f(x_0)}{x_1-x_0} = \frac{\Delta f(x_0)}{\Delta x_0}$$
 
 ### Tangentensteigung / Differenzialquotient / Ableitung
 
-Eine (reelle) Funktion $f : D \to Z$ heisst an der Stelle $x_0 \in D$  differenzierbar, falls
+Eine (reelle) Funktion $f : D \to Z$ heißt an der Stelle $x_0 \in D$  differenzierbar, falls
 der Grenzwert 
-$$\lim_{\Delta x_0 \to 0} \frac{\Delta f(x_0)}{\Delta x_0} = \lim_{h \to 0} \frac{f(x_0+h)- f(x_0)}{h}$$ 
+$$\lim_{\Delta x_0 \to 0} \frac{\Delta f(x_0)}{\Delta x_0} = \lim_{h \to 0} \frac{f(x_0+h)- f(x_0)}{h}$$
 existiert. 
 Wir nennen der Grenzwert **erste Ableitung** oder **Differenzialquotient** von $f$ an der Stelle $x_0$ und bezeichnen diesen mit:
 $$f'(x_0) = \frac{d f(x_0)}{d x_0}$$
@@ -631,7 +180,7 @@ $$f(x) \approx t(x) = f(x_0) + f'(x_0) \cdot(x- x_0)$$
 
 ### Ableitung elementarer Funktionen
 
-Für die folgenden *elementaren Funktionen* kann man expliziete Ableitungsregeln angeben.
+Für die folgenden *elementaren Funktionen* kann man explizite Ableitungsregeln angeben.
 
 Sei $f: D \to Z$ eine Funktion und $a>0$, $b$, $c$ reelle Zahlen. Dann gilt:
 
@@ -646,11 +195,11 @@ Sei $f: D \to Z$ eine Funktion und $a>0$, $b$, $c$ reelle Zahlen. Dann gilt:
 +------------+--------------------+-------------+----------------------------+
 
 
-### Übung
+### Übung `r nextExercise()`: {.exercise} 
 
-<!-- Übung vn Ross/Christians -->
+<!-- Übung von Ross/Christians -->
 
-Bestimmen sie für die folgenden Funktionen $f(x)$, die Ableitungen $f'(x)$ und
+Bestimmen Sie für die folgenden Funktionen $f(x)$, die Ableitungen $f'(x)$ und
 werten Sie dann die Funktion $f'(x)$ an der Stelle $x_0$ aus.
 
 +------+-----------------+------------------+
@@ -674,7 +223,7 @@ werten Sie dann die Funktion $f'(x)$ an der Stelle $x_0$ aus.
 
 ### Summenregel
 
-Sei $f(x) = g(x) +  h(x)$, dann gilt für die Ableitung gemäß **Summenregel**:
+Sei $f(x) = g(x) + h(x)$, dann gilt für die Ableitung gemäß **Summenregel**:
 
 $$f'(x) = g'(x)+h'(x)$$
 
@@ -729,7 +278,7 @@ Sei $f(x) = c \cdot g(x)$, dann ist $f'(x)= c \cdot g'(x)$.
 <!-- -->
 
 
-### Übungen
+### Übung  `r nextExercise()`: {.exercise} 
 
 Bestimmen Sie die ersten Ableitungen der folgenden Funktionen
 
@@ -815,7 +364,7 @@ $$f'(x) = \left(g\left(h(x)\right)\right)' = g'(h(x)) \cdot h'(x)$$
 <!-- -->
 
 
-### Übungen
+### Übung `r nextExercise()`: {.exercise} 
 
 Bestimmen Sie die ersten Ableitungen der folgenden Funktionen:
 
@@ -869,7 +418,7 @@ Gilt in beiden Fällen jeweils auf der rechten Seite die *strikte Ungleichung*
 
 **Monotonie** setzt voraus, dass die *Steigungen* im jeweiligen Intervall $I$
 *nicht negativ* (im *strengen* Fall *positiv*) bzw. 
-*nicht postiv* (im strengen Fall *negativ*) sind.
+*nicht positiv* (im strengen Fall *negativ*) sind.
 
 Es gilt daher:
 
@@ -883,7 +432,7 @@ Es gilt daher:
 
 Eine reellwertige Funktion heißt **konvex** auf dem Intervall $I$, wenn
 für je zwei Stellen $a < b$ mit $a,b \in I$ die Funktionswerte von $f$ unterhalb
-der Verbingdsstrecke von $(a; f(a))$ und $(b; f(b))$ liegt.
+der Verbindungsstrecke von $(a; f(a))$ und $(b; f(b))$ liegt.
 Liegen alle Funktionswerte oberhalb, so nennen wir die Funktion **konkav** auf 
 $I$:
 
@@ -907,8 +456,8 @@ dafür
 
 $$f''(x) = \left[f'(x)\right]' = \frac{d}{dx} \left(\frac{d}{dx} f\right) = \frac{d^2}{dx^2} f$$
 
-Rekursiv definieren wir die $n$-te Ableitung, falls die $n-1$ Ableitungfunktion
-exisiert und differenzierbar ist. Wir schreiben dann:
+Rekursiv definieren wir die $n$-te Ableitung, falls die $n-1$ Ableitungsfunktion
+existiert und differenzierbar ist. Wir schreiben dann:
 
 $$f^{(n)}(x) = \left[f^{(n-1)}(x)\right]' = \frac{d}{dx} \left(\frac{d^{n-1}}{dx^{n-1}} f\right) = \frac{d^n}{dx^n} f$$
 
@@ -939,7 +488,7 @@ $x_0$ heißt
 
 - **globales Maximum**, falls $f(x) \leq f(x_0)$ für alle $x\in D$ gilt
 
-- **strenges globales Maximum**, falls $f(x) < f(x_0) für alle $x \in D \setminus {x_0}$ gilt.
+- **strenges globales Maximum**, falls $f(x) < f(x_0)$ für alle $x \in D \setminus \{x_0\}$ gilt.
 
 - **lokales Maximum**, falls $f(x) \leq f(x_0)$ für alle $x$ in einer echten Umgebung von $x_0$ gilt
 
@@ -947,10 +496,11 @@ $x_0$ heißt
 
 Analog die Definition mit **Minimum**. 
 
-### Übung
+
+### Übung `r nextExercise()`: {.exercise} 
 
 Schreiben Sie die Definitionen von 
-**globles Minimum**, 
+**globales Minimum**, 
 **strenges globales Minimum**, 
 **lokales Minimum** und **strenges lokales Minimum** einmal konkret auf!
 
@@ -1067,27 +617,30 @@ ggplot(my.df, aes(x = x)) +
 
 ### Beispiel
 
-Bestimmen Sie die Nullstellen der ersten und zweiten Ableitung von 
-$f(x) = x^3-3x^2-24x+2$. 
+Wir analysieren die Funktion $f(x) = x^3-3x^2-24x+2$.
+
+Bestimmen Sie die Nullstellen der ersten und zweiten Ableitung von $f$.
+
 Überprüfen Sie, ob es sich bei diesen Nullstellen um Maxima, Minima, Wende- 
 oder Sattelpunkte handelt.
 
 **Lösung:**
+
 $f(x)=x^3-3x^2-24x+2$, $f'(x)=3x^2-6x-24$, $f''(x)=6x-6$, $f'''(x)=6$
 
-$f'(x)=0 \Leftrightarrow 3x^2-6x-24 \Leftrightarrow x_1=-2; x_2=4$
+$f'(x)=0 \Leftrightarrow 3x^2-6x-24 \Leftrightarrow x_1=-2 ;\, x_2=4$
 
-$f''(-2) = -18 < 0$, also ist bei $x_1=-2$ ein lokales Maximum.
+$f''(-2) = -18 < 0$, also ist bei $x_1 = -2; y_1 = 30$ ein lokales Maximum.
 
-$f''(5) = 18 > 0$, also ist bei $x_2=-4$ ein lokales Minimum.
+$f''(4) = 18 > 0$, also ist bei $x_2=4;\, y_2 = -78$ ein lokales Minimum.
 
 Wegen $f''(x) = 0 \Leftrightarrow x=1$ und $f'''(1)=6 \neq 0$ gibt es bei
-$x=1$ einen Wendepunkt. 
+$x=1$ einen Wendepunkt bei $(1| -24). 
 
-Wegen $f(1)=-27 \neq 0$ gibt es keine Sattelpunkte.
+Wegen $f'(1)=-27 \neq 0$ gibt es an der Stelle $x=1$ *keinen* Sattelpunkt.
 
 
-### Übungen
+### Übung `r nextExercise()`: {.exercise} 
 
 <!-- Übung von Ross/Christiaans -->
 
@@ -1113,7 +666,7 @@ h) $\displaystyle f(x) = -2x^3 + 24x$
 i) $\displaystyle f(x) = -2x^3 + 6x^2$
 
 
-### Übungen
+### Übung `r nextExercise()`: {.exercise} 
 
 <!-- Übung von Ross/Christiaans -->
 
@@ -1139,42 +692,239 @@ h) $\displaystyle f(x) = e^x$
 i) $\displaystyle f(x) = x^{-1{,}5}+1{,}5x\quad (\text{für }x>0)$
 
 
-### Gewinnmaximum und Break Even mit Konkurrenz
+### Beispiel: Gewinnmaximum und Break Even mit Konkurrenz
 
-**Beispiel:**
 Betrachten Sie ein Unternehmen, welches sich einem konstanten Marktpreis 
 $p = 10$ gegenübersieht. 
 Die Kosten sind abhängig von der produzierten Menge $x$ und gegeben durch 
 $K(x) = 0{,}64x^2 -6x + 64$.
 
-**Erlöse:** $E = E(X)= p \cdot x = 10x$
+:::::: {.columns}
+::: {.column width="49%"}
 
-**Gewinnfunktion:** $G(x)=E(x)-K(x) = 10x - (0{,}64x^2 -6x + 64) = -0{,}64x^2 + 16x + -64$ 
+**Erlöse:** 
 
-**Gewinnmaximum:** $G'(x)=0 \Leftrightarrow -1{,}28x+16 = 0 \Leftrightarrow x_{max} = 12{,}5$
+$E(x)= p \cdot x = 10x$
 
-**Gewinne im Maximum:** $G_{max} = G(x_{max}) = 36$
+**Gewinnfunktion:** 
 
+$G(x)=E(x)-K(x)$ 
 
-### Gewinnmaximum und Break Even mit Konkurrenz (Fortset.)
+$\phantom{G(x)}= 10x - (0{,}64x^2 -6x + 64)$  
+
+$\phantom{G(x)}= -0{,}64x^2 + 16x -64$ 
+
+**Gewinnmaximum:** 
+
+$G'(x)=0 \Leftrightarrow -1{,}28x+16 = 0$
+
+$\phantom{G`(x)=0}\Leftrightarrow x_{max} = 12{,}5$
+
+**Gewinne im Maximum:** 
+
+$G_{max} = G(x_{max}) = 36$
+
+:::
+::: {.column width="49%"}
+
+```{r echo=FALSE, out.width="95%"}
+my_size = 2
+my_zero_line_color = "black"
+my_line_color = "blue"
+my_sec_color = "green"
+
+my_P = makeFun(10 ~ x)
+my_E = makeFun(my_P(x) * x  ~ x)
+my_K = makeFun((0.64*x -6) * x + 64 ~ x)
+my_G = makeFun(my_E(x) - my_K(x) ~ x) 
+my_DK = makeFun(my_K(x) / x ~ x)
+
+gf_function( fun = my_G, color = "green", xlim = c(0, 20.5)) %>%
+  gf_function( fun = my_E, color = "blue", xlim = c(0, 20.5)) %>%
+  gf_function( fun = my_K, color = "red", xlim = c(0, 20.5)) %>%
+  gf_point(36 ~ 12.5, color = "green", size = 2) %>%
+  gf_point(89 ~ 12.5, color = "red", size = 2) %>%
+  gf_point(125 ~ 12.5, color = "blue", size = 2) %>%
+  gf_point(c(0,0) ~ c(5,20), color = "green", size = 2) %>%
+  gf_point(50 ~ 5, color = "red", fill = "blue", size = 2) %>%
+  gf_point(200 ~ 20, color = "red", fill = "blue", size = 2) %>%
+  gf_path(c(0,50) ~ c(5,5) , linetype = "dotted", color = "darkgray") %>%
+  gf_path(c(0,125) ~ c(12.5,12.5) , linetype = "dotted", color = "darkgray") %>%
+  gf_path(c(0,200) ~ c(20,20) , linetype = "dotted", color = "darkgray") %>%
+  gf_label(10 ~ 1.5, label = "E(x)", size = 4, angle = 0, hjust = 0, nudge_x = -0.5, nudge_y = 0.5) %>% 
+  gf_label(my_K(1.5) ~ 1.5, label = "K(x)", size = 4, angle = 0, hjust = 0, nudge_x = -0.5, nudge_y = 0.5) %>% 
+  gf_label(my_G(1.5) ~ 1.5, label = "G(x)", size = 4, angle = 0, hjust = 0, nudge_x = -0.5, nudge_y = 0.5) %>% 
+  gf_label((my_G(12.5) + 15) ~ 12.5, label = "max. Gewinn", size = 4, angle = 0, hjust = 0, nudge_x = -0.5, nudge_y = 0.5) %>%
+  gf_label(-15 ~ 5.6, label = "Break Even Point", size = 4, angle = 0, hjust = 0, nudge_x = -0.5, nudge_y = 0.5) %>%
+  gf_refine(scale_x_continuous(breaks = seq(0,20,2.5))) %>%
+  gf_refine(scale_y_continuous(breaks = c(0,36,my_K(5),my_K(12.5), my_E(12.5),my_K(20)))) %>%
+  gf_hline(yintercept = 0, color = "black") %>%
+  gf_theme(theme_bw(base_size = my_size*11)) 
+```
+
+:::
+::::::
 
 **Break Even (BE):** $G(x) = 0 \Leftrightarrow -0{,}64x^2 + 16x + -64 = 0$
 $x_{BE} = x_1 = 5$, $x_2 = 20$ (*obere Gewinngrenze*)
 
-**Betriebsoptimum:** (Miniumum der Durchschnittskosten)
+
+
+
+### Beispiel: Gewinnmaximum und Break Even mit Konkurrenz (Fortset.)
+
+
+**Betriebsoptimum:** (Minimum der Durchschnittskosten)
 $DK(x) = \frac{K(x)}{x} = \frac{0{,}64x^2 -6x + 64}{x} = 0{,}64x -6 + \frac{64}{x}$
 $DK'(x) = 0{,}64 - \frac{64}{x^2} = 0 \Leftrightarrow x_{BO}= x_1=10, x_2=-10$
 
+```{r echo=FALSE, out.width="70%"}
+my_size = 2
+my_zero_line_color = "black"
+my_line_color = "blue"
+my_sec_color = "green"
 
-### Gewinnmaximum und Break Even mit Marktmacht
+my_P = makeFun(10 ~ x)
+my_E = makeFun(my_P(x) * x  ~ x)
+my_K = makeFun((0.64*x -6) * x + 64 ~ x)
+my_G = makeFun(my_E(x) - my_K(x) ~ x) 
+my_DK = makeFun(my_K(x) / x ~ x)
+my_DE = makeFun(my_E(x) / x  ~ x)
+#my_DG = makeFun(my_DE(x)-my_DK(x) ~ x)
+
+gf_function( fun = my_DK, color = "red", xlim = c(5, 20.)) %>%
+  gf_function( fun = my_G, color = "blue", xlim = c(5, 20)) %>%
+#  gf_function( fun = my_DE, color = "green", xlim = c(5, 20)) %>%
+#  gf_function( fun = my_DG, color = "orange", xlim = c(5, 20)) %>%
+  gf_point(my_DK(10) ~ 10, color = "red", size = 2) %>%
+  gf_point(my_G(12.5) ~ 12.5, color = "blue", size = 2) %>%
+
+  gf_refine(scale_x_continuous(breaks = seq(5,20,2.5))) %>%
+  gf_refine(scale_y_continuous(breaks = c(0, my_DK(10), 10, 36))) %>%
+  gf_hline(yintercept = 0, color = "black") %>%
+  gf_theme(theme_bw(base_size = my_size*11)) 
+
+
+```
+
+
+
+### Beispiel: Gewinnmaximum und Break Even mit Marktmacht
 
 Betrachten Sie ein Unternehmen mit Marktmacht, welches sich der Marktnachfrage 
-$p = 30-x$ gegenübersieht, wobei hier $p$ den Preis und $x$ die Menge bezeichnet. 
+$p(x) = 30-x$ gegenübersieht, wobei hier $p$ den Preis und $x$ die Menge bezeichnet. 
 Die Kosten $K$ sind gegeben durch $K = 0{,}5x^2 +18x + 18$. 
 
-...
+:::::: {.columns}
+::: {.column width="49%"}
 
-### Übungen
+**Erlöse:** 
+
+$E(x)= p(x) \cdot x = 30x-x^2$
+
+**Gewinnfunktion:** 
+
+$G(x)=E(x)-K(x)$ 
+
+$\phantom{G(x)}= 30x-x^2 - (0{,}5x^2 +18x + 18)$  
+
+$\phantom{G(x)}= -1{,}5x^2 + 12x -18$ 
+
+**Gewinnmaximum:** 
+
+$G'(x)=0 \Leftrightarrow -3{,}0x+12 = 0$
+
+$\phantom{G`(x)=0}\Leftrightarrow x_{max} = 4{,}0$
+
+**Gewinne im Maximum:** 
+
+$G_{max} = G(x_{max}) = 6$
+
+**Preis im Maximum:** 
+
+$P_{max} = p(x_{max}) = 26$
+
+
+:::
+::: {.column width="49%"}
+
+```{r echo=FALSE, out.width="95%"}
+my_size = 2
+my_zero_line_color = "black"
+my_line_color = "blue"
+my_sec_color = "green"
+
+my_P = makeFun(30-x ~ x)
+my_E = makeFun(my_P(x) * x  ~ x)
+my_K = makeFun(0.5*x*x + 18*x +18 ~ x)
+my_G = makeFun(my_E(x) - my_K(x) ~ x) 
+#my_DK = makeFun(my_K(x) / x ~ x)
+
+gf_function( fun = my_G, color = "green", xlim = c(1.8, 6.2)) %>%
+#  gf_function( fun = my_E, color = "blue", xlim = c(0, 7)) %>%
+#  gf_function( fun = my_K, color = "red", xlim = c(0, 7)) %>%
+  gf_point(6 ~ 4, color = "green", size = 2) %>%
+#  gf_point(89 ~ 12.5, color = "red", size = 2) %>%
+#  gf_point(125 ~ 12.5, color = "blue", size = 2) %>%
+  gf_point(c(0,0) ~ c(2,6), color = "green", size = 2) %>%
+#  gf_point(50 ~ 5, color = "red", fill = "blue", size = 2) %>%
+#  gf_point(200 ~ 20, color = "red", fill = "blue", size = 2) %>%
+  gf_path(c(0,6) ~ c(4,4) , linetype = "dotted", color = "darkgray") %>%
+#  gf_path(c(0,125) ~ c(12.5,12.5) , linetype = "dotted", color = "darkgray") %>%
+#  gf_path(c(0,200) ~ c(20,20) , linetype = "dotted", color = "darkgray") %>%
+#  gf_label(10 ~ 1.5, label = "E(x)", size = 4, angle = 0, hjust = 0, nudge_x = -0.5, nudge_y = 0.5) %>% 
+#  gf_label(my_K(1.5) ~ 1.5, label = "K(x)", size = 4, angle = 0, hjust = 0, nudge_x = -0.5, nudge_y = 0.5) %>% 
+#  gf_label(my_G(1.5) ~ 1.5, label = "G(x)", size = 4, angle = 0, hjust = 0, nudge_x = -0.5, nudge_y = 0.5) %>% 
+#  gf_label((my_G(12.5) + 15) ~ 12.5, label = "max. Gewinn", size = 4, angle = 0, hjust = 0, nudge_x = -0.5, nudge_y = 0.5) %>%
+#  gf_label(-15 ~ 5.6, label = "Break Even Point", size = 4, angle = 0, hjust = 0, nudge_x = -0.5, nudge_y = 0.5) %>%
+#  gf_refine(scale_x_continuous(breaks = seq(0,20,2.5))) %>%
+#  gf_refine(scale_y_continuous(breaks = c(0,36,my_K(5),my_K(12.5), my_E(12.5),my_K(20)))) %>%
+  gf_hline(yintercept = 0, color = "black") %>%
+  gf_theme(theme_bw(base_size = my_size*11)) 
+```
+
+:::
+::::::
+
+**Break Even (BE):** $G(x) = 0 \Leftrightarrow -1{,}5x^2 + 12x -18 = 0$
+$x_{BE} = x_1 = 2$, $x_2 = 6$ (*obere Gewinngrenze*)
+
+### Beispiel: Gewinnmaximum und Break Even mit Marktmacht (Fortset.)
+
+
+**Betriebsoptimum:** (Minimum der Durchschnittskosten)
+$DK(x) = \frac{K(x)}{x} = \frac{0{,}5x^2 +18x + 18}{x} = 0{,}5x + 18 + \frac{18}{x}$
+$DK'(x) = 0{,}5 - \frac{18}{x^2} = 0 \Leftrightarrow x_{BO}= x_1=6, x_2=-6$
+
+```{r echo=FALSE, out.width="70%"}
+my_size = 2
+my_zero_line_color = "black"
+my_line_color = "blue"
+my_sec_color = "green"
+
+my_P = makeFun(30-x ~ x)
+my_E = makeFun(my_P(x) * x  ~ x)
+my_K = makeFun(0.5*x*x + 18*x +18 ~ x)
+my_G = makeFun(my_E(x) - my_K(x) ~ x) 
+my_DK = makeFun(my_K(x) / x ~ x)
+
+gf_function( fun = my_DK, color = "red", xlim = c(2, 6.5)) %>%
+  gf_function( fun = my_G, color = "blue", xlim = c(2, 6.5)) %>%
+#  gf_function( fun = my_DE, color = "green", xlim = c(5, 20)) %>%
+#  gf_function( fun = my_DG, color = "orange", xlim = c(5, 20)) %>%
+  gf_point(my_DK(6) ~ 6, color = "red", size = 2) %>%
+  gf_point(my_G(4) ~ 4, color = "blue", size = 2) %>%
+
+  gf_refine(scale_x_continuous(breaks = seq(2,6,1))) %>%
+  gf_refine(scale_y_continuous(breaks = c(0, my_DK(6), my_G(4),30))) %>%
+  gf_hline(yintercept = 0, color = "black") %>%
+  gf_theme(theme_bw(base_size = my_size*11)) 
+
+
+```
+
+
+### Übung `r nextExercise()`: {.exercise} 
 
 Bestimmen Sie für ein Unternehmen ohne Marktmacht, welches sich nachfolgendem 
 Marktpreis $p$ und Kosten $K(x)$ gegenübersieht, die Break-Even-Menge $x_{BE}$, 
@@ -1198,9 +948,9 @@ g) $p=20; K(x) = x^2-6x+144$
 h) $p=60; K(x) = 2x^2+2x+200$
 
 
-### Univariate Funktionen
+### Multivariate Funktionen
 
-Unter einer reelwertigen, **univariaten Funktion**, wollen wir eine Funktion
+Unter einer reellwertigen, **multivariaten Funktion**, wollen wir eine Funktion
 
 $$\begin{aligned}
 f\,:\, & D \phantom{(x, \dotsc, x)}\to Z \\
@@ -1229,16 +979,17 @@ c) $\displaystyle f(x, y) = \frac{x}{y}+xy$
 
 :::
 
+
 ### Partielle Ableitung
 
-Werden für eine univariate, reellwertige Funktion
+Werden für eine multivariate, reellwertige Funktion
 
 $$\begin{aligned}
 f\,:\, & D \phantom{(x, \dotsc, x)}\to Z \\
        & (x_1, \dotsc, x_n) \mapsto\, y = f(x_1, \dotsc, x_n)
 \end{aligned}$$
 
-Alle Variabeln $x_j$ bis auf die $i$-te als Konstanten betrachtet 
+Alle Variablen $x_j$ bis auf die $i$-te als Konstanten betrachtet 
 (c.p. = ceteris paribus), dann heißt die Ableitung von $f$ nach $x_i$ die 
 **partielle Ableitung von $f$ nach $x_i$**:
 
@@ -1255,11 +1006,11 @@ b) $f(x_1, x_2) = x_1^2 x_2^3$, $f_{x_1}(x_1, x_2) =2 x_1 x_2^3$, $f_{x_2}(x_1, 
 c) $\displaystyle f(x, y) = \frac{x}{y}+xy$, $\displaystyle f_x(x,y) = \frac{1}{y} + y$, $\displaystyle f_y(x,y) = -\frac{x}{y^2}+x$
 
 
-### Übung
+### Übung `r nextExercise()`: {.exercise} 
 
 <!-- Übung von Ross/Christians -->
 
-Bestimmen sie die partiellen Ableitungen nach $x$ und $y$:
+Bestimmen Sie die partiellen Ableitungen nach $x$ und $y$:
 
 a) $\displaystyle 4x^3+2y^4$
 
@@ -1278,7 +1029,7 @@ g) $\displaystyle x^y$
 
 ### Gradient
 
-Unter dem *Gradienten* einer univariaten, reellwertigen Funktion 
+Unter dem *Gradienten* einer multivariaten, reellwertigen Funktion 
 $$\begin{aligned}
 f\,:\, & D \phantom{(x, \dotsc, x)}\to Z \\
        & (x_1, \dotsc, x_n) \mapsto\, y = f(x_1, \dotsc, x_n)
@@ -1372,7 +1123,7 @@ persp3D(x, y, z,
 
 
 
-## Extremstellen univariaten Funktionen
+## Extremstellen multivariaten Funktionen
 
 
 
@@ -1418,7 +1169,7 @@ $$\operatorname{Hess}\left(f(x)\right) =
 
 ### Klassifikation stationärer Punkte
 
-Sie $f: D \to Z$ eine hinreichend differenzierbare Funktion und 
+Sei $f: D \to Z$ eine hinreichend differenzierbare Funktion und 
 $D \subseteq \mathbf{R}^n$ und $Z \subseteq \mathbf{R}$.und $x_0$ ein
 stationärer Punkt ($\nabla f(x_0) = 0^n$).
 
@@ -1507,7 +1258,7 @@ Hesse-Matrix indefinit.
 Der Punkt $(0; 0)$ liefert somit einen Sattelpunkt.
 
 
-### Übungen:
+### Übung `r nextExercise()`: {.exercise} 
 <!-- Aufgabe von Ross/Christians -->
 
 Bestimmen Sie für die folgenden Funktionen den stationären Punkt $(x_0; y_0)$
@@ -1531,7 +1282,7 @@ g) $\displaystyle f(x,y) = x^2+4x-5y^2+10y-4xy$
 h) $\displaystyle f(x,y) = -x^2+120x+2y^2+120y-4xy$
 
 
-### Übung
+### Übung `r nextExercise()`: {.exercise} 
 
 Die Funktion $f(x,y) = y^2(x-1) + x^2(x+1)$ besitzt **zwei** stationäre Punkte.
 
@@ -1559,6 +1310,25 @@ b) Berechnen Sie die Hesse-Matrizen und entscheiden Sie, ob die Punkte lokale
 <!-- -->
 
 
+### Totales Differential
+
+Die Summe aller partiellen Ableitungen einer Funktion nennt man das **totale Differential** und schreibt dafür $d f$.
+
+
+**Beispiel:**
+
+Sei $f(x,y)$ eine bivariate reellwertige Funktion, so ist:
+
+$$d f(x,y) = f_x(x,y) \cdot dx + f_y(x,y) \cdot dy$$
+
+**Interpretation:**
+
+Die totale Änderung einer Funktion setzt sich zusammen aus den Änderungen, 
+die sich in jeder Koordinatenrichtung ergeben.
+
+
+
+
 ## Extrema unter Nebenbedingungen 
 
 ### Das allgemeine Problem
@@ -1570,6 +1340,19 @@ der Form $g_i: D \to Z$ ($i=1,...,m)$ mit $g_i(x) = 0$.
 Wir suchen nun das $x$ aus der Menge der aller $x$, welche die Nebenbedingungen 
 $g_i$ erfüllen, bei dem $f(x)$ den größten bzw. kleinsten Wert annimmt.
 
+
+
+### Beispiel: Nutzen aus dem Konsum zweier Güter
+
+
+Betrachtet werden zwei Güter, deren Konsummengen $x_1$ und $x_2$ dem Verbraucher 
+einen Nutzen stiften, der durch die Nutzenfunktion $U(x_1,x_2)=x_1 \cdot x_2$ 
+beschrieben wird.
+
+Weiterhin verfügt der Verbraucher über ein begrenztes Einkommen in Höhe von 
+$Y = 300$, und die Preise der beiden Güter sind $p_1 = 3$ und $p_2 = 6$.
+
+**Frage:** Welche Kombination aus den beiden Gütern maximiert den Nutzen unter Einhaltung des gegebenen Einkommens?
 
 
 
@@ -1609,7 +1392,7 @@ Und wir erhalten als Lösung von $\nabla L(x_1, x_2, \lambda) = 0^3$:
 $x_1=50$, $x_2=25$, $\lambda=25/3$
 
 
-### Übungen
+### Übung `r nextExercise()`: {.exercise} 
 
 <!-- Übungen von Ross/Christians -->
 
@@ -1634,21 +1417,6 @@ g) $\displaystyle U(x_1,x_2)=-3x_1-2x_2+x_1x_2+6$; $Y=64$; $p_1=4$; $p_2=8$
 h) $\displaystyle U(x_1,x_2)=-x_1+3x_2+x_1x_2-3$; $Y=86$; $p_1=6$; $p_2=8$
 
 
-
-### Einsetzungsverfahren {include-only=LangeFassung}
-...
-
-<!-- -->
-
-
-## Taylorreihe {include-only=LangeFassung}
-...
-
-<!-- -->
-
-### ...
-
-...
 
 ```{r finish-Differenzialrechnung, include=FALSE}
 finalizePart(partname)
