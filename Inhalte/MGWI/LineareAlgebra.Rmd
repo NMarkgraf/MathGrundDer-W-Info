@@ -736,134 +736,6 @@ Für reelle Zahlen (Skalare) $a$ und $b$ und Matrizen $A$ und $B$ gilt:
 :::
 ::::::
 
-
-### Beispiel: Kaffeespezialitäten (I/III)
-
-[Frage:]{.cstrong}(Für falsche Barista!) 
-
-Kann man eine Kaffeespezialität aus den anderen durch mischen erhalten?
-
-:::::: {.columns}
-::: {.column width="45%"}
-
-```{r echo=FALSE, out.width = "80%", fig.align="center"}
-knitr::include_graphics(file.path(pathToImages, "VektorenKaffee1.png"), error=FALSE)
-```
-
-:::
-::: {.column width="45%"}
-
-```{r echo=FALSE, out.width = "80%", fig.align="center"}
-knitr::include_graphics(file.path(pathToImages, "VektorenKaffee2.png"), error=FALSE)
-```
-
-:::
-::::::
-
-Wir können die Anteile von Kaffee, Milchschaum und Milch in einen Vektor 
-schreiben: 
-$$v = \begin{pmatrix} \text{Anteil Kaffee}\\ \text{Anteil Milchschaum} \\ \text{Anteil Milch} \end{pmatrix}$$
-
-
-### Beispiel: Kaffeespezialitäten (II/III)
-
-Wir können also die Mischungsverhältnisse der drei Kaffeespezialitäten wie 
-folgt darstellen:
-
-:::::: {.columns}
-::: {.column width="33%"}
-
-Latte Macchiato:
-
-$$v_{lm}=\begin{pmatrix} \frac13 \\[0.1em] \frac13 \\[0.1em] \frac13 \end{pmatrix}$$
-:::
-::: {.column width="33%"}
-
-Milchkaffee:
-
-$$v_{mk}=\begin{pmatrix} \frac12 \\[0.1em] \frac12 \\[0.1em] 0 \end{pmatrix}$$
-
-:::
-::: {.column width="33%"}
-
-Cappuccino: 
-
-$$\displaystyle v_{cap}=\begin{pmatrix} \frac12 \\[0.1em] \frac16 \\[0.1em] \frac13 \end{pmatrix}$$
-
-:::
-::::::
-
-[Frage:]{.cstrong}
-Kann man eine dieser Kaffeespezialitäten (im Prinzip) durch das zusammenmischen 
-zweier anderer erhalten?
-
-
-### Linearkombination
-
-#### Linearkombination {.definition}
-Seien $v_1, \dots v_n$ Vektoren. Eine [Linearkombination]{.cstrong} ist ein 
-Vektor $v$, der sich durch die Vektoren $v_1, \dots, v_n$ und die Skalare 
-$c_1, \dots c_n$ wie folgt ausdrücken lässt:
-
-$$v = c_1 \cdot v_1 + c_2 \cdot v_2 + \cdots + c_n \cdot v_n = \sum_{i=1}^{n} c_i v_i$$
-
-<!-- --->
-
-#### {.endblock}
-
-<!-- --->
-
-Statt jeden Vektor einzeln zu prüfen, formen wir wie folgt um:
-
-$$v = c_1 \cdot v_1 + c_2 \cdot v_2 + \cdots + c_n \cdot v_n \Leftrightarrow c_1 \cdot v_1 + c_2 \cdot v_2 + \cdots + c_n \cdot v_n + c_v \cdot v = 0$$
-
-
-
-### Lineare (Un-)Abhängigkeit
-
-#### Lineare (Un-)abhängigkeit {.definition}
-
-Eine Menge von Vektoren $\{v_1, \dotsc, v_n\}$ nennen wir [linear unabhängig]{.cstrong},
-falls keiner von  ihnen als [Linearkombination]{.cemph} der anderen ausgedrückt 
-werden kann. 
-
-Andernfalls nennen wir sie [linear abhängig]{.cstrong}.
-
-
-#### {.endblock}
-
- <!-- --->
-
-**Mit anderen Worten:**
-
-Genau dann hat für Gleichung
-$$c_1 \cdot v_1 + c_2 \cdot v_2 + \cdots + c_n \cdot v_n= 0_n$$
-
-für $n$ Vektoren $v_1,\dotsc, v_n$ und $n$ Skalare (Variablen) $c_1, \dotsc, c_n$
-nur die triviale Lösung $c_1 = c_2 = \cdots c_n=0$, 
-falls die Vektoren **lineare unabhängig** sind.
-
-Ansonsten sind sie **lineare abhängig**.
-
-
-
-### Kaffeespezialitäten (III/III)
-
-Die Vektoren $\displaystyle v_{lm}=\begin{pmatrix} \frac13 \\[0.1em] \frac13 \\[0.1em] \frac13 \end{pmatrix}$,
-$\displaystyle v_{mk}=\begin{pmatrix} \frac12 \\[0.1em] \frac12 \\[0.1em] 0 \end{pmatrix}$ und
-$\displaystyle v_{cap}=\begin{pmatrix} \frac12 \\[0.1em] \frac16 \\[0.1em] \frac13 \end{pmatrix}$
-sind *linear unabhängig*.
-
-
-Denn $c_{lm} \cdot v_{lm} +  c_{mk} \cdot v_{mk} + c_{cap} \cdot v_{cap} = \begin{pmatrix}0 \\[0.1em] 0 \\[0.1em] 0 \end{pmatrix}$ hat nur die triviale Lösung $c_{lm} = c_{mk} = c_{cap} = 0$
-
-
-[Hausaufgabe:]{.cstrong}
-
-Schreiben sie das (lineare) Gleichungssystem zur Überprüfung der linearen 
-(Un-)Abhängigkeit explizit auf und lösen Sie es!
-
-
 ### Produkt zweier Matrizen
 
 - Zwei Matrizen können mit einander multipliziert, wenn sie passend sind.
@@ -994,6 +866,140 @@ $$a = \begin{pmatrix} 1 \\ 2 \\ 3 \\ 4 \end{pmatrix}, \quad b = \begin{pmatrix} 
 ::: 
 
 
+### Beispiel: Kaffeespezialitäten (I/III)
+
+[Frage:]{.cstrong}(Für falsche Barista!) 
+
+Kann man eine Kaffeespezialität aus den anderen durch mischen erhalten?
+
+:::::: {.columns}
+::: {.column width="45%"}
+
+```{r echo=FALSE, out.width = "80%", fig.align="center"}
+knitr::include_graphics(file.path(pathToImages, "VektorenKaffee1.png"), error = FALSE)
+```
+
+:::
+::: {.column width="45%"}
+
+```{r echo=FALSE, out.width = "80%", fig.align="center"}
+knitr::include_graphics(file.path(pathToImages, "VektorenKaffee2.png"), error = FALSE)
+```
+
+:::
+::::::
+
+Wir können die Anteile von Kaffee, Milchschaum und Milch in einen Vektor 
+schreiben: 
+$$v = \begin{pmatrix} \text{Anteil Kaffee}\\ \text{Anteil Milchschaum} \\ \text{Anteil Milch} \end{pmatrix}$$
+
+
+### Beispiel: Kaffeespezialitäten (II/III)
+
+Schreiben wir nun die Mischungsverhältnisse 
+
+$$\begin{pmatrix} \text{Anteil Kaffee}\\ \text{Anteil Milchschaum} \\ \text{Anteil Milch} \end{pmatrix}$$
+
+der drei Kaffeespezialitäten wie folgt auf:
+
+:::::: {.columns}
+::: {.column width="33%"}
+
+Latte Macchiato:
+
+$$v_{lm}=\begin{pmatrix} \frac13 \\[0.1em] \frac13 \\[0.1em] \frac13 \end{pmatrix}$$
+:::
+::: {.column width="33%"}
+
+Milchkaffee:
+
+$$v_{mk}=\begin{pmatrix} \frac12 \\[0.1em] 0 \\[0.1em]  \frac12 \end{pmatrix}$$
+
+:::
+::: {.column width="33%"}
+
+Cappuccino: 
+
+$$\displaystyle v_{cap}=\begin{pmatrix} \frac13 \\[0.1em] \frac12 \\[0.1em] \frac16 \end{pmatrix}$$
+
+:::
+::::::
+
+[Frage:]{.cstrong}
+Kann man eine dieser Kaffeespezialitäten (im Prinzip) durch das zusammenmischen 
+zweier anderer erhalten?
+
+
+### Linearkombination
+
+#### Linearkombination {.definition}
+Seien $v_1, \dots v_n$ Vektoren. Eine [Linearkombination]{.cstrong} ist ein 
+Vektor $v$, der sich durch die Vektoren $v_1, \dots, v_n$ und die Skalare 
+$c_1, \dots c_n$ wie folgt ausdrücken lässt:
+
+$$v = c_1 \cdot v_1 + c_2 \cdot v_2 + \cdots + c_n \cdot v_n = \sum_{i=1}^{n} c_i v_i$$
+<!-- --->
+
+#### {.endblock}
+
+<!-- --->
+
+Statt jeden Vektor einzeln zu prüfen, formen wir wie folgt um:
+
+$$v = c_1 \cdot v_1 + c_2 \cdot v_2 + \cdots + c_n \cdot v_n \Leftrightarrow c_1 \cdot v_1 + c_2 \cdot v_2 + \cdots + c_n \cdot v_n + c_v \cdot v = 0$$
+
+**In unserem Beispiel** prüfen wir somit ob das folgende homogene LGS nicht-tirviale Lösungen hat:
+$$c_{lm} \cdot v_{lm} + c_{mk} \cdot v_{mk} + c_{cap} \cdot v_{cap} = \begin{pmatrix} 0\\ 0 \\ 0\end{pmatrix} \Longleftrightarrow \begin{pmatrix} \frac13 & \frac12 & \frac13 \\ \frac13 & 0 & \frac12 \\ \frac13 & \frac12 & \frac16 \end{pmatrix} \cdot \begin{pmatrix}c_{lm} \\ c_{mk} \\ c_{cap}\end{pmatrix} = \begin{pmatrix} 0\\ 0 \\ 0\end{pmatrix}$$
+
+
+### Lineare (Un-)Abhängigkeit
+
+#### Lineare (Un-)abhängigkeit {.definition}
+
+Eine Menge von Vektoren $\{v_1, \dotsc, v_n\}$ nennen wir [linear unabhängig]{.cstrong},
+falls keiner von  ihnen als [Linearkombination]{.cemph} der anderen ausgedrückt 
+werden kann. 
+
+Andernfalls nennen wir sie [linear abhängig]{.cstrong}.
+
+
+#### {.endblock}
+
+ <!-- --->
+
+**Mit anderen Worten:**
+
+Genau dann hat für Gleichung
+$$c_1 \cdot v_1 + c_2 \cdot v_2 + \cdots + c_n \cdot v_n= 0_n$$
+
+für $n$ Vektoren $v_1,\dotsc, v_n$ und $n$ Skalare (Variablen) $c_1, \dotsc, c_n$
+nur die triviale Lösung $c_1 = c_2 = \cdots c_n=0$, 
+falls die Vektoren **lineare unabhängig** sind.
+
+Ansonsten sind sie **lineare abhängig**.
+
+
+
+### Kaffeespezialitäten (III/III)
+
+Die Vektoren $\displaystyle v_{lm}=\begin{pmatrix} \frac13 \\[0.1em] \frac13 \\[0.1em] \frac13 \end{pmatrix}$,
+$\displaystyle v_{mk}=\begin{pmatrix} \frac12 \\[0.1em] 0 \\[0.1em] \frac12 \end{pmatrix}$ und
+$\displaystyle v_{cap}=\begin{pmatrix} \frac13 \\[0.1em] \frac12 \\[0.1em] \frac16 \end{pmatrix}$
+sind *linear unabhängig*.
+
+Zur Begründung:
+$$\begin{pmatrix} \frac13 & \frac12 & \frac13 \\ \frac13 & 0 & \frac12 \\ \frac13 & \frac12 & \frac16 \end{pmatrix} \cdot \begin{pmatrix}c_{lm} \\ c_{mk} \\ c_{cap}\end{pmatrix} = \begin{pmatrix} 0\\ 0 \\ 0\end{pmatrix} \Leftrightarrow
+\frac16 \cdot\begin{pmatrix} 2 & 3 & 2 \\ 2 & 0 & 3 \\ 2 & 3 & 1 \end{pmatrix} \cdot \begin{pmatrix}c_{lm} \\ c_{mk} \\ c_{cap}\end{pmatrix} = \begin{pmatrix} 0\\ 0 \\ 0\end{pmatrix}\Leftrightarrow
+\begin{pmatrix} 2 & 3 & 2 \\ 2 & 0 & 3 \\ 2 & 3 & 1 \end{pmatrix} \cdot \begin{pmatrix}c_{lm} \\ c_{mk} \\ c_{cap}\end{pmatrix} = \begin{pmatrix} 0\\ 0 \\ 0\end{pmatrix}$$
+
+$$\Leftrightarrow
+\begin{pmatrix} 2 & 3 & 2 \\ 0 & -3 & 1 \\ 0 & 0 & -1 \end{pmatrix} \cdot \begin{pmatrix}c_{lm} \\ c_{mk} \\ c_{cap}\end{pmatrix} = \begin{pmatrix} 0\\ 0 \\ 0\end{pmatrix}\Leftrightarrow
+\begin{pmatrix} 2 & 3 & 0 \\ 0 & -3 & 0 \\ 0 & 0 & 1 \end{pmatrix} \cdot \begin{pmatrix}c_{lm} \\ c_{mk} \\ c_{cap}\end{pmatrix} = \begin{pmatrix} 0\\ 0 \\ 0\end{pmatrix}\Leftrightarrow
+\begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix} \cdot \begin{pmatrix}c_{lm} \\ c_{mk} \\ c_{cap}\end{pmatrix} = \begin{pmatrix} 0\\ 0 \\ 0\end{pmatrix}$$
+
+**Mit anderen Worten:** Ein(e) faule(r) Barista kann also nicht mit zwei beliegen Kaffeespezialität eine dritte durch mischen erzeugen!
+
+
 ## Rechnen mit Matrizen und Vektoren
 
 
@@ -1015,7 +1021,7 @@ $$a = \begin{pmatrix} 1 \\ 2 \\ 3 \\ 4 \end{pmatrix}, \quad b = \begin{pmatrix} 
 ### Beispiel: Bettwanzen
 
 ```{r echo=FALSE, out.width = "10cm", fig.align="center"}
-knitr::include_graphics(file.path(pathToImages, "Bettwanze1.png"), error=FALSE)
+knitr::include_graphics(file.path(pathToImages, "Bettwanze1.png"), error = FALSE)
 ```
 [Quelle: [CDC - PHIL](https://phil.cdc.gov/details.aspx?pid=6283) - Lizenz: Gemeinfrei]{.right .tiny}
 
@@ -1047,7 +1053,7 @@ knitr::include_graphics(file.path(pathToImages, "Bettwanze1.png"), error=FALSE)
 	\end{column}
 	\begin{column}[c]{5cm}
 ```{r echo=FALSE, out.width = "5cm", fig.align="center"}
-knitr::include_graphics(file.path(pathToImages, "Bettwanze2.png"), error=FALSE)
+knitr::include_graphics(file.path(pathToImages, "Bettwanze2.png"), error = FALSE)
 ```
 	\end{column}
 \end{columns}
@@ -1068,8 +1074,8 @@ a) Wie viele Käufer*innen werden im Folgemonat zur Marke S bzw. zur Marke G gre
 b) Wenn die prozentualen Anteile gleich bleiben, wie viele Käufer*innen werden im Monat danach zur jeweiligen Marke greifen?
 
 ```{r echo=FALSE}
-A <- matrix(c(0.7, 0.3, 0.2, 0.8), nrow=2, ncol=2)
-x <- matrix(c(120, 80), ncol=1)
+A <- matrix(c(0.7, 0.3, 0.2, 0.8), nrow = 2, ncol = 2)
+x <- matrix(c(120, 80), ncol = 1)
 sol <- A %*% x
 sol.2 <- A %*% sol
 ```
@@ -1555,7 +1561,7 @@ Sei $A$ eine [quadratische]{.cstrong} resp. $n \times n$ Matrix.
 			\end{equation*}
 			besteht die Determinante aus 6 Summanden von je 3 Faktoren, die  mit dem Schema
 ```{r echo=FALSE, out.width = "2.5cm", fig.align="center"}
-knitr::include_graphics(file.path(pathToImages, "Regel_von_Sarrus.png"), error=FALSE)
+knitr::include_graphics(file.path(pathToImages, "Regel_von_Sarrus.png"), error = FALSE)
 ```
 			ermittelt werden.
 			
@@ -1571,7 +1577,7 @@ knitr::include_graphics(file.path(pathToImages, "Regel_von_Sarrus.png"), error=F
 		
 
 ```{r echo=FALSE, out.width = "4cm", fig.align="center"}
-knitr::include_graphics(file.path(pathToImages, "Pierre-Frederic_Sarrus.jpg"), error=FALSE)
+knitr::include_graphics(file.path(pathToImages, "Pierre-Frederic_Sarrus.jpg"), error = FALSE)
 ```
 
 		
@@ -1606,7 +1612,7 @@ knitr::include_graphics(file.path(pathToImages, "Pierre-Frederic_Sarrus.jpg"), e
 		
 		
 ```{r echo=FALSE, out.width = "4cm", fig.align="center"}
-knitr::include_graphics(file.path(pathToImages, "Pierre-Simon_Laplace.jpg"), error=FALSE)
+knitr::include_graphics(file.path(pathToImages, "Pierre-Simon_Laplace.jpg"), error = FALSE)
 ```
 
 
@@ -1766,7 +1772,7 @@ b) $\displaystyle \det(A) = 21$
 ### Beispiel: Noch einmal die Bettwanzen
 
 ```{r echo=FALSE, out.width = "90%", fig.align="center"}
-knitr::include_graphics(file.path(pathToImages, "Bettwanze1.png"), error=FALSE)
+knitr::include_graphics(file.path(pathToImages, "Bettwanze1.png"), error = FALSE)
 ```
 
 ### Beispiel: Der Lebenszyklus einer Bettwanze

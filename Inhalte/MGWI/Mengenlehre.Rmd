@@ -1528,7 +1528,7 @@ a) $\displaystyle \left|A \times B \times A\right| = 18$, $\displaystyle A \time
 
 
 ### Exkurs: Kreuzprodukt als typisches Datenbankproblem
-	
+
 *Kreuzprodukte* treten in *relationalen Datenbanken* auf.
 Die Gründe dafür sind meistens:
 
@@ -1545,7 +1545,7 @@ Nehmen wir folgende Tabellen an:
 \vspace*{1em}
 
 \begin{columns}
-		\begin{column}{5cm}
+		\begin{column}{0.49\textwidth}
 			\begin{tabular}{|l|l|l|}
 				\hline
 				\multicolumn{3}{|l|}{{\it\bf Mitarbeiter}} \\
@@ -1562,7 +1562,7 @@ Nehmen wir folgende Tabellen an:
 				\hline
 			\end{tabular}
 		\end{column}
-		\begin{column}{5cm}
+		\begin{column}{0.39\textwidth}
 			\begin{tabular}{|l|l|l|}
 				\hline
 				\multicolumn{3}{|l|}{{\it\bf Adressen}} \\
@@ -1603,9 +1603,9 @@ Abhilfe schafft hier eine *eineindeutige Zuordnung*^[*eineindeutig* ist ein alte
 #### {.endblock}
 
 
-### Intervalle, die Teilmengen der reellen Zahlen
+### Intervalle, die (zusammenhängenden) Teilmengen der reellen Zahlen
 
-Die folgenden *Teilmengen* der ***reellen*** *Zahlen* nennen wir [Intervalle]{.cstrong}:
+Die folgenden zusammenhängenden *Teilmengen* der ***reellen*** *Zahlen* nennen wir [Intervalle]{.cstrong}:
 
 - $\left[a,\, b\right] =                       \left\{ x \in \mathbf{R} \,|\, a \leq x \leq b \right\}$ geschlossenen Intervall
 - $\left(a,\, b\right) = \left]a,\, b\right[ = \left\{ x \in \mathbf{R} \,|\, a < x < b \right\}$       offenes Intervall

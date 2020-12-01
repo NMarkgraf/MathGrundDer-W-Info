@@ -13,6 +13,20 @@ pathToImages = getPathToImages()
 # ---------------------------------------------------------------------------
 
 ```
+```{r setup-plots, echo=FALSE}
+library(mosaic)
+library(ggplot2)
+library(plot3D)  # Für mesh und 3d-plot ...
+my_base_size <- 3*11
+my_font_size <- 12
+my_line_size <- 4
+my_line_color <- "blue"
+my_zero_line_color <- "black"
+my_secant_color <- "green"
+my_point_color = "red"
+my_constant_line_color <- "green"
+f <- 1.0
+```
 
 # Differenzialrechnung 
 
@@ -20,18 +34,102 @@ pathToImages = getPathToImages()
 
 ### Stetigkeit
 
-Eine (reellwertige) Funktion ist **(folgen-)stetig**, wenn für alle $h>0$ gilt:
+::::::::: {.small}
 
-$$\lim_{h \to 0} f(x+h) = f(x) = \lim_{h \to 0} f(x-h)$$
+Eine Funktion $f: D\subseteq \mathbf{R} \to \mathbf{R}$ ist an der Stelle $x_0 \in D$ **stetig**, wenn für alle reellen $h>0$ gilt:
+$$\lim_{h \to 0} f(x_0+h) = f(x_0) = \lim_{h \to 0} f(x_0-h)$$
 
-Eine stetige Funktion hat keine **Sprungstellen** und "lässt ich ohne Absetzen durchzeichnen".
+$f$ heißt **stetigen Funktion**, falls $f$ in jedem Punkt $x_0 \in D$ stetig ist.
 
 
-### Zwischenwertsatz
+**Idee:** Eine stetige Funktion hat keine **Sprungstellen** und 
+"lässt sich ohne Absetzen durchzeichnen".
 
-Eine *stetige Funktion* $f$, die zwischen zwei Stellen $x_0$ und $x_1$ das 
-Vorzeichen wechselt, also $f(x_0)\cdot f(x_1) < 0$, hat zwischen 
-$x_0$ und $x_1$ mindestens eine Nullstelle.
+:::::: {.columns}
+::: {.column width="49%"}
+**Beispiel:** Stetige Funktion:
+
+
+$f:\mathbf{R}\setminus \{-2\} \to \mathbf{R}, x \mapsto y=\frac{2x-1}{x+2}\phantom{\begin{cases}
+1 & . \\
+0 & \; . \\
+1 & \;. \\
+\end{cases}}$
+
+```{r echo=FALSE, out.width="80%"}
+fkt <- makeFun((2*x-1)/(x+2) ~ x)
+
+x1 <- seq(-3.5,-2.01, 0.01)
+y1 <- fkt(x1)
+
+x2 <- seq(-1.99,0.5, 0.01)
+y2 <- fkt(x2)
+
+gf_line(y1 ~ x1, 
+        color = ~ I(my_line_color),
+        size = f*my_line_size) %>% 
+  gf_line(y2 ~ x2, 
+          color = ~ I(my_line_color),
+          size = f*my_line_size) %>%
+  gf_labs(x = "x", y = "y") %>%
+  gf_theme(theme_bw(base_size = my_base_size))
+```
+
+
+:::
+::: {.column width="49%"}
+**Beispiel:** Unstetige Funktion:
+
+$\text{sgn}:\mathbf{R}\to \mathbf{R}, x \mapsto y:=
+\begin{cases}
+     +1 & \; \text{falls} \quad x>0 \\
+\;\;\,0 & \; \text{falls} \quad x=0 \\
+     -1 & \; \text{falls} \quad x<0 \\
+\end{cases}$
+```{r echo=FALSE, out.width="80%"}
+# f <- 0.8
+x1 <- seq(-2,0, 0.5)
+y1 <- rep(-1,len = length(x1))
+
+x2 <- 0
+y2 <- 0
+
+x3 <- seq(0,2, 0.5)
+y3 <- rep(1, len = length(x3))
+
+gf_line(y1 ~ x1, 
+        color = my_line_color, 
+        size = f*my_line_size) %>% 
+  gf_point(y2 ~ x2, 
+        color = my_line_color, 
+        size = f*my_line_size) %>%
+  gf_line(y3 ~ x3, 
+        color = my_line_color, 
+        size = f*my_line_size) %>%
+  gf_point(c(1, -1) ~ c(0, 0), 
+           color = my_line_color, 
+           fill = "white", 
+        size = f*my_line_size+1) %>%
+  gf_point(c(1, -1) ~ c(0, 0), 
+           color = "white", 
+        size = f*my_line_size-1) %>%
+  gf_labs(x = "x", y = "y") %>%
+  gf_refine(scale_y_continuous(breaks = c(-1,0,1))) %>%
+  gf_theme(theme_bw(base_size = f*my_base_size)) 
+
+```
+
+:::
+::::::
+:::::::::
+
+
+### Nullstellensatz von Bolzano
+
+Sei $f:[a,b] \to \mathbf{R}$ eine *stetige Funktion* mit 
+$[a,b] \subset \mathbf{R}$, die zwischen zwei Stellen $a$ und $b$ das 
+Vorzeichen wechselt, also $f(a)\cdot f(b) < 0$, so gibt es ein $c \in [a,b]$ 
+welches Nullstelle von $f$ ist, also $f(c) =0$.
 
 
 **Beispiel:**
@@ -41,66 +139,196 @@ ein unterschiedlichen Vorzeichen, also muss zwischen $-2$ und $4$ (mindestens)
 eine Nullstelle existieren:
 
 ```{r echo=FALSE, out.height="40%"}
-my_size = 1.5
-my_zero_line_color = "black"
-my_line_color = "blue"
-my_point_color = "red"
-
-gf_fun( cos(0.4*(x+2))  ~ x, color = "blue", xlim=c(-2, 6)) %>%
-  gf_hline(color = my_zero_line_color, yintercept = ~ 0, show.legend = FALSE) %>%
-  gf_point(1 ~ -2, color = my_line_color) %>%
-  gf_point(-1 ~ 6, color = my_line_color) %>%
-  gf_path(c(0, 1) ~ c(-2, -2), linetype = "dotted") %>%
-  gf_path(c(0, -1) ~ c(6, 6), linetype = "dotted") %>%
-  gf_point(0 ~ 2.5*(3.14/2)-2, color = my_point_color) %>%
-  gf_theme(theme_bw(base_size = my_size*11)) 
+# f <- 0.4
+gf_fun( cos(0.4*(x+2))  ~ x, 
+        color = ~ I(my_line_color), 
+        size = ~I(f*my_line_size),
+        xlim = c(-2, 6)) %>%
+  gf_hline(yintercept = ~ 0,
+           color = my_zero_line_color,
+           size = f*0.25*my_line_size,
+           show.legend = FALSE) %>%
+  gf_point(1 ~ -2, 
+           color = my_line_color) %>%
+  gf_point(-1 ~ 6, 
+           color = my_line_color) %>%
+  gf_path(c(0, 1) ~ c(-2, -2),
+          size = f*0.25*my_line_size,
+          linetype = "dotted") %>%
+  gf_path(c(0, -1) ~ c(6, 6),
+          size = f*0.25*my_line_size,
+          linetype = "dotted") %>%
+  gf_point(0 ~ 2.5*(3.14/2)-2, 
+           color = my_point_color) %>%
+  gf_theme(theme_bw(base_size = f*my_base_size)) 
 ```
 
+
+### Zwischenwertsatz
+
+Sei $f:[a,b]\to\mathbf{R}$ eine stetige Funktion mit $a,b\in\mathbf{R}$ und 
+$a < b$. 
+Sei $s$ ein Wert zwischen den beiden Funktionswerten $f(a)$ und $f(b)$. 
+Es gilt also $f(a) \le s \le f(b)$ oder $f(b) \le s \le f(a)$.
+Dann gibt es mindestens eine reelle Zahl $c \in [a,b]$ mit $f(c)=s$. 
+
+
+:::::: {.columns}
+::: {.column width="49%"}
+```{r echo=FALSE, out.width="80%"}
+fkt <- makeFun( 2*(50-x)/50*sin(x) ~ x)
+# f <- 0.49*0.8
+gf_fun(fkt(x) ~x, 
+       color = NA, 
+       xlim = c(-1.5,7.4)) %>%
+  gf_point(c(fkt(-1.5), fkt(7.4)) ~ c(-1.5,7.4), color = my_line_color) %>%
+  gf_text(c(fkt(-1.5), fkt(7.4)) ~ c(-1.5,7.4), 
+          label = c("f(a)", "f(b)"), 
+          nudge_y = c(0.25,-0.27), 
+          size = f*my_font_size,
+          color = my_line_color) %>%
+  gf_hline(yintercept = 0.75, 
+           color = my_constant_line_color) %>%
+  gf_text(0.75 ~ -1.5,
+          label = "s", 
+          nudge_y = 0.15, 
+          size = f*my_font_size,
+          color = my_constant_line_color) %>%
+  gf_refine(scale_y_continuous(breaks = c()),
+            scale_x_continuous(breaks = c())) %>%
+  gf_theme(theme_bw(base_size = f*my_base_size)) 
+```
+
+:::
+::: {.column width="49%"}
+```{r echo=FALSE, out.width="80%"}
+fkt <- makeFun(2*(50-x)/50*sin(x) ~ x)
+# f <- 0.49*0.8
+x_values <- c(-1.5, 7.4)
+tdf <- tibble(
+          y = fkt(x_values), 
+          x = x_values
+       )
+
+gf_fun(fkt(x) ~ x,
+       color = ~ I(my_line_color),
+       xlim = x_values) %>%
+  gf_point(y ~ x , 
+           color = my_line_color,
+           data = tdf) %>%
+  gf_text(c(fkt(-1.5), fkt(7.4)) ~ c(-1.5, 7.4), 
+          label = c("f(a)", "f(b)"), 
+          nudge_y = c(0.25,-0.27), 
+          size = f*my_font_size,
+          color = my_line_color) %>%
+  gf_hline(yintercept = 0.75, 
+           color = my_constant_line_color) %>%  
+  gf_point(0.75 ~ 0.38, 
+           color = my_line_color) %>%
+  gf_point(0.75 ~ 2.73, 
+           color = my_line_color) %>%
+  gf_point(0.75 ~ 6.73, 
+           color = my_line_color) %>%
+  gf_segment(-0.75 + 0.72 ~ 1.6 + 2.70, 
+             arrow = arrow(length = unit(0.4, "cm"))) %>%
+  gf_segment(-0.75 + 0.72 ~ 1.6 + 6.70, 
+             arrow = arrow(length = unit(0.4, "cm"))) %>%
+  gf_segment(-0.75 + 0.72 ~ 1.6 + 0.35, 
+              arrow = arrow(length = unit(0.4, "cm"))) %>%
+  gf_label(-0.75 ~ 1.6, 
+           label = "f(c)=s", 
+           size = f*my_font_size) %>%
+  gf_text(0.75 ~ -1.5, 
+          label = "s", 
+          nudge_y = 0.15, 
+          size = f*my_font_size, 
+          color = my_constant_line_color) %>%
+  gf_refine(scale_y_continuous(breaks = c()),
+            scale_x_continuous(breaks = c())) %>%
+  gf_theme(theme_bw(base_size = f*my_base_size)) 
+```
+:::
+::::::
 
 ## Steigungen von Funktionen
 
 ### Sekante
 
-Sei $f:D \to Z$ eine Funktion mit $a<b$ und $a, b \in D$. 
-Dann gibt es zu den Punkten $P(a; f(a))$ und $Q(b; f(b))$ immer eine Gerade 
-$g_{PQ}$, welche die beiden Punkte $P$ und $Q$ miteinander verbindet.
+Für eine Funktion von $D\subseteq \mathbf{R}$ nach $Z \subseteq \mathbf{R}$, 
+$f:D \to Z$, seine die Stelen $a, b \in D$ mit $a<b$ gegeben.
+Es gibt dann zu den Punkten $P(a; f(a))$ und $Q(b; f(b))$ immer eine Gerade
+$g(x) = g_{PQ}(x)=m_s \cdot x + b_s$, welche die beiden Punkte $P$ und $Q$ 
+miteinander verbindet.
 
-Sollte für alle $c \in (a, b)$ die Punkte $S(c, f(c))$ nicht auf der Geraden
-liegen, so nennen wir die Gerade $g_{PQ}$ eine **Sekante**.
+Sollte für alle $c \in (a, b)$ die Punkte $S_c(c, f(c))$ nicht auf der Geraden
+liegen, so nennen wir $g(x)$ eine **Sekante** (durch $P$ und $Q$ an $f$).
 
 
 ```{r echo=FALSE, out.height="40%"}
-my_size = 1.5
-my_zero_line_color = "black"
-my_line_color = "blue"
-my_sec_color = "green"
 my_fkt = makeFun(cos(0.6*(x+2))  ~ x)
-
-gf_function( fun = my_fkt, color = "blue", xlim=c(-1, 6)) %>%
-  gf_hline(color = my_zero_line_color, yintercept = ~ 0, show.legend = FALSE) %>%
-  gf_point(my_fkt(0) ~ 0, color = my_line_color) %>%
-  gf_text(my_fkt(0) ~ 0, label = "P", size = 4, angle = 0, hjust = 0, nudge_x = 0.1, nudge_y = 0.1) %>%
-  gf_point(my_fkt(5) ~ 5, color = my_line_color) %>%
-  gf_text(my_fkt(5) ~ 5, label = "Q", size = 4, angle = 0, hjust = 0, nudge_x = 0.1, nudge_y = -0.1) %>%
-  gf_abline(slope = ((my_fkt(5) - my_fkt(0)) / (5 - 0)), intercept = my_fkt(0), color = my_sec_color) %>%
-  gf_theme(theme_bw(base_size = my_size*11)) 
+# f <- 0.4
+gf_function( fun = my_fkt, 
+             size = ~ I(f * my_line_size),
+             color = ~ I(my_line_color),
+             xlim = c(-1, 6)) %>%
+  gf_hline(color = my_zero_line_color, 
+           yintercept = ~ 0, 
+           size = f * 0.25 * my_line_size,
+           show.legend = FALSE) %>%
+  gf_abline(slope = ((my_fkt(5) - my_fkt(0)) / (5 - 0)), 
+            intercept = my_fkt(0),
+            size = f * 0.75 * my_line_size,
+            color = my_secant_color) %>%
+  gf_point(my_fkt(0) ~ 0, 
+           size = f * 1.5 * my_line_size,
+           color = my_line_color) %>%
+  gf_label(my_fkt(-1) ~ -1, 
+           label = "f(x)", 
+           size = f*my_font_size, 
+           nudge_x = 0.3) %>%
+  gf_text(my_fkt(0) ~ 0, 
+          label = "P(a;f(a))", 
+          size = f*my_font_size, 
+          angle = 0, 
+          hjust = 0, 
+          nudge_x = 0.1, 
+          nudge_y = 0.1) %>%
+  gf_point(my_fkt(5) ~ 5, 
+           size = f * 1.5 * my_line_size,
+           color = my_line_color) %>%
+  gf_text(my_fkt(5) ~ 5, 
+          label = "Q(b;f(b))", 
+          size = f*my_font_size, 
+          angle = 0, hjust = 0, 
+          nudge_x = 0.1, 
+          nudge_y = -0.1) %>%
+  gf_label(0.5 ~-1, 
+           label = "g(x)", 
+           size = f*my_font_size) %>%
+  gf_refine(scale_x_continuous(breaks = seq(-1,6,1))) %>%
+  gf_theme(theme_bw(base_size = f*my_base_size)) 
 ```
 
 
 ### Sekantensteigung / Differenzenquotient
 
-Für eine Funktion $f:D \to Z$ und zwei Werte $x_0 < x_1$ aus $D$ nennen wir 
-die Steigung der Sekante $s$ zwischen den Punkten $P(x_0; f(x_0))$ und 
-$Q(x_1; f(x_1))$
+Sei $f: D\subseteq \mathbf{R} \to Z \subseteq \mathbf{R}$ eine Funktion $s(x)$ 
+die Sekante gegeben durch die Stützstellen $x_0 < x_1$ aus $D$ und somit eine
+Gerade durch die Punkte $P(x_0; f(x_0))$ und 
+$Q(x_1; f(x_1))$. Der Wert
 
 $$m_s = \frac{f(x_1)- f(x_0)}{x_1-x_0}$$
 
-die **Sekantensteigung** oder auch **Durchschnittssteigung** bzw.
-**Differenzenquotient** von $f$ im Intervall $[x_0, x_1]$.
+heißt dann **Sekantensteigung** oder **Durchschnittssteigung** bzw.
+**Differenzenquotient** von $f$ im Intervall $[x_0, x_1] \subseteq Z$.
 
-Die Sekante wird dann durch den folgenden Funktionsterm beschrieben:
-$$m_s \cdot x + b_s$$
-Dabei ist $b_s = f(x_0) - m_x \cdot x_0 = f(x_1) - m_x \cdot x_1$.
+
+Die Sekante $s(x)$ wird dann durch den folgenden Funktionsterm beschrieben:
+
+$$s(x) = m_s \cdot x + b_s$$
+Dabei ist:
+
+$$b_s = f(x_0) - m_s \cdot x_0 = f(x_1) - m_s \cdot x_1$$
 
 
 ### Übung `r nextExercise()`: {.exercise} 
@@ -133,8 +361,9 @@ d) $...$
 :::
 
 ### Die $\Delta$-Notation
+Oft interessiert uns primär die Stelle $x_0$ und $x_1$ ist nur "in der Nähe von $x_0$".
 
-Statt $x_1 - x_0$ wollen wir zur Abkürzeung $\Delta x_0$ schreiben, in dem wir festlegen:
+Daher schreiben wir statt $x_1 - x_0$ wir zur Abkürzeung $\Delta x_0$, in dem wir festlegen:
 
 $$x_1 = x_0 + \Delta x_0 \quad \Longleftrightarrow \quad \Delta x_0 = x_1 - x_0$$
 
@@ -142,7 +371,7 @@ Analog wollen wir statt $f(x_1) - f(x_0)$ kurz $\Delta f(x_0)$ schreiben, in dem
 
 $$\Delta f(x_0) = f(x_0 + \Delta x_0)- f(x_0) = f(x_1) - f(x_0)$$
 
-Damit lässt sich der Differenzenquotient wie folgt zusammenfassen:
+Damit lässt sich der *Differenzenquotient* wie folgt zusammenfassen:
 
 $$m_s = \frac{f(x_1)- f(x_0)}{x_1-x_0} = \frac{\Delta f(x_0)}{\Delta x_0}$$
 
@@ -150,22 +379,34 @@ $$m_s = \frac{f(x_1)- f(x_0)}{x_1-x_0} = \frac{\Delta f(x_0)}{\Delta x_0}$$
 ### Tangentensteigung / Differenzialquotient / Ableitung
 
 Eine (reelle) Funktion $f : D \to Z$ heißt an der Stelle $x_0 \in D$  differenzierbar, falls
-der Grenzwert 
-$$\lim_{\Delta x_0 \to 0} \frac{\Delta f(x_0)}{\Delta x_0} = \lim_{h \to 0} \frac{f(x_0+h)- f(x_0)}{h}$$
-existiert. 
-Wir nennen der Grenzwert **erste Ableitung** oder **Differenzialquotient** von $f$ an der Stelle $x_0$ und bezeichnen diesen mit:
-$$f'(x_0) = \frac{d f(x_0)}{d x_0}$$
+der Grenzwert von
 
-Die erste Ableitung $f'(x_0)$ ist gleich der **Tangentensteigung** in dem Punkt $(x_0, f(x_0))$, 
-also einer Geraden $t(x) = m_t \cdot x + b_t$, welche die Funktion $f$ im Punkt $(x_0, f(x_0))$ berührt und in diesem Punkt die selbe Steigung wie $f$ hat, also $m_t = f'(x_0)$ und $b_t = f(x_0) - m_t \cdot x_0$. 
+$$\lim_{\Delta x_0 \to 0} \frac{\Delta f(x_0)}{\Delta x_0} = \lim_{h \to 0} \frac{f(x_0+h)- f(x_0)}{h}$$
+
+existiert. 
+
+Wir nennen den Grenzwert **erste Ableitung** oder **Differenzialquotient** von $f$ an der Stelle $x_0$ und bezeichnen diesen mit:
+$$f'(x_0) := \frac{d f(x_0)}{d x_0} := \lim_{\Delta x_0 \to 0} \frac{\Delta f(x_0)}{\Delta x_0} $$
+
+Die erste Ableitung $f'(x_0)$ ist gleich der **Tangentensteigung** in dem Punkt $(x_0, f(x_0))$. 
+Somit die Steigung der Geraden $t(x) = m_t \cdot x + b_t$, welche die Funktion 
+$f$ im Punkt $(x_0, f(x_0))$ berührt und in diesem Punkt die selbe Steigung 
+wie $f$ hat. 
+
+Es gilt somit: 
+$$m_t = f'(x_0) \quad\text{ und }\quad b_t = f(x_0) - m_t \cdot x_0.$$ 
 
 
 ### Näherungseigenschaften der Tangente
 
 Durch eine leichte Umformung erhalten wir aus der Tangenten
-$$t(x) = m_t \cdot x + b_t$$ 
+
+$$t(x) = m_t \cdot x + b_t$$
+
 für die Funktion $f$ an der Stelle $x_0$ die Gestalt:
+
 $$t(x) = f(x_0) + f'(x_0) \cdot(x- x_0)$$
+
 (Rechnen Sie das bitte nach!)
 
 Die Tangente $t(x)$ ist dann die *beste lineare Näherung* der Funktion $f$ an 
@@ -178,21 +419,41 @@ $$f(x) \approx t(x) = f(x_0) + f'(x_0) \cdot(x- x_0)$$
 
 ## Ableitungsregeln
 
+
 ### Ableitung elementarer Funktionen
 
 Für die folgenden *elementaren Funktionen* kann man explizite Ableitungsregeln angeben.
 
 Sei $f: D \to Z$ eine Funktion und $a>0$, $b$, $c$ reelle Zahlen. Dann gilt:
 
-+------------+--------------------+-------------+----------------------------+
-| $f(x)$     | $f'(x)$            | $f(x)$      | $f'(x)$                    | 
-+:===========+:===================+=============+:===========================+
-| $x^b$      | $b\cdot x^{b-1}$   | $c$         | $0$                        |
-+------------+--------------------+-------------+----------------------------+
-| $e^x$      | $e^x$              | $\log_a(x)$ | $\frac{1}{x \cdot \ln(a)}$ |
-+------------+--------------------+-------------+----------------------------+
-| $\ln(x)$   | $\frac{1}{x}$      | $a^x$       | $a^x \cdot \ln(a)$         |
-+------------+--------------------+-------------+----------------------------+
+:::::: {.columns}
+::: {.column width="49%"}
+
++------------+--------------------+
+| $f(x)$     | $f'(x)$            | 
++:===========+:===================+
+| $x^b$      | $b\cdot x^{b-1}$   |
++------------+--------------------+
+| $e^x$      | $e^x$              |
++------------+--------------------+
+| $\ln(x)$   | $\frac{1}{x}$      |
++------------+--------------------+
+
+:::
+::: {.column width="49%"}
+
++-------------+----------------------------+
+| $f(x)$      | $f'(x)$                    | 
++=============+:===========================+
+| $c$         | $0$                        |
++-------------+----------------------------+
+| $\log_a(x)$ | $\frac{1}{x \cdot \ln(a)}$ |
++-------------+----------------------------+
+| $a^x$       | $a^x \cdot \ln(a)$         |
++-------------+----------------------------+
+
+:::
+::::::
 
 
 ### Übung `r nextExercise()`: {.exercise} 
@@ -202,22 +463,42 @@ Sei $f: D \to Z$ eine Funktion und $a>0$, $b$, $c$ reelle Zahlen. Dann gilt:
 Bestimmen Sie für die folgenden Funktionen $f(x)$, die Ableitungen $f'(x)$ und
 werten Sie dann die Funktion $f'(x)$ an der Stelle $x_0$ aus.
 
-+------+-----------------+------------------+
-|      | $f(x)$          | $x_0$            |
-+:====:+:================+:=================+
-| a$)$ | $x^4$           | $0{,}5$          |
-+------+-----------------+------------------+
-| b$)$ | $3$             | $-4$             |
-+------+-----------------+------------------+
-| c$)$ | $x$             | $-4$             |
-+------+-----------------+------------------+
-| d$)$ | $x^{0{,}5}$     | $4$              |
-+------+-----------------+------------------+
-| e$)$ | $x^{-1{,}5}$    | $4$              | 
-+------+-----------------+------------------+
-| f$)$ | $3^x$           | $0$              |
-+------+-----------------+------------------+
++------+-----------------+------------------+------------------+------------------+
+|      | $f(x)$          | $x_0$            | $f'(x)$          | $f'(x_0)$        |
++:====:+:================+:=================+:=================+:=================+
+| a$)$ | $x^4$           | $0{,}5$          | $\qquad \qquad$  | $\qquad \qquad$  |
++------+-----------------+------------------+------------------+------------------+
+| b$)$ | $3$             | $-4$             | $\qquad \qquad$  | $\qquad \qquad$  |
++------+-----------------+------------------+------------------+------------------+
+| c$)$ | $x$             | $-4$             | $\qquad \qquad$  | $\qquad \qquad$  |
++------+-----------------+------------------+------------------+------------------+
+| d$)$ | $x^{0{,}5}$     | $4$              | $\qquad \qquad$  | $\qquad \qquad$  |
++------+-----------------+------------------+------------------+------------------+
+| e$)$ | $x^{-1{,}5}$    | $4$              | $\qquad \qquad$  | $\qquad \qquad$  |
++------+-----------------+------------------+------------------+------------------+
+| f$)$ | $3^x$           | $0$              | $\qquad \qquad$  | $\qquad \qquad$  |
++------+-----------------+------------------+------------------+------------------+
 
+
+::: {.notes}
+
++------+-----------------+------------------+--------------------------+------------------+
+|      | $f(x)$          | $x_0$            | $f'(x)$                  | $f'(x_0)$        |
++:====:+:================+:=================+:=========================+:=================+
+| a$)$ | $x^4$           | $0{,}5$          | $4x^3$                   | $0{,}5$          |
++------+-----------------+------------------+--------------------------+------------------+
+| b$)$ | $3$             | $-4$             | $0$                      | $0$              |
++------+-----------------+------------------+--------------------------+------------------+
+| c$)$ | $x$             | $-4$             | $1$                      | $1$              |
++------+-----------------+------------------+--------------------------+------------------+
+| d$)$ | $x^{0{,}5}$     | $4$              | $0{,}5 \cdot x^{-0{,}5}$ | $0{,}25$         |
++------+-----------------+------------------+--------------------------+------------------+
+| e$)$ | $x^{-1{,}5}$    | $4$              | $-1{,}5\cdot x^{-2{,}5}$ | $\frac{-3}{64}$  |
++------+-----------------+------------------+--------------------------+------------------+
+| f$)$ | $3^x$           | $0$              | $3^x \cdot \ln(3)$       | $\ln(3)$         |
++------+-----------------+------------------+--------------------------+------------------+
+
+:::
 
 <!-- -->
 
@@ -266,8 +547,6 @@ Sei $f(x) = c \cdot g(x)$, dann ist $f'(x)= c \cdot g'(x)$.
 - $\displaystyle \left(4 \cdot x\right)' = 0 \cdot x + 4 \cdot 1 = 4$
 
 - $\displaystyle \left(10 \cdot x^2\right)' = 10 \cdot \left( x^2\right)' = 10 \cdot 2 \cdot x = 20 x$
-
-- $\displaystyle \left(4 \cdot e^x\right)' = 4 \cdot \left( e^x\right)' = 4 \cdot e^x$
 
 - $\displaystyle \left(5  \cdot \ln(x) \cdot x\right)' = 5  \cdot \left(\ln(x) \cdot x\right)' = 5 \cdot (1+ \ln(x)) = 5+5\ln(x)$
 
@@ -336,7 +615,9 @@ $$f'(x) = \left(\frac{g(x)}{h(x)}\right)' = \frac{g'(x)\cdot h(x)- g(x) \cdot h'
 
 - $\displaystyle \left(\frac{\ln(x)}{x^2}\right)' = \frac{\frac{1}{x} \cdot x^2- \ln(x) \cdot 2x}{x^4} = \frac{1-2 \ln(x)}{x^3}$
 
-- $\displaystyle \left(\frac{e^x}{\sqrt{x}}\right)' =\frac{e^x \cdot \sqrt{x}- 0{,}5\cdot e^x \cdot x^{-0{,}5}}{(\sqrt{x})^2} = \frac{e^x \cdot(\sqrt{x}-\frac{1}{2\sqrt{x}})}{x} = \frac{e^x \cdot(\frac{2x}{2\sqrt{x}}-\frac{1}{2\sqrt{x}})}{x} = \frac{e^x \cdot(2x-1)}{2x\sqrt{x}}$
+- $\displaystyle \left(\frac{e^x}{\sqrt{x}}\right)' =\frac{e^x \cdot \sqrt{x}- 0{,}5\cdot e^x \cdot x^{-0{,}5}}{(\sqrt{x})^2} = \frac{e^x \cdot(\sqrt{x}-\frac{1}{2\sqrt{x}})}{x} = \frac{e^x \cdot(\frac{2x}{2\sqrt{x}}-\frac{1}{2\sqrt{x}})}{x}$
+    
+    $\displaystyle \phantom{\left(\frac{e^x}{\sqrt{x}}\right)'} = \frac{e^x \cdot(2x-1)}{2x\sqrt{x}}$
 <!-- -->
 
 ### Kettenregel
@@ -420,7 +701,7 @@ Gilt in beiden Fällen jeweils auf der rechten Seite die *strikte Ungleichung*
 *nicht negativ* (im *strengen* Fall *positiv*) bzw. 
 *nicht positiv* (im strengen Fall *negativ*) sind.
 
-Es gilt daher:
+Für auf $I$ differenzierbare Funktionen gilt daher:
 
 - $f$ ist auf $I$ *(streng) monoton steigend* 
   $\Longleftrightarrow f'(x) \geq (>) 0$
@@ -431,21 +712,42 @@ Es gilt daher:
 ### Krümmung
 
 Eine reellwertige Funktion heißt **konvex** auf dem Intervall $I$, wenn
-für je zwei Stellen $a < b$ mit $a,b \in I$ die Funktionswerte von $f$ unterhalb
+für je zwei Stellen $a < b$ mit $a, b \in I$ die Funktionswerte von $f$ unterhalb
 der Verbindungsstrecke von $(a; f(a))$ und $(b; f(b))$ liegt.
 Liegen alle Funktionswerte oberhalb, so nennen wir die Funktion **konkav** auf 
 $I$:
 
 Es gilt dann:
 
+:::::: {.columns}
+::: {.column width="60%"}
+
 - $f$ ist **konvex** auf $I$ $\Longleftrightarrow$ 
 $\forall t \in [0,1], x, y \in I:$ 
 $$f(t \cdot x + (1-t) \cdot y) \leq t\cdot f(x) + (1-t)\cdot f(y)$$
 
+:::
+::: {.column width="39%"}
+
+**Beispiel:**
+
+:::
+::::::
+
+:::::: {.columns}
+::: {.column width="60%"}
 
 - $f$ ist **konkav** auf $I$ $\Longleftrightarrow$ 
 $\forall t \in [0,1], x, y \in I:$ 
 $$f(t \cdot x + (1-t) \cdot y) \geq t\cdot f(x) + (1-t)\cdot f(y)$$
+
+:::
+::: {.column width="39%"}
+
+**Beispiel:**
+
+:::
+::::::
 
 
 ### Zweite (und höhere) Ableitung
@@ -459,6 +761,7 @@ $$f''(x) = \left[f'(x)\right]' = \frac{d}{dx} \left(\frac{d}{dx} f\right) = \fra
 Rekursiv definieren wir die $n$-te Ableitung, falls die $n-1$ Ableitungsfunktion
 existiert und differenzierbar ist. Wir schreiben dann:
 
+$$f^{(0)}(x) = f(x), \quad f^{(1)}(x) = f'(x)= \frac{d}{dx} f$$
 $$f^{(n)}(x) = \left[f^{(n-1)}(x)\right]' = \frac{d}{dx} \left(\frac{d^{n-1}}{dx^{n-1}} f\right) = \frac{d^n}{dx^n} f$$
 
 
@@ -492,7 +795,7 @@ $x_0$ heißt
 
 - **lokales Maximum**, falls $f(x) \leq f(x_0)$ für alle $x$ in einer echten Umgebung von $x_0$ gilt
 
-- **strenges lokales Maximum**, falls $f(x) \leq f(x_0)$ für alle $x$ in einer echten Umgebung von $x_0$ gilt.
+- **strenges lokales Maximum**, falls $f(x) < f(x_0)$ für alle $x$ in einer echten Umgebung von $x_0$ gilt.
 
 Analog die Definition mit **Minimum**. 
 
@@ -502,19 +805,31 @@ Analog die Definition mit **Minimum**.
 Schreiben Sie die Definitionen von 
 **globales Minimum**, 
 **strenges globales Minimum**, 
-**lokales Minimum** und **strenges lokales Minimum** einmal konkret auf!
+**lokales Minimum** und **strenges lokales Minimum** explizit auf!
+
+::: {.notes}
+Für eine univariate, reellwertige Funktion $f: D \to Z$ und $x_0 \in D$ gilt:
+$x_0$ heißt
+
+- **globales Minimum**, falls $f(x) \geq f(x_0)$ für alle $x\in D$ gilt
+
+- **strenges globales Minimum**, falls $f(x) > f(x_0)$ für alle $x \in D \setminus \{x_0\}$ gilt.
+
+- **lokales Minimum**, falls $f(x) \geq f(x_0)$ für alle $x$ in einer echten Umgebung von $x_0$ gilt
+
+- **strenges lokales Minimum**, falls $f(x) > f(x_0)$ für alle $x$ in einer echten Umgebung von $x_0$ gilt.
+
+:::
 
 
 <!-- -->
 
 ### Beispiel
 
-$f(x) = x^3-9x^2$, $f'(x)=3x^2-18x$, $f''(x)=6x-18$
+$f(x) = x^3-9x^2$, $\;f'(x)=3x^2-18x$, $\;f''(x)=6x-18$
 
 ```{r warnings=FALSE, echo=FALSE, fig.align="center", out.width="70%", }
-library(mosaic)
-library(ggplot2)
-
+# f <- 0.7
 myFun <- function(x) {
     x**3 - 9*x**2
 }
@@ -557,18 +872,17 @@ ggplot(my.df, aes(x = x)) +
                nudge_x = 0.3,
                nudge_y = 0.75
                ) + 
-    coord_cartesian(ylim = c(-200, 100)) 
+    coord_cartesian(xlim = c(-5,10), ylim = c(-125, 50)) 
 
 ```
 
 
 ### Beispiel Sattelpunkt
 
-$f(x) = x^3-9x^2+27x$, $f'(x)=3x^2-18x+27$, $f''(x)=6x-18$
+$f(x) = x^3-9x^2+27x$, $\;f'(x)=3x^2-18x+27$, $\;f''(x)=6x-18$
 
 ```{r warnings=FALSE, echo=FALSE, fig.align="center", out.width="70%", }
-library(mosaic)
-library(ggplot2)
+#f <- 0.7
 
 myFun <- function(x) {
     x**3 - 9*x**2 + 27*x
@@ -610,7 +924,9 @@ ggplot(my.df, aes(x = x)) +
                nudge_x = 0.3,
                nudge_y = 0.75
                ) + 
-    coord_cartesian(ylim = c(-100, 100)) 
+    coord_cartesian(xlim = c(-2, 7), ylim = c(-30, 60)) +
+    scale_y_continuous(breaks = seq(-30,60,15)) +
+    scale_x_continuous(breaks = seq(-2,7,1))
 
 ```
 
@@ -626,16 +942,16 @@ oder Sattelpunkte handelt.
 
 **Lösung:**
 
-$f(x)=x^3-3x^2-24x+2$, $f'(x)=3x^2-6x-24$, $f''(x)=6x-6$, $f'''(x)=6$
+$f(x)=x^3-3x^2-24x+2$, $\;f'(x)=3x^2-6x-24$, $\;f''(x)=6x-6$, $f'''(x)=6$
 
-$f'(x)=0 \Leftrightarrow 3x^2-6x-24 \Leftrightarrow x_1=-2 ;\, x_2=4$
+$f'(x)=0 \Leftrightarrow 3x^2-6x-24 = 0\Leftrightarrow x=-2 \vee x=4$
 
-$f''(-2) = -18 < 0$, also ist bei $x_1 = -2; y_1 = 30$ ein lokales Maximum.
+$f''(-2) = -18 < 0$, also ist bei $x_{max} = -2; y_{max} = 30$ ein lokales Maximum.
 
-$f''(4) = 18 > 0$, also ist bei $x_2=4;\, y_2 = -78$ ein lokales Minimum.
+$f''(4) = 18 > 0$, also ist bei $x_{min}=4;\, y_{min} = -78$ ein lokales Minimum.
 
 Wegen $f''(x) = 0 \Leftrightarrow x=1$ und $f'''(1)=6 \neq 0$ gibt es bei
-$x=1$ einen Wendepunkt bei $(1| -24). 
+$x_{WP}=1$ einen Wendepunkt bei $WP(1; -24)$. 
 
 Wegen $f'(1)=-27 \neq 0$ gibt es an der Stelle $x=1$ *keinen* Sattelpunkt.
 
@@ -728,11 +1044,7 @@ $G_{max} = G(x_{max}) = 36$
 ::: {.column width="49%"}
 
 ```{r echo=FALSE, out.width="95%"}
-my_size = 2
-my_zero_line_color = "black"
-my_line_color = "blue"
-my_sec_color = "green"
-
+# f <- 0.50
 my_P = makeFun(10 ~ x)
 my_E = makeFun(my_P(x) * x  ~ x)
 my_K = makeFun((0.64*x -6) * x + 64 ~ x)
@@ -740,26 +1052,26 @@ my_G = makeFun(my_E(x) - my_K(x) ~ x)
 my_DK = makeFun(my_K(x) / x ~ x)
 
 gf_function( fun = my_G, color = "green", xlim = c(0, 20.5)) %>%
-  gf_function( fun = my_E, color = "blue", xlim = c(0, 20.5)) %>%
+  gf_function( fun = my_E, color = ~I(my_line_color), xlim = c(0, 20.5)) %>%
   gf_function( fun = my_K, color = "red", xlim = c(0, 20.5)) %>%
   gf_point(36 ~ 12.5, color = "green", size = 2) %>%
   gf_point(89 ~ 12.5, color = "red", size = 2) %>%
-  gf_point(125 ~ 12.5, color = "blue", size = 2) %>%
+  gf_point(125 ~ 12.5, color = my_line_color, size = 2) %>%
   gf_point(c(0,0) ~ c(5,20), color = "green", size = 2) %>%
   gf_point(50 ~ 5, color = "red", fill = "blue", size = 2) %>%
   gf_point(200 ~ 20, color = "red", fill = "blue", size = 2) %>%
   gf_path(c(0,50) ~ c(5,5) , linetype = "dotted", color = "darkgray") %>%
   gf_path(c(0,125) ~ c(12.5,12.5) , linetype = "dotted", color = "darkgray") %>%
   gf_path(c(0,200) ~ c(20,20) , linetype = "dotted", color = "darkgray") %>%
-  gf_label(10 ~ 1.5, label = "E(x)", size = 4, angle = 0, hjust = 0, nudge_x = -0.5, nudge_y = 0.5) %>% 
-  gf_label(my_K(1.5) ~ 1.5, label = "K(x)", size = 4, angle = 0, hjust = 0, nudge_x = -0.5, nudge_y = 0.5) %>% 
-  gf_label(my_G(1.5) ~ 1.5, label = "G(x)", size = 4, angle = 0, hjust = 0, nudge_x = -0.5, nudge_y = 0.5) %>% 
-  gf_label((my_G(12.5) + 15) ~ 12.5, label = "max. Gewinn", size = 4, angle = 0, hjust = 0, nudge_x = -0.5, nudge_y = 0.5) %>%
-  gf_label(-15 ~ 5.6, label = "Break Even Point", size = 4, angle = 0, hjust = 0, nudge_x = -0.5, nudge_y = 0.5) %>%
-  gf_refine(scale_x_continuous(breaks = seq(0,20,2.5))) %>%
-  gf_refine(scale_y_continuous(breaks = c(0,36,my_K(5),my_K(12.5), my_E(12.5),my_K(20)))) %>%
-  gf_hline(yintercept = 0, color = "black") %>%
-  gf_theme(theme_bw(base_size = my_size*11)) 
+  gf_label(10 ~ 1.5, label = "E(x)", size = f * my_font_size, angle = 0, hjust = 0, nudge_x = -0.5, nudge_y = 0.5) %>% 
+  gf_label(my_K(1.5) ~ 1.5, label = "K(x)", size = f * my_font_size, angle = 0, hjust = 0, nudge_x = -0.5, nudge_y = 0.5) %>% 
+  gf_label(my_G(1.5) ~ 1.5, label = "G(x)", size = f * my_font_size, angle = 0, hjust = 0, nudge_x = -0.5, nudge_y = 0.5) %>% 
+  gf_label((my_G(12.5) + 15) ~ 12.5, label = "max. Gewinn", size = f * my_font_size, angle = 0, hjust = 0, nudge_x = -0.5, nudge_y = 0.5) %>%
+  gf_label(-15 ~ 5.6, label = "Break Even Point", size = f * my_font_size, angle = 0, hjust = 0, nudge_x = -0.5, nudge_y = 0.5) %>%
+  gf_refine(scale_x_continuous(breaks = seq(0,20,2.5)),
+            scale_y_continuous(breaks = c(0,36,my_K(5),my_K(12.5), my_E(12.5),my_K(20)))) %>%
+  gf_hline(yintercept = 0, color = my_zero_line_color) %>%
+  gf_theme(theme_bw(base_size = f * my_base_size)) 
 ```
 
 :::
@@ -776,14 +1088,10 @@ $x_{BE} = x_1 = 5$, $x_2 = 20$ (*obere Gewinngrenze*)
 
 **Betriebsoptimum:** (Minimum der Durchschnittskosten)
 $DK(x) = \frac{K(x)}{x} = \frac{0{,}64x^2 -6x + 64}{x} = 0{,}64x -6 + \frac{64}{x}$
-$DK'(x) = 0{,}64 - \frac{64}{x^2} = 0 \Leftrightarrow x_{BO}= x_1=10, x_2=-10$
+$DK'(x) = 0{,}64 - \frac{64}{x^2} = 0 \Leftrightarrow x_{BO}=10 \vee x=-10$ (n.w.w.r.)
 
 ```{r echo=FALSE, out.width="70%"}
-my_size = 2
-my_zero_line_color = "black"
-my_line_color = "blue"
-my_sec_color = "green"
-
+# f <- 0.7
 my_P = makeFun(10 ~ x)
 my_E = makeFun(my_P(x) * x  ~ x)
 my_K = makeFun((0.64*x -6) * x + 64 ~ x)
@@ -793,16 +1101,16 @@ my_DE = makeFun(my_E(x) / x  ~ x)
 #my_DG = makeFun(my_DE(x)-my_DK(x) ~ x)
 
 gf_function( fun = my_DK, color = "red", xlim = c(5, 20.)) %>%
-  gf_function( fun = my_G, color = "blue", xlim = c(5, 20)) %>%
+  gf_function( fun = my_G, color = ~ I(my_line_color), xlim = c(5, 20)) %>%
 #  gf_function( fun = my_DE, color = "green", xlim = c(5, 20)) %>%
 #  gf_function( fun = my_DG, color = "orange", xlim = c(5, 20)) %>%
-  gf_point(my_DK(10) ~ 10, color = "red", size = 2) %>%
-  gf_point(my_G(12.5) ~ 12.5, color = "blue", size = 2) %>%
+  gf_point(my_DK(10) ~ 10, color = "red", size = f * 2) %>%
+  gf_point(my_G(12.5) ~ 12.5, color = my_line_color, size = f * 2) %>%
 
-  gf_refine(scale_x_continuous(breaks = seq(5,20,2.5))) %>%
-  gf_refine(scale_y_continuous(breaks = c(0, my_DK(10), 10, 36))) %>%
-  gf_hline(yintercept = 0, color = "black") %>%
-  gf_theme(theme_bw(base_size = my_size*11)) 
+  gf_refine(scale_x_continuous(breaks = seq(5,20,2.5)),
+            scale_y_continuous(breaks = c(0, my_DK(10), 10, 36))) %>%
+  gf_hline(yintercept = 0, color = my_zero_line_color) %>%
+  gf_theme(theme_bw(base_size = f*my_base_size)) 
 
 
 ```
@@ -813,7 +1121,7 @@ gf_function( fun = my_DK, color = "red", xlim = c(5, 20.)) %>%
 
 Betrachten Sie ein Unternehmen mit Marktmacht, welches sich der Marktnachfrage 
 $p(x) = 30-x$ gegenübersieht, wobei hier $p$ den Preis und $x$ die Menge bezeichnet. 
-Die Kosten $K$ sind gegeben durch $K = 0{,}5x^2 +18x + 18$. 
+Die Kosten sind gegeben durch $K(x) = 0{,}5x^2 +18x + 18$. 
 
 :::::: {.columns}
 ::: {.column width="49%"}
@@ -849,11 +1157,11 @@ $P_{max} = p(x_{max}) = 26$
 ::: {.column width="49%"}
 
 ```{r echo=FALSE, out.width="95%"}
-my_size = 2
-my_zero_line_color = "black"
-my_line_color = "blue"
-my_sec_color = "green"
-
+#my_size = 2
+#my_zero_line_color = "black"
+#my_line_color = my_line_color
+#my_sec_color = "green"
+# f <- 0.95
 my_P = makeFun(30-x ~ x)
 my_E = makeFun(my_P(x) * x  ~ x)
 my_K = makeFun(0.5*x*x + 18*x +18 ~ x)
@@ -861,26 +1169,26 @@ my_G = makeFun(my_E(x) - my_K(x) ~ x)
 #my_DK = makeFun(my_K(x) / x ~ x)
 
 gf_function( fun = my_G, color = "green", xlim = c(1.8, 6.2)) %>%
-#  gf_function( fun = my_E, color = "blue", xlim = c(0, 7)) %>%
+#  gf_function( fun = my_E, color = my_line_color, xlim = c(0, 7)) %>%
 #  gf_function( fun = my_K, color = "red", xlim = c(0, 7)) %>%
-  gf_point(6 ~ 4, color = "green", size = 2) %>%
+  gf_point(6 ~ 4, color = "green", size = f2) %>%
 #  gf_point(89 ~ 12.5, color = "red", size = 2) %>%
-#  gf_point(125 ~ 12.5, color = "blue", size = 2) %>%
+#  gf_point(125 ~ 12.5, color = my_line_color, size = 2) %>%
   gf_point(c(0,0) ~ c(2,6), color = "green", size = 2) %>%
 #  gf_point(50 ~ 5, color = "red", fill = "blue", size = 2) %>%
 #  gf_point(200 ~ 20, color = "red", fill = "blue", size = 2) %>%
   gf_path(c(0,6) ~ c(4,4) , linetype = "dotted", color = "darkgray") %>%
 #  gf_path(c(0,125) ~ c(12.5,12.5) , linetype = "dotted", color = "darkgray") %>%
 #  gf_path(c(0,200) ~ c(20,20) , linetype = "dotted", color = "darkgray") %>%
-#  gf_label(10 ~ 1.5, label = "E(x)", size = 4, angle = 0, hjust = 0, nudge_x = -0.5, nudge_y = 0.5) %>% 
-#  gf_label(my_K(1.5) ~ 1.5, label = "K(x)", size = 4, angle = 0, hjust = 0, nudge_x = -0.5, nudge_y = 0.5) %>% 
-#  gf_label(my_G(1.5) ~ 1.5, label = "G(x)", size = 4, angle = 0, hjust = 0, nudge_x = -0.5, nudge_y = 0.5) %>% 
-#  gf_label((my_G(12.5) + 15) ~ 12.5, label = "max. Gewinn", size = 4, angle = 0, hjust = 0, nudge_x = -0.5, nudge_y = 0.5) %>%
-#  gf_label(-15 ~ 5.6, label = "Break Even Point", size = 4, angle = 0, hjust = 0, nudge_x = -0.5, nudge_y = 0.5) %>%
+#  gf_label(10 ~ 1.5, label = "E(x)", size = my_font_size, angle = 0, hjust = 0, nudge_x = -0.5, nudge_y = 0.5) %>% 
+#  gf_label(my_K(1.5) ~ 1.5, label = "K(x)", size = my_font_size, angle = 0, hjust = 0, nudge_x = -0.5, nudge_y = 0.5) %>% 
+#  gf_label(my_G(1.5) ~ 1.5, label = "G(x)", size = my_font_size, angle = 0, hjust = 0, nudge_x = -0.5, nudge_y = 0.5) %>% 
+#  gf_label((my_G(12.5) + 15) ~ 12.5, label = "max. Gewinn", size = my_font_size, angle = 0, hjust = 0, nudge_x = -0.5, nudge_y = 0.5) %>%
+#  gf_label(-15 ~ 5.6, label = "Break Even Point", size = my_font_size, angle = 0, hjust = 0, nudge_x = -0.5, nudge_y = 0.5) %>%
 #  gf_refine(scale_x_continuous(breaks = seq(0,20,2.5))) %>%
 #  gf_refine(scale_y_continuous(breaks = c(0,36,my_K(5),my_K(12.5), my_E(12.5),my_K(20)))) %>%
-  gf_hline(yintercept = 0, color = "black") %>%
-  gf_theme(theme_bw(base_size = my_size*11)) 
+  gf_hline(yintercept = 0, color = my_zero_line_color) %>%
+  gf_theme(theme_bw(base_size = f*my_base_size)) 
 ```
 
 :::
@@ -894,14 +1202,10 @@ $x_{BE} = x_1 = 2$, $x_2 = 6$ (*obere Gewinngrenze*)
 
 **Betriebsoptimum:** (Minimum der Durchschnittskosten)
 $DK(x) = \frac{K(x)}{x} = \frac{0{,}5x^2 +18x + 18}{x} = 0{,}5x + 18 + \frac{18}{x}$
-$DK'(x) = 0{,}5 - \frac{18}{x^2} = 0 \Leftrightarrow x_{BO}= x_1=6, x_2=-6$
+$DK'(x) = 0{,}5 - \frac{18}{x^2} = 0 \Leftrightarrow x_{BO}=6 \vee x=-6$ (n.w.w.r)
 
 ```{r echo=FALSE, out.width="70%"}
-my_size = 2
-my_zero_line_color = "black"
-my_line_color = "blue"
-my_sec_color = "green"
-
+# f <- 0.7
 my_P = makeFun(30-x ~ x)
 my_E = makeFun(my_P(x) * x  ~ x)
 my_K = makeFun(0.5*x*x + 18*x +18 ~ x)
@@ -909,16 +1213,16 @@ my_G = makeFun(my_E(x) - my_K(x) ~ x)
 my_DK = makeFun(my_K(x) / x ~ x)
 
 gf_function( fun = my_DK, color = "red", xlim = c(2, 6.5)) %>%
-  gf_function( fun = my_G, color = "blue", xlim = c(2, 6.5)) %>%
+  gf_function( fun = my_G, color = ~ I(my_line_color), xlim = c(2, 6.5)) %>%
 #  gf_function( fun = my_DE, color = "green", xlim = c(5, 20)) %>%
 #  gf_function( fun = my_DG, color = "orange", xlim = c(5, 20)) %>%
   gf_point(my_DK(6) ~ 6, color = "red", size = 2) %>%
-  gf_point(my_G(4) ~ 4, color = "blue", size = 2) %>%
+  gf_point(my_G(4) ~ 4, color = my_line_color, size = 2) %>%
 
   gf_refine(scale_x_continuous(breaks = seq(2,6,1))) %>%
   gf_refine(scale_y_continuous(breaks = c(0, my_DK(6), my_G(4),30))) %>%
-  gf_hline(yintercept = 0, color = "black") %>%
-  gf_theme(theme_bw(base_size = my_size*11)) 
+  gf_hline(yintercept = 0, color = my_zero_line_color) %>%
+  gf_theme(theme_bw(base_size = my_base_size)) 
 
 
 ```
@@ -970,13 +1274,23 @@ auffassen.
 **Beispiele:** 
 
 ::: {.small}
+:::::: {.columns}
+::::::::: {.column width="33%"}
 
 a) $\displaystyle f(x,y) = x^2+ y^3$
 
+:::::::::
+::::::::: {.column width="33%"}
+
 b) $\displaystyle f(x_1, x_2) = x_1^2x_2^3$
+
+:::::::::
+::::::::: {.column width="33%"}
 
 c) $\displaystyle f(x, y) = \frac{x}{y}+xy$
 
+:::::::::
+::::::
 :::
 
 
@@ -999,18 +1313,19 @@ $$\frac{\partial f(x_1,\dotsc,x_n)}{\partial x_1} = f_{x_i}(x_1,\dotsc,x_n)$$
 
 <!-- Beispiel von Ross/Christians -->
 
-a) $f(x,y) = x^2+ y^3$, $f_x(x,y) = 2x$, $f_y(x,y)= 3y^2$
+a) $\displaystyle f(x,y) = x^2+ y^3$, $\displaystyle f_x(x,y) = 2x$, $\quad\displaystyle f_y(x,y)= 3y^2$
 
-b) $f(x_1, x_2) = x_1^2 x_2^3$, $f_{x_1}(x_1, x_2) =2 x_1 x_2^3$, $f_{x_2}(x_1, x_2) =3x_1^2 x_2^2$
+b) $\displaystyle f(x_1, x_2) = x_1^2 x_2^3$, $\displaystyle f_{x_1}(x_1, x_2) =2 x_1 x_2^3$, $\displaystyle\quad f_{x_2}(x_1, x_2) =3x_1^2 x_2^2$
 
-c) $\displaystyle f(x, y) = \frac{x}{y}+xy$, $\displaystyle f_x(x,y) = \frac{1}{y} + y$, $\displaystyle f_y(x,y) = -\frac{x}{y^2}+x$
+c) $\displaystyle f(x, y) = \frac{x}{y}+xy$, $\displaystyle f_x(x,y) = \frac{1}{y} + y$, $\quad\displaystyle f_y(x,y) = -\frac{x}{y^2}+x$
 
 
 ### Übung `r nextExercise()`: {.exercise} 
 
 <!-- Übung von Ross/Christians -->
 
-Bestimmen Sie die partiellen Ableitungen nach $x$ und $y$:
+Bestimmen Sie die partiellen Ableitungen der angegebenen Funktionen
+nach $x$ und $y$:
 
 a) $\displaystyle 4x^3+2y^4$
 
@@ -1069,6 +1384,7 @@ $\displaystyle \left|\begin{pmatrix}-8\\2\\\end{pmatrix}\right| = \sqrt{(-8)^2 +
 ### 3D-Plot von $f(x,y)=2x^2-y^2$ 
 
 ```{r echo=FALSE, fig.align="center", out.width="75%"}
+# f<- 0.75
 fkt <- function(x,y) {
   return(2*x^2 - y^2)
 }
@@ -1093,7 +1409,7 @@ for (xx in x) {
 ```
 
 ```{r echo=FALSE,fig.align="center", out.width="75%"}
-library("plot3D")
+#library("plot3D")
 
 t <- seq(-5, 5, 0.1)
 m <- mesh(t, t)
