@@ -734,13 +734,33 @@ Es gilt dann:
 ::: {.column width="60%"}
 
 - $f$ ist **konvex** auf $I$ $\Longleftrightarrow$ 
-$\forall t \in [0,1], x, y \in I:$ 
+    $\forall t \in [0,1], x, y \in I:$ 
 $$f(t \cdot x + (1-t) \cdot y) \leq t\cdot f(x) + (1-t)\cdot f(y)$$
 
 :::
 ::: {.column width="39%"}
 
 **Beispiel:**
+```{r echo=FALSE, out.width="65%"}
+# f <- 0.65
+fkt <- makeFun(x^2 ~ x)
+x0 <- -1.5
+y0 <- fkt(x0)
+x1 <- 1
+y1 <- fkt(x1)
+
+# m <- (y1 - y0) / (x1 - x0)
+# b <- y1 - m*x1
+
+gf_fun(fkt(x) ~ x, 
+       size = ~ I(f*my_line_size),
+       color = ~ I(my_line_color),
+       xlim = c(-2,2)) %>%
+  gf_line(c(y1,y0) ~ c(x1,x0),
+          size = ~ I(f*0.75*my_line_size),
+          color = ~ I(my_secant_color),) %>%
+  gf_theme(theme_bw(base_size = f * my_base_size)) 
+```
 
 :::
 ::::::
@@ -749,7 +769,7 @@ $$f(t \cdot x + (1-t) \cdot y) \leq t\cdot f(x) + (1-t)\cdot f(y)$$
 ::: {.column width="60%"}
 
 - $f$ ist **konkav** auf $I$ $\Longleftrightarrow$ 
-$\forall t \in [0,1], x, y \in I:$ 
+    $\forall t \in [0,1], x, y \in I:$ 
 $$f(t \cdot x + (1-t) \cdot y) \geq t\cdot f(x) + (1-t)\cdot f(y)$$
 
 :::
@@ -757,6 +777,27 @@ $$f(t \cdot x + (1-t) \cdot y) \geq t\cdot f(x) + (1-t)\cdot f(y)$$
 
 **Beispiel:**
 
+```{r echo=FALSE, out.width="65%"}
+# f <- 0.65
+fkt <- makeFun(-x^2 ~ x)
+
+x0 <- -1
+y0 <- fkt(x0)
+x1 <- 1.5
+y1 <- fkt(x1)
+
+# m <- (y1 - y0) / (x1 - x0)
+# b <- y1 - m*x1
+
+gf_fun(fkt(x) ~ x,  
+       size = ~ I(f*my_line_size),
+       color = ~ I(my_line_color),
+       xlim = c(-2,2)) %>%
+  gf_line(c(y1,y0) ~ c(x1,x0),
+          size = ~ I(f*0.75*my_line_size),
+          color = ~ I(my_secant_color),) %>%
+  gf_theme(theme_bw(base_size = f * my_base_size)) 
+```
 :::
 ::::::
 
