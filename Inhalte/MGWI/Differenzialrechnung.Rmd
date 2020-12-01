@@ -180,6 +180,7 @@ fkt <- makeFun( 2*(50-x)/50*sin(x) ~ x)
 # f <- 0.49*0.8
 gf_fun(fkt(x) ~x, 
        color = NA, 
+       size = ~ I(f * my_line_size),
        xlim = c(-1.5,7.4)) %>%
   gf_point(c(fkt(-1.5), fkt(7.4)) ~ c(-1.5,7.4), color = my_line_color) %>%
   gf_text(c(fkt(-1.5), fkt(7.4)) ~ c(-1.5,7.4), 
@@ -188,6 +189,7 @@ gf_fun(fkt(x) ~x,
           size = f*my_font_size,
           color = my_line_color) %>%
   gf_hline(yintercept = 0.75, 
+           size = f * my_line_size,
            color = my_constant_line_color) %>%
   gf_text(0.75 ~ -1.5,
           label = "s", 
@@ -202,8 +204,9 @@ gf_fun(fkt(x) ~x,
 :::
 ::: {.column width="49%"}
 ```{r echo=FALSE, out.width="80%"}
+#f <- 0.49*0.8
+
 fkt <- makeFun(2*(50-x)/50*sin(x) ~ x)
-# f <- 0.49*0.8
 x_values <- c(-1.5, 7.4)
 tdf <- tibble(
           y = fkt(x_values), 
@@ -212,22 +215,28 @@ tdf <- tibble(
 
 gf_fun(fkt(x) ~ x,
        color = ~ I(my_line_color),
+       size = ~ I(f * my_line_size),
        xlim = x_values) %>%
   gf_point(y ~ x , 
-           color = my_line_color,
+           color = my_line_color, 
+           size = f * 1.5 * my_line_size,
            data = tdf) %>%
   gf_text(c(fkt(-1.5), fkt(7.4)) ~ c(-1.5, 7.4), 
           label = c("f(a)", "f(b)"), 
           nudge_y = c(0.25,-0.27), 
           size = f*my_font_size,
           color = my_line_color) %>%
-  gf_hline(yintercept = 0.75, 
+  gf_hline(yintercept = 0.75,
+           size = f * my_line_size,
            color = my_constant_line_color) %>%  
   gf_point(0.75 ~ 0.38, 
+           size = f * 1.5 * my_line_size, 
            color = my_line_color) %>%
   gf_point(0.75 ~ 2.73, 
+           size = f * 1.5 * my_line_size,
            color = my_line_color) %>%
   gf_point(0.75 ~ 6.73, 
+           size = f * 1.5 * my_line_size,
            color = my_line_color) %>%
   gf_segment(-0.75 + 0.72 ~ 1.6 + 2.70, 
              arrow = arrow(length = unit(0.4, "cm"))) %>%
@@ -237,11 +246,11 @@ gf_fun(fkt(x) ~ x,
               arrow = arrow(length = unit(0.4, "cm"))) %>%
   gf_label(-0.75 ~ 1.6, 
            label = "f(c)=s", 
-           size = f*my_font_size) %>%
+           size = f * my_font_size) %>%
   gf_text(0.75 ~ -1.5, 
           label = "s", 
           nudge_y = 0.15, 
-          size = f*my_font_size, 
+          size = f * my_font_size, 
           color = my_constant_line_color) %>%
   gf_refine(scale_y_continuous(breaks = c()),
             scale_x_continuous(breaks = c())) %>%
@@ -265,8 +274,10 @@ liegen, so nennen wir $g(x)$ eine **Sekante** (durch $P$ und $Q$ an $f$).
 
 
 ```{r echo=FALSE, out.height="40%"}
-my_fkt = makeFun(cos(0.6*(x+2))  ~ x)
 # f <- 0.4
+
+my_fkt = makeFun(cos(0.6*(x+2))  ~ x)
+
 gf_function( fun = my_fkt, 
              size = ~ I(f * my_line_size),
              color = ~ I(my_line_color),
