@@ -1171,7 +1171,7 @@ my_G = makeFun(my_E(x) - my_K(x) ~ x)
 gf_function( fun = my_G, color = "green", xlim = c(1.8, 6.2)) %>%
 #  gf_function( fun = my_E, color = my_line_color, xlim = c(0, 7)) %>%
 #  gf_function( fun = my_K, color = "red", xlim = c(0, 7)) %>%
-  gf_point(6 ~ 4, color = "green", size = f2) %>%
+  gf_point(6 ~ 4, color = "green", size = 2) %>%
 #  gf_point(89 ~ 12.5, color = "red", size = 2) %>%
 #  gf_point(125 ~ 12.5, color = my_line_color, size = 2) %>%
   gf_point(c(0,0) ~ c(2,6), color = "green", size = 2) %>%

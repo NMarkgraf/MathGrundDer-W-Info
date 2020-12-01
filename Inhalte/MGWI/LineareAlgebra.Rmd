@@ -35,7 +35,7 @@ Litern  $21\,\%$-igen Alkohol zu mischen und zusammen müssen es $5$ Liter sein,
 also $x+y=5$.
 
 
-[Das Gleichungsystem:]{.cstrong}
+[Das Gleichungssystem:]{.cstrong}
 $$\sysdelim..
   \systeme{%
 		0{,}36\cdot x+0{,}21\cdot y=1{,}5,%
