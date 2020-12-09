@@ -1982,7 +1982,8 @@ $x_1=50$, $x_2=25$, $\lambda=25/3$
 
 Was hat es nun mit dem $\lambda = 25/3$ aufsich?
 
-Unsere Nebenbedingung hat mit $Y=300$ eine Konstante, Leiten wir formal $L(x_1, x_2, \lamba)$ nach $>$ ab,
+Unsere Nebenbedingung hat mit $Y=300$ eine Konstante. 
+Ersetzen wir in der Nebenbedingung die 300 durch $Y$ und leiten dann formal $L(x_1, x_2, \lambda, Y)$ nach $Y$ ab,
 so erhalten wir:
 
 $$\frac{\partial L}{\partial Y} = \lambda$$
@@ -1991,7 +1992,7 @@ Im Maximum gilt nur $L(x_1, x_2, \lambda) = U(x_1, x_2)$,
 
 Der *Lagrange-Multiplicator* gibt also an, in wie sich das Optimum ändert, wenn sich die Konstane $Y$ der Nebenbedingung verändert.
 
-Würden wir also $Y=303$ statt $Y=300$ als Einkommen annehmen, so sollte sich das Nutzenmaximum von $1\,250$ um $\frac{25}{3}\cdot 3 = 25$ auf (etwa) $1\,275$ steigen lassen.
+Würden wir also $Y=303$ statt $Y=300$ als Einkommen annehmen, so sollte sich das Nutzenmaximum von $1\,250$ um (ca.) $\frac{25}{3}\cdot 3 = 25$ auf (etwa) $1\,275$ steigern lassen.
 
 Rechnen Sie es (als Hausaufgabe) nach!^[Lösung: $x_1=50{,}5\; x_2 = 25{,}25\$ Nutzenmaximum: $1275{,}125$]
 
