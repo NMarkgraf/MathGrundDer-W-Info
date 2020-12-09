@@ -57,6 +57,7 @@ $f:\mathbf{R}\setminus \{-2\} \to \mathbf{R}, x \mapsto y=\frac{2x-1}{x+2}\phant
 \end{cases}}$
 
 ```{r echo=FALSE, out.width="80%"}
+# f <- 0.8
 fkt <- makeFun((2*x-1)/(x+2) ~ x)
 
 x1 <- seq(-3.5,-2.01, 0.01)
@@ -70,9 +71,9 @@ gf_line(y1 ~ x1,
         size = f*my_line_size) %>% 
   gf_line(y2 ~ x2, 
           color = ~ I(my_line_color),
-          size = f*my_line_size) %>%
+          size = f * my_line_size) %>%
   gf_labs(x = "x", y = "y") %>%
-  gf_theme(theme_bw(base_size = my_base_size))
+  gf_theme(theme_bw(base_size = f * my_base_size))
 ```
 
 
@@ -366,9 +367,48 @@ Z.B.: https://www.mathe-fa.de/de
 
 
 ::: {.notes}
-a) $m_s = \frac{16-0}{4-0}= 4$ und $b_s=0$, Die Sekante lautet also: $4\cdot x$
+```{r, echo=FALSE, eval=FALSE}
+# b)
+fkt <- makeFun(x**2 ~ x)
+x0 <- 2
+x1 <- 4
+f1 <- 4
+f2 <- 17
+# c)
+fkt <- makeFun(x**3 - 3*x +1 ~ x)
+x0 <- -1
+x1 <- 1
+f1 <- 4
+f2 <- 5
+# d)
+fkt <- makeFun(x**3 - 3*x +1 ~ x)
+x0 <- 0
+x1 <- 2
+f1 <- 4
+f2 <- 1
+# e)
+fkt <- makeFun(x**3 - 3*x +1 ~ x)
+x0 <- 1
+x1 <- 2
+f1 <- 4
+f2 <- 13
+(z_s <- (fkt(x0) - fkt(x1))) * f1
+(n_s <- x0 - y1) * f1
+(m_s <-  z_s / n_s)
+(b_s <- fkt(x0) - m_s * x0) * f2
+```
 
-d) $...$
+
+a) $m_s = \frac{16-0}{4-0}= 4$ und $b_s=0$. Die Sekante lautet also: $4\cdot x$
+
+b) $m_s = -\frac{48}{17}$ und $b_s =\frac{164}{17}$. Die Sekante lautet also: $-\frac{48}{17} \cdot x + \frac{164}{17}$
+
+c) $m_s = \frac{16}{5}$ und $b_s =\frac{31}{5}$. Die Sekante lautet also: $-\frac{16}{5} \cdot x + \frac{31}{5}$
+
+d) $m_s = -\frac{8}{9}$ und $b_s =1$. Die Sekante lautet also: $-\frac{8}{9} \cdot x + 1$
+
+e) $m_s = -\frac{16}{13}$ und $b_s =\frac{3}{13}$. Die Sekante lautet also: $-\frac{16}{13} \cdot x + \frac{3}{13}$
+
 :::
 
 ### Die $\Delta$-Notation
@@ -410,6 +450,9 @@ $$m_t = f'(x_0) \quad\text{ und }\quad b_t = f(x_0) - m_t \cdot x_0.$$
 
 ### Näherungseigenschaften der Tangente
 
+:::::: {.columns}
+::: {.column width="60%"}
+
 Durch eine leichte Umformung erhalten wir aus der Tangenten
 
 $$t(x) = m_t \cdot x + b_t$$
@@ -418,9 +461,43 @@ für die Funktion $f$ an der Stelle $x_0$ die Gestalt:
 
 $$t(x) = f(x_0) + f'(x_0) \cdot(x- x_0)$$
 
-(Rechnen Sie das bitte nach!)
+:::
+::: {.column width="40%"}
 
-Die Tangente $t(x)$ ist dann die *beste lineare Näherung* der Funktion $f$ an 
+```{r echo=FALSE, out.width="95%"}
+# f <- 0.4*0.95
+
+xrange <- c(1, 3)  # war -0.5, 3
+
+x0 <- 2
+
+fkt <- makeFun(x**3-3*x+3 ~ x)
+dfkt <- makeFun(3*x**2-3 ~ x)
+tfkt <- makeFun(fkt(x0)+ dfkt(x0) * (x - x0) ~ x)
+
+
+gf_fun(fkt(x) ~ x, 
+       color = ~ I(my_line_color),
+       size = ~ I(f * my_line_size),
+       xlim = xrange) %>%
+  gf_fun(tfkt(x) ~ x,
+       size = ~ I(f * my_line_size),
+         color = ~ I(my_secant_color)) %>%
+  gf_label(fkt(1) ~ 1, 
+           label = "f(x)", 
+           size = f * my_font_size) %>%
+  gf_label(tfkt(1) ~ 1, 
+           label = "t(x)", 
+           size = f * my_font_size) %>%
+  gf_labs(x = "x", y = "y") %>%
+  gf_theme(theme_bw(base_size = f * my_base_size))
+```
+:::
+
+::::::
+
+Die Tangente $t(x)$ ist dann die *beste lineare Näherung* 
+(oder auch *beste lineare Approximation*) der Funktion $f$ an 
 der Stelle $x_0$!
 
 Es ist somit für $x \approx x_0$:
@@ -819,6 +896,9 @@ $$f^{(n)}(x) = \left[f^{(n-1)}(x)\right]' = \frac{d}{dx} \left(\frac{d^{n-1}}{dx
 
 ### Krümmung und die 2. Ableitung / Wendepunkte
 
+:::::: {.columns}
+::: {.column width="60%"}
+
 Die 2. Ableitung einer Funktion beschreibt ihr Krümmungsverhalten, denn es gilt:
 
 Eine *zweimal differenzierbare* Funktion $f$ ist auf dem Intervall $I$
@@ -827,6 +907,59 @@ Eine *zweimal differenzierbare* Funktion $f$ ist auf dem Intervall $I$
 - **(streng)** **konkav** $\Longleftrightarrow f''(x) (<)\leq 0$
 
 für alle $x \in I$.
+
+:::
+::: {.column width="40%"}
+
+```{r echo=FALSE, out.width="95%"}
+# f <- 0.4*0.95
+
+xlabel = -3.4
+xrange <- c(-3.5, 3)  
+fkt <- makeFun(x**3-3*x+3 ~ x)
+dfkt <- makeFun(3*x**2-3 ~ x)
+ddfkt <- makeFun(6*x ~ x)
+tfkt <- makeFun(fkt(x0)+ dfkt(x0) * (x - x0) ~ x)
+
+gf_fun(fkt(x) ~ x, 
+       color = ~ I(my_line_color),
+       size = ~ I(f * my_line_size),
+       xlim = xrange) %>%
+  gf_fun(ddfkt(x) ~ x,
+       size = ~ I(f * 0.75 * my_line_size),
+         color = ~ I(my_secant_color)) %>%
+  gf_hline(yintercept = 0, 
+           color = my_zero_line_color) %>%
+  gf_vline(xintercept = 0,
+           color = my_zero_line_color,
+           linetype = "dotted") %>%
+  gf_label(fkt(xlabel) ~ xlabel,
+           label = "f(x)",
+           color = my_line_color,
+           size = f * 0.75 * my_font_size) %>%
+  gf_label(ddfkt(xlabel) ~ xlabel,
+           label = "f''(x)",
+           color = my_secant_color,
+           size = f * 0.75 * my_font_size) %>%
+  gf_text(20 ~ -2, 
+          label = "konkaver Bereich",
+           size = f * 0.75 * my_font_size) %>%
+  gf_text(-20 ~ 2, 
+          label = "konvexer Bereich",
+           size = f * 0.75 * my_font_size) %>%
+  gf_point(fkt(0) ~ 0,,
+           color = my_line_color,
+           size = f * 1.5 * my_line_size) %>%
+  gf_label(I(fkt(0)+5) ~ 0,
+           label = "Wendepunkt",
+           size = f * 0.75 * my_font_size) %>%
+  gf_labs(x = "x", y = "y") %>%
+  gf_theme(theme_bw(base_size = f * my_base_size))
+```
+
+
+:::
+::::::
 
 Der Punkt, an dem eine Funktion von einem konvexen Bereich in einen konkaven 
 Bereich bzw. von einem konkaven in einen konvexen Bereich übergeht bezeichnen 
@@ -1162,7 +1295,7 @@ gf_function( fun = my_DK, color = "red", xlim = c(5, 20.)) %>%
   gf_refine(scale_x_continuous(breaks = seq(5,20,2.5)),
             scale_y_continuous(breaks = c(0, my_DK(10), 10, 36))) %>%
   gf_hline(yintercept = 0, color = my_zero_line_color) %>%
-  gf_theme(theme_bw(base_size = f*my_base_size)) 
+  gf_theme(theme_bw(base_size = f * my_base_size)) 
 
 
 ```
@@ -1303,6 +1436,9 @@ g) $p=20; K(x) = x^2-6x+144$
 
 h) $p=60; K(x) = 2x^2+2x+200$
 
+::: {.notes}
+
+:::
 
 ### Multivariate Funktionen
 
@@ -1392,6 +1528,24 @@ e) $\displaystyle e^{0{,}5x^2+0{,}5y^{-2}}$
 f) $\displaystyle e^{\ln(x)}e^{\ln(y)}$
 
 g) $\displaystyle x^y$
+
+::: {.notes}
+
+a) $f_x(x,y) =12x^2$ $\;$ $f_y(x,y)=8y^3$ 
+
+b) $f_x(x,y) =4x$ $\;$ $f_y(x,y)=6$ 
+
+c) $f_x(x,y) = - \frac{3y^2}{x}$ $\;$ $f_y(x,y)=\frac{6y}{x}$ 
+
+d) $f_x(x,y) =2xye^{x^2y}$ $\;$ $f_y(x,y)=x^2e^{x^2y}$ 
+
+e) $f_x(x,y) =xe^{0{,}5x^2+0{,}5/y^2}$ $\;$ $f_y(x,y)=-\frac{e^{0{,}5x^2+0{,}5/y^2}}{y^3}$ 
+
+f) $f_x(x,y) =y$ $\;$ $f_y(x,y)=x$ 
+
+g) $f_x(x,y) = yx^{y-1}$ $\;$ $f_y(x,y)=x^y \cdot \log(x)$ 
+
+:::
 
 
 ### Gradient
@@ -1649,6 +1803,25 @@ g) $\displaystyle f(x,y) = x^2+4x-5y^2+10y-4xy$
 
 h) $\displaystyle f(x,y) = -x^2+120x+2y^2+120y-4xy$
 
+::: {.notes}
+
+a) Maximum bei $(4, 8)$ mit $f(4,8)=205$
+
+b) Minimum bei $(5,2)$ mit $f(5,2) = -75$
+
+c) Sattelpunkt bei $(2,1)$ mit $f(0,0)= -12$
+
+d) Sattelpunkt bei $\left(\frac{44}{3},\frac{160}{9}\right)$ mit $f\left(\frac{44}{3},\frac{160}{9}\right)= \frac{91\,376}{81}$
+
+e) Minimum bei $(10, 5)$ mit $f(10, 5)= -175$
+
+f) Maximum bei $(16, 8)$ mit $f(16, 8)= 191$
+
+g) Sattelpunkt bei $(0,1)$ mit $f(0,1) = 5$
+
+h) Sattelpunkt bei $(40, 10)$ mit $f(40,10)= 3000$
+
+:::
 
 ### Übung `r nextExercise()`: {.exercise} 
 
@@ -1658,6 +1831,22 @@ a) Bestimmen Sie die beiden stationären Punkt $(x_0; y_0)$ und $(x_1; y_1)$.
 
 b) Berechnen Sie die Hesse-Matrizen und entscheiden Sie, ob die Punkte lokale 
    Extremstellen sind (und welcher Typ) oder Sattelpunkte.
+
+::: {.notes}
+
+a) $f_x(x,y)= 3x^2 + 2x +y^2$, $f_y(x,y)=2xy-2y$, 
+    Für $y=0$ folgt $f_x(x,0) = 3x^2+2x = (3x+2)x$ und damit $x=0$ oder $x=\frac{-2}{3}$.
+    Für $y\neq 0$ folgt aus $2xy-2y=0 \Leftrightarrow x=1$ und
+    $f_x(1,y)= 3+2+y^2 \neq 0$ für alle $y \in \mathbf{R}$.
+    Daher gibt es die zwei stationären Punkte: $(0,0)$ und $\left(-\frac23, 0\right)$
+
+b) $\operatorname{Hess}\left(f(x,y)\right) = \begin{pmatrix}6x+2  & 2y \\ 2y & 2x-2\end{pmatrix}$
+    Für $(0,0)$ ergibt sich $\operatorname{Hess}\left(f(0,0)\right) =\begin{pmatrix}2  & 0 \\ 0 & -2\end{pmatrix}$. Die Eigenwerte sind somit $2$ und $-2$, damit ist die Matrix indefinit und somit liegt hier ein Sattelpunkt vor.
+    Für $\left(-\frac23, 0\right)$ ist $\operatorname{Hess}\left(\left(-\frac23, 0\right)\right) = \begin{pmatrix}-2  & 0 \\ 0 & -\frac{10}{3}\end{pmatrix}$.
+    Die Eigenwerte sind $-2$ und $-\frac{10}{3}$, damit ist die Matrix negativ definit. 
+    Es liegt also ein lokales Maximum vor, $f\left(-\frac23, 0\right) = \frac{4}{27}$.
+
+:::
 
 
 ### Minimierungsproblem {include-only=LangeFassung}
@@ -1722,6 +1911,35 @@ $Y = 300$, und die Preise der beiden Güter sind $p_1 = 3$ und $p_2 = 6$.
 
 **Frage:** Welche Kombination aus den beiden Gütern maximiert den Nutzen unter Einhaltung des gegebenen Einkommens?
 
+**Modellierung:**
+Maximierte $U(x_1, x_2) = x_1 \cdot x_2 \to \max!$ unter der 
+Nebenbedingen $300 = 3 \cdot x_1 + 6 \cdot x_2$.
+
+**Lösungswege:**  
+
+- Einsetzungsverfahren
+
+- Lagrangemethode
+
+
+### Einsetzungsverfahren (am Beispiel)
+
+Forme $300 = 3 \cdot x_1 + 6 \cdot x_2$ so um, das wir eine Variable, z.B. $x_1$,
+durch die andere ausdrücken können:
+
+$x_1 = \frac{300 - 6x_2}{3} = 100 - 2 x_2$
+
+Setze nun $100 - 2 x_2$ für $x_1$ in die Funktion $U(x_1, x_2)$ ein:
+
+$U(x_2) = U(100 - 2 x_2, x_2) = (100 - 2 x_2)\cdot x_2 = 100 x_2 - 2 x_2^2$
+
+Bestimme nun das Maximum von $U(x_2)$:
+
+$U'(x_2) = 100 - 4 x_2 = 0 \Leftrightarrow x_2 = 25$, $U''(x_2) = -4$ (also Maximum an der Stelle $x_2 = 25$)
+
+Und berechne nun $x_1 = 100 - 2 \cdot 25 = 50$. 
+
+Wir haben damit bei $x_1=50$, $x_2 = 25$ einen maximalen Nutzen von $U(50,25)=1250$.
 
 
 ### Lagrangemethode
@@ -1758,6 +1976,24 @@ $$\nabla L(x_1, x_2, \lambda) = \begin{pmatrix} x_2 - 3 \lambda\\ x_1 - 6 \lambd
 
 Und wir erhalten als Lösung von $\nabla L(x_1, x_2, \lambda) = 0^3$:
 $x_1=50$, $x_2=25$, $\lambda=25/3$
+
+
+### Bedeutung des Lagrange-Multiplikators (am Beispiel)
+
+Was hat es nun mit dem $\lambda = 25/3$ aufsich?
+
+Unsere Nebenbedingung hat mit $Y=300$ eine Konstante, Leiten wir formal $L(x_1, x_2, \lamba)$ nach $>$ ab,
+so erhalten wir:
+
+$$\frac{\partial L}{\partial Y} = \lambda$$
+
+Im Maximum gilt nur $L(x_1, x_2, \lambda) = U(x_1, x_2)$, 
+
+Der *Lagrange-Multiplicator* gibt also an, in wie sich das Optimum ändert, wenn sich die Konstane $Y$ der Nebenbedingung verändert.
+
+Würden wir also $Y=303$ statt $Y=300$ als Einkommen annehmen, so sollte sich das Nutzenmaximum von $1\,250$ um $\frac{25}{3}\cdot 3 = 25$ auf (etwa) $1\,275$ steigen lassen.
+
+Rechnen Sie es (als Hausaufgabe) nach!^[Lösung: $x_1=50{,}5\; x_2 = 25{,}25\$ Nutzenmaximum: $1275{,}125$]
 
 
 ### Übung `r nextExercise()`: {.exercise} 

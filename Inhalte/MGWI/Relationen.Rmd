@@ -196,13 +196,13 @@ e) $~_2$ ist eine Äquivalenzrelation! Denn es gilt:
 
 Aus der Schule kennen wir die **Division mit Rest**: 
 Für eine ganze Zahl $a$ und eine natürliche Zahl $m$ finden sich ein 
-$q\in\mathbf{Z}$ und $r\in\mathbf{N}$ (gennant **Rest**),
+$q\in\mathbf{Z}$ und $r\in\mathbf{N_0}$ (gennant **Rest**),
 so dass gilt:
 
 $$ a = q \cdot m + r$$
 
 #### $m$ teilt $a$ {.definition}
-Teilt die natürliche Zahl $m$ die ganze Zahl $a$ ohne Rest, so schreiben wir 
+Teilt die natürliche Zahl $m$ die ganze Zahl $a$ ohne Rest (also $r=0$), so schreiben wir 
 dafür auch
 
 $$m \, | \, a$$ 
@@ -873,7 +873,7 @@ Für eine endliche Menge $A$ und $B$ (bzgl. einer *universalen Menge* $U$) ist n
 ### Typen von Relationen 
 
 ```{r echo=FALSE, out.width = "80%", fig.align="center"}
-knitr::include_graphics(file.path(pathToImages, "TypenVonRelationen.pdf"), error=FALSE)
+knitr::include_graphics(file.path(pathToImages, "TypenVonRelationen.pdf"), error = FALSE)
 ```
 
 ::: {.tiny}
