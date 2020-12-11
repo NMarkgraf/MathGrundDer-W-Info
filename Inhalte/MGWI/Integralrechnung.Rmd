@@ -1,0 +1,665 @@
+```{r setup-MGDWI-Integralrechnung, include=FALSE}
+# ---------------------------------------------------------------------------
+#% maintainer:
+#%   - Norman Markgraf
+#%
+# ---------------------------------------------------------------------------
+source("../../prelude.R")
+initPart(
+    "Integralrechnung",  # Dateiname ohne Suffix
+    "Integralrechnung"   # Verzeichnisname im Bilderverzeichnis 
+    )
+pathToImages = getPathToImages()
+# ---------------------------------------------------------------------------
+
+```
+```{r setup-plots-Integralrechnung, echo=FALSE}
+library(mosaic)
+library(ggplot2)
+# library(plot3D)  # Für mesh und 3d-plot ...
+my_base_size <- 3*11
+my_font_size <- 12
+my_line_size <- 1.1
+my_line_color <- "blue"
+my_zero_line_color <- "black"
+my_secant_color <- "green"
+my_point_color = "red"
+my_constant_line_color <- "green"
+f <- 1.0
+```
+
+# Integralrechnung
+
+## Einführung in die Integralrechnung
+
+### Kann man das Ableiten umkehren?
+
+Kann man zu einer *Steigungsfunktion* $f(x)$ immer auch eine 
+Funktion $F(x)$ finden,  deren Ableitung $F'(x)=f(x)$ ist?
+
+
+Für die Monome $x^n$ ist das Problem sehr einfach zu lösen:
+
+
+Es gilt ja:
+
+$$\left[x^n\right]'= n \cdot x^{n-1}$$
+Wir müssen nur das $n$ "wegbekommen". Dazu reicht, wegen der Faktorregel, 
+ein Vorfaktor:
+
+$$\left[\frac{1}{n} x^n\right]' = \frac{1}{n}\cdot \left[x^n\right]'= \frac{1}{n}\cdot n \cdot x^{n-1} =x^{n-1}$$
+
+
+### Stammfunktionen
+
+#### Stammfunktion {.definition}
+Zu einer gegebenen Funktion $f:I \to \mathbf{R}$ mit einem beliebigen Intervall 
+$I \subset R$ heißt jede Funktion 
+$F: I \to \mathbf{R}$, bei der für alle $x \in I$ immer $F'(x) = f(x)$ gilt 
+**Stammfunktion von $f$**.
+
+
+#### {.example}
+
+-  Eine Stammfunktion von  $f(x) = x^2$ kennen wir schon: 
+   $$F(x)=\frac13 \cdot x^3$$ 
+
+- Ebenso würden die Funktionen 
+   $$G(x)=\frac13 \cdot  x^3 +1 \text{ oder } H(x) = \frac13 \cdot x^3-5$$ 
+   die Bedingungen erfüllen und sind daher auch *Stammfunktionen* von $f$.
+
+- Die Funktion $K(x) = \frac13 \cdot x^3 + x$ ist aber **keine Stammfunktion** 
+    von $f$, denn es ist $K'(x)= x^2 + 1\neq x^2$.
+
+
+### Fakten zu Stammfunktionen 
+
+- Ist $F(x)$ eine *Stammfunktion* von $f$, dann ist auch $F(x)+c$ für jede 
+    beliebige reelle Konstante $c$ eine Stammfunktion von $f$!
+
+- *Stammfunktionen* sind also nur *bis auf eine reelle Konstante eindeutig*!
+
+- Zu jeder *stetigen Funktion* gibt es eine *Stammfunktion*
+
+
+### Unbestimmtes Integral
+
+#### Unbestimmtes Integral {.definition}
+
+Die Menge aller Stammfunktionen von $f$ nennt man  **unbestimmtes Integral**.
+		
+Wir schreiben dieses *unbestimmte Integral* oft als
+
+$$\int f(x) \, \mathrm{d}  x = F(x) + c \; .$$
+
+abei ist $F$ eine beliebige *Stammfunktion* von $f$ und $c$ eine *reelle Konstante*.
+
+
+Die Funktion $f$ unter dem **Integralzeichen** $\int$ heißt **Integrand**, $x$ ist die **Integrationsvariable** und
+$c$ wird als **Integrationskonstante** bezeichnet.
+
+#### {.remark}
+Formal müsste das **unbestimmte Integral** wie folgt  definiert werden:
+
+$$\int f(x) \, \mathrm{d} x = \left\{F : I \to \mathbf{R} \,\left|\, \forall x \in I: F'(x) = f(x) \right.\right\}$$
+
+
+### Beispiel: (Unbestimmtes Integral)
+
+Sei $c$ im folgenden eine beliebige reelle Zahl.
+
+$$\begin{aligned}
+	\int \sqrt[3]{t} \, \mathrm{d}  t 	&= \int t^\frac13 \, \mathrm{d} t \\
+						&= \frac{t^{\frac{1}{3}+1}}{\frac13+1} + c \\
+						&= \frac34 \cdot t^\frac43 + c \\
+						&= \frac34 \sqrt[3]{t^4} + c
+\end{aligned}$$
+
+### Liste von unbestimmten Integralen
+
+Sei $c$ jeweils eine beliebige reelle Konstante. Dann ist z.B.:
+
+- Für jedes $\alpha \in \mathbf{R}$ ist:
+	$$\int x^\alpha \, \mathrm{d} x = \begin{cases} \frac{x^{\alpha + 1}}{\alpha + 1}+ c &: \alpha \neq -1 \\ \ln \left| x \right| + c &: \alpha = -1 \end{cases}$$
+
+- Wegen $(a^x)' = a^x \cdot \ln a$ gilt:
+	$$\int a^x  \, \mathrm{d} x = \frac{a^x}{\ln a} + c \qquad (a > 0, \, a \neq 1)$$
+
+- Wegen $(\cos(x))' = -\sin(x)$ gilt:
+	$$\int \sin(x)  \, \mathrm{d} x = -\cos (x) + c$$
+
+-	Wegen $(\sin(x))' = \cos(x)$ gilt: 
+	$$\int \cos(x)  \, \mathrm{d} x = \sin (x)  + c$$
+
+
+### Rechenregeln für unbestimmte Integrale (I)
+
+Seien $f$ und $g$ zwei reelle Funktionen auf dem Intervall $I$, sowie $c$ 
+eine beliebige reelle Konstante.
+
+Dann gilt:
+
+* $\displaystyle \int \left(c \cdot f(x)\right) \, \mathrm{d} x = c \cdot \int f(x) \, \mathrm{d} x$
+
+* $\displaystyle \int \left(f(x) + g(x) \right) \, \mathrm{d} x = \int f(x) \, \mathrm{d} x + \int g(x) \, \mathrm{d} x$
+
+* $\displaystyle \int \left(f(x) - g(x) \right) \, \mathrm{d} x = \int f(x) \, \mathrm{d} x - \int g(x) \, \mathrm{d} x$
+
+
+### Rechenregeln für Integrale (II)
+
+- $\displaystyle \int \left(\frac{\mathrm{d}}{\mathrm{d}x} f(x)\right) \, \mathrm{d}x = f(x) + c$
+   
+   **Beispiel:**
+   
+	$$\int \left[x^2+3x \right]' \, \mathrm{d}x = \int \frac{\mathrm{d}}{\mathrm{d}x} \left(x^2+3x\right) \, \mathrm{d}x = x^2+3x+c$$
+	
+- $\displaystyle \frac{\mathrm{d}}{\mathrm{d}x} \int  f(x) \, \mathrm{d}x = f(x)$
+   
+   **Beispiel:**
+   
+	$$\left[\int  \cos(x) \, \mathrm{d}x \right]' = \frac{\mathrm{d}}{\mathrm{d}x} \int  \cos(x) \, \mathrm{d}x = \cos(x)$$
+
+
+### Rechenregeln für Integrale (III)
+
+- $\displaystyle \int \, \mathrm{d}(f(x)) = f(x)+c$
+   
+   **Beispiel:**
+   	$$\int \, \mathrm{d}(x^2) = x^2+c$$
+
+- $\displaystyle \int  f'(x) \, \mathrm{d}x = f(x)+c$
+	   
+   **Beispiel:**
+   
+   $$\int g(x) \, \mathrm{d}x = x^2+4x-5 \Longrightarrow g(x) = (x^2+4x-5)' = 2x+4$$
+
+
+
+### Beispiel: 
+
+Es seien $c$, $c_1$ und $c_2$ beliebige reelle Konstanten.
+
+$$\begin{aligned}
+	\int 2 \cdot \cos(x)+ \sin(x)  \, \mathrm{d}  x 
+		&= \int 2 \cdot \cos(x)  \, \mathrm{d}  x  + \int \sin(x)  \, \mathrm{d}  x \\
+		&= 2 \cdot \int \cos(x)  \, \mathrm{d}  x  + \int \sin(x)  \, \mathrm{d}  x \\
+		&= 2 \cdot \sin(x) + c_1 - \cos(x) + c_2 \\
+		\text{(Setze } & c = c_1 + c_2 )  \\
+		&= 2 \cdot \sin(x) - \cos(x) + c
+\end{aligned}$$
+
+
+### Substitutionsregel für Integrale
+
+Aus der *Kettenregel* für Ableitungen folgt
+	
+$$f\left(g(x)\right) = \int f'\left(g(x)\right) \cdot g'(x) \, \mathrm{d}  x$$
+
+und mit $u=g(x)$ sogar
+
+$$\int f\left(g(x)\right) \cdot g'(x) \, \mathrm{d}  x = \left. \int f(u) \, \mathrm{d}  u\right|_{u=g(x)}$$
+
+die sogenannte **Integration durch Substitution**.	
+
+
+### Rechenregeln für Integrale (IV)
+
+- $\displaystyle \int f(x) \cdot f'(x)  \,\mathrm{d} x = \frac{(f(x))^{2}}{2} + c$
+   
+    **Beispiel:**
+   
+    $$\int \sin(x) \cdot \cos(x) \, \mathrm{d} x = \frac{\sin^2(x)}{2}  + c = -\frac{\cos^2(x) }{2}+c$$
+
+- $\displaystyle \int (f(x))^n \cdot f'(x) \,\mathrm{d} x = \frac{(f(x))^{n+1}}{n+1} + c$
+   
+    **Beispiel:**
+   	
+   	$$\int \left(3x^2-5\right)^3\cdot (6x) \, \mathrm{d} x = \frac{(3x^2-5)^4}{4}  +c$$
+
+
+### Rechenregeln für Integrale (V)
+
+- $\displaystyle \int  \frac{f'(x)}{f(x)} \,\mathrm{d} x = \ln |f(x)| + c$
+   
+    **Beispiel:**
+   	
+   	$$\int  \frac{3x^2+4}{x^3+4x+5} \,\mathrm{d} x = \ln \left|x^3+4x+5\right| + c$$
+
+
+### Weitere Beispiele
+
+- Wegen $\displaystyle \tan(x) = \frac{\sin(x)}{\cos(x)}$ und $(\cos(x))' = -\sin(x)$ gilt:
+	
+    **Beispiel:**
+   	
+   	$$\int \tan(x)  \, \mathrm{d}  x = \int \frac{\sin(x)}{\cos(x)} \, \mathrm{d}  x = -\ln\, \left|\cos (x)\right| + c$$
+   	
+	
+- Wegen $\displaystyle \cot(x) = \frac{\cos(x)}{\sin(x)}$ und $\left[\sin(x)\right]' = \cos(x)$ gilt:
+	
+    **Beispiel:**
+   	
+   	$$\int \cot(x)  \, \mathrm{d}  x = \int \frac{\cos(x)}{\sin(x)} \, \mathrm{d}  x = \ln\,\left|\sin (x)\right| + c$$
+   	    
+### Partielle Integration
+ 
+Aus der *Produktregel für Ableitungen* folgt die Regel
+
+$$\int f'(x) g(x) \, \mathrm{d} x = f(x)g(x) - \int f(x) g'(x) \, \mathrm{d} x,$$
+		
+welche **partielle Integration** genannt wird.
+
+
+Das Problem der Partiellen Integration ist das 
+Finden und Zuordnen von $f'(x)$ und $g(x)$. 
+
+Dabei sollte $f'(x)$ leicht zu integrieren und $g(x)$ leicht zu 
+differenzieren sein. 
+
+
+### Beispiel Partielle Integration
+
+$$\int x e^x  \, \mathrm{d} x = x \cdot e^x - \int 1 \cdot e^x  \, \mathrm{d} x = x e^x - e^x + c$$
+
+	
+Dazu setze man
+$\displaystyle f(x) = e^x$ , $f'(x) = e^x$, $g(x) = x$ und $g'(x) = 1$ 
+in die Regel ein.
+
+
+### Übung
+
+Bestimmen Sie die folgenden unbestimmten Integrale:
+
+a) $\displaystyle \int \left( \frac{1}{x^2} - x^2 \right)^2 \, \mathrm{d}  x$
+
+a) $\displaystyle \int \frac{x^3-5x^2+3x-1}{x^2}  \, \mathrm{d}  x$
+
+a) $\displaystyle \int \frac{x^2-2x+1}{1-x} \, \mathrm{d}  x$
+
+a) $\displaystyle \int e^{x-0{,}5} \, \mathrm{d}  x$
+
+a) $\displaystyle \int (a^x + x^a) \, \mathrm{d}  x$, dabei sei $a$ eine beliebige reelle Zahl mit $a>0$ und $a \neq 1$
+
+
+### Übung
+
+Lösen Sie die folgenden Integrale unter Verwendung einer geeigneten Substitution:
+
+a) $\displaystyle \int \left( 5-3x \right)^2 \, \mathrm{d}  x$
+
+a) $\displaystyle \int \frac{1}{\sqrt[3]{2-7x}} \, \mathrm{d}  x$
+
+a) $\displaystyle \int e^{-0{,}1x+3} \, \mathrm{d}  x$
+
+a) $\displaystyle \int (3x^2-4x+3)^2(3x-2)  \, \mathrm{d}  x$
+
+a) $\displaystyle \int \frac{x^2}{1+x^3}  \, \mathrm{d}  x$
+
+### Übung
+
+Aufgaben zur partiellen Integration:
+
+a) $\displaystyle \int \sqrt{x} \cdot \ln(x) \, \mathrm{d}  x$
+
+a) $\displaystyle \int x^3 e^{2x}  \, \mathrm{d}  x$
+
+
+
+## Das bestimmte Integral
+
+### Die Idee der Integralrechnung
+
+Die Idee der Integralrechnung ist es, ganz allgemein krummlinig begrenzte 
+Flächen zu berechnen, also etwa die Fläche zwischen dem Graph einer Funktion und 
+einem Abschnitt zwischen auf der $x$-Achse.
+
+
+```{r echo=FALSE, out.width="40%", fig.align="center"}
+#f <- 0.3
+#fkt <- makeFun(x**3 + 10*x**2 + 100 ~ x)
+fkt <- function(x) x**3 + 10*x**2 + 100
+
+x0 <- -10
+y0 <- fkt(x0)
+
+x1 <- 2
+y1 <- fkt(x1)
+
+p <- ggplot(data = data.frame(x = 0), mapping = aes(x = x)) +
+        stat_function(fun = fkt,
+                  geom = "line",
+                  color = my_line_color,
+                  size = f * my_line_size,
+                  xlim = c(-11, 3)) + 
+        stat_function(fun = fkt,
+                geom = "area",
+                fill = "steelblue",
+                alpha = 0.25,
+                xlim = c(-10, 2)) + 
+        geom_hline(yintercept = 0,
+                   size = f * my_line_size,
+                   color = my_zero_line_color) + 
+        geom_text(x = -10, 
+                  y = 0, 
+                  label = "a",
+                  size = f * my_font_size,
+                  vjust = 1) + 
+        geom_text(x = 2, 
+                  y = 0, 
+                  label = "b",
+                  size = f * my_font_size,
+                  vjust = 1) +
+        geom_segment(x = x0, xend = x0, 
+                     y = 0, yend = y0, 
+                     linetype = "dotted",
+                     size = f * my_line_size) +
+        geom_segment(x = x1, xend = x1, 
+                     y = 0, yend = y1, 
+                     linetype = "dotted",
+                     size = f * my_line_size) +
+        scale_x_continuous(breaks = NULL) +
+        scale_y_continuous(breaks = NULL) +
+        theme_bw(base_size = f * my_base_size)
+
+p
+
+```
+
+Wir vereinbaren die folgende Notation:
+
+Mit $$\int_a^b f(x) \,\mathrm dx$$ bezeichnen wir das **bestimmte Integral** der Funktion 
+$f(x)$ in den Grenzen $a$ bis $b$.
+
+
+### Das bestimmte integral
+
+<!-- 
+\begin{center}
+	\includegraphics[width=0.2\textwidth]{./images/IntegralDefinition.png}
+\end{center}
+-->
+
+#### Das bestimmte Integral {.definition}
+
+Die Summe der gerichteten Inhalte aller Flächenstücke, die der Graph in einem 
+Teilintervall $[a; b]$ mit der $x$-Achse einschließt, heißt
+**bestimmtes Integral** über $f$ von $a$ bis $b$:
+
+$$\int\limits_a^b f(x) \, \mathrm{d} x$$
+
+Dabei heißen 
+$f(x)$ der **Integrand**, 
+$x$ die **Integrationsvariable**,
+$a$ und $b$ **untere** bzw. **obere Integrationsgrenze**
+und $[a;\, b]$ das **Integrationsintervall**.	
+
+
+### Etwas Numerik: Simpson-Regel 
+
+Um bestimmte Integrale zu berechnen benutzt man oft *Näherungsverfahren*.
+Man nennt diese Verfahren auch *numerische Integration* oder *numerische Quadratur*.
+ 
+* [Mittelpunktsregel](http://de.wikipedia.org/wiki/Mittelpunktsregel)
+* [Trapezregel](http://de.wikipedia.org/wiki/Trapezregel)
+* Simpson-Regel / Keplersche Faßregel
+
+#### Simpson-Regel {.remark}
+
+Näherungslösung eines *bestimmten Integrals* mit Hilfe der **Simpson-Regel**:
+
+$$\int\limits_a^b f(x) \, \mathrm{d} x \approx \tfrac{b-a}{6} \cdot \left[f(a) + 4 \cdot f\left(\tfrac{a+b}{2}\right)+f(b)\right]$$
+
+
+### Beispiel zur Simpson-Regel
+
+Wir wollen das Integral von $f(x)=x^3$ über dem Interval $[3; 6]$ mit Hilfe der 
+*Simpson-Regel* bestimmen.
+
+Dann ist
+$$\begin{aligned}
+	\int\limits_3^6 x^3 \, \text(d)x 
+		&\approx 
+			\frac{6-3}{6} \cdot \left[f(3) + 4 \cdot f\left(\tfrac{6+3}{2}\right)+f(6)\right] \\
+			&= \frac{1}{2} \cdot \left[3^3+4\cdot(4{,}5)^3+6^3\right] \\
+			&= 303{,}75
+\end{aligned}$$
+
+
+**Ein kleiner Tipp:** (http://youtu.be/N0kFSTDvDcw)
+
+### Integralfunktion
+
+#### Integralfunktion {.definition}
+Sei $f$ im Intervall $[a; b]$ stetig. 
+Dann nennt man die Funktion
+
+$$F \colon [a;\, b] \to \mathbf{R}; x \mapsto F(x) = \int\limits_a^x f(t) \, \mathrm{d} t$$
+
+eine **Integralfunktion** von $f$ in $[a; b]$.
+
+
+#### Es gilt: {.fact}
+
+Für jede Integralfunktion $F$ von $f$ ist die untere Grenze eine Nullstelle:
+
+$$F(a) = \int\limits_a^a f(t) \, \mathrm{d} t = 0$$
+
+
+### Hauptsatz der Integral und Differentialrechnung
+
+Sei $f \colon [a;\,b] \to \mathbf{R}$ eine reellwertige stetige Funktion auf dem 
+Intervall $[a;\, b]$, so ist die *Integralfunktion*
+$F\colon[a,b]\rightarrow\mathbf{R}$ mit 
+
+$$F(x)=\int_{a}^{x}f(t) \, \mathrm{d}t$$
+
+stetig, auf $(a; b)$ differenzierbar und eine *Stammfunktion* von $f$, 
+d.h., es gilt 
+
+$$F^{\prime}(x)=f(x)$$
+
+für alle $x \in (a;\, b)$.
+
+
+### Exkurs: Standardnormalverteilung $\Phi(x)$ (I)
+
+Aus der Statistik kennen Sie die Formel:
+
+#### Standartnormalverteilte Zufallsvariablen {.definition}
+Die Wahrscheinlichkeit das ein *standardnormalverteiten* Zufallsvariable $X$ kleiner gleich einem gegebenem Wert $x$ ist liegt bei:
+
+$$P(X \leq x) = \Phi(x) 
+				= \int_{-\infty}^x \varphi(x) \mathrm{d}  t
+				= \frac{1}{\sqrt{2\pi}} \int_{-\infty}^x e^{-\frac{x^2}2} \mathrm{d}  t$$
+
+#### Bemerkungen {.remarks}
+
+- $X \sim \mathcal{N}(0, 1)$
+
+- $\varphi(x)$ ist die *Dichte* von $X$
+
+- $\Phi(x)$ ist die *Verteilungsfunktion* von $X$
+
+- $\Phi(x)$ ist *nur* als Integralfunktion gegeben. 
+
+- Es gilt $\Phi(x)'=\varphi(x)$.
+
+
+### Newton-Leibniz-Formel
+Ein direkte Folgerung des Hauptsatzes ist:
+
+#### Newton-Leibniz-Formel {.theorem}
+Sei $f\colon[a;\, b] \to \mathbf{R}$ eine stetige Funktion mit 
+Stammfunktion $F\colon[a,b] \to \mathbf{R}$, dann gilt die 
+**Newton-Leibniz-Formel**:
+
+$$\int\limits_{a}^{b}f(x) \, \mathrm{d} x = \left[ F(x) \right]_a^b = F(b)-F(a) \; .$$
+
+#### {.example}
+
+Sei $f(x)=x^3$, $a=3$, $b=6$ und $F(x)=\frac{1}{4} \cdot x^4$. Dann ist:
+
+$$\int\limits_3^6 x^3 \, \mathrm{d} x 	= \left[ \frac{x^4}{4} \right]_3^6 
+										= \frac{6^4}{4}-\frac{3^4}{4} 
+										= 303{,}75$$
+
+<!-- --->
+
+### Rechenregeln für bestimmte Integrale (I)
+
+Für stetige Funktionen $g,f:[a;\,b] \to \mathbf{R}$ und ein $c \in [a;\,b]$ gilt:
+
+- $\displaystyle \int\limits_{a}^{c} f(x) \, \mathrm{d} x + \int\limits_{c}^{b} f(x) \, \mathrm{d} x = \int\limits_{a}^{b} f(x) \, \mathrm{d} x$
+	
+    **Beispiel:**
+    
+    $\int\limits_0^1 f(x) \, \mathrm{d} x + \int\limits_1^2 f(x) \, \mathrm{d} x = \int\limits_0^2 f(x) \, \mathrm{d}  x$$
+
+- $\displaystyle \int\limits_{a}^{b} \left(f(x) + g(x)\right)\, \mathrm{d} x = \int\limits_{a}^{b} f(x) \, \mathrm{d} x + \int\limits_{a}^{b} g(x) \, \mathrm{d} x$
+
+    **Beispiel:**
+    
+    $$\int\limits_1^3 \left( x^2 + x \right) \, \mathrm{d} x = \int\limits_1^3 x^2 \, \mathrm{d} x + \int\limits_1^3 x \, \mathrm{d}  x$$
+
+
+### Rechenregeln für bestimmte Integrale (II)
+
+Für stetige Funktionen $g,f:[a;\,b] \to \mathbf{R}$ gilt:
+
+- $\displaystyle \int\limits_{b}^{a} f(x) \, \mathrm{d} x = - \int\limits_{a}^{b} f(x) \, \mathrm{d} x$
+    
+    **Beispiel:**
+    
+    $$\int\limits_{5}^{1} x^3 \, \mathrm{d} x = - \int\limits_{1}^{5} x^3 \, \mathrm{d} x$$
+
+- $\displaystyle \int\limits_{a}^{b} c \cdot f(x) \, \mathrm{d} x = c \cdot \int\limits_{a}^{b}  f(x) \, \mathrm{d} x$				
+    
+    **Beispiel:**
+    
+    $$\int\limits_{0}^{1} 5 \cdot x^2 \, \mathrm{d} x = 5 \cdot \int\limits_{0}^{1}  x^2 \, \mathrm{d} x$$
+
+
+### Exkurs: Standardnormalverteilung $\Phi(x)$ berechnen (II)
+
+Weil $\Phi(0) = 0{,}5$ können wir
+
+$$P(X \leq x) = \Phi(x) 
+				= \frac{1}{\sqrt{2\pi}} \int_\infty^x e^{-\frac{x^2}2} \mathrm{d}  t
+				= 0{,}5 + \frac{1}{\sqrt{2\pi}} \int_0^x e^{-\frac{x^2}2} \mathrm{d}  t$$
+				
+schreiben und mit Hilfe der Simpsonregel erhalten wir so die Näherung:
+
+$$(X \leq x) \approx \Phi_S(x) =
+				0{,}5 + \frac{x}{\sqrt{2\pi}\cdot 6} \left[1 + 4 \cdot e^{-\frac{x^2}8} + e^{-\frac{x^2}2} \right]$$
+<!--
+\begin{center}
+	\includegraphics[width=0.33\textwidth]{./images/VerteilungsfunktionVergleich.png}%
+	$\qquad$
+	\includegraphics[width=0.33\textwidth]{./images/VerteilungsfunktionFehler.png}
+\end{center}
+-->
+
+
+### Exkurs: Standardnormalverteilung $\Phi(x)$ berechnen (III)
+
+So ganz optimal ist $\Phi_S(x)$ noch nicht. Teilen wir aber die Simpsonregel in zwei Teile auf, so erhalten wir:
+
+$$P(X \leq x) \approx \Phi_D(x) =
+				0{,}5 + \frac{x}{\sqrt{2\pi}\cdot 12} \left[1 + 4 \cdot e^{-\frac{x^2}{32}} + 2 \cdot e^{-\frac{x^2}8} + 4 \cdot e^{-\frac{9 \cdot x^2}{32}}+ e^{-\frac{x^2}2} \right]$$
+				
+Etwas umfangreichere Formel, aber mit deutlich besseren Ergebnissen:
+
+<!--
+\begin{center}
+	\includegraphics[width=0.33\textwidth]{./images/VerteilungsfunktionVergleichD.png}%
+	$\qquad$
+	\includegraphics[width=0.33\textwidth]{./images/VerteilungsfunktionFehlerD.png}
+\end{center}
+-->
+
+
+### Flächenberechnung durch Integration
+
+Wir wollen die betragsmässige Fläche zwischen der Funktion
+$\displaystyle f(x) = x^3+x^2-6x$ und der $x$-Achse berechnen.
+
+
+Eine Skizze:
+<!--
+\begin{center}
+	\includegraphics[width=0.7\textwidth]{./images/Flaechenberechnung1.png}
+\end{center}
+-->
+
+### Fläche zwischen zwei Funktionen
+
+<!-- 
+\begin{center}
+	\includegraphics[width=0.9\textwidth]{./images/Integral_difference.png}
+\end{center}
+-->
+
+####  Satz des Cavalieri {.theorem}
+
+$$\int_a^b(g(x)-f(x))\,\mathrm dx=\int_a^b g(x)\,\mathrm dx-\int_a^b f(x)\,\mathrm dx$$
+
+### Partielle Integration
+
+$$\int_a^b f'(x)\cdot g(x)\,\mathrm{d} x
+		= [f(x)\cdot g(x)]_{a}^{b} - \int_a^b f(x)\cdot g'(x)\,\mathrm{d} x$$
+
+**Beispiel:**
+
+$$\int_a^b x \ln(x)\,\mathrm{d} x.$$
+Setzt man
+$f'(x)=x\,$ und $g(x) = \ln(x)\,$
+so ist
+$f(x) = \frac{x^2}2$ und $g'(x)=\frac 1x$,
+und man erhält
+
+$$\begin{aligned}
+\int_a^b x\ln(x)\,\mathrm dx &= \frac{b^2}2 \ln(b) - \frac{a^2}2\ln(a)- \int_a^b \frac{x^2}2\cdot\frac 1x\,\mathrm dx\\
+                             &= \frac{b^2}2 \left(\ln(b)-\frac 12\right) - \frac{a^2}2 \left(\ln(a)-\frac 12\right).
+\end{aligned}$$
+
+
+### Integration durch Substitution
+
+$$\int_{a}^{b} f(\varphi(t)) \cdot \varphi'(t)\,\mathrm{d} t = \int_{\varphi(a)}^{\varphi(b)} f(x)\,\mathrm{d} x$$
+**Beispiel:**
+
+Berechnung des Integrals
+
+$$\int_{0}^a \sin(2x) \,\mathrm{d}x$$
+
+für eine beliebige reelle Zahl $a > 0$:
+Durch die Substitution $\varphi(x) = 2x = t$ erhält man $\varphi'(x)\mathrm{d}x = \mathrm{d}t \Leftrightarrow 2\,\mathrm{d}x = \mathrm{d}t \Leftrightarrow \mathrm{d}x = \tfrac12 {\mathrm{d}t}$ und: 
+$$\begin{aligned}
+\int_{0}^a \sin(2x) \,\mathrm{d}x = \int_{\varphi(0)}^{\varphi(a)} \sin(t)\,\frac12 {\mathrm{d}t} = \int_{0}^{2a} \sin(t) \,\frac12 {\mathrm{d}t} = \frac{1}{2} \int_{0}^{2a} \sin(t) \,\mathrm{d}t \\
+= \frac{1}{2} [ -\cos(t) ]_0^{2a} = \frac{1}{2} (-\cos(2a)+\cos(0)) = \frac{1}{2}(1 - \cos(2a)).
+\end{aligned}$$
+
+
+
+### Eigenschaften des bestimmten Integrals
+
+::: {.small}
+Sind die Integrationsgrenzen gleich, erhält man eine „flächenlose“ Strecke:
+$$\int\limits_a^a f(x)\,\mathrm dx=0$$
+
+Intervalladditivität ($a\le b\le c$):
+$$\int\limits_a^cf(x)\mathrm dx=\int\limits_a^b f(x)\,\mathrm dx+\int\limits_b^cf(x)\,\mathrm dx$$
+
+Durch Verdopplung der Funktion werden alle Rechtecke doppelt so groß, allgemein:
+$$\int\limits_a^bk\cdot f(x)\,\mathrm dx=k\cdot\int\limits_a^bf(x)\,\mathrm dx$$
+
+Addition der Funktionen ergibt Addition der Integralwerte:
+$$\int\limits_a^b \left(f(x)+g(x)\right)\,\mathrm dx=\int\limits_a^b f(x)\,\mathrm dx+\int\limits_a^b g(x)\,\mathrm dx$$
+:::
+
+
+```{r finish-Integralrechnung, include=FALSE}
+finalizePart(partname)
+```
