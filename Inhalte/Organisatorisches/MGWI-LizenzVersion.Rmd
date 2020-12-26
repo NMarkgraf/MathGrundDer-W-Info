@@ -7,10 +7,11 @@ Der verwendete Code sowie das Beamer Template aus dem [NPBT-Projekt](http://gith
 ::: {.footnotesize}
 
 - Datum erstellt: `r Sys.Date()`
-- R Version: `r getRversion()`
-- `mosaic` Version: `r packageVersion("mosaic")`
-- Python: `r reticulate::py_config()$version_string`
-- Python numpy: `r reticulate::py_config()$numpy$version`
+- R Version: `r getRversion()` mit `mosaic` Version: `r packageVersion("mosaic")`
+- Übersetzt mit den R Packeten:
+- knitr Version `r packageVersion("knitr")`, rmarkdown Version `r packageVersion("rmarkdown")`
+- pandoc Version :`r rmarkdown::pandoc_version()`
+- Python: `r reticulate::py_config()$version_string` mit dem Paket *numpy*: `r reticulate::py_config()$numpy$version`
 
 :::
 

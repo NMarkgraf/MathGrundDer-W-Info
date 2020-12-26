@@ -19,6 +19,7 @@
 #library(reticulate)
 ## Hier muss der Link zu Python3 stehen!
 reticulate::use_python("/usr/local/bin/python3", required = TRUE) 
+reticulate::py_config()
 
 # ------------------------------------------------------------------------
 # Dateiname (ohne ".Rmd") der übersetzt werden soll:
@@ -115,3 +116,4 @@ compileTeXFile(filename_tex, filename_pdf, filename_lsg,
 
 cat(paste0("makerender ", filename,".Rmd ... DONE!\n"))
 # ========================================================================
+

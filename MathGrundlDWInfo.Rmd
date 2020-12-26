@@ -6,6 +6,9 @@ header-includes:
 ---
 
 ```{r setup, include=FALSE}
+
+reticulate::py_config()
+
 # .aux Dateien vom LaTeX-Übersetzungsprozess löschen? 
 options(tinytex.clean = FALSE)
 
@@ -66,6 +69,7 @@ childrenToInclude <- c(
     "Logik", 
     "Finanzmathematik", 
     "Differenzialrechnung",
+    "Integralrechnung",
     "LineareAlgebra"
 )
 
@@ -73,10 +77,13 @@ childrenToInclude <- c(
 ## auf TRUE setzen und nur die Teilskripte einfügen, die benötigt werden.
 if (FALSE) {
   childrenToInclude <- c(
-    "Mengenlehre",
+    # "Mengenlehre",
     # "Relationen",
-    #"Kombinatorik",
+    # "Kombinatorik",
     # "LineareAlgebra",
+    # "Logik",
+    # "Differenzialrechnung",
+    "Integralrechnung",
     ""
   )
   # Zur Sicherheit die private Vorstellung NICHT in das Testlauf-Skript!
@@ -117,6 +124,9 @@ includeChild <- function(name, children=childrenToInclude, all=FALSE) {
 ```
 
 ```{r child = "./Inhalte/MGWI/Differenzialrechnung.Rmd", eval = includeChild("Differenzialrechnung")}
+```
+
+```{r child = "./Inhalte/MGWI/Integralrechnung.Rmd", eval = includeChild("Integralrechnung")}
 ```
 
 ```{r child = "./Inhalte/MGWI/Finanzmathematik.Rmd", eval = includeChild("Finanzmathematik")}

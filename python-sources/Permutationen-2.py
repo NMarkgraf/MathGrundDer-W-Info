@@ -1,7 +1,7 @@
 # Implementierung des Algorithmuses L aus Section 7.2.1.2 von Donald E. Knuths
 # "The Art of Computer Programming" - Volume 7
 
-def permutiere(tuple):
+def permutiere(tuple, visit=print):
     # Tuple in Liste umwandeln:
     a = list(tuple)
 
@@ -9,7 +9,7 @@ def permutiere(tuple):
 
     while True:
         # Visit a
-        print(a)
+        visit(a)
 
         # Find j
         j = n - 1
@@ -33,4 +33,4 @@ def permutiere(tuple):
 
 
 if __name__ == "__main__":
-    permutiere(("a","b","c"))
+    permutiere(("a","b","c","d","e","f"))

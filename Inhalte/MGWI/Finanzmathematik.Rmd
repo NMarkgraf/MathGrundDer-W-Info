@@ -143,13 +143,13 @@ Zum [Zeitpunkt]{.cemph} $t=0$ wird [Kapital]{.cemph} $K_0$ angelegt, welches sic
 :::
 ::: {.column width="49%"}
 
-\begin{align*}
+$$\begin{aligned}
 K_1 &= K_0 (1+i) \\
 K_2 &= K_1 (1+i) = K_0 (1+i)^{2} \\
 K_3 &= K_2 (1+i) = K_0 (1+i)^{3} \\
 \cdots & \\
 K_n &= K_0 (1+i)^{n} = K_0 \cdot q^{n} \\
-\end{align*}
+\end{aligned}$$
 
 mit dem [Aufzinsungsfaktor]{.cemph} $q=(1+i)$
 
@@ -169,7 +169,7 @@ a) 	Wie viel Endkapital erhalten Sie nach 17 Jahren, wenn Sie $3\,000$ € zu ei
 
 b) 	Wie viel Kapital hatten Sie vor 7 Jahren zu einem Zinssatz von $1{,}1\,\%$ angelegt, wenn Sie heute inkl. Zinsen $2\,159{,}18$ € erhalten?
 
-c) 	Wie hoch ist der Zinssatz, wenn aus 500 € nach 11 Jahren $545{,}80$ € werden?
+c) 	Wie hoch ist der Zinssatz, wenn aus $500$ € nach 11 Jahren $545{,}80$ € werden?
 
 d) 	Wie lange hatten Sie $1\,500$ € zu einem Zinssatz von $4\,\%$ angelegt, wenn das Endkapital $2\,921{,}85$ € beträgt?
 
@@ -229,7 +229,7 @@ $$K_t = K_0\left(1+i\cdot\frac{T_2-T_1}{360}\right)= 9\,000\left(1+0{,}011\cdot\
 
 a)	Gertrud legt am 1. April eines Jahres $3\,000$ € zu $4\,\%$ Zinsen bei der Bank an. Wie hoch ist Ihr Endkapital am 16. September, wenn Sie Ihre Geldanlage inklusive Zinsen abhebt?
 
-b)	Kathrin erhält am 25.10. insgesamt 112 € inkl. Zinsen. Wie viel Kapital hatte sie am 20.4. des selben Jahres zu einem Zinssatz von 8 % angelegt?
+b)	Kathrin erhält am 25.10. insgesamt $112$ € inkl. Zinsen. Wie viel Kapital hatte sie am 20.4. des selben Jahres zu einem Zinssatz von 8 % angelegt?
  
 c)	Eine Rechnung über $3\,250$ € wird nicht bezahlt. Daher sind Verzugszinsen in Höhe von $144{,}45$ € zu zahlen. Für welche Zeitspanne wurden die Verzugszinsen berechnet, falls der zugrunde liegende Zins $8\,\%$ betrug?
 
@@ -272,7 +272,7 @@ e) $K_t = 22\,629{,}02$
 
 ### Übung `r thisExercise()`: {.exercise}
 
-f) Luise legt am 6. April eines Jahres 800 € zu $3{,}3\,\%$ Zinsen bei der Bank an. Wie hoch ist ihr Endkapital am 23. Dezember?
+f) Luise legt am 6. April eines Jahres $800$ € zu $3{,}3\,\%$ Zinsen bei der Bank an. Wie hoch ist ihr Endkapital am 23. Dezember?
 
 g) Leonard hatte am 20.11. das erhaltende Weihnachtsgeld zu $4\,\%$ angelegt, so dass er am 20.12. insgesamt  $2\,112{,}00$ € abheben konnte. Wie viel Weihnachtsgeld bekam er?
 

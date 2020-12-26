@@ -79,7 +79,7 @@ Binomische Formeln
 
 Binomischer Lehrsatz
 :	Für zwei reelle Zahlen $x$, $y$ und eine natürliche Zahl $n$ gilt:
-:	$\displaystyle (x+y)^n = \sum\limits_{k=0}^{n} \dbinom{k}{n} x^{n-k}y^{k}$
+:	$\displaystyle (x+y)^n = \sum\limits_{k=0}^{n} \dbinom{n}{k} x^{n-k}y^{k}$
 
 
 Normalform von Polynomgleichungen
