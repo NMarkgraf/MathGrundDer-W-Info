@@ -6,9 +6,9 @@ Fehler etc. bitte unter Issues melden!
 
 - möglichst aktuelles R, RStudio, LaTeX
 - LaTeX u. a. Paket `beamer`, `cm-super`, `ulem`
-- pandoc in einer aktuellen Version (2.9.2) -- RStudio 1.2 liefert gegenwärtig nur 2.1. mit: [https://github.com/jgm/pandoc/releases/tag/2.9.2](https://github.com/jgm/pandoc/releases/tag/2.9.2). 
-- rmarkdown in der aktuellen Version (1.10 oder später).
-- Python3 mit panflute: [https://www.python.org/downloads/](https://www.python.org/downloads/). Nach der Installation über die Windows Eingabeaufforderung (Terminal) panflute installieren: `python3 -m pip install panflute`.
+- pandoc in einer aktuellen Version (2.11.3.1) -- RStudio 1.2 liefert gegenwärtig nur 2.1. mit: [https://github.com/jgm/pandoc/releases/tag/2.11.3.1](https://github.com/jgm/pandoc/releases/tag/2.11.3.1). 
+- rmarkdown in der aktuellen Version (2.5 oder später).
+- Python3 mit panflute ab 2.0.5: [https://www.python.org/downloads/](https://www.python.org/downloads/). Nach der Installation über die Windows Eingabeaufforderung (Terminal) panflute installieren: `python3 -m pip install panflute`.
 
 ### Wichtige zusätzliche Hinweise
 
