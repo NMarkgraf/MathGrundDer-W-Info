@@ -4,8 +4,8 @@ title: "Mathematische Grundlagen der Informatik"
 header-includes:
   - "\\usepackage{systeme}"
 ---
-```{r python-setup, include = FALSE, child="./private/python-setup.R"}
-reticulate::py_config()
+```{r python-setup, include = FALSE, echo=FALSE}
+source("./private/python-setup.R")
 ```
 
 ```{r setup, include=FALSE}
