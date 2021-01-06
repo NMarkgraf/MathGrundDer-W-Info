@@ -18,8 +18,7 @@
 
 #library(reticulate)
 ## Hier muss der Link zu Python3 stehen!
-reticulate::use_python("/usr/local/bin/python3", required = TRUE) 
-reticulate::py_config()
+source("private/python-setup.R")
 
 # ------------------------------------------------------------------------
 # Dateiname (ohne ".Rmd") der übersetzt werden soll:

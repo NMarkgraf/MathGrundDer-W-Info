@@ -4,10 +4,12 @@ title: "Mathematische Grundlagen der Informatik"
 header-includes:
   - "\\usepackage{systeme}"
 ---
+```{r python-setup, include = FALSE, child="./private/python-setup.R"}
+reticulate::py_config()
+```
 
 ```{r setup, include=FALSE}
 
-reticulate::py_config()
 
 # .aux Dateien vom LaTeX-Übersetzungsprozess löschen? 
 options(tinytex.clean = FALSE)
