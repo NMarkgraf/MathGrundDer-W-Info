@@ -42,8 +42,8 @@ UseCache <<- FALSE
 
 createPrivateYaml(
     "Dipl.-Math. Norman Markgraf",  # Dozent*innenname
-    "WiSe 2020/21",                   # Semesterkennzeichen
-    "Münster / Düsseldorf"            # Studienort(e)
+    "WiSe 2023/24",                   # Semesterkennzeichen
+    "Essenf"            # Studienort(e)
 )
 
 # Erzeuge Skript "DozentenSkript", "StudierendenSkript" oder "LösungsSkript": 
@@ -62,9 +62,9 @@ theme_set(
 ```{r setUpChildren, eval=TRUE, include=FALSE}
 ## Liste aller Teilskripte, die in das Skript integriert werden sollen.
 childrenToInclude <- c(
-    "Organisatorisches", 
-#    "Hinweise",   # Hinweise für reguläre Präsenzlehre
-    "Hinweise_virtuell",  # Hinweise für vituelle Präsenzlehre
+#    "Organisatorisches", 
+    "Hinweise",   # Hinweise für reguläre Präsenzlehre
+#    "Hinweise_virtuell",  # Hinweise für vituelle Präsenzlehre
     "Mengenlehre", 
     "Relationen", 
     "Kombinatorik", 
@@ -101,7 +101,7 @@ includeChild <- function(name, children=childrenToInclude, all=FALSE) {
 ```{r child = './Inhalte/MGWI-Organisatorisches-60min.Rmd', eval = includeChild("Organisatorisches")}
 ```
 
-```{r child = './private/private-Vorstellung.Rmd', eval = privateVorstellung}
+```{r child = './private/private-Vorstellung.Rmd'}
 ```
 
 ```{r child = './Inhalte/Organisatorisches/MGWI-Hinweise.Rmd', eval = includeChild("Hinweise")}

@@ -1,0 +1,934 @@
+```{r setup-MGDWI-Lineare-Algebra, include=FALSE}
+# ---------------------------------------------------------------------------
+#% maintainer:
+#%   - Norman Markgraf
+#%
+# ---------------------------------------------------------------------------
+source("../../prelude.R")
+initPart(
+    "LineareAlgebra",  # Dateiname ohne Suffix
+    "LineareAlgebra"   # Verzeichnisname im Bilderverzeichnis 
+    )
+pathToImages = getPathToImages()
+# ---------------------------------------------------------------------------
+
+```
+
+# Lineare Algebra
+
+## Eliminationsverfahren
+
+### Beispiel: Das Problem eines Apothekers
+
+**Das Problem:**
+
+Ein Apotheker hat 36%-igen und 21%igen Alkohl. 
+Welche Mengen von beiden Lösungen muss er mischen, damit er 5 Liter 30% igen Alkohols erhält?
+
+
+**Erste Schritte zum mathematischen Modell:**
+
+In 5 Litern Mischung sind $5 \cdot 0{,}3 =1{,}5$ Liter Alkohol aus $x$ Liter 36%-igen bzw. aus $y$ Liter 21%-igen Alkohol.
+Weiterhin muss $x+y=5$ Liter ergeben. 
+
+
+**Das Gleichungsystem:**
+$$\sysdelim..
+  \systeme{%
+		0.36x+0.21y=1.5,%
+		x+y=5}$$
+
+
+### Graphische Lösung
+
+```{r echo=FALSE, out.width = "12cm", fig.align="center"}
+knitr::include_graphics(file.path(pathToImages, "ApoGleich.png"))
+```
+
+
+### Rechnerische Lösung
+
+\begin{align*}
+		0{,}36x+0{,}21y &=1{,}5													\\[-0.4em]
+		x+y&=5 						& &| -x 									\\[0.6em]
+		0{,}36x+0{,}21y &=1{,}5 			& &| \text{~} y \text{ für } x \text{ einsetzen}			\\[-0.4em]
+		y&=5-x 																\\[0.6em]
+		0{,}36x+0{,}21(5-x) &=1{,}5 		& & | \text{ ausklammern \& zusammenfassen}		\\[-0.4em]
+		y&=5-x 																\\[0.6em]
+		(0{,}36-0{,}21) x + 1{,}05 &=1{,}5 	& &| - 1{,}05 								\\[-0.4em]
+		y&=5-x 																\\[0.6em]
+		0{,}15 x &=0{,}45 				& &| : 0{,}15								\\[-0.4em]
+		y&=5-x																\\[0.6em]
+		x &=3																\\[-0.4em]
+		y&=5-x = 2 															\\		
+\end{align*}
+
+
+### Lineare Gleichungssysteme
+
+Ein **lineares Gleichungssystem** (kurz: **LGS**) bezeichnet ein System *linearer Gleichungen*, die mehrere *unbekannte Größen* (**Variablen**) enthalten.
+
+
+Allgemein lässt sich ein LGS mit $m$ Gleichungen und $n$ Unbekannten immer in die Form 
+
+$$\begin{matrix}
+        a_{11} \cdot x_1 +  a_{12} \cdot x_2 \, + & \cdots & +\, a_{1n} \cdot x_n & = & b_1\\
+        a_{21} \cdot x_1 +  a_{22} \cdot x_2 \, + & \cdots & +\, a_{2n} \cdot x_n & = & b_2\\
+        &&&\vdots&\\
+        a_{m1} \cdot x_1 +  a_{m2} \cdot x_2 \, + & \cdots & +\, a_{mn} \cdot x_n & = & b_m\\
+    \end{matrix}$$
+
+bringen.
+
+
+### Bemerkungen zu LGS
+
+- Die $a_{ij}$ nennt man **Koeffizienten**.
+
+- Die $b_i$ nennt man kurz **rechte Seite**.
+
+- Sind alle Einträge auf der *rechten Seite* gleich $0$, dann nennt man das LGS **homogen**, sonst **inhomogen**.
+
+- *Homogene* LGS besitzen immer eine **triviale Lösung**, mit $x_i=0$ für alle $i$.
+
+- Gibt es genau so viele Gleichungen wie Unbekannte ($n=m$), so nennt man das LGS **quadratisch**.
+
+- In der **(Zeilen-)Stufenform** verringert sich in jeder Zeile die Zahl der Unbekannten um mindestens eine, die dann auch nicht mehr weiter vorkommt.
+
+
+### Elementare Zeilenumformungen
+
+Man ändert die Lösungsmenge eines LGS nicht, wenn man
+
+- zwei Zeilen vertauscht,
+
+- eine Zeile auf beiden Seiten mit einer beliebigen Konstante $c \neq 0$ multipliziert,
+
+- das Vielfache einer Zeile zu einer anderen hinzuaddiert oder
+
+- das Vielfache einer Zeile von einer anderen subtrahiert.
+
+
+### Das Eliminationsverfahren
+
+Man benutzt die *Elementaren Zeilenumformungen* um aus einem beliebigen LGS ein LGS in *Zeilenstufenform* zu erhalten:
+
+\begin{align*}
+		0{,}36x+0{,}21y 			&=1{,}5			& & \mathrm{I}							\\[-0.4em]
+		x+\phantom{0{,}21}y		&=5 				& & \mathrm{II}							\\[0.6em]
+		x+\phantom{0{,}21}y		&=5 				& & \mathrm{II}							\\[-0.4em]
+		0{,}36x+0{,}21y 			&=1{,}5			& & \mathrm{I}							\\[0.6em]
+		x+\phantom{0{,}15}y		&=5 				& & \mathrm{I}							\\[-0.4em]
+		-0{,}15y				&=-0{,}3			& & \mathrm{II}-0{,}36\cdot \mathrm{I} 		\\[0.6em]
+		x+y					&=5 				& & \mathrm{I}							\\[-0.4em]
+		y					&=2				& & \frac{-1}{0{,}15}\cdot \mathrm{II} 			\\[0.6em]
+		x\phantom{+y}			&=3 				& & \mathrm{II}-\mathrm{I}					\\[-0.4em]
+		y					&=2				& &									\\[0.6em]
+\end{align*}
+
+
+### Lösungsverhalten eines LGS
+
+Ein *homogenes* LGS besitzt entweder
+
+- genau *eine* Lösung, nämlich die triviale Lösung oder
+- *unendlich viele* Lösungen.
+
+Ein *inhomogenes* LGS besitzt entweder
+
+- genau *eine* Lösung oder
+- *unendlich viele* Lösungen oder
+- überhaupt *keine* Lösung.
+
+
+### Konsequenzen
+
+- Zu jedem  *inhomogenen* LGS gibt es ein *homogenes* LGS bei dem man die rechte Seite durch die Nullen ersetzt.
+
+- Gibt es für das *homogene* LGS nur die *triviale Lösung*, so hat das *inhomogene* LGS **genau  eine** oder **gar keine** Lösung.
+
+- Hat das *homogene* LGS *unendlich viele Lösungen*, dann hat das *inhomogene* LGS **unendlich viele** oder **gar keine** Lösung.
+
+- Haben wir eine Lösung des *inhomogenen* LGS gefunden, entscheidet das *homogene* LGS darüber ob diese Lösung die einzige Lösung ist -- *homogenes* LGS hat nur triviale Lösung -- oder ob es unendlich viele Lösungen gibt -- *homogenes LGS* hat unendlich viele Lösungen.
+
+
+## Matrizen und Vektoren
+
+### Matrizen
+ Ein geordnetes, rechteckiges Schema von Zahlen oder Symbolen
+$$\renewcommand{\arraystretch}{.9}
+A=\begin{pmatrix}
+a_{11} & a_{12} & \ldots & a_{1j} &\ldots& a_{1n}\\
+a_{21} & a_{22} & \ldots & a_{2j} & \ldots & a_{2n}\\
+\vdots & \vdots & & \vdots & &\vdots \\
+a_{i1} & a_{i2} & \ldots & a_{ij} & \ldots & a_{in}\\
+\vdots & \vdots & & \vdots & &\vdots \\
+a_{m1} & a_{m2} & \ldots & a_{mj} & \ldots & a_{mn}\\
+\end{pmatrix}
+   = {(a_{ij})}_{m\times n}$$
+   
+mit $m,n \in \mathbf{N}$ heißt **Matrix mit $m$ Zeilen** und **$n$ Spalten** oder kurz **$m\times n$-Matrix**.
+
+
+### Bemerkungen zu Matrizen
+
+- Die $a_{11},\ldots,a_{mn}$ heißen **Elemente** der Matrix.
+- Dabei gibt $i$ die Zeile und $j$ die Spalte an, in der $a_{ij}$ steht.
+- $i$ heißt **Zeilenindex** und $j$ **Spaltenindex** von $a_{ij}$.
+
+**Beispiele:**
+
+$$B = 	\begin{pmatrix}
+			1 & 1 \\
+			0{,}36 & 0{,}21 \\		
+		\end{pmatrix},
+	\quad
+	A = 	\begin{pmatrix}
+			-2 & 3 & 0 \\
+			10 & \frac12 & 8\\
+		\end{pmatrix},
+	\quad
+	C = 	\begin{pmatrix}
+			-2 & 3 & 4 & 0\\
+			10 & 0 & 1 & 9 \\
+			8 & 7 & 2 & 3 \\
+			-8 & 7 & 4 & -8 \\
+			0 & 0 & -1 & 10 \\			
+		\end{pmatrix}$$
+
+
+### Vektoren
+
+- $n\times 1$-Matrix heißt **Spaltenvektor mit $n$ Komponenten**:
+	$$a=\begin{pmatrix}
+				a_1 \\
+				\vdots \\
+				a_n
+		\end{pmatrix}$$
+		
+- $1\times n$-Matrix heißt **Zeilenvektor mit $n$ Komponenten**:
+	$$a = (a_1, \ldots, a_n)$$
+
+
+### Vektoren in Koordinatensystemen
+
+```{r echo=FALSE, out.width = "9cm", fig.align="center"}
+knitr::include_graphics(file.path(pathToImages, "Vektoren.png"))
+```
+
+
+### Beispiel: Kaffeespezialitäten 
+
+```{r echo=FALSE, out.width = "8cm", fig.align="center"}
+knitr::include_graphics(file.path(pathToImages, "VektorenKaffee1.png"))
+```
+
+
+### Beispiel: Kaffeespezialitäten 
+
+```{r echo=FALSE, out.width = "8cm", fig.align="center"}
+knitr::include_graphics(file.path(pathToImages, "VektorenKaffee2.png"))
+```
+
+
+### Lineare Unabhängigkeit
+Eine Menge von Vektoren ist **linear unabhängig** falls keiner von ihnen als Linearkombination der anderen ausgedrückt werden kann.
+
+
+**Beispiel:**
+
+Die Vektoren $\displaystyle v_{lm}=\begin{pmatrix} \frac13 \\[0.1em] \frac13 \\[0.1em] \frac13 \end{pmatrix}$,
+$\displaystyle v_{mk}=\begin{pmatrix} \frac12 \\[0.1em] \frac12 \\[0.1em] 0 \end{pmatrix}$ und
+$\displaystyle v_{cap}=\begin{pmatrix} \frac13 \\[0.1em] \frac16 \\[0.1em] \frac12 \end{pmatrix}$
+sind *linear unabhängig*.
+
+
+### Addition & Subtraktion von Matrizen und Vektoren 
+
+- Mit Matrizen bzw. Vektoren gleicher Ordnung kann man rechnen!
+- *Addition* und *Subtraktion* erfolgt *komponentenweise*!
+
+
+**Beispiel:**
+
+Seien 
+$\displaystyle A= \begin{pmatrix} a_{11} & a_{12} & a_{13} \\ a_{21} & a_{22} & a_{23}\end{pmatrix}$
+und
+$\displaystyle B= \begin{pmatrix} b_{11} & b_{12} & b_{13} \\ b_{21} & b_{22} & b_{23}\end{pmatrix}$
+gegeben. 
+
+Dann gilt:
+$$A \pm B	= 	\begin{pmatrix} 
+					a_{11} \pm b{11} & a_{12} \pm b{12}& a_{13} \pm b{13}\\ 
+					a_{21} \pm b{21} & a_{22} \pm b{22}& a_{23} \pm b{23}
+				\end{pmatrix}$$
+				
+
+### Multiplikation mit einem Skalar 
+
+- Eine *reelle Zahl* wollen wir zur besseren Unterscheidung **Skalar** nennen.
+
+- Man kann eine *Matrix* (resp. einen *Vektor*) mit einem *Skalar* **multiplizieren**. 
+	In dem man *jedes Element* mit dem *Skalar multipliziert*.
+
+
+**Beispiel:**
+
+Sei 
+$\displaystyle A= \begin{pmatrix} a_{11} & a_{12} \\ a_{21} & a_{22} \end{pmatrix}$
+und
+$k$ ein Skalar. 
+
+Dann ist:
+
+$$k \cdot A= \begin{pmatrix} k \cdot a_{11} & k \cdot a_{12} \\ k \cdot a_{21} & k \cdot a_{22} \end{pmatrix}$$
+
+### Produkt zweier Matrizen
+
+- Zwei Matrizen multipliziert man mit einander, wenn sie passend sind.
+
+- Passend sind sie, wenn die Spaltenanzahl der ersten mit der Zeilenanzahl der zweiten Matrix übereinstimmt.
+
+- Passen zwei Matrizen zueinander, dann ist das Produkt eine Matrix mit genauso viel Zeilen wie die erste und Spalten wie die zweite Matrix.
+
+- Näheres regelt das Falk'sche Schema. ;-)
+
+
+### Falk'sches Schema
+
+
+### Sonderformen der Multiplikation
+
+- Auch eine Matrix $A$ und ein Vektor $x$ können zueinander passen. 
+	Dann ist $A \cdot x$ erklärt und ergibt einen *Vektor*
+
+- Zwei Vektoren mit gleicher Komponentenanzahl multipliziert man durch einen Trick zu einem Skalar
+	Man nennt das **Skalarprodukt** zweier (Spalten-)Vektoren 
+	$x$ und $y$
+	einfach 
+	$<x, y> = x^T \cdot y$
+
+- Das 'hoch T' heißt **transponiert**. 
+
+- Man **transponiert** eine *Matrix* (resp. *Vektor*) in dem man aus jeder Zeile eine Spalte macht.
+
+## Rechnen mit Matrizen und Vektoren
+
+### Besondere Matrizen
+
+- **Einheitsmatrix** $E_n$:
+	Eine Matrix heißt Einheitsmatrix, wenn sie jeden Vektor auf sich selber abbildet.
+
+- **Nullmatrix** $0_n$:
+	Jeder Vektor wird von der Nullmatrix auf den Nullvektor abgebildet.
+
+- **Streckungsmatrix**:
+	Jeder Vektor verändert seine Länge, aber nicht seine Richtung.
+
+- **Drehmatrix**:
+	Jeder Vektor verändert seine Länge nicht, aber seine Richtung.
+
+
+### Beispiel: Bettwanzen
+
+```{r echo=FALSE, out.width = "10cm", fig.align="center"}
+knitr::include_graphics(file.path(pathToImages, "Bettwanze1.png"))
+```
+
+
+### Beispiel: Der Lebenszyklus einer Bettwanze
+
+\begin{columns}[T]
+	\begin{column}[c]{6cm}
+		Sei $E_t$ die Anzahl der Eier, $A_t$ die Anzahl der Adulten Bettwanzen 
+		zu einem Zeitpunkt $t$.
+		\begin{align*}
+			E_{t+1} &= s \cdot E_t + f \cdot A_t \\
+			A_{t+1} &= d \cdot E_t + l \cdot A_t
+		\end{align*}		\pause
+		oder mit 
+		\begin{equation*}
+			L =	\begin{pmatrix}
+					s & f \\ d & l \\
+				\end{pmatrix},
+			\quad
+			x_t = \begin{pmatrix}
+					E_t \\ A_t \\
+				\end{pmatrix}
+		\end{equation*}
+		ist dann
+		\begin{equation*}
+			x_{t+1} = L \cdot x_t
+		\end{equation*}
+	\end{column}
+	\begin{column}[c]{5cm}
+```{r echo=FALSE, out.width = "5cm", fig.align="center"}
+knitr::include_graphics(file.path(pathToImages, "Bettwanze2.png"))
+```
+	\end{column}
+\end{columns}
+
+**Übung:** Überlegen Sie sich, was hinter $s$, $f$, $d$ und $l$ steckt!
+
+
+### Umschreiben von LGSen
+
+Mit Hilfe der *Matrix-Multiplikation* kann man z.B. das LGS
+
+$$\sysdelim..
+	\systeme{%
+		0.36x+0.21y=1.5,%
+		x+y=5}$$
+		
+in
+
+$$\underbrace{%
+	\begin{pmatrix}
+		0{,}36 	& 0{,}21 \\
+		1		& 1\\
+	\end{pmatrix}%
+	}_{A}
+	\cdot
+	\underbrace{%
+	\begin{pmatrix}
+		x_1 \\
+		x_2 \\
+	\end{pmatrix}%
+	}_{x}
+	=
+	\underbrace{%
+	\begin{pmatrix}
+		1{,}5 \\
+		5 \\
+	\end{pmatrix}%
+	}_{b}$$
+	
+umschreiben.
+
+Wir brauchen also 'nur' $A \cdot x = b$ zu lösen.  
+
+
+### LGS in der Matrizenschreibweise (I)
+
+Wir können die LGS in Matrizenschreibweise ganz analog zu den normalen LGS lösen.
+Dazu schreiben wir sie in die **erweiterte Matrix**
+\begin{equation*}
+	(A|b) =
+	\begin{pmatrix}
+		0{,}36 	& 0{,}21	& | & 1{,}5\\
+		1		& 1			& | & 5\\
+	\end{pmatrix}
+\end{equation*}
+um.
+
+Mit den *elementaren Zeilenumformungen* bearbeiten wir nun die erweiterte Matrix $(A|b)$,
+bis wir links vom Strich eine **obere Dreiecksmatrix** (bzw. eine **Einheitsmatrix**) erhalten
+haben. 
+
+
+### LGS in der Matrizenschreibweise (II)
+
+**Partielle Elimination:** (Ziel: *Dreiecksmatrix*)
+
+$$\begin{pmatrix}
+		0{,}36 	& 0{,}21	& | & 1{,}5\\
+		1		& 1			& | & 5\\
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		1		& 1			& | & 5\\
+		0{,}36 	& 0{,}21	& | & 1{,}5\\
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		1	& 1			& | & 5\\
+		0 	& -0{,}15	& | & -0{,}3\\
+	\end{pmatrix}$$
+
+**Vollständige Elimination:** (Ziel: *Einheitsmatrix*)
+
+$$\phantom{%
+	\begin{pmatrix}
+		0{,}36 	& 0{,}21	& | & 1{,}5\\
+		1		& 1			& | & 5\\
+	\end{pmatrix}}
+	=
+	\begin{pmatrix}
+		1	& 1	& | & 5\\
+		0 	& 1	& | & 2\\
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		1	& 0	& | & 3\\
+		0 	& 1	& | & 2\\
+	\end{pmatrix}$$
+
+Kann mein keine *Dreiecksmatrix* (bzw. *Einheitsmatrix*) erhalten, 
+ist das LGS nicht lösbar oder hat unendlich viele Lösungen!
+
+
+### Division von Matrizen
+
+Geht nicht! :-( Darum können wir  leider nicht einfach
+
+$$x = \frac{b}{A} \quad \text{ oder } \quad x = b : A$$
+
+schreiben. 
+
+
+Aber vielleicht können wir uns dieser Idee nähern.
+
+
+Mit Hilfe der Inversen:
+
+$$x = A^{-1} \cdot b$$
+
+
+### Die Inverse einer Matrix
+
+Zu einer *quadratischen* Matrix $A$ wollen wir eine Matrix $X$ mit der Eigenschaft
+
+$$E_n = X \cdot A = A \cdot X = E_n$$
+
+die **Inverse** der Matrix $A$ nennen.
+Wir schreiben dann auch $A^{-1}$ für eine solche Matrix.
+
+Dabei ist $E_n$ die **Einheitsmatrix** mit $n \times n$ Elementen.
+
+**Beispiele für $E_n$:**
+
+$$E_1 = (1), \quad
+	E_2 = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}, \quad
+	E_3 = \begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix}$$
+
+
+### Anwendung der Inverse auf LGSe
+
+Falls man für ein LGS $A x = b$ die *Inverse* von $A$ kennt, kann man wie folgt rechnen
+
+\begin{align*}
+	A \cdot x 				&= b  			& & | \text{ Auf beiden Seiten von links mal } A^{-1} \\
+	A^{-1} \cdot A \cdot x 	&= A^{-1} \cdot b 	& & | \text{ Zusammenfassen} \\
+	E_n \cdot x			&= A^{-1} \cdot b	& & | \text{ Einheitsmatrix ausnutzen} \\
+	x					&= A^{-1} \cdot b	& & \\
+\end{align*}
+
+und eine Lösung erhalten.
+
+
+**Probleme:**
+
+-  $A$ muss quadratisch sein!
+
+-  Wir kennen $A^{-1}$ nicht!
+
+-  Es gibt auch nicht immer ein $A^{-1}$
+
+
+### Beispiel: Anwendung auf das Apotheker Problem
+
+Es seien gegeben
+
+$$A=	\begin{pmatrix}
+		0{,}36 	& 0{,}21 \\
+		1		& 1\\
+	\end{pmatrix},
+	\quad
+	b=	\begin{pmatrix}
+		1{,}5 \\
+		5 \\
+	\end{pmatrix},%
+	\quad$$
+$$x=	\begin{pmatrix}
+		x_1 \\
+		x_2 \\
+	\end{pmatrix}%
+	\text{ und }
+	A^{-1}=	\frac{1}{15} \cdot \begin{pmatrix}
+		 100	& -21 \\
+		-100	& 36 \\
+	\end{pmatrix}.$$
+
+
+Dann ist die Lösung von $A \cdot x = b$ zu berechnen durch
+
+$$x = A^{-1} \cdot b = \begin{pmatrix} 3 \\ 2 \end{pmatrix}$$
+
+
+### Bestimmen der Inversen (I)
+
+Betrachten wir die Matrix:
+
+$$A =	\begin{pmatrix}
+			 1 & -2 &   4 &   5 \\
+			 2 & -5 &   9 &  12 \\
+			-3 &  6 & -13 & -15 \\
+			 3 & -6 &  12 &  16 \\
+		\end{pmatrix}$$
+
+
+Wir schreiben die Einheitsmatrix rechts daneben:
+
+$$\begin{pmatrix}
+			 1 & -2 &   4 &   5 & | & 1 & 0 & 0 & 0 \\
+			 2 & -5 &   9 &  12 & | & 0 & 1 & 0 & 0 \\
+			-3 &  6 & -13 & -15 & | & 0 & 0 & 1 & 0 \\
+			 3 & -6 &  12 &  16 & | & 0 & 0 & 0 & 1 \\
+		\end{pmatrix}$$
+		
+
+### Bestimmen der Inversen (II)
+
+Wir formen -- mit Hilfe der elementaren Zeilenumformungen -- um, 
+bis wir auf der linken Seite die Einheitsmatrix erhalten.
+Und erhalten so auf der rechten Seite die Inverse von $A$
+
+$$\begin{pmatrix}
+			 1 & 0 & 0 & 0 & | & 14 & -2 &  2 & -1 \\
+			 0 & 1 & 0 & 0 & | &  -7 & -1 & -1 & 2 \\
+			 0 & 0 & 1 & 0 & | &  -3 &  0 & -1 & 0 \\
+			 0 & 0 & 0 & 1 & | &  -3 &  0 &  0 & 1 \\
+		\end{pmatrix}$$
+
+Es ist also 
+
+$$A^{-1} = 	\begin{pmatrix}
+			 14 & -2 &  2 & -1 \\
+			 -7 & -1 & -1 &  2 \\
+			 -3 &  0 & -1 &  0 \\
+			 -3 &  0 &  0 &  1 \\
+		\end{pmatrix}$$
+
+### Probe!
+
+Berechnen Sie bitte **zu Hause**:
+
+$$A \cdot A^{-1} \qquad \text{ und } \qquad A^{-1} \cdot A$$
+
+
+Lösen Sie danach das folgende LGS:
+
+$$\begin{pmatrix}
+			 1 & -2 &   4 &   5 \\
+			 2 & -5 &   9 &  12 \\
+			-3 &  6 & -13 & -15 \\
+			 3 & -6 &  12 &  16 \\
+	\end{pmatrix}
+	 \cdot 
+	\begin{pmatrix} x_1 \\ x_2 \\ x_3 \\ x_4 \end{pmatrix}
+	 = 
+	\begin{pmatrix} 24 \\ 57 \\ -73 \\ 73 \end{pmatrix}$$
+
+
+### Matrixschreibweise und Lösungen 
+
+… im 1-dimensionalen Fall:
+
+
+**Matrixscheibweise:**
+
+$$\begin{pmatrix}
+		a_{11}
+	\end{pmatrix}
+	\cdot
+	\begin{pmatrix}
+		x_{1}
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		b_{1}
+	\end{pmatrix}$$
+
+**Lösung:**
+
+$$x_1 = \frac{b_1}{a_{11}}$$
+
+### Matrixschreibweise und Lösungen 
+
+… im 2-dimensionalen Fall:
+
+
+**Matrixscheibweise:**
+
+$$\begin{pmatrix}
+		a_{11}  & a_{12} \\
+		a_{21}  & a_{22} \\
+	\end{pmatrix}
+	\cdot
+	\begin{pmatrix}
+		x_{1} \\
+		x_{2} \\
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		b_{1} \\
+		b_{2} \\
+	\end{pmatrix}$$
+
+**Lösung:**
+
+\begin{align*}
+	x_1 &= \frac{b_1 \cdot a_{22} - a_{12} \cdot b_2}{a_{11} \cdot a_{22} - a_{12} \cdot a_{21}}\\[0.5em]
+	x_2 &= \frac{b_2 \cdot a_{11} - a_{21} \cdot b_1}{a_{11} \cdot a_{22} - a_{12} \cdot a_{21}}
+\end{align*}
+
+
+### Matrixschreibweise  
+
+… im 3-dimensionalen Fall:
+
+
+**Matrixscheibweise:**
+
+$$\begin{pmatrix}
+		a_{11}  & a_{12}  & a_{13}\\
+		a_{21}  & a_{22}  & a_{23}\\
+		a_{31}  & a_{32}  & a_{33}\\
+	\end{pmatrix}
+	\cdot
+	\begin{pmatrix}
+		x_{1} \\
+		x_{2} \\
+		x_{3} \\
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		b_{1} \\
+		b_{2} \\
+		b_{3} \\
+	\end{pmatrix}$$
+
+**Lösung:**
+::: {.center . footnotesize}
+
+\begin{align*}
+		x_1 &=\frac{b_1a_{22}a_{33} - b_1a_{32}a_{23} + a_{12}a_{23}b_3 - a_{32}a_{23}b_1 + b_1a_{21}a_{32} - a_{33}b_2a_{23}}{a_{11}a_{22}a_{33} - a_{11}a_{32}a_{23} - a_{21}a_{12}a_{33} + a_{21}a_{32}a_{13} + a_{31}a_{12}a_{23} - a_{31}a_{22}a_{13}}\\
+		x_2 &=\frac{a_{11}b_2a_{33} - a_{13}b_2a_{31} + b_1a_{23}a_{31} - b_3a_{23}a_{12} + a_{13}b_2a_{32} - a_{33}a_{21}b_2}{a_{11}a_{22}a_{33} - a_{11}a_{32}a_{23} - a_{21}a_{12}a_{33} + a_{21}a_{32}a_{13} + a_{31}a_{12}a_{23} - a_{31}a_{22}a_{13}}\\
+		x_3 &=\frac{a_{11}a_{22}b_3 - a_{12}a_{21}b_3 + a_{12}b_2a_{31} - a_{32}b_3a_{12} + a_{13}a_{21}b_3 - b_3a_{21}a_{23}}{a_{11}a_{22}a_{33} - a_{11}a_{32}a_{23} - a_{21}a_{12}a_{33} + a_{21}a_{32}a_{13} + a_{31}a_{12}a_{23} - a_{31}a_{22}a_{13}}\\
+	\end{align*}
+:::
+
+
+## Determinanten
+
+### Determinante
+
+- Ob eine **quadratisch**es LGS $A x = b$ eine Lösung hat, 
+	hängt *entscheidend* vom Nenner des Bruchs ab!
+
+- Man nennt diesen Nenner auch **Determinante** von $A$. 
+
+- Der Wert der *Determinate* von $A$ wird $\det(A)$ geschrieben 
+	und ist eine *reelle Zahl*. 
+
+- Kennt man die *Determinante*, so weiß man ob es eine 
+	*eindeutige* Lösung gibt oder *nicht*.
+
+- Eine Matrix $A$ ist genau dann *invertierbar*, wenn $det(A)\neq 0$ ist. 
+
+- Es gibt Lösungsmethoden für LGS mit Hilfe von Matrizen. 
+	*Diese sind aber in der Praxis bedeutungslos*!
+	($\longrightarrow$ [Cramersche Regel](http://de.wikipedia.org/wiki/Cramersche_Regel "Link zur passenden Wikipedia-Seite")). 
+
+### Determinanten 
+
+Sei $A$ eine **quadratische** resp. $n \times n$ Matrix. 
+
+\begin{center}
+	\begin{tabular}{c|l|l}
+		n 	& $\det(A)$									& Bemerkung \\\hline
+		1	& $a_{11}$									& Reelle Zahlen (s.o.)\\\hline
+		2	& $a_{11} \cdot a_{22} - a_{12} \cdot a_{21}$ & (s.o.) \\\hline
+			& $a_{11}a_{22}a_{33}+a_{12}a_{23}a_{31}+$	& \\
+		3	& $a_{13}a_{21}a_{32}-a_{31}a_{22}a_{13}-$	& Regel von Sarrus\\
+			& $a_{32}a_{23}a_{11}-a_{33}a_{21}a_{12}$ 	& \\\hline
+		n	& ...										& Laplace'scher Entwicklungssatz\\
+			& ...										& Eliminationsverfahren\\
+	\end{tabular}
+\end{center}
+
+### Regeln für Determinanten
+
+- Wenn eine ganze Zeile oder eine ganze Spalte einer Matrix $A$ gleich $0$ ist, 
+	dann ist $\det(A)=0$.
+
+- Wenn zwei Zeilen oder zwei Spalten einer Matrix $A$ identisch oder proportional sind, 
+	dann ist $\det(A)=0$.
+
+- Werden alle Elemente einer Zeile (oder einer Spalte) mit einer Konstanten $k$ multipliziert, 
+	so ändert sich die Determinante ebenfalls um den Faktor $k$.
+	Für eine $n \times n$-Matrix $A$ folgt daraus:
+	$$\det(k\cdot A) = k^n \cdot \det(A)$$
+
+
+$\longrightarrow$ Vergleiche Aufgabe 20!
+
+### Regel von Sarrus
+
+\begin{columns}[T]
+	\begin{column}[c]{0.70\textwidth}
+		{\small
+		
+		
+			Für die $3\times 3$-Matrix
+			\begin{equation*}
+				A =
+				\begin{pmatrix}
+				  a & b & c \\
+				  d & e & f \\
+				  g & h & i
+				\end{pmatrix}
+			\end{equation*}
+			besteht die Determinante aus 6 Summanden von je 3 Faktoren, die  mit dem Schema
+```{r echo=FALSE, out.width = "2.5cm", fig.align="center"}
+knitr::include_graphics(file.path(pathToImages, "Regel_von_Sarrus.png"))
+```
+			ermittelt werden.
+			
+			Damit gilt:
+			\begin{equation*}
+				\det(A) = aei + bfg + cdh - gec - hfa - idb
+			\end{equation*}
+		}
+	\end{column}
+	\begin{column}[c]{0.30\textwidth}
+		{\tiny
+		Die Regel ist benannt nach
+		
+
+```{r echo=FALSE, out.width = "4cm", fig.align="center"}
+knitr::include_graphics(file.path(pathToImages, "Pierre-Frederic_Sarrus.jpg"))
+```
+
+		
+		Pierre Frédéric Sarrus 
+		
+		(* 1798; † 1861)
+		}
+	\end{column}
+\end{columns}
+
+### [Laplace'scher Entwicklungssatz](http://de.wikipedia.org/wiki/Determinante#Laplacescher_Entwicklungssatz)
+\begin{columns}[T]
+	\begin{column}[c]{0.66\textwidth}
+		{\small%
+			Man kann die Determinante einer $n \times n$-Matrix "nach einer Zeile oder Spalte entwickeln".
+			\textbf{Entwicklung nach der $j$-ten Spalte:}
+			\[
+				\det A = \sum_{i=1}^n (-1)^{i+j} \cdot a_{ij} \cdot \det A_{ij}
+			\]
+			\textbf{Entwicklung nach der $i$-ten Zeile:}
+			\[
+				\det A = \sum_{j=1}^n (-1)^{i+j} \cdot a_{ij} \cdot \det A_{ij}
+			\]
+			Dabei ist $A_{ij}$ die $(n-1) \times (n-1)$-Untermatrix von $A$, die durch
+			Streichen der $i$-ten Zeile und $j$-ten Spalte entsteht.
+		}		
+	\end{column}
+	\begin{column}[c]{0.33\textwidth}
+		{\tiny%
+		Dieser Satz ist von
+		
+		
+```{r echo=FALSE, out.width = "4cm", fig.align="center"}
+knitr::include_graphics(file.path(pathToImages, "Pierre-Simon_Laplace.jpg"))
+```
+
+
+		Pierre-Simon (Marquis de) Laplace 
+		
+		(* 1749; † 1827)
+		}
+	\end{column}
+\end{columns}
+
+### Beispiel: Laplace'scher Entwicklungssatz
+
+Entwicklung nach der ersten Zeile:
+
+\begin{align*}
+	\det 
+	\begin{pmatrix}
+ 		0 & 1 & 2 \\
+ 		3 & 2 & 1 \\
+ 		1 & 1 & 0
+ 	\end{pmatrix} 
+ 	&=
+ 	0 \cdot \det
+ 	\begin{pmatrix}
+ 		2 & 1 \\
+ 		1 & 0
+	 \end{pmatrix}
+ 	-1 \cdot \det
+ 	\begin{pmatrix}
+ 		3 & 1 \\
+ 		1 & 0
+	 \end{pmatrix}
+ 	+2 \cdot \det
+ 	\begin{pmatrix}
+ 		3 & 2 \\
+ 		1 & 1
+ 	\end{pmatrix} \\
+ 	&= 0 + 1 + 2 \\
+	&= 3 \\
+ \end{align*}
+ 
+### [Eliminationsverfahren](http://de.wikipedia.org/wiki/Determinante#Gau.C3.9Fsches_Eliminationsverfahren_zur_Determinantenberechnung) 
+
+Allgemein können Determinanten mit Hilfe der (Partiellen) Elimination ermittelt werden.
+
+Dafür verwendet man folgende Regeln:
+
+- Ist $A$ eine *Dreiecksmatrix*, 
+	dann ist das Produkt der *Hauptdiagonalelemente* die Determinante von $A$.
+
+- Falls $B$ sich aus $A$ ergibt, 
+	indem man zwei Zeilen oder Spalten *vertauscht*, 
+	dann ist $\det B=-\det A$.
+
+- Falls $B$ sich aus $A$ ergibt, 
+	indem man ein *Vielfaches* einer Zeile oder Spalte zu einer *anderen* Zeile oder Spalte addiert, 
+	dann ist $\det B=\det A$.
+
+- Falls $B$ sich aus $A$ ergibt, 
+	indem man ein $c$-faches einer Zeile oder Spalte bildet, 
+	dann ist $\det B=c\cdot \det A$.
+
+
+### Beispiel: Determinante m.H.d. Eliminationverfahren
+
+Betrachten wir die Matrix:
+\begin{center}\footnotesize\vspace*{-2em}%
+\begin{equation*}
+	A =	\begin{pmatrix}
+			 1 & -2 &   4 &   5 \\
+			 2 & -5 &   9 &  12 \\
+			-3 &  6 & -13 & -15 \\
+			 3 & -6 &  12 &  16 \\
+		\end{pmatrix}
+\end{equation*}
+\end{center}
+
+Mit Hilfe von $I_{neu} = I, II_{neu} = II - 2 \cdot I, III_{neu} = III+3 \cdot I$ und $IV_{neu} = IV-3 \cdot I$ können wir
+die Matrix in eine Dreiecksmatrix $A^*$ überführen:
+
+\begin{center}\footnotesize\vspace*{-2em}%
+\begin{equation*}
+	A^*=	\begin{pmatrix}
+			 1 & -2 &  4 &  5 \\
+			 0 & -1 &  9 &  2 \\
+			 0 &  0 & -1 &  0 \\
+			 0 &  0 &  0 &  1 \\
+		\end{pmatrix}
+\end{equation*}
+\end{center}
+Daher ist
+ \begin{equation*}
+	\det A = \det A^* = 1 \cdot (-1) \cdot (-1) \cdot 1 = 1
+\end{equation*}
+
+
+
+```{r finish-Lineare-Algebra, include=FALSE}
+finalizePart(partname)
+```

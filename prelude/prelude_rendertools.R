@@ -1,5 +1,5 @@
 # ===========================================================================
-# prelude_rendertools.R (Release 0.4.0)
+# prelude_rendertools.R (Release 0.3.2)
 # =====================------------------------------------------------------
 # (W) by Norman Markgraf in 2018/19
 #
@@ -16,10 +16,9 @@
 # 03. Sep. 2019  (nm)  "makeSkriptTypeOf()" ersetzt die make*() Funktionen.
 #                      (0.3.1)
 # 04. Sep. 2019  (nm)  "makeS*riptTypeOf()", "setTypeOfS*ript()" um *={k,c} 
-#                      erweitert, damit "pseudo-native-speaker" nichts merken.
+#                      erweitert, damit "pseudo-native-speaker" nicht merken.
 #                      Laysiness bei den drei Skriptarten erweitert. Cool man!
 #                      (0.3.2)
-# 05. Nov. 2019  (nm)  Jetzt wird UTF-8 auch auf Windows geschrieben.
 #
 #   (C)opyleft Norman Markgraf in 2018/19
 #
@@ -52,39 +51,7 @@ if (!exists("prelude.rendertools")) {
   inc.notes.lsgskript <- "include-notes-loesungen.tex"
   inc.notes <- "include-notes.tex"
 
-#
- 
-write_utf8 <- function(text, f = tempfile(), bom=FALSE) {
-    # step 0: Save BOM (it may be nessarry on Windows Systems only!)
-    BOM <- charToRaw('\xEF\xBB\xBF')
-    
-    # step 1: ensure our text is utf8 encoded
-    utf8 <- enc2utf8(text) 
-
-    # step 2: create a connection with 'native' encoding
-    # this signals to R that translation before writing
-    # to the connection should be skipped
-    
-    con <- file(f, open = "w+", encoding = "native.enc")
-
-    # steo 2a: write BOM if needed.
-    if (bom) {
-    #  writeLines(BOM, con = con), endian = "little")
-      writeChar("\ufeff", con=con, eos = NULL, useByte=TRUE) 
-    }
-    
-    # step 3: write to the connection with 'useBytes = TRUE',
-    # telling R to skip translation to the native encoding
-    
-    writeLines(utf8, con = con, useBytes = TRUE)
-
-    # close our connection
-    close(con)
-    
-    print(readLines(f, encoding = "UTF-8"))
-    
-}
-   
+  
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   createPrivateYaml <- function(
       DozInfo=NULL, 
@@ -113,6 +80,7 @@ write_utf8 <- function(text, f = tempfile(), bom=FALSE) {
         tmpInst <- Studienort
     }
     
+    out <- file(privymlfn, "w", encoding = "UTF-8")
     if (is.null(DozInfo)) {
       tmp <- paste0(
         "---\nauthor: \"FOM\"\ndate: \"", Semester, "\"",
@@ -138,15 +106,8 @@ write_utf8 <- function(text, f = tempfile(), bom=FALSE) {
     }
     flog.info(paste0("Create new '", privymlfn, "'"))
     flog.info(paste0("Content of '", privymlfn, "':\n", tmp))
-
-    if (.Platform$OS.type == "windows") 
-        cat(iconv(tmp), to=privymlfn)
-    else
-        # Use BOM on windows systems
-        write_utf8(tmp, privymlfn, bom=(.Platform$OS.type == "windows"))
-
-#    cat(iconv(tmp, to="UTF-8"), file = out)
-#    close(out)
+    cat(iconv(tmp, to="UTF-8"), file = out)
+    close(out)
   }
 
   
@@ -189,7 +150,7 @@ write_utf8 <- function(text, f = tempfile(), bom=FALSE) {
   makeDozi <- function() {
     createDoziNotes()
     doCopyAndLog(inc.notes.dozi, inc.notes)
-    if (UseCache) {
+    if (my.options$get("UseCache")) {
         doCopyAndLog(file.path(defaults.dir, "cachecontrol-Dozi.R"), "cachecontrol.R")
     } else {
         doCopyAndLog(file.path(defaults.dir, "cachecontrol-NoCache.R"), "cachecontrol.R")
@@ -201,7 +162,7 @@ write_utf8 <- function(text, f = tempfile(), bom=FALSE) {
   makeStudi <- function() {
     createStudiNotes()
     doCopyAndLog(inc.notes.studi, inc.notes)
-    if (UseCache) {
+    if (my.options$get("UseCache")) {
         doCopyAndLog(file.path(defaults.dir, "cachecontrol-Studi.R"), "cachecontrol.R")
     } else {
         doCopyAndLog(file.path(defaults.dir, "cachecontrol-NoCache.R"), "cachecontrol.R")
@@ -213,7 +174,7 @@ write_utf8 <- function(text, f = tempfile(), bom=FALSE) {
   makeLsgSkript <- function() {
       createLsgSkriptNotes()
       doCopyAndLog(inc.notes.lsgskript, inc.notes)
-      if (UseCache) {
+      if (my.options$get("UseCache")) {
           doCopyAndLog(file.path(defaults.dir, "cachecontrol-LsgSkript.R"), "cachecontrol.R")
       } else {
           doCopyAndLog(file.path(defaults.dir, "cachecontrol-NoCache.R"), "cachecontrol.R")
@@ -246,32 +207,6 @@ write_utf8 <- function(text, f = tempfile(), bom=FALSE) {
   setTypeOfScript <- makeSkriptOfType
   setTypeOfSkript <- makeSkriptOfType
     
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  
-  show_source_data <- function(file, show_licence=TRUE, use_yaml=TRUE) {
-
-  image.licence.text <- ""
-    
-  image.licence.yaml <- paste0(file,".yaml")
-  if (show_licence) {
-    if (use_yaml) {
-      if (file.exists(image.licence.yaml)) {
-        image.meta <- yaml::read_yaml(image.licence.yaml)
-        image.licence.text=
-          paste0("\n{\\tiny Quelle:",
-                 image.meta$original$author, ", ",
-                 image.meta$original$url, ", ",
-                 "\\href{",image.meta$original$licencerefurl,"}{",image.meta$original$licence,"}",
-                 "}\n\n")
-        
-      } else {
-        print(paste0("Yaml ",image.licence.yaml,"' not found!"))
-      }
-    }
-  }
-  cat(paste(image.licence.text), sep="\n")
-}
-
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   cleanUp <- function(path) {
     flog.debug(paste("Remove:", file.path(path, "*_files")))

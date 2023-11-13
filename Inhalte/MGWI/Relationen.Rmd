@@ -529,9 +529,11 @@ $$p = (10 - [(z_1+z_3+z_5+z_7+z_9+z_{11})+ 3 \cdot (z_2+z_4+z_6+z_8+z_{10}+ z_{1
 Hier im Beispiel somit:
 
 \begin{align*}
- p &= (10 - [(9+8+6+8+1+8)+3\cdot(7+3+5+2+5+6)] \mod 10) \mod 10\\
+ p &= (10 - [(9+8+6+8+1+8) + \\
+   &\qquad 3\cdot(7+3+5+2+5+6)] \mod 10) \mod 10\\
    &= (10 - [40 + 3 \cdot 28] \mod 10) \mod 10 \\
-   &= (10 - [124] \mod 10) \mod 10 = (10 - 4) \mod 10 = 6 \mod 10 = 6
+   &= (10 - [124] \mod 10) \mod 10 = (10 - 4) \mod 10 = 6 \mod 10 \\
+   &= 6
 \end{align*}
 
 
@@ -624,26 +626,26 @@ x1 = seq(-2,2, by=0.1)
 p1 <-gf_line(f1(x1) ~ x1,
         xlab="x", ylab="f(x)",
         subtitle="surjektiv, nicht bijektiv.",
-        caption=TeX("$f: \\mathbf{R} \\rightarrow \\mathbf{R}^{\\geq 0}$, $f(x)=x^2$"))
+        caption=TeX(r'($f:R \rightarrow R^{\geq 0}$, $f(x)=x^2$)'))
 
 f2 = makeFun( x^3 ~ x & x)
 x2 = seq(-1,1, by=0.05)
 p2 <- gf_line(f2(x2) ~ x2, 
         xlab="x", ylab="f(x)",
         subtitle="bijektiv",
-        caption=TeX("$f: \\mathbf{R} \\rightarrow \\mathbf{R}$, $f(x)=x^3$"))
+        caption=TeX(r"($f:R \rightarrow R$,$ f(x)=x^3$)"))
 
 f3 = makeFun( exp(x) ~ x & x)
 p3 <- gf_line(f3(x1) ~ x1,
         xlab="x", ylab="f(x)",
         subtitle="injektiv, nicht surjektiv",
-        caption=TeX("$f: \\mathbf{R} \\rightarrow \\mathbf{R}^{\\geq 0}$, $f(x)=\\exp(x)$"))
+        caption=TeX(r"($f:R \rightarrow R^{\geq 0}$, $f(x)=\exp(x)$)"))
 
 f4 = makeFun( exp(-x^2) ~ x & x)
 p4 <- gf_line(f4(x1) ~ x1,
         xlab="x", ylab="f(x)",
         subtitle="weder injektiv noch surjektiv",
-        caption=TeX("$f: \\mathbf{R} \\rightarrow \\mathbf{R}^{\\geq 0}$, $f(x)=\\exp\\left(-x^2\\right)$"))
+        caption=TeX(r"($f:R \rightarrow R^{\geq 0}$, $f(x)=\exp\left(-x^2\right)$)"))
 
 grid.arrange(p1, p2, p3, p4, ncol=2)
 ```
@@ -786,11 +788,11 @@ def partCharFkt(x, M):
 
 A. Die Funktion $f:\{1,2\} \to \{1,2,3\}$ mit $f(x) = x$ ist *injektiv*, *surjektiv* und/oder *bijektiv*?
 
-B. Für ein *Universum* $U$ ist charakteristische Funktion $\chi_U$  *injektiv*, *surjektiv* und/oder *bijektiv*?
+A. Für ein *Universum* $U$ ist charakteristische Funktion $\chi_U$  *injektiv*, *surjektiv* und/oder *bijektiv*?
 
-C. Die Funktion $f:\mathbf{Z_5} \to \mathbf{Z}_5$ mit $f(\mathbf{a}) = [\mathbf{a}+\mathbf{1}]_5$ ist *injektiv*, *surjektiv* und/oder *bijektiv*?
+A. Die Funktion $f:\mathbf{Z_5} \to \mathbf{Z}_5$ mit $f(\mathbf{a}) = [\mathbf{a}+\mathbf{1}]_5$ ist *injektiv*, *surjektiv* und/oder *bijektiv*?
 
-D. Es seien $\max(x,y) := \begin{cases}x &: x \geq y \\ y &: x < y\end{cases}$ 
+A. Es seien $\max(x,y) := \begin{cases}x &: x \geq y \\ y &: x < y\end{cases}$ 
     und $\min(x,y) := -\max(-x,-y)$ sowie zwei beliebige Teilmengen $A$ und $B$ 
     von $\mathbf{R}$ gegeben. 
     Schreiben Sie die folgenden Funktionen ausschließlich unter Verwendung von 

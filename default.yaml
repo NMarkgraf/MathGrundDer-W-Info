@@ -1,10 +1,15 @@
 ---
-toc-title: "\\contentsname"
 lang: de-DE
 header-includes: 
-    #- "\\usepackage{csquotes}"
     - "\\InputIfFileExists{header.tex}{\\relax}{\\relax}"
+    - "\\definecolor{shadecolor}{RGB}{230,230,230}" 
+    - "\\setmoderntoc"
+    - "\\InputIfFileExists{moreblocks.tex}{\\relax}{\\relax}"
+    - "\\InputIfFileExists{person.tex}{\\relax}{\\relax}"
+#   - "\\usepackage{csquotes}"
 output:
     beamer_presentation:
+        slide_level: 3
+    revealjs::revealjs_presentation:
         slide_level: 3
 ---

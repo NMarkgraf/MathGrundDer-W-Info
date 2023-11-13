@@ -186,7 +186,7 @@ gf_fun(fkt(x) ~x,
   gf_point(c(fkt(-1.5), fkt(7.4)) ~ c(-1.5,7.4), color = my_line_color) %>%
   gf_text(c(fkt(-1.5), fkt(7.4)) ~ c(-1.5,7.4), 
           label = c("f(a)", "f(b)"), 
-          nudge_y = c(0.25,-0.27), 
+          #nudge_y = c(0.25,-0.27), 
           size = f*my_font_size,
           color = my_line_color) %>%
   gf_hline(yintercept = 0.75, 
@@ -224,7 +224,7 @@ gf_fun(fkt(x) ~ x,
            data = tdf) %>%
   gf_text(c(fkt(-1.5), fkt(7.4)) ~ c(-1.5, 7.4), 
           label = c("f(a)", "f(b)"), 
-          nudge_y = c(0.25,-0.27), 
+          #nudge_y = c(0.25,-0.27), 
           size = f*my_font_size,
           color = my_line_color) %>%
   gf_hline(yintercept = 0.75,
@@ -250,7 +250,7 @@ gf_fun(fkt(x) ~ x,
            size = f * my_font_size) %>%
   gf_text(0.75 ~ -1.5, 
           label = "s", 
-          nudge_y = 0.15, 
+          #nudge_y = 0.15, 
           size = f * my_font_size, 
           color = my_constant_line_color) %>%
   gf_refine(scale_y_continuous(breaks = c()),

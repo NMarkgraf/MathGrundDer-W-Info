@@ -54,7 +54,8 @@ if (!exists("prelude.packages")) {
 # Release Vergleich
 # ---------------------------------------------------------------------------
 releaseCompare <- function(relA, relB) {
-  return (compareVersion(relA, relB) < 0)
+    library(purrr)
+    any(map2(relA, relB, compareVersion) < 0)
 }
   
 # ---------------------------------------------------------------------------
@@ -115,8 +116,8 @@ releaseCompare <- function(relA, relB) {
       
       new.pkgs <- needed_pkgs[!(needed_pkgs %in% installed.packages())]
       del.pkgs <- unwanted_pkgs[(unwanted_pkgs %in% installed.packages())]
-      # print(new.pkgs)
-      # print(del.pkgs)
+      print(new.pkgs)
+      print(del.pkgs)
       if (length(new.pkgs)) {
           install.packages(new.pkgs, dependencies = dependencies, repos = repos)
       }
@@ -127,21 +128,22 @@ releaseCompare <- function(relA, relB) {
       message("Ggf. müssen noch Updates gemacht werden. Ich prüfe das ...")
       # Prüfe ob Updates nötig sind
       currel <- c()
-      for (pkg in needed_pkgs_df[needed_pkgs_df$minrelease != "-",]$packages)
+      tmp <- needed_pkgs_df[needed_pkgs_df$minrelease != "-",]
+      for (pkg in tmp$packages)
       {
           currel <- c(currel, paste0(packageVersion(pkg), ""))
       }
-      update.pkgs <- needed_pkgs[releaseCompare(currel, as.character(needed_pkgs_df[needed_pkgs_df$minrelease != "-",]$minrelease))]
+      update.pkgs <- needed_pkgs[releaseCompare(currel, tmp$minrelease)]
       
       # Ggf. wird hier ein Update durchgeführt oder eine Mitteilung gesendet!
       for (pkg in update.pkgs)
       {
           if (noupdates || pkg %in% loadedNamespaces()) {
               warning(paste0("WARNUNG: ",
-                             "Das Paket `", pkg, "` muss aktualisiert werden!"))
+                             "Das Paket `", pkg, "` muss upgedatet werden!"))
           }
           else {
-              message("das Paket '", pkg, "' wird aktualisiert ... ")
+              message("das Paket '", pkg, "' wird upgedatet ... ")
               install.packages(pkg, dependencies = dependencies, repos = repos) # besser als update.packages!
           }
       }

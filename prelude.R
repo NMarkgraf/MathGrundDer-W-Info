@@ -1,7 +1,7 @@
 # ===========================================================================
-# prelude.R (Release 3.0.0)
+# prelude.R (Release 2.5.3)
 # =========------------------------------------------------------------------
-# (W) by Norman Markgraf, Karsten Lübke & Sebastian Sauer in 2017-19
+# (W) by Norman Markgraf, Karsten Lübke & Sebastian Sauer in 2017-21
 #
 # 01. Sep. 2017  (nm)  Erstes Release
 #                      (Release 1.)
@@ -60,9 +60,19 @@
 #                      Wegen der include_exclude.py Filter nun direkt in LaTeX
 #                      als Zähler dort. (beamerthemeNPBT.sty ab 4.2.1 nötig!!!)
 #                      (Release 2.4.0)
-# 07. Jul. 2020  (nm)  Ausmisten! (Release 3.0.0)
+# 27. Feb. 2021  (nm)  Corona und useR standardmässig auf FALSE gesetzt.
+#                      (Release 2.4.1)
+# 02. Mrz. 2021  (nm)  my.options() statt statischen Variablen
+#                      (Release 2.5)
+# 23. Apr. 2021  (nm)  "assign" statt "<<-"!
+#                      (Release 2.5.1)
+# 31. Dez. 2021  (nm)  "assertTxtData()" zum Sicherstellen von Txt-Daten aus 
+#                      dem Netz
+#                      (Release 2.5.2)
+# 04. Jan. 2022  (nm)  assign() um ",envir = GlobalEnc" erweitert. Bugfix!
+#                      (Release 2.5.3)
 #
-#   (C)opyleft Norman Markgraf in 2017-20
+#   (C)opyleft Norman Markgraf in 2017-22
 #
 #   This program is free software: you can redistribute it and/or modify
 #   it under the terms of the GNU General Public License as published by
@@ -93,6 +103,7 @@ if (!requireNamespace('futile.logger', quietly = TRUE)) {
     stop("Please install the packages `futile.logger` (install.packages(\"futile.logger\") first!")
 }
 library(futile.logger)
+
 # ---------------------------------------------------------------------------
 
 # ---------------------------------------------------------------------------
@@ -102,14 +113,77 @@ library(knitr)
 
 knitr::opts_chunk$set(
   echo = TRUE,
-  background = "#ECF2F8",
+  background = "#ECF2F8", # war mal: '#E0E0E0',
   concordance = TRUE,
+  #    out.width="80%",
   tidy = FALSE,
   fig.align = "center",
+  #    fig.asp = .618,
   message = FALSE,
   warning = FALSE,
   width.cutoff = 70
 )
+
+merge_list = function(x, y) {
+  x[names(y)] = y
+  x
+}
+
+my_defaults = function(value = list()) {
+  defaults = value
+  
+  get = function(name, default = FALSE, drop = TRUE) {
+    if (default) defaults = value  # this is only a local version
+    if (missing(name)) defaults else {
+      if (drop && length(name) == 1) defaults[[name]] else {
+        setNames(defaults[name], name)
+      }
+    }
+  }
+  resolve = function(...) {
+    dots = list(...)
+    if (length(dots) == 0) return()
+    if (is.null(names(dots)) && length(dots) == 1 && is.list(dots[[1]]))
+      if (length(dots <- dots[[1]]) == 0) return()
+    dots
+  }
+  set = function(...) {
+    dots = resolve(...)
+    if (length(dots)) defaults <<- merge(dots)
+    invisible(NULL)
+  }
+  delete = function(keys) {
+    for (k in keys) defaults[[k]] <<- NULL
+  }
+  merge = function(values) merge_list(defaults, values)
+  restore = function(target = value) defaults <<- target
+  append = function(...) {
+    dots = resolve(...)
+    for (i in names(dots)) dots[[i]] <- c(defaults[[i]], dots[[i]])
+    if (length(dots)) defaults <<- merge(dots)
+    invisible(NULL)
+  }
+  
+  list(
+    get = get, set = set, delete = delete,
+    append = append, merge = merge, restore = restore
+  )
+}
+
+if (!exists("my.options")) {
+  assign("my.options",  my_defaults(list(
+    layouttype = "FOM",        # Möglich sind: "eufom", "DLS"
+    eufom = FALSE,             #
+    Corona = TRUE,             #
+    UseCache = FALSE,          #
+    showuseR = TRUE, 
+    overwrite_old = TRUE,      # Sollen bestehende Dateien überschrieben werden?
+    use_private = TRUE,        # Die Werte aus "private/private.R" benutzen?
+    privateVorstellung = TRUE, #
+    showVorlesungsplan = FALSE,
+    useLattice = FALSE         # Use Lattice (or if not use ggplot)
+  )), envir = .GlobalEnv)
+}
 
 # ---------------------------------------------------------------------------
 # Falls die Datei "cachecontrol.R" existiert, wird diese nachgeladen.
@@ -131,16 +205,16 @@ library(mosaic)
 options(width = 73) # Ausgabe auf 73 Zeichen pro Zeile begrenzen.
 
 # ---------------------------------------------------------------------------
-# GLOBALE Variabeln, daher mit <<- stat <- !
+# GLOBALE Variabeln, daher assign() statt  <<- oder <- !
 # ---------------------------------------------------------------------------
-DEBUGMASTERFLAG <<- FALSE
-prelude.cleanMemory <<- TRUE  # Nach Benutzung ggf. unnütz gewordene 
+assign("DEBUGMASTERFLAG", FALSE)
+assign("prelude.cleanMemory", TRUE)  # Nach Benutzung ggf. unnütz gewordene 
                               # prelude-Funktionen aus dem Speicher löschnen?
-FOMLayout <<- TRUE
-EUFOMLayout <<- !FOMLayout
+if (!exists("FOMLayout")) assign("FOMLayout", TRUE)
+assign("EUFOMLayout", !FOMLayout)
 
 if (!exists("runCount")) {
-  runCount <<- 0
+  assign("runCount", 0)
 }
 
 # ---------------------------------------------------------------------------
@@ -150,17 +224,30 @@ if (!exists("runCount")) {
 # sind. Sie sollte zu Beginn einer Rmd-Master-Datei ausgeführt werden.
 # ---------------------------------------------------------------------------
 initPrelude <- function(
-                  doCheckPackages = TRUE, # Sollen die Pakete geprüft werden?
-                  basePath = "."
-               ) { 
+                        prefix = "prefixZeit", # Prefix für das aktuelle Dokument
+                        doCheckPackages = FALSE, # Sollen die Pakete geprüft werden?
+                        initSeed = 1896, # Random Seed setzen auf ...
+                        basePath = ".") { 
 
-  owrOwnBasePath <<- basePath 
+  assign("owrOwnBasePath", basePath, envir = .GlobalEnv)
+  assign("prefixZeit", prefix, envir = .GlobalEnv)
 
-  showuseR <<- TRUE
+
+  if (!exists("Vorlesungstermine")) {
+      assign("Vorlesungstermine", "default")
+  }
   
-  abschluss <<- FALSE
-  WDH <<- "Wiederholung: "
+  # Standardeinstellungen für useR und Corona Variablen
+  if (!exists("showuseR")) assign("showuseR", FALSE, envir = .GlobalEnv)
+  if (!exists("Corona")) assign("Corona", FALSE, envir = .GlobalEnv)
+  
+  assign("kap", -1, envir = .GlobalEnv)
+  assign("ex", 0, envir = .GlobalEnv)
 
+  # Keine Ahnung wofür das ist ***KL***??
+  assign("abschluss", FALSE, envir = .GlobalEnv)
+  assign("WDH", "Wiederholung: ", envir = .GlobalEnv)
+  
   message("load prelude tools")
   if (file.exists("prelude/prelude_tools.R")) {
       source("prelude/prelude_tools.R", verbose=T)
@@ -174,34 +261,39 @@ initPrelude <- function(
 
   loadPrelude("prelude_packages.R")
 
-  # Notwendige Pakete überprüfen und ggf. installieren.
-  if (doCheckPackages) {
-    checkPackages()
-  }
-
   # Prüfen ob private.yaml existiert und ggf. mit Dafaultwerten füllen!
   if (!file.exists("private.yaml")) {
       cat("---\nauthor: \"FOM Dozent\\*in\"\ndate: \"\"\ninstitute: \"FOM\"\n---\n", file="private.yaml")
   }
 
+  # Notwendige Pakete überprüfen und ggf. installieren.
+  if (doCheckPackages) {
+    checkPackages()
+  }
+
   if (!exists("RENDEREDBYSCRIPT")) {
-      RENDEREDBYSCRIPT <<- FALSE
+      assign("RENDEREDBYSCRIPT", FALSE, envir = .GlobalEnv)
   }
   
   # Auf private Dateien (private.R,  und private.yaml) prüfen und ggf. laden.
   checkPrivateFiles(c("private-Semesterdaten.R"), path="private")
   
-  preludeFilelist <- c("prelude_images.R",
+  preludeFilelist <- c("prelude_timetable.R",
+                       "prelude_timetable.R",
+                       "prelude_images.R",
                        "prelude_python.R",
                        "prelude_panflute.R"
                        )
   for(preludeFile in preludeFilelist){
       loadPrelude(preludeFile)
   }
+
+  # Random Seed setzen
+  set.seed(initSeed)
 }
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-# Liefert zu einem Dateinamen den Namen der "_default"-Datei
+# Liefert zu einer Dateinamen den Namen der "_default"-Datei
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 defaultFilename <- function(filename) {
   fn <- basename(filename)
@@ -240,18 +332,27 @@ checkPrivateFiles <- function(addPrivateFiles = NULL, path=".") {  #  path="priv
 # einer Rmd-Master-Datei stehen.
 # ---------------------------------------------------------------------------
 finalizePrelude <- function() {
-  abschluss <<- FALSE
-  runCount <<- 0
+  assign("kap", -1, envir = .GlobalEnv)
+  assign("ex", 0, envir = .GlobalEnv)
+  assign("abschluss", FALSE, envir = .GlobalEnv)
+  assign("runCount", 0, envir = .GlobalEnv)
   if (exists("RENDEREDBYSCRIPT")) {
-      rm("RENDEREDBYSCRIPT", inherits=TRUE)
+      rm("RENDEREDBYSCRIPT", inherits = TRUE, envir = .GlobalEnv)
   }
 }
 
-runCount <<- runCount + 1
-if (runCount > 2) {
-  runCount <<- 2
+assign("runCount", get("runCount") + 1, envir = .GlobalEnv)
+if (get("runCount") > 2) {
+  assign("runCount", 2, envir = .GlobalEnv)
 }
 
+# ---------------------------------------------------------------------------
+# ownChapter steuert die Lübke'sche Kapitelverwaltung. (DEPRECATED!)
+# ---------------------------------------------------------------------------
+assign("ownChapter", FALSE, envir = .GlobalEnv) # Verwaltung der Kapitel durch LaTeX
+nextChapter <- function() {
+    return("")
+}
 
 # ---------------------------------------------------------------------------
 # Die nächste Übung ...
@@ -266,7 +367,9 @@ if (runCount > 2) {
 #' ## Exercise No. 'r nextExercise`: A new Exercise!
 #
 nextExercise <- function() {
-  return(paste0("\\nextExercise{}"))
+  # ex <<- ex + 1
+  # return(thisExercise())
+  return(paste0("\\nextExercise"))
 }
 
 # ---------------------------------------------------------------------------
@@ -282,7 +385,8 @@ nextExercise <- function() {
 #' ## Still exercise No. 'r thisExercise`!
 #
 thisExercise <- function() {
-  return(paste0("\\thisExercise{}"))
+  #return(paste0(ex, ""))
+  return(paste0("\\thisExercise"))
 }
 
 
@@ -293,20 +397,37 @@ assertData <- function(
                        csv,
                        url,
                        debug = FALSE,
+                       stringsAsFactors = FALSE,
                        lang = "de") {
-  td <- try(read.csv2(csv), silent = !debug)
+  td <- try(read.csv2(csv, stringsAsFactors = stringsAsFactors), silent = !debug)
   if (class(td) == "try-error") {
     if (debug) message(paste("Die Tabelle", csv, "wird von", url, "nachgeladen!"))
     download.file(url, destfile = csv)
   }
   if (lang == "de") {
-    out_file <- read.csv2(csv)
+    out_file <- read.csv2(csv, stringsAsFactors = stringsAsFactors)
   } else {
-    out_file <- read.csv(csv)
+    out_file <- read.csv(csv, stringsAsFactors = stringsAsFactors)
   }
   return(out_file)
 }
 
+# ---------------------------------------------------------------------------
+# assertTxtData (txt, url)
+# ---------------------------------------------------------------------------
+assertTxtData <- function(
+    txt,
+    url,
+    debug = FALSE,
+    stringsAsFactors = FALSE,
+    lang = "de") {
+    td <- try(read.table(txt, stringsAsFactors = stringsAsFactors), silent = !debug)
+    if (class(td) == "try-error") {
+        if (debug) message(paste("Die Tabelle", txt, "wird von", url, "nachgeladen!"))
+        download.file(url, destfile = txt)
+    }
+    read.table(txt, stringsAsFactors = stringsAsFactors)
+}
 
 # ---------------------------------------------------------------------------
 # getPathToBase
@@ -332,34 +453,115 @@ getPathToImages <- function(chapter = NULL) {
 # initPart
 # ---------------------------------------------------------------------------
 initPart <- function(
-               partname = NULL,
-               subdirname = "",
-               debug = FALSE
-            ) {
-    curPart.name <<- ""
-    curPart.subdirname <<- subdirname
+                     partname = NULL,
+                     subdirname = "",
+                     debug = FALSE) {
+    assign("curPart.name", "", envir = .GlobalEnv)
+    assign("curPart.subdirname", subdirname, envir = .GlobalEnv)
     if (!is.null(partname)) {
-        curPart.name <<- partname
+        assign("curPart.name",partname, envir = .GlobalEnv)
     }
-    flog.debug(paste0("Starte mit Datei '", curPart.name, ".Rmd'"))
-    x <- paste0("'", paste(search(), collapse="', '"), "'")
+    flog.debug(paste0("Starte mit Datei '", get("curPart.name"), ".Rmd'"))
+    x <- paste0("'", paste(search(), collapse = "', '"), "'")
     flog.debug(paste("Aktueller Suchpfad:", x))
-    x <- paste0("'", paste(loadedNamespaces(), collapse="', '"), "'")
+    x <- paste0("'", paste(loadedNamespaces(), collapse = "', '"), "'")
     flog.debug(paste("Aktueller Namespaces", x))
 }
 
 # ---------------------------------------------------------------------------
 # finalizePart
 # ---------------------------------------------------------------------------
-finalizePart <- function(partname = NULL, debug = FALSE) {
+finalizePart <- function(partname=NULL, debug=FALSE) {
     x <- paste0("'", paste(search(), collapse = "', '"), "'")
     flog.debug(paste("Aktueller Suchpfad:", x))
-    flog.debug(paste0("Ende mit Datei '", curPart.name,".Rmd'!"))
+    flog.debug(paste0("Ende mit Datei '", get("curPart.name"),".Rmd'!"))
     x <- paste0("'", paste(loadedNamespaces(), collapse = "', '"), "'")
     flog.debug(paste("Aktueller Namespaces", x))
     
-    curPart.name <<- NULL
-    curPart.subdirname <<- NULL
+    assign("curPart.name", NULL, envir = .GlobalEnv)
+    assign("curPart.subdirname", NULL, envir = .GlobalEnv)
+}
+# ---------------------------------------------------------------------------
+# setupFOMColors
+# --------------
+# Passt einige Mosaic/ Lattice/ Trellis Graphiken an das FOM CD an.
+# ---------------------------------------------------------------------------
+setupFOMColors <- function() {
+  library(mosaic)
+
+  FOMColor.line <- "#00998A"
+  FOMColor.polygon.col <- "#BFE5E2"
+  FOMColor.polygon.border <- "#007368"
+
+  trellis.par.set(
+    list(
+      add.line = list(col = FOMColor.line),
+      plot.polygon = list(col = FOMColor.polygon.col, border = FOMColor.polygon.border),
+      box.rectangle = list(col = FOMColor.polygon.border),
+      box.umbrella = list(col = FOMColor.polygon.border),
+      box.dot = list(col = FOMColor.polygon.border),
+      plot.line = list(col = FOMColor.line),
+      plot.symbol = list(col = FOMColor.polygon.border),
+      dot.symbol = list(col = FOMColor.line),
+      dot.line = list(col = FOMColor.polygon.border),
+      superpose.line = list(col = FOMColor.line)
+    )
+  )
+}
+# ---------------------------------------------------------------------------
+# ================== Ergänzungen mg ==================
+
+# ---------------------------------------------------------------------------
+#
+# Text aus Summary auslesen
+#
+# Parameter: Model, starttext, endtext (optional)
+# starttext kann auch eine Zahl, dann wird ab dieser Zeile ausgegeben
+# endtext kann auch eine Zahl sein, dann werden endtext Zeilen nach starttext ausgegeben
+# es wird jeweils das erste Auftreten des gesuchten Textes genommen
+# flsumy: TRUE - output von summary(mod), FALSE - direkt output von mod
+# Etwas Fehlerbehandlung implementiert
+# ---------------------------------------------------------------------------
+getSumLines <- function(mod, starttext, endtext = "", flsumy = TRUE) {
+    # Umwandeln des summary in text
+    if (flsumy)
+        # Summary nutzen
+        sumytxt <- capture.output(summary(mod))
+    else
+        # direkt Output des Modells nutzen
+        sumytxt <- capture.output(mod)
+    
+    if (is.numeric(starttext))
+        lStart <- starttext
+    else{
+        lStart <- grep(starttext, sumytxt)
+        if (!length(lStart)) {
+            cat("Starttext nicht gefunden!\n")
+            return
+        }
+        # wenn mehr als eine Stelle gefunden wurde, die erste nehmen
+        lStart <- lStart[1]
+    }
+    
+    if (endtext != "") {
+        if (is.numeric(endtext)) {
+            lEnd <- lStart + endtext
+        }
+        else {
+            lEnd <- grep(endtext, sumytxt)
+            lEnd <- lEnd[1]
+        }
+        if (!length(lEnd)) {
+            cat("Endtext nicht gefunden!\n")
+            return
+        }
+        if (lEnd > lStart)
+            cat(sumytxt[lStart:lEnd], sep = "\n")
+        else
+            cat(sumytxt[lEnd:lStart], sep = "\n")
+    }
+    else
+        cat(sumytxt[lStart])
 }
 
 # ===========================================================================

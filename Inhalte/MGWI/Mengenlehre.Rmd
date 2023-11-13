@@ -313,6 +313,7 @@ Diese Mengen können (paarweise) eine der folgenden Beziehungen haben:
 $\subseteq$, $\supseteq$, $\subsetneq$, $\supsetneq$, $=$, $\neq$
 
 A. Wie viele (paarweise) Beziehungen gibt es zwischen den Mengen $A$, $B$, $C$, $D$ und $E$?
+
 B. Welche (paarweisen) Beziehungen gibt es zwischen den Mengen $A$, $B$, $C$, $D$ und $E$?
 
 ::: {.notes}

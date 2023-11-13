@@ -1,0 +1,43 @@
+beamer_presentation:
+  latex_engine: xelatex
+  #latex_engine: lualatex
+  fonttheme: serif
+  template: NULL
+  toc: true
+  md_extensions: +raw_tex+header_attributes
+  fig_caption: false
+  highlight: tango
+  keep_tex: true
+  slide_level: 3
+  pandoc_args:
+    - './private.yaml'
+    - './default.yaml'
+    - './default-xelatex.yaml' 
+#    - -V
+#    - aspectratio=169 # Alternativ geht auch: 1610 oder 43 
+    - -V
+    - papersize=A4
+    - -V
+    - fontsize=12pt
+    - -V
+    - toc-title="Inhaltsverzeichnis"
+    - -V
+    - lang=de
+    - -V
+    - linkcolor=blue
+    - -V
+    - urlcolor=blue
+    - -V
+    - csquotes=true
+    - -V
+    - theme=NPBT
+    - -V
+    - colortheme=NPBT-FOM  # NPBT-EUFOM für eufom; NPBT-FOM für FOM;
+    - -V
+    - outertheme=NPBT-FOM  # NPBT-EUFOM für eufom; NPBT-FOM für FOM;
+    - --filter
+    - pandoc-filter/typography.py
+    - --filter
+    - pandoc-filter/style.py
+    - --filter
+    - pandoc-filter/include_exclude.py
